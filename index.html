@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#B91C1C">
 <title>Vovôminic Emergência — Guia de Plantão</title>
 <meta name="description" content="Guia educacional de emergência médica brasileira, baseado em evidências e diretrizes. Sem fins lucrativos.">
+
+<!-- PWA: install/offline support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vovôminic ER">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Vov%C3%B4minic%20Emerg%C3%AAncia%22%2C%22short_name%22%3A%22Vov%C3%B4minic%20ER%22%2C%22description%22%3A%22Guia%20de%20plant%C3%A3o%20em%20emerg%C3%AAncia%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait-primary%22%2C%22background_color%22%3A%22%23FAF8F5%22%2C%22theme_color%22%3A%22%23B91C1C%22%2C%22categories%22%3A%5B%22medical%22%2C%22health%22%2C%22education%22%5D%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D%2522http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2522%2520viewBox%253D%25220%25200%2520512%2520512%2522%253E%253Crect%2520width%253D%2522512%2522%2520height%253D%2522512%2522%2520fill%253D%2522%2523B91C1C%2522%2520rx%253D%252264%2522%252F%253E%253Cpath%2520d%253D%2522M256%2520120v272M120%2520256h272%2522%2520stroke%253D%2522%2523fff%2522%2520stroke-width%253D%252264%2522%2520stroke-linecap%253D%2522round%2522%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%22%7D%2C%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%253D%2522http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2522%2520viewBox%253D%25220%25200%2520512%2520512%2522%253E%253Crect%2520width%253D%2522512%2522%2520height%253D%2522512%2522%2520fill%253D%2522%2523B91C1C%2522%2520rx%253D%252264%2522%252F%253E%253Cpath%2520d%253D%2522M256%2520120v272M120%2520256h272%2522%2520stroke%253D%2522%2523fff%2522%2520stroke-width%253D%252264%2522%2520stroke-linecap%253D%2522round%2522%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="%23B91C1C" rx="4"/><path d="M16 8v16M8 16h16" stroke="white" stroke-width="3.5" stroke-linecap="round"/></svg>'>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1478,6 +1487,159 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
   color: #7DD3FC;
 }
 
+/* ============== MODAL ============== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal {
+  background: var(--bg);
+  color: var(--ink-1);
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.modal-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.modal-body {
+  padding: 1rem 1.2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body .note {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin-bottom: 0.5rem;
+}
+.modal-foot {
+  padding: 0.8rem 1.2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+.cross-textarea {
+  width: 100%;
+  min-height: 400px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.8rem;
+  background: var(--bg-elev);
+  color: var(--ink-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+.pat-foot-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ============== IMPRESSÃO ============== */
+@media print {
+  /* Esconde elementos da UI que não fazem sentido em papel */
+  .topbar, .foot, .modo-toggle, .pat-foot button, .pat-foot-actions, .search-shell,
+  .topbar-actions, nav.bread, .has-flow, #btnInstall, .modal-overlay {
+    display: none !important;
+  }
+  
+  /* Página limpa */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+  
+  /* Cabeçalho institucional */
+  #view::before {
+    content: "Vovôminic Emergência — Guia de Plantão";
+    display: block;
+    border-bottom: 2px solid #B91C1C;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 10pt;
+    color: #B91C1C;
+  }
+  
+  /* Patologia em página única */
+  .patologia {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  /* Quebra de página entre blocos grandes */
+  .block { page-break-inside: avoid; margin-bottom: 0.4cm; }
+  .rx-etapa { page-break-inside: avoid; }
+  table.rx { page-break-inside: avoid; font-size: 9pt; }
+  
+  /* Headers */
+  h1 { color: #B91C1C !important; font-size: 16pt; margin-bottom: 0.2cm; }
+  h2 { color: #475569 !important; font-size: 12pt; margin-top: 0.4cm; }
+  h3 { font-size: 10pt; margin: 0.2cm 0 0.1cm; }
+  
+  /* Alertas — manter visíveis */
+  .alert-crit { border-left: 3px solid #B91C1C !important; background: #FEF2F2 !important; padding: 6px 10px !important; }
+  .alert-warn { border-left: 3px solid #CA8A04 !important; background: #FEFCE8 !important; padding: 6px 10px !important; }
+  .alert-info { border-left: 3px solid #475569 !important; background: #F1F5F9 !important; padding: 6px 10px !important; }
+  
+  /* Esconder imagens em impressão (economiza tinta) — exceto se classe .print-keep */
+  .figs-wrap { display: none !important; }
+  
+  /* Tabela de prescrição */
+  table.rx { width: 100%; border-collapse: collapse; }
+  table.rx th, table.rx td {
+    border: 1px solid #ccc !important;
+    padding: 4px 6px !important;
+    text-align: left;
+    font-size: 9pt;
+  }
+  table.rx thead { background: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  
+  /* Rodapé de assinatura */
+  #view::after {
+    content: "Assinatura/Carimbo: ____________________________________     CRM: __________";
+    display: block;
+    margin-top: 1.5cm;
+    padding-top: 8px;
+    border-top: 1px solid #999;
+    font-size: 9pt;
+  }
+  
+  /* Esconder seções não essenciais em impressão */
+  .pat-fisio-collapsed, .pat-mec-collapsed { display: none !important; }
+  
+  /* Forçar cores */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
 </style>
 </head>
 <body>
@@ -1495,6 +1657,9 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
       <div class="search-results" id="searchResults"></div>
     </div>
     <div class="topbar-actions">
+      <button class="icon-btn" id="btnInstall" onclick="installPWA()" aria-label="Instalar app" title="Instalar como aplicativo (offline)" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
       <button class="icon-btn" onclick="navigate('#/sobre')" aria-label="Como usar" title="Como usar este guia">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       </button>
@@ -1557,6 +1722,8 @@ const SISTEMAS = {
   oft:      { nome: "Oftalmologia / ORL",    icone: "◉", cor: "#1D4ED8" },
   ubs:      { nome: "UBS / Prevenção",       icone: "✚", cor: "#059669" },
   anal:     { nome: "Analgesia",             icone: "◴", cor: "#A16207" },
+  conv:     { nome: "Conversores / Calc",    icone: "↔", cor: "#2563EB" },
+  proc:     { nome: "Procedimentos",         icone: "✣", cor: "#7C2D12" },
 };
 
 const PATOLOGIAS = [
@@ -5635,6 +5802,602 @@ calcs:[],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PROCEDIMENTOS PASSO-A-PASSO
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+{id:"proc-iot", sis:"proc", grav:"alta",
+nome:"Procedimento — Intubação Orotraqueal (IOT)",
+sin:["IOT","intubação","sequência rápida","RSI","via aérea"],
+def:"Sequência rápida de intubação (RSI) — padrão-ouro em emergência. Preparação + pré-oxigenação + pré-medicação + indução + paralisia + intubação + confirmação + manutenção.",
+
+exames:[
+"INDICAÇÕES: falência respiratória, proteção via aérea (Glasgow ≤8, déficit motor), choque refratário, hipoxemia refratária (SpO₂ <90% c/ máscara), hipercapnia c/ acidose (pH<7,25), agitação que impede manejo",
+"CONTRAINDICAÇÕES RELATIVAS: via aérea difícil prevista (LEMON), instabilidade hemodinâmica extrema (considerar ressuscitação primeiro)",
+"AVALIAR VIA AÉREA DIFÍCIL — LEMON: Look (anatomia), Evaluate (3-3-2), Mallampati, Obstrução, Neck mobility",
+],
+
+rx:[
+{etapa:"inicial", d:"1. PREPARAÇÃO (SOAPME)",do:"Sucção pronta + O2 + Airway tools (laringo+TOT) + Posicionamento + Monitorização + Equipamento",via:"—",o:"S = succion (cânula Yankauer testada); O = O2 (15L reservatório); A = airway (TOT 7.5-8.0 H, 7.0-7.5 M + Cuff testado + fio guia); P = positioning (sniff position, coxim occipital); M = monitor (PA, SpO2, ECG, capnografia); E = equipamento e drogas pré-calculadas + drogas resgate (atropina, adrenalina)."},
+
+{etapa:"inicial", d:"2. PRÉ-OXIGENAÇÃO",do:"Máscara não-reinalante 15 L/min × 3-5 min OU 8 respirações de Vt máximo c/ O2 100%",via:"—",o:"Objetivo: SpO2 ≥95% + 'desnitrogenizar' (substituir N2 alveolar por O2 = reserva de O2 alveolar). Em obesos/hipoxêmicos: HEAD UP 25° + VNI 5 min OU cateter nasal alto fluxo (15L NRM + 15L cateter)."},
+
+{etapa:"escala", d:"3. INDUÇÃO — Etomidato",do:"0,3 mg/kg IV (peso real)",via:"IV",o:"PADRÃO em hipotenso/instável. Vantagem: ↓PA mínima. Desvantagem: supressão adrenal transitória (1 dose = ok). Início 30-60s. Alternativas: cetamina 1-2 mg/kg IV (broncoespasmo, asma, choque), propofol 1,5-2,5 mg/kg IV (estáveis, neurológicos)."},
+{etapa:"escala", d:"3b. INDUÇÃO — Cetamina (preferência em choque/asma)",do:"1-2 mg/kg IV",via:"IV",o:"NÃO baixa PA (libera catecolaminas), broncodilatador. CI relativa: HIC, IAM ativo. Início 30-60s."},
+{etapa:"escala", d:"3c. INDUÇÃO — Propofol (estáveis)",do:"1,5-2,5 mg/kg IV",via:"IV",o:"Início rápido (15-30s), curta ação. CAUSA hipotensão (40-50%). Reduzir dose 30-50% em idoso/choque."},
+
+{etapa:"escala", d:"4. PARALISIA — Succinilcolina",do:"1,5 mg/kg IV (peso real)",via:"IV",o:"PADRÃO se sem CI. Início 30-45s, duração 5-10 min. CI: hipercalemia conhecida (>5,5), suspeita rabdomiólise, queimaduras >48h, denervação >72h, hipertermia maligna prévia, miopatia, ↑PIC."},
+{etapa:"escala", d:"4b. PARALISIA — Rocurônio",do:"1,2 mg/kg IV (dose RSI)",via:"IV",o:"ALTERNATIVA. Início 45-60s. Duração LONGA (45-90 min). Útil em CI succinilcolina. Antídoto: sugamadex 16 mg/kg IV (se disponível)."},
+
+{etapa:"escala", d:"5. LARINGOSCOPIA + PASSAGEM TOT",do:"Pega laringoscópio MÃO ESQUERDA, abre boca com 'manobra dos dedos cruzados'",via:"—",o:"Lâmina (Macintosh 3-4 adulto), avança pela direita varrendo língua para esquerda, levanta no eixo do cabo (NÃO alavanca). Visualizar epiglote, depois cordas vocais (Cormack-Lehane). Passar TOT pela direita até cuff 1-2 cm além das cordas (~22-23 cm comissura labial em homens, 20-21 em mulheres). Insuflar cuff (cerca 5-10 mL ar)."},
+
+{etapa:"escala", d:"6. CONFIRMAÇÃO",do:"Capnografia (gold standard) + ausculta 5 pontos + visualização do tubo entre as cordas",via:"—",o:"CAPNOGRAFIA EtCO2 >35 mmHg em ondas (≥6 ciclos) = confirma TOT em traqueia. Ausculta: epigástrio (silêncio), ápices, bases bilateral (MV simétrico). NÃO confiar só em ausculta — intubação esofágica pode ter 'falso MV'. RX tórax para confirmar posição (ponta TOT 2-4 cm acima da carina)."},
+
+{etapa:"adj", d:"7. PÓS-INTUBAÇÃO — Sedação + Analgesia",do:"Midazolam 0,05-0,1 mg/kg/h + Fentanil 0,5-2 mcg/kg/h BIC",via:"IV",o:"Alvo RASS -2 a 0 na maioria. Cisatracúrio 0,15 mg/kg + 0,18 mg/kg/h se sd compartimental abdominal/SDRA grave/sincronia VM impossível."},
+{etapa:"adj", d:"8. PARÂMETROS VM iniciais",do:"VCV: Vt 6 mL/kg peso PREDITO + PEEP 5-8 + FR 14-20 + FiO2 100% inicialmente",via:"VM",o:"Reduzir FiO2 para SpO2 ≥92-96%. Pplat <30. Driving pressure <15. Reavaliar gasometria em 30 min."},
+{etapa:"adj", d:"9. Após procedimento",do:"RX tórax, gasometria, conferir cuff (20-30 cmH2O), aspirar secreções",via:"—",o:"Cabeceira 30° (prevenir PAV). Trocar fixação a cada 24h."},
+
+{etapa:"alta", d:"COMPLICAÇÕES — Falha intubação",do:"Plano B: outra tentativa c/ ajuste de posição/lâmina/operador; máscara laríngea como ponte",via:"—",o:"Algoritmo difícil: <3 tentativas → dispositivos supraglóticos (LMA/i-gel) → cricotireoidostomia se CICO (Can't Intubate Can't Oxygenate)."},
+{etapa:"alta", d:"COMPLICAÇÕES — Hipotensão pós-IOT",do:"Volume + noradrenalina + reduzir sedação",via:"IV",o:"Por: indução + ventilação positiva (↓retorno venoso) + alívio do estresse simpático. Comum, antecipável. Ter NE pronta."},
+],
+
+alertas:[
+{t:"crit",x:"VIA AÉREA DIFÍCIL: SE PREVISTA → avaliar intubação acordada com videolaringo + sedação leve. Chamar mais experiente. Material de resgate à mão (BURP, bougie, máscara laríngea, kit cricotireoidostomia)."},
+{t:"crit",x:"SUCCINILCOLINA está CONTRAINDICADA em: hipercalemia conhecida, rabdomiólise, queimaduras/trauma >48h, paraplegia/AVC >72h, hipertermia maligna, ↑PIC. Use rocurônio."},
+{t:"crit",x:"PARADA CARDIORRESPIRATÓRIA pós-IOT: causa mais comum é HIPOTENSÃO (não hipoxia). Ter NE pronta + cristaloide + preparar adrenalina dose-resgate (10-50 mcg IV)."},
+{t:"warn",x:"PRESSÃO CRICOIDE (Sellick) — controversa. Evidência fraca para prevenção de aspiração; pode dificultar visualização. NÃO obrigatória."},
+{t:"info",x:"Capnografia é OBRIGATÓRIA para confirmação — método mais confiável. Sem capnografia → SpO2 mantida + ausculta + visualização."},
+],
+
+fisio:"RSI tem 7 P's: Preparation, Preoxygenation, Pretreatment (raramente usado hoje), Paralysis with induction, Position, Placement of tube, Postintubation management. A indução + paralisia simultâneas evitam ventilação manual (que distende estômago + aspiração). A janela apneica (entre paralisia e intubação) é a 'área crítica' — dependemos da pré-oxigenação para preservar SpO2.",
+
+mec:[
+{d:"Etomidato",x:"Agonista GABA-A. Vantagem: estabilidade hemodinâmica (↓PA mínima). Desvantagem: supressão adrenal transitória (24h após dose única — raramente clinicamente relevante)."},
+{d:"Cetamina",x:"Antagonista NMDA. Libera catecolaminas endógenas → ↑PA + ↑FC + broncodilatação. 'Anestésico dissociativo'. CI relativa em HIC e IAM ativo."},
+{d:"Propofol",x:"Agonista GABA-A. Início rápido, depuração rápida. Causa ↓PA dose-dependente (vasodilatação + ↓débito)."},
+{d:"Succinilcolina",x:"Agonista nicotínico despolarizante. Causa contração transitória ('fasciculações') seguida de paralisia. Curta ação por hidrólise plasmática (pseudocolinesterase). Causa ↑K transitório de 0,5-1 mEq — perigoso em hipercalemia/rabdomiólise/queimadura/denervação (↑receptores extrajuncionais)."},
+{d:"Rocurônio",x:"Antagonista nicotínico não-despolarizante. Doses altas (1,2 mg/kg) dão início rápido (45s) com longa duração. Sugamadex reverte completamente."},
+],
+
+diretriz:"Difficult Airway Society 2015. NAP4 (UK 2011). Brown CA — Manual of Emergency Airway Management 5ª ed.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"proc-acesso-central", sis:"proc", grav:"alta",
+nome:"Procedimento — Acesso Venoso Central (Seldinger)",
+sin:["acesso central","cateter central","CVC","Seldinger","jugular","subclávia","femoral"],
+def:"Punção e cateterização de veia central — geralmente jugular interna direita (1ª escolha eletiva em UTI), subclávia ou femoral. Indicações: drogas vesicantes, monitorização PVC, hemodiálise, NPP, acesso falho periférico, longa permanência.",
+
+exames:[
+"INDICAÇÕES: vasopressor, NPP, drogas irritantes, monitorização hemodinâmica, hemodiálise, marcapasso temporário",
+"CONTRAINDICAÇÕES: infecção no sítio, coagulopatia grave (relativa), trombose conhecida do sítio",
+"PREFERÊNCIAS: Jugular interna direita (mais segura, ECO-guiada); Subclávia (menos infecção mas mais pneumotórax); Femoral (emergência/PCR — alta infecção)",
+],
+
+rx:[
+{etapa:"inicial", d:"1. CONSENTIMENTO + Conferência",do:"Identificação paciente, alergias, anticoag, plaqueta >50k, INR <2",via:"—",o:"Em PCR/emergência: post-hoc. Conferir lateralidade (direita preferida pela anatomia + RX inicial). Posicionar Trendelenburg 15° (jugular/subclávia) para distender veias."},
+{etapa:"inicial", d:"2. ANTISSEPSIA + Campos estéreis",do:"Clorexidina alcoólica 2% × 30s + campo fenestrado amplo",via:"—",o:"Toque na pele com gaze estéril. Aguardar SECAR (eficácia depende). Paramentação: avental, máscara, óculos, gorro, luvas estéreis (full barrier — reduz CRBSI)."},
+{etapa:"inicial", d:"3. ANESTESIA LOCAL",do:"Lidocaína 1% 5-10 mL infiltração subcutânea + planos profundos",via:"SC",o:"Botão dérmico + cone até o trajeto previsto. Aspirar antes de injetar (evitar IV)."},
+
+{etapa:"escala", d:"4. ULTRASSOM (PADRÃO) — Mapeamento",do:"Sonda linear 5-12 MHz, axial sobre o trajeto",via:"—",o:"Identificar veia (compressível, sem pulsação, anecoica) versus artéria (pulsátil, não-comprime). Marcar pele OU manter visualização em tempo real durante punção (preferido — reduz complicações 70-80%)."},
+
+{etapa:"escala", d:"5. PUNÇÃO — Jugular interna direita",do:"Aproximar a 30-45° da pele, ângulo lateral, ponta para o mamilo ipsilateral",via:"—",o:"Avançar enquanto aspira. Sangue VENOSO escuro fluindo facilmente. ARTERIAL = vermelho-vivo, pulsátil → SAIR + comprimir 10 min. Em USG: visualizar agulha entrando no lúmen da veia."},
+{etapa:"escala", d:"5b. PUNÇÃO — Subclávia",do:"1 cm abaixo do ponto médio da clavícula, agulha paralela ao chão, direção fúrcula esternal",via:"—",o:"Avançar SOB clavícula (evitar pleura). Tunelizar sob a clavícula até retorno venoso. Risco: pneumotórax 1-3%. NÃO trocar tentativa do MESMO lado >2× (cumulativo)."},
+{etapa:"escala", d:"5c. PUNÇÃO — Femoral",do:"2 cm abaixo do ligamento inguinal, 1 cm medial ao pulso femoral (NAVEL: Nervo-Artéria-Veia-Espaço-Linfático)",via:"—",o:"Avançar 30-45° em direção ao umbigo. Útil em PCR (não interfere RCP) ou emergência sem ECO. ALTA TAXA infecção — trocar para outro sítio em 24-72h."},
+
+{etapa:"escala", d:"6. FIO GUIA (Seldinger)",do:"Passar fio J pela agulha — sem resistência",via:"—",o:"Se resistência = NÃO forçar (perfuração, posição errada). Reposicionar/repunção. Avançar fio ~20 cm para jugular direita. ECG: extrassístoles = fio no AD (recuar 2-3 cm)."},
+{etapa:"escala", d:"7. DILATADOR + CATETER",do:"Remover agulha (mantendo fio), passar dilatador, depois cateter sobre fio",via:"—",o:"Manter SEMPRE o fio guia controlado. Dilatador penetra a pele + fáscia. Cateter avança até marcas (~15-17 cm jugular D em adulto médio)."},
+{etapa:"escala", d:"8. CONFIRMAÇÃO",do:"Aspirar todas as vias (retorno venoso) + fluxo livre + fixar (sutura) + curativo",via:"—",o:"RX tórax obrigatório (jugular/subclávia) — confirmar ponta na VCS (carina) + excluir pneumotórax. NÃO usar antes do RX exceto emergência."},
+
+{etapa:"adj", d:"COMPLICAÇÕES IMEDIATAS",do:"Pneumotórax (subclávia), hematoma, punção arterial, arritmia, embolia gasosa",via:"—",o:"Pneumotórax: dispneia/dor pleurítica/↓MV após procedimento → RX urgente. Punção arterial: COMPRIMIR 10 min + observar hematoma."},
+{etapa:"adj", d:"COMPLICAÇÕES TARDIAS",do:"Infecção (CRBSI), trombose, estenose venosa",via:"—",o:"CRBSI: retirar cateter + hemocultura quantitativa + ATB. Trombose: heparina + retirar. Manter curativo limpo, trocar 7/7 dias."},
+],
+
+alertas:[
+{t:"crit",x:"USG-GUIADO é PADRÃO em 2024 — reduz complicações 70-80%. Se sem ECO disponível: experiente + anatomia + cautela."},
+{t:"crit",x:"NÃO USAR antes do RX (jugular/subclávia) — risco de infundir medicação em pleura/mediastino."},
+{t:"warn",x:"Subclávia: NUNCA tentar bilateral no mesmo dia (pneumotórax bilateral = catastrófico)."},
+{t:"warn",x:"Femoral: alto risco INFECÇÃO + TVP. Reservar para PCR, falha de outros sítios, ou trocar em 24-72h."},
+{t:"info",x:"Anticoag/coagulopatia: jugular > subclávia (compressível). INR <2, plaq >50k geralmente OK."},
+],
+
+fisio:"Técnica Seldinger (1953): punção com agulha → fio guia → dilatador → cateter sobre fio. Reduz complicações vs. punção direta com cateter. USG transformou a prática: identificação de anatomia variante, anomalias, visualização em tempo real da agulha entrando no lúmen.",
+
+mec:[],
+diretriz:"Brass P et al., Cochrane 2015 (US-guidance). CDC Guidelines for Prevention of Intravascular Catheter-Related Infections 2017.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"proc-toracico", sis:"proc", grav:"alta",
+nome:"Procedimento — Drenagem Torácica em Selo d'Água",
+sin:["drenagem torácica","dreno de tórax","pneumotórax dreno","hemotórax dreno"],
+def:"Inserção de tubo no espaço pleural para drenar ar (pneumotórax), sangue (hemotórax), líquido (derrame), pus (empiema). Padrão: 4°-5° EIC linha axilar média/anterior, lado afetado.",
+
+exames:[
+"INDICAÇÕES: pneumotórax >2cm/hipertensivo/sintomático/recidiva, hemotórax, derrame parapneumônico complicado, empiema, quilotórax, pós-operatório torácico",
+"CONTRAINDICAÇÕES: relativas — aderências, coagulopatia. Em PNT hipertensivo: punção descompressiva ANTES",
+"PRÉ: RX/TC tórax, hemograma + coag, marcar lado e sítio (CHECKLIST cirurgia segura)",
+],
+
+rx:[
+{etapa:"inicial", d:"1. CONFIRMAR LADO + LOCAL",do:"Confirmar com paciente + RX + marcar com caneta",via:"—",o:"WRONG-SIDE DRAINAGE é evento grave evitável. Conferir LATERALIDADE 2× independentemente."},
+{etapa:"inicial", d:"2. POSICIONAMENTO",do:"Decúbito dorsal, braço do lado afetado abduzido sobre cabeça",via:"—",o:"Expõe axila. Triângulo de segurança: borda lateral do peitoral maior (anterior), borda lateral do grande dorsal (posterior), linha do mamilo (inferior)."},
+{etapa:"inicial", d:"3. ANTISSEPSIA + CAMPOS + EPI",do:"Clorexidina + campo fenestrado + paramentação completa",via:"—",o:"Procedimento ESTÉRIL. Avental, máscara, luvas."},
+
+{etapa:"escala", d:"4. ANESTESIA LOCAL EXTENSA",do:"Lidocaína 1% 20-40 mL: pele → SC → periósteo costela → pleura",via:"SC/profunda",o:"BOTÃO dérmico + infiltrar trajeto até pleura parietal (muito sensível). Aspirar antes (excluir vaso). Confirmar profundidade do espaço pleural: aspira ar/líquido → marca profundidade na agulha."},
+
+{etapa:"escala", d:"5. INCISÃO",do:"Bisturi #11 — incisão 2-3 cm horizontal, paralela à costela inferior",via:"—",o:"4°-5° EIC linha axilar média/anterior (mais comum) OU 2° EIC linha hemiclavicular (urgência PNT, mas deixa cicatriz visível). Apoiar dedo na pele para controle profundidade."},
+
+{etapa:"escala", d:"6. DISSECÇÃO ROMBA + ENTRADA PLEURAL",do:"Pinça curva (Kelly) — dissecar até o ESPAÇO PLEURAL, sempre PASSANDO ACIMA da costela inferior (evitar feixe vasculonervoso intercostal)",via:"—",o:"Sentir 'pop' ao atravessar pleura parietal. Pode-se sentir saída de ar/líquido. Introduzir DEDO indicador para confirmar espaço pleural (palpar pulmão, aderências, baço, fígado)."},
+
+{etapa:"escala", d:"7. INSERÇÃO DO DRENO",do:"Tubo 28-32 Fr (adulto) — guiar com pinça em direção apical (PNT) ou basal (líquido)",via:"—",o:"Avançar até última perfuração estar 2-3 cm dentro do tórax (~10-12 cm). Sentir resistência da parede contralateral = parar. EVITAR forçar (lesão pulmão/diafragma)."},
+
+{etapa:"escala", d:"8. CONECTAR AO SELO D'ÁGUA",do:"Sistema com 3 frascos OU coletor descartável tipo Pleur-evac",via:"—",o:"Selo d'água: água destilada 2 cm acima do tubo curto = válvula unidirecional. PERMITE saída do tórax, IMPEDE retorno. Sucção opcional (-10 a -20 cmH2O) se persistir fuga."},
+
+{etapa:"escala", d:"9. FIXAÇÃO + CURATIVO",do:"Sutura em 'U' (não em bolsa de tabaco) + curativo oclusivo",via:"—",o:"Sutura ancora o dreno + permite fechar quando retirar. Curativo gaze + esparadrapo (evitar oclusão completa para detectar enfisema subcutâneo)."},
+
+{etapa:"adj", d:"10. CONFIRMAÇÃO + RX",do:"RX tórax IMEDIATA — confirmar posição + reexpansão pulmonar",via:"—",o:"Última perfuração DEVE estar intratorácica. Reexpansão: rever após 2-4h. Volume drenado: registrar de início + horária."},
+
+{etapa:"alta", d:"RETIRADA — Critérios",do:"Sem oscilação por 24h + sem fuga aérea + drenagem <100-150 mL/d",via:"—",o:"Clampear 4-6h, RX, se mantido → retirar em expiração forçada (Valsalva) + sutura imediata + curativo oclusivo. RX controle 4-6h após."},
+],
+
+alertas:[
+{t:"crit",x:"PNT HIPERTENSIVO: punção descompressiva (cateter 14G 2°EIC linha hemiclavicular) IMEDIATA antes de dreno definitivo. Não esperar RX."},
+{t:"crit",x:"LADO ERRADO (wrong-site): CHECKLIST + MARCAÇÃO + TIME-OUT. Erros evitáveis."},
+{t:"crit",x:"HEMOTÓRAX MACIÇO: >1500 mL imediato OU >200 mL/h × 4h → TORACOTOMIA. NÃO insistir só com dreno."},
+{t:"warn",x:"Lesão do FEIXE INTERCOSTAL (artéria + veia + nervo): passar SEMPRE acima da costela inferior. Sangramento pode ser significativo."},
+{t:"warn",x:"EDEMA DE REEXPANSÃO: drenar pneumotórax/derrame de longa data MUITO RÁPIDO → edema. Drenar não >1500 mL inicial + clampear se sintomas."},
+],
+
+fisio:"Pressão pleural normal: negativa (-3 a -5 cmH2O em inspiração). Pneumotórax: ar entra na pleura → pressão = atmosférica → pulmão colapsa. Hipertensivo: válvula unidirecional → ar acumula → desvio mediastino → ↓retorno venoso → choque. O selo d'água restaura a pressão negativa pleural, permitindo reexpansão.",
+
+mec:[],
+diretriz:"BTS Pleural Disease Guideline 2023. ATLS 10ª ed.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"proc-toracocentese", sis:"proc", grav:"media",
+nome:"Procedimento — Toracocentese",
+sin:["toracocentese","punção pleural","drenagem pleural diagnóstica"],
+def:"Punção do espaço pleural com agulha para análise diagnóstica (transudato vs exsudato) ou drenagem terapêutica de derrame.",
+
+exames:[
+"INDICAÇÕES: derrame pleural novo significativo (diagnóstico), derrame sintomático (terapêutica)",
+"CONTRAINDICAÇÕES: relativas — coagulopatia (INR>2, plaq<50k), derrame muito pequeno (<1 cm na lateral), infecção local",
+"PRÉ: RX/USG tórax (preferir USG-guiado), hemograma + coag",
+],
+
+rx:[
+{etapa:"inicial", d:"1. POSICIONAMENTO",do:"Sentado, inclinado para frente, braço apoiado em mesa",via:"—",o:"Posição ótima — derrame se concentra na base. Alternativa: lateral oposta se sentar impossível."},
+{etapa:"inicial", d:"2. USG-guiado (PREFERIDO)",do:"Marcar sítio de maior coleção, longe do diafragma + pulmão",via:"—",o:"USG reduz complicações 70%. Identifica baço/fígado adjacente (evita perfuração). Marcar entre 7° e 9° EIC posterior."},
+{etapa:"inicial", d:"3. ANTISSEPSIA + Campos",do:"Clorexidina + campo fenestrado",via:"—",o:"Procedimento estéril. EPI básico (luvas, máscara)."},
+
+{etapa:"escala", d:"4. ANESTESIA LOCAL",do:"Lidocaína 1% 10-20 mL: pele → SC → periósteo → pleura",via:"SC/profunda",o:"Aspirar continuamente — ao chegar no espaço pleural, aspira-se líquido = confirma profundidade. Marca a profundidade na agulha."},
+
+{etapa:"escala", d:"5. PUNÇÃO",do:"Cateter 18G longo conectado a torneirinha 3 vias + seringa",via:"—",o:"Avançar SEMPRE ACIMA da costela inferior (feixe intercostal abaixo). Em expiração suspensa do paciente. Quando aspira líquido → introduzir cateter + remover agulha."},
+
+{etapa:"escala", d:"6. DRENAGEM",do:"Conectar a frasco/seringa + drenar 30-50 mL (diagnóstico) OU até 1500 mL (terapêutico)",via:"—",o:"NÃO >1500 mL de uma vez — risco de edema de reexpansão (especialmente derrame de longa duração). Pausar se tosse/dor torácica/dispneia."},
+
+{etapa:"adj", d:"7. AMOSTRAS (sempre coletar)",do:"Bioquímica (proteína, LDH, glicose, pH), citológico, microbiologia (Gram, cultura, BAAR se suspeita TB)",via:"Laboratório",o:"Critérios de LIGHT (≥1 = exsudato): prot pleura/sérica >0,5; LDH pleura/sérica >0,6; LDH pleural >2/3 LSN sérico. Outros úteis: ADA (TB), amilase (pancreatite/ruptura esôfago), pH <7,2 (parapneumônico complicado)."},
+{etapa:"adj", d:"8. PÓS-PROCEDIMENTO",do:"RX tórax (excluir pneumotórax iatrogênico) + observar 1h",via:"—",o:"Pneumotórax 5-15% (sem USG; <5% com USG). Maioria não necessita drenagem."},
+],
+
+alertas:[
+{t:"crit",x:"PNEUMOTÓRAX iatrogênico em 5-15% (sem USG). RX obrigatório após. Drenar apenas se grande/sintomático."},
+{t:"warn",x:"EDEMA DE REEXPANSÃO se >1500 mL — limitar volume + retirada gradual."},
+{t:"info",x:"DERRAME PARAPNEUMÔNICO COMPLICADO: pH<7,2, glic<60, LDH>1000, Gram/cultura+ → DRENO TORÁCICO (não só toracocentese)."},
+],
+
+fisio:"Espaço pleural normal contém ~10-20 mL de líquido seroso (lubrificação). Derrame: acúmulo de líquido. Critérios de Light determinam mecanismo (transudato — alteração de pressão hidrostática/oncótica; exsudato — inflamação, infiltração, infecção).",
+
+mec:[],
+diretriz:"BTS Pleural Disease Guideline 2023.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"proc-paracentese", sis:"proc", grav:"media",
+nome:"Procedimento — Paracentese",
+sin:["paracentese","punção abdominal","ascite"],
+def:"Punção da cavidade peritoneal para análise diagnóstica (PBE, etiologia) ou drenagem terapêutica de ascite tensa.",
+
+exames:[
+"INDICAÇÕES: ascite nova (diagnóstico), suspeita PBE (qualquer cirrótico c/ ascite + febre/dor/encefalopatia), ascite tensa sintomática",
+"CONTRAINDICAÇÕES: relativas — gestação avançada (trocar local), aderências/cirurgia prévia, infecção local",
+"PRÉ: USG abdome se possível, hemograma + INR (mas coagulopatia NÃO é CI absoluta em cirrótico)",
+],
+
+rx:[
+{etapa:"inicial", d:"1. POSICIONAMENTO + ESCOLHA SÍTIO",do:"Decúbito dorsal levemente lateralizado para esquerda",via:"—",o:"Sítio preferido: FOSSA ILÍACA ESQUERDA — entre umbigo e EIAS, 1/3 lateral do trajeto. Evita ceco (à direita), fígado (linha média superior), cicatrizes."},
+{etapa:"inicial", d:"2. USG (preferido)",do:"Confirmar líquido livre + evitar alças intestinais aderentes",via:"—",o:"Reduz complicações. USG marca melhor sítio se ascite localizada."},
+{etapa:"inicial", d:"3. ANTISSEPSIA + CAMPO",do:"Clorexidina + campo fenestrado",via:"—",o:"Estéril. Luvas + máscara."},
+
+{etapa:"escala", d:"4. ANESTESIA",do:"Lidocaína 1% 5-10 mL — pele + parede até peritônio",via:"SC",o:"Aspirar — líquido amarelo claro = peritônio com ascite. Confirma profundidade."},
+
+{etapa:"escala", d:"5. TÉCNICA Z (evita escape de ascite)",do:"Tracionar pele lateralmente, então avançar agulha vertical — solta pele depois",via:"—",o:"Cria 'trajeto em zigue-zague' — quando retira agulha, pele/SC desalinham e fecham o orifício. Reduz extravasamento pós-procedimento."},
+
+{etapa:"escala", d:"6. PUNÇÃO",do:"Cateter 16-18G (diagnóstico) ou 14-16G (terapêutico)",via:"—",o:"Avançar lentamente até retorno de líquido. Conectar a torneirinha 3 vias + seringa/sistema coletor."},
+
+{etapa:"escala", d:"7. COLETA + AMOSTRAS",do:"30-50 mL para análise (diagnóstico)",via:"Laboratório",o:"OBRIGATÓRIO: contagem celular (neutrófilos ≥250/mm³ = PBE), albumina (GASA = alb sérica - alb ascite ≥1,1 = hipertensão portal), proteína total, cultura (frascos de hemocultura, 10 mL cada). Opcional: glicose, LDH, amilase, ADA."},
+
+{etapa:"escala", d:"8. PARACENTESE TERAPÊUTICA",do:"Drenar até 5-10 L (ascite tensa)",via:"—",o:"Reposição de ALBUMINA: 6-8 g de albumina humana 20% por LITRO drenado > 5L. Previne disfunção circulatória pós-paracentese (PICD)."},
+
+{etapa:"adj", d:"9. PÓS-PROCEDIMENTO",do:"Curativo oclusivo + observação 1-2h",via:"—",o:"Vigiar: hipotensão (PICD), hemorragia, infecção iatrogênica, extravasamento de líquido. Encaminhar resultados ao hepatologista."},
+],
+
+alertas:[
+{t:"crit",x:"PBE (peritonite bacteriana espontânea): neutrófilos ≥250/mm³ → CEFTRIAXONA 2g IV 24/24h × 5 dias + albumina 1,5 g/kg dia 1 + 1 g/kg dia 3 (reduz síndrome hepatorrenal). NÃO esperar cultura."},
+{t:"crit",x:"COAGULOPATIA do cirrótico NÃO é contraindicação absoluta. Risco hemorrágico é baixo (<1% mesmo com INR alto). Plaq <20k → considerar transfusão antes."},
+{t:"warn",x:"REPOR ALBUMINA em paracentese terapêutica >5L: 6-8 g/L drenado. Reduz mortalidade."},
+{t:"info",x:"GASA (Gradient Albumin Soro-Ascite) ≥1,1 = hipertensão portal (cirrose, IC, Budd-Chiari). <1,1 = outras causas (carcinomatose, TB, pancreatite)."},
+],
+
+fisio:"Ascite ocorre primariamente por: (1) hipertensão portal — cirrose (mais comum), trombose, IC; (2) hipoalbuminemia — síndrome nefrótica; (3) inflamação peritoneal — carcinomatose, TB, pancreatite. PBE em cirrótico: translocação bacteriana intestinal → ascite estéril vira infectada. Mortalidade 20-30%.",
+
+mec:[],
+diretriz:"AASLD Practice Guidance on Ascites 2021. EASL Cirrhosis 2018.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"proc-lp", sis:"proc", grav:"alta",
+nome:"Procedimento — Punção Lombar",
+sin:["punção lombar","LP","raqui","análise LCR"],
+def:"Punção do espaço subaracnóideo lombar para análise do LCR. Indicações: suspeita meningite/encefalite, HSA com TC normal, hipertensão intracraniana benigna, anestesia raquidiana.",
+
+exames:[
+"INDICAÇÕES: meningite/encefalite, HSA (TC <6h normal), HIC benigna (medida pressão), MS, polirradiculopatias",
+"CONTRAINDICAÇÕES ABSOLUTAS: HIC com efeito de massa (herniação), infecção local, coagulopatia grave, instabilidade hemodinâmica",
+"PRÉ: SEMPRE FUNDOSCOPIA + TC CRÂNIO se: ↓consc, déficit focal, papiledema, crise convulsiva recente, imunossuprimido, idade >60a",
+],
+
+rx:[
+{etapa:"inicial", d:"1. CONFIRMAR AUSÊNCIA DE HIC",do:"Fundoscopia (papiledema?) + TC crânio",via:"—",o:"PUNCIONAR HIC = herniação cerebelar = morte. TC obrigatória nas indicações acima. Em jovem sem fatores de risco, fundoscopia normal: pode dispensar TC."},
+{etapa:"inicial", d:"2. CONSENTIMENTO",do:"Explicar procedimento, riscos (cefaleia 30%, sangramento, infecção)",via:"—",o:"Cefaleia pós-LP é comum (40% se agulha Quincke, 10% se atraumática Whitacre/Sprotte). Usar atraumática quando disponível."},
+{etapa:"inicial", d:"3. POSICIONAMENTO",do:"Decúbito lateral, joelhos no peito (posição fetal)",via:"—",o:"Maximiza abertura interespinhosa. ALTERNATIVA: sentado curvado para frente (não permite medir pressão de abertura — ficção)."},
+
+{etapa:"escala", d:"4. LOCALIZAÇÃO",do:"L3-L4 ou L4-L5 (linha intercristal de Tuffier = L4)",via:"—",o:"Cone medular termina em L1-L2 — punção em L3-L5 é segura. Marcar com unha. Verificar simetria das EIPs."},
+{etapa:"escala", d:"5. ANTISSEPSIA + CAMPOS",do:"Clorexidina + campos fenestrados",via:"—",o:"Procedimento ESTÉRIL — risco de meningite iatrogênica. Aguardar secar."},
+{etapa:"escala", d:"6. ANESTESIA LOCAL",do:"Lidocaína 1% 3-5 mL — pele + SC + ligamento interespinhoso",via:"SC",o:"Botão + cone profundo. Aspirar antes de injetar."},
+
+{etapa:"escala", d:"7. PUNÇÃO",do:"Agulha 22G atraumática — angulação 15° cefálica, em linha média",via:"—",o:"Bisel paralelo às fibras durais (longitudinal). Avançar lentamente — sente-se 'pop' ao atravessar duramáter. Retirar mandril a cada 1-2 cm. Quando sair LCR: parar."},
+
+{etapa:"escala", d:"8. MEDIDA DA PRESSÃO DE ABERTURA",do:"Manômetro conectado, paciente RELAXADO + pernas estendidas",via:"—",o:"Normal: 6-20 cmH2O. HIC benigna: >25 cmH2O. ↑em meningite, HSA, tumor. Pressão SEM o paciente em posição fetal (estende pernas)."},
+
+{etapa:"escala", d:"9. COLETA",do:"4 tubos × 1-2 mL cada",via:"Laboratório",o:"Tubo 1 — bioquímica (glicose, proteína); Tubo 2 — bacterioscopia/cultura/painel viral; Tubo 3 — celularidade + diferencial; Tubo 4 — reserva (xantocromia em HSA). Glicemia capilar simultânea (relação LCR/sérica)."},
+
+{etapa:"adj", d:"10. REMOVER + CURATIVO",do:"Recolocar mandril + retirar agulha + curativo",via:"—",o:"Repouso pós-LP (1-2h) é controverso — evidência fraca. Atraumática + 22G reduz cefaleia."},
+
+{etapa:"adj", d:"11. INTERPRETAÇÃO RÁPIDA",do:"Confronto: bacteriana vs viral vs HSA",via:"—",o:"BACTERIANA: turvo, ↑celular (neutrófilos), glic↓ (<40), prot↑ (>50). VIRAL: claro, mononuclear, glic normal, prot levemente↑. HSA: hemorrágico ou xantocrômico (>12h), eritrócitos NÃO clareiam tubo 1 ao 4 (DIFERENCIA de punção traumática)."},
+],
+
+alertas:[
+{t:"crit",x:"NÃO PUNCIONAR se HIC com efeito de massa → herniação fatal. TC + fundoscopia ANTES nas indicações de risco."},
+{t:"crit",x:"MENINGITE BACTERIANA: cobertura ATB EMPÍRICA antes da LP se houver atraso na LP. NÃO atrasar ATB para LP — TC + ATB + depois LP."},
+{t:"warn",x:"Cefaleia pós-LP (CPLP): postural, 24-72h pós. Tratamento: repouso + hidratação + cafeína. Refratária: blood patch peridural."},
+{t:"info",x:"PUNÇÃO TRAUMÁTICA: regra do '0,7' — para cada 700 eritrócitos, +1 leucócito permitido (corrige diluição sanguínea)."},
+],
+
+fisio:"LCR é produzido nos plexos coroides ventriculares (~500 mL/d, volume total ~150 mL). Circula ventrículos → cisternas → espaço subaracnoide → reabsorção pelas vilosidades aracnoides. Punção lombar acessa o LCR no saco dural lombar abaixo do cone medular (L1-L2 adultos).",
+
+mec:[],
+diretriz:"IDSA Bacterial Meningitis 2004. AAN Lumbar Puncture 2005.",
+fluxo:null,
+calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — DOENÇAS TROPICAIS BRASILEIRAS
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+{id:"malaria", sis:"infecto", grav:"alta",
+nome:"Malária",
+sin:["malária","Plasmodium","febre amazônica"],
+def:"Infecção pelo Plasmodium (vivax mais comum BR-Norte; falciparum mais grave). Febre periódica + sintomas inespecíficos + procedência/passagem por área endêmica (Amazônia legal, Mata Atlântica residual). Notificação compulsória IMEDIATA.",
+
+exames:[
+"Gota espessa + esfregaço (gold standard) — repetir 6/6h × 3 se neg + suspeita",
+"Teste rápido (RDT) — antígeno HRP-2 (P. falciparum) ou pLDH (todas espécies)",
+"PCR (centros referência)",
+"HMG (anemia, plaquetopenia frequente), função renal/hepática, glicemia, gaso",
+"β-HCG (gestação altera conduta)",
+"Procurar foco: malária 'importada' de fora da Amazônia em viajante",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO IMEDIATA — SIVEP-Malária",do:"Compulsória <24h. Ficha do MS.",via:"—",o:"Notificar SEMPRE. Imediato (24h). Permite ação epidemiológica."},
+{etapa:"inicial", d:"Avaliação de gravidade",do:"Buscar critérios: alt consciência, convulsão, ↓consc, icterícia, edema, oligúria, sangramento, choque, hiperparasitemia (>2% falciparum)",via:"—",o:"Malária GRAVE = falciparum + qualquer critério. Internação obrigatória + ARTESUNATO IV."},
+
+{etapa:"atb", d:"P. VIVAX/OVALE (não-grave)",do:"Cloroquina 25 mg/kg total VO em 3 dias (10+7,5+7,5 mg/kg) + PRIMAQUINA 0,5 mg/kg/d × 7 dias",via:"VO",o:"Primaquina mata HIPNOZOÍTOS hepáticos (previne recaída). NUNCA em gestante (teratogênica) ou G6PD deficiente (hemólise). Cloroquina segura na gestação."},
+{etapa:"atb", d:"P. FALCIPARUM não-grave",do:"Arteméter-Lumefantrina (Coartem) 4 cp 12/12h × 3 dias VO + Primaquina 0,75 mg/kg dose única (gametocitocida)",via:"VO",o:"BR-padrão. Tomar com gordura para absorção. CI: 1º trimestre gestação (usar quinina + clindamicina)."},
+{etapa:"atb", d:"P. FALCIPARUM GRAVE",do:"Artesunato IV 2,4 mg/kg na admissão + 12h + 24h, depois 1×/dia até VO",via:"IV",o:"PADRÃO-OURO em grave (AQUAMAT trial — ↓mortalidade vs quinina). Reservar 50% da dose pediátrica em <20 kg. Após melhora: completar com ACT VO 3 dias."},
+{etapa:"atb", d:"Alternativa grave — Quinina",do:"10 mg/kg IV em SG 5% 250 mL em 4h, depois 10 mg/kg 8/8h + Clindamicina 10 mg/kg 8/8h",via:"IV",o:"Se artesunato indisponível. Monitorar: hipoglicemia (insulina-mediada — repor SG), cardiotoxicidade (QT, alargar QRS)."},
+{etapa:"atb", d:"GESTANTE 1º trimestre — falciparum",do:"Quinina + Clindamicina",via:"IV/VO",o:"Após 1º trim: artemisinina pode ser usada. Cloroquina segura em vivax."},
+
+{etapa:"escala", d:"GRAVE — Suporte",do:"UTI, monitorização, hidratação cautelosa",via:"IV",o:"NÃO ressuscitar volemicamente em excesso (FEAST trial — bolus altera prognóstico). Manter euvolemia. Insulina para hiperG."},
+{etapa:"escala", d:"GRAVE — Transfusão",do:"CH se Hb<7 (Hb<5 em criança)",via:"IV",o:"Hemólise é comum. ↑Bili indireta. Considerar exsanguineotransfusão se parasitemia >10% (controverso)."},
+{etapa:"escala", d:"Diálise se IRA",do:"Hemodiálise indicação clássica",via:"—",o:"Mais comum em falciparum grave. Pode ser transitória."},
+
+{etapa:"adj", d:"Antipirético",do:"Dipirona 1-2g IV 6/6h ou paracetamol",via:"IV/VO",o:"Conforto + reduz convulsão febril em criança. NÃO usar AAS (Reye)."},
+],
+
+alertas:[
+{t:"crit",x:"GOTA ESPESSA NEGATIVA NÃO EXCLUI — pode haver baixa parasitemia. Repetir 6/6h × 3 antes de descartar. Iniciar empírico se grave + alta suspeita."},
+{t:"crit",x:"FALCIPARUM grave = mortalidade 20-30% sem tratamento adequado. Artesunato IV IMEDIATO. Não esperar evolução."},
+{t:"crit",x:"MALÁRIA NA GESTANTE: mais grave (hipoglicemia, anemia, edema pulmonar). Falciparum gestação = grave por definição. ARTESUNATO seguro >1º trim."},
+{t:"warn",x:"PRIMAQUINA: NUNCA gestante (teratogênica), NUNCA G6PD (hemólise grave). Testar G6PD ou pedir antes de prescrever."},
+{t:"info",x:"NOTIFICAÇÃO: SIVEP-Malária (Amazônia) ou SINAN (fora). Importação de área endêmica = investigação obrigatória."},
+],
+
+fisio:"Plasmodium tem 2 ciclos: hepático (esporozoítos → merozoítos, ~7 dias) e eritrocítico (parasitose das hemácias → ruptura cíclica → FEBRE). Ciclo: 48h (P. vivax/ovale/falciparum) ou 72h (P. malariae). P. vivax/ovale têm HIPNOZOÍTOS hepáticos (causa recaída meses-anos). P. falciparum não tem hipnozoíto MAS é o mais grave (adesão endotelial → microcirculação ↓ → cérebro, rim, pulmão).",
+
+mec:[
+{d:"Cloroquina",x:"Inibe polimerização do heme (toxinha para o parasita). Resistência GENERALIZADA no falciparum — não usar mais para falciparum."},
+{d:"Artemisinina/Artesunato",x:"Ponte endoperóxida — gera radicais livres que destroem proteínas do parasita. Ativo em todos os estágios sanguíneos. Ação rápida."},
+{d:"Primaquina",x:"Único antimalárico que mata HIPNOZOÍTOS HEPÁTICOS (vivax/ovale). Hemolítico em G6PD. Teratogênico."},
+],
+
+diretriz:"MS Brasil — Guia para Profissionais de Saúde sobre Malária 2024. WHO Guidelines for Malaria 2024.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"leptospirose", sis:"infecto", grav:"alta",
+nome:"Leptospirose",
+sin:["leptospirose","doença de Weil","febre dos arrozais","febre dos pântanos"],
+def:"Zoonose por Leptospira spp. (espiroquetal). Contato com água/lama/solo contaminado por URINA DE RATO. Quadros: leve (febre + mialgia em panturrilhas + cefaleia) → grave (Síndrome de Weil: icterícia + IRA + hemorragia pulmonar). Pós-enchente é cenário clássico. Notificação compulsória.",
+
+exames:[
+"HMG (leucocitose com desvio, plaquetopenia importante)",
+"Função renal (IRA dialítica comum — frequente hipocalemia)",
+"Função hepática (icterícia mista — bili direta e indireta altas; TGO/TGP geralmente <500)",
+"CK (mialgia → rabdomiólise)",
+"Urinálise (proteinúria, leucocitúria estéril, hematúria)",
+"Gaso, eletrólitos",
+"Sorologia ELISA IgM (a partir do 7º dia) — confirmatória microaglutinação MAT",
+"Hemocultura nos 1ºs 7 dias (cultura difícil)",
+"RX tórax — hemorragia alveolar bilateral (Síndrome de Hemorragia Pulmonar)",
+"ECG — miocardite frequente",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO COMPULSÓRIA — SINAN",do:"Imediata em qualquer suspeita",via:"—",o:"Investigação epidemiológica importante (surto, fonte)."},
+{etapa:"inicial", d:"Hidratação cuidadosa",do:"SF 0,9% guiado por volemia",via:"IV",o:"Frequente desidratação (febre + mialgia). MAS cuidado com edema pulmonar (hemorragia alveolar)."},
+
+{etapa:"atb", d:"LEVE — Doxiciclina",do:"100 mg VO 12/12h × 7 dias",via:"VO",o:"Apenas em adultos não-grávidos. Iniciar precocemente (<5 dias) reduz duração."},
+{etapa:"atb", d:"LEVE — Amoxicilina",do:"500 mg VO 8/8h × 7 dias",via:"VO",o:"Gestante, criança. Alternativa segura."},
+{etapa:"atb", d:"MODERADA/GRAVE — Ceftriaxona",do:"1-2 g IV/d × 7 dias",via:"IV",o:"PADRÃO em internação. Cobertura adicional. Step-down VO em melhora."},
+{etapa:"atb", d:"GRAVE — Penicilina G cristalina",do:"6-12 milhões UI/d IV em doses divididas × 7 dias",via:"IV",o:"Clássica. ATENÇÃO: reação de Jarisch-Herxheimer (piora transitória 2-6h após 1ª dose) — sintomática, NÃO suspender."},
+
+{etapa:"escala", d:"GRAVE — UTI + suporte multissistêmico",do:"Hemodiálise, VM, transfusão CH/plaquetas",via:"—",o:"Mortalidade 20-30% sem suporte adequado. Hemorragia pulmonar tem mortalidade 50-70%."},
+{etapa:"escala", d:"Hemorragia pulmonar — Suporte ventilatório protetor",do:"VM com PEEP, considerar VNI inicial",via:"VM",o:"NÃO recomendado: corticoide alta dose (controverso, sem benefício claro). Suporte intensivo."},
+{etapa:"escala", d:"Hemodiálise",do:"Precoce em IRA oligúrica + hipocalemia",via:"—",o:"NÃO esperar uremia clássica — diálise PRECOCE em leptospirose grave reduz mortalidade."},
+
+{etapa:"adj", d:"Reposição eletrolítica",do:"K +++, Mg",via:"IV",o:"Hipocalemia é REGRA (perda tubular). Repor agressivamente."},
+{etapa:"adj", d:"Transfusão",do:"CH, plaquetas se sangramento",via:"IV",o:"Plaquetopenia + coagulopatia comuns. Transfundir se sangramento ativo."},
+],
+
+alertas:[
+{t:"crit",x:"SÍNDROME DE HEMORRAGIA PULMONAR (SHP) — mortalidade 50-70%. Dispneia + hemoptise + infiltrados bilaterais. IOT precoce, VM protetora, UTI."},
+{t:"crit",x:"HISTÓRIA EPIDEMIOLÓGICA é a chave: exposição a água/lama (enchente, esgoto), trabalhador rural/lixeiro/açougueiro/militar, contato com rato/cão."},
+{t:"warn",x:"Diferencial: dengue, hantavirose, febre amarela, hepatite viral, malária. TODOS podem dar quadro inicial similar."},
+{t:"warn",x:"REAÇÃO DE JARISCH-HERXHEIMER após penicilina: febre + calafrio + hipotensão 2-6h pós — MANTER ATB, suporte sintomático."},
+{t:"info",x:"DOR EM PANTURRILHAS desproporcional + sufusões oculares = pistas clássicas."},
+],
+
+fisio:"Leptospira spp. (espiroqueta) — reservatório: ratos (urina). Penetra mucosas/pele lesada → bacteremia (fase septicêmica 1-7 dias) → fase imune (sintomas leves) ou progressão → vasculite generalizada + lesão endotelial → falência multissistêmica. ÓRGÃOS-ALVO: rim (NTA + nefrite intersticial), fígado (colestase + dano hepatocelular), pulmão (hemorragia alveolar), coração (miocardite), musculatura (rabdomiólise).",
+
+mec:[
+{d:"Doxiciclina/Amoxicilina/Penicilina",x:"Inibidores de parede ou síntese proteica — leptospira mantém sensibilidade. Iniciar precoce (<5 dias) reduz dia de doença em 25%."},
+],
+
+diretriz:"MS Brasil — Guia de Vigilância em Saúde 2024. WHO Leptospirosis 2003.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"febre-amarela", sis:"infecto", grav:"alta",
+nome:"Febre Amarela",
+sin:["febre amarela","FA","yellow fever"],
+def:"Arbovirose causada pelo vírus da febre amarela (Flavivirus). Forma silvestre (BR — macacos + Aedes/Haemagogus) vs urbana (Aedes aegypti — erradicada no BR desde 1942). Notificação compulsória IMEDIATA.",
+
+exames:[
+"HMG (leucopenia com linfocitose relativa)",
+"Função hepática (AST > ALT > 1000, sinal Faget=bradicardia c/ febre alta)",
+"Função renal (IRA em casos graves)",
+"Coagulograma (CIVD)",
+"Bilirrubinas (icterícia tardia)",
+"PCR vírus (1ºs 5 dias) ou sorologia IgM (>5 dias)",
+"Diferencial: leptospirose, malária, dengue, hepatite viral",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO IMEDIATA — SINAN",do:"Compulsória em <24h",via:"—",o:"Suspeita gera ação epidemiológica (vacinação, vigilância)."},
+{etapa:"inicial", d:"Suporte",do:"Hidratação cautelosa, monitorização hepática/renal",via:"IV",o:"NÃO HÁ ANTIVIRAL ESPECÍFICO."},
+
+{etapa:"escala", d:"GRAVE — UTI + suporte multissistêmico",do:"VM, hemodiálise, hemoderivados",via:"—",o:"Mortalidade da forma grave: 20-50%."},
+{etapa:"escala", d:"Coagulopatia",do:"PFC + plaquetas + vit K",via:"IV",o:"Sangramento (hematêmese, melena) é típico em fase intoxicação. Transfusão guiada."},
+{etapa:"escala", d:"Transplante hepático",do:"Critérios King's College em centro referência",via:"Cirúrgico",o:"Considerar em fulminante."},
+
+{etapa:"adj", d:"Antipiréticos",do:"Dipirona, paracetamol",via:"IV/VO",o:"NÃO AAS, NÃO AINEs (sangramento, hepatotoxicidade)."},
+{etapa:"adj", d:"VACINAÇÃO pós-alta (não-imunes)",do:"FA fracionada/integral SC",via:"SC",o:"PREVENÇÃO. Recomenda-se reforço a cada 10 anos em áreas endêmicas (BR-MS reverteu para dose única em 2017 — controverso)."},
+],
+
+alertas:[
+{t:"crit",x:"FORMA GRAVE: icterícia + hemorragias + IRA + acidose + ↓consciência. Mortalidade 20-50%. UTI obrigatória."},
+{t:"crit",x:"SINAL DE FAGET: bradicardia + febre alta = sugere FA (diferencial com sepse comum)."},
+{t:"warn",x:"DIFERENCIAL: leptospirose, malária, hepatite viral fulminante, sepse, dengue grave."},
+{t:"warn",x:"VACINA é PREVENÇÃO. Em surto/área endêmica: vacinação massiva. Contraindicações: <6 meses, gestante, imunossuprimido grave, alergia ovo."},
+],
+
+fisio:"Vírus replica em linfonodos regionais → viremia → fígado (alvo principal — necrose hepatocelular massiva), rim (NTA), miocárdio, SNC. 3 fases: (1) Infecção (3 dias: febre, mialgia, cefaleia), (2) Remissão (poucas horas — engana), (3) INTOXICAÇÃO (15% — icterícia + hemorragias + IRA + choque + coma).",
+
+mec:[],
+diretriz:"MS — Guia de Vigilância Febre Amarela 2024. WHO Yellow Fever 2024.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"leishmaniose-visc", sis:"infecto", grav:"alta",
+nome:"Leishmaniose Visceral (Calazar)",
+sin:["leishmaniose visceral","calazar","Leishmania","kala-azar"],
+def:"Infecção sistêmica por Leishmania chagasi/infantum, transmitida pelo mosquito-palha (Lutzomyia longipalpis). Pancitopenia + hepatoesplenomegalia + febre + emagrecimento. Endêmica no Nordeste e periferias urbanas em expansão. Notificação compulsória.",
+
+exames:[
+"HMG (PANCITOPENIA — tríade hipercaracterística: anemia + leucopenia + plaquetopenia)",
+"VHS elevadíssima",
+"Hipergamaglobulinemia + hipoalbuminemia (relação invertida)",
+"Função renal/hepática (LDH, AST normais a leves)",
+"Sorologia (RIFI, ELISA, teste rápido rK39)",
+"Pesquisa direta: aspirado de medula óssea (gold standard) ou esplênico (raro)",
+"PCR (centros referência)",
+"HIV (coinfecção comum, agrava prognóstico)",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO COMPULSÓRIA — SINAN",do:"Imediata",via:"—",o:"Investigação caso + ações de bloqueio (controle vetor, exame contactantes)."},
+{etapa:"inicial", d:"Suporte",do:"Transfusão CH se Hb <7, plaquetas se sangramento, nutrição",via:"IV",o:"Internação obrigatória em casos graves."},
+
+{etapa:"atb", d:"1ª LINHA — Anfotericina B LIPOSSOMAL",do:"3 mg/kg/d IV × 7 dias (total 21 mg/kg)",via:"IV",o:"PADRÃO no BR — alta eficácia, menor toxicidade. ↓Mortalidade vs Glucantime. Disponível SUS."},
+{etapa:"atb", d:"ALTERNATIVA — Antimoniato meglumina (Glucantime)",do:"20 mg Sb⁵⁺/kg/d IV/IM × 20-30 dias (máx 3 ampolas/d)",via:"IV/IM",o:"Tradicional, mais tóxico (cardiotoxicidade, pancreatite, nefro/hepatotoxicidade). ECG seriado obrigatório. CI: gestante, criança <1a, cardiopata, insuficiência hepática/renal."},
+{etapa:"atb", d:"Anfotericina B convencional",do:"1 mg/kg/d IV × 14 dias",via:"IV",o:"Alternativa em centros sem lipossomal. MUITO mais tóxica (calafrio, IRA, hipocalemia)."},
+{etapa:"atb", d:"HIV+ — Lipossomal",do:"3 mg/kg/d × 10 dias (total 40 mg/kg)",via:"IV",o:"Doses maiores. Pode recidivar — profilaxia secundária mensal indicada."},
+
+{etapa:"escala", d:"SUPORTE GERAL",do:"Hidratação, nutrição, ATB se infecção secundária",via:"—",o:"Maioria dos óbitos: infecção bacteriana 2ª (pneumonia, ITU, sepse). Cobrir empiricamente em febre+pancitopenia."},
+
+{etapa:"adj", d:"Reposição albumina/transfusão",do:"PFC, CH, plaquetas conforme",via:"IV",o:"Albumina baixa = edema, ascite. Coagulopatia possível."},
+{etapa:"adj", d:"Acompanhamento pós-tratamento",do:"6-12 meses, atenção a recidivas",via:"—",o:"Cura geralmente em 6-12 meses. Recidiva pode ocorrer, especialmente HIV+."},
+],
+
+alertas:[
+{t:"crit",x:"MORTALIDADE: 5-10% mesmo tratado, >90% sem tratamento. Pancitopenia + infecção secundária = causa #1 óbito. Cobertura ATB empírica liberal."},
+{t:"crit",x:"GLUCANTIME tem cardiotoxicidade — ECG basal + seriado. QT longo, T inversão. Suspender se alteração."},
+{t:"warn",x:"COINFECÇÃO HIV — sempre testar. Calazar HIV+: mais recidivas, menor cura, maior mortalidade. Profilaxia secundária mensal."},
+{t:"info",x:"DIFERENCIAL: leucemia, linfoma, brucelose, esquistossomose hepatoesplênica, tuberculose miliar, HIV avançado."},
+],
+
+fisio:"Leishmania chagasi → mosquito flebotomíneo → fagocitada por macrófagos → vive intracelularmente em forma amastigota → proliferação em sistema retículo-endotelial (medula, baço, fígado) → infiltração + supressão hematopoiética + ativação imune crônica (hipergamaglobulinemia) → caquexia + imunossupressão progressiva.",
+
+mec:[
+{d:"Anfotericina B (lipossomal)",x:"Liga-se a ergosterol da membrana do parasita → poros → lise. Lipossomal direciona ao SRE (alto carregamento de parasitas)."},
+{d:"Glucantime (antimoniato)",x:"Inibe metabolismo energético de Leishmania (glicólise, oxidação ácidos graxos). Não totalmente elucidado. Cardiotóxico."},
+],
+
+diretriz:"MS — Manual de Vigilância e Controle da Leishmaniose Visceral 2014. WHO Leishmaniases 2010.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"chagas-aguda", sis:"infecto", grav:"alta",
+nome:"Doença de Chagas Aguda",
+sin:["Chagas","tripanossomíase americana","Trypanosoma cruzi"],
+def:"Infecção aguda por T. cruzi. Transmissão BR atual: VIA ORAL (açaí, caldo de cana contaminados — surtos), vetorial (barbeiro — raro), vertical, transfusional. Sintomas: febre + edema palpebral unilateral (Sinal de Romaña) OU chagoma de inoculação + miocardite. Notificação compulsória.",
+
+exames:[
+"HMG (linfomonocitose)",
+"Pesquisa direta de parasita: sangue periférico (gota espessa, esfregaço), creme leucocitário — 1ª escolha em aguda",
+"Xenodiagnóstico ou hemocultura (positivos em aguda)",
+"Sorologia IgM (precoce) + IgG (tardia)",
+"PCR (centros referência)",
+"ECG (alterações repolarização, BAV, distúrbios de condução)",
+"Ecocardiograma (miocardite — disfunção ventricular)",
+"Função renal/hepática",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO COMPULSÓRIA — SINAN",do:"Imediata",via:"—",o:"Investigação fonte (transmissão oral por surto requer investigação intensiva)."},
+{etapa:"inicial", d:"Suporte",do:"Repouso, hidratação, monitorização cardíaca",via:"—",o:"Em miocardite: UTI."},
+
+{etapa:"atb", d:"1ª LINHA — Benznidazol",do:"5-7 mg/kg/d VO em 2 doses × 60 dias",via:"VO",o:"PADRÃO. Disponível SUS. CI: gestante. Efeitos adversos: rash (frequente), neuropatia periférica, leucopenia, hepatite."},
+{etapa:"atb", d:"ALTERNATIVA — Nifurtimox",do:"8-10 mg/kg/d VO em 3-4 doses × 60-90 dias",via:"VO",o:"Disponível MS (fora SUS comum). Mais efeitos adversos GI."},
+{etapa:"atb", d:"GESTANTE",do:"Suspender tratamento até pós-parto + amamentação",via:"—",o:"Benznidazol/nifurtimox contraindicados na gestação. Newborn deve ser investigado e tratado se infectado (sucesso >90% em RN)."},
+
+{etapa:"escala", d:"MIOCARDITE AGUDA — Suporte",do:"Tratamento de IC, antiarrítmico, marcapasso se BAV",via:"—",o:"Causa #1 de óbito agudo. Hospitalização. Diurético + IECA + β-bloq conforme."},
+{etapa:"escala", d:"MENINGOENCEFALITE — Anticonvulsivante",do:"Fenitoína/levetiracetam + tratamento empírico",via:"IV",o:"Mais comum em imunossuprimidos. Suporte UTI."},
+
+{etapa:"adj", d:"Hemograma seriado",do:"Cada 15 dias durante tratamento",via:"—",o:"Benznidazol pode causar leucopenia/agranulocitose. Suspender se neutrófilos <1500."},
+{etapa:"adj", d:"Acompanhamento",do:"Sorologia anual (cura comprovada por seroconversão)",via:"—",o:"Pode levar 2-3 anos para negativar. PCR + sorologia."},
+],
+
+alertas:[
+{t:"crit",x:"FORMA AGUDA tem 5-10% mortalidade por MIOCARDITE ou MENINGOENCEFALITE. Tratamento PRECOCE (<12 sem) — cura >70%."},
+{t:"crit",x:"TRANSMISSÃO ORAL (açaí, caldo de cana, sopa de milho): SURTOS familiares/comunitários. Investigar contactantes."},
+{t:"warn",x:"BENZNIDAZOL é tóxico em 20-30%: rash (manejar com anti-H1; suspender se Stevens-Johnson), neuropatia periférica (irreversível parcial), leucopenia."},
+{t:"info",x:"Diferencial: dengue, malária, viroses inespecíficas, hepatite viral aguda. Romaña + epidemiologia → Chagas."},
+],
+
+fisio:"T. cruzi entra por mucosa/pele lesada → tripomastigotas migram para coração + fígado + baço → diferenciam em amastigotas intracelulares → proliferam → ruptura celular → fase aguda (parasitemia alta, sintomas). Maioria evolui para fase crônica indeterminada (assintomática). 30% desenvolvem cardiopatia chagásica crônica (10-30 anos) — IC, arritmia, morte súbita. 10% megacólon/megaesôfago.",
+
+mec:[
+{d:"Benznidazol",x:"Pró-droga ativada por nitrorredutases do parasita → radicais livres → dano DNA tripanossomal. Seletividade limitada (toxicidade humana)."},
+],
+
+diretriz:"MS — Protocolo Clínico Doença de Chagas 2019. PCDT MS. WHO Chagas Disease 2024.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"hanseniase-reacao", sis:"infecto", grav:"media",
+nome:"Hanseníase em Reação",
+sin:["hanseníase","lepra","reação reversa","eritema nodoso hansênico"],
+def:"Episódios inflamatórios agudos em paciente com hanseníase, com ou sem tratamento. Reação TIPO 1 (reversa, mediada por células — exacerba lesões existentes) ou TIPO 2 (eritema nodoso hansênico, imunocomplexos — múltiplos nódulos + sintomas sistêmicos). Notificação compulsória.",
+
+exames:[
+"Avaliação dermatológica + neurológica completa (déficit motor/sensitivo periférico)",
+"Baciloscopia (linfa de lóbulo da orelha, cotovelos, lesão)",
+"HMG, função renal/hepática (pré-uso medicamentos)",
+"Pesquisa M. leprae em fragmento",
+"Histopatologia (granuloma)",
+],
+
+rx:[
+{etapa:"inicial", d:"NOTIFICAÇÃO COMPULSÓRIA",do:"Hanseníase: SINAN",via:"—",o:"Caso novo + casos em reação. Acompanhamento sob notificação."},
+{etapa:"inicial", d:"MANTER PQT (poliquimioterapia)",do:"Não suspender o tratamento anti-hanseníase em reação",via:"VO",o:"Reação NÃO é falha do tratamento — é resposta imune. Manter PQT-MB (rifampicina + dapsona + clofazimina) ou PQT-PB conforme classificação."},
+
+{etapa:"atb", d:"REAÇÃO TIPO 1 — Prednisona",do:"1-1,5 mg/kg/d VO, desmame lento 6-12 meses",via:"VO",o:"PADRÃO. Reduz inflamação celular. Iniciar dose alta, desmame muito lento (dependência fenômeno-de-rebote). Monitorar diabetes, HAS, infecção."},
+{etapa:"atb", d:"REAÇÃO TIPO 2 leve — Talidomida",do:"100-400 mg/d VO, desmame conforme",via:"VO",o:"TRATAMENTO DE ESCOLHA TIPO 2 — anti-inflamatório imunomodulador. CRÍTICO: NUNCA em gestante (teratogenicidade — focomelia). Teste β-HCG mensal. Cadastro obrigatório no programa de talidomida."},
+{etapa:"atb", d:"REAÇÃO TIPO 2 grave — Talidomida + Prednisona",do:"Talidomida 100-300 mg/d + prednisona 0,5-1 mg/kg/d",via:"VO",o:"Casos graves com neurite, irite, orquite, glomerulonefrite."},
+{etapa:"atb", d:"GESTANTE — Prednisona",do:"1 mg/kg/d × tempo necessário",via:"VO",o:"NÃO talidomida (teratogênica)."},
+
+{etapa:"escala", d:"NEURITE AGUDA",do:"Prednisona dose máxima + imobilização membro + corticoide local se necessário",via:"VO",o:"Risco de dano neural permanente. Avaliar motor/sensitivo seriado."},
+{etapa:"escala", d:"IRITE / IRIDOCICLITE",do:"Colírio corticoide + midriático + oftalmo",via:"Tópico",o:"Risco de glaucoma + cegueira. Avaliação oftalmológica urgente."},
+
+{etapa:"adj", d:"Tratamento sintomático",do:"AINE (cuidado renal), analgesia",via:"VO",o:"Para conforto. NÃO trata reação em si."},
+{etapa:"adj", d:"Acompanhamento de contactantes",do:"Vacina BCG + exame anual",via:"—",o:"Familiares devem ser examinados e BCG ofertada (reforço se já vacinado)."},
+],
+
+alertas:[
+{t:"crit",x:"NEURITE em reação = DANO PERMANENTE possível em horas-dias. Prednisona dose máxima IMEDIATA + acompanhamento neurológico seriado."},
+{t:"crit",x:"TALIDOMIDA é TERATOGÊNICA — focomelia. PROIBIDA em gestante. Mulher fértil → contracepção dupla + β-HCG mensal. Cadastro obrigatório."},
+{t:"warn",x:"PREDNISONA prolongada (6-12m): efeitos adversos (DM, HAS, osteoporose, infecção, catarata). Monitorar."},
+{t:"info",x:"REAÇÃO pode ocorrer ANTES, DURANTE ou APÓS o tratamento anti-hanseníase. Não significa falha. Manter PQT."},
+],
+
+fisio:"Reação Tipo 1 (Reversa): hipersensibilidade tipo IV (celular) — exacerba lesões existentes, edema, dor nas placas. Pode causar neurite por inflamação dos nervos periféricos. Reação Tipo 2 (Eritema Nodoso Hansênico): imunocomplexos circulantes (tipo III) — múltiplos nódulos dolorosos + sintomas sistêmicos (febre, mal-estar) + neurite + irite + orquite + nefrite. Mais comum em formas multibacilares.",
+
+mec:[
+{d:"Talidomida",x:"Imunomodulador — inibe TNF-α, modula citocinas. Mecanismo da teratogenicidade: liga-se a cereblon, altera ubiquitinação → embriopatia (membros)."},
+{d:"Prednisona",x:"Anti-inflamatório amplo via receptor glicocorticoide."},
+],
+
+diretriz:"MS — Guia para Vigilância, Atenção e Eliminação da Hanseníase 2022. WHO Leprosy 2024.",
+fluxo:null,
+calcs:[],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CALCULADORAS DE PLANTÃO
    30 escores e calculadoras essenciais
    Estrutura: {id, nome, desc, sis, fields[], calc(v), interp(s)}
@@ -6837,6 +7600,268 @@ interp:function(s){
 /* índice rápido por id */
 const CALCS_BY_ID = {};
 CALCS.forEach(c => CALCS_BY_ID[c.id] = c);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — CONVERSORES DE DROGAS/UNIDADES
+   =========================================================== */
+
+const CONVERSORES = [
+
+/* ============== BIC: mcg/kg/min ↔ mL/h ============== */
+{id:"bic-mcg-min", nome:"BIC: mcg/kg/min ↔ mL/h", sis:"conv",
+desc:"Conversão entre dose contínua (mcg/kg/min) e velocidade da bomba de infusão (mL/h). Drogas vasoativas, sedativos, etc.",
+fields:[
+{tipo:"num", id:"peso", label:"Peso do paciente (kg)", min:1, max:300, step:0.1},
+{tipo:"num", id:"droga", label:"Massa total de droga (mg)", min:0, max:10000, step:1},
+{tipo:"num", id:"diluicao", label:"Volume total da diluição (mL)", min:1, max:1000, step:1},
+{tipo:"num", id:"dose", label:"Dose desejada (mcg/kg/min)", min:0, max:100, step:0.01},
+],
+calc:function(v){
+  const peso = parseFloat(v.peso||0);
+  const droga_mg = parseFloat(v.droga||0);
+  const diluicao = parseFloat(v.diluicao||0);
+  const dose = parseFloat(v.dose||0);
+  if(!peso || !droga_mg || !diluicao || !dose) return 0;
+  // Concentração: droga (mcg) / diluição (mL) = mcg/mL
+  // Velocidade (mL/h) = dose × peso × 60 / concentração
+  const concentracao_mcg_mL = (droga_mg * 1000) / diluicao;
+  const mlh = (dose * peso * 60) / concentracao_mcg_mL;
+  return Math.round(mlh * 100) / 100;
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher todos os campos", acao:"Cálculo: dose × peso × 60 / (droga_mcg/diluição_mL)", cor:"info"};
+  return {risco:`${s} mL/h`, acao:`Programar a bomba para ${s} mL/h. Conferir: dose × peso × 60 ÷ (droga em mcg / volume).`, cor:"ok"};
+}
+},
+
+/* ============== Conversão de opioides ============== */
+{id:"opioide-conv", nome:"Equipotência de Opioides", sis:"conv",
+desc:"Conversão entre opioides (potência relativa à morfina). Útil em rotação por intolerância/eficácia/disponibilidade.",
+fields:[
+{tipo:"sel", id:"de", label:"Converter DE:", opcoes:[
+{v:"morfina-iv", t:"Morfina IV"},
+{v:"morfina-vo", t:"Morfina VO"},
+{v:"fentanil-iv", t:"Fentanil IV"},
+{v:"tramadol-iv", t:"Tramadol IV"},
+{v:"tramadol-vo", t:"Tramadol VO"},
+{v:"codeina-vo", t:"Codeína VO"},
+{v:"oxicodona-vo", t:"Oxicodona VO"},
+{v:"metadona-vo", t:"Metadona VO"},
+]},
+{tipo:"num", id:"dose", label:"Dose total/dia da droga atual (mg ou mcg)", min:0, max:1000, step:0.1},
+{tipo:"sel", id:"para", label:"Converter PARA:", opcoes:[
+{v:"morfina-iv", t:"Morfina IV"},
+{v:"morfina-vo", t:"Morfina VO"},
+{v:"fentanil-iv", t:"Fentanil IV"},
+{v:"tramadol-vo", t:"Tramadol VO"},
+{v:"codeina-vo", t:"Codeína VO"},
+{v:"oxicodona-vo", t:"Oxicodona VO"},
+]},
+],
+calc:function(v){
+  // Fator de conversão para "morfina IV equivalente" (mg/dia)
+  // Baseado em tabelas padrão de equianalgesia
+  const conv_to_morfIV = {
+    "morfina-iv": 1.0,
+    "morfina-vo": 1/3,        // 30 VO = 10 IV
+    "fentanil-iv": 100,        // 0,1 mg IV = 10 mg morfina IV (em mcg → multiplica por 0.1)
+    "tramadol-iv": 0.1,        // 100 mg = 10 mg morfina IV
+    "tramadol-vo": 0.1,
+    "codeina-vo": 0.15/3,      // 200 mg VO = ~10 morfina IV
+    "oxicodona-vo": 1.5/3,     // 20 VO = 10 morfina IV (3× mais potente que VO; ÷3 p/IV)
+    "metadona-vo": 1.0,        // SIMPLIFICAÇÃO grossa - real é não-linear
+  };
+  const conv_from_morfIV = {
+    "morfina-iv": 1.0,
+    "morfina-vo": 3,
+    "fentanil-iv": 0.01,       // 10 mg morfina IV = 0,1 mg = 100 mcg fentanil
+    "tramadol-vo": 10,
+    "codeina-vo": 20,
+    "oxicodona-vo": 2,
+  };
+  const dose = parseFloat(v.dose||0);
+  const fator_de = conv_to_morfIV[v.de] || 1;
+  const morfina_iv_eq = dose * fator_de;
+  const fator_para = conv_from_morfIV[v.para] || 1;
+  // Para fentanil retornar em mcg (mais prático)
+  return morfina_iv_eq * fator_para;
+},
+interp:function(s){
+  if(!s || isNaN(s)) return {risco:"Preencher todos os campos", acao:"Valores de equipotência aproximados.", cor:"info"};
+  const rounded = Math.round(s * 100) / 100;
+  return {risco:`≈ ${rounded} (unidade da droga selecionada)`, 
+    acao:"REDUZIR 25-50% da dose calculada por TOLERÂNCIA CRUZADA INCOMPLETA. Titular para resposta. Metadona é EXCEÇÃO — conversão não-linear, requer experiência.", 
+    cor:"warn"};
+}
+},
+
+/* ============== Gotas/min ↔ mL/h ============== */
+{id:"gotas-mlh", nome:"Gotas/min ↔ mL/h", sis:"conv",
+desc:"Conversão entre velocidade em gotas/min (gotejamento manual) e mL/h (bomba/cálculo).",
+fields:[
+{tipo:"sel", id:"tipo", label:"Tipo de equipo", opcoes:[
+{v:"20", t:"Macrogotas (20 gotas = 1 mL)"},
+{v:"60", t:"Microgotas (60 gotas = 1 mL)"},
+]},
+{tipo:"sel", id:"converter", label:"Converter de:", opcoes:[
+{v:"gotas", t:"Gotas/min → mL/h"},
+{v:"mlh", t:"mL/h → Gotas/min"},
+]},
+{tipo:"num", id:"valor", label:"Valor a converter", min:0, max:1000, step:0.5},
+],
+calc:function(v){
+  const fator = parseInt(v.tipo||20);  // gotas por mL
+  const valor = parseFloat(v.valor||0);
+  if(!valor) return 0;
+  if(v.converter === "gotas") {
+    // gotas/min → mL/h: gotas/min × 60 / fator
+    return Math.round((valor * 60 / fator) * 100) / 100;
+  } else {
+    // mL/h → gotas/min: mL/h × fator / 60
+    return Math.round((valor * fator / 60) * 100) / 100;
+  }
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher", acao:"Macrogotas: 20 gotas/mL. Microgotas: 60 gotas/mL.", cor:"info"};
+  return {risco:`${s}`, acao:"Resultado calculado. Para 'gotas/min': contar 1 minuto. Para macrogotas/microgotas, conferir embalagem do equipo.", cor:"ok"};
+}
+},
+
+/* ============== Sódio corrigido por glicemia ============== */
+{id:"na-corrigido", nome:"Na⁺ corrigido pela glicemia", sis:"conv",
+desc:"Hiperglicemia causa hiponatremia diluicional. Calcular Na real é importante na CAD/EHH.",
+fields:[
+{tipo:"num", id:"na", label:"Sódio medido (mEq/L)", min:100, max:200, step:0.1},
+{tipo:"num", id:"glic", label:"Glicemia (mg/dL)", min:100, max:2000, step:1},
+],
+calc:function(v){
+  const na = parseFloat(v.na||0);
+  const glic = parseFloat(v.glic||0);
+  if(!na || !glic) return 0;
+  // Fator clássico Katz: ↑1.6 mEq/L para cada 100 mg/dL acima de 100
+  // Fator Hillier (mais aceito): ↑2.4 mEq/L para cada 100 mg/dL acima de 100
+  const correcao = ((glic - 100) / 100) * 2.4;
+  return Math.round((na + correcao) * 10) / 10;
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher", acao:"Fórmula Hillier: Na corrigido = Na medido + 2,4 × (glic-100)/100", cor:"info"};
+  if(s < 135) return {risco:`Na corrigido ${s} mEq/L — Hiponatremia verdadeira`, acao:"Investigar etiologia. Em CAD: cuidado com reposição. SIADH? Insuficiência adrenal?", cor:"warn"};
+  if(s > 145) return {risco:`Na corrigido ${s} mEq/L — Hipernatremia`, acao:"Indica desidratação significativa. Repor água livre (déficit hídrico).", cor:"warn"};
+  return {risco:`Na corrigido ${s} mEq/L — Normal`, acao:"Hiponatremia era apenas diluicional pela hiperglicemia.", cor:"ok"};
+}
+},
+
+/* ============== Cálcio corrigido por albumina ============== */
+{id:"ca-corrigido", nome:"Cálcio corrigido pela albumina", sis:"conv",
+desc:"Hipoalbuminemia subestima cálcio (40% do Ca circula ligado à albumina). Importante em sepse, hepatopata, desnutrido.",
+fields:[
+{tipo:"num", id:"ca", label:"Cálcio total medido (mg/dL)", min:4, max:15, step:0.1},
+{tipo:"num", id:"alb", label:"Albumina (g/dL)", min:1, max:6, step:0.1},
+],
+calc:function(v){
+  const ca = parseFloat(v.ca||0);
+  const alb = parseFloat(v.alb||0);
+  if(!ca || !alb) return 0;
+  // Fórmula: Ca corrigido = Ca medido + 0.8 × (4.0 - albumina)
+  const correcao = 0.8 * (4.0 - alb);
+  return Math.round((ca + correcao) * 100) / 100;
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher", acao:"Ca corrigido = Ca medido + 0,8 × (4 − albumina)", cor:"info"};
+  if(s < 8.5) return {risco:`Ca corrigido ${s} mg/dL — Hipocalcemia`, acao:"Investigar: hipoparatireoidismo, vit D, hiperfosfatemia, magnésio baixo, pancreatite, IRC. Tetania? QT longo?", cor:"warn"};
+  if(s > 10.5) return {risco:`Ca corrigido ${s} mg/dL — Hipercalcemia`, acao:"Investigar: hiperparatireoidismo, neoplasia (mieloma, metástase óssea), vit D excessiva, hipertireoidismo. Tratamento: hidratação + furosemida + bifosfonato.", cor:"warn"};
+  return {risco:`Ca corrigido ${s} mg/dL — Normal`, acao:"Padrão normal (8,5-10,5).", cor:"ok"};
+}
+},
+
+/* ============== Anion Gap ============== */
+{id:"anion-gap", nome:"Anion Gap (com correção albumina)", sis:"conv",
+desc:"Diagnóstico diferencial de acidose metabólica. Anion gap ↑ = ácido endógeno/exógeno acumulado (CAD, lactato, urêmica, intoxicação).",
+fields:[
+{tipo:"num", id:"na", label:"Sódio (mEq/L)", min:120, max:180, step:0.1},
+{tipo:"num", id:"cl", label:"Cloro (mEq/L)", min:80, max:130, step:0.1},
+{tipo:"num", id:"hco3", label:"Bicarbonato (mEq/L)", min:5, max:40, step:0.1},
+{tipo:"num", id:"alb", label:"Albumina (g/dL, opcional)", min:1, max:6, step:0.1},
+],
+calc:function(v){
+  const na = parseFloat(v.na||0);
+  const cl = parseFloat(v.cl||0);
+  const hco3 = parseFloat(v.hco3||0);
+  const alb = parseFloat(v.alb||0);
+  if(!na || !cl || !hco3) return 0;
+  let ag = na - (cl + hco3);
+  // Correção pela albumina (cada 1 g/dL abaixo de 4 → subestima AG em 2,5)
+  if(alb && alb < 4) ag += 2.5 * (4 - alb);
+  return Math.round(ag * 10) / 10;
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher Na, Cl, HCO3", acao:"AG = Na − (Cl + HCO3). Normal 8-12 (com correção albumina ~10-14).", cor:"info"};
+  if(s < 8) return {risco:`AG ${s} — Baixo`, acao:"Raro: hipoalbuminemia (já corrigida?), mieloma múltiplo (IgG cationica), litem intoxicação.", cor:"info"};
+  if(s <= 12) return {risco:`AG ${s} — Normal`, acao:"Acidose hiperclorêmica (HCO3 baixo + AG normal): perda GI (diarreia), acidose tubular renal, recuperação CAD.", cor:"ok"};
+  if(s <= 20) return {risco:`AG ${s} — Aumentado moderadamente`, acao:"Investigar: lactato (sepse, choque), cetoacidose, urêmico, intoxicações.", cor:"warn"};
+  return {risco:`AG ${s} — Muito aumentado`, acao:"Acidose grave. Mnemônico MUDPILES: Metanol, Urêmica, Diabetes (CAD), Paraldeído, Isoniazida/Ferro, Lactato, Etilenoglicol, Salicilatos. Tratar causa.", cor:"crit"};
+}
+},
+
+/* ============== Déficit de Bicarbonato ============== */
+{id:"def-hco3", nome:"Déficit de Bicarbonato", sis:"conv",
+desc:"Estimativa do déficit de HCO₃⁻ para reposição em acidose metabólica grave. Geralmente reservado para pH <7,1 ou shock.",
+fields:[
+{tipo:"num", id:"peso", label:"Peso (kg)", min:20, max:200, step:1},
+{tipo:"num", id:"hco3-atual", label:"HCO3 atual (mEq/L)", min:0, max:30, step:0.1},
+{tipo:"num", id:"hco3-alvo", label:"HCO3 alvo (mEq/L)", min:10, max:24, step:1},
+],
+calc:function(v){
+  const peso = parseFloat(v.peso||0);
+  const atual = parseFloat(v["hco3-atual"]||0);
+  const alvo = parseFloat(v["hco3-alvo"]||15);
+  if(!peso || !atual) return 0;
+  // Déficit = 0.5 × peso × (HCO3 alvo - HCO3 atual)
+  // 0.5 = volume de distribuição do bicarbonato (50% do peso)
+  return Math.round(0.5 * peso * (alvo - atual));
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher", acao:"Déficit = 0,5 × peso × (HCO3 alvo − HCO3 atual). Alvo geralmente 15.", cor:"info"};
+  if(s <= 0) return {risco:"Sem déficit ou já corrigido", acao:"HCO3 atual ≥ alvo. Sem indicação de reposição.", cor:"ok"};
+  return {risco:`Déficit ≈ ${s} mEq`, 
+    acao:`Repor 50% (≈ ${Math.round(s/2)} mEq) em 4-6h e reavaliar. NaHCO3 8,4% = 1 mEq/mL. EVITAR em CAD inicial e acidose lática salvo pH <7,0-7,1. Risco: hipocalemia, ↓K ionizado, acidose paradoxal SNC.`, 
+    cor:"warn"};
+}
+},
+
+/* ============== Osmolaridade plasmática ============== */
+{id:"osm", nome:"Osmolaridade plasmática", sis:"conv",
+desc:"Calcular osmolaridade efetiva. Útil em CAD/EHH (osm efetiva guia ritmo de correção), suspeita de intoxicação (gap osmolar).",
+fields:[
+{tipo:"num", id:"na", label:"Sódio (mEq/L)", min:100, max:200, step:0.1},
+{tipo:"num", id:"glic", label:"Glicemia (mg/dL)", min:50, max:2000, step:1},
+{tipo:"num", id:"ur", label:"Ureia (mg/dL)", min:5, max:300, step:1},
+],
+calc:function(v){
+  const na = parseFloat(v.na||0);
+  const glic = parseFloat(v.glic||0);
+  const ur = parseFloat(v.ur||0);
+  if(!na) return 0;
+  // Fórmula: 2 × Na + glic/18 + ur/6
+  return Math.round((2*na + glic/18 + ur/6) * 10) / 10;
+},
+interp:function(s){
+  if(!s) return {risco:"Preencher", acao:"Osm = 2 × Na + glic/18 + ureia/6. Normal: 285-295 mOsm/kg.", cor:"info"};
+  if(s < 280) return {risco:`Osm ${s} — Hipo-osmolaridade`, acao:"Hiponatremia hipotônica. Investigar SIADH, ICC, cirrose, hipotireoidismo.", cor:"warn"};
+  if(s > 320) return {risco:`Osm ${s} — Hiperosmolaridade grave`, acao:"EHH (estado hiperosmolar) ou CAD avançado. Hidratação cautelosa (↓Osm não >3-4/h). Risco edema cerebral em correção rápida.", cor:"crit"};
+  if(s > 295) return {risco:`Osm ${s} — Hiperosmolaridade`, acao:"Avaliar contexto. Hidratação adequada.", cor:"warn"};
+  return {risco:`Osm ${s} — Normal`, acao:"Padrão normal.", cor:"ok"};
+}
+},
+
+];
+
+/* Conversores também são "calculadoras" para reuso da renderização */
+CONVERSORES.forEach(c => {
+  CALCS.push(c);
+  CALCS_BY_ID[c.id] = c;
+});
 
 
 /* ===========================================================
@@ -8267,7 +9292,7 @@ const FLOWS_LIST = Object.keys(FLOWS);
 const SISTEMAS_ORD = {
   cardio:1, resp:2, neuro:3, gi:4, endo:5, gu:6, ost:7, psiq:8, hidro:9,
   infecto:10, anaf:11, tox:12, pec:13, hemo:14, vaso:15, iot:16, gest:17,
-  obst:18, trauma:19, derm:20, oft:21, anal:22, ubs:23
+  obst:18, trauma:19, derm:20, oft:21, anal:22, ubs:23, conv:24, proc:25
 };
 Object.keys(SISTEMAS_ORD).forEach(k => {
   if (SISTEMAS[k]) SISTEMAS[k].ord = SISTEMAS_ORD[k];
@@ -8674,12 +9699,149 @@ function renderPatologia(id) {
 
       <footer class="pat-foot">
         <p class="note">Doses individualizar por peso, função renal/hepática, idade e gestação. Conteúdo educacional — não substitui o julgamento clínico.</p>
-        <button class="btn btn-ghost" onclick="window.print()">Imprimir</button>
+        <div class="pat-foot-actions">
+          <button class="btn btn-ghost" onclick="window.print()">🖨 Imprimir</button>
+          <button class="btn btn-ghost" onclick="gerarCROSS('${p.id}')">📋 Gerar CROSS</button>
+        </div>
       </footer>
     </article>
   `;
   if (p.imgs && p.imgs.length) scheduleImgCheck("imgs-block-" + p.id);
 }
+
+/* ============== GERADOR DE SOLICITAÇÃO CROSS ============== */
+/* Gera texto formal pré-preenchido para solicitação de transferência via CROSS-SP.
+   Usuário preenche dados específicos do paciente e copia para o sistema CROSS. */
+window.gerarCROSS = function(patId) {
+  const p = PATOLOGIAS_BY_ID[patId];
+  if (!p) return;
+  
+  const today = new Date();
+  const dt = today.toLocaleDateString("pt-BR") + " às " + today.toLocaleTimeString("pt-BR").slice(0,5);
+  
+  // Sugestão de recurso/especialidade conforme sistema
+  const recursoSug = {
+    "cardio": "Vaga de UTI cardiológica / Hemodinâmica / Cardiologista",
+    "neuro": "Vaga UTI / Stroke center / Neurocirurgia / Neurologia",
+    "resp": "Vaga UTI / Pneumologia",
+    "gi": "Cirurgia geral / UTI",
+    "gu": "Urologia / Nefrologia",
+    "obst": "Maternidade de alto risco / UTI obstétrica",
+    "trauma": "Trauma center / Neurocirurgia / Cirurgia geral / UTI",
+    "infecto": "Infectologia / UTI",
+    "psiq": "Hospital psiquiátrico / Leito psiquiátrico em hospital geral",
+    "hemo": "Hematologia / Oncologia / UTI",
+    "endo": "Endocrinologia / UTI",
+    "iot": "UTI com vaga de ventilação mecânica",
+    "ost": "Ortopedia",
+    "anaf": "UTI / Alergia",
+    "tox": "UTI / Toxicologia",
+    "pec": "Centro de referência para acidentes peçonhentos / UTI",
+    "oft": "Oftalmologia",
+    "derm": "Dermatologia / Unidade de queimados (SJS/NET)",
+    "gest": "Maternidade",
+    "anal": "Suporte clínico",
+    "proc": "Conforme procedimento",
+    "ubs": "Conforme avaliação",
+  };
+  const recurso = recursoSug[p.sis] || "A definir conforme avaliação";
+  
+  const template = `═══════════════════════════════════════════════
+SOLICITAÇÃO DE TRANSFERÊNCIA — CROSS
+═══════════════════════════════════════════════
+
+DATA/HORA DA SOLICITAÇÃO: ${dt}
+
+【 IDENTIFICAÇÃO 】
+Nome do paciente: ________________________________
+Idade: ___ anos     Sexo: (   ) M  (   ) F
+RG/CNS: ___________________     Peso: ____ kg
+Procedência: _____________________________________
+
+【 HOSPITAL SOLICITANTE 】
+Unidade: _________________________________________
+Médico solicitante: ______________________________
+CRM: __________________    Telefone: _____________
+
+【 QUADRO CLÍNICO 】
+Diagnóstico: ${p.nome.toUpperCase()}
+Tempo de evolução: ________________________________
+
+Resumo clínico:
+${p.def}
+
+Histórico relevante:
+- HMA: ________________________________________
+- HPP/comorbidades: ____________________________
+- Medicações em uso: ___________________________
+- Alergias: ____________________________________
+
+【 SINAIS VITAIS / EXAME FÍSICO ATUAL 】
+PA: _____ / _____ mmHg     FC: _____ bpm
+FR: _____ irpm     SpO2: _____ %     Tax: _____ °C
+Glasgow: _____     Glicemia capilar: _____ mg/dL
+Exame físico relevante: __________________________
+__________________________________________________
+
+【 EXAMES REALIZADOS 】
+${(p.exames || []).map(e => "- " + e).join("\n")}
+
+Resultados disponíveis: __________________________
+__________________________________________________
+
+【 CONDUTA REALIZADA NESTA UNIDADE 】
+- Acessos: _______________________________________
+- Suporte ventilatório: __________________________
+- Medicações administradas:
+${(p.rx || []).slice(0, 6).map(r => "  • " + r.d + " — " + r.do + " " + (r.via || "")).join("\n")}
+- Outras condutas: _______________________________
+
+【 RECURSO/ESPECIALIDADE SOLICITADA 】
+► ${recurso}
+
+【 JUSTIFICATIVA PARA TRANSFERÊNCIA 】
+- Nossa unidade NÃO dispõe de: ___________________
+  (TC/RM, hemodinâmica, neurocirurgia, UTI especializada, etc.)
+- Paciente necessita de: _________________________
+- Risco da não-transferência: ____________________
+
+【 ESTABILIDADE PARA TRANSPORTE 】
+( ) Estável para transporte simples
+( ) Necessita UTI móvel / médico
+( ) Necessita ventilação mecânica de transporte
+( ) Necessita drogas vasoativas em BIC
+
+【 PRINCIPAIS ALERTAS DA CONDIÇÃO 】
+${(p.alertas || []).filter(a => a.t === "crit").slice(0, 3).map(a => "⚠ " + a.x).join("\n\n")}
+
+═══════════════════════════════════════════════
+Assinatura do médico solicitante:
+
+____________________________________
+Nome / CRM
+═══════════════════════════════════════════════`;
+
+  // Abrir modal com textarea para copiar
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="modal">
+      <div class="modal-head">
+        <h3>📋 Solicitação CROSS — ${safeHtml(p.nome)}</h3>
+        <button class="icon-btn" onclick="this.closest('.modal-overlay').remove()" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="note">Texto pré-preenchido. Edite os campos com dados do paciente e copie para o sistema CROSS.</p>
+        <textarea id="crossTextarea" class="cross-textarea" rows="30">${esc(template)}</textarea>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" onclick="navigator.clipboard.writeText(document.getElementById('crossTextarea').value).then(()=>{this.textContent='✓ Copiado';setTimeout(()=>this.textContent='📋 Copiar texto',2000);})">📋 Copiar texto</button>
+        <button class="btn btn-ghost" onclick="this.closest('.modal-overlay').remove()">Fechar</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+};
 
 /* ============== SISTEMA — LISTA ============== */
 function renderSistema(sk) {
@@ -9146,6 +10308,67 @@ document.addEventListener("click", (e) => {
     document.getElementById("searchResults").classList.remove("visible","open");
   }
 });
+
+/* ============== PWA: Service Worker + Install Prompt ============== */
+/* Service Worker via Blob URL — funciona em HTTPS/localhost (deploy GitHub Pages).
+   Em file:// não funciona SW, mas o HTML já é self-contained = offline natural. */
+window.__deferredInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  window.__deferredInstallPrompt = e;
+  // Botão de instalar aparece no topbar (renderizado pela home)
+  const btn = document.getElementById("btnInstall");
+  if (btn) btn.style.display = "inline-flex";
+});
+
+window.installPWA = function() {
+  if (!window.__deferredInstallPrompt) {
+    alert("Para instalar manualmente:\n\n• Android/Chrome: Menu (⋮) → Adicionar à tela inicial\n• iPhone/Safari: Compartilhar (□↑) → Adicionar à Tela de Início\n• Desktop: ícone de instalação na barra de endereço");
+    return;
+  }
+  window.__deferredInstallPrompt.prompt();
+  window.__deferredInstallPrompt.userChoice.then(() => {
+    window.__deferredInstallPrompt = null;
+    const btn = document.getElementById("btnInstall");
+    if (btn) btn.style.display = "none";
+  });
+};
+
+/* Registrar Service Worker via Blob (sem precisar de arquivo separado).
+   Cacheia tudo na 1ª visita; usa cache se offline. */
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  const swSource = `
+    const CACHE_NAME = "vovominic-er-v1";
+    self.addEventListener("install", e => {
+      e.waitUntil(caches.open(CACHE_NAME));
+      self.skipWaiting();
+    });
+    self.addEventListener("activate", e => {
+      e.waitUntil(self.clients.claim());
+    });
+    self.addEventListener("fetch", e => {
+      if (e.request.method !== "GET") return;
+      e.respondWith(
+        caches.open(CACHE_NAME).then(cache =>
+          cache.match(e.request).then(cached => {
+            const fetchPromise = fetch(e.request).then(resp => {
+              if (resp.ok && resp.type !== "opaque") cache.put(e.request, resp.clone());
+              return resp;
+            }).catch(() => cached);
+            return cached || fetchPromise;
+          })
+        )
+      );
+    });
+  `;
+  try {
+    const blob = new Blob([swSource], { type: "application/javascript" });
+    const url = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(url).catch(() => { /* silencioso — fallback é HTML standalone */ });
+  } catch (e) {
+    // ignore
+  }
+}
 
 /* ============== INICIALIZAÇÃO ============== */
 window.addEventListener("load", () => {
