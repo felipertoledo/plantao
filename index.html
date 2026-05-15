@@ -1449,6 +1449,35 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
   font-style: italic;
 }
 
+/* ============== PRESCRIÇÃO ETAPAS ============== */
+.rx-etapa { margin-bottom: 1.2rem; }
+.rx-etapa-h {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  padding-left: 0.6rem;
+  border-left: 3px solid #475569;
+  color: var(--ink-2);
+  font-family: var(--font-body);
+  letter-spacing: 0.02em;
+}
+
+.badge-cal {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: #E0F2FE;
+  color: #0369A1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .badge-cal {
+  background: #082F49;
+  color: #7DD3FC;
+}
+
 </style>
 </head>
 <body>
@@ -1526,6 +1555,8 @@ const SISTEMAS = {
   trauma:   { nome: "Trauma",                icone: "✖", cor: "#7C2D12" },
   derm:     { nome: "Dermatologia",          icone: "❋", cor: "#A21CAF" },
   oft:      { nome: "Oftalmologia / ORL",    icone: "◉", cor: "#1D4ED8" },
+  ubs:      { nome: "UBS / Prevenção",       icone: "✚", cor: "#059669" },
+  anal:     { nome: "Analgesia",             icone: "◴", cor: "#A16207" },
 };
 
 const PATOLOGIAS = [
@@ -2757,10 +2788,18 @@ PATOLOGIAS.push(
   def:"Febre + dor lombar + Giordano + sintomas baixos + leucocitúria. Mais grave que cistite, pode levar à sepse urinária.",
   exames:["EAS + urocultura SEMPRE","Hemograma, PCR, função renal","HMC se internação","USG/TC se complicação"],
   rx:[
-    {d:"Ciprofloxacino",do:"500 mg VO 12/12h × 7 dias",via:"VO",o:"Ambulatorial sem comorbidade."},
-    {d:"Ceftriaxona",do:"1–2 g IV/d × 7–14 dias",via:"IV",o:"Internação. Step-down VO conforme antibiograma."},
-    {d:"Piperacilina-tazobactam",do:"4,5 g IV 6/6h",via:"IV",o:"Grave / sepse / fatores de risco MR."},
-    {d:"Imipenem/meropenem",do:"500 mg 6/6h / 1g 8/8h",via:"IV",o:"Sepse grave ou ESBL prévia."},
+    {etapa:"inicial", d:"Avaliação inicial",do:"SSVV + sinais sepse (qSOFA) + Giordano + exame abdominal",via:"—",o:"Diferenciar de cistite baixa. Avaliar obstrução suspeita (cólica, urolitíase prévia)."},
+    {etapa:"inicial", d:"Acesso venoso + hidratação",do:"SF/RL 30 mL/kg em 3h se sepse; ou manutenção se estável",via:"IV",o:"Hipovolemia + febre. Ajustar conforme volemia."},
+    {etapa:"inicial", d:"Coletar EAS + urocultura + HMC",do:"ANTES da 1ª dose ATB",via:"—",o:"Permite step-down ATB conforme antibiograma."},
+    {etapa:"atb", d:"AMBULATORIAL — Ciprofloxacino",do:"500 mg VO 12/12h × 7 dias",via:"VO",o:"Sem comorbidade, sem sepse, sem gestação. Pode falhar se resistência local >10% — checar antibiograma local."},
+    {etapa:"atb", d:"AMBULATORIAL alternativo — SMX-TMP",do:"800/160 mg VO 12/12h × 14 dias",via:"VO",o:"Apenas se sensibilidade conhecida (resistência >30% em muitas regiões)."},
+    {etapa:"atb", d:"INTERNAÇÃO — Ceftriaxona",do:"1-2 g IV/d × 7-14 dias",via:"IV",o:"1ª LINHA hospitalar. Step-down para VO em 48-72h se melhora + antibiograma."},
+    {etapa:"atb", d:"GRAVE/SEPSE — Piperacilina-tazobactam",do:"4,5 g IV 6/6h",via:"IV",o:"Sepse, fatores de risco MR (uso ATB recente, internação, sonda vesical, complicada)."},
+    {etapa:"atb", d:"ESBL/MULTIRRESISTENTE — Meropenem",do:"1 g IV 8/8h",via:"IV",o:"ESBL prévia conhecida, sepse refratária, exposição ATB amplo recente."},
+    {etapa:"escala", d:"VASOPRESSOR se sepse com choque",do:"Noradrenalina 0,05-2 mcg/kg/min",via:"IV",o:"Meta PAM ≥65. Ver patologia Sepse para escalonamento completo."},
+    {etapa:"adj", d:"Antitérmico/Analgésico",do:"Dipirona 2g IV 6/6h ± paracetamol",via:"IV/VO",o:"Conforto + reduz demanda metabólica. Evitar AINEs (risco renal)."},
+    {etapa:"adj", d:"Antiemético",do:"Ondansetrona 4-8 mg IV 8/8h",via:"IV",o:"Náusea/vômitos frequentes. Permite hidratação VO."},
+    {etapa:"adj", d:"Avaliar OBSTRUÇÃO",do:"USG renal/vias urinárias urgente",via:"—",o:"Hidronefrose + sepse = drenagem URGENTE (cateter duplo J ou nefrostomia). Pielonefrite obstruída evolui mal."},
   ],
   alertas:[
     {t:"crit",x:"Sepse urinária: bundle hour-1. Procurar obstrução (hidronefrose) — drenagem urgente (cateter duplo J, nefrostomia)."},
@@ -3291,15 +3330,20 @@ PATOLOGIAS.push(
   def:"Sepse: disfunção orgânica ameaçadora à vida causada por resposta desregulada à infecção (SOFA ≥2). Choque séptico: sepse + hipotensão refratária a volume + lactato >2 + vasopressor para PAM ≥65.",
   exames:["Lactato (repetir 2h depois se >2)","Hemoculturas ANTES do ATB","EAS + urocultura","RX tórax","Hemograma, função renal, gasometria, eletrólitos, coagulograma","PCR/procalcitonina","Culturas dirigidas: LCR, líquido peritoneal, secreção"],
   rx:[
-    {d:"1. Lactato",do:"Coletar imediato; repetir 2h se ≥2",via:"—",o:"Marcador de hipoperfusão. Clearance >10%/h associado a melhor sobrevida."},
-    {d:"2. Hemoculturas",do:"2 pares (2 sítios diferentes) ANTES da 1ª dose ATB",via:"—",o:"Não atrasar ATB >45 min para colher culturas."},
-    {d:"3. ATB amplo espectro em ≤1h",do:"Conforme foco — empírico inicial conforme epidemiologia local",via:"IV",o:"Cada hora de atraso ↑mortalidade ~7,6%."},
-    {d:"4. Cristaloide",do:"30 mL/kg em 3h (até melhora hemodinâmica)",via:"IV",o:"Ringer lactato preferível ao SF (↓hipercloremia/IRA). Reavaliar com VCI/eco/lactato/diurese."},
-    {d:"5. Noradrenalina",do:"0,05–2 mcg/kg/min; iniciar com 0,1 mcg/kg/min",via:"IV",o:"VASOPRESSOR DE 1ª LINHA. Iniciar precocemente — pode ser periférico em curto prazo. Meta: PAM ≥65."},
-    {d:"6. Vasopressina",do:"0,03 U/min FIXA",via:"IV",o:"Adicionar se NE >0,25–0,5 mcg/kg/min para reduzir dose de NE."},
-    {d:"7. Hidrocortisona",do:"200 mg/d (50 mg IV 6/6h) ou 200 mg/d BIC",via:"IV",o:"Choque refratário com NE >0,25 mcg/kg/min por >4h."},
-    {d:"Dobutamina",do:"2,5–20 mcg/kg/min",via:"IV",o:"Disfunção miocárdica com baixo débito apesar de volume adequado."},
-    {d:"Foco de controle",do:"Drenagem de abscesso, retirada cateter, desbridamento cirurgico",via:"—",o:"Tão crítico quanto ATB — primeiras 6–12h."},
+    {etapa:"inicial", d:"Reconhecimento + qSOFA/SOFA",do:"≥2 critérios = sepse",via:"—",o:"qSOFA: FR ≥22, PAS ≤100, alteração mental. SOFA mais sensível na UTI. Tempo é vida."},
+    {etapa:"inicial", d:"Lactato",do:"Coletar IMEDIATO; repetir 2h se ≥2 mmol/L",via:"—",o:"Marcador de hipoperfusão. Clearance >10%/h associado a melhor sobrevida."},
+    {etapa:"inicial", d:"Hemoculturas",do:"2 pares (2 sítios diferentes) ANTES da 1ª dose ATB",via:"—",o:"NÃO atrasar ATB >45 min para colher culturas."},
+    {etapa:"inicial", d:"2 acessos calibrosos + monitorização",do:"PA invasiva se choque, débito urinário, SpO₂, ECG",via:"—",o:"Acesso central precoce se vasopressor previsto."},
+    {etapa:"atb", d:"ATB amplo espectro em ≤1h",do:"Conforme foco — empírico inicial",via:"IV",o:"Cada hora de atraso ↑mortalidade ~7,6%. Cobertura: pneumonia (ceftriaxona + macrolídeo), urinária (ceftriaxona/piper-tazo), abdominal (piper-tazo), pele/parte mole (vanco + piper-tazo), neutropenia febril (cefepime), comunitário desconhecido (ceftriaxona + vanco se grave)."},
+    {etapa:"escala", d:"① Cristaloide — Ringer Lactato",do:"30 mL/kg em 3h (até melhora hemodinâmica)",via:"IV",o:"RL preferível ao SF (↓hipercloremia/IRA). Reavaliar com VCI/eco/lactato/diurese."},
+    {etapa:"escala", d:"② Noradrenalina",do:"0,05–2 mcg/kg/min; iniciar 0,1 mcg/kg/min",via:"IV",o:"VASOPRESSOR DE 1ª LINHA. Pode ser periférico curto prazo (até 6h). META: PAM ≥65."},
+    {etapa:"escala", d:"③ Vasopressina (adicionar)",do:"0,03 U/min FIXA",via:"IV",o:"Adicionar se NE >0,25–0,5 mcg/kg/min — reduz dose de NE + complementa via não-catecolaminérgica."},
+    {etapa:"escala", d:"④ Hidrocortisona",do:"200 mg/d (50 mg IV 6/6h) ou BIC",via:"IV",o:"CHOQUE REFRATÁRIO: NE >0,25 mcg/kg/min por >4h. Reduz tempo de vasopressor."},
+    {etapa:"escala", d:"⑤ Dobutamina (se baixo débito)",do:"2,5–20 mcg/kg/min",via:"IV",o:"Disfunção miocárdica com baixo débito apesar de volume + vasopressor. Pode reduzir PA — manter NE."},
+    {etapa:"adj", d:"Foco de controle",do:"Drenagem de abscesso, retirada cateter, desbridamento",via:"—",o:"Tão crítico quanto ATB — primeiras 6-12h. Identificar e remover."},
+    {etapa:"adj", d:"Hemocomponentes",do:"CH se Hb <7 (ou <8 em SCA)",via:"IV",o:"Estratégia restritiva. Plaquetas <10k (profilática) ou <50k (procedimento)."},
+    {etapa:"adj", d:"Tromboprofilaxia",do:"Enoxaparina 40 mg SC/d",via:"SC",o:"Mecânica (compressão) se contraindicação. Reduz TEV."},
+    {etapa:"adj", d:"Controle glicêmico",do:"Insulina BIC alvo 140-180 mg/dL",via:"IV",o:"Evitar hipoglicemia. Sliding scale ou BIC conforme glicemia capilar 4/4h."},
   ],
   alertas:[
     {t:"crit",x:"ATB em ≤1h do reconhecimento. Sepse é emergência tempo-dependente como IAM e AVC."},
@@ -3473,6 +3517,16 @@ PATOLOGIAS.push(
     {d:"Cefalexina/Cefazolina",x:"Cefalosporina 1G — inibe PBPs Gram-positivas."},
   ],
   diretriz:"IDSA SSTI (Stevens DL et al., CID 2014;59:e10–e52).",
+  imgs:[
+    {src:"https://upload.wikimedia.org/wikipedia/commons/5/5c/Cellulitis_Left_Leg.JPG",
+     alt:"Celulite em MI esquerdo",
+     caption:"Celulite em MI esquerdo — eritema, edema, calor, com bordas MAIS DIFUSAS que erisipela (que tem bordas elevadas e bem delimitadas).",
+     source:"Wikimedia Commons (CC BY-SA 2.5)"},
+    {src:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Necrotizing_fasciitis_left_leg.JPEG",
+     alt:"Fasceíte necrotizante em MI",
+     caption:"FASCEÍTE NECROTIZANTE — eritema com áreas escuras de necrose e bolhas hemorrágicas. EMERGÊNCIA cirúrgica + ATB amplo.",
+     source:"Wikimedia Commons / Piotr Smuszkiewicz et al. (CC BY 2.0)"},
+  ],
   calcs:[],
 },
 {
@@ -3572,14 +3626,19 @@ PATOLOGIAS.push(
   def:"Reação alérgica sistêmica grave, início rápido (min a horas), envolvendo 2+ sistemas (pele, respiratório, CV, GI). Critérios WAO/EAACI.",
   exames:["Diagnóstico clínico","Triptase sérica em 1–6h (confirmação retrospectiva)","ECG, eletrólitos, função renal"],
   rx:[
-    {d:"1. ADRENALINA IM",do:"0,3–0,5 mg IM (1:1000), face anterolateral da coxa",via:"IM",o:"1ª LINHA ÚNICA. Crianças 0,01 mg/kg (máx 0,3). Repetir cada 5–15 min até 3×."},
-    {d:"2. Posição supina + elevar MMII",do:"Decúbito dorsal + Trendelenburg",via:"—",o:"Exceto se dispneia grave. NÃO sentar (síndrome ventricular vazio)."},
-    {d:"3. O2 alto fluxo",do:"10–15 L/min máscara não-reinalante",via:"—",o:"SpO2 ≥94%."},
-    {d:"4. Cristaloide",do:"SF 20 mL/kg em 5–10 min (adulto 1–2 L)",via:"IV",o:"Pode repetir. Choque distributivo."},
-    {d:"5. Adrenalina IV em BIC (refratário)",do:"0,1 mcg/kg/min, titular 0,05–1 mcg/kg/min",via:"IV",o:"APENAS em ambiente monitorizado, após ≥2 doses IM sem resposta."},
-    {d:"Glucagon",do:"1–5 mg IV bolus + 5–15 mcg/min",via:"IV",o:"Se em β-bloqueador (adrenalina não funciona bem)."},
-    {d:"ADJUVANTES (NÃO 1ª LINHA)",do:"Difenidramina 25–50 mg + Prometazina 25 mg + Hidrocortisona 200 mg IV",via:"IV",o:"Tratam urticária; NÃO substituem adrenalina, NÃO previnem bifásica."},
-    {d:"Observação ≥6–8h pós-resolução",do:"Internar se: refratária, IV adrenalina, bifásica prévia, β-bloqueador",via:"—",o:"Reação bifásica em 5–20% em 4–8h."},
+    {etapa:"inicial", d:"1. ADRENALINA IM",do:"0,3–0,5 mg IM (1:1000), face anterolateral da coxa",via:"IM",o:"1ª LINHA ÚNICA. Crianças 0,01 mg/kg (máx 0,3). Repetir cada 5–15 min até 3×."},
+    {etapa:"inicial", d:"2. Posição supina + elevar MMII",do:"Decúbito dorsal + Trendelenburg",via:"—",o:"Exceto se dispneia grave. NÃO sentar (síndrome ventricular vazio)."},
+    {etapa:"inicial", d:"3. O₂ alto fluxo",do:"10–15 L/min máscara não-reinalante",via:"—",o:"SpO₂ ≥94%. IOT precoce se edema laríngeo progressivo."},
+    {etapa:"inicial", d:"4. Cristaloide",do:"SF 20 mL/kg em 5–10 min (adulto 1–2 L)",via:"IV",o:"Pode repetir. Choque distributivo."},
+    {etapa:"escala", d:"② Adrenalina IM REPETIDA",do:"0,3-0,5 mg IM cada 5-15 min",via:"IM",o:"Se não responder à 1ª dose. Até 3 doses antes de IV."},
+    {etapa:"escala", d:"③ Adrenalina IV em BIC (refratário)",do:"0,1 mcg/kg/min, titular 0,05–1 mcg/kg/min",via:"IV",o:"APENAS em ambiente monitorizado, após ≥2 doses IM sem resposta."},
+    {etapa:"escala", d:"④ Glucagon (β-bloqueador)",do:"1–5 mg IV bolus + 5–15 mcg/min BIC",via:"IV",o:"Se em β-bloqueador (adrenalina não funciona bem)."},
+    {etapa:"adj", d:"ADJUVANTES — Difenidramina",do:"25–50 mg IV",via:"IV",o:"Anti-H1. Trata urticária; NÃO substitui adrenalina."},
+    {etapa:"adj", d:"ADJUVANTES — Hidrocortisona",do:"200 mg IV",via:"IV",o:"Pode reduzir reação bifásica (controverso). NÃO previne morte aguda."},
+    {etapa:"adj", d:"ADJUVANTES — Ranitidina (anti-H2)",do:"50 mg IV",via:"IV",o:"Sinergia com anti-H1. Opcional."},
+    {etapa:"adj", d:"Broncodilatador",do:"Salbutamol nebulização 2,5-5 mg",via:"INH",o:"Se broncoespasmo significativo."},
+    {etapa:"alta", d:"Observação ≥6–8h pós-resolução",do:"Internar se: refratária, IV adrenalina, bifásica prévia, β-bloqueador",via:"—",o:"Reação bifásica em 5–20% em 4–8h."},
+    {etapa:"alta", d:"Prescrição de alta",do:"Auto-injetor adrenalina (EpiPen) + anti-H1 VO × 5 dias + corticoide VO × 5 dias",via:"VO",o:"Encaminhar alergologia. Identificar e EVITAR gatilho. Cartão de identificação."},
   ],
   alertas:[
     {t:"crit",x:"ADRENALINA IM É A ÚNICA 1ª LINHA. Anti-histamínicos e corticoides são ADJUVANTES e NÃO substituem. Atraso = morte."},
@@ -3592,6 +3651,12 @@ PATOLOGIAS.push(
     {d:"Anti-H1",x:"Bloqueia receptores H1 — trata apenas urticária/prurido."},
   ],
   diretriz:"WAO Anaphylaxis 2020 (Cardona V et al., World Allergy Organ J 2020;13:100472, DOI:10.1016/j.waojou.2020.100472). EAACI Anaphylaxis 2021 (Muraro A et al., Allergy 2022;77:357–377, DOI:10.1111/all.15032).",
+  imgs:[
+    {src:"https://upload.wikimedia.org/wikipedia/commons/c/c9/Urticaria2.JPG",
+     alt:"Urticária — pápulas eritematosas elevadas",
+     caption:"Urticária — pápulas eritematosas confluentes (wheals), pruriginosas, fugazes. Quando associada a sintomas sistêmicos = anafilaxia.",
+     source:"Wikimedia Commons (Domínio público)"},
+  ],
   fluxo:"anafilaxia",
   calcs:[],
 },
@@ -4989,10 +5054,10 @@ mec:[{d:"Penicilina G",x:"β-lactâmico — inibe transpeptidação na parede ba
 diretriz:"IDSA SSTI 2014 (Stevens DL et al., CID 2014;59:e10, DOI:10.1093/cid/ciu444).",
 fluxo:null, calcs:[],
 imgs:[
-{src:"https://upload.wikimedia.org/wikipedia/commons/2/24/Erysipelas2.jpg",
-alt:"Erisipela em MMII — placa eritematosa bem delimitada",
-caption:"Erisipela em MMII — eritema bem delimitado, edema, bordes elevados.",
-source:"Wikimedia Commons (Domínio público)"},
+{src:"https://upload.wikimedia.org/wikipedia/commons/1/1c/Erysipel.JPG",
+alt:"Erisipela — placa eritematosa bem delimitada",
+caption:"Erisipela — placa eritematosa bem delimitada, edema, com bordas elevadas. CHAVE: bordas BEM DEFINIDAS distinguem de celulite.",
+source:"Wikimedia Commons / Mahmoudalrawi (CC BY-SA 3.0)"},
 ],
 },
 
@@ -5051,10 +5116,14 @@ mec:[
 diretriz:"UK SJS/NET Guidelines 2016. Mockenhaupt M, RegisCAR.",
 fluxo:null, calcs:[],
 imgs:[
-{src:"https://upload.wikimedia.org/wikipedia/commons/7/70/Stevens-Johnson_syndrome.jpg",
+{src:"https://upload.wikimedia.org/wikipedia/commons/5/58/Stevens-johnson-syndrome.jpg",
 alt:"Lesões em alvo atípicas e descolamento epidérmico em SJS",
-caption:"SJS — lesões em alvo atípicas e descolamento epidérmico, com acometimento mucoso.",
-source:"Wikimedia Commons (CC BY-SA 3.0)"},
+caption:"SJS — lesões em alvo atípicas com descolamento epidérmico e acometimento de pelo menos 2 mucosas.",
+source:"Wikimedia Commons / DermNet (CC BY-NC-ND 3.0)"},
+{src:"https://upload.wikimedia.org/wikipedia/commons/a/ae/Toxic-epidermal-necrolysis.jpg",
+alt:"NET — descolamento epidérmico extenso",
+caption:"NET (Lyell) — descolamento epidérmico extenso (>30% SCT), sinal de Nikolsky positivo. Manejo igual a queimadura grande.",
+source:"Wikimedia Commons / DermNet (CC BY-NC-ND 3.0)"},
 ],
 },
 
@@ -5473,6 +5542,99 @@ fluxo:null, calcs:[],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — DADOS CLÍNICOS PARTE 8
+   Analgesia em emergência + características da dor
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+{id:"analgesia-er", sis:"anal", grav:"baixa",
+nome:"Analgesia em Emergência — Guia de Escalonamento",
+sin:["analgesia","dor","escala da dor","escada OMS","EVA","opioide"],
+def:"Manejo escalonado da dor aguda em emergência. PILAR: caracterizar a dor + medir intensidade + escolher analgésico apropriado + reavaliar resposta. Dor é o 5º sinal vital — medir SEMPRE e RE-medir.",
+
+exames:[
+"Caracterizar a dor — mnemônico OPQRST",
+"O — Onset (início, súbito vs gradual)",
+"P — Provocação/Paliação (o que piora/melhora)",
+"Q — Qualidade (latejante, em pontada, em queimação, em cólica, em peso)",
+"R — Radiação (irradia para onde?)",
+"S — Severidade (EVA 0-10, FLACC pediátrico, BPS sedado)",
+"T — Tempo (duração, periodicidade)",
+"+ sintomas associados (náusea, sudorese, palidez, alteração consciência)",
+"Padrão da dor (nociceptiva somática/visceral, neuropática, mista)",
+],
+
+rx:[
+// === ETAPA 1: AVALIAÇÃO ===
+{etapa:"inicial", d:"1. Medir intensidade — EVA 0-10",do:"Pedir ao paciente: 0 = sem dor, 10 = pior dor imaginável",via:"—",o:"FLACC <7a (face/legs/activity/cry/consolability). BPS em sedado (1-12)."},
+{etapa:"inicial", d:"2. Caracterizar a dor (OPQRST)",do:"Anamnese estruturada — não 'só dói'",via:"—",o:"DOR NOCICEPTIVA: somática (localizada, latejante, em peso — pele, músculo, osso) ou visceral (mal localizada, em cólica, surda — víscera). DOR NEUROPÁTICA: queimação, choque, formigamento, parestesia, dor em região com déficit sensitivo (HZ, neuropatia diabética, ciática)."},
+{etapa:"inicial", d:"3. Excluir CAUSAS QUE EXIGEM TRATAMENTO ESPECÍFICO",do:"NÃO mascarar com analgesia ANTES de diagnóstico",via:"—",o:"Abdome agudo cirúrgico (dor + Blumberg) — analgesia pode mascarar?! HOJE EVIDÊNCIA mostra que analgesia NÃO atrasa diagnóstico e DEVE ser dada (Cochrane). Mas registrar exame antes e após."},
+
+// === ETAPA 2: DOR LEVE (EVA 1-3) — Degrau 1 ===
+{etapa:"leve", d:"DEGRAU 1 — Dipirona",do:"500-1000 mg IV/VO 6/6h (máx 4g/d)",via:"VO/IV",o:"1ª LINHA dor leve-moderada. Custo baixo, perfil de segurança bom. Risco raro: agranulocitose. CI: alergia, porfiria."},
+{etapa:"leve", d:"DEGRAU 1 — Paracetamol",do:"500-1000 mg VO 6/6h (máx 4g/d, 3g/d em idoso/hepatopata)",via:"VO/IV",o:"Alternativa à dipirona. EVITAR em hepatopata + alcoolismo (dose tóxica reduzida). NÃO anti-inflamatório."},
+{etapa:"leve", d:"AINE — Cetorolaco (IV)",do:"30 mg IV 6/6h × máx 5 dias",via:"IV",o:"Componente inflamatório (cólica renal, dor pós-trauma, dor músculo-esquelética). CI: IRC, ulcera, sangramento, gestante (3º trim)."},
+{etapa:"leve", d:"AINE — Ibuprofeno (VO)",do:"400-600 mg VO 6/8h (máx 2,4g/d)",via:"VO",o:"Alternativa VO. Mesmas CI dos AINEs."},
+{etapa:"leve", d:"AINE — Cetoprofeno",do:"100 mg IV/IM 12/12h",via:"IV/IM",o:"Alternativa parenteral. Cuidado em idoso."},
+
+// === ETAPA 3: DOR MODERADA (EVA 4-6) — Degrau 2 ===
+{etapa:"mod", d:"DEGRAU 2 — Tramadol",do:"50-100 mg IV/VO 6/6h (máx 400 mg/d, 300 mg/d em idoso)",via:"VO/IV",o:"Opioide fraco + inibe recaptação 5-HT/NA. CUIDADO: ↓limiar convulsivo, síndrome serotoninérgica (com ISRS), náusea (até 30%). Diluir IV em SF 100 mL, infundir lento."},
+{etapa:"mod", d:"Codeína (associada paracetamol)",do:"30-60 mg VO 6/6h",via:"VO",o:"Alternativa VO. Variabilidade genética (CYP2D6) — 'metabolizadores ultra-rápidos' têm risco overdose, 'metabolizadores lentos' não respondem. Cuidado pediatria."},
+{etapa:"mod", d:"Adjuvante — Dipirona/Paracetamol mantido",do:"Junto com opioide (multimodal)",via:"VO/IV",o:"Combinar analgésicos de mecanismos diferentes reduz dose total de cada um e efeitos colaterais."},
+
+// === ETAPA 4: DOR INTENSA (EVA 7-10) — Degrau 3 ===
+{etapa:"intensa", d:"DEGRAU 3 — Morfina IV (titulação)",do:"2-5 mg IV cada 5-10 min até alívio (EVA <4) ou efeitos colaterais",via:"IV",o:"1ª LINHA dor intensa aguda. TITULAR — não usar 'dose única padrão'. Reavaliar em 5-15 min. Doses pediátricas: 0,1 mg/kg IV."},
+{etapa:"intensa", d:"Fentanil IV",do:"25-50 mcg IV cada 5-10 min (1 mcg/kg)",via:"IV",o:"Início mais rápido (1-2 min) que morfina, sem liberação histamínica (preferir em hipotenso). Curta ação (~30 min). Útil em procedimentos."},
+{etapa:"intensa", d:"Metadona (dor crônica/refratária)",do:"5-10 mg VO 8/8h (NÃO conversão linear de morfina)",via:"VO",o:"Não usar em emergência sem experiência. Risco QT longo. Útil em dor neuropática refratária e oncológica."},
+{etapa:"intensa", d:"PCA (analgesia controlada paciente)",do:"Morfina 1-2 mg bolus a cada 6-10 min (lockout)",via:"IV BIC",o:"Pós-op, queimadura, falciforme, oncológico. Ideal para controlar dor flutuante."},
+
+// === ETAPA 5: ADJUVANTES (dor neuropática, oncológica) ===
+{etapa:"adj", d:"Gabapentina (dor neuropática)",do:"300 mg VO 8/8h, titular até 1800-3600 mg/d",via:"VO",o:"Indicações: neuralgia pós-herpética, neuropatia diabética, dor radicular, dor central pós-AVC. Início lento (1-2 sem)."},
+{etapa:"adj", d:"Pregabalina (dor neuropática)",do:"75 mg VO 12/12h → 150 mg 12/12h",via:"VO",o:"Mais rápido que gabapentina. Mesma classe (ligante α2δ). Ajustar em IR."},
+{etapa:"adj", d:"Amitriptilina",do:"25-75 mg VO à noite",via:"VO",o:"Tricíclico — dor neuropática, fibromialgia. Anticolinérgico (cuidado idoso). Iniciar baixo."},
+{etapa:"adj", d:"Lidocaína IV (dor refratária)",do:"1-2 mg/kg em bolus + 1-3 mg/kg/h BIC",via:"IV",o:"Refratária a opioide. Monitorizado. Útil em pancreatite, oncológico, neuropático."},
+{etapa:"adj", d:"Cetamina (sub-anestésica)",do:"0,1-0,3 mg/kg IV bolus + 0,1-0,3 mg/kg/h BIC",via:"IV",o:"Dor refratária + tolerância a opioide. Antagonista NMDA. Risco psicotomimético (alucinações leves). Útil em queimadura, falciforme."},
+
+// === ETAPA 6: ANTIEMÉTICOS (acompanham opioides) ===
+{etapa:"adj", d:"Ondansetrona",do:"4-8 mg IV/VO 8/8h",via:"IV/VO",o:"Náusea por opioide. Cuidado QT longo se outras drogas QT-prolongadoras."},
+{etapa:"adj", d:"Metoclopramida",do:"10 mg IV 8/8h",via:"IV",o:"Náusea/vômito + gastroparesia. Cuidado: extrapiramidalismo em jovens."},
+{etapa:"adj", d:"Bromoprida",do:"10 mg IV/VO 8/8h",via:"IV/VO",o:"Alternativa a metoclopramida. Similar."},
+],
+
+alertas:[
+{t:"crit",x:"REAVALIE em 15-30 min após qualquer analgésico IV. NÃO se contentar com dose única — TITULAR. EVA persistente >4 = subdose ou diagnóstico errado."},
+{t:"crit",x:"OPIOIDE em IDOSO, RESPIRADOR PRÉVIO COMPROMETIDO, OBESIDADE: começar com METADE da dose padrão. Monitorar SpO₂ + FR + nível consciência."},
+{t:"crit",x:"ANTÍDOTO opioide: NALOXONA 0,04-0,4 mg IV (titular para reverter sintomas, NÃO consciência total). Risco de síndrome de abstinência aguda em usuário crônico."},
+{t:"warn",x:"DOR NEUROPÁTICA não responde bem a opioide → adicionar gabapentina/pregabalina precocemente. Sinais: queimação, choque, dor em região com déficit sensitivo."},
+{t:"warn",x:"AINE: cuidado em IRC, idoso, anticoagulado, gestante (3º trim), úlcera. Preferir paracetamol/dipirona ± opioide."},
+{t:"warn",x:"DOR CRÔNICA ≠ dor aguda — paciente em uso crônico de opioide pode precisar de dose MAIOR (tolerância). Avaliação especializada."},
+{t:"info",x:"ABORDAGEM MULTIMODAL é a regra: combinar mecanismos diferentes (paracetamol + AINE + opioide + neuropático) reduz dose de cada um e efeitos colaterais. Esta é a base da analgesia moderna."},
+],
+
+fisio:"Dor = experiência sensorial e emocional desagradável, associada a dano tecidual real ou potencial. Vias: (1) Nociceptores periféricos → (2) Fibras Aδ (rápida, aguda) e C (lenta, surda) → (3) Corno dorsal medula → (4) Trato espinotalâmico → (5) Tálamo → (6) Córtex somatossensorial + sistema límbico (componente emocional). Modulação descendente: PAG → núcleo magno da rafe → corno dorsal (libera serotonina, noradrenalina, encefalinas — base dos antidepressivos como analgésicos). Tipos: NOCICEPTIVA (lesão tecidual — somática vs visceral) e NEUROPÁTICA (lesão do sistema nervoso — diabetes, HZ, AVC, esclerose múltipla).",
+
+mec:[
+{d:"Paracetamol",x:"Mecanismo incerto — inibe COX-3 central, ativa sistema canabinoide endógeno, modula serotonina. NÃO é anti-inflamatório periférico. Bom para dor leve-moderada com componente central."},
+{d:"AINEs",x:"Inibem COX-1/2 → ↓prostaglandinas (PGE2 sensibiliza nociceptores periféricos). Útil em dor com componente inflamatório (osteomuscular, cólica renal, dismenorreia). Cuidado: TGI, renal, CV."},
+{d:"Dipirona",x:"Pirazolona — inibe COX-3 central e periférica. Boa analgesia + antitérmico. Risco raro de agranulocitose."},
+{d:"Tramadol",x:"Dupla ação: (1) agonista μ-opioide fraco; (2) inibe recaptação serotonina/noradrenalina (como antidepressivo). Útil em dor moderada + componente neuropático. Cuidado: convulsão + sd. serotoninérgica."},
+{d:"Morfina",x:"Agonista μ-opioide puro — ↓liberação de neurotransmissores (sub. P, glutamato) no corno dorsal + ativa vias descendentes inibitórias. Libera histamina (cuidado em hipotenso/asma)."},
+{d:"Fentanil",x:"Opioide sintético — 100× potência da morfina. Lipofílico (rápido), sem liberação histamínica. Curta ação. Útil em procedimentos + hipotensão."},
+{d:"Gabapentina/Pregabalina",x:"Ligantes α2δ dos canais de cálcio neuronais → ↓liberação de neurotransmissores excitatórios (glutamato, substância P) no corno dorsal. Específicos para dor neuropática."},
+{d:"Cetamina",x:"Antagonista NMDA → bloqueia sensibilização central + componente afetivo da dor. Sub-anestésica útil em dor refratária."},
+{d:"Naloxona",x:"Antagonista μ-opioide puro — reverte depressão respiratória, sedação, miose. Curta ação (~30 min) — pode precisar repetir em uso de opioides de longa ação."},
+],
+
+diretriz:"WHO Pain Ladder (1986, atualizada). ACEP Pain Management 2017. SBED — Sociedade Brasileira para Estudo da Dor. SAMPE/SBA — Diretrizes brasileiras de analgesia. PALLIATIVE Care WHO 2018.",
+fluxo:null,
+calcs:[],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CALCULADORAS DE PLANTÃO
    30 escores e calculadoras essenciais
    Estrutura: {id, nome, desc, sis, fields[], calc(v), interp(s)}
@@ -5654,8 +5816,8 @@ interp:function(s){
 
 /* ============== TEP / TVP ============== */
 {
-id:"wells-tep", nome:"Wells — TEP", sis:"cardio",
-desc:"Probabilidade clínica pré-teste para TEP.",
+id:"wells-tep", nome:"Wells — TEP (Tromboembolismo Pulmonar)", sis:"cardio",
+desc:"Probabilidade clínica pré-teste para TEP. NÃO confundir com Wells-TVP (escala diferente, para trombose venosa profunda).",
 fields:[
 {tipo:"bool", id:"a", label:"Sinais clínicos de TVP", peso:3},
 {tipo:"bool", id:"b", label:"TEP é o diagnóstico mais provável", peso:3},
@@ -5679,8 +5841,8 @@ interp:function(s){
 },
 
 {
-id:"wells-tvp", nome:"Wells — TVP", sis:"cardio",
-desc:"Probabilidade clínica pré-teste para TVP de MMII.",
+id:"wells-tvp", nome:"Wells — TVP (Trombose Venosa Profunda)", sis:"cardio",
+desc:"Probabilidade clínica pré-teste para TVP de MMII. NÃO confundir com Wells-TEP (escala diferente, para tromboembolismo pulmonar).",
 fields:[
 {tipo:"bool", id:"a", label:"Câncer ativo", peso:1},
 {tipo:"bool", id:"b", label:"Paralisia/paresia/imobilização recente de MI", peso:1},
@@ -6386,6 +6548,287 @@ interp:function(s){
   if(s<=6) return {risco:"5-6 — Possível apendicite", acao:"Imagem indicada: USG (especialmente jovens e mulheres), TC se USG inconclusivo. Cirurgião avisado. Dieta zero, hidratação venosa.", cor:"warn"};
   if(s<=8) return {risco:"7-8 — Provável apendicite", acao:"Avaliação cirúrgica urgente. Imagem (TC) para confirmar e descartar complicação. Iniciar ATB se sinais sistêmicos (ceftriaxona + metronidazol). Dieta zero.", cor:"warn"};
   return {risco:"9-10 — Apendicite muito provável", acao:"Cirurgia (apendicectomia) — pode dispensar imagem em homens jovens com quadro clássico. ATB profilático no centro cirúrgico. Imagem se dúvida diagnóstica ou suspeita de complicação (abscesso, perfuração).", cor:"crit"};
+}
+},
+
+{
+id:"imc", nome:"IMC — Índice de Massa Corporal", sis:"ubs",
+desc:"Classificação de peso por IMC (WHO). Útil em UBS, prevenção, indicação cirurgia bariátrica.",
+fields:[
+{tipo:"num", id:"peso", label:"Peso (kg)", min:30, max:300, step:0.1},
+{tipo:"num", id:"alt", label:"Altura (m)", min:0.5, max:2.5, step:0.01},
+],
+calc:function(v){
+  const peso = parseFloat(v.peso||0);
+  const alt = parseFloat(v.alt||0);
+  if(!peso || !alt) return 0;
+  return peso / (alt * alt);
+},
+interp:function(s){
+  if(s<16) return {risco:"Magreza grave (<16)", acao:"Subnutrição severa. Avaliação clínica + nutricional + investigar causa.", cor:"crit"};
+  if(s<17) return {risco:"Magreza moderada (16-17)", acao:"Subnutrição. Avaliação nutricional.", cor:"warn"};
+  if(s<18.5) return {risco:"Magreza leve (17-18,5)", acao:"Baixo peso. Avaliar dieta e hábitos.", cor:"info"};
+  if(s<25) return {risco:"Eutrófico (18,5-25)", acao:"Peso adequado. Manter estilo de vida saudável.", cor:"ok"};
+  if(s<30) return {risco:"Sobrepeso (25-30)", acao:"Orientação dieta + atividade física. Risco CV aumentado.", cor:"info"};
+  if(s<35) return {risco:"Obesidade grau I (30-35)", acao:"Tratamento médico. Considerar farmacoterapia (orlistat, liraglutide, semaglutide).", cor:"warn"};
+  if(s<40) return {risco:"Obesidade grau II (35-40)", acao:"Risco alto. Indicação de bariátrica se comorbidade (DM, HAS, SAOS, dislipidemia).", cor:"warn"};
+  return {risco:"Obesidade grau III / mórbida (≥40)", acao:"Indicação de bariátrica independente de comorbidade. Avaliação multidisciplinar.", cor:"crit"};
+}
+},
+
+{
+id:"framingham", nome:"Framingham — Risco CV em 10 anos", sis:"ubs",
+desc:"Risco cardiovascular global (IAM/AVC fatal e não-fatal) em 10 anos. Adultos 30-74a sem doença CV prévia.",
+fields:[
+{tipo:"sel", id:"sexo", label:"Sexo", opcoes:[{v:"m",t:"Homem"},{v:"f",t:"Mulher"}]},
+{tipo:"num", id:"idade", label:"Idade (anos)", min:30, max:74},
+{tipo:"num", id:"col", label:"Colesterol total (mg/dL)", min:100, max:400},
+{tipo:"num", id:"hdl", label:"HDL (mg/dL)", min:20, max:120},
+{tipo:"num", id:"pas", label:"PAS (mmHg)", min:90, max:220},
+{tipo:"bool", id:"trat", label:"Em tratamento anti-hipertensivo"},
+{tipo:"bool", id:"fum", label:"Tabagista atual"},
+{tipo:"bool", id:"dm", label:"Diabético"},
+],
+calc:function(v){
+  // Simplificação do Framingham geral (D'Agostino 2008)
+  // Retorna score numérico inteiro (pontos)
+  const sexo = v.sexo || "m";
+  const idade = parseInt(v.idade||0);
+  const col = parseInt(v.col||0);
+  const hdl = parseInt(v.hdl||0);
+  const pas = parseInt(v.pas||0);
+  const trat = v.trat ? 1 : 0;
+  const fum = v.fum ? 1 : 0;
+  const dm = v.dm ? 1 : 0;
+  
+  let pts = 0;
+  if(sexo === "m"){
+    // Idade
+    if(idade>=70) pts += 11;
+    else if(idade>=65) pts += 10;
+    else if(idade>=60) pts += 8;
+    else if(idade>=55) pts += 6;
+    else if(idade>=50) pts += 4;
+    else if(idade>=45) pts += 3;
+    else if(idade>=40) pts += 2;
+    else if(idade>=35) pts += 1;
+    // CT
+    if(col>=280) pts += 3;
+    else if(col>=240) pts += 2;
+    else if(col>=200) pts += 1;
+    else if(col<160) pts -= 0;
+    // HDL
+    if(hdl>=60) pts -= 2;
+    else if(hdl>=50) pts -= 1;
+    else if(hdl<35) pts += 2;
+    else if(hdl<45) pts += 1;
+    // PAS
+    const pasPts = pas>=160?(trat?5:3):pas>=140?(trat?4:2):pas>=130?(trat?3:1):pas>=120?(trat?2:0):0;
+    pts += pasPts;
+    // Fumo + DM
+    if(fum) pts += 4;
+    if(dm) pts += 3;
+  } else {
+    if(idade>=70) pts += 12;
+    else if(idade>=65) pts += 11;
+    else if(idade>=60) pts += 9;
+    else if(idade>=55) pts += 7;
+    else if(idade>=50) pts += 6;
+    else if(idade>=45) pts += 4;
+    else if(idade>=40) pts += 3;
+    else if(idade>=35) pts += 2;
+    if(col>=280) pts += 3;
+    else if(col>=240) pts += 2;
+    else if(col>=200) pts += 1;
+    if(hdl>=60) pts -= 2;
+    else if(hdl>=50) pts -= 1;
+    else if(hdl<35) pts += 2;
+    else if(hdl<45) pts += 1;
+    const pasPts = pas>=160?(trat?6:4):pas>=140?(trat?5:3):pas>=130?(trat?4:2):pas>=120?(trat?3:1):0;
+    pts += pasPts;
+    if(fum) pts += 3;
+    if(dm) pts += 4;
+  }
+  return pts;
+},
+interp:function(s){
+  // Aproximação do % de risco em 10a
+  let pct;
+  if(s<=0) pct="<1%";
+  else if(s<=5) pct="1-2%";
+  else if(s<=9) pct="2-5%";
+  else if(s<=12) pct="5-10%";
+  else if(s<=14) pct="10-15%";
+  else if(s<=16) pct="15-20%";
+  else if(s<=18) pct="20-30%";
+  else pct=">30%";
+  
+  if(s<=9) return {risco:`Baixo risco (${pct})`, acao:"Manter hábitos saudáveis. Reavaliar em 5 anos. SBC: estatina não rotineira; controlar PA + glicemia.", cor:"ok"};
+  if(s<=14) return {risco:`Risco intermediário (${pct})`, acao:"SBC 2017: considerar estatina (LDL alvo <100). AAS apenas se outros fatores. PA <130/80 se DM. Otimizar estilo vida.", cor:"warn"};
+  return {risco:`Alto risco (${pct})`, acao:"Estatina alta intensidade (LDL alvo <70 mg/dL). PA <130/80. AAS se sem contraindicação. Reavaliar anualmente.", cor:"crit"};
+}
+},
+
+{
+id:"rass", nome:"RASS — Sedação UTI", sis:"iot",
+desc:"Richmond Agitation-Sedation Scale. Avaliação do nível de sedação/agitação em UTI. Alvo geralmente -2 a 0 (leve sedação a despertar).",
+fields:[
+{tipo:"sel", id:"r", label:"Nível observado", opcoes:[
+{v:"4", t:"+4 — Combativo: violento, perigoso imediato à equipe"},
+{v:"3", t:"+3 — Muito agitado: puxa/remove tubos, agressivo"},
+{v:"2", t:"+2 — Agitado: movimentos frequentes não-propositais, briga com ventilador"},
+{v:"1", t:"+1 — Inquieto: ansioso, mas movimentos não agressivos/vigorosos"},
+{v:"0", t:"0 — Alerta e calmo"},
+{v:"-1", t:"-1 — Sonolento: não totalmente alerta mas mantém abertura ocular >10s ao chamado"},
+{v:"-2", t:"-2 — Sedação leve: abertura ocular breve (<10s) ao chamado"},
+{v:"-3", t:"-3 — Sedação moderada: movimento ao chamado mas sem contato visual"},
+{v:"-4", t:"-4 — Sedação profunda: sem resposta ao chamado, movimento ao estímulo físico"},
+{v:"-5", t:"-5 — Não despertável: sem resposta ao chamado ou estímulo físico"},
+]},
+],
+calc:function(v){ return parseInt(v.r||"0"); },
+interp:function(s){
+  if(s>=2) return {risco:"Agitação significativa", acao:"Avaliar dor (FENT/morfina), delirium (CAM-ICU), retirada (etanol, BZD). Considerar haloperidol/dexmedetomidina. Alvo: 0 a -2.", cor:"crit"};
+  if(s===1) return {risco:"Inquietação leve", acao:"Avaliar conforto, dor, ansiedade. Tranquilizar. Pode estar adequado se em desmame.", cor:"warn"};
+  if(s===0) return {risco:"Alerta e calmo (ideal)", acao:"Manter. Reavaliar a cada 4h.", cor:"ok"};
+  if(s>=-2) return {risco:"Sedação leve (geralmente ideal)", acao:"Alvo na maioria dos pacientes em VM. Permite avaliação neurológica + interrupção diária da sedação.", cor:"ok"};
+  if(s>=-3) return {risco:"Sedação moderada", acao:"Considerar reduzir sedação se possível — sedação profunda associada a delirium e maior tempo de VM.", cor:"warn"};
+  return {risco:"Sedação profunda — excessiva", acao:"REDUZIR/SUSPENDER sedação se não houver indicação específica (HIC, SDRA com curare, hipotermia). Avaliar diariamente.", cor:"crit"};
+}
+},
+
+{
+id:"apache-simp", nome:"APACHE II — Simplificado", sis:"iot",
+desc:"Escala simplificada de gravidade em UTI. Estimativa de mortalidade hospitalar. NOTE: APACHE II completo tem 12 variáveis fisiológicas — esta é versão didática.",
+fields:[
+{tipo:"num", id:"idade", label:"Idade (anos)", min:0, max:120},
+{tipo:"num", id:"gcs", label:"Glasgow", min:3, max:15},
+{tipo:"num", id:"pam", label:"PAM (mmHg)", min:30, max:200},
+{tipo:"num", id:"fc", label:"FC (bpm)", min:30, max:200},
+{tipo:"bool", id:"doencacron", label:"Doença crônica grave (cirrose, IC NYHA IV, DPOC severa, imunossupressão)"},
+{tipo:"bool", id:"pos-op", label:"Pós-operatório de emergência"},
+],
+calc:function(v){
+  const idade = parseInt(v.idade||0);
+  const gcs = parseInt(v.gcs||15);
+  const pam = parseInt(v.pam||80);
+  const fc = parseInt(v.fc||80);
+  
+  let pts = 0;
+  // Idade
+  if(idade>=75) pts += 6;
+  else if(idade>=65) pts += 5;
+  else if(idade>=55) pts += 3;
+  else if(idade>=45) pts += 2;
+  // GCS (15 - GCS atual)
+  pts += (15 - gcs);
+  // PAM
+  if(pam<50 || pam>=160) pts += 4;
+  else if(pam<70 || pam>=130) pts += 2;
+  // FC
+  if(fc<40 || fc>=180) pts += 4;
+  else if(fc<55 || fc>=140) pts += 3;
+  else if(fc<70 || fc>=110) pts += 2;
+  // Comorbidades
+  if(v.doencacron) pts += 5;
+  if(v["pos-op"]) pts += 2;
+  return pts;
+},
+interp:function(s){
+  let mort;
+  if(s<=4) mort="<5%";
+  else if(s<=9) mort="5-15%";
+  else if(s<=14) mort="15-25%";
+  else if(s<=19) mort="25-40%";
+  else if(s<=24) mort="40-55%";
+  else mort=">55%";
+  
+  if(s<=9) return {risco:`Baixa gravidade (mortalidade ~${mort})`, acao:"Cuidado de UTI padrão. Reavaliação periódica.", cor:"ok"};
+  if(s<=19) return {risco:`Moderada (mortalidade ~${mort})`, acao:"Monitoração intensiva, otimização hemodinâmica. Discutir prognóstico com família.", cor:"warn"};
+  return {risco:`Alta gravidade (mortalidade ~${mort})`, acao:"Cuidados máximos. Discussão de cuidados paliativos / limitação terapêutica conforme contexto familiar e diretivas.", cor:"crit"};
+}
+},
+
+{
+id:"audit-c", nome:"AUDIT-C — Rastreio Álcool", sis:"ubs",
+desc:"Rastreio rápido de uso problemático de álcool em UBS. 3 perguntas (versão reduzida do AUDIT).",
+fields:[
+{tipo:"sel", id:"q1", label:"Com que frequência consome bebida alcoólica?", opcoes:[
+{v:"0", t:"Nunca"},
+{v:"1", t:"Mensal ou menos"},
+{v:"2", t:"2-4 ×/mês"},
+{v:"3", t:"2-3 ×/semana"},
+{v:"4", t:"≥4 ×/semana"},
+]},
+{tipo:"sel", id:"q2", label:"Quantas doses num dia típico?", opcoes:[
+{v:"0", t:"1-2"},
+{v:"1", t:"3-4"},
+{v:"2", t:"5-6"},
+{v:"3", t:"7-9"},
+{v:"4", t:"≥10"},
+]},
+{tipo:"sel", id:"q3", label:"Com que frequência consome ≥6 doses na mesma ocasião?", opcoes:[
+{v:"0", t:"Nunca"},
+{v:"1", t:"Menos que mensal"},
+{v:"2", t:"Mensalmente"},
+{v:"3", t:"Semanalmente"},
+{v:"4", t:"Diário ou quase"},
+]},
+],
+calc:function(v){
+  return parseInt(v.q1||0) + parseInt(v.q2||0) + parseInt(v.q3||0);
+},
+interp:function(s){
+  // Sexo-específicos: ≥4 H, ≥3 M (mas usando ≥4 como threshold conservador)
+  if(s<3) return {risco:"Baixo risco (<3)", acao:"Sem critério para uso problemático. Reforçar moderação.", cor:"ok"};
+  if(s<=4) return {risco:"Uso de risco (3-4 M, 3 H)", acao:"Aconselhamento breve. AUDIT completo recomendado. Acompanhar.", cor:"warn"};
+  if(s<=7) return {risco:"Uso de risco aumentado (5-7)", acao:"Intervenção breve. Avaliar abuso/dependência. Considerar AUDIT completo. Acompanhamento.", cor:"warn"};
+  return {risco:"Provável transtorno por uso de álcool (≥8)", acao:"Avaliação especializada (psicólogo/psiquiatra/CAPS-AD). Considerar abstinência supervisionada (sd. abstinência).", cor:"crit"};
+}
+},
+
+{
+id:"phq9", nome:"PHQ-9 — Rastreio Depressão", sis:"ubs",
+desc:"Rastreio e monitoramento de depressão em adultos. Útil em UBS, ambulatório, ginecologia (pós-parto), oncologia.",
+fields:[
+{tipo:"sel", id:"q1", label:"Pouco interesse/prazer em fazer coisas?", opcoes:[
+{v:"0", t:"Nenhum dia"},{v:"1", t:"Vários dias"},{v:"2", t:"Mais da metade dos dias"},{v:"3", t:"Quase todos os dias"}
+]},
+{tipo:"sel", id:"q2", label:"Triste, desanimado ou sem esperança?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q3", label:"Dificuldade para dormir / dormir demais?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q4", label:"Cansaço/falta de energia?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q5", label:"Apetite ruim ou comendo demais?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q6", label:"Sentindo-se mal consigo mesmo / fracasso?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q7", label:"Dificuldade para se concentrar?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q8", label:"Lentificação ou agitação observável?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+{tipo:"sel", id:"q9", label:"Pensamentos de se machucar ou de morte?", opcoes:[
+{v:"0", t:"Nenhum"},{v:"1", t:"Vários"},{v:"2", t:"Mais da metade"},{v:"3", t:"Quase todos"}
+]},
+],
+calc:function(v){
+  return ["q1","q2","q3","q4","q5","q6","q7","q8","q9"].reduce((s,k)=>s+parseInt(v[k]||0),0);
+},
+interp:function(s){
+  // Q9 ≥1 = avaliar risco suicida SEMPRE
+  if(s<5) return {risco:"Sem depressão (0-4)", acao:"Sem necessidade de tratamento. Reforço positivo.", cor:"ok"};
+  if(s<10) return {risco:"Depressão leve (5-9)", acao:"Vigilância. Intervenção psicossocial. Reavaliar em 2-4 semanas. Atenção se Q9 ≥1.", cor:"info"};
+  if(s<15) return {risco:"Depressão moderada (10-14)", acao:"Considerar tratamento (psicoterapia ou farmacoterapia — ISRS 1ª linha: sertralina, escitalopram). Reavaliar 2-4 sem.", cor:"warn"};
+  if(s<20) return {risco:"Depressão moderada-grave (15-19)", acao:"Tratamento ativo: psicoterapia + ISRS. Considerar encaminhamento. Avaliar risco suicida (Q9).", cor:"warn"};
+  return {risco:"Depressão grave (≥20)", acao:"Tratamento intensivo. Psiquiatra. Avaliar risco suicida URGENTE se Q9 ≥1.", cor:"crit"};
 }
 },
 
@@ -7824,7 +8267,7 @@ const FLOWS_LIST = Object.keys(FLOWS);
 const SISTEMAS_ORD = {
   cardio:1, resp:2, neuro:3, gi:4, endo:5, gu:6, ost:7, psiq:8, hidro:9,
   infecto:10, anaf:11, tox:12, pec:13, hemo:14, vaso:15, iot:16, gest:17,
-  obst:18, trauma:19, derm:20, oft:21
+  obst:18, trauma:19, derm:20, oft:21, anal:22, ubs:23
 };
 Object.keys(SISTEMAS_ORD).forEach(k => {
   if (SISTEMAS[k]) SISTEMAS[k].ord = SISTEMAS_ORD[k];
@@ -7910,15 +8353,34 @@ function alertHTML(a) {
   return `<div class="alert ${cls}"><span class="ai alert-ic">${ic}</span><div>${safeHtml(a.x)}</div></div>`;
 }
 
-function rxTable(rx) {
-  if (!rx || !rx.length) return "";
-  const rows = rx.map(r => `
+/* Renderização de prescrição.
+   - Se nenhum item tem `etapa`, renderiza tabela única (legacy).
+   - Se algum item tem `etapa`, agrupa visualmente em seções:
+     inicial → escalonamento → leve/mod/intensa (analgesia) → adj → atb */
+const ETAPA_LABELS = {
+  "inicial":  { titulo: "① Medidas iniciais", cor: "#0EA5E9" },
+  "escala":   { titulo: "② Tratamento específico — escalonamento", cor: "#DC2626" },
+  "leve":     { titulo: "Dor leve (EVA 1-3) — Degrau 1 OMS", cor: "#22C55E" },
+  "mod":      { titulo: "Dor moderada (EVA 4-6) — Degrau 2 OMS", cor: "#F59E0B" },
+  "intensa":  { titulo: "Dor intensa (EVA 7-10) — Degrau 3 OMS", cor: "#DC2626" },
+  "atb":      { titulo: "③ Antibioticoterapia", cor: "#16A34A" },
+  "anticoag": { titulo: "③ Anticoagulação", cor: "#7C3AED" },
+  "adj":      { titulo: "④ Adjuvantes / suporte", cor: "#475569" },
+  "alta":     { titulo: "⑤ Alta / seguimento", cor: "#0891B2" },
+};
+const ETAPA_ORDER = ["inicial", "escala", "leve", "mod", "intensa", "atb", "anticoag", "adj", "alta"];
+
+function rxRow(r) {
+  return `
     <tr>
       <td><strong>${safeHtml(r.d)}</strong></td>
       <td class="mono">${safeHtml(r.do)}</td>
       <td class="cell-via">${esc(r.via)}</td>
       <td class="cell-obs">${safeHtml(r.o || "")}</td>
-    </tr>`).join("");
+    </tr>`;
+}
+
+function rxTableInner(rows) {
   return `
     <div class="rx-wrap">
       <table class="rx">
@@ -7932,6 +8394,31 @@ function rxTable(rx) {
         <tbody>${rows}</tbody>
       </table>
     </div>`;
+}
+
+function rxTable(rx) {
+  if (!rx || !rx.length) return "";
+  const anyEtapa = rx.some(r => r.etapa);
+  if (!anyEtapa) {
+    // legacy: tabela única
+    return rxTableInner(rx.map(rxRow).join(""));
+  }
+  // Agrupar por etapa, mantendo ordem definida
+  const groups = {};
+  rx.forEach(r => {
+    const e = r.etapa || "escala";
+    if (!groups[e]) groups[e] = [];
+    groups[e].push(r);
+  });
+  return ETAPA_ORDER.filter(e => groups[e]).map(e => {
+    const label = ETAPA_LABELS[e] || { titulo: e, cor: "#475569" };
+    const rows = groups[e].map(rxRow).join("");
+    return `
+      <div class="rx-etapa">
+        <h3 class="rx-etapa-h" style="border-color:${label.cor}">${safeHtml(label.titulo)}</h3>
+        ${rxTableInner(rows)}
+      </div>`;
+  }).join("");
 }
 
 function listHTML(arr, cls) {
@@ -8215,12 +8702,22 @@ function renderSistema(sk) {
       ${p.fluxo ? '<span class="has-flow">↳ tem fluxograma</span>' : ""}
     </button>`).join("");
 
+  // Calculadoras associadas a este sistema
+  const calcsDoSis = (typeof CALCS !== "undefined" ? CALCS : []).filter(c => c.sis === sk);
+  const calcCards = calcsDoSis.map(c => `
+    <button class="pat-card" onclick="navigate('#/c/${c.id}')">
+      <div class="pat-card-head"><span class="badge-cal">calculadora</span></div>
+      <h3>${safeHtml(c.nome)}</h3>
+      <p>${safeHtml(c.desc.length > 140 ? c.desc.slice(0,140)+"…" : c.desc)}</p>
+    </button>`).join("");
+
   document.getElementById("view").innerHTML = `
     <section class="container">
       <nav class="bread"><a onclick="navigate('#/')">Início</a> · <span style="color:${s.cor}">${safeHtml(s.nome)}</span></nav>
       <h1 style="color:${s.cor}">${safeHtml(s.nome)}</h1>
-      <p class="lead">${lista.length} ${lista.length===1?"patologia":"patologias"} • ordenadas por gravidade</p>
-      <div class="pat-grid">${cards}</div>
+      <p class="lead">${lista.length} ${lista.length===1?"patologia":"patologias"}${calcsDoSis.length?` • ${calcsDoSis.length} calculadora${calcsDoSis.length>1?"s":""}`:""}</p>
+      ${lista.length ? `<div class="pat-grid">${cards}</div>` : ""}
+      ${calcsDoSis.length ? `<h2 style="margin-top:1.5rem;color:${s.cor}">Calculadoras / escalas</h2><div class="pat-grid">${calcCards}</div>` : ""}
     </section>
   `;
 }
