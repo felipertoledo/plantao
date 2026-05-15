@@ -1792,7 +1792,7 @@ const PATOLOGIAS = [
     { etapa:"escala", d: "Metoprolol", do: "5 mg IV em 2 min, repetir até 15 mg", via: "IV", o: "Controle de FC se estável. Manter VO 25–100 mg 12/12h." },
     { etapa:"escala", d: "Diltiazem", do: "0,25 mg/kg IV em 2 min", via: "IV", o: "Alternativa se contraindicação a β-bloq. Repetir 0,35 mg/kg em 15 min se necessário." },
     { etapa:"escala", d: "Deslanosídeo", do: "0,4 mg IV em 5 min", via: "IV", o: "Em IC ou hipotensão. Início em 15–30 min. Cuidado em IRC." },
-    { etapa:"anticoag", d: "Cardioversão sincronizada", do: "150–200 J bifásica", via: "—", o: "Se instável OU eletiva com TEE-guided ou ≥3 sem de anticoagulação. Sedação com etomidato/propofol." },
+    { etapa:"escala", d: "Cardioversão sincronizada", do: "150–200 J bifásica", via: "—", o: "Se instável OU eletiva com TEE-guided ou ≥3 sem de anticoagulação. Sedação com etomidato/propofol." },
     { etapa:"anticoag", d: "Anticoagulação (DOAC)", do: "Apixabana 5 mg 12/12h • Rivaroxabana 20 mg/d • Dabigatrana 150 mg 12/12h", via: "VO", o: "Iniciar conforme CHA₂DS₂-VA. DOAC > varfarina em FA não-valvar. Ajustar para IRC." },
     { etapa:"anticoag", d: "Varfarina", do: "Iniciar 2,5–5 mg/d, ajustar INR 2–3", via: "VO", o: "FA valvar (estenose mitral reumática moderada/grave, prótese mecânica)." },
   ],
@@ -2111,8 +2111,8 @@ const PATOLOGIAS = [
     {etapa:"escala", d:"③ TROMBECTOMIA mecânica",do:"Janela ≤6h (todos) ou 6-24h com mismatch (DAWN/DEFUSE-3)",via:"—",o:"Oclusão de grande vaso (LVO: M1, ACI). ASPECTS ≥6. NIHSS ≥6. Acionar centro de AVC IMEDIATAMENTE."},
     {etapa:"adj", d:"Controle PA pós-trombólise",do:"Alvo PA <180/105 por 24h",via:"IV",o:"Monitorizar 15/15 min × 2h, depois 30/30 min × 6h, depois 1/1h × 16h."},
     {etapa:"adj", d:"NÃO antiagregar nas 1ªs 24h pós-trombólise",do:"Risco de hemorragia",via:"—",o:"Reavaliar TC em 24h antes de iniciar AAS. Se sem hemorragia: AAS 300 mg dose única."},
-    {etapa:"atb", d:"AAS (sem trombólise ou após 24h)",do:"300 mg VO/SNG dose única + 100 mg/d",via:"VO",o:"Sem trombólise: iniciar imediato. Pós-trombólise: aguardar 24h + TC controle."},
-    {etapa:"atb", d:"Atorvastatina",do:"80 mg VO/d",via:"VO",o:"Iniciar em 24-48h. Indicação independente do LDL."},
+    {etapa:"escala", d:"AAS (sem trombólise ou após 24h)",do:"300 mg VO/SNG dose única + 100 mg/d",via:"VO",o:"Sem trombólise: iniciar imediato. Pós-trombólise: aguardar 24h + TC controle."},
+    {etapa:"adj", d:"Atorvastatina",do:"80 mg VO/d",via:"VO",o:"Iniciar em 24-48h. Indicação independente do LDL."},
     {etapa:"alta", d:"Investigação etiológica",do:"Eco TT/TE, Doppler carótidas, Holter, perfil lipídico, HbA1c",via:"—",o:"Definir etiologia (cardioembólica, aterotrombótica, lacunar, criptogênico). Prevenção secundária guiada."},
     {etapa:"alta", d:"Reabilitação precoce",do:"Fisio, fono, TO em 24-48h se estável",via:"—",o:"Reduz incapacidade. Disfagia: avaliação fono antes de VO."},
   ],
@@ -2353,7 +2353,7 @@ const PATOLOGIAS = [
   rx: [
     { etapa:"escala", d: "Esquema RIPE", do: "RHZE coformulado: <50kg 2 cp; 50–70kg 3 cp; >70kg 4 cp — uma vez/dia em jejum", via: "VO", o: "Fase intensiva 2 meses. Composição (por cp): R 150 / H 75 / Z 400 / E 275 mg." },
     { etapa:"escala", d: "Manutenção RH", do: "RH coformulado por mais 4 meses", via: "VO", o: "Total 6 meses em PAS comum. 12 meses em meningite ou óssea." },
-    { etapa:"escala", d: "Piridoxina (B6)", do: "50 mg/d", via: "VO", o: "Profilaxia de neuropatia por isoniazida em gestante, lactante, DM, etilista, IRC, HIV." },
+    { etapa:"adj", d: "Piridoxina (B6)", do: "50 mg/d", via: "VO", o: "Profilaxia de neuropatia por isoniazida em gestante, lactante, DM, etilista, IRC, HIV." },
     { etapa:"adj", d: "Corticoide", do: "Prednisona 1 mg/kg/d × 4–8 sem", via: "VO", o: "Em meningite tuberculosa e pericardite TB." },
   ],
   alertas: [
@@ -2384,7 +2384,7 @@ const PATOLOGIAS = [
   def: "Pneumotórax: ar no espaço pleural — dor torácica súbita + dispneia + hipertimpanismo. Hipertensivo: + hipotensão, desvio traqueal, ↓MV. Hemotórax: sangue no espaço pleural.",
   exames: ["RX tórax PA em pé (hipertransparência sem trama)", "USG point-of-care (ausência de lung sliding, B-lines)", "TC tórax se traumático/loculado", "Hemograma, coagulograma"],
   rx: [
-    { etapa:"escala", d: "Descompressão imediata", do: "Punção 2º EIC linha hemiclavicular OU 4º–5º EIC linha axilar", via: "—", o: "PNT HIPERTENSIVO (instável). Cateter 14G. Drenagem definitiva em seguida." },
+    { etapa:"inicial", d: "Descompressão imediata", do: "Punção 2º EIC linha hemiclavicular OU 4º–5º EIC linha axilar", via: "—", o: "PNT HIPERTENSIVO (instável). Cateter 14G. Drenagem definitiva em seguida." },
     { etapa:"adj", d: "Drenagem torácica em selo d'água", do: "5º EIC linha axilar média, dreno 28–32 Fr", via: "—", o: "PNT >2 cm, sintomático, recidiva, traumatic; hemotórax; derrame complicado. Anestesia local + analgesia." },
     { etapa:"atb", d: "Cefazolina", do: "2 g IV pré-drenagem + 8/8h × 24h", via: "IV", o: "Profilaxia ATB em trauma penetrante." },
     { etapa:"inicial", d: "Conservador", do: "O₂ alto fluxo + observação", via: "—", o: "PNT primário pequeno (<2 cm), assintomático. Reabsorção 1–2%/dia (mais rápido com O₂)." },
@@ -2487,9 +2487,9 @@ const PATOLOGIAS = [
   def: "Sangramento nasal. Anterior (90%, área de Kiesselbach) ou posterior (mais grave). Causa: trauma, ressecamento, HAS, anticoagulação, coagulopatia.",
   exames: ["Sinais vitais", "Hemograma, coagulograma se anticoagulado/recorrente", "Rinoscopia anterior"],
   rx: [
-    { etapa:"escala", d: "Compressão digital", do: "Pinçar narinas 10–15 min sem soltar, inclinado para frente", via: "—", o: "1ª medida em TODOS. Eficaz em 80%." },
+    { etapa:"inicial", d: "Compressão digital", do: "Pinçar narinas 10–15 min sem soltar, inclinado para frente", via: "—", o: "1ª medida em TODOS. Eficaz em 80%." },
     { etapa:"escala", d: "Oximetazolina spray", do: "2 jatos cada narina", via: "Intranasal", o: "Vasoconstritor. Pode aplicar em algodão e introduzir." },
-    { etapa:"anticoag", d: "Ácido tranexâmico tópico", do: "500 mg em algodão embebido + tamponamento 10 min", via: "Tópico", o: "Útil em pacientes anticoagulados." },
+    { etapa:"adj", d: "Ácido tranexâmico tópico", do: "500 mg em algodão embebido + tamponamento 10 min", via: "Tópico", o: "Útil em pacientes anticoagulados." },
     { etapa:"escala", d: "Tamponamento anterior", do: "Gaze vaselinada ou tampão expansível por 24–48h", via: "—", o: "Falha de medidas iniciais." },
     { etapa:"atb", d: "Tamponamento posterior", do: "Sonda Foley + tampão anterior", via: "—", o: "Sangramento posterior. Hospitalização. ATB profilático (síndrome do choque tóxico)." },
   ],
@@ -2600,9 +2600,9 @@ PATOLOGIAS.push(
     {etapa:"escala", d:"② TRANSFUSÃO — Concentrado de hemácias",do:"1 UI eleva Hb ~1 g/dL",via:"IV",o:"Alvo Hb >7 (geral) ou >8 (cardiopata). Estratégia RESTRITIVA > liberal (Villanueva NEJM 2013)."},
     {etapa:"escala", d:"③ CHOQUE — Transfusão maciça",do:"Proporção 1:1:1 (CH:PFC:plaquetas)",via:"IV",o:"Em choque grave. Acionar banco de sangue + ácido tranexâmico 1g IV (controverso em HDA — discutir)."},
     {etapa:"escala", d:"④ EDA TERAPÊUTICA em ≤24h",do:"Hemoclipe, escleroterapia, ligadura elástica (varizes)",via:"—",o:"Padrão-ouro diagnóstico-terapêutico. Acionar endoscopia precoce. Estabilizar paciente antes."},
-    {etapa:"atb", d:"NÃO-VARICOSO — Omeprazol IV",do:"80 mg IV bolus + 8 mg/h BIC × 72h",via:"IV",o:"Antes da EDA em sangramento ativo. Após EDA: ajustar conforme achado (Forrest)."},
+    {etapa:"escala", d:"NÃO-VARICOSO — Omeprazol IV",do:"80 mg IV bolus + 8 mg/h BIC × 72h",via:"IV",o:"Antes da EDA em sangramento ativo. Após EDA: ajustar conforme achado (Forrest)."},
     {etapa:"atb", d:"VARICOSO — Terlipressina",do:"2 mg IV 4/4h × 24h, depois 1 mg 4/4h × 3-5 dias",via:"IV",o:"Suspeita: cirrótico, ascite, encefalopatia, varizes prévias. Reduz pressão portal."},
-    {etapa:"atb", d:"VARICOSO — Octreotide (alternativa)",do:"50 mcg IV bolus + 50 mcg/h BIC × 3-5 dias",via:"IV",o:"Alternativa à terlipressina onde indisponível. Sem grandes diferenças de eficácia."},
+    {etapa:"escala", d:"VARICOSO — Octreotide (alternativa)",do:"50 mcg IV bolus + 50 mcg/h BIC × 3-5 dias",via:"IV",o:"Alternativa à terlipressina onde indisponível. Sem grandes diferenças de eficácia."},
     {etapa:"atb", d:"PROFILAXIA PBE (cirrótico) — Ceftriaxona",do:"1 g IV/d × 7 dias",via:"IV",o:"OBRIGATÓRIA em cirrótico com HDA. Reduz mortalidade (NNT 22). Norfloxacino VO alternativa."},
     {etapa:"adj", d:"Pré-EDA: Eritromicina (opcional)",do:"250 mg IV 30 min antes",via:"IV",o:"Procinético — limpa estômago, melhora visualização. Sem benefício de mortalidade comprovado mas pode reduzir necessidade de 2ª EDA."},
     {etapa:"adj", d:"Reversão de anticoagulação se em uso",do:"Conforme droga: vit K + PCC (varfarina), idarucizumab (dabigatrana), etc.",via:"IV",o:"Sangramento grave + anticoagulado = reverter. Discutir risco/benefício (válvula mecânica, TEP recente)."},
@@ -2628,8 +2628,8 @@ PATOLOGIAS.push(
   def:"Sangramento distal ao Treitz. Hematoquezia/enterorragia. Causas: diverticular (40%), angiodisplasia, neoplasia, doença inflamatória, hemorroida.",
   exames:["Hemograma + coagulograma","Tipagem","Colonoscopia <24h se estável","Angio-TC se ativo/instável"],
   rx:[
-    {etapa:"escala", d:"Reanimação volêmica",do:"SF/Ringer + CH",via:"IV",o:"Mesma estratégia que HDA. Restritiva (Hb>7)."},
-    {etapa:"anticoag", d:"Suspender anticoagulante/antiagregante",do:"Conforme situação",via:"—",o:"Considerar reversão se grave (vit K, andexanet, idarucizumabe)."},
+    {etapa:"inicial", d:"Reanimação volêmica",do:"SF/Ringer + CH",via:"IV",o:"Mesma estratégia que HDA. Restritiva (Hb>7)."},
+    {etapa:"inicial", d:"Suspender anticoagulante/antiagregante",do:"Conforme situação",via:"—",o:"Considerar reversão se grave (vit K, andexanet, idarucizumabe)."},
     {etapa:"escala", d:"Colonoscopia + hemostasia endoscópica",do:"Clip, escleroterapia, eletrocoagulação",via:"—",o:"Diagnóstico + terapêutica."},
     {etapa:"escala", d:"Embolização angiográfica",do:"—",via:"—",o:"Sangramento ativo refratário à endoscopia."},
   ],
@@ -2675,7 +2675,7 @@ PATOLOGIAS.push(
     {etapa:"inicial", d:"Ringer Lactato",do:"10 mL/kg bolus + 1,5 mL/kg/h",via:"IV",o:"REGIME MODERADO guiado por meta (PAM>65, diurese>0,5 mL/kg/h, lactato em queda). WATERFALL: agressivo causa mais sobrecarga."},
     {etapa:"adj", d:"Analgesia",do:"Dipirona 1g IV + opioide se intenso (fentanil/morfina)",via:"IV",o:"Não há contraindicação a opioide (mito do espasmo de Oddi)."},
     {etapa:"inicial", d:"Dieta zero inicial",do:"Reintrodução em 24–72h se tolerância",via:"VO",o:"Dieta precoce VO/enteral reduz complicações. NPT só se ↑ ileostomia/jejum prolongado."},
-    {etapa:"escala", d:"Antieméticos",do:"Ondansetrona 4–8 mg IV 8/8h",via:"IV",o:"Sintomático."},
+    {etapa:"adj", d:"Antieméticos",do:"Ondansetrona 4–8 mg IV 8/8h",via:"IV",o:"Sintomático."},
     {etapa:"escala", d:"CPRE precoce",do:"<24–48h",via:"—",o:"APENAS se colangite associada OU obstrução biliar persistente. NÃO de rotina."},
     {etapa:"escala", d:"ATB",do:"Imipenem 500 mg 6/6h OU meropenem 1g 8/8h",via:"IV",o:"APENAS em necrose infectada documentada. NÃO profilático."},
   ],
@@ -2697,7 +2697,7 @@ PATOLOGIAS.push(
   def:"Dor em hipocôndrio direito/epigástrio pós-prandial, <6h, sem febre nem icterícia (cólica simples). Diferenciar de colecistite (>6h + febre + Murphy +).",
   exames:["USG abdome (cálculo, espessamento de parede)","Hemograma, função hepática, FA, BT","Lipase para descartar pancreatite"],
   rx:[
-    {etapa:"escala", d:"Dipirona",do:"1 g IV em 10 min",via:"IV",o:"1ª linha analgésica."},
+    {etapa:"adj", d:"Dipirona",do:"1 g IV em 10 min",via:"IV",o:"1ª linha analgésica."},
     {etapa:"escala", d:"Cetoprofeno",do:"100 mg IV em 100 mL SF",via:"IV",o:"AINE — pode reduzir progressão para colecistite."},
     {etapa:"escala", d:"Escopolamina (Buscopan)",do:"20 mg IV/IM",via:"IV/IM",o:"Anticolinérgico — ↓espasmo. CI: glaucoma, taquicardia."},
     {etapa:"escala", d:"Colecistectomia eletiva",do:"Em sintomáticos",via:"Cirúrgico",o:"Mesma internação se episódio agudo grave; ambulatorial em sintomáticos leves."},
@@ -2790,7 +2790,7 @@ PATOLOGIAS.push(
     {etapa:"escala", d:"IBP",do:"Omeprazol 20–40 mg 12/12h × 4–8 sem",via:"VO",o:"Cicatrização da úlcera."},
     {etapa:"escala", d:"Esquema H. pylori (1ª linha)",do:"Claritro 500 mg + Amox 1g + IBP dose dobrada — todos 12/12h × 14 dias",via:"VO",o:"Adesão crítica. Em alta resistência (>15%): quadrupla com bismuto."},
     {etapa:"escala", d:"Esquema quádruplo com bismuto",do:"IBP 12/12h + bismuto + tetraciclina 500 mg 6/6h + metronidazol 500 mg 8/8h × 14 dias",via:"VO",o:"Alta resistência ou falha primeira linha."},
-    {etapa:"escala", d:"Suspender AINE",do:"—",via:"—",o:"Se possível. Trocar por paracetamol/dipirona."},
+    {etapa:"adj", d:"Suspender AINE",do:"—",via:"—",o:"Se possível. Trocar por paracetamol/dipirona."},
   ],
   alertas:[
     {t:"warn",x:"Complicações: hemorragia (Forrest), perfuração (pneumoperitônio), estenose, malignização."},
@@ -2816,7 +2816,7 @@ PATOLOGIAS.push(
     {etapa:"escala", d:"Albumina 20%",do:"6–8 g por L removido se paracentese >5 L",via:"IV",o:"Previne disfunção circulatória pós-paracentese."},
     {etapa:"atb", d:"Ceftriaxona",do:"2 g IV/d × 5–7 dias",via:"IV",o:"PBE — empírico. Cobre E. coli, Klebsiella, pneumococo."},
     {etapa:"escala", d:"Albumina (PBE)",do:"1,5 g/kg D1 + 1 g/kg D3",via:"IV",o:"Reduz SHR e mortalidade na PBE."},
-    {etapa:"escala", d:"Profilaxia PBE",do:"Norfloxacino 400 mg/d ou SMX-TMP 1 cp/d",via:"VO",o:"Indicações: HDA varicosa, PBE prévia, prot. asc <1,5 g/dL + disfunção renal/Child C."},
+    {etapa:"adj", d:"Profilaxia PBE",do:"Norfloxacino 400 mg/d ou SMX-TMP 1 cp/d",via:"VO",o:"Indicações: HDA varicosa, PBE prévia, prot. asc <1,5 g/dL + disfunção renal/Child C."},
   ],
   alertas:[
     {t:"crit",x:"PBE não tratada: mortalidade 60–90%. Iniciar ATB EMPIRICAMENTE assim que paracentese coletada."},
@@ -2960,7 +2960,7 @@ PATOLOGIAS.push(
     {etapa:"inicial", d:"Sacarose VO",do:"15 g (3 sachês açúcar em 200 mL água)",via:"VO",o:"Consciente + capaz de deglutir. Reavaliar em 15 min."},
     {etapa:"escala", d:"Glicose 50%",do:"50–100 mL IV bolus",via:"IV",o:"Inconsciente. Manter SG10% se etiologia persistente (sulfonilureia)."},
     {etapa:"inicial", d:"Glucagon",do:"1 mg IM/SC",via:"IM/SC",o:"Sem acesso venoso. Não funciona em hepatopata/desnutrido (sem reserva)."},
-    {etapa:"escala", d:"Tiamina",do:"100 mg IV ANTES de glicose",via:"IV",o:"OBRIGATÓRIO em etilistas, desnutridos, gestantes hiperêmese — prevenir Wernicke."},
+    {etapa:"adj", d:"Tiamina",do:"100 mg IV ANTES de glicose",via:"IV",o:"OBRIGATÓRIO em etilistas, desnutridos, gestantes hiperêmese — prevenir Wernicke."},
   ],
   alertas:[
     {t:"crit",x:"Hipoglicemia por sulfonilureia (glibenclamida, glimepirida) ou insulina de longa ação: observar 24–48h após resolução — recorrência."},
@@ -3099,7 +3099,7 @@ PATOLOGIAS.push(
     {etapa:"atb", d:"Aciclovir",do:"400 mg VO 8/8h × 7–10 dias (primária) / 5 dias (recidiva)",via:"VO",o:"Iniciar nas primeiras 72h."},
     {etapa:"atb", d:"Valaciclovir",do:"1 g VO 12/12h × 7–10 dias",via:"VO",o:"Alternativa, posologia mais cômoda."},
     {etapa:"escala", d:"Famciclovir",do:"250 mg VO 8/8h × 7–10 dias",via:"VO",o:"Alternativa."},
-    {etapa:"escala", d:"Profilaxia diária (se >6 recidivas/ano)",do:"Aciclovir 400 mg 12/12h",via:"VO",o:"Reduz recorrência e transmissão."},
+    {etapa:"adj", d:"Profilaxia diária (se >6 recidivas/ano)",do:"Aciclovir 400 mg 12/12h",via:"VO",o:"Reduz recorrência e transmissão."},
   ],
   alertas:[
     {t:"warn",x:"Gestante com primoinfecção próximo ao parto: cesariana + aciclovir EV (transmissão neonatal grave)."},
@@ -3143,7 +3143,7 @@ PATOLOGIAS.push(
   exames:["EAS (hematúria 90%)","USG ou TC sem contraste (PADRÃO-OURO)","Função renal, eletrólitos","β-HCG"],
   rx:[
     {etapa:"escala", d:"Cetoprofeno / Diclofenaco",do:"100 mg IV ou 75 mg IM",via:"IV/IM",o:"1ª linha analgésica. CI: IRC, sangramento, gestação 3º trim."},
-    {etapa:"escala", d:"Dipirona",do:"1 g IV",via:"IV",o:"Alternativa/associada."},
+    {etapa:"adj", d:"Dipirona",do:"1 g IV",via:"IV",o:"Alternativa/associada."},
     {etapa:"escala", d:"Morfina",do:"0,1 mg/kg IV (max 5 mg/dose)",via:"IV",o:"Dor refratária aos AINEs."},
     {etapa:"escala", d:"Tansulosina",do:"0,4 mg VO/d × até 4 sem",via:"VO",o:"Cálculo distal 5–10 mm — facilita expulsão. Alfa-bloqueador."},
     {etapa:"escala", d:"Hidratação",do:"Conforme tolerância oral; não hiperhidratar",via:"VO/IV",o:"NÃO acelera expulsão. Hidratar para diurese 1,5–2 L/d."},
@@ -3500,7 +3500,7 @@ PATOLOGIAS.push(
   def:"Ca total >10,5. Severa >14 com sintomas: \"stones, bones, abdominal moans, psychiatric overtones\". Crise hipercalcêmica >14 = emergência.",
   exames:["Ca total + iônico","Albumina","Função renal, eletrólitos, fósforo","PTH (↓ = hipercalcemia maligna; ↑ = primária)","ECG (QT curto)","RX, USG (litíase)"],
   rx:[
-    {etapa:"escala", d:"SF 0,9%",do:"200–300 mL/h × 24–48h",via:"IV",o:"PILAR. Restaura volume + ↑excreção renal de Ca. Cuidado com IC/idoso."},
+    {etapa:"inicial", d:"SF 0,9%",do:"200–300 mL/h × 24–48h",via:"IV",o:"PILAR. Restaura volume + ↑excreção renal de Ca. Cuidado com IC/idoso."},
     {etapa:"escala", d:"Furosemida",do:"20–40 mg IV após volemizar",via:"IV",o:"APENAS APÓS hidratação adequada. Sem furosemida = ↓ excreção renal de Ca."},
     {etapa:"escala", d:"Pamidronato",do:"60–90 mg IV em 2h",via:"IV",o:"Bisfosfonato — efeito em 2–4 dias. Hipercalcemia maligna."},
     {etapa:"escala", d:"Ácido zoledrônico",do:"4 mg IV em 15 min",via:"IV",o:"Alternativa mais potente."},
@@ -3680,7 +3680,7 @@ PATOLOGIAS.push(
     {etapa:"escala", d:"Imunoglobulina humana antitetânica (IGHAT)",do:"500–3000 UI IM (250 UI em criança)",via:"IM",o:"Neutraliza toxina circulante. NÃO atua sobre toxina já ligada."},
     {etapa:"atb", d:"Metronidazol",do:"500 mg IV 8/8h × 7–10 dias",via:"IV",o:"PREFERENCIAL — penicilina pode antagonizar GABA e piorar espasmos."},
     {etapa:"escala", d:"Diazepam",do:"5–10 mg IV 4/4h, titular",via:"IV",o:"Controle de espasmos."},
-    {etapa:"escala", d:"Vacina dT",do:"Dose única + completar esquema",via:"IM",o:"Esquema 3 doses se status incerto."},
+    {etapa:"adj", d:"Vacina dT",do:"Dose única + completar esquema",via:"IM",o:"Esquema 3 doses se status incerto."},
     {etapa:"escala", d:"Desbridamento da ferida",do:"Limpeza ampla",via:"—",o:"Remoção do tecido necrótico/corpo estranho."},
     {etapa:"escala", d:"Suporte ventilatório",do:"IOT + sedação + bloqueador NM se grave",via:"—",o:"Espasmos laríngeos/diafragmáticos."},
   ],
@@ -4076,7 +4076,7 @@ PATOLOGIAS.push(
     {etapa:"escala", d:"Diazepam",do:"5–20 mg VO/IV cada 1–2h conforme CIWA",via:"VO/IV",o:"1ª linha. Esquema flexível guiado por sintoma (CIWA ≥8)."},
     {etapa:"escala", d:"Lorazepam",do:"1–4 mg IV cada 30 min",via:"IV",o:"Hepatopata (sem metabólitos ativos)."},
     {etapa:"adj", d:"Tiamina",do:"100–300 mg IV/d × 3 dias",via:"IV",o:"Prevenir Wernicke."},
-    {etapa:"escala", d:"Reposição eletrolítica",do:"K, Mg, fósforo VO/IV",via:"VO/IV",o:"Frequentemente deficitários."},
+    {etapa:"adj", d:"Reposição eletrolítica",do:"K, Mg, fósforo VO/IV",via:"VO/IV",o:"Frequentemente deficitários."},
     {etapa:"escala", d:"Haloperidol",do:"2,5–5 mg IM",via:"IM",o:"Agitação refratária a BZD. Reduz limiar convulsivo — cautela."},
     {etapa:"adj", d:"Hidratação",do:"SF + glicose se necessário",via:"IV",o:"Após tiamina."},
   ],
@@ -4103,7 +4103,7 @@ sin:["mordedura","cão","gato","raiva"],
 def:"Ferida por mordida. Risco infeccioso alto (humana 25%, cão 15%, gato 50%). Risco de raiva em mamíferos silvestres/desconhecidos.",
 exames:["RX se trauma profundo","Cultura se infectada"],
 rx:[
-{etapa:"escala", d:"Lavagem abundante",do:"Água + sabão por 15 min",via:"—",o:"PILAR. NÃO suturar primária (exceto face)."},
+{etapa:"inicial", d:"Lavagem abundante",do:"Água + sabão por 15 min",via:"—",o:"PILAR. NÃO suturar primária (exceto face)."},
 {etapa:"atb", d:"Amoxicilina-clavulanato",do:"875/125 mg VO 12/12h × 5–7 dias",via:"VO",o:"Profilaxia: face, mão, articulação, imunossupressão, diabético, todas as humanas e felinas."},
 {etapa:"atb", d:"Ampicilina-sulbactam",do:"1,5 g IV 6/6h",via:"IV",o:"Internado/sepse."},
 {etapa:"escala", d:"Antitetânica",do:"dT + IGHAT conforme status",via:"IM",o:"Esquema MS."},
@@ -4199,7 +4199,7 @@ exames:["ECG (taquicardia, arritmia, alterações de repolarização)","Glicemia
 rx:[
 {etapa:"escala", d:"SAEEsc (Soro Antiescorpiônico)",do:"MODERADO: 2–3 ampolas / GRAVE: 4–6 ampolas",via:"IV",o:"Diluir + 30 min infusão. Em adulto picado moderado: pode dispensar soro."},
 {etapa:"adj", d:"Analgesia",do:"Dipirona + opioide (morfina/tramadol) + lidocaína 1% infiltração local",via:"IV/Local",o:"Dor pode ser extrema."},
-{etapa:"escala", d:"Antieméticos",do:"Ondansetrona 4–8 mg IV",via:"IV",o:"Vômitos são comuns."},
+{etapa:"adj", d:"Antieméticos",do:"Ondansetrona 4–8 mg IV",via:"IV",o:"Vômitos são comuns."},
 {etapa:"escala", d:"Suporte cardiovascular",do:"Diurético, vasodilatador, IOT, vasopressor conforme caso",via:"IV",o:"Edema pulmonar/miocardite — UTI."},
 ],
 alertas:[{t:"crit",x:"CRIANÇA <7a com picada de T. serrulatus = sempre grave até prova contrária. Vigilância em UTI."}],
@@ -4398,7 +4398,7 @@ sin:["SRI","IOT","intubação","laringoscopia"],
 def:"Indução farmacológica rápida com sedação + bloqueio neuromuscular para IOT em paciente crítico.",
 exames:["Avaliação prévia (LEMON, MOANS, RODS)","Monitor + acesso IV"],
 rx:[
-{etapa:"escala", d:"PRÉ-OXIGENAÇÃO",do:"O2 100% 3–5 min ou 8 capacidades vitais",via:"Máscara",o:"Maximiza SpO2 + reserva de O2 alveolar."},
+{etapa:"inicial", d:"PRÉ-OXIGENAÇÃO",do:"O2 100% 3–5 min ou 8 capacidades vitais",via:"Máscara",o:"Maximiza SpO2 + reserva de O2 alveolar."},
 {etapa:"escala", d:"INDUÇÃO — Etomidato",do:"0,3 mg/kg IV",via:"IV",o:"Estabilidade hemodinâmica. Risco de supressão adrenal."},
 {etapa:"adj", d:"INDUÇÃO — Cetamina/Escetamina",do:"1–2 mg/kg IV (0,5–1 mg/kg escet)",via:"IV",o:"Broncodilatador, preserva PA. Útil em sepse, asma, trauma."},
 {etapa:"escala", d:"INDUÇÃO — Propofol",do:"1,5–2,5 mg/kg IV",via:"IV",o:"Anticonvulsivante; cardiodepressor — evitar em choque."},
@@ -4570,7 +4570,7 @@ sin:["HPP","hemorragia puerperal","atonia uterina"],
 def:"Perda sanguínea ≥500 mL pós-parto vaginal ou ≥1000 mL pós-cesárea, OU qualquer sangramento com sinais de instabilidade. Precoce: <24h (90%, atonia). Tardia: 24h-12 semanas.",
 exames:["SSVV continuamente","Hemograma seriado","Coagulograma + fibrinogênio (alvo >2 g/L)","Lactato, gaso arterial","Tipo sanguíneo + Rh + prova cruzada"],
 rx:[
-{etapa:"escala", d:"Massagem uterina bimanual",do:"Contínua",via:"—",o:"1ª medida sempre. Compressão externa + intracavitária."},
+{etapa:"inicial", d:"Massagem uterina bimanual",do:"Contínua",via:"—",o:"1ª medida sempre. Compressão externa + intracavitária."},
 {etapa:"escala", d:"Ocitocina",do:"10 UI IM + 20-40 UI em 500 mL SF/RL IV em 1h",via:"IV+IM",o:"1ª linha medicamentosa. CONTÍNUO até cessar."},
 {etapa:"escala", d:"Misoprostol",do:"800-1000 mcg retal OU 600 mcg VO/SL",via:"Retal/VO",o:"Se ocitocina indisponível/falha. Pode causar tremor + hipertermia."},
 {etapa:"escala", d:"Metilergometrina",do:"0,2 mg IM, pode repetir 2-4h (máx 5 doses)",via:"IM",o:"CONTRAINDICADA em hipertensão, pré-eclâmpsia, cardiopatia."},
@@ -4791,7 +4791,7 @@ rx:[
 {etapa:"inicial", d:"Repouso + cabeceira 30°",do:"Ambiente calmo, monitorizado",via:"—",o:"Reduz pico hipertensivo. Profilaxia de TVP MECÂNICA (sem heparina até clipagem)."},
 {etapa:"escala", d:"Nimodipino",do:"60 mg VO 4/4h × 21 dias",via:"VO",o:"INICIAR <96h da hemorragia. PREVINE vasoespasmo (não trata). Suspender se hipoTA."},
 {etapa:"escala", d:"Controle da PA",do:"PAS <160 (alguns serviços <140) com labetalol/esmolol/nicardipino",via:"IV",o:"ATÉ a clipagem. Após clipagem, mais liberal (PAS 160-200) para HIPERTENSIVA — terapia 'Triple H' antiquada, focar em mantém PAM."},
-{etapa:"escala", d:"Anticonvulsivantes",do:"Fenitoína 1 g IV de ataque OU levetiracetam 500 mg IV 12/12h",via:"IV",o:"Profilaxia 3-7 dias. Não usar de rotina (controverso); reservar para crise documentada."},
+{etapa:"adj", d:"Anticonvulsivantes",do:"Fenitoína 1 g IV de ataque OU levetiracetam 500 mg IV 12/12h",via:"IV",o:"Profilaxia 3-7 dias. Não usar de rotina (controverso); reservar para crise documentada."},
 {etapa:"escala", d:"Clipagem cirúrgica / coiling endovascular",do:"—",via:"Cirúrgico/Endo",o:"DEFINITIVO. ASAP (<24-72h) — preferir coiling se anatomia favorável (ISAT trial, melhor outcome)."},
 ],
 alertas:[
@@ -4904,7 +4904,7 @@ rx:[
 {etapa:"escala", d:"Manitol",do:"0,25-1 g/kg IV em 15-30 min",via:"IV",o:"Hipertensão intracraniana (HIC) com sinais clínicos (anisocoria, postura). Repetir 4-6h. Monitor osmolaridade <320."},
 {etapa:"escala", d:"Salina hipertônica 3%",do:"250 mL IV em 10-15 min",via:"IV",o:"Alternativa ao manitol — preferida em hipotensão/euvolemia. Verificar Na sérico (alvo 145-155)."},
 {etapa:"escala", d:"Anti-convulsivante profilático",do:"Levetiracetam 1 g IV ataque + 500 mg 12/12h × 7 dias",via:"IV",o:"TCE grave (Glasgow ≤8) ou contusão/hematoma — apenas 1ª semana (não previne crises tardias)."},
-{etapa:"anticoag", d:"Reversão de anticoagulante",do:"PCC 25-50 UI/kg (varfarina); idarucizumab (dabigatran); andexanet (rivaroxabana/apixabana)",via:"IV",o:"TCE + anticoag = emergência. Reverter ANTES de cirurgia."},
+{etapa:"adj", d:"Reversão de anticoagulante",do:"PCC 25-50 UI/kg (varfarina); idarucizumab (dabigatran); andexanet (rivaroxabana/apixabana)",via:"IV",o:"TCE + anticoag = emergência. Reverter ANTES de cirurgia."},
 {etapa:"escala", d:"Cirurgia",do:"Craniotomia evacuação OU craniectomia descompressiva",via:"Cirúrgico",o:"HSD/HED >10 mm ou desvio linha média >5 mm ou HIC refratária — chamar neurocirurgia."},
 ],
 alertas:[
@@ -4981,11 +4981,11 @@ def:"Fratura proximal de fêmur (colo, transtrocantérica, subtrocantérica) —
 exames:["RX bacia AP + lateral quadril","TC se RX inconclusivo (mais 5% RX-negativas)","Hemograma, função renal","ECG + RX tórax (pré-op)","Avaliação anestésica","Ecocardiograma se cardiopata"],
 rx:[
 {etapa:"escala", d:"Cirurgia em <48h",do:"Hemiartroplastia (colo desviada idoso), DHS/parafuso (intertroc), HD (jovem)",via:"Cirúrgico",o:"PILAR. Cada dia de atraso = ↑mortalidade. Múltiplas diretrizes apoiam <48h."},
-{etapa:"escala", d:"Profilaxia TVP",do:"Enoxaparina 40 mg SC/d ou HBPM ajustada",via:"SC",o:"INICIAR pré-op (suspender 12h antes) e manter 4-6 semanas pós-op."},
+{etapa:"adj", d:"Profilaxia TVP",do:"Enoxaparina 40 mg SC/d ou HBPM ajustada",via:"SC",o:"INICIAR pré-op (suspender 12h antes) e manter 4-6 semanas pós-op."},
 {etapa:"adj", d:"Analgesia",do:"Bloqueio do fáscia ilíaca (3-Em-1) + paracetamol 1g 6/6h + dipirona",via:"IV/regional",o:"EVITAR opioides em idoso — delirium. Bloqueio regional 1ª linha — Cochrane recomendação forte."},
 {etapa:"escala", d:"Reposição volêmica",do:"Cristaloide cauteloso",via:"IV",o:"Idoso descompensa fácil. Avaliar volemia clinicamente."},
 {etapa:"escala", d:"Otimização cardíaca",do:"Manter β-bloqueador se uso, controlar PA, corrigir anemia (Hb >8)",via:"—",o:"Cirurgia geralmente cardio-tolerada — não atrasar para 'investigação' desnecessária."},
-{etapa:"escala", d:"Profilaxia delirium",do:"Hidratação adequada + reorientação + dispositivos auditivos/visuais + evitar BZD/anti-H1",via:"—",o:"Delirium pós-op em até 50% idosos. Haloperidol 0,25-0,5 mg em crise."},
+{etapa:"adj", d:"Profilaxia delirium",do:"Hidratação adequada + reorientação + dispositivos auditivos/visuais + evitar BZD/anti-H1",via:"—",o:"Delirium pós-op em até 50% idosos. Haloperidol 0,25-0,5 mg em crise."},
 ],
 alertas:[
 {t:"crit",x:"FRATURA + HIPOTENSÃO em idoso = considerar sangramento (trans/subtrocantérica pode perder 1-2 L). Reservar hemocomponentes."},
@@ -5013,7 +5013,7 @@ rx:[
 {etapa:"escala", d:"Transfusão simples",do:"CH 10-15 mL/kg",via:"IV",o:"Hb >7-9. NÃO ultrapassar Hb 10 (hiperviscosidade)."},
 {etapa:"escala", d:"Exsanguineotransfusão",do:"Eritroaférese ou exsang manual",via:"IV",o:"STA grave, AVC, falência multissistêmica, priapismo refratário. Alvo HbS <30%."},
 {etapa:"anticoag", d:"Heparina profilática",do:"Enoxaparina 40 mg SC/d",via:"SC",o:"Internação prolongada — alto risco TVP/TEP."},
-{etapa:"anticoag", d:"Tromboprofilaxia mecânica",do:"Meias compressivas",via:"—",o:"Sempre, mesmo em quem recebe heparina."},
+{etapa:"adj", d:"Tromboprofilaxia mecânica",do:"Meias compressivas",via:"—",o:"Sempre, mesmo em quem recebe heparina."},
 ],
 alertas:[
 {t:"crit",x:"SÍNDROME TORÁCICA AGUDA (STA): febre + dispneia/dor torácica + infiltrado novo RX em paciente com anemia falciforme. Mortalidade 4-10% adultos. Atb + O₂ + transfusão se Hb<9 ou hipoxemia."},
@@ -5121,7 +5121,7 @@ rx:[
 {etapa:"alta", d:"Propiltiouracila (PTU)",do:"500-1000 mg VO ataque + 250 mg 4/4h",via:"VO/SNG",o:"1ª escolha NA CRISE (bloqueia conversão T4→T3 perifericamente, além de síntese). PREFERIR sobre metimazol em crise (não em manutenção crônica)."},
 {etapa:"escala", d:"Iodo (Lugol/SSKI)",do:"Lugol 8-10 gotas 6/6h OU SSKI 5 gotas 6/6h",via:"VO",o:"DAR 1H APÓS PTU (não antes — fornece substrato). Bloqueio Wolff-Chaikoff. Iopanato/ipodato (não disponível BR) é alternativa."},
 {etapa:"escala", d:"Hidrocortisona",do:"100 mg IV 8/8h",via:"IV",o:"Bloqueia conversão T4→T3 + reposição (insuficiência adrenal relativa frequente)."},
-{etapa:"escala", d:"Resfriamento + Paracetamol",do:"NÃO usar AAS (desloca T4 da TBG → piora)",via:"—",o:"Manta + paracetamol 1g 6/6h. Hipertermia agrava."},
+{etapa:"adj", d:"Resfriamento + Paracetamol",do:"NÃO usar AAS (desloca T4 da TBG → piora)",via:"—",o:"Manta + paracetamol 1g 6/6h. Hipertermia agrava."},
 {etapa:"escala", d:"Suporte volêmico",do:"SF 0,9% guiado por volemia",via:"IV",o:"Vômitos + diarreia + sudorese causam desidratação importante."},
 ],
 alertas:[
@@ -5237,7 +5237,7 @@ exames:["PCR influenza A/B (gold standard)","Teste rápido antigênico (S 60-70%
 rx:[
 {etapa:"atb", d:"Oseltamivir",do:"75 mg VO 12/12h × 5 dias",via:"VO",o:"Idealmente <48h. Em GRAVES: usar mesmo após 48h."},
 {etapa:"atb", d:"Oseltamivir UTI",do:"150 mg VO 12/12h × 10 dias (dobrada)",via:"VO",o:"Evidência fraca de superioridade — algumas diretrizes endossam."},
-{etapa:"escala", d:"Dipirona/Paracetamol",do:"500-1000 mg",via:"VO/IV",o:"NÃO AAS em <16a (Reye)."},
+{etapa:"adj", d:"Dipirona/Paracetamol",do:"500-1000 mg",via:"VO/IV",o:"NÃO AAS em <16a (Reye)."},
 {etapa:"inicial", d:"O₂ + suporte",do:"VM protetora se SDRA",via:"—",o:"IOT precoce em piora rápida."},
 {etapa:"escala", d:"ATB superinfecção",do:"Ceftriaxona 2g + azitromicina 500 mg IV",via:"IV",o:"Recidiva febril → S. aureus, pneumococo, Strep A."},
 ],
@@ -5265,7 +5265,7 @@ rx:[
 {etapa:"atb", d:"Penicilina G cristalina",do:"4 milhões UI IV 4/4h",via:"IV",o:"Internação — face, imunossuprimido, sepse, falha VO."},
 {etapa:"atb", d:"Clindamicina",do:"600-900 mg IV 8/8h",via:"IV",o:"Alergia à penicilina."},
 {etapa:"escala", d:"Suporte",do:"Elevação MMII + repouso + analgesia + marcação bordes",via:"—",o:"Caneta para avaliar progressão."},
-{etapa:"escala", d:"Profilaxia secundária",do:"Pen G Benzatina 1.2 mi IM 21/21 dias × 6-12m",via:"IM",o:"Recorrentes (≥2/ano) + linfedema."},
+{etapa:"adj", d:"Profilaxia secundária",do:"Pen G Benzatina 1.2 mi IM 21/21 dias × 6-12m",via:"IM",o:"Recorrentes (≥2/ano) + linfedema."},
 ],
 alertas:[
 {t:"crit",x:"FACE: risco trombose seio cavernoso. ATB IV + monitorização."},
@@ -5291,7 +5291,7 @@ def:"Indicada em exposição com risco de transmissão HIV: ocupacional (perfuro
 exames:["Teste rápido HIV exposto E fonte (se possível) — ANTES da PEP","Teste rápido sífilis, HBsAg, anti-HCV","Beta-HCG mulher fértil","Função hepática + renal (basal pré-TARV)"],
 rx:[
 {etapa:"atb", d:"TARV — Tenofovir + Lamivudina + Dolutegravir",do:"TDF 300 + 3TC 300 + DTG 50 mg, 1×/d × 28 dias",via:"VO",o:"INICIAR <72h (idealmente <2h). PCDT MS-Brasil 2017."},
-{etapa:"escala", d:"Hepatite B (vacina + IGHAHB)",do:"Vacina 3 doses + IGHAHB 0,06 mL/kg IM (até 7 dias)",via:"IM",o:"Não imunizado ou anti-HBs <10 + fonte HBsAg+."},
+{etapa:"adj", d:"Hepatite B (vacina + IGHAHB)",do:"Vacina 3 doses + IGHAHB 0,06 mL/kg IM (até 7 dias)",via:"IM",o:"Não imunizado ou anti-HBs <10 + fonte HBsAg+."},
 {etapa:"escala", d:"Sífilis profilática",do:"Pen G Benzatina 2.4 milhões UI IM",via:"IM",o:"Exposição sexual + fonte com sífilis ativa."},
 {etapa:"escala", d:"Contracepção emergência",do:"Levonorgestrel 1,5 mg VO dose única",via:"VO",o:"Até 5 dias — direito da mulher em violência sexual."},
 {etapa:"alta", d:"Seguimento",do:"Teste HIV em 30 + 90 + 180 dias",via:"—",o:"+ transaminases. Suporte multidisciplinar se trauma."},
@@ -5510,7 +5510,7 @@ rx:[
 {etapa:"escala", d:"③ ESCAROTOMIA (queimadura circular)",do:"Indicação: tórax circular (restritiva) ou extremidade (sd compartimental)",via:"Cirúrgico",o:"24-48h após queimadura. Antes que evolua para sd compartimental. Sinais: ↑pressão compartimental, pulsos diminuídos, palidez, parestesia."},
 {etapa:"escala", d:"④ Cirurgia precoce (2º profundo, 3º)",do:"Excisão tangencial + enxerto em 5-7 dias",via:"Cirúrgico",o:"Reduz hipermetabolismo, infecção, dor. Centro de queimados."},
 {etapa:"atb", d:"ATB profilático sistêmico — NÃO indicado",do:"Apenas se infecção estabelecida + cultura",via:"—",o:"Profilaxia sistêmica AUMENTA resistência. Cobertura empírica em sepse: cobrir Pseudomonas + S. aureus + ESBL."},
-{etapa:"atb", d:"Antissepsia tópica — Sulfadiazina prata 1%",do:"Aplicar sobre queimadura + gaze",via:"Tópico",o:"Trocar 24/24h. CI: alergia sulfa, gestante, RN. Alternativa: hidrogel ou hidrofibra."},
+{etapa:"adj", d:"Antissepsia tópica — Sulfadiazina prata 1%",do:"Aplicar sobre queimadura + gaze",via:"Tópico",o:"Trocar 24/24h. CI: alergia sulfa, gestante, RN. Alternativa: hidrogel ou hidrofibra."},
 {etapa:"adj", d:"ANALGESIA — Morfina IV titulada",do:"0,1 mg/kg IV cada 5-15 min até alívio",via:"IV",o:"Doses generosas. PCA quando possível. NÃO subdosar. Cetamina sub-anestésica útil em curativos."},
 {etapa:"adj", d:"VACINA antitetânica",do:"dT ± IGHAT conforme esquema",via:"IM",o:"Sempre questionar esquema. Atualizar se >5 anos (queimadura sujidade). IGHAT 250 UI IM se não-vacinado."},
 {etapa:"adj", d:"INTOXICAÇÃO — Hidroxocobalamina (cianeto)",do:"5 g IV em 15 min",via:"IV",o:"Incêndio em ambiente fechado + acidose lática + alteração consciência sem CO suficiente. Disponível em poucos centros."},
@@ -5572,7 +5572,7 @@ rx:[
 {etapa:"escala", d:"RESFRIAMENTO IMEDIATO",do:"Imersão em água gelada (atleta) OU spray + ventilador + gelo em axilas/inguinais/pescoço/poplítea",via:"—",o:"PILAR. CADA MINUTO conta. Meta: T <38,5°C em ≤30 min."},
 {etapa:"escala", d:"Hidratação cautelosa",do:"SF 0,9% guiado por SSVV (não bolus maciço)",via:"IV",o:"Hipovolemia frequente mas não dominante. Cuidado em idoso cardiopata."},
 {etapa:"adj", d:"BZD",do:"Diazepam 5-10 mg IV",via:"IV",o:"Calafrios + agitação (não usar antitérmico — ineficaz, hepatotóxico em paracetamol)."},
-{etapa:"escala", d:"NÃO usar antitérmicos",do:"Paracetamol/AINE",via:"—",o:"FALÊNCIA hipotalâmica — não responde. Risco hepato/nefrotoxicidade. Resfriar fisicamente."},
+{etapa:"adj", d:"NÃO usar antitérmicos",do:"Paracetamol/AINE",via:"—",o:"FALÊNCIA hipotalâmica — não responde. Risco hepato/nefrotoxicidade. Resfriar fisicamente."},
 {etapa:"escala", d:"Tratar complicações",do:"Rabdomiólise, IRA, CIVD, arritmia",via:"—",o:"Suporte. UTI."},
 {etapa:"escala", d:"Dantrolene",do:"NÃO eficaz",via:"—",o:"Útil em hipertermia MALIGNA anestésica, não em golpe de calor."},
 ],
@@ -5595,7 +5595,7 @@ exames:["RX/TC tórax + angio-TC (definir sítio + etiologia)","HMG, coag, funç
 rx:[
 {etapa:"inicial", d:"POSICIONAR — decúbito LATERAL do lado SANGRANTE para baixo",do:"Se o sítio é conhecido",via:"—",o:"PILAR. Protege pulmão são. Se desconhecido — decúbito Trendelenburg (pulmonar)."},
 {etapa:"inicial", d:"O₂ + via aérea",do:"IOT se necessário (tubo amplo)",via:"—",o:"Tubo grande (8.0+) para broncoscopia. CONSIDERAR IOT seletiva (Carlens) ou bloqueador brônquico do lado sangrante."},
-{etapa:"anticoag", d:"Suporte hemodinâmico",do:"Cristaloide + CH (tipo O- se urgente)",via:"IV",o:"Reverter anticoagulação se aplicável."},
+{etapa:"escala", d:"Suporte hemodinâmico",do:"Cristaloide + CH (tipo O- se urgente)",via:"IV",o:"Reverter anticoagulação se aplicável."},
 {etapa:"escala", d:"Ácido tranexâmico",do:"500-1000 mg IV em 10 min OU nebulizado 500 mg",via:"IV/Neb",o:"Reduz sangramento — Cochrane 2020. Pode repetir."},
 {etapa:"escala", d:"Broncoscopia rígida",do:"Aspiração + cauterização + tamponamento balão",via:"—",o:"Intervenção precoce em centro especializado."},
 {etapa:"escala", d:"Embolização ARTÉRIA BRÔNQUICA",do:"Angiografia + embolização",via:"Endovascular",o:"DEFINITIVO. Sucesso 85-95%. Disponível em centros referência."},
@@ -5675,7 +5675,7 @@ sin:["priapismo","ereção prolongada"],
 def:"Ereção persistente >4h, NÃO relacionada a estimulação sexual. ISQUÊMICO (baixo fluxo): doloroso, rígido, EMERGÊNCIA — falência fluxo arterial → necrose corpo cavernoso → impotência permanente. NÃO-ISQUÊMICO (alto fluxo): trauma perineal, indolor, parcial, NÃO urgência.",
 exames:["GASO sangue cavernoso (punção): isquêmico = PaO₂ <30, PaCO₂ >60, pH <7,25; não-isq = arterial","HMG (descartar falcêmico)","β-HCG não aplicável","Função renal","Investigar causa: falciforme (eletroforese), leucemia, drogas (sildenafil, cocaína, antipsicóticos)","Doppler peniano em casos selecionados"],
 rx:[
-{etapa:"escala", d:"ASPIRAÇÃO + IRRIGAÇÃO cavernosa",do:"Agulha 21G na lateral da base do pênis; aspirar 30-50 mL sangue + irrigar SF",via:"—",o:"1ª linha priapismo isquêmico <6h. Anestesia local (bloqueio peniano). Repetir conforme resposta."},
+{etapa:"inicial", d:"ASPIRAÇÃO + IRRIGAÇÃO cavernosa",do:"Agulha 21G na lateral da base do pênis; aspirar 30-50 mL sangue + irrigar SF",via:"—",o:"1ª linha priapismo isquêmico <6h. Anestesia local (bloqueio peniano). Repetir conforme resposta."},
 {etapa:"escala", d:"Fenilefrina intracavernosa",do:"100-500 mcg/mL — 1 mL a cada 5-10 min (máx 1 mg) APÓS aspiração",via:"—",o:"Vasoconstrição local. Monitor PA (risco HAS sistêmica). Diluir 1 mL fenilefrina 10 mg em 99 mL SF (100 mcg/mL)."},
 {etapa:"escala", d:"Falcêmico — exsanguineotransfusão",do:"Eritroaférese, alvo HbS <30%",via:"IV",o:"Em PARALELO com manejo local. Não atrasar tratamento peniano."},
 {etapa:"escala", d:"Cirurgia (Shunt)",do:"Winter / Ebbehoj / Quackels / Grayhack",via:"Cirúrgico",o:"Falha de tratamento conservador >24-48h. Urologista."},
@@ -6428,10 +6428,10 @@ rx:[
 {etapa:"inicial", d:"NOTIFICAÇÃO COMPULSÓRIA",do:"Hanseníase: SINAN",via:"—",o:"Caso novo + casos em reação. Acompanhamento sob notificação."},
 {etapa:"inicial", d:"MANTER PQT (poliquimioterapia)",do:"Não suspender o tratamento anti-hanseníase em reação",via:"VO",o:"Reação NÃO é falha do tratamento — é resposta imune. Manter PQT-MB (rifampicina + dapsona + clofazimina) ou PQT-PB conforme classificação."},
 
-{etapa:"atb", d:"REAÇÃO TIPO 1 — Prednisona",do:"1-1,5 mg/kg/d VO, desmame lento 6-12 meses",via:"VO",o:"PADRÃO. Reduz inflamação celular. Iniciar dose alta, desmame muito lento (dependência fenômeno-de-rebote). Monitorar diabetes, HAS, infecção."},
-{etapa:"atb", d:"REAÇÃO TIPO 2 leve — Talidomida",do:"100-400 mg/d VO, desmame conforme",via:"VO",o:"TRATAMENTO DE ESCOLHA TIPO 2 — anti-inflamatório imunomodulador. CRÍTICO: NUNCA em gestante (teratogenicidade — focomelia). Teste β-HCG mensal. Cadastro obrigatório no programa de talidomida."},
-{etapa:"atb", d:"REAÇÃO TIPO 2 grave — Talidomida + Prednisona",do:"Talidomida 100-300 mg/d + prednisona 0,5-1 mg/kg/d",via:"VO",o:"Casos graves com neurite, irite, orquite, glomerulonefrite."},
-{etapa:"atb", d:"GESTANTE — Prednisona",do:"1 mg/kg/d × tempo necessário",via:"VO",o:"NÃO talidomida (teratogênica)."},
+{etapa:"escala", d:"REAÇÃO TIPO 1 — Prednisona",do:"1-1,5 mg/kg/d VO, desmame lento 6-12 meses",via:"VO",o:"PADRÃO. Reduz inflamação celular. Iniciar dose alta, desmame muito lento (dependência fenômeno-de-rebote). Monitorar diabetes, HAS, infecção."},
+{etapa:"escala", d:"REAÇÃO TIPO 2 leve — Talidomida",do:"100-400 mg/d VO, desmame conforme",via:"VO",o:"TRATAMENTO DE ESCOLHA TIPO 2 — anti-inflamatório imunomodulador. CRÍTICO: NUNCA em gestante (teratogenicidade — focomelia). Teste β-HCG mensal. Cadastro obrigatório no programa de talidomida."},
+{etapa:"escala", d:"REAÇÃO TIPO 2 grave — Talidomida + Prednisona",do:"Talidomida 100-300 mg/d + prednisona 0,5-1 mg/kg/d",via:"VO",o:"Casos graves com neurite, irite, orquite, glomerulonefrite."},
+{etapa:"escala", d:"GESTANTE — Prednisona",do:"1 mg/kg/d × tempo necessário",via:"VO",o:"NÃO talidomida (teratogênica)."},
 
 {etapa:"escala", d:"NEURITE AGUDA",do:"Prednisona dose máxima + imobilização membro + corticoide local se necessário",via:"VO",o:"Risco de dano neural permanente. Avaliar motor/sensitivo seriado."},
 {etapa:"escala", d:"IRITE / IRIDOCICLITE",do:"Colírio corticoide + midriático + oftalmo",via:"Tópico",o:"Risco de glaucoma + cegueira. Avaliação oftalmológica urgente."},
@@ -8463,73 +8463,75 @@ const CALCS_EXTRA = [
 {id:"ciwa-ar", nome:"CIWA-Ar — Abstinência Alcoólica", sis:"psiq",
 desc:"Clinical Institute Withdrawal Assessment — alcohol revised. Avalia gravidade da abstinência e guia dose de benzodiazepínico. Aplicar a cada 1-4h.",
 fields:[
-{tipo:"sel", id:"nausea", label:"Náusea/vômito", opcoes:[
-{v:"0", t:"0 — Sem náusea/vômito"},
-{v:"1", t:"1 — Leve náusea, sem vômito"},
-{v:"4", t:"4 — Náusea intermitente com ânsia"},
-{v:"7", t:"7 — Náusea constante, vômitos"},
+{tipo:"select", id:"nausea", label:"Náusea/vômito", opts:[
+{val:"0", label:"0 — Sem náusea/vômito"},
+{val:"1", label:"1 — Leve náusea, sem vômito"},
+{val:"4", label:"4 — Náusea intermitente com ânsia"},
+{val:"7", label:"7 — Náusea constante, vômitos"},
 ]},
-{tipo:"sel", id:"tremor", label:"Tremor (braços estendidos, dedos abertos)", opcoes:[
-{v:"0", t:"0 — Sem tremor"},
-{v:"1", t:"1 — Não-visível, sentido na ponta dos dedos"},
-{v:"4", t:"4 — Moderado, com braços estendidos"},
-{v:"7", t:"7 — Severo, mesmo sem braços estendidos"},
+{tipo:"select", id:"tremor", label:"Tremor (braços estendidos, dedos abertos)", opts:[
+{val:"0", label:"0 — Sem tremor"},
+{val:"1", label:"1 — Não-visível, sentido na ponta dos dedos"},
+{val:"4", label:"4 — Moderado, com braços estendidos"},
+{val:"7", label:"7 — Severo, mesmo sem braços estendidos"},
 ]},
-{tipo:"sel", id:"sud", label:"Sudorese paroxística", opcoes:[
-{v:"0", t:"0 — Pele seca"},
-{v:"1", t:"1 — Umidade palmar visível"},
-{v:"4", t:"4 — Gotículas óbvias na testa"},
-{v:"7", t:"7 — Sudorese profusa"},
+{tipo:"select", id:"sud", label:"Sudorese paroxística", opts:[
+{val:"0", label:"0 — Pele seca"},
+{val:"1", label:"1 — Umidade palmar visível"},
+{val:"4", label:"4 — Gotículas óbvias na testa"},
+{val:"7", label:"7 — Sudorese profusa"},
 ]},
-{tipo:"sel", id:"ans", label:"Ansiedade", opcoes:[
-{v:"0", t:"0 — Sem ansiedade"},
-{v:"1", t:"1 — Levemente ansioso"},
-{v:"4", t:"4 — Moderadamente ansioso"},
-{v:"7", t:"7 — Pânico agudo, similar a reação esquizofrênica"},
+{tipo:"select", id:"ans", label:"Ansiedade", opts:[
+{val:"0", label:"0 — Sem ansiedade"},
+{val:"1", label:"1 — Levemente ansioso"},
+{val:"4", label:"4 — Moderadamente ansioso"},
+{val:"7", label:"7 — Pânico agudo, similar a reação esquizofrênica"},
 ]},
-{tipo:"sel", id:"agit", label:"Agitação", opcoes:[
-{v:"0", t:"0 — Atividade normal"},
-{v:"1", t:"1 — Inquietação leve"},
-{v:"4", t:"4 — Moderadamente inquieto"},
-{v:"7", t:"7 — Andando, debatendo-se"},
+{tipo:"select", id:"agit", label:"Agitação", opts:[
+{val:"0", label:"0 — Atividade normal"},
+{val:"1", label:"1 — Inquietação leve"},
+{val:"4", label:"4 — Moderadamente inquieto"},
+{val:"7", label:"7 — Andando, debatendo-se"},
 ]},
-{tipo:"sel", id:"tac", label:"Distúrbios táteis", opcoes:[
-{v:"0", t:"0 — Nenhum"},
-{v:"1", t:"1 — Leve prurido/parestesia"},
-{v:"4", t:"4 — Alucinações táteis moderadas"},
-{v:"7", t:"7 — Alucinações táteis contínuas"},
+{tipo:"select", id:"tac", label:"Distúrbios táteis", opts:[
+{val:"0", label:"0 — Nenhum"},
+{val:"1", label:"1 — Leve prurido/parestesia"},
+{val:"4", label:"4 — Alucinações táteis moderadas"},
+{val:"7", label:"7 — Alucinações táteis contínuas"},
 ]},
-{tipo:"sel", id:"aud", label:"Distúrbios auditivos", opcoes:[
-{v:"0", t:"0 — Não presentes"},
-{v:"1", t:"1 — Sensibilidade leve"},
-{v:"4", t:"4 — Alucinações moderadas"},
-{v:"7", t:"7 — Alucinações contínuas"},
+{tipo:"select", id:"aud", label:"Distúrbios auditivos", opts:[
+{val:"0", label:"0 — Não presentes"},
+{val:"1", label:"1 — Sensibilidade leve"},
+{val:"4", label:"4 — Alucinações moderadas"},
+{val:"7", label:"7 — Alucinações contínuas"},
 ]},
-{tipo:"sel", id:"vis", label:"Distúrbios visuais", opcoes:[
-{v:"0", t:"0 — Não presentes"},
-{v:"1", t:"1 — Sensibilidade leve à luz"},
-{v:"4", t:"4 — Alucinações moderadas"},
-{v:"7", t:"7 — Alucinações contínuas"},
+{tipo:"select", id:"vis", label:"Distúrbios visuais", opts:[
+{val:"0", label:"0 — Não presentes"},
+{val:"1", label:"1 — Sensibilidade leve à luz"},
+{val:"4", label:"4 — Alucinações moderadas"},
+{val:"7", label:"7 — Alucinações contínuas"},
 ]},
-{tipo:"sel", id:"cef", label:"Cefaleia", opcoes:[
-{v:"0", t:"0 — Não presente"},
-{v:"1", t:"1 — Muito leve"},
-{v:"4", t:"4 — Moderadamente intensa"},
-{v:"7", t:"7 — Extremamente intensa"},
+{tipo:"select", id:"cef", label:"Cefaleia", opts:[
+{val:"0", label:"0 — Não presente"},
+{val:"1", label:"1 — Muito leve"},
+{val:"4", label:"4 — Moderadamente intensa"},
+{val:"7", label:"7 — Extremamente intensa"},
 ]},
-{tipo:"sel", id:"orient", label:"Orientação/sensorium", opcoes:[
-{v:"0", t:"0 — Orientado, soma série"},
-{v:"1", t:"1 — Não consegue somar, incerto da data"},
-{v:"2", t:"2 — Desorientado em data (<2 dias)"},
-{v:"3", t:"3 — Desorientado em data (>2 dias)"},
-{v:"4", t:"4 — Desorientado em lugar/pessoa"},
+{tipo:"select", id:"orient", label:"Orientação/sensorium", opts:[
+{val:"0", label:"0 — Orientado, soma série"},
+{val:"1", label:"1 — Não consegue somar, incerto da data"},
+{val:"2", label:"2 — Desorientado em data (<2 dias)"},
+{val:"3", label:"3 — Desorientado em data (>2 dias)"},
+{val:"4", label:"4 — Desorientado em lugar/pessoa"},
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["nausea","tremor","sud","ans","agit","tac","aud","vis","cef","orient"]
     .reduce((acc,k) => acc + parseInt(v[k]||0), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<8) return {risco:`${s} — Abstinência LEVE`, acao:"Sem necessidade de tratamento farmacológico. Vigilância clínica. Reavaliar 4-8h. Hidratação + tiamina 100 mg IV/IM/d (prevenir Wernicke).", cor:"ok"};
   if(s<=15) return {risco:`${s} — Abstinência MODERADA`, acao:"Iniciar BZD: Diazepam 10-20 mg VO 4/4h ou Lorazepam 2-4 mg VO/IV 4/4h. Tiamina 100 mg/d. Reavaliar CIWA cada 1-2h. Considerar internação.", cor:"warn"};
   return {risco:`${s} — Abstinência GRAVE (risco delirium tremens)`, acao:"INTERNAÇÃO. BZD IV: Diazepam 10-20 mg IV cada 5-15 min até calmar, ou Lorazepam 2-4 mg IV. UTI se: instabilidade, convulsão, alucinose intensa, delirium tremens estabelecido. Tiamina 500 mg IV 8/8h × 2-3 dias.", cor:"crit"};
@@ -8546,6 +8548,7 @@ fields:[
 {tipo:"bool", id:"f4", label:"FEATURE 4 — ALTERAÇÃO DO NÍVEL DE CONSCIÊNCIA (RASS ≠ 0)"},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   // Codificação binária: F1, F2, F3, F4 → 1 bit cada
   let code = 0;
   if(v.f1) code |= 8;
@@ -8555,6 +8558,7 @@ calc:function(v){
   return code;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   const f1 = !!(s & 8), f2 = !!(s & 4), f3 = !!(s & 2), f4 = !!(s & 1);
   // Delirium: F1 + F2 + (F3 OU F4)
   if(f1 && f2 && (f3 || f4)) {
@@ -8571,57 +8575,59 @@ interp:function(s){
 {id:"nihss", nome:"NIHSS — National Institutes of Health Stroke Scale", sis:"neuro",
 desc:"Escala completa para gravidade de AVC isquêmico. 11 itens, total 0-42. Decisão de trombólise + monitoramento evolutivo.",
 fields:[
-{tipo:"sel", id:"1a", label:"1a. Nível de consciência", opcoes:[
-{v:"0", t:"0 — Alerta"},{v:"1", t:"1 — Sonolento (responde a estímulo verbal)"},{v:"2", t:"2 — Estuporoso (responde a estímulo doloroso)"},{v:"3", t:"3 — Coma (sem resposta ou reflexa)"}
+{tipo:"select", id:"1a", label:"1a. Nível de consciência", opts:[
+{val:"0", label:"0 — Alerta"},{val:"1", label:"1 — Sonolento (responde a estímulo verbal)"},{val:"2", label:"2 — Estuporoso (responde a estímulo doloroso)"},{val:"3", label:"3 — Coma (sem resposta ou reflexa)"}
 ]},
-{tipo:"sel", id:"1b", label:"1b. Perguntas (mês atual, idade)", opcoes:[
-{v:"0", t:"0 — Ambas corretas"},{v:"1", t:"1 — 1 correta"},{v:"2", t:"2 — Nenhuma correta"}
+{tipo:"select", id:"1b", label:"1b. Perguntas (mês atual, idade)", opts:[
+{val:"0", label:"0 — Ambas corretas"},{val:"1", label:"1 — 1 correta"},{val:"2", label:"2 — Nenhuma correta"}
 ]},
-{tipo:"sel", id:"1c", label:"1c. Comandos (abrir/fechar olhos, abrir/fechar mão não-parética)", opcoes:[
-{v:"0", t:"0 — Ambos corretos"},{v:"1", t:"1 — 1 correto"},{v:"2", t:"2 — Nenhum correto"}
+{tipo:"select", id:"1c", label:"1c. Comandos (abrir/fechar olhos, abrir/fechar mão não-parética)", opts:[
+{val:"0", label:"0 — Ambos corretos"},{val:"1", label:"1 — 1 correto"},{val:"2", label:"2 — Nenhum correto"}
 ]},
-{tipo:"sel", id:"2", label:"2. Olhar conjugado", opcoes:[
-{v:"0", t:"0 — Normal"},{v:"1", t:"1 — Paralisia parcial do olhar"},{v:"2", t:"2 — Desvio forçado/paralisia total"}
+{tipo:"select", id:"2", label:"2. Olhar conjugado", opts:[
+{val:"0", label:"0 — Normal"},{val:"1", label:"1 — Paralisia parcial do olhar"},{val:"2", label:"2 — Desvio forçado/paralisia total"}
 ]},
-{tipo:"sel", id:"3", label:"3. Campos visuais", opcoes:[
-{v:"0", t:"0 — Sem perda visual"},{v:"1", t:"1 — Hemianopsia parcial"},{v:"2", t:"2 — Hemianopsia completa"},{v:"3", t:"3 — Hemianopsia bilateral (cegueira)"}
+{tipo:"select", id:"3", label:"3. Campos visuais", opts:[
+{val:"0", label:"0 — Sem perda visual"},{val:"1", label:"1 — Hemianopsia parcial"},{val:"2", label:"2 — Hemianopsia completa"},{val:"3", label:"3 — Hemianopsia bilateral (cegueira)"}
 ]},
-{tipo:"sel", id:"4", label:"4. Paralisia facial", opcoes:[
-{v:"0", t:"0 — Movimentos simétricos"},{v:"1", t:"1 — Paralisia menor (apagamento sulco)"},{v:"2", t:"2 — Paralisia parcial (face inferior)"},{v:"3", t:"3 — Paralisia completa unilateral/bilateral"}
+{tipo:"select", id:"4", label:"4. Paralisia facial", opts:[
+{val:"0", label:"0 — Movimentos simétricos"},{val:"1", label:"1 — Paralisia menor (apagamento sulco)"},{val:"2", label:"2 — Paralisia parcial (face inferior)"},{val:"3", label:"3 — Paralisia completa unilateral/bilateral"}
 ]},
-{tipo:"sel", id:"5a", label:"5a. Motor MS esquerdo (extensão 10s)", opcoes:[
-{v:"0", t:"0 — Sem queda"},{v:"1", t:"1 — Queda em <10s, não atinge cama"},{v:"2", t:"2 — Algum esforço contra gravidade"},{v:"3", t:"3 — Sem esforço contra gravidade"},{v:"4", t:"4 — Sem movimento"}
+{tipo:"select", id:"5a", label:"5a. Motor MS esquerdo (extensão 10s)", opts:[
+{val:"0", label:"0 — Sem queda"},{val:"1", label:"1 — Queda em <10s, não atinge cama"},{val:"2", label:"2 — Algum esforço contra gravidade"},{val:"3", label:"3 — Sem esforço contra gravidade"},{val:"4", label:"4 — Sem movimento"}
 ]},
-{tipo:"sel", id:"5b", label:"5b. Motor MS direito", opcoes:[
-{v:"0", t:"0 — Sem queda"},{v:"1", t:"1"},{v:"2", t:"2"},{v:"3", t:"3"},{v:"4", t:"4 — Sem movimento"}
+{tipo:"select", id:"5b", label:"5b. Motor MS direito", opts:[
+{val:"0", label:"0 — Sem queda"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},{val:"4", label:"4 — Sem movimento"}
 ]},
-{tipo:"sel", id:"6a", label:"6a. Motor MI esquerdo (30° por 5s)", opcoes:[
-{v:"0", t:"0 — Sem queda"},{v:"1", t:"1"},{v:"2", t:"2"},{v:"3", t:"3"},{v:"4", t:"4 — Sem movimento"}
+{tipo:"select", id:"6a", label:"6a. Motor MI esquerdo (30° por 5s)", opts:[
+{val:"0", label:"0 — Sem queda"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},{val:"4", label:"4 — Sem movimento"}
 ]},
-{tipo:"sel", id:"6b", label:"6b. Motor MI direito", opcoes:[
-{v:"0", t:"0 — Sem queda"},{v:"1", t:"1"},{v:"2", t:"2"},{v:"3", t:"3"},{v:"4", t:"4 — Sem movimento"}
+{tipo:"select", id:"6b", label:"6b. Motor MI direito", opts:[
+{val:"0", label:"0 — Sem queda"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},{val:"4", label:"4 — Sem movimento"}
 ]},
-{tipo:"sel", id:"7", label:"7. Ataxia de membros (dedo-nariz, calcanhar-joelho)", opcoes:[
-{v:"0", t:"0 — Sem ataxia"},{v:"1", t:"1 — Em 1 membro"},{v:"2", t:"2 — Em 2 membros"}
+{tipo:"select", id:"7", label:"7. Ataxia de membros (dedo-nariz, calcanhar-joelho)", opts:[
+{val:"0", label:"0 — Sem ataxia"},{val:"1", label:"1 — Em 1 membro"},{val:"2", label:"2 — Em 2 membros"}
 ]},
-{tipo:"sel", id:"8", label:"8. Sensibilidade", opcoes:[
-{v:"0", t:"0 — Normal"},{v:"1", t:"1 — Perda leve a moderada"},{v:"2", t:"2 — Perda severa/total"}
+{tipo:"select", id:"8", label:"8. Sensibilidade", opts:[
+{val:"0", label:"0 — Normal"},{val:"1", label:"1 — Perda leve a moderada"},{val:"2", label:"2 — Perda severa/total"}
 ]},
-{tipo:"sel", id:"9", label:"9. Linguagem (afasia)", opcoes:[
-{v:"0", t:"0 — Normal"},{v:"1", t:"1 — Afasia leve a moderada"},{v:"2", t:"2 — Afasia grave"},{v:"3", t:"3 — Mutismo / afasia global"}
+{tipo:"select", id:"9", label:"9. Linguagem (afasia)", opts:[
+{val:"0", label:"0 — Normal"},{val:"1", label:"1 — Afasia leve a moderada"},{val:"2", label:"2 — Afasia grave"},{val:"3", label:"3 — Mutismo / afasia global"}
 ]},
-{tipo:"sel", id:"10", label:"10. Disartria", opcoes:[
-{v:"0", t:"0 — Normal"},{v:"1", t:"1 — Leve a moderada (entendível)"},{v:"2", t:"2 — Grave (ininteligível)"}
+{tipo:"select", id:"10", label:"10. Disartria", opts:[
+{val:"0", label:"0 — Normal"},{val:"1", label:"1 — Leve a moderada (entendível)"},{val:"2", label:"2 — Grave (ininteligível)"}
 ]},
-{tipo:"sel", id:"11", label:"11. Extinção / negligência", opcoes:[
-{v:"0", t:"0 — Sem"},{v:"1", t:"1 — Em uma modalidade"},{v:"2", t:"2 — Em ≥2 modalidades"}
+{tipo:"select", id:"11", label:"11. Extinção / negligência", opts:[
+{val:"0", label:"0 — Sem"},{val:"1", label:"1 — Em uma modalidade"},{val:"2", label:"2 — Em ≥2 modalidades"}
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["1a","1b","1c","2","3","4","5a","5b","6a","6b","7","8","9","10","11"]
     .reduce((acc,k) => acc + parseInt(v[k]||0), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:`NIHSS ${s} — Sem déficit`, acao:"Sem evidência de AVC clinicamente significativo. Investigar diagnóstico diferencial (TIA, migrânea, hipoglicemia).", cor:"ok"};
   if(s<=4) return {risco:`NIHSS ${s} — AVC LEVE`, acao:"AVC menor. Trombólise se elegível (sintomas incapacitantes, dentro de 4,5h, sem CI). Considerar TIA. AAS após 24h de exclusão de hemorragia.", cor:"info"};
   if(s<=15) return {risco:`NIHSS ${s} — AVC MODERADO`, acao:"INDICAÇÃO de trombólise IV (alteplase 0,9 mg/kg, máx 90 mg) se <4,5h + sem CI. Considerar trombectomia mecânica se grande artéria + <24h em centro especializado.", cor:"warn"};
@@ -8638,14 +8644,15 @@ fields:[
 {tipo:"num", id:"fc", label:"FC (bpm)", min:20, max:250, step:1},
 {tipo:"num", id:"fr", label:"FR (irpm)", min:5, max:50, step:1},
 {tipo:"num", id:"temp", label:"Temperatura (°C)", min:32, max:42, step:0.1},
-{tipo:"sel", id:"avpu", label:"Nível de consciência (AVPU)", opcoes:[
-{v:"0", t:"A — Alerta"},
-{v:"1", t:"V — Responde à voz"},
-{v:"2", t:"P — Responde à dor"},
-{v:"3", t:"U — Não responde"},
+{tipo:"select", id:"avpu", label:"Nível de consciência (AVPU)", opts:[
+{val:"0", label:"A — Alerta"},
+{val:"1", label:"V — Responde à voz"},
+{val:"2", label:"P — Responde à dor"},
+{val:"3", label:"U — Não responde"},
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   const pas = parseInt(v.pas||120);
   const fc = parseInt(v.fc||80);
   const fr = parseInt(v.fr||16);
@@ -8677,6 +8684,7 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=2) return {risco:`MEWS ${s} — Baixo risco`, acao:"Reavaliação rotineira. Manter monitorização padrão.", cor:"ok"};
   if(s<=3) return {risco:`MEWS ${s} — Risco moderado`, acao:"Reavaliar em 1-2h. Comunicar enfermagem. Considerar avaliação médica.", cor:"info"};
   if(s<=4) return {risco:`MEWS ${s} — Alerta`, acao:"AVALIAÇÃO MÉDICA imediata. Vigilância intensiva. Considerar transferência para área mais monitorada.", cor:"warn"};
@@ -8693,12 +8701,13 @@ fields:[
 {tipo:"bool", id:"o2", label:"Em suplementação de O2 (não em ar ambiente)"},
 {tipo:"num", id:"pas", label:"PAS (mmHg)", min:40, max:250, step:1},
 {tipo:"num", id:"fc", label:"FC (bpm)", min:20, max:250, step:1},
-{tipo:"sel", id:"consc", label:"Consciência", opcoes:[
-{v:"0", t:"Alerta"},{v:"3", t:"Confuso novo / V / P / U"}
+{tipo:"select", id:"consc", label:"Consciência", opts:[
+{val:"0", label:"Alerta"},{val:"3", label:"Confuso novo / V / P / U"}
 ]},
 {tipo:"num", id:"temp", label:"Temperatura (°C)", min:32, max:42, step:0.1},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   const fr = parseInt(v.fr||16);
   const spo2 = parseInt(v.spo2||98);
   const pas = parseInt(v.pas||120);
@@ -8738,6 +8747,7 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:`NEWS2 ${s} — Baixo risco`, acao:"Avaliação rotineira (12/12h em enfermaria).", cor:"ok"};
   if(s<=4) return {risco:`NEWS2 ${s} — Baixo risco`, acao:"Reavaliação cada 4-6h. Comunicar enfermagem. Avaliação médica se único parâmetro = 3 pontos.", cor:"info"};
   if(s<=6) return {risco:`NEWS2 ${s} — Risco médio`, acao:"Avaliação MÉDICA URGENTE (em até 1h). Monitorização cada 1h. Considerar transferência para área monitorizada.", cor:"warn"};
@@ -8749,30 +8759,31 @@ interp:function(s){
 {id:"gcs", nome:"Glasgow Coma Scale (GCS) — Interativo", sis:"neuro",
 desc:"Escala de coma de Glasgow. 3 componentes: ocular, verbal, motor. Total 3-15. Padrão de avaliação neurológica e prognóstico em TCE.",
 fields:[
-{tipo:"sel", id:"e", label:"Abertura ocular (E)", opcoes:[
-{v:"4", t:"4 — Espontânea"},
-{v:"3", t:"3 — Ao comando verbal"},
-{v:"2", t:"2 — À dor"},
-{v:"1", t:"1 — Sem abertura"},
+{tipo:"select", id:"e", label:"Abertura ocular (E)", opts:[
+{val:"4", label:"4 — Espontânea"},
+{val:"3", label:"3 — Ao comando verbal"},
+{val:"2", label:"2 — À dor"},
+{val:"1", label:"1 — Sem abertura"},
 ]},
-{tipo:"sel", id:"v", label:"Resposta verbal (V)", opcoes:[
-{v:"5", t:"5 — Orientado"},
-{v:"4", t:"4 — Confuso"},
-{v:"3", t:"3 — Palavras inapropriadas"},
-{v:"2", t:"2 — Sons incompreensíveis"},
-{v:"1", t:"1 — Nenhuma resposta"},
-{v:"-1", t:"T — Intubado (não avaliável)"},
+{tipo:"select", id:"v", label:"Resposta verbal (V)", opts:[
+{val:"5", label:"5 — Orientado"},
+{val:"4", label:"4 — Confuso"},
+{val:"3", label:"3 — Palavras inapropriadas"},
+{val:"2", label:"2 — Sons incompreensíveis"},
+{val:"1", label:"1 — Nenhuma resposta"},
+{val:"-1", label:"T — Intubado (não avaliável)"},
 ]},
-{tipo:"sel", id:"m", label:"Resposta motora (M)", opcoes:[
-{v:"6", t:"6 — Obedece a comandos"},
-{v:"5", t:"5 — Localiza dor"},
-{v:"4", t:"4 — Retirada à dor"},
-{v:"3", t:"3 — Flexão anormal (decorticação)"},
-{v:"2", t:"2 — Extensão anormal (descerebração)"},
-{v:"1", t:"1 — Sem resposta motora"},
+{tipo:"select", id:"m", label:"Resposta motora (M)", opts:[
+{val:"6", label:"6 — Obedece a comandos"},
+{val:"5", label:"5 — Localiza dor"},
+{val:"4", label:"4 — Retirada à dor"},
+{val:"3", label:"3 — Flexão anormal (decorticação)"},
+{val:"2", label:"2 — Extensão anormal (descerebração)"},
+{val:"1", label:"1 — Sem resposta motora"},
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   const e = parseInt(v.e||0);
   const vS = parseInt(v.v||0);
   const m = parseInt(v.m||0);
@@ -8781,6 +8792,7 @@ calc:function(v){
   return e + vS + m;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s>=13) return {risco:`GCS ${s} — TCE LEVE`, acao:"Manejo conforme Canadian CT Head Rule. Observação 4-6h se TC indicada e normal. Alta com orientações se baixo risco.", cor:"ok"};
   if(s>=9) return {risco:`GCS ${s} — TCE MODERADO`, acao:"TC crânio OBRIGATÓRIA. Internação para observação. Reavaliação neurológica 1/1h. Avaliar IOT se queda do GCS.", cor:"warn"};
   return {risco:`GCS ${s} — TCE GRAVE`, acao:"IOT IMEDIATA (proteção VA) com sequência rápida + Cardiomonitorização + Acesso venoso + TC + Neurocirurgia. UTI. Manter PaCO2 35-40, PAS ≥110, SpO2 ≥94%, evitar hipoglicemia.", cor:"crit"};
@@ -8791,36 +8803,38 @@ interp:function(s){
 {id:"apgar", nome:"APGAR — Avaliação do Recém-Nascido", sis:"gest",
 desc:"Vitalidade do RN. Avaliar 1' e 5' após nascimento (e 10' se 5'<7). NÃO determina se ressuscitar (decisão clínica imediata).",
 fields:[
-{tipo:"sel", id:"fc", label:"Frequência cardíaca", opcoes:[
-{v:"0", t:"0 — Ausente"},
-{v:"1", t:"1 — < 100 bpm"},
-{v:"2", t:"2 — ≥ 100 bpm"},
+{tipo:"select", id:"fc", label:"Frequência cardíaca", opts:[
+{val:"0", label:"0 — Ausente"},
+{val:"1", label:"1 — < 100 bpm"},
+{val:"2", label:"2 — ≥ 100 bpm"},
 ]},
-{tipo:"sel", id:"resp", label:"Esforço respiratório", opcoes:[
-{v:"0", t:"0 — Ausente"},
-{v:"1", t:"1 — Lento, irregular, fraco"},
-{v:"2", t:"2 — Bom choro, vigoroso"},
+{tipo:"select", id:"resp", label:"Esforço respiratório", opts:[
+{val:"0", label:"0 — Ausente"},
+{val:"1", label:"1 — Lento, irregular, fraco"},
+{val:"2", label:"2 — Bom choro, vigoroso"},
 ]},
-{tipo:"sel", id:"tonus", label:"Tônus muscular", opcoes:[
-{v:"0", t:"0 — Flácido"},
-{v:"1", t:"1 — Alguma flexão das extremidades"},
-{v:"2", t:"2 — Movimentos ativos"},
+{tipo:"select", id:"tonus", label:"Tônus muscular", opts:[
+{val:"0", label:"0 — Flácido"},
+{val:"1", label:"1 — Alguma flexão das extremidades"},
+{val:"2", label:"2 — Movimentos ativos"},
 ]},
-{tipo:"sel", id:"reflex", label:"Irritabilidade reflexa (à aspiração/estímulo)", opcoes:[
-{v:"0", t:"0 — Sem resposta"},
-{v:"1", t:"1 — Careta"},
-{v:"2", t:"2 — Tosse, espirro, choro vigoroso"},
+{tipo:"select", id:"reflex", label:"Irritabilidade reflexa (à aspiração/estímulo)", opts:[
+{val:"0", label:"0 — Sem resposta"},
+{val:"1", label:"1 — Careta"},
+{val:"2", label:"2 — Tosse, espirro, choro vigoroso"},
 ]},
-{tipo:"sel", id:"cor", label:"Cor", opcoes:[
-{v:"0", t:"0 — Cianose central ou palidez"},
-{v:"1", t:"1 — Acrocianose (corpo rosado, extremidades cianóticas)"},
-{v:"2", t:"2 — Totalmente rosado"},
+{tipo:"select", id:"cor", label:"Cor", opts:[
+{val:"0", label:"0 — Cianose central ou palidez"},
+{val:"1", label:"1 — Acrocianose (corpo rosado, extremidades cianóticas)"},
+{val:"2", label:"2 — Totalmente rosado"},
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["fc","resp","tonus","reflex","cor"].reduce((s,k)=>s+parseInt(v[k]||0), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s>=7) return {risco:`APGAR ${s} — Vitalidade adequada`, acao:"Cuidados de rotina: secar, contato pele-a-pele, clampear cordão 1-3 min, amamentar.", cor:"ok"};
   if(s>=4) return {risco:`APGAR ${s} — Depressão moderada`, acao:"Ventilação com máscara + O2. Reavaliar 30s. Persistência → considerar IOT. Aquecimento. Não atrasar reanimação por APGAR.", cor:"warn"};
   return {risco:`APGAR ${s} — Depressão grave`, acao:"REANIMAÇÃO NEONATAL completa: VPP + compressões torácicas se FC <60 + adrenalina 0,01-0,03 mg/kg IV/IO se FC<60 após 30s VPP+compressões. Não atrasar por avaliar.", cor:"crit"};
@@ -8838,6 +8852,7 @@ fields:[
 {tipo:"bool", id:"dial", label:"Diálise em 2x na última semana"},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   let bili = Math.max(1, parseFloat(v.bili||1));
   let inr = Math.max(1, parseFloat(v.inr||1));
   let cr = parseFloat(v.cr||1);
@@ -8860,6 +8875,7 @@ calc:function(v){
   return Math.min(40, Math.round(meld));
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<10) return {risco:`MELD-Na ${s} — Baixo risco`, acao:"Mortalidade 3m ~2%. Acompanhamento ambulatorial.", cor:"ok"};
   if(s<20) return {risco:`MELD-Na ${s} — Moderado`, acao:"Mortalidade 3m ~6-20%. Avaliar para transplante. Otimizar.", cor:"info"};
   if(s<30) return {risco:`MELD-Na ${s} — Alto`, acao:"Mortalidade 3m ~20-50%. PRIORIDADE para transplante. Internação se descompensado.", cor:"warn"};
@@ -8871,26 +8887,28 @@ interp:function(s){
 {id:"child-pugh", nome:"Child-Pugh — Cirrose", sis:"gi",
 desc:"Classificação clássica de gravidade da cirrose. A (5-6), B (7-9), C (10-15). Cirurgia abdominal, transplante, prognóstico.",
 fields:[
-{tipo:"sel", id:"bili", label:"Bilirrubina (mg/dL)", opcoes:[
-{v:"1", t:"1 — < 2"},{v:"2", t:"2 — 2-3"},{v:"3", t:"3 — > 3"}
+{tipo:"select", id:"bili", label:"Bilirrubina (mg/dL)", opts:[
+{val:"1", label:"1 — < 2"},{val:"2", label:"2 — 2-3"},{val:"3", label:"3 — > 3"}
 ]},
-{tipo:"sel", id:"alb", label:"Albumina (g/dL)", opcoes:[
-{v:"1", t:"1 — > 3,5"},{v:"2", t:"2 — 2,8-3,5"},{v:"3", t:"3 — < 2,8"}
+{tipo:"select", id:"alb", label:"Albumina (g/dL)", opts:[
+{val:"1", label:"1 — > 3,5"},{val:"2", label:"2 — 2,8-3,5"},{val:"3", label:"3 — < 2,8"}
 ]},
-{tipo:"sel", id:"inr", label:"INR", opcoes:[
-{v:"1", t:"1 — < 1,7"},{v:"2", t:"2 — 1,7-2,3"},{v:"3", t:"3 — > 2,3"}
+{tipo:"select", id:"inr", label:"INR", opts:[
+{val:"1", label:"1 — < 1,7"},{val:"2", label:"2 — 1,7-2,3"},{val:"3", label:"3 — > 2,3"}
 ]},
-{tipo:"sel", id:"asc", label:"Ascite", opcoes:[
-{v:"1", t:"1 — Ausente"},{v:"2", t:"2 — Leve (controlada com diurético)"},{v:"3", t:"3 — Moderada-grave (refratária)"}
+{tipo:"select", id:"asc", label:"Ascite", opts:[
+{val:"1", label:"1 — Ausente"},{val:"2", label:"2 — Leve (controlada com diurético)"},{val:"3", label:"3 — Moderada-grave (refratária)"}
 ]},
-{tipo:"sel", id:"enc", label:"Encefalopatia", opcoes:[
-{v:"1", t:"1 — Ausente"},{v:"2", t:"2 — Grau I-II (leve)"},{v:"3", t:"3 — Grau III-IV (grave)"}
+{tipo:"select", id:"enc", label:"Encefalopatia", opts:[
+{val:"1", label:"1 — Ausente"},{val:"2", label:"2 — Grau I-II (leve)"},{val:"3", label:"3 — Grau III-IV (grave)"}
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["bili","alb","inr","asc","enc"].reduce((s,k)=>s+parseInt(v[k]||1), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=6) return {risco:`Child A (${s} pontos)`, acao:"Sobrevida 1 ano ~100%. Cirurgia abdominal de baixo-moderado risco aceitável. Acompanhamento clínico.", cor:"ok"};
   if(s<=9) return {risco:`Child B (${s} pontos)`, acao:"Sobrevida 1 ano ~80%, 2 anos ~60%. CIRURGIA com risco elevado. Avaliar transplante se descompensação. Otimizar nutrição, ascite, encefalopatia.", cor:"warn"};
   return {risco:`Child C (${s} pontos)`, acao:"Sobrevida 1 ano ~45%, 2 anos ~35%. EVITAR cirurgia eletiva (mortalidade muito alta). Prioridade para transplante. UTI se descompensado.", cor:"crit"};
@@ -8901,31 +8919,33 @@ interp:function(s){
 {id:"hit-4t", nome:"HIT 4T Score — Trombocitopenia Induzida por Heparina", sis:"hemo",
 desc:"Probabilidade pré-teste de HIT (trombocitopenia induzida por heparina, tipo II) em paciente sob uso de heparina + plaquetopenia. Guia investigação e troca de anticoagulante.",
 fields:[
-{tipo:"sel", id:"throm", label:"Thrombocytopenia (queda)", opcoes:[
-{v:"0", t:"0 — Queda <30% OU contagem <10k"},
-{v:"1", t:"1 — Queda 30-50% OU contagem 10-19k"},
-{v:"2", t:"2 — Queda >50% E contagem ≥20k (sem outra causa óbvia)"},
+{tipo:"select", id:"throm", label:"Thrombocytopenia (queda)", opts:[
+{val:"0", label:"0 — Queda <30% OU contagem <10k"},
+{val:"1", label:"1 — Queda 30-50% OU contagem 10-19k"},
+{val:"2", label:"2 — Queda >50% E contagem ≥20k (sem outra causa óbvia)"},
 ]},
-{tipo:"sel", id:"timing", label:"Timing (queda em relação ao início heparina)", opcoes:[
-{v:"0", t:"0 — Queda <4 dias (sem exposição prévia recente)"},
-{v:"1", t:"1 — Queda >10 dias OU início não claro"},
-{v:"2", t:"2 — Queda 5-10 dias OU ≤1 dia após reexposição em últimos 30 dias"},
+{tipo:"select", id:"timing", label:"Timing (queda em relação ao início heparina)", opts:[
+{val:"0", label:"0 — Queda <4 dias (sem exposição prévia recente)"},
+{val:"1", label:"1 — Queda >10 dias OU início não claro"},
+{val:"2", label:"2 — Queda 5-10 dias OU ≤1 dia após reexposição em últimos 30 dias"},
 ]},
-{tipo:"sel", id:"throms", label:"Thrombosis (trombose ou outra sequela)", opcoes:[
-{v:"0", t:"0 — Nenhuma"},
-{v:"1", t:"1 — Trombose progressiva/recorrente, lesão cutânea não-necrótica, suspeita não-confirmada"},
-{v:"2", t:"2 — Nova trombose confirmada, necrose cutânea, reação aguda sistêmica pós-bolus IV de heparina"},
+{tipo:"select", id:"throms", label:"Thrombosis (trombose ou outra sequela)", opts:[
+{val:"0", label:"0 — Nenhuma"},
+{val:"1", label:"1 — Trombose progressiva/recorrente, lesão cutânea não-necrótica, suspeita não-confirmada"},
+{val:"2", label:"2 — Nova trombose confirmada, necrose cutânea, reação aguda sistêmica pós-bolus IV de heparina"},
 ]},
-{tipo:"sel", id:"other", label:"oTher causes de trombocitopenia", opcoes:[
-{v:"0", t:"0 — Outra causa DEFINIDA (sepse, drogas, MO)"},
-{v:"1", t:"1 — Possível outra causa"},
-{v:"2", t:"2 — Sem outra causa aparente"},
+{tipo:"select", id:"other", label:"oTher causes de trombocitopenia", opts:[
+{val:"0", label:"0 — Outra causa DEFINIDA (sepse, drogas, MO)"},
+{val:"1", label:"1 — Possível outra causa"},
+{val:"2", label:"2 — Sem outra causa aparente"},
 ]},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["throm","timing","throms","other"].reduce((s,k)=>s+parseInt(v[k]||0), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=3) return {risco:`Score ${s} — Baixa probabilidade (<5%)`, acao:"HIT improvável. Não suspender heparina rotineiramente. Investigar outras causas de plaquetopenia.", cor:"ok"};
   if(s<=5) return {risco:`Score ${s} — Probabilidade intermediária (10-30%)`, acao:"SUSPENDER heparina (HNF E HBPM) + iniciar anticoagulante alternativo: fondaparinux 7,5 mg SC/d OU argatroban OU bivalirudina. Solicitar PF4-anti-heparin antibody (ELISA). Confirmar com Serotonin Release Assay se ELISA+.", cor:"warn"};
   return {risco:`Score ${s} — Alta probabilidade (>50%)`, acao:"EMERGÊNCIA HEMATOLÓGICA. Suspender TODA heparina (incluindo flushes de acessos). Iniciar anticoagulante não-heparínico IMEDIATO (fondaparinux/argatroban). PF4 + Serotonin Release. NÃO USAR varfarina sem ponte (risco gangrena venosa). Hematologia.", cor:"crit"};
@@ -8945,6 +8965,7 @@ fields:[
 {tipo:"bool", id:"b3", label:"+ Incapacidade de sustentar peso (4 passos) imediatamente E na consulta"},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   // RX tornozelo se: A + (A1 OU A2)
   // RX pé se: B + (B1 OU B2 OU B3)
   let pts = 0;
@@ -8953,6 +8974,7 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:"RX NÃO indicado", acao:"Sem critérios Ottawa. Probabilidade de fratura clínica <2%. Manejo conservador: RICE (repouso, gelo, compressão, elevação), analgesia, retorno se piora. Reavaliar em 7 dias se persistência.", cor:"ok"};
   if(s===1) return {risco:"RX TORNOZELO indicado", acao:"Solicitar RX tornozelo AP + perfil + mortise. Avaliar maléolos, articulação tibiotalar.", cor:"warn"};
   if(s===2) return {risco:"RX PÉ indicado", acao:"Solicitar RX pé AP + perfil + oblíqua. Avaliar base do 5° MT, navicular, tarsais.", cor:"warn"};
@@ -8974,9 +8996,11 @@ fields:[
 {tipo:"bool", id:"h", label:"Uso de hormônio (estrogênio, anticoncepcional)"},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   return ["a","b","c","d","e","f","g","h"].reduce((s,k)=>s+(v[k]?1:0), 0);
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:"PERC NEGATIVO (todos critérios ausentes)", acao:"TEP EXCLUÍDO em paciente de baixa probabilidade pré-teste. Não solicitar D-dímero/angio-TC. Investigar outros diagnósticos.", cor:"ok"};
   return {risco:`PERC POSITIVO (${s}/8 critério${s>1?"s":""} presente${s>1?"s":""})`, acao:"PERC não exclui TEP. Prosseguir investigação: D-dímero ajustado idade (× 10 ng/mL se >50a). Se elevado → angio-TC pulmonar.", cor:"warn"};
 }
@@ -8992,14 +9016,15 @@ fields:[
 {tipo:"bool", id:"d", label:"Câncer ativo (+2)"},
 {tipo:"bool", id:"e", label:"Dor unilateral em MI (+3)"},
 {tipo:"bool", id:"f", label:"Hemoptise (+2)"},
-{tipo:"sel", id:"fc", label:"Frequência cardíaca", opcoes:[
-{v:"0", t:"0 — < 75 bpm"},
-{v:"3", t:"3 — 75-94 bpm"},
-{v:"5", t:"5 — ≥ 95 bpm"},
+{tipo:"select", id:"fc", label:"Frequência cardíaca", opts:[
+{val:"0", label:"0 — < 75 bpm"},
+{val:"3", label:"3 — 75-94 bpm"},
+{val:"5", label:"5 — ≥ 95 bpm"},
 ]},
 {tipo:"bool", id:"h", label:"Dor à palpação venosa profunda + edema unilateral (+4)"},
 ],
 calc:function(v){
+  if (Object.values(v).includes(null)) return NaN;
   let s = 0;
   if(v.a) s+=1; if(v.b) s+=3; if(v.c) s+=2; if(v.d) s+=2;
   if(v.e) s+=3; if(v.f) s+=2;
@@ -9008,6 +9033,7 @@ calc:function(v){
   return s;
 },
 interp:function(s){
+  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=3) return {risco:`Geneva ${s} — Baixa probabilidade (~8%)`, acao:"D-dímero ajustado por idade. Se neg → exclui TEP. Considerar PERC se score 0-1.", cor:"ok"};
   if(s<=10) return {risco:`Geneva ${s} — Probabilidade intermediária (~28%)`, acao:"D-dímero. Se positivo → angio-TC pulmonar. Considerar anticoagulação empírica se delay >4h em alto risco.", cor:"warn"};
   return {risco:`Geneva ${s} — Alta probabilidade (~74%)`, acao:"Angio-TC pulmonar DIRETO (não usar D-dímero — não exclui). Iniciar anticoagulação empírica enquanto aguarda exame.", cor:"crit"};
@@ -9386,7 +9412,7 @@ svg: `<svg viewBox="0 0 820 1180" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["tsv"] = {
 titulo: "Taquicardia Supraventricular",
 fonte: "AHA ACLS 2020; ESC SVT 2019",
-svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1020 980" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-tsv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9407,18 +9433,18 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="410" y="42" text-anchor="middle" class="f-tw">Taquicardia QRS estreito (&lt;120 ms)</text>
 <text x="410" y="60" text-anchor="middle" class="f-tw" style="font-size:11px">FC &gt; 150 bpm, regular</text>
 <line x1="410" y1="70" x2="410" y2="100" class="f-arr" marker-end="url(#arr-tsv)"/>
-<polygon points="410,105 630,170 410,235 190,170" class="f-dec"/>
+<polygon points="410,105 690,170 410,235 190,170" class="f-dec"/>
 <text x="410" y="160" text-anchor="middle" class="f-t">INSTÁVEL?</text>
 <text x="410" y="178" text-anchor="middle" class="f-ts">↓PA, dor torácica,</text>
 <text x="410" y="194" text-anchor="middle" class="f-ts">dispneia, ↓consciência</text>
-<line x1="630" y1="170" x2="730" y2="170" class="f-arr" marker-end="url(#arr-tsv)"/>
-<text x="680" y="162" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="600" y="190" width="200" height="120" class="f-crit"/>
-<text x="700" y="215" text-anchor="middle" class="f-tc">CARDIOVERSÃO</text>
-<text x="700" y="237" text-anchor="middle" class="f-ts">Sincronizada 50-100 J</text>
-<text x="700" y="255" text-anchor="middle" class="f-ts">Sedação se possível</text>
-<text x="700" y="275" text-anchor="middle" class="f-ts">(midazolam 0,05 mg/kg</text>
-<text x="700" y="290" text-anchor="middle" class="f-ts">+ fentanil 1 mcg/kg)</text>
+<line x1="760" y1="170" x2="920" y2="170" class="f-arr" marker-end="url(#arr-tsv)"/>
+<text x="870" y="162" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="730" y="190" width="200" height="120" class="f-crit"/>
+<text x="890" y="215" text-anchor="middle" class="f-tc">CARDIOVERSÃO</text>
+<text x="890" y="237" text-anchor="middle" class="f-ts">Sincronizada 50-100 J</text>
+<text x="890" y="255" text-anchor="middle" class="f-ts">Sedação se possível</text>
+<text x="890" y="275" text-anchor="middle" class="f-ts">(midazolam 0,05 mg/kg</text>
+<text x="890" y="290" text-anchor="middle" class="f-ts">+ fentanil 1 mcg/kg)</text>
 <line x1="410" y1="235" x2="410" y2="270" class="f-arr" marker-end="url(#arr-tsv)"/>
 <text x="380" y="255" text-anchor="end" class="f-no">NÃO</text>
 <rect x="220" y="275" width="380" height="80" class="f-warn"/>
@@ -9426,17 +9452,17 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="410" y="322" text-anchor="middle" class="f-ts">Valsalva modificada (60-80% sucesso)</text>
 <text x="410" y="340" text-anchor="middle" class="f-ts">Massagem do seio carotídeo (se sem sopro/AVC)</text>
 <line x1="410" y1="355" x2="410" y2="385" class="f-arr" marker-end="url(#arr-tsv)"/>
-<polygon points="410,390 600,440 410,490 220,440" class="f-dec"/>
+<polygon points="410,390 660,440 410,490 220,440" class="f-dec"/>
 <text x="410" y="438" text-anchor="middle" class="f-t">Reverteu?</text>
 <line x1="220" y1="440" x2="120" y2="440" class="f-arr" marker-end="url(#arr-tsv)"/>
 <text x="170" y="432" text-anchor="middle" class="f-no">NÃO</text>
-<line x1="600" y1="440" x2="700" y2="440" class="f-arr" marker-end="url(#arr-tsv)"/>
-<text x="650" y="432" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="620" y="480" width="180" height="100" class="f-ok"/>
-<text x="710" y="505" text-anchor="middle" class="f-tc">REVERTIDO</text>
-<text x="710" y="527" text-anchor="middle" class="f-ts">ECG 12 derivações</text>
-<text x="710" y="545" text-anchor="middle" class="f-ts">Observação 4-6h</text>
-<text x="710" y="563" text-anchor="middle" class="f-ts">Alta + cardiologista</text>
+<line x1="730" y1="440" x2="890" y2="440" class="f-arr" marker-end="url(#arr-tsv)"/>
+<text x="840" y="432" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="750" y="480" width="180" height="100" class="f-ok"/>
+<text x="900" y="505" text-anchor="middle" class="f-tc">REVERTIDO</text>
+<text x="900" y="527" text-anchor="middle" class="f-ts">ECG 12 derivações</text>
+<text x="900" y="545" text-anchor="middle" class="f-ts">Observação 4-6h</text>
+<text x="900" y="563" text-anchor="middle" class="f-ts">Alta + cardiologista</text>
 <rect x="20" y="500" width="200" height="120" class="f-rect"/>
 <text x="120" y="525" text-anchor="middle" class="f-tc">ADENOSINA</text>
 <text x="120" y="547" text-anchor="middle" class="f-ts">6 mg IV bolus rápido</text>
@@ -9444,8 +9470,6 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="120" y="583" text-anchor="middle" class="f-ts">→ 12 mg se falha</text>
 <text x="120" y="601" text-anchor="middle" class="f-ts">→ 12 mg 2ª dose</text>
 <line x1="120" y1="620" x2="120" y2="650" class="f-arr" marker-end="url(#arr-tsv)"/>
-<polygon points="120,655 310,705 120,755 -70,705" class="f-dec" style="display:none"/>
-<rect x="20" y="655" width="200" height="60" class="f-dec"/>
 <text x="120" y="680" text-anchor="middle" class="f-t">Reverteu?</text>
 <text x="120" y="700" text-anchor="middle" class="f-ts">após adenosina</text>
 <line x1="120" y1="715" x2="120" y2="745" class="f-arr" marker-end="url(#arr-tsv)"/>
@@ -9472,7 +9496,7 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 FLOWS["sca"] = {
 titulo: "IAM com Supra de ST",
 fonte: "Diretriz SBC SCA com Supra ST 2015 (atual.); ESC STEMI 2023",
-svg: `<svg viewBox="0 0 820 1020" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 900 1300" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-sca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9489,76 +9513,110 @@ svg: `<svg viewBox="0 0 820 1020" xmlns="http://www.w3.org/2000/svg" class="flow
 .f-yes{font:600 11px var(--font-mono);fill:var(--ok)}
 .f-no{font:600 11px var(--font-mono);fill:var(--accent)}
 </style>
-<rect x="220" y="20" width="380" height="60" class="f-start"/>
-<text x="410" y="45" text-anchor="middle" class="f-tw">Dor torácica ≤ 12h</text>
-<text x="410" y="65" text-anchor="middle" class="f-tw" style="font-size:11px">ECG 12d em ≤ 10 min da chegada</text>
-<line x1="410" y1="80" x2="410" y2="110" class="f-arr" marker-end="url(#arr-sca)"/>
-<polygon points="410,115 640,180 410,245 180,180" class="f-dec"/>
-<text x="410" y="170" text-anchor="middle" class="f-t">Supra ST ≥ 1 mm em 2</text>
-<text x="410" y="188" text-anchor="middle" class="f-t">contíguas (≥2 mm V2-V3)</text>
-<text x="410" y="208" text-anchor="middle" class="f-ts">ou BRE novo / supra aVR ≥ 1 mm?</text>
-<line x1="180" y1="180" x2="80" y2="180" class="f-arr" marker-end="url(#arr-sca)"/>
-<text x="130" y="172" text-anchor="middle" class="f-no">NÃO</text>
-<rect x="20" y="200" width="160" height="80" class="f-warn"/>
-<text x="100" y="225" text-anchor="middle" class="f-tc">SCAsSST?</text>
-<text x="100" y="245" text-anchor="middle" class="f-ts">Troponina seriada</text>
-<text x="100" y="263" text-anchor="middle" class="f-ts">Estratificar risco</text>
-<text x="100" y="278" text-anchor="middle" class="f-ts">(HEART, TIMI, GRACE)</text>
-<line x1="410" y1="245" x2="410" y2="275" class="f-arr" marker-end="url(#arr-sca)"/>
-<text x="430" y="265" class="f-yes">SIM</text>
-<rect x="180" y="280" width="460" height="100" class="f-crit"/>
-<text x="410" y="305" text-anchor="middle" class="f-t">MONABCH — IMEDIATO</text>
-<text x="410" y="328" text-anchor="middle" class="f-ts">AAS 300 mg mastigar + clopi 300mg/ticagrelor 180mg/prasugrel 60mg</text>
-<text x="410" y="346" text-anchor="middle" class="f-ts">Atorvastatina 80 mg • Enoxaparina 1 mg/kg SC ou HNF</text>
-<text x="410" y="364" text-anchor="middle" class="f-ts">O₂ se SpO₂ &lt; 90 • morfina só se dor refratária • β-bloq oral &lt; 24h</text>
-<line x1="410" y1="380" x2="410" y2="410" class="f-arr" marker-end="url(#arr-sca)"/>
-<polygon points="410,415 640,475 410,535 180,475" class="f-dec"/>
-<text x="410" y="465" text-anchor="middle" class="f-t">ICP disponível ≤ 120 min?</text>
-<text x="410" y="483" text-anchor="middle" class="f-ts">"door-to-balloon" alvo</text>
-<text x="410" y="501" text-anchor="middle" class="f-ts">≤ 90 min se já no hospital ICP</text>
-<line x1="640" y1="475" x2="740" y2="475" class="f-arr" marker-end="url(#arr-sca)"/>
-<text x="690" y="467" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="620" y="540" width="180" height="100" class="f-ok"/>
-<text x="710" y="565" text-anchor="middle" class="f-tc">ICP PRIMÁRIA</text>
-<text x="710" y="588" text-anchor="middle" class="f-ts">Hemodinâmica</text>
-<text x="710" y="606" text-anchor="middle" class="f-ts">Stent culprit lesion</text>
-<text x="710" y="624" text-anchor="middle" class="f-ts">DAPT 12 meses</text>
-<line x1="180" y1="475" x2="80" y2="475" class="f-arr" marker-end="url(#arr-sca)"/>
-<text x="130" y="467" text-anchor="middle" class="f-no">NÃO</text>
-<rect x="20" y="500" width="160" height="100" class="f-warn"/>
-<text x="100" y="525" text-anchor="middle" class="f-tc">FIBRINÓLISE</text>
-<text x="100" y="548" text-anchor="middle" class="f-ts">se &lt; 12h e</text>
-<text x="100" y="566" text-anchor="middle" class="f-ts">sem CI absoluta</text>
-<text x="100" y="584" text-anchor="middle" class="f-ts">Tenecteplase peso-ajustada</text>
-<text x="100" y="599" text-anchor="middle" class="f-ts">ou alteplase 15+50+35</text>
-<line x1="100" y1="600" x2="100" y2="640" class="f-arr" marker-end="url(#arr-sca)"/>
-<rect x="20" y="645" width="160" height="80" class="f-rect"/>
-<text x="100" y="670" text-anchor="middle" class="f-tc">CI fibrinólise</text>
-<text x="100" y="690" text-anchor="middle" class="f-ts">AVC h c/&lt;3m, qq AVC h</text>
-<text x="100" y="708" text-anchor="middle" class="f-ts">trauma craniano, sangr ativo</text>
-<text x="100" y="722" text-anchor="middle" class="f-ts">dissecção, PAS &gt; 180</text>
-<rect x="220" y="500" width="350" height="100" class="f-rect"/>
-<text x="395" y="525" text-anchor="middle" class="f-tc">CRITÉRIOS DE REPERFUSÃO</text>
-<text x="395" y="548" text-anchor="middle" class="f-ts">↓ ≥ 50% supra ST em 60-90 min</text>
-<text x="395" y="566" text-anchor="middle" class="f-ts">Alívio da dor</text>
-<text x="395" y="584" text-anchor="middle" class="f-ts">Ritmo idioventricular acelerado</text>
-<line x1="395" y1="600" x2="395" y2="640" class="f-arr" marker-end="url(#arr-sca)"/>
-<rect x="220" y="645" width="350" height="120" class="f-warn"/>
-<text x="395" y="670" text-anchor="middle" class="f-tc">ICP DE RESGATE / RX</text>
-<text x="395" y="690" text-anchor="middle" class="f-ts">Falha de fibrinólise → ICP em &lt; 2h</text>
-<text x="395" y="708" text-anchor="middle" class="f-ts">Sucesso → ICP em 2-24h (estratégia farmaco-invasiva)</text>
-<text x="395" y="728" text-anchor="middle" class="f-ts">CROSS: solicitar transferência ASAP</text>
-<text x="395" y="748" text-anchor="middle" class="f-ts">PA, ECG e dor monitorados continuamente</text>
-<line x1="710" y1="640" x2="710" y2="775" class="f-arr"/>
-<line x1="710" y1="775" x2="410" y2="775" class="f-arr"/>
-<line x1="395" y1="765" x2="395" y2="800" class="f-arr" marker-end="url(#arr-sca)"/>
-<rect x="180" y="805" width="460" height="120" class="f-ok"/>
-<text x="410" y="830" text-anchor="middle" class="f-tc">PÓS-IAM — ALTA</text>
-<text x="410" y="853" text-anchor="middle" class="f-ts">AAS 100 mg + P2Y12 (clopi/ticagrelor/prasugrel) 12m</text>
-<text x="410" y="871" text-anchor="middle" class="f-ts">β-bloqueador, IECA/BRA, atorvastatina 80 mg</text>
-<text x="410" y="889" text-anchor="middle" class="f-ts">eGFR &gt; 45 + FE ≤ 40 → empagliflozina</text>
-<text x="410" y="907" text-anchor="middle" class="f-ts">Reabilitação cardíaca + cessação tabagismo</text>
-<text x="410" y="980" text-anchor="middle" class="f-ts" style="font-size:10px;fill:var(--ink-3)">SBC SCA com Supra ST 2015 (atualização 2023); ESC STEMI 2023 — Byrne RA et al., EHJ 44:3720</text>
+
+<!-- Início: chegada -->
+<rect x="260" y="20" width="380" height="60" class="f-start"/>
+<text x="450" y="45" text-anchor="middle" class="f-tw">Dor torácica ≤ 12h</text>
+<text x="450" y="65" text-anchor="middle" class="f-tw" style="font-size:11px">ECG 12d em ≤ 10 min da chegada</text>
+<line x1="450" y1="80" x2="450" y2="110" class="f-arr" marker-end="url(#arr-sca)"/>
+
+<!-- Diamante 1: Supra ST? -->
+<polygon points="450,115 680,180 450,245 220,180" class="f-dec"/>
+<text x="450" y="170" text-anchor="middle" class="f-t">Supra ST ≥ 1 mm em 2</text>
+<text x="450" y="188" text-anchor="middle" class="f-t">contíguas (≥2 mm V2-V3)</text>
+<text x="450" y="208" text-anchor="middle" class="f-ts">ou BRE novo / supra aVR ≥ 1 mm?</text>
+
+<!-- NÃO → SCAsSST -->
+<line x1="220" y1="180" x2="120" y2="180" class="f-arr" marker-end="url(#arr-sca)"/>
+<text x="170" y="172" text-anchor="middle" class="f-no">NÃO</text>
+<rect x="20" y="200" width="200" height="100" class="f-warn"/>
+<text x="120" y="225" text-anchor="middle" class="f-tc">SCAsSST?</text>
+<text x="120" y="248" text-anchor="middle" class="f-ts">Troponina seriada</text>
+<text x="120" y="266" text-anchor="middle" class="f-ts">Estratificar risco</text>
+<text x="120" y="284" text-anchor="middle" class="f-ts">(HEART, TIMI, GRACE)</text>
+
+<!-- SIM → MONABCH -->
+<line x1="450" y1="245" x2="450" y2="285" class="f-arr" marker-end="url(#arr-sca)"/>
+<text x="470" y="270" class="f-yes">SIM</text>
+<rect x="200" y="290" width="500" height="110" class="f-crit"/>
+<text x="450" y="315" text-anchor="middle" class="f-t">MONABCH — IMEDIATO</text>
+<text x="450" y="340" text-anchor="middle" class="f-ts">AAS 300 mg mastigar + clopi 300mg/ticagrelor 180mg/prasugrel 60mg</text>
+<text x="450" y="360" text-anchor="middle" class="f-ts">Atorvastatina 80 mg • Enoxaparina 1 mg/kg SC ou HNF</text>
+<text x="450" y="380" text-anchor="middle" class="f-ts">O₂ se SpO₂ &lt; 90 • morfina só se dor refratária • β-bloq oral &lt; 24h</text>
+
+<line x1="450" y1="400" x2="450" y2="440" class="f-arr" marker-end="url(#arr-sca)"/>
+
+<!-- Diamante 2: ICP disponível? -->
+<polygon points="450,445 680,510 450,575 220,510" class="f-dec"/>
+<text x="450" y="495" text-anchor="middle" class="f-t">ICP disponível ≤ 120 min?</text>
+<text x="450" y="513" text-anchor="middle" class="f-ts">"door-to-balloon" alvo</text>
+<text x="450" y="531" text-anchor="middle" class="f-ts">≤ 90 min se já no hospital ICP</text>
+
+<!-- SIM → ICP primária (direita) -->
+<line x1="680" y1="510" x2="760" y2="510" class="f-arr" marker-end="url(#arr-sca)"/>
+<text x="720" y="502" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="700" y="600" width="180" height="120" class="f-ok"/>
+<text x="790" y="625" text-anchor="middle" class="f-tc">ICP PRIMÁRIA</text>
+<text x="790" y="648" text-anchor="middle" class="f-ts">Hemodinâmica</text>
+<text x="790" y="666" text-anchor="middle" class="f-ts">Stent culprit lesion</text>
+<text x="790" y="684" text-anchor="middle" class="f-ts">DAPT 12 meses</text>
+<text x="790" y="702" text-anchor="middle" class="f-ts">UTI cardio</text>
+<line x1="760" y1="510" x2="760" y2="600" class="f-arr"/>
+
+<!-- NÃO → Fibrinólise (esquerda) -->
+<line x1="220" y1="510" x2="120" y2="510" class="f-arr" marker-end="url(#arr-sca)"/>
+<text x="170" y="502" text-anchor="middle" class="f-no">NÃO</text>
+<rect x="20" y="600" width="200" height="130" class="f-warn"/>
+<text x="120" y="625" text-anchor="middle" class="f-tc">FIBRINÓLISE</text>
+<text x="120" y="648" text-anchor="middle" class="f-ts">se &lt; 12h e</text>
+<text x="120" y="666" text-anchor="middle" class="f-ts">sem CI absoluta</text>
+<text x="120" y="688" text-anchor="middle" class="f-ts">Tenecteplase peso-aj.</text>
+<text x="120" y="706" text-anchor="middle" class="f-ts">ou Alteplase 15+50+35</text>
+<line x1="120" y1="510" x2="120" y2="600" class="f-arr"/>
+
+<!-- Centro: Critérios de reperfusão (após fibrinólise OU em geral) -->
+<line x1="450" y1="575" x2="450" y2="610" class="f-arr" marker-end="url(#arr-sca)"/>
+<rect x="240" y="615" width="420" height="115" class="f-rect"/>
+<text x="450" y="640" text-anchor="middle" class="f-tc">CRITÉRIOS DE REPERFUSÃO (90 min)</text>
+<text x="450" y="663" text-anchor="middle" class="f-ts">↓ ≥ 50% supra ST em 60-90 min</text>
+<text x="450" y="681" text-anchor="middle" class="f-ts">Alívio da dor</text>
+<text x="450" y="699" text-anchor="middle" class="f-ts">Ritmo idioventricular acelerado</text>
+<text x="450" y="717" text-anchor="middle" class="f-ts">PA, ECG, dor monitorizados continuamente</text>
+
+<!-- CI fibrinólise (abaixo do fibrinólise) -->
+<rect x="20" y="760" width="200" height="100" class="f-rect"/>
+<text x="120" y="785" text-anchor="middle" class="f-tc">CI FIBRINÓLISE</text>
+<text x="120" y="808" text-anchor="middle" class="f-ts">AVC h prévio, AVCi &lt; 3m</text>
+<text x="120" y="826" text-anchor="middle" class="f-ts">Trauma craniano recente</text>
+<text x="120" y="844" text-anchor="middle" class="f-ts">Sangr ativo, dissec aórtica</text>
+<line x1="120" y1="730" x2="120" y2="760" class="f-arr" marker-end="url(#arr-sca)"/>
+
+<!-- ICP de resgate (centro, abaixo de critérios) -->
+<line x1="450" y1="730" x2="450" y2="760" class="f-arr" marker-end="url(#arr-sca)"/>
+<rect x="240" y="765" width="420" height="120" class="f-warn"/>
+<text x="450" y="790" text-anchor="middle" class="f-tc">ICP DE RESGATE / FARMACO-INVASIVA</text>
+<text x="450" y="813" text-anchor="middle" class="f-ts">Falha de fibrinólise → ICP em &lt; 2h</text>
+<text x="450" y="831" text-anchor="middle" class="f-ts">Sucesso → ICP em 2-24h (estratégia farmaco-invasiva)</text>
+<text x="450" y="849" text-anchor="middle" class="f-ts">CROSS: solicitar transferência ASAP</text>
+<text x="450" y="867" text-anchor="middle" class="f-ts">Antiagregação + anticoagulação mantidas</text>
+
+<!-- Convergência: ICP primária e ICP resgate → Alta -->
+<line x1="450" y1="885" x2="450" y2="915" class="f-arr"/>
+<line x1="790" y1="720" x2="790" y2="900" class="f-arr"/>
+<line x1="790" y1="900" x2="450" y2="900" class="f-arr"/>
+<line x1="450" y1="900" x2="450" y2="935" class="f-arr" marker-end="url(#arr-sca)"/>
+
+<!-- Pós-IAM / Alta -->
+<rect x="200" y="940" width="500" height="160" class="f-ok"/>
+<text x="450" y="965" text-anchor="middle" class="f-tc">PÓS-IAM — ALTA HOSPITALAR</text>
+<text x="450" y="990" text-anchor="middle" class="f-ts">AAS 100 mg + P2Y12 (clopi/ticagrelor/prasugrel) 12 meses</text>
+<text x="450" y="1008" text-anchor="middle" class="f-ts">β-bloqueador titulado, IECA/BRA, atorvastatina 80 mg</text>
+<text x="450" y="1026" text-anchor="middle" class="f-ts">Espironolactona se FE ≤ 40 + IC + Killip ≥ II</text>
+<text x="450" y="1044" text-anchor="middle" class="f-ts">eGFR &gt; 45 + FE ≤ 40 → empagliflozina/dapagliflozina</text>
+<text x="450" y="1062" text-anchor="middle" class="f-ts">Reabilitação cardíaca + cessação tabagismo + controle FR</text>
+<text x="450" y="1083" text-anchor="middle" class="f-ts">Ecocardiograma em 24-72h • avaliação para CDI se FE &lt; 35% após 40d</text>
+
+<text x="450" y="1180" text-anchor="middle" class="f-ts" style="font-size:10px;fill:var(--ink-3)">SBC SCA com Supra ST 2015 (atualização 2023); ESC STEMI 2023 — Byrne RA et al., EHJ 44:3720</text>
 </svg>`
 };
 
@@ -9566,7 +9624,7 @@ svg: `<svg viewBox="0 0 820 1020" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["eap"] = {
 titulo: "Edema Agudo de Pulmão / ICA",
 fonte: "ESC HF 2021 (McDonagh TA et al., EHJ 42:3599); SBC IC Aguda 2018",
-svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 980" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-eap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9593,13 +9651,13 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="410" y="168" text-anchor="middle" class="f-ts">Monitor + acesso venoso + ECG + RX</text>
 <text x="410" y="186" text-anchor="middle" class="f-ts">BNP/NT-proBNP, troponina, eletrólitos, função renal</text>
 <line x1="410" y1="195" x2="410" y2="225" class="f-arr" marker-end="url(#arr-eap)"/>
-<polygon points="410,230 640,295 410,360 180,295" class="f-dec"/>
+<polygon points="410,230 810,295 410,360 180,295" class="f-dec"/>
 <text x="410" y="285" text-anchor="middle" class="f-t">PERFIL HEMODINÂMICO</text>
 <text x="410" y="305" text-anchor="middle" class="f-ts">PAS / hipoperfusão</text>
 <line x1="180" y1="295" x2="80" y2="295" class="f-arr" marker-end="url(#arr-eap)"/>
-<line x1="640" y1="295" x2="740" y2="295" class="f-arr" marker-end="url(#arr-eap)"/>
+<line x1="870" y1="295" x2="970" y2="295" class="f-arr" marker-end="url(#arr-eap)"/>
 <text x="130" y="287" text-anchor="middle" class="f-tc" style="font-size:10px">FRIO/SECO</text>
-<text x="690" y="287" text-anchor="middle" class="f-tc" style="font-size:10px">QUENTE/ÚMIDO</text>
+<text x="920" y="287" text-anchor="middle" class="f-tc" style="font-size:10px">QUENTE/ÚMIDO</text>
 <text x="410" y="380" text-anchor="middle" class="f-tc" style="font-size:10px">FRIO/ÚMIDO</text>
 <rect x="20" y="320" width="160" height="120" class="f-rect"/>
 <text x="100" y="340" text-anchor="middle" class="f-tc">Hipoperfundido</text>
@@ -9608,15 +9666,15 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="100" y="396" text-anchor="middle" class="f-ts">SF 250 mL teste</text>
 <text x="100" y="414" text-anchor="middle" class="f-ts">Dobutamina se ↓FE</text>
 <text x="100" y="432" text-anchor="middle" class="f-ts">Cuidado: PAS &lt; 80</text>
-<rect x="620" y="320" width="180" height="160" class="f-warn"/>
-<text x="710" y="340" text-anchor="middle" class="f-tc">Congesto / PAS ≥ 110</text>
-<text x="710" y="355" text-anchor="middle" class="f-ts">FOSPE — clássico</text>
-<text x="710" y="378" text-anchor="middle" class="f-ts">FUROSEMIDA 40-80 mg IV</text>
-<text x="710" y="396" text-anchor="middle" class="f-ts">VNI CPAP 8-10 cmH₂O</text>
-<text x="710" y="414" text-anchor="middle" class="f-ts">Nitro 5-10 mcg/min</text>
-<text x="710" y="432" text-anchor="middle" class="f-ts">titular até 200 mcg/min</text>
-<text x="710" y="452" text-anchor="middle" class="f-ts">Repetir furo se ↓débito</text>
-<text x="710" y="472" text-anchor="middle" class="f-ts">urinário em 1h</text>
+<rect x="850" y="320" width="180" height="160" class="f-warn"/>
+<text x="940" y="340" text-anchor="middle" class="f-tc">Congesto / PAS ≥ 110</text>
+<text x="940" y="355" text-anchor="middle" class="f-ts">FOSPE — clássico</text>
+<text x="940" y="378" text-anchor="middle" class="f-ts">FUROSEMIDA 40-80 mg IV</text>
+<text x="940" y="396" text-anchor="middle" class="f-ts">VNI CPAP 8-10 cmH₂O</text>
+<text x="940" y="414" text-anchor="middle" class="f-ts">Nitro 5-10 mcg/min</text>
+<text x="940" y="432" text-anchor="middle" class="f-ts">titular até 200 mcg/min</text>
+<text x="940" y="452" text-anchor="middle" class="f-ts">Repetir furo se ↓débito</text>
+<text x="940" y="472" text-anchor="middle" class="f-ts">urinário em 1h</text>
 <line x1="410" y1="360" x2="410" y2="395" class="f-arr" marker-end="url(#arr-eap)"/>
 <rect x="220" y="400" width="380" height="120" class="f-crit"/>
 <text x="410" y="425" text-anchor="middle" class="f-tc">FRIO/ÚMIDO — choque cardiogênico</text>
@@ -9650,7 +9708,7 @@ svg: `<svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg" class="flow-
 FLOWS["avci"] = {
 titulo: "AVC Isquêmico — Trombólise",
 fonte: "AHA/ASA Stroke 2026; PCDT AVC MS/CONITEC 2021",
-svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-avc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9677,7 +9735,7 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="175" text-anchor="middle" class="f-ts">Acesso venoso 2 calibres • coleta laboratorial</text>
 <text x="410" y="193" text-anchor="middle" class="f-ts">TC crânio sem contraste em ≤ 20 min</text>
 <line x1="410" y1="210" x2="410" y2="240" class="f-arr" marker-end="url(#arr-avc)"/>
-<polygon points="410,245 640,310 410,375 180,310" class="f-dec"/>
+<polygon points="410,245 810,310 410,375 180,310" class="f-dec"/>
 <text x="410" y="295" text-anchor="middle" class="f-t">TC — Sangramento?</text>
 <text x="410" y="315" text-anchor="middle" class="f-ts">Hipoatenuação precoce</text>
 <text x="410" y="333" text-anchor="middle" class="f-ts">ASPECTS</text>
@@ -9691,21 +9749,21 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="100" y="432" text-anchor="middle" class="f-ts">Cabeceira 30°</text>
 <line x1="410" y1="375" x2="410" y2="405" class="f-arr" marker-end="url(#arr-avc)"/>
 <text x="430" y="395" class="f-yes">NÃO</text>
-<polygon points="410,410 640,475 410,540 180,475" class="f-dec"/>
+<polygon points="410,410 810,475 410,540 180,475" class="f-dec"/>
 <text x="410" y="465" text-anchor="middle" class="f-t">Ictus ≤ 4,5h?</text>
 <text x="410" y="485" text-anchor="middle" class="f-ts">(0-3h, 3-4,5h)</text>
 <text x="410" y="503" text-anchor="middle" class="f-ts">+ NIHSS ≥ 4 (ou incapacitante)</text>
-<line x1="640" y1="475" x2="740" y2="475" class="f-arr" marker-end="url(#arr-avc)"/>
-<text x="690" y="467" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="600" y="495" width="200" height="180" class="f-ok"/>
-<text x="700" y="518" text-anchor="middle" class="f-tc">TROMBÓLISE — IV</text>
-<text x="700" y="540" text-anchor="middle" class="f-ts">PA &lt; 185/110</text>
-<text x="700" y="558" text-anchor="middle" class="f-ts">ALTEPLASE 0,9 mg/kg</text>
-<text x="700" y="576" text-anchor="middle" class="f-ts">(máx 90 mg)</text>
-<text x="700" y="594" text-anchor="middle" class="f-ts">10% bolus + 90% em 1h</text>
-<text x="700" y="616" text-anchor="middle" class="f-ts">Alternativa: Tenecteplase</text>
-<text x="700" y="634" text-anchor="middle" class="f-ts">0,25 mg/kg bolus (AHA 2026)</text>
-<text x="700" y="654" text-anchor="middle" class="f-ts">Sem anticoag/anti-plaq 24h</text>
+<line x1="870" y1="475" x2="970" y2="475" class="f-arr" marker-end="url(#arr-avc)"/>
+<text x="920" y="467" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="830" y="495" width="200" height="180" class="f-ok"/>
+<text x="930" y="518" text-anchor="middle" class="f-tc">TROMBÓLISE — IV</text>
+<text x="930" y="540" text-anchor="middle" class="f-ts">PA &lt; 185/110</text>
+<text x="930" y="558" text-anchor="middle" class="f-ts">ALTEPLASE 0,9 mg/kg</text>
+<text x="930" y="576" text-anchor="middle" class="f-ts">(máx 90 mg)</text>
+<text x="930" y="594" text-anchor="middle" class="f-ts">10% bolus + 90% em 1h</text>
+<text x="930" y="616" text-anchor="middle" class="f-ts">Alternativa: Tenecteplase</text>
+<text x="930" y="634" text-anchor="middle" class="f-ts">0,25 mg/kg bolus (AHA 2026)</text>
+<text x="930" y="654" text-anchor="middle" class="f-ts">Sem anticoag/anti-plaq 24h</text>
 <line x1="180" y1="475" x2="80" y2="475" class="f-arr" marker-end="url(#arr-avc)"/>
 <text x="130" y="467" text-anchor="middle" class="f-no">NÃO</text>
 <rect x="20" y="495" width="160" height="160" class="f-rect"/>
@@ -9721,8 +9779,8 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="610" text-anchor="middle" class="f-tc">TROMBECTOMIA MECÂNICA</text>
 <text x="410" y="630" text-anchor="middle" class="f-ts">Oclusão grande vaso (ACM-M1, ACI, A2 selecionados)</text>
 <text x="410" y="648" text-anchor="middle" class="f-ts">Até 6h (DEFUSE-3 24h se mismatch)</text>
-<line x1="710" y1="675" x2="710" y2="720" class="f-arr"/>
-<line x1="710" y1="720" x2="410" y2="720" class="f-arr"/>
+<line x1="940" y1="675" x2="940" y2="720" class="f-arr"/>
+<line x1="940" y1="720" x2="410" y2="720" class="f-arr"/>
 <line x1="100" y1="655" x2="100" y2="720" class="f-arr"/>
 <line x1="100" y1="720" x2="410" y2="720" class="f-arr"/>
 <line x1="410" y1="710" x2="410" y2="740" class="f-arr" marker-end="url(#arr-avc)"/>
@@ -9747,7 +9805,7 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["crise"] = {
 titulo: "Crise Convulsiva / Estado Epiléptico",
 fonte: "AES Status Epilepticus 2016 (Glauser T et al., Epilepsy Curr); ABNeuro",
-svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 970 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-cv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9773,7 +9831,7 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="150" text-anchor="middle" class="f-ts">Decúbito lateral • aspirar VA • O₂ • glicemia capilar</text>
 <text x="410" y="168" text-anchor="middle" class="f-ts">Acesso venoso • monitor • coleta lab</text>
 <line x1="410" y1="185" x2="410" y2="215" class="f-arr" marker-end="url(#arr-cv)"/>
-<polygon points="410,220 600,275 410,330 220,275" class="f-dec"/>
+<polygon points="410,220 710,275 410,330 220,275" class="f-dec"/>
 <text x="410" y="265" text-anchor="middle" class="f-t">Crise &gt; 5 min ou</text>
 <text x="410" y="283" text-anchor="middle" class="f-t">2+ crises sem recobro?</text>
 <text x="410" y="303" text-anchor="middle" class="f-ts">→ EME estabelecido</text>
@@ -9786,17 +9844,17 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="448" text-anchor="middle" class="f-ts">ou LORAZEPAM 4 mg IV em 2 min (se disponível)</text>
 <text x="410" y="468" text-anchor="middle" class="f-ts">Pode repetir 1×. Tiamina 100 mg IV se etilismo/desnutrição</text>
 <line x1="410" y1="485" x2="410" y2="515" class="f-arr" marker-end="url(#arr-cv)"/>
-<polygon points="410,520 600,575 410,630 220,575" class="f-dec"/>
+<polygon points="410,520 710,575 410,630 220,575" class="f-dec"/>
 <text x="410" y="570" text-anchor="middle" class="f-t">Cessou?</text>
 <text x="410" y="595" text-anchor="middle" class="f-ts">após benzodiazepínico</text>
-<line x1="600" y1="575" x2="700" y2="575" class="f-arr" marker-end="url(#arr-cv)"/>
-<text x="650" y="567" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="620" y="615" width="180" height="100" class="f-ok"/>
-<text x="710" y="640" text-anchor="middle" class="f-tc">Investigar causa</text>
-<text x="710" y="660" text-anchor="middle" class="f-ts">TC crânio</text>
-<text x="710" y="678" text-anchor="middle" class="f-ts">eletrólitos, glicose</text>
-<text x="710" y="696" text-anchor="middle" class="f-ts">LCR se febril/imunossup</text>
-<text x="710" y="712" text-anchor="middle" class="f-ts">níveis FAE se uso prévio</text>
+<line x1="710" y1="575" x2="810" y2="575" class="f-arr" marker-end="url(#arr-cv)"/>
+<text x="760" y="567" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="730" y="615" width="180" height="100" class="f-ok"/>
+<text x="820" y="640" text-anchor="middle" class="f-tc">Investigar causa</text>
+<text x="820" y="660" text-anchor="middle" class="f-ts">TC crânio</text>
+<text x="820" y="678" text-anchor="middle" class="f-ts">eletrólitos, glicose</text>
+<text x="820" y="696" text-anchor="middle" class="f-ts">LCR se febril/imunossup</text>
+<text x="820" y="712" text-anchor="middle" class="f-ts">níveis FAE se uso prévio</text>
 <line x1="410" y1="630" x2="410" y2="660" class="f-arr" marker-end="url(#arr-cv)"/>
 <text x="380" y="650" text-anchor="end" class="f-no">NÃO</text>
 <rect x="120" y="665" width="580" height="130" class="f-warn"/>
@@ -9807,7 +9865,7 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="771" text-anchor="middle" class="f-ts">• LEVETIRACETAM 60 mg/kg IV (máx 4,5 g) em 15 min</text>
 <text x="410" y="789" text-anchor="middle" class="f-ts">Fenobarbital 20 mg/kg em 100 mg/min — alternativa</text>
 <line x1="410" y1="795" x2="410" y2="825" class="f-arr" marker-end="url(#arr-cv)"/>
-<polygon points="410,830 600,880 410,930 220,880" class="f-dec"/>
+<polygon points="410,830 710,880 410,930 220,880" class="f-dec"/>
 <text x="410" y="875" text-anchor="middle" class="f-t">Cessou?</text>
 <line x1="220" y1="880" x2="100" y2="880" class="f-arr" marker-end="url(#arr-cv)"/>
 <text x="160" y="872" text-anchor="middle" class="f-no">NÃO</text>
@@ -9824,7 +9882,7 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["sepse"] = {
 titulo: "Sepse / Choque Séptico — Hour-1",
 fonte: "Surviving Sepsis Campaign 2021 (Evans L et al., ICM 47:1181)",
-svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-sep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -9874,14 +9932,14 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="540" y="420" text-anchor="middle" class="f-ts">por foco presumido</text>
 <text x="540" y="438" text-anchor="middle" class="f-ts">Cada hora ↑ 4-7%</text>
 <text x="540" y="456" text-anchor="middle" class="f-ts">mortalidade</text>
-<rect x="650" y="355" width="150" height="120" class="f-rect"/>
-<text x="725" y="380" text-anchor="middle" class="f-tc">4 — FLUIDOS</text>
-<text x="725" y="402" text-anchor="middle" class="f-ts">Cristaloide</text>
-<text x="725" y="420" text-anchor="middle" class="f-ts">30 mL/kg em 3h</text>
-<text x="725" y="438" text-anchor="middle" class="f-ts">se hipoTA ou</text>
-<text x="725" y="456" text-anchor="middle" class="f-ts">lactato ≥ 4</text>
+<rect x="880" y="355" width="150" height="120" class="f-rect"/>
+<text x="955" y="380" text-anchor="middle" class="f-tc">4 — FLUIDOS</text>
+<text x="955" y="402" text-anchor="middle" class="f-ts">Cristaloide</text>
+<text x="955" y="420" text-anchor="middle" class="f-ts">30 mL/kg em 3h</text>
+<text x="955" y="438" text-anchor="middle" class="f-ts">se hipoTA ou</text>
+<text x="955" y="456" text-anchor="middle" class="f-ts">lactato ≥ 4</text>
 <line x1="410" y1="475" x2="410" y2="510" class="f-arr" marker-end="url(#arr-sep)"/>
-<polygon points="410,515 640,580 410,645 180,580" class="f-dec"/>
+<polygon points="410,515 810,580 410,645 180,580" class="f-dec"/>
 <text x="410" y="565" text-anchor="middle" class="f-t">PAM ≥ 65 mmHg após</text>
 <text x="410" y="583" text-anchor="middle" class="f-t">reposição volêmica?</text>
 <line x1="180" y1="580" x2="80" y2="580" class="f-arr" marker-end="url(#arr-sep)"/>
@@ -9894,20 +9952,20 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="100" y="705" text-anchor="middle" class="f-ts">+ Vasopressina 0,03 U/min</text>
 <text x="100" y="723" text-anchor="middle" class="f-ts">se NE ≥ 0,25-0,5</text>
 <text x="100" y="741" text-anchor="middle" class="f-ts">Pode iniciar em periférico</text>
-<line x1="640" y1="580" x2="740" y2="580" class="f-arr" marker-end="url(#arr-sep)"/>
-<text x="690" y="572" text-anchor="middle" class="f-yes">SIM</text>
-<rect x="620" y="600" width="180" height="120" class="f-ok"/>
-<text x="710" y="625" text-anchor="middle" class="f-tc">REAVALIAR</text>
-<text x="710" y="647" text-anchor="middle" class="f-ts">Lactato em 2-4h</text>
-<text x="710" y="665" text-anchor="middle" class="f-ts">Tempo de enchimento capilar</text>
-<text x="710" y="683" text-anchor="middle" class="f-ts">Débito urinário</text>
-<text x="710" y="701" text-anchor="middle" class="f-ts">Fluido-responsividade</text>
-<text x="710" y="715" text-anchor="middle" class="f-ts">(PLR, VPP, VTI)</text>
+<line x1="870" y1="580" x2="970" y2="580" class="f-arr" marker-end="url(#arr-sep)"/>
+<text x="920" y="572" text-anchor="middle" class="f-yes">SIM</text>
+<rect x="850" y="600" width="180" height="120" class="f-ok"/>
+<text x="940" y="625" text-anchor="middle" class="f-tc">REAVALIAR</text>
+<text x="940" y="647" text-anchor="middle" class="f-ts">Lactato em 2-4h</text>
+<text x="940" y="665" text-anchor="middle" class="f-ts">Tempo de enchimento capilar</text>
+<text x="940" y="683" text-anchor="middle" class="f-ts">Débito urinário</text>
+<text x="940" y="701" text-anchor="middle" class="f-ts">Fluido-responsividade</text>
+<text x="940" y="715" text-anchor="middle" class="f-ts">(PLR, VPP, VTI)</text>
 <line x1="410" y1="645" x2="410" y2="780" class="f-arr"/>
 <line x1="100" y1="760" x2="100" y2="800" class="f-arr"/>
 <line x1="100" y1="800" x2="410" y2="800" class="f-arr"/>
-<line x1="710" y1="720" x2="710" y2="800" class="f-arr"/>
-<line x1="710" y1="800" x2="410" y2="800" class="f-arr"/>
+<line x1="940" y1="720" x2="940" y2="800" class="f-arr"/>
+<line x1="940" y1="800" x2="410" y2="800" class="f-arr"/>
 <line x1="410" y1="780" x2="410" y2="820" class="f-arr" marker-end="url(#arr-sep)"/>
 <rect x="180" y="825" width="460" height="100" class="f-warn"/>
 <text x="410" y="850" text-anchor="middle" class="f-tc">CHOQUE REFRATÁRIO — adicionar</text>
@@ -10025,7 +10083,7 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["anafilaxia"] = {
 titulo: "Anafilaxia",
 fonte: "WAO 2020 (Cardona V et al., DOI:10.1016/j.waojou.2020.100472); EAACI 2021",
-svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-anaf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -10058,7 +10116,7 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="361" text-anchor="middle" class="f-ts">O₂ alto fluxo • acesso venoso 2 calibres</text>
 <text x="410" y="379" text-anchor="middle" class="f-ts">Cristaloide 20 mL/kg em 5-10 min se hipoTA</text>
 <line x1="410" y1="395" x2="410" y2="425" class="f-arr" marker-end="url(#arr-anaf)"/>
-<polygon points="410,430 640,495 410,560 180,495" class="f-dec"/>
+<polygon points="410,430 810,495 410,560 180,495" class="f-dec"/>
 <text x="410" y="485" text-anchor="middle" class="f-t">Resposta?</text>
 <text x="410" y="503" text-anchor="middle" class="f-ts">PAS ≥ 90 + reversão</text>
 <text x="410" y="521" text-anchor="middle" class="f-ts">de broncoespasmo</text>
@@ -10074,16 +10132,16 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="100" y="676" text-anchor="middle" class="f-ts">IOT precoce</text>
 <text x="100" y="694" text-anchor="middle" class="f-ts">se estridor/edema</text>
 <text x="100" y="710" text-anchor="middle" class="f-ts">de via aérea</text>
-<line x1="640" y1="495" x2="740" y2="495" class="f-arr" marker-end="url(#arr-anaf)"/>
-<rect x="600" y="540" width="200" height="160" class="f-ok"/>
-<text x="700" y="565" text-anchor="middle" class="f-tc">ESTABILIZADO</text>
-<text x="700" y="588" text-anchor="middle" class="f-ts">ADJUVANTES (após adrenalina)</text>
-<text x="700" y="605" text-anchor="middle" class="f-ts">— Anti-H1: difenidramina</text>
-<text x="700" y="621" text-anchor="middle" class="f-ts">25-50 mg IV (urticária)</text>
-<text x="700" y="640" text-anchor="middle" class="f-ts">— H2: ranitidina 50 mg IV</text>
-<text x="700" y="659" text-anchor="middle" class="f-ts">— Corticoide: metilpred</text>
-<text x="700" y="675" text-anchor="middle" class="f-ts">1-2 mg/kg IV</text>
-<text x="700" y="691" text-anchor="middle" class="f-ts">NÃO previne bifásica</text>
+<line x1="870" y1="495" x2="970" y2="495" class="f-arr" marker-end="url(#arr-anaf)"/>
+<rect x="830" y="540" width="200" height="160" class="f-ok"/>
+<text x="930" y="565" text-anchor="middle" class="f-tc">ESTABILIZADO</text>
+<text x="930" y="588" text-anchor="middle" class="f-ts">ADJUVANTES (após adrenalina)</text>
+<text x="930" y="605" text-anchor="middle" class="f-ts">— Anti-H1: difenidramina</text>
+<text x="930" y="621" text-anchor="middle" class="f-ts">25-50 mg IV (urticária)</text>
+<text x="930" y="640" text-anchor="middle" class="f-ts">— H2: ranitidina 50 mg IV</text>
+<text x="930" y="659" text-anchor="middle" class="f-ts">— Corticoide: metilpred</text>
+<text x="930" y="675" text-anchor="middle" class="f-ts">1-2 mg/kg IV</text>
+<text x="930" y="691" text-anchor="middle" class="f-ts">NÃO previne bifásica</text>
 <line x1="410" y1="560" x2="410" y2="600" class="f-arr" marker-end="url(#arr-anaf)"/>
 <rect x="220" y="605" width="380" height="80" class="f-warn"/>
 <text x="410" y="630" text-anchor="middle" class="f-tc">SE BRONCOESPASMO PERSISTE</text>
@@ -10208,7 +10266,7 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["abd-agudo"] = {
 titulo: "Abdome Agudo — Abordagem por Padrão",
 fonte: "WSES Abdominal Emergencies; ACEP Acute Abdomen",
-svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -10269,13 +10327,13 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="593" y="425" text-anchor="middle" class="f-ts">DOR desproporcional</text>
 <text x="593" y="441" text-anchor="middle" class="f-ts">ao exame • lactato</text>
 <text x="593" y="455" text-anchor="middle" class="f-ts">FA, IAM, idoso</text>
-<rect x="680" y="330" width="120" height="130" class="f-rect"/>
-<text x="740" y="355" text-anchor="middle" class="f-tc" style="font-size:11px">EXTRA-ABD</text>
-<text x="740" y="377" text-anchor="middle" class="f-ts">IAM inferior</text>
-<text x="740" y="393" text-anchor="middle" class="f-ts">CAD</text>
-<text x="740" y="409" text-anchor="middle" class="f-ts">Pielonefrite</text>
-<text x="740" y="425" text-anchor="middle" class="f-ts">Pneumonia base</text>
-<text x="740" y="445" text-anchor="middle" class="f-ts">Crise falciforme</text>
+<rect x="910" y="330" width="120" height="130" class="f-rect"/>
+<text x="970" y="355" text-anchor="middle" class="f-tc" style="font-size:11px">EXTRA-ABD</text>
+<text x="970" y="377" text-anchor="middle" class="f-ts">IAM inferior</text>
+<text x="970" y="393" text-anchor="middle" class="f-ts">CAD</text>
+<text x="970" y="409" text-anchor="middle" class="f-ts">Pielonefrite</text>
+<text x="970" y="425" text-anchor="middle" class="f-ts">Pneumonia base</text>
+<text x="970" y="445" text-anchor="middle" class="f-ts">Crise falciforme</text>
 <line x1="410" y1="460" x2="410" y2="495" class="f-arr" marker-end="url(#arr-aa)"/>
 <rect x="120" y="500" width="580" height="80" class="f-warn"/>
 <text x="410" y="525" text-anchor="middle" class="f-t">CONDUTA UNIVERSAL — primeiras medidas</text>
@@ -10288,17 +10346,17 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="678" text-anchor="middle" class="f-ts">USG: ideal para colecistite, apendicite, gravidez, urolitíase</text>
 <text x="410" y="696" text-anchor="middle" class="f-ts">TC ABDOME: padrão-ouro para diverticulite, vascular, perfuração, obstrução</text>
 <line x1="410" y1="715" x2="410" y2="745" class="f-arr" marker-end="url(#arr-aa)"/>
-<polygon points="410,750 640,815 410,880 180,815" class="f-dec"/>
+<polygon points="410,750 810,815 410,880 180,815" class="f-dec"/>
 <text x="410" y="800" text-anchor="middle" class="f-t">SINAIS DE PERITONITE?</text>
 <text x="410" y="820" text-anchor="middle" class="f-ts">Defesa, descompressão dolorosa,</text>
 <text x="410" y="838" text-anchor="middle" class="f-ts">abd em tábua, sepse</text>
-<line x1="640" y1="815" x2="740" y2="815" class="f-arr" marker-end="url(#arr-aa)"/>
-<rect x="600" y="835" width="200" height="100" class="f-crit"/>
-<text x="700" y="860" text-anchor="middle" class="f-tc">CIRURGIA URGENTE</text>
-<text x="700" y="882" text-anchor="middle" class="f-ts">Cirurgião imediato</text>
-<text x="700" y="900" text-anchor="middle" class="f-ts">ATB amplo espectro</text>
-<text x="700" y="918" text-anchor="middle" class="f-ts">(ceftriaxona+metro</text>
-<text x="700" y="930" text-anchor="middle" class="f-ts">ou pip-tazo)</text>
+<line x1="870" y1="815" x2="970" y2="815" class="f-arr" marker-end="url(#arr-aa)"/>
+<rect x="830" y="835" width="200" height="100" class="f-crit"/>
+<text x="930" y="860" text-anchor="middle" class="f-tc">CIRURGIA URGENTE</text>
+<text x="930" y="882" text-anchor="middle" class="f-ts">Cirurgião imediato</text>
+<text x="930" y="900" text-anchor="middle" class="f-ts">ATB amplo espectro</text>
+<text x="930" y="918" text-anchor="middle" class="f-ts">(ceftriaxona+metro</text>
+<text x="930" y="930" text-anchor="middle" class="f-ts">ou pip-tazo)</text>
 <line x1="180" y1="815" x2="80" y2="815" class="f-arr" marker-end="url(#arr-aa)"/>
 <rect x="20" y="835" width="160" height="100" class="f-ok"/>
 <text x="100" y="860" text-anchor="middle" class="f-tc">TRATAMENTO</text>
@@ -10319,7 +10377,7 @@ svg: `<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["asma"] = {
 titulo: "Crise Asmática Grave",
 fonte: "GINA 2024 (ginasthma.org); SBPT 2020",
-svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -10348,10 +10406,10 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="173" text-anchor="middle" class="f-ts">Fala em palavras</text>
 <text x="410" y="190" text-anchor="middle" class="f-ts">FR &gt; 30 • FC &gt; 120</text>
 <text x="410" y="207" text-anchor="middle" class="f-ts">SpO₂ &lt; 90% • PFE &lt; 50%</text>
-<text x="595" y="155" text-anchor="middle" class="f-tc" style="font-size:11px">RISCO DE PCR</text>
-<text x="595" y="173" text-anchor="middle" class="f-ts">Cianose • sonolento</text>
-<text x="595" y="190" text-anchor="middle" class="f-ts">Tórax silente</text>
-<text x="595" y="207" text-anchor="middle" class="f-ts">Bradicardia • IOT</text>
+<text x="825" y="155" text-anchor="middle" class="f-tc" style="font-size:11px">RISCO DE PCR</text>
+<text x="825" y="173" text-anchor="middle" class="f-ts">Cianose • sonolento</text>
+<text x="825" y="190" text-anchor="middle" class="f-ts">Tórax silente</text>
+<text x="825" y="207" text-anchor="middle" class="f-ts">Bradicardia • IOT</text>
 <line x1="410" y1="225" x2="410" y2="255" class="f-arr" marker-end="url(#arr-as)"/>
 <rect x="120" y="265" width="580" height="120" class="f-crit"/>
 <text x="410" y="290" text-anchor="middle" class="f-tc">PRIMEIRA HORA — sempre fazer</text>
@@ -10365,17 +10423,17 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 <text x="410" y="465" text-anchor="middle" class="f-ts">Prednisona 40-50 mg VO (1 mg/kg ped) × 5-7 dias</text>
 <text x="410" y="483" text-anchor="middle" class="f-ts">ou metilprednisolona 40-125 mg IV/hidrocortisona 200 mg IV</text>
 <line x1="410" y1="500" x2="410" y2="530" class="f-arr" marker-end="url(#arr-as)"/>
-<polygon points="410,535 640,595 410,655 180,595" class="f-dec"/>
+<polygon points="410,535 810,595 410,655 180,595" class="f-dec"/>
 <text x="410" y="585" text-anchor="middle" class="f-t">Após 1h — melhorou?</text>
 <text x="410" y="605" text-anchor="middle" class="f-ts">PFE &gt; 60-80% pré • SpO₂ &gt; 95%</text>
 <text x="410" y="623" text-anchor="middle" class="f-ts">sem dispneia em repouso</text>
-<line x1="640" y1="595" x2="740" y2="595" class="f-arr" marker-end="url(#arr-as)"/>
-<rect x="600" y="615" width="200" height="120" class="f-ok"/>
-<text x="700" y="640" text-anchor="middle" class="f-tc">ALTA</text>
-<text x="700" y="660" text-anchor="middle" class="f-ts">Prednisona 5-7 dias</text>
-<text x="700" y="678" text-anchor="middle" class="f-ts">CI + ABAP (formoterol)</text>
-<text x="700" y="696" text-anchor="middle" class="f-ts">Plano escrito</text>
-<text x="700" y="714" text-anchor="middle" class="f-ts">Reavaliação ambulat 7d</text>
+<line x1="870" y1="595" x2="970" y2="595" class="f-arr" marker-end="url(#arr-as)"/>
+<rect x="830" y="615" width="200" height="120" class="f-ok"/>
+<text x="930" y="640" text-anchor="middle" class="f-tc">ALTA</text>
+<text x="930" y="660" text-anchor="middle" class="f-ts">Prednisona 5-7 dias</text>
+<text x="930" y="678" text-anchor="middle" class="f-ts">CI + ABAP (formoterol)</text>
+<text x="930" y="696" text-anchor="middle" class="f-ts">Plano escrito</text>
+<text x="930" y="714" text-anchor="middle" class="f-ts">Reavaliação ambulat 7d</text>
 <line x1="180" y1="595" x2="80" y2="595" class="f-arr" marker-end="url(#arr-as)"/>
 <rect x="20" y="660" width="160" height="80" class="f-warn"/>
 <text x="100" y="685" text-anchor="middle" class="f-tc">MANTER neb</text>
@@ -10401,7 +10459,7 @@ svg: `<svg viewBox="0 0 820 1000" xmlns="http://www.w3.org/2000/svg" class="flow
 FLOWS["dpoc"] = {
 titulo: "DPOC — Exacerbação",
 fonte: "GOLD 2024 (goldcopd.org); SBPT",
-svg: `<svg viewBox="0 0 820 900" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+svg: `<svg viewBox="0 0 1080 900" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
 <defs><marker id="arr-dp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
 <style>
 .f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
@@ -10444,13 +10502,13 @@ svg: `<svg viewBox="0 0 820 900" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="410" y="388" text-anchor="middle" class="f-ts">40-60 mg/d ou</text>
 <text x="410" y="406" text-anchor="middle" class="f-ts">hidrocortisona 200 mg</text>
 <rect x="560" y="265" width="240" height="160" class="f-crit"/>
-<text x="680" y="290" text-anchor="middle" class="f-tc">3 — ANTIBIÓTICO</text>
-<text x="680" y="310" text-anchor="middle" class="f-ts">se critérios Anthonisen</text>
-<text x="680" y="330" text-anchor="middle" class="f-ts">Amox-clav 875 mg 12/12</text>
-<text x="680" y="348" text-anchor="middle" class="f-ts">ou azitromicina 500 mg/d</text>
-<text x="680" y="366" text-anchor="middle" class="f-ts">por 5-7 dias</text>
-<text x="680" y="386" text-anchor="middle" class="f-ts">Cobertura Pseudomonas</text>
-<text x="680" y="404" text-anchor="middle" class="f-ts">se VEF1 &lt; 30% ou ATB recente</text>
+<text x="910" y="290" text-anchor="middle" class="f-tc">3 — ANTIBIÓTICO</text>
+<text x="910" y="310" text-anchor="middle" class="f-ts">se critérios Anthonisen</text>
+<text x="910" y="330" text-anchor="middle" class="f-ts">Amox-clav 875 mg 12/12</text>
+<text x="910" y="348" text-anchor="middle" class="f-ts">ou azitromicina 500 mg/d</text>
+<text x="910" y="366" text-anchor="middle" class="f-ts">por 5-7 dias</text>
+<text x="910" y="386" text-anchor="middle" class="f-ts">Cobertura Pseudomonas</text>
+<text x="910" y="404" text-anchor="middle" class="f-ts">se VEF1 &lt; 30% ou ATB recente</text>
 <line x1="410" y1="425" x2="410" y2="455" class="f-arr" marker-end="url(#arr-dp)"/>
 <rect x="120" y="460" width="580" height="120" class="f-warn"/>
 <text x="410" y="485" text-anchor="middle" class="f-tc">OXIGÊNIO — alvo SpO₂ 88-92%</text>
@@ -10459,16 +10517,16 @@ svg: `<svg viewBox="0 0 820 900" xmlns="http://www.w3.org/2000/svg" class="flow-
 <text x="410" y="544" text-anchor="middle" class="f-ts">VNI (BiPAP IPAP 12-15 / EPAP 4-6) se:</text>
 <text x="410" y="562" text-anchor="middle" class="f-ts">acidose respiratória pH ≤ 7,35 + PaCO₂ &gt; 45 + dispneia importante</text>
 <line x1="410" y1="580" x2="410" y2="610" class="f-arr" marker-end="url(#arr-dp)"/>
-<polygon points="410,615 640,675 410,735 180,675" class="f-dec"/>
+<polygon points="410,615 810,675 410,735 180,675" class="f-dec"/>
 <text x="410" y="665" text-anchor="middle" class="f-t">Critérios de IOT?</text>
 <text x="410" y="683" text-anchor="middle" class="f-ts">PA instável, parada/iminência</text>
 <text x="410" y="703" text-anchor="middle" class="f-ts">consciência ↓, falha de VNI</text>
-<line x1="640" y1="675" x2="740" y2="675" class="f-arr" marker-end="url(#arr-dp)"/>
-<rect x="600" y="695" width="200" height="100" class="f-crit"/>
-<text x="700" y="720" text-anchor="middle" class="f-tc">IOT + VM</text>
-<text x="700" y="740" text-anchor="middle" class="f-ts">SRI — cetamina 1-2 mg/kg</text>
-<text x="700" y="758" text-anchor="middle" class="f-ts">VC controlado</text>
-<text x="700" y="776" text-anchor="middle" class="f-ts">FR 8-10, IxE 1:3-1:4</text>
+<line x1="870" y1="675" x2="970" y2="675" class="f-arr" marker-end="url(#arr-dp)"/>
+<rect x="830" y="695" width="200" height="100" class="f-crit"/>
+<text x="930" y="720" text-anchor="middle" class="f-tc">IOT + VM</text>
+<text x="930" y="740" text-anchor="middle" class="f-ts">SRI — cetamina 1-2 mg/kg</text>
+<text x="930" y="758" text-anchor="middle" class="f-ts">VC controlado</text>
+<text x="930" y="776" text-anchor="middle" class="f-ts">FR 8-10, IxE 1:3-1:4</text>
 <line x1="180" y1="675" x2="80" y2="675" class="f-arr" marker-end="url(#arr-dp)"/>
 <rect x="20" y="695" width="160" height="100" class="f-ok"/>
 <text x="100" y="720" text-anchor="middle" class="f-tc">MANTER</text>
