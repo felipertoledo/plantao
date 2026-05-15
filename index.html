@@ -801,12 +801,17 @@ details .acc-body p:last-child { margin-bottom: 0; }
   position: sticky;
   bottom: 0.6rem;
   background: var(--bg-elev);
-  border: 2px solid var(--accent);
+  border: 1px solid var(--rule);
   border-radius: var(--radius-lg);
   padding: 0.9rem 1.1rem;
   margin-top: 1rem;
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-1);
+  transition: border-color 0.2s;
 }
+.calc-result.has-score { border: 2px solid var(--accent); box-shadow: var(--shadow-2); }
+.calc-result.has-score-ok { border: 2px solid var(--ok); box-shadow: var(--shadow-2); }
+.calc-result.has-score-warn { border: 2px solid var(--warn); box-shadow: var(--shadow-2); }
+.calc-result.has-score-crit { border: 2px solid var(--accent); box-shadow: var(--shadow-2); }
 .calc-result .res-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); font-weight: 600; }
 .calc-result .res-val { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; color: var(--accent); line-height: 1.1; margin: 0.15rem 0 0.3rem; font-variant-numeric: tabular-nums; }
 .calc-result .res-int { font-size: 0.9rem; color: var(--ink-2); }
@@ -8747,12 +8752,10 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   return ["nausea","tremor","sud","ans","agit","tac","aud","vis","cef","orient"]
     .reduce((acc,k) => acc + parseInt(v[k]||0), 0);
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<8) return {risco:`${s} — Abstinência LEVE`, acao:"Sem necessidade de tratamento farmacológico. Vigilância clínica. Reavaliar 4-8h. Hidratação + tiamina 100 mg IV/IM/d (prevenir Wernicke).", cor:"ok"};
   if(s<=15) return {risco:`${s} — Abstinência MODERADA`, acao:"Iniciar BZD: Diazepam 10-20 mg VO 4/4h ou Lorazepam 2-4 mg VO/IV 4/4h. Tiamina 100 mg/d. Reavaliar CIWA cada 1-2h. Considerar internação.", cor:"warn"};
   return {risco:`${s} — Abstinência GRAVE (risco delirium tremens)`, acao:"INTERNAÇÃO. BZD IV: Diazepam 10-20 mg IV cada 5-15 min até calmar, ou Lorazepam 2-4 mg IV. UTI se: instabilidade, convulsão, alucinose intensa, delirium tremens estabelecido. Tiamina 500 mg IV 8/8h × 2-3 dias.", cor:"crit"};
@@ -8769,7 +8772,6 @@ fields:[
 {tipo:"bool", id:"f4", label:"FEATURE 4 — ALTERAÇÃO DO NÍVEL DE CONSCIÊNCIA (RASS ≠ 0)"},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   // Codificação binária: F1, F2, F3, F4 → 1 bit cada
   let code = 0;
   if(v.f1) code |= 8;
@@ -8779,7 +8781,6 @@ calc:function(v){
   return code;
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   const f1 = !!(s & 8), f2 = !!(s & 4), f3 = !!(s & 2), f4 = !!(s & 1);
   // Delirium: F1 + F2 + (F3 OU F4)
   if(f1 && f2 && (f3 || f4)) {
@@ -8843,12 +8844,10 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   return ["1a","1b","1c","2","3","4","5a","5b","6a","6b","7","8","9","10","11"]
     .reduce((acc,k) => acc + parseInt(v[k]||0), 0);
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:`NIHSS ${s} — Sem déficit`, acao:"Sem evidência de AVC clinicamente significativo. Investigar diagnóstico diferencial (TIA, migrânea, hipoglicemia).", cor:"ok"};
   if(s<=4) return {risco:`NIHSS ${s} — AVC LEVE`, acao:"AVC menor. Trombólise se elegível (sintomas incapacitantes, dentro de 4,5h, sem CI). Considerar TIA. AAS após 24h de exclusão de hemorragia.", cor:"info"};
   if(s<=15) return {risco:`NIHSS ${s} — AVC MODERADO`, acao:"INDICAÇÃO de trombólise IV (alteplase 0,9 mg/kg, máx 90 mg) se <4,5h + sem CI. Considerar trombectomia mecânica se grande artéria + <24h em centro especializado.", cor:"warn"};
@@ -8873,7 +8872,6 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   const pas = parseInt(v.pas||120);
   const fc = parseInt(v.fc||80);
   const fr = parseInt(v.fr||16);
@@ -8905,7 +8903,6 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=2) return {risco:`MEWS ${s} — Baixo risco`, acao:"Reavaliação rotineira. Manter monitorização padrão.", cor:"ok"};
   if(s<=3) return {risco:`MEWS ${s} — Risco moderado`, acao:"Reavaliar em 1-2h. Comunicar enfermagem. Considerar avaliação médica.", cor:"info"};
   if(s<=4) return {risco:`MEWS ${s} — Alerta`, acao:"AVALIAÇÃO MÉDICA imediata. Vigilância intensiva. Considerar transferência para área mais monitorada.", cor:"warn"};
@@ -8928,7 +8925,6 @@ fields:[
 {tipo:"num", id:"temp", label:"Temperatura (°C)", min:32, max:42, step:0.1},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   const fr = parseInt(v.fr||16);
   const spo2 = parseInt(v.spo2||98);
   const pas = parseInt(v.pas||120);
@@ -8968,7 +8964,6 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:`NEWS2 ${s} — Baixo risco`, acao:"Avaliação rotineira (12/12h em enfermaria).", cor:"ok"};
   if(s<=4) return {risco:`NEWS2 ${s} — Baixo risco`, acao:"Reavaliação cada 4-6h. Comunicar enfermagem. Avaliação médica se único parâmetro = 3 pontos.", cor:"info"};
   if(s<=6) return {risco:`NEWS2 ${s} — Risco médio`, acao:"Avaliação MÉDICA URGENTE (em até 1h). Monitorização cada 1h. Considerar transferência para área monitorizada.", cor:"warn"};
@@ -9004,7 +8999,7 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
+  if (v.e == null || v.v == null || v.m == null) return NaN;
   const e = parseInt(v.e||0);
   const vS = parseInt(v.v||0);
   const m = parseInt(v.m||0);
@@ -9051,11 +9046,9 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   return ["fc","resp","tonus","reflex","cor"].reduce((s,k)=>s+parseInt(v[k]||0), 0);
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s>=7) return {risco:`APGAR ${s} — Vitalidade adequada`, acao:"Cuidados de rotina: secar, contato pele-a-pele, clampear cordão 1-3 min, amamentar.", cor:"ok"};
   if(s>=4) return {risco:`APGAR ${s} — Depressão moderada`, acao:"Ventilação com máscara + O2. Reavaliar 30s. Persistência → considerar IOT. Aquecimento. Não atrasar reanimação por APGAR.", cor:"warn"};
   return {risco:`APGAR ${s} — Depressão grave`, acao:"REANIMAÇÃO NEONATAL completa: VPP + compressões torácicas se FC <60 + adrenalina 0,01-0,03 mg/kg IV/IO se FC<60 após 30s VPP+compressões. Não atrasar por avaliar.", cor:"crit"};
@@ -9073,7 +9066,7 @@ fields:[
 {tipo:"bool", id:"dial", label:"Diálise em 2x na última semana"},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
+  if (v.bili == null || v.inr == null || v.cr == null || v.na == null) return NaN;
   let bili = Math.max(1, parseFloat(v.bili||1));
   let inr = Math.max(1, parseFloat(v.inr||1));
   let cr = parseFloat(v.cr||1);
@@ -9125,7 +9118,7 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
+  if (v.bili == null || v.alb == null || v.inr == null || v.asc == null || v.enc == null) return NaN;
   return ["bili","alb","inr","asc","enc"].reduce((s,k)=>s+parseInt(v[k]||1), 0);
 },
 interp:function(s){
@@ -9162,11 +9155,9 @@ fields:[
 ]},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   return ["throm","timing","throms","other"].reduce((s,k)=>s+parseInt(v[k]||0), 0);
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=3) return {risco:`Score ${s} — Baixa probabilidade (<5%)`, acao:"HIT improvável. Não suspender heparina rotineiramente. Investigar outras causas de plaquetopenia.", cor:"ok"};
   if(s<=5) return {risco:`Score ${s} — Probabilidade intermediária (10-30%)`, acao:"SUSPENDER heparina (HNF E HBPM) + iniciar anticoagulante alternativo: fondaparinux 7,5 mg SC/d OU argatroban OU bivalirudina. Solicitar PF4-anti-heparin antibody (ELISA). Confirmar com Serotonin Release Assay se ELISA+.", cor:"warn"};
   return {risco:`Score ${s} — Alta probabilidade (>50%)`, acao:"EMERGÊNCIA HEMATOLÓGICA. Suspender TODA heparina (incluindo flushes de acessos). Iniciar anticoagulante não-heparínico IMEDIATO (fondaparinux/argatroban). PF4 + Serotonin Release. NÃO USAR varfarina sem ponte (risco gangrena venosa). Hematologia.", cor:"crit"};
@@ -9186,7 +9177,6 @@ fields:[
 {tipo:"bool", id:"b3", label:"+ Incapacidade de sustentar peso (4 passos) imediatamente E na consulta"},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   // RX tornozelo se: A + (A1 OU A2)
   // RX pé se: B + (B1 OU B2 OU B3)
   let pts = 0;
@@ -9195,7 +9185,6 @@ calc:function(v){
   return pts;
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:"RX NÃO indicado", acao:"Sem critérios Ottawa. Probabilidade de fratura clínica <2%. Manejo conservador: RICE (repouso, gelo, compressão, elevação), analgesia, retorno se piora. Reavaliar em 7 dias se persistência.", cor:"ok"};
   if(s===1) return {risco:"RX TORNOZELO indicado", acao:"Solicitar RX tornozelo AP + perfil + mortise. Avaliar maléolos, articulação tibiotalar.", cor:"warn"};
   if(s===2) return {risco:"RX PÉ indicado", acao:"Solicitar RX pé AP + perfil + oblíqua. Avaliar base do 5° MT, navicular, tarsais.", cor:"warn"};
@@ -9217,11 +9206,9 @@ fields:[
 {tipo:"bool", id:"h", label:"Uso de hormônio (estrogênio, anticoncepcional)"},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   return ["a","b","c","d","e","f","g","h"].reduce((s,k)=>s+(v[k]?1:0), 0);
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s===0) return {risco:"PERC NEGATIVO (todos critérios ausentes)", acao:"TEP EXCLUÍDO em paciente de baixa probabilidade pré-teste. Não solicitar D-dímero/angio-TC. Investigar outros diagnósticos.", cor:"ok"};
   return {risco:`PERC POSITIVO (${s}/8 critério${s>1?"s":""} presente${s>1?"s":""})`, acao:"PERC não exclui TEP. Prosseguir investigação: D-dímero ajustado idade (× 10 ng/mL se >50a). Se elevado → angio-TC pulmonar.", cor:"warn"};
 }
@@ -9245,7 +9232,6 @@ fields:[
 {tipo:"bool", id:"h", label:"Dor à palpação venosa profunda + edema unilateral (+4)"},
 ],
 calc:function(v){
-  if (Object.values(v).includes(null)) return NaN;
   let s = 0;
   if(v.a) s+=1; if(v.b) s+=3; if(v.c) s+=2; if(v.d) s+=2;
   if(v.e) s+=3; if(v.f) s+=2;
@@ -9254,7 +9240,6 @@ calc:function(v){
   return s;
 },
 interp:function(s){
-  if (s == null || (typeof s === "number" && isNaN(s))) return {risco:"—", acao:"Preencha todos os campos acima.", cor:"info"};
   if(s<=3) return {risco:`Geneva ${s} — Baixa probabilidade (~8%)`, acao:"D-dímero ajustado por idade. Se neg → exclui TEP. Considerar PERC se score 0-1.", cor:"ok"};
   if(s<=10) return {risco:`Geneva ${s} — Probabilidade intermediária (~28%)`, acao:"D-dímero. Se positivo → angio-TC pulmonar. Considerar anticoagulação empírica se delay >4h em alto risco.", cor:"warn"};
   return {risco:`Geneva ${s} — Alta probabilidade (~74%)`, acao:"Angio-TC pulmonar DIRETO (não usar D-dímero — não exclui). Iniciar anticoagulação empírica enquanto aguarda exame.", cor:"crit"};
@@ -14439,6 +14424,19 @@ function recalcCalc(id) {
   else scoreText = String(res);
 
   document.getElementById("calc-score-" + id).textContent = scoreText;
+
+  // Aplicar classe ao container para colorir a borda conforme estado
+  const resultEl = document.getElementById("calc-result-" + id);
+  if (resultEl) {
+    resultEl.classList.remove("has-score","has-score-ok","has-score-warn","has-score-crit");
+    if (scoreText !== "—") {
+      const cor = (interp && interp.cor) || "info";
+      if (cor === "ok") resultEl.classList.add("has-score-ok");
+      else if (cor === "warn") resultEl.classList.add("has-score-warn");
+      else if (cor === "crit") resultEl.classList.add("has-score-crit");
+      else resultEl.classList.add("has-score");
+    }
+  }
 
   const interpEl = document.getElementById("calc-interp-" + id);
   if (!interp) {
