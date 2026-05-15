@@ -1426,6 +1426,29 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
 .btn span { line-height: 1; }
 .btn .kbd-hint { padding: 0.1rem 0.35rem; font-size: 0.7rem; line-height: 1; }
 
+/* ============== IMAGENS / FIGURAS ============== */
+.figs-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+@media (min-width: 720px) {
+  .figs-wrap { grid-template-columns: 1fr 1fr; }
+}
+.figs-wrap .fig { margin: 0; }
+.fig img {
+  max-height: 380px;
+  object-fit: contain;
+  background: var(--bg-elev);
+}
+.fig-source {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--ink-4);
+  font-style: italic;
+}
+
 </style>
 </head>
 <body>
@@ -1499,6 +1522,10 @@ const SISTEMAS = {
   vaso:     { nome: "Drogas vasoativas",     icone: "◆", cor: "#EA580C" },
   iot:      { nome: "Sedação & IOT",         icone: "≡", cor: "#475569" },
   gest:     { nome: "Gestantes",             icone: "◯", cor: "#DB2777" },
+  obst:     { nome: "Obstetrícia",           icone: "♀", cor: "#BE185D" },
+  trauma:   { nome: "Trauma",                icone: "✖", cor: "#7C2D12" },
+  derm:     { nome: "Dermatologia",          icone: "❋", cor: "#A21CAF" },
+  oft:      { nome: "Oftalmologia / ORL",    icone: "◉", cor: "#1D4ED8" },
 };
 
 const PATOLOGIAS = [
@@ -1648,6 +1675,12 @@ const PATOLOGIAS = [
     { d: "Metoprolol", x: "β1-bloqueador — ↓FC, ↓contratilidade, ↓consumo miocárdico de O₂ e ↓arritmias." },
   ],
   diretriz: "Diretriz SBC SCA sem Supra de ST 2021 (Nicolau JC et al., Arq Bras Cardiol 2021;117(1):181–264). Diretriz SBC IAM com Supra de ST 2024. 2023 ESC ACS Guidelines (Byrne RA et al., Eur Heart J 2023;44:3720–3826, DOI:10.1093/eurheartj/ehad191).",
+  imgs: [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/12_Lead_EKG_ST_Elevation_tracing_color_coded.jpg/640px-12_Lead_EKG_ST_Elevation_tracing_color_coded.jpg",
+     alt:"ECG 12 derivações com supra de ST",
+     caption:"IAMCST — supra de ST em parede inferior (II, III, aVF), com imagem em espelho em DI/aVL.",
+     source:"Wikimedia Commons / Glenlarson (Domínio público)"},
+  ],
   fluxo: "sca",
   calcs: ["heart", "grace", "timi"],
 },
@@ -1872,6 +1905,12 @@ const PATOLOGIAS = [
     { d: "AAS", x: "Inibe COX-1 plaquetária irreversivelmente — bloqueia tromboxano A2 e agregação." },
   ],
   diretriz: "AHA/ASA 2025 Guideline for the Management of Patients With Acute Ischemic Stroke (Powers WJ et al., 2025 update; DOI:10.1161/STR.0000000000000513). Linha de Cuidado em AVC, Ministério da Saúde (Portaria GM/MS 4.129/2024). PCDT MS Brasil 2021 (recomenda apenas alteplase em SUS).",
+  imgs: [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/MCA_Territory_Infarct.svg/640px-MCA_Territory_Infarct.svg.png",
+     alt:"TC de crânio com hipoatenuação em território de ACM",
+     caption:"Infarto extenso em território da artéria cerebral média esquerda — hipoatenuação cortical e apagamento dos sulcos.",
+     source:"Wikimedia Commons / Lucien Monfils (CC BY-SA 3.0)"},
+  ],
   fluxo: "avci",
   calcs: ["nihss"],
 },
@@ -2052,6 +2091,14 @@ const PATOLOGIAS = [
     { d: "Levofloxacino", x: "Fluoroquinolona — inibe <strong>DNA-girase e topoisomerase IV</strong> bacterianas, impedindo replicação. Cobre típicos + atípicos." },
   ],
   diretriz: "SBPT 2018 — Recomendações para o manejo da PAC (Corrêa RA et al., J Bras Pneumol 2018;44:405–423). ATS/IDSA 2019 (Metlay JP et al., Am J Respir Crit Care Med 2019;200:e45–e67, DOI:10.1164/rccm.201908-1581ST).",
+  imgs: [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lobar_pneumonia_illustrated.jpg/640px-Lobar_pneumonia_illustrated.jpg",
+     alt:"RX tórax mostrando pneumonia lobar com consolidação", caption:"Pneumonia lobar — consolidação alveolar densa no lobo inferior direito, com broncograma aéreo.",
+     source:"Wikimedia Commons (CC BY-SA)"},
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pneumonia_x-ray.jpg/640px-Pneumonia_x-ray.jpg",
+     alt:"Consolidação radiológica em pneumonia", caption:"Outro exemplo de consolidação pneumônica.",
+     source:"Wikimedia Commons"},
+  ],
   fluxo: null,
   calcs: ["curb65"],
 },
@@ -2079,6 +2126,12 @@ const PATOLOGIAS = [
     { d: "Etambutol (E)", x: "Inibe <strong>arabinosil-transferase</strong>, bloqueando síntese de arabinogalactano da parede. Bacteriostático. Toxicidade: neurite óptica." },
   ],
   diretriz: "Manual de Recomendações para o Controle da Tuberculose no Brasil (MS, 2ª ed. 2019). WHO Consolidated Guidelines on Tuberculosis 2022.",
+  imgs: [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Tuberculosis-x-ray-1.jpg/640px-Tuberculosis-x-ray-1.jpg",
+     alt:"RX de tórax com cavitação apical bilateral",
+     caption:"TB pulmonar bilateral — infiltrado heterogêneo nos ápices com cavitações.",
+     source:"Wikimedia Commons (Domínio público)"},
+  ],
   fluxo: null,
   calcs: [],
 },
@@ -2103,6 +2156,11 @@ const PATOLOGIAS = [
     { d: "Oxigenoterapia", x: "↑Pressão parcial de O₂ alveolar → aumenta gradiente para reabsorção pleural (acelera 4×)." },
   ],
   diretriz: "BTS Pleural Disease Guideline 2023 (Roberts ME et al., Thorax 2023;78(Suppl 3):s1–s42). Manual de Trauma ATLS 10ª ed.",
+  imgs: [
+    {src:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Right-sided_Pneumothorax.jpg/640px-Right-sided_Pneumothorax.jpg",
+     alt:"RX tórax com pneumotórax à direita", caption:"Pneumotórax à direita — ausência de trama pulmonar lateralmente, linha pleural visível.",
+     source:"Wikimedia Commons / Clinical Cases (CC BY-SA 2.5)"},
+  ],
   fluxo: null,
   calcs: [],
 },
@@ -4166,6 +4224,1241 @@ calcs:[],
 },
 );
 /* PARTE 4 COMPLETA — TOTAL 80+ patologias */
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — DADOS CLÍNICOS PARTE 5
+   Tier 1: Obstetrícia + Cardio extras + Neuro extras + Trauma + Outras críticas
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== OBSTETRÍCIA ============== */
+{id:"pre-eclampsia", sis:"obst", grav:"alta",
+nome:"Pré-eclâmpsia / Eclâmpsia / HELLP",
+sin:["pré-eclampsia","eclampsia","HELLP","DHEG"],
+def:"PE = HAS (PA ≥140×90) APÓS 20 sem + proteinúria OU disfunção orgânica. PE grave = PAS ≥160 ou PAD ≥110 + sintomas (cefaleia, escotomas, dor HCD, oligúria, edema agudo pulmão). Eclâmpsia = + crise convulsiva. HELLP = Hemólise + ↑enzimas hepáticas + ↓plaquetas (<100k).",
+exames:["PA seriada","Proteinúria fita/24h","Hemograma (esquistócitos), plaquetas","TGO/TGP, bilirrubinas, LDH, haptoglobina","Ureia/Cr, ácido úrico","Coagulograma","CTG fetal + USG obstétrico"],
+rx:[
+{d:"Sulfato de Magnésio (Pritchard)",do:"ATAQUE: 4 g IV em 20 min + 10 g IM (5 g cada glúteo). MANUTENÇÃO: 5 g IM 4/4h",via:"IV+IM",o:"PE grave + eclâmpsia. Manter 24h pós-parto ou pós-última crise."},
+{d:"Sulfato de Magnésio (Zuspan)",do:"ATAQUE: 4-6 g IV em 20 min. MANUTENÇÃO: 1-2 g/h IV BIC",via:"IV",o:"Mais fisiológico. Antídoto: gluconato de cálcio 10% 10 mL IV se intoxicação."},
+{d:"Hidralazina",do:"5 mg IV bolus, repetir 5-10 mg 20/20 min (máx 30 mg)",via:"IV",o:"1ª linha emergência hipertensiva gestacional. Meta: PAS 140-160, PAD 90-100."},
+{d:"Nifedipino",do:"10 mg VO, repetir 20/20 min (máx 50 mg)",via:"VO",o:"Alternativa à hidralazina. Não usar sublingual."},
+{d:"Labetalol",do:"20 mg IV bolus, dobrar dose 10/10 min (máx 300 mg)",via:"IV",o:"Onde disponível — 1ª linha em alguns serviços."},
+{d:"Betametasona",do:"12 mg IM 24/24h × 2 doses",via:"IM",o:"Maturação pulmonar fetal — gestação 24-34 sem."},
+{d:"Parto",do:"Interrupção da gestação",via:"Obstétrico",o:"TRATAMENTO DEFINITIVO. PE grave ≥34 sem ou HELLP ou eclâmpsia → resolução."},
+],
+alertas:[
+{t:"crit",x:"Eclâmpsia é DIAGNÓSTICO CLÍNICO — crise tônico-clônica em gestante/puérpera. Sulfato Mg é a 1ª droga, NÃO BZD/fenitoína."},
+{t:"crit",x:"HELLP pode ocorrer SEM hipertensão prévia. Dor em HCD/epigástrio + náusea + AST alta em gestante → suspeitar."},
+{t:"warn",x:"PE pode evoluir até 6 SEMANAS pós-parto. Eclâmpsia tardia existe."},
+{t:"warn",x:"Sinais de intoxicação por Mg: arreflexia patelar (precoce), FR <12, oligúria <100 mL/4h. Suspender Mg, antídoto Ca."},
+],
+fisio:"Doença trofoblástica — placentação anormal com remodelamento inadequado das artérias espiraladas → isquemia placentária → liberação de fatores antiangiogênicos (sFlt-1, endoglina) que neutralizam VEGF/PlGF → disfunção endotelial sistêmica. Resultado: <strong>vasoespasmo + permeabilidade vascular + ativação plaquetária + microangiopatia trombótica</strong>. Manifesta-se como HAS + proteinúria + lesão de órgão-alvo. HELLP é a expressão hepato-hematológica. Eclâmpsia provavelmente é encefalopatia hipertensiva + vasoespasmo + edema vasogênico (PRES).",
+mec:[
+{d:"Sulfato de Magnésio", x:"<strong>Não é anticonvulsivante convencional</strong>. Atua como antagonista de NMDA, bloqueia liberação de glutamato, causa vasodilatação cerebral seletiva, reduz edema vasogênico e estabiliza membrana neuronal. Reduz risco de eclâmpsia em 58% (Magpie trial)."},
+{d:"Hidralazina", x:"Vasodilatador arteriolar direto — abre canais de K⁺ no músculo liso → hiperpolarização. Reduz RVP sem comprometer fluxo útero-placentário."},
+{d:"Betametasona", x:"Corticoide atravessa placenta, ↑surfactante pulmonar fetal e reduz síndrome do desconforto respiratório do RN em ~50%."},
+],
+diretriz:"FEBRASGO 2020 — Manual de Pré-eclâmpsia. ACOG Practice Bulletin 222 (Gestational Hypertension and Preeclampsia, Obstet Gynecol 2020;135:e237). ISSHP 2021 (DOI:10.1097/HJH.0000000000002889).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"hpp", sis:"obst", grav:"alta",
+nome:"Hemorragia Pós-Parto (HPP)",
+sin:["HPP","hemorragia puerperal","atonia uterina"],
+def:"Perda sanguínea ≥500 mL pós-parto vaginal ou ≥1000 mL pós-cesárea, OU qualquer sangramento com sinais de instabilidade. Precoce: <24h (90%, atonia). Tardia: 24h-12 semanas.",
+exames:["SSVV continuamente","Hemograma seriado","Coagulograma + fibrinogênio (alvo >2 g/L)","Lactato, gaso arterial","Tipo sanguíneo + Rh + prova cruzada"],
+rx:[
+{d:"Massagem uterina bimanual",do:"Contínua",via:"—",o:"1ª medida sempre. Compressão externa + intracavitária."},
+{d:"Ocitocina",do:"10 UI IM + 20-40 UI em 500 mL SF/RL IV em 1h",via:"IV+IM",o:"1ª linha medicamentosa. CONTÍNUO até cessar."},
+{d:"Misoprostol",do:"800-1000 mcg retal OU 600 mcg VO/SL",via:"Retal/VO",o:"Se ocitocina indisponível/falha. Pode causar tremor + hipertermia."},
+{d:"Metilergometrina",do:"0,2 mg IM, pode repetir 2-4h (máx 5 doses)",via:"IM",o:"CONTRAINDICADA em hipertensão, pré-eclâmpsia, cardiopatia."},
+{d:"Ácido Tranexâmico",do:"1 g IV em 10 min, repetir em 30 min se sangramento ativo (WOMAN trial)",via:"IV",o:"Idealmente nas primeiras 3h. Reduz mortalidade materna em 31%."},
+{d:"Balão de Bakri / sonda Foley",do:"Insuflar 250-500 mL SF",via:"Intrauterino",o:"Tamponamento — se atonia refratária à medicação."},
+{d:"Cirurgia",do:"Sutura B-Lynch / ligadura uterinas / histerectomia",via:"Cirúrgico",o:"Falha do tamponamento — chamar obstetra imediato."},
+{d:"Hemocomponentes",do:"Protocolo de hemorragia maciça 1:1:1 (CH:PFC:plaq)",via:"IV",o:"Manter Hb >7, plaq >50k, fibrinogênio >2 g/L. CH se choque/Hb<7."},
+],
+alertas:[
+{t:"crit",x:"4 T's da HPP — TÔNUS (atonia 70%), TRAUMA (laceração 20%), TECIDO (retenção placentária 10%), TROMBINA (coagulopatia <1%). Identificar e tratar a causa."},
+{t:"crit",x:"Choque hipovolêmico em gestante MASCARA — gestantes compensam até 30-40% de perda. Hipotensão é tardia."},
+{t:"warn",x:"Ácido tranexâmico — TIME IS LIFE. Cada 15 min de atraso ↓5% benefício. Administrar SEMPRE em HPP com sangramento ativo."},
+],
+fisio:"Após dequitação, a hemostasia uterina depende primariamente da contração miometrial que comprime os vasos espiralados das artérias uterinas (ligaduras vivas de Pinard). A atonia uterina (70-80% das HPPs) ocorre por: trabalho de parto prolongado, macrossomia, multíparas, corioamnionite, uso de tocolíticos. Outras causas: lacerações vias baixas, retenção placentária, coagulopatia (CIVD, von Willebrand não diagnosticado, descolamento prévio). A perda sanguínea aguda em gestante leva a CIVD por consumo, agravando o quadro.",
+mec:[
+{d:"Ocitocina",x:"Análogo do hormônio natural — liga-se a receptores de ocitocina no miométrio (densidade ↑↑ no termo) → ativação de Gq → ↑IP3/Ca²⁺ → contração. <strong>Saturável</strong>: doses muito altas não aumentam efeito e podem causar ↓PA, hiponatremia, taquicardia."},
+{d:"Misoprostol",x:"Análogo de PGE1 — contração miometrial direta + amadurecimento cervical. Custo baixo, termoestável (uso em campo)."},
+{d:"Metilergometrina",x:"Alcaloide do ergot — agonista parcial de receptores α-adrenérgicos e serotoninérgicos → contração uterina <strong>tetânica</strong>. Risco de vasoespasmo sistêmico (HAS, IAM)."},
+{d:"Ácido Tranexâmico",x:"Análogo da lisina — bloqueia sítios de ligação da lisina no plasminogênio → inibe ativação para plasmina → reduz fibrinólise. Não é pró-trombótico de forma significativa em doses terapêuticas."},
+],
+diretriz:"FIGO 2022 (Escobar MF et al., Int J Gynecol Obstet 2022;157:3). WOMAN Trial (Lancet 2017;389:2105, DOI:10.1016/S0140-6736(17)30638-4). MS — Manual Obstetrícia de Alto Risco.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"ectopica", sis:"obst", grav:"alta",
+nome:"Gestação Ectópica",
+sin:["ectopica","gestação tubária","gravidez tubária"],
+def:"Implantação embrionária fora da cavidade uterina (95% tubária). Tríade clássica: atraso menstrual + sangramento vaginal + dor pélvica. Suspeitar em TODA mulher fértil com dor abdominal — β-hCG é OBRIGATÓRIO.",
+exames:["β-hCG quantitativo seriado","USG transvaginal","Hemograma + tipagem","Função renal e hepática (pré-MTX)"],
+rx:[
+{d:"Conduta expectante",do:"Seguimento β-hCG h/48h",via:"—",o:"Apenas se: β-hCG <1000-2000 e em queda, paciente estável, sem sangramento livre."},
+{d:"Metotrexato (MTX)",do:"1 mg/kg IM (dose única) OU 50 mg/m² IM",via:"IM",o:"Critérios: estável, sem ruptura, β-hCG <5000, massa <3,5 cm, sem BCF, função renal/hepática normal. Acompanhamento D4 e D7 — esperado ↓15% em 4-7 dias."},
+{d:"Salpingostomia/Salpingectomia laparoscópica",do:"—",via:"Cirúrgico",o:"Ruptura, instabilidade, falha de MTX, β-hCG alto, BCF presente, massa grande."},
+{d:"Hemocomponentes",do:"CH se Hb <7 ou choque",via:"IV",o:"Anti-D 300 mcg IM se Rh-negativa."},
+],
+alertas:[
+{t:"crit",x:"Ectópica ROTA: choque hipovolêmico + Blumberg + sinal de Cullen/Laffont + dor referida ombro (sangue subdiafragmático) → laparotomia/laparoscopia URGENTE."},
+{t:"crit",x:"β-hCG ZONA DISCRIMINATÓRIA: USG transvaginal deve mostrar saco gestacional intrauterino quando β-hCG >2000 mUI/mL. Ausência = ectópica até prova contrária."},
+{t:"warn",x:"Gestação heterotópica (1:30.000 espontânea, 1:100 em FIV) — não exclui ectópica só porque há gestação tópica."},
+],
+fisio:"95% tubária (ampolar 70%, ístmica 12%, fimbriada 11%); raras: cornual, ovariana, cervical, cicatriz cesárea, abdominal. Fatores de risco: DIP prévia (PID), tabagismo, FIV/inseminação, DIU in situ, cirurgia tubária, ectópica prévia (recorrência 10-15%). A tuba não tem submucosa nem decidualização — o trofoblasto invade direto a muscular → ruptura em 6-10 sem. A ruptura gera hemoperitônio com choque hipovolêmico clássico.",
+mec:[
+{d:"Metotrexato",x:"Antagonista do ácido fólico — inibe <strong>dihidrofolato redutase</strong>, bloqueando síntese de purinas/timidina → impede replicação celular. Atua preferencialmente em células com alta proliferação (trofoblasto). Pré-medicar com leucovorina pode mitigar mucosite/mielotoxicidade."},
+],
+diretriz:"FEBRASGO 2018. ACOG Practice Bulletin 193 — Tubal Ectopic Pregnancy (Obstet Gynecol 2018;131:e91). NICE Ectopic Pregnancy 2019 (NG126).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"aborto", sis:"obst", grav:"media",
+nome:"Aborto / Sangramento 1º Trimestre",
+sin:["aborto","sangramento gestacional","ameaça aborto","aborto incompleto","aborto infectado"],
+def:"Sangramento vaginal <22 sem ou feto <500 g. Tipos: ameaça (colo fechado + BCF+); inevitável (colo aberto); incompleto (restos); completo (vazio); retido (sem BCF); infectado (febre + secreção fétida).",
+exames:["β-hCG","USG transvaginal","Hemograma","Coagulograma (se sangramento volumoso)","Tipagem ABO/Rh"],
+rx:[
+{d:"Ameaça",do:"Repouso relativo + abstinência sexual",via:"—",o:"Sem evidência de progesterona. Reavaliação USG em 7-10 dias."},
+{d:"Aborto incompleto/inevitável <12 sem",do:"Misoprostol 600-800 mcg vaginal dose única",via:"Vaginal",o:"OU AMIU (até 12 sem) OU expectante (estável, sem infecção)."},
+{d:"Aborto retido",do:"Misoprostol 800 mcg vaginal 3/3h × 2-3 doses",via:"Vaginal",o:"OU curetagem se >12 sem ou sangramento."},
+{d:"Aborto infectado",do:"Ampicilina 2g IV 6/6h + Gentamicina 1,5 mg/kg 8/8h + Metronidazol 500 mg IV 8/8h + Curetagem URGENTE após 1ª dose",via:"IV",o:"Após 48h afebril → VO 7-10 dias. Risco de sepse, perfuração, choque tóxico."},
+{d:"Imunoglobulina anti-D",do:"300 mcg IM em até 72h",via:"IM",o:"TODAS Rh-negativas com sangramento ou aborto."},
+],
+alertas:[
+{t:"crit",x:"Aborto infectado: febre + dor + secreção fétida + sangramento. Pode evoluir para sepse (clostridial, gram-negativos). ATB + esvaziamento URGENTE, NÃO atrasar."},
+{t:"warn",x:"Aborto provocado clandestino: alta morbimortalidade. Acolher SEM julgamento — Brasil tem amparo legal nas 3 hipóteses (anencefalia, risco materno, estupro)."},
+{t:"info",x:"Aborto legal NÃO precisa de BO. Risco de vida vida = qualquer médico. Estupro = palavra da mulher (Lei 12.845/2013)."},
+],
+fisio:"Etiologias: cromossomopatias (50%, anomalia mais comum), trombofilia (SAAF), endocrinopatia (insuficiência lútea, hipotireoidismo), uterina (sinéquias, septo, miomas submucosos), infecção (sífilis, TORCH), imunológica. Repetição (≥2-3 abortos) → investigação. <strong>Sangramento de 1º trimestre acontece em 25% das gestações, metade aborta</strong>.",
+mec:[
+{d:"Misoprostol",x:"Análogo PGE1 — amolece colo + contração uterina. Via vaginal tem biodisponibilidade superior à VO para esvaziamento (Cmax mais sustentado)."},
+],
+diretriz:"MS — Atenção humanizada ao abortamento (Norma Técnica 2014). FEBRASGO Aborto 2021. WHO Abortion Care Guideline 2022.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"dip", sis:"obst", grav:"media",
+nome:"Doença Inflamatória Pélvica (DIP)",
+sin:["DIP","DIPA","salpingite","abscesso tubo-ovariano"],
+def:"Infecção ascendente do trato genital feminino — endometrite + salpingite ± abscesso tubo-ovariano + peritonite pélvica. Critérios mínimos CDC (1 basta): dor à mobilização do colo OU dor anexial OU dor uterina à palpação bimanual.",
+exames:["β-hCG (sempre)","Hemograma, PCR","Cultura endocervical (gonococo + clamídia)","USG/TC pélvica","Sorologia HIV, sífilis, hepatites"],
+rx:[
+{d:"Ambulatorial — Ceftriaxona + Doxiciclina + Metronidazol",do:"500 mg IM dose única + 100 mg 12/12h × 14 dias + 500 mg 12/12h × 14 dias",via:"IM+VO",o:"DIP leve-moderada, estável, sem ATB, gestação excluída."},
+{d:"Hospitalar — Ceftriaxona + Doxiciclina + Metronidazol",do:"1 g IV/d + 100 mg IV 12/12h + 500 mg IV 8/8h",via:"IV",o:"Indicações: gravidez, abscesso, falha ambulatorial, vômitos, intolerância VO, dúvida diagnóstica, adolescente."},
+{d:"Drenagem do ATO",do:"Punção USG-guiada ou laparoscópica",via:"—",o:"Abscesso >7 cm, falha ATB 48-72h, ruptura suspeita."},
+],
+alertas:[
+{t:"crit",x:"Abscesso TUBO-OVARIANO ROTO = peritonite + sepse → cirurgia urgente. Mortalidade 5-10%."},
+{t:"warn",x:"DIP por DIU recém-inserido (<3 sem) — RETIRAR o DIU. Após 3 semanas, decisão individualizada (DIU pode ser mantido se boa resposta ATB)."},
+{t:"info",x:"Síndrome de Fitz-Hugh-Curtis: peri-hepatite por DIP (cordas em violino na laparoscopia). Dor em HCD + DIP."},
+],
+fisio:"Patógenos: gonococo e clamídia (40-50% combinados), aeróbios (E. coli, S. aureus), anaeróbios (Bacteroides, Peptococcus), micoplasma genitalium. A infecção ascende do colo → endométrio → tubas → peritônio. Sequelas: infertilidade tubária (12% após 1 episódio, 50% após 3), dor pélvica crônica, ectópica (×6-10).",
+mec:[
+{d:"Ceftriaxona",x:"Cobre gonococo (cepas resistentes a quinolonas). Dose única 500 mg adequada para erradicação cervical."},
+{d:"Doxiciclina",x:"Tetraciclina — inibe síntese proteica (30S). Excelente para clamídia (intracelular, longa duração de TTO necessária)."},
+{d:"Metronidazol",x:"Anaeróbio + tricomonas. Ativação por redução do grupo nitro em ambiente anaeróbio → radicais que danificam DNA."},
+],
+diretriz:"CDC STI Treatment Guidelines 2021 (MMWR Recomm Rep 2021;70:1). PCDT-IST MS 2022.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"torcao-anexo", sis:"obst", grav:"alta",
+nome:"Torção de Anexo Ovariano",
+sin:["torção ovariana","torção anexial"],
+def:"Rotação do ovário/tuba no pedículo vascular → isquemia. Dor pélvica unilateral SÚBITA + náusea + vômito + massa anexial. Mulheres em idade reprodutiva; pico aos 20-30 anos e na infância.",
+exames:["β-hCG","USG transvaginal com doppler (whirlpool sign, ↓fluxo)","Hemograma","Função renal/eletrólitos","TC se diagnóstico incerto"],
+rx:[
+{d:"Cirurgia URGENTE",do:"Laparoscopia + destorção ovariana",via:"Cirúrgico",o:"PRESERVAR o ovário sempre que possível (mesmo aparentemente necrótico — recupera em 80%). NÃO ooforectomizar de rotina."},
+{d:"Analgesia",do:"Dipirona 2g + Tramadol 100mg IV (não mascara)",via:"IV",o:"Acesso venoso + dieta zero enquanto aguarda cirurgia."},
+],
+alertas:[
+{t:"crit",x:"DOPPLER NORMAL NÃO EXCLUI torção (vascularização dual ovariana). Diagnóstico é CLÍNICO + cirúrgico."},
+{t:"crit",x:"Janela de viabilidade: ~24-36h. Cada hora conta. NÃO postergar cirurgia para 'tentar conservador'."},
+{t:"info",x:"Massa anexial >5 cm é o maior fator de risco. Gestação (corpo lúteo), tumores ovarianos benignos (teratoma) são causas comuns."},
+],
+fisio:"Em ovários normais, o ligamento útero-ovárico curto e a tuba estabilizam. Cisto/tumor cria 'pêndulo' que pode torcer com movimento brusco/Valsalva. A torção do pedículo bloqueia retorno venoso primeiro (edema, congestão), depois fluxo arterial (isquemia, necrose). Manobra de Adler-Hellin: trompa edemaciada e congesta + ovário azulado/violáceo na laparoscopia.",
+mec:[],
+diretriz:"ACOG Practice Bulletin 174 — Evaluation and Management of Adnexal Masses (Obstet Gynecol 2016;128:e210). SBMR Imagem 2020.",
+fluxo:null,
+calcs:[],
+},
+
+/* ============== CARDIO EXTRAS ============== */
+{id:"sincope", sis:"cardio", grav:"media",
+nome:"Síncope",
+sin:["síncope","desmaio","perda transitória de consciência","lipotimia"],
+def:"Perda transitória de consciência por hipoperfusão cerebral global, súbita, breve (<5 min), com recuperação completa espontânea. 3 grandes grupos: REFLEXA (60%), ORTOSTÁTICA (15%), CARDIOGÊNICA (10-30%). Excluir convulsão, AVC, TCE.",
+exames:["ECG 12 derivações","Glicemia capilar","HMG, troponina (se cardiogênica suspeita)","β-HCG mulher fértil","Eletrólitos","Manobra ortostática (HipoTA = ↓PAS ≥20 ou PAD ≥10 em 3 min em pé)"],
+rx:[
+{d:"REFLEXA (vasovagal)",do:"Orientações: hidratação, manobras de contrapressão, sair de gatilhos",via:"—",o:"Boa evolução. β-bloq podem ser tentados se recorrente."},
+{d:"ORTOSTÁTICA",do:"Suspender hipotensores se possível + hidratação + meias compressivas",via:"—",o:"Fludrocortisona 0,1 mg/d ou midodrina 5-10 mg 8/8h em refratários."},
+{d:"CARDIOGÊNICA",do:"Internação + monitorização contínua + tratamento da causa",via:"IV",o:"Marcapasso provisório se BAV avançado/sinusal grave. CDI em arritmia ventricular."},
+],
+alertas:[
+{t:"crit",x:"BANDEIRAS VERMELHAS (alto risco — internação): síncope sentado ou em esforço, palpitações antes, história familiar de morte súbita, cardiopatia conhecida, sopro novo, ECG anormal, idade >65a, lesão grave, instabilidade hemodinâmica."},
+{t:"warn",x:"Diferenciar SÍNCOPE de CRISE CONVULSIVA — convulsão tem aura, fase tônico-clônica >10s, confusão pós, mordedura lateral de língua, incontinência. Síncope tem mioclonias breves (<10s) sem confusão pós-ictal."},
+{t:"info",x:"San Francisco Syncope Rule (CHESS): ICC História, Hto<30, ECG anormal, Shortness of breath, PAS<90. Qualquer = alto risco."},
+],
+fisio:"Cérebro depende de fluxo constante (~50 mL/100g/min). Interrupção >6-8s já causa LOC. Mecanismos: (1) REFLEXA — eferência vagal súbita (vasovagal, situacional, do seio carotídeo) → bradicardia + vasodilatação; (2) ORTOSTÁTICA — falha autonômica (DM, Parkinson, drogas) ou volume baixo; (3) CARDIOGÊNICA — arritmia (bradi/taqui) ou obstrutiva (EAo, MCH, TEP, dissecção, tamponamento, mixoma).",
+mec:[],
+diretriz:"ESC 2018 Syncope (Brignole M et al., Eur Heart J 2018;39:1883, DOI:10.1093/eurheartj/ehy037). AHA 2017 (Shen WK et al., Circulation 2017;136:e60).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"pericardite", sis:"cardio", grav:"media",
+nome:"Pericardite Aguda / Tamponamento",
+sin:["pericardite","tamponamento","derrame pericárdico"],
+def:"Pericardite: dor torácica pleurítica (alivia inclinado p/ frente, piora em supino) + atrito pericárdico + ECG (supra ST côncavo difuso + infra PR) + derrame pericárdico (ECO). Tamponamento: dor + Beck (hipotensão + bulhas abafadas + estase jugular) + pulso paradoxal >10 mmHg.",
+exames:["ECG (supra ST côncavo + infra PR difusos)","RX tórax (coração em moringa se derrame grande)","Ecocardiograma (CRÍTICO)","HMG, PCR, troponina, função renal","Hemocultura se febril, autoanticorpos se suspeita autoimune","HIV, TB se fator de risco"],
+rx:[
+{d:"AINE — Ibuprofeno",do:"600-800 mg VO 8/8h × 1-2 sem (depois desmame)",via:"VO",o:"1ª linha pericardite aguda. AAS 750-1000 mg 8/8h se pós-IAM."},
+{d:"Colchicina",do:"0,5 mg VO 12/12h (>70 kg) ou 0,5 mg/d (<70 kg) × 3 meses",via:"VO",o:"COMBINAR com AINE — reduz recidiva (ICAP trial, 50% ↓ recorrência)."},
+{d:"Pericardiocentese",do:"Punção subxifoide ou para-apical, ECO-guiada",via:"—",o:"TAMPONAMENTO — emergência. NÃO esperar ECO formal se Beck completo + instável."},
+{d:"Corticoide",do:"Prednisona 0,2-0,5 mg/kg/d × 2-4 sem com desmame",via:"VO",o:"Apenas em refratários, autoimunes, urêmica, TB tratada. Evitar 1ª linha (↑ recidiva)."},
+],
+alertas:[
+{t:"crit",x:"TAMPONAMENTO é diagnóstico CLÍNICO + ECO. Pulso paradoxal + colapso de câmaras direitas no ECO. Pericardiocentese SALVA VIDA — não esperar laboratório/RX."},
+{t:"crit",x:"DIFERENCIAR de SCA: supra ST difuso CÔNCAVO (pericardite) vs convexo localizado (IAM); infra PR (pericardite) vs Q (IAM); sem reciprocidade na pericardite."},
+{t:"warn",x:"Etiologia: viral/idiopática 80%, urêmica, TB (BR), neoplásica, autoimune (LES), pós-IAM (Dressler), pós-pericardiectomia."},
+],
+fisio:"Inflamação pericárdica → líquido seroso/serossanguinolento/purulento no saco pericárdico. Pequeno acúmulo gradual → tolerado (até 1-2 L). Acúmulo rápido (mesmo 100-200 mL) → tamponamento (a serosa não distende rápido). O ↑pressão intrapericárdica colaba átrios → ↓retorno venoso → ↓débito → choque obstrutivo. Pulso paradoxal: queda inspiratória de PAS >10 mmHg por exagero da interdependência ventricular.",
+mec:[
+{d:"AINE",x:"Inibe COX → ↓PG → ↓inflamação pericárdica. Cuidado em pós-IAM (pode prejudicar remodelamento) — preferir AAS."},
+{d:"Colchicina",x:"Liga-se à tubulina → impede polimerização de microtúbulos → bloqueia migração de neutrófilos e ativação do inflamassoma NLRP3 (relevante na pericardite recorrente). Custa pouco, alta evidência."},
+],
+diretriz:"ESC 2015 Pericardial Diseases (Adler Y et al., Eur Heart J 2015;36:2921, DOI:10.1093/eurheartj/ehv318). ICAP Trial (Imazio M et al., NEJM 2013;369:1522).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"endocardite", sis:"cardio", grav:"alta",
+nome:"Endocardite Infecciosa",
+sin:["endocardite","EI","Duke","Osler"],
+def:"Infecção do endotélio valvar/intracardíaco — febre + sopro novo + fenômenos embólicos/imunológicos. Diagnóstico por critérios de Duke modificados (2 maiores; 1 maior + 3 menores; 5 menores).",
+exames:["Hemoculturas (3 PARES, em momentos diferentes, ANTES do ATB)","ECO transtorácico (ETT) — se negativo + suspeita alta → transesofágico (ETE)","Hemograma, PCR, VHS, função renal","Sorologia para Bartonella, Coxiella, Brucella se hemocultura negativa","TC tórax/abdome para êmbolos","Avaliação dentária"],
+rx:[
+{d:"Vancomicina + Gentamicina (empírico — válvula nativa)",do:"15-20 mg/kg 12/12h + 1 mg/kg 8/8h",via:"IV",o:"Aguardando hemocultura. Ajustar conforme isolado."},
+{d:"Vancomicina + Gentamicina + Rifampicina (próteses)",do:"15-20 mg/kg 12/12h + 1 mg/kg 8/8h + 300-450 mg 12/12h",via:"IV",o:"Próteses cardíacas / S. epidermidis."},
+{d:"S. aureus oxa-sensível",do:"Oxacilina 12 g/d (2 g 4/4h)",via:"IV",o:"× 4-6 semanas. Penicilínicos podem ter associação curta de gentamicina (3-5 dias)."},
+{d:"S. viridans",do:"Penicilina G 18-24 milhões UI/d ou Ceftriaxona 2 g/d",via:"IV",o:"× 4 semanas. Pode ser feita ambulatorialmente em casos selecionados."},
+{d:"Cirurgia",do:"Troca valvar",via:"Cirúrgico",o:"Indicações: IC refratária, êmbolos recorrentes apesar de ATB, vegetação >10 mm, abscesso anular, prótese disfuncional, gérmen agressivo (fungo, S. aureus prótese)."},
+],
+alertas:[
+{t:"crit",x:"COLHER hemoculturas ANTES do ATB. 3 pares com pelo menos 1h de intervalo. Sem isso, perde-se a etiologia em 30-50% dos casos."},
+{t:"crit",x:"EI em USUÁRIO DE DROGAS IV — geralmente direita (tricúspide), S. aureus. Suspeitar em qualquer febre + comportamento."},
+{t:"warn",x:"Profilaxia ATB (amoxi 2g 1h antes) apenas em cardiopatia de alto risco (próteses, EI prévia, congênita cianótica/recém-corrigida) + procedimento dentário com sangramento."},
+],
+fisio:"Endotélio valvar lesado (turbulência, prótese, dano reumático) → fibrina + plaquetas depositam (vegetação asséptica) → bacteremia (extração dental, IV, GI/GU) → colonização → vegetação infectada → embolização, lesão valvar progressiva, disseminação metastática (cérebro, baço, rim, ossos). Agentes: S. aureus (atualmente o mais comum, agressivo), Streptococcus viridans (dental), enterococos, HACEK, fungos (debilitados, próteses).",
+mec:[
+{d:"Vancomicina",x:"Glicopeptídeo — liga-se ao terminal D-Ala-D-Ala do peptideoglicano → impede transpeptidação → lise. Cobre MRSA, Enterococcus (não-VRE)."},
+{d:"Gentamicina",x:"Aminoglicosídeo — liga-se a 30S → erros de leitura. Sinergia com β-lactâmicos contra enterococos e estreptococos (entra mais fácil)."},
+{d:"Rifampicina",x:"Inibe RNA polimerase bacteriana → impede transcrição. Penetra biofilme (essencial em próteses). NUNCA em monoterapia (resistência rápida)."},
+],
+diretriz:"ESC 2023 Endocarditis Guidelines (Delgado V et al., Eur Heart J 2023;44:3948, DOI:10.1093/eurheartj/ehad193). AHA 2015. Diretriz SBC EI 2019.",
+fluxo:null,
+calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — DADOS CLÍNICOS PARTE 6
+   Tier 1 parte 2: Neuro extras + Trauma + outras críticas
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== NEURO EXTRAS ============== */
+{id:"hsa", sis:"neuro", grav:"alta",
+nome:"Hemorragia Subaracnoide (HSA)",
+sin:["HSA","hemorragia subaracnoide","aneurisma roto","trovão"],
+def:"Sangramento no espaço subaracnoide — cefaleia 'trovão' (worst headache of life), súbita, máxima intensidade <1 min, ± LOC, ± rigidez nucal, ± déficit focal. Escalas: Hunt-Hess (clínica) e Fisher (radiológica).",
+exames:["TC crânio sem contraste (95% sensibilidade nas 1ª 6h)","Punção lombar se TC normal + clínica forte (xantocromia)","Angio-TC ou angio-RM cerebral (procurar aneurisma)","ECG (anormal em 50% — taqui, alt repolarização, prolongamento QT)","Hemograma, eletrólitos","Coagulograma"],
+rx:[
+{d:"Repouso + cabeceira 30°",do:"Ambiente calmo, monitorizado",via:"—",o:"Reduz pico hipertensivo. Profilaxia de TVP MECÂNICA (sem heparina até clipagem)."},
+{d:"Nimodipino",do:"60 mg VO 4/4h × 21 dias",via:"VO",o:"INICIAR <96h da hemorragia. PREVINE vasoespasmo (não trata). Suspender se hipoTA."},
+{d:"Controle da PA",do:"PAS <160 (alguns serviços <140) com labetalol/esmolol/nicardipino",via:"IV",o:"ATÉ a clipagem. Após clipagem, mais liberal (PAS 160-200) para HIPERTENSIVA — terapia 'Triple H' antiquada, focar em mantém PAM."},
+{d:"Anticonvulsivantes",do:"Fenitoína 1 g IV de ataque OU levetiracetam 500 mg IV 12/12h",via:"IV",o:"Profilaxia 3-7 dias. Não usar de rotina (controverso); reservar para crise documentada."},
+{d:"Clipagem cirúrgica / coiling endovascular",do:"—",via:"Cirúrgico/Endo",o:"DEFINITIVO. ASAP (<24-72h) — preferir coiling se anatomia favorável (ISAT trial, melhor outcome)."},
+],
+alertas:[
+{t:"crit",x:"PIOR cefaleia da vida + súbita + qualquer LOC = HSA até prova contrária. NÃO se contentar com TC normal — fazer punção se >6h ou clínica clara."},
+{t:"crit",x:"Vasoespasmo cerebral: dia 4-14 pós-HSA — déficit focal novo. TCD seriado, nimodipino, monitor neuro."},
+{t:"warn",x:"Hidrocefalia aguda em até 20% — DVE se Glasgow ↓."},
+{t:"warn",x:"Hunt-Hess: I (assintomático/cefaleia leve) → V (coma profundo, descerebração). Mortalidade 70% no V."},
+],
+fisio:"85% por ruptura de aneurisma sacular (PolIgono de Willis, comunicante anterior/posterior, ACM). Outras: MAV, trauma, dissecção. Após ruptura, sangue arterial sob pressão se dispersa no LCR → ↑↑PIC súbito → LOC e até herniação. Sequelas: ressangramento (24h crítico), vasoespasmo (D4-14), hidrocefalia, hiponatremia (SIADH/cerebral salt wasting), pneumonia, cardiomiopatia de Takotsubo neurogênica.",
+mec:[
+{d:"Nimodipino",x:"BCC dihidropiridínico — bloqueia canais L de Ca²⁺ no músculo liso vascular, com seletividade cerebral. <strong>Não previne nem reverte vasoespasmo radiologicamente</strong> mas reduz infarto cerebral retardado e melhora prognóstico funcional (mecanismo neuroprotetor não totalmente elucidado)."},
+{d:"Ácido tranexâmico (não rotineiro)",x:"Antifibrinolítico — usado em alguns centros pré-clipagem. STASH e ULTRA trials desafiaram benefício rotineiro."},
+],
+diretriz:"AHA/ASA 2023 (Hoh BL et al., Stroke 2023;54:e314, DOI:10.1161/STR.0000000000000436). Neurocritical Care Society 2023. PCDT MS Brasil.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"ait", sis:"neuro", grav:"alta",
+nome:"Ataque Isquêmico Transitório (AIT)",
+sin:["AIT","TIA","mini-AVC"],
+def:"Déficit neurológico súbito de origem vascular com RESOLUÇÃO COMPLETA em ≤24h (geralmente <1h) e SEM evidência de infarto em imagem. Sinal de alarme — 5% terão AVC em 48h, 10% em 90 dias.",
+exames:["TC crânio (sem evidência de infarto)","RM com DWI (gold standard para excluir AVC verdadeiro)","Doppler carótidas + vertebrais","ECG + Holter 24-72h (FA paroxística)","Ecocardiograma transtorácico ± transesofágico","HMG, glicemia, perfil lipídico, função renal","HbA1c"],
+rx:[
+{d:"AAS",do:"300 mg dose única + 75-100 mg/d",via:"VO",o:"Iniciar imediatamente após excluir hemorragia."},
+{d:"DAPT (AAS + Clopidogrel)",do:"AAS 100 mg/d + Clopi 75 mg/d × 21 dias depois AAS",via:"VO",o:"ABCD² ≥4 ou AIT moderado-alto risco. CHANCE/POINT trials — reduz AVC 32%."},
+{d:"Atorvastatina",do:"40-80 mg/d",via:"VO",o:"Alta intensidade — SPARCL trial. LDL alvo <70."},
+{d:"Anticoagulação",do:"Apixabana 5 mg 12/12h (dose plena) OU varfarina INR 2-3",via:"VO",o:"SE FA presente. CHA₂DS₂-VA ≥1H ou ≥2M."},
+{d:"Controle pressórico",do:"Após 24-48h, IECA/BRA + diurético tiazídico",via:"VO",o:"Meta progressiva PAS <130. PROGRESS trial."},
+{d:"Endarterectomia carotídea",do:"—",via:"Cirúrgico",o:"Estenose sintomática 70-99% — em até 14 dias do evento (NASCET)."},
+],
+alertas:[
+{t:"crit",x:"ABCD² ≥4 ou AIT recente (<48h) ou novo déficit ≥30 min → INTERNAÇÃO + investigação rápida + DAPT 21 dias."},
+{t:"crit",x:"Crescendo TIAs (AITs múltiplos em curto intervalo) = pré-AVC iminente — UTI neurológica, anticoag/DAPT, imagem urgente."},
+{t:"warn",x:"AIT em <55a com sopro carotídeo → considerar dissecção arterial cervical (jovem, esforço, trauma cervical leve)."},
+],
+fisio:"Mecanismos idênticos ao AVCi: cardioembólico (FA — origem cardíaca), aterosclerose grande vaso (placa carotídea — embolia arterio-arterial), doença de pequenos vasos (lacunar), criptogênico. A diferença com AVC é apenas que aqui o trombo se desfaz/migra antes do dano permanente. RM-DWI mostra que ~30-50% dos AITs clínicos têm pequena lesão isquêmica — alguns reclassificam.",
+mec:[
+{d:"Clopidogrel",x:"Tienopiridínico — pró-droga ativada pelo CYP2C19, metabólito liga-se irreversivelmente ao receptor P2Y12 plaquetário → bloqueia ativação plaquetária por ADP."},
+{d:"Atorvastatina",x:"Inibidor HMG-CoA redutase — ↓síntese colesterol hepático + efeitos pleiotrópicos (estabiliza placa, ↓inflamação, melhora endotélio)."},
+],
+diretriz:"AHA/ASA 2021 Secondary Prevention (Kleindorfer DO et al., Stroke 2021;52:e364). ESO 2021. CHANCE/POINT trials.",
+fluxo:null,
+calcs:["abcd2","chads-va"],
+},
+
+{id:"encefalite", sis:"neuro", grav:"alta",
+nome:"Encefalite",
+sin:["encefalite","encefalite herpética","HSV"],
+def:"Inflamação do parênquima cerebral — febre + alteração de consciência/cognição + sintomas focais ou crises convulsivas. Diferente de meningite por DISFUNÇÃO cerebral predominante. Mais comum: HSV-1, arbovírus, autoimune.",
+exames:["TC crânio (excluir HIC, lesão expansiva)","Punção lombar com pleocitose linfocítica, proteína ↑, glicose normal","PCR para HSV no LCR (sensibilidade 96-98%)","RM crânio (lesões temporais mediais bilaterais = HSV)","EEG (descargas periódicas lateralizadas — PLEDs em HSV)","Sorologia/PCR para arbovírus, HIV, sífilis"],
+rx:[
+{d:"Aciclovir EMPÍRICO",do:"10 mg/kg IV 8/8h × 14-21 dias",via:"IV",o:"INICIAR EMPIRICAMENTE em qualquer encefalite, NÃO esperar PCR. Aciclovir reduz mortalidade HSV de 70% → 20%."},
+{d:"Ajuste de aciclovir",do:"Função renal: ClCr 25-50 → 10 mg/kg 12/12h; <25 → 10 mg/kg 24/24h",via:"IV",o:"Hidratação concomitante (cristaloide 1-2 L) — nefrotoxicidade."},
+{d:"Anticonvulsivantes",do:"Fenitoína 20 mg/kg IV ou levetiracetam 60 mg/kg IV",via:"IV",o:"Crises são frequentes em HSV (50%). Tratar 1ª crise."},
+{d:"Cobertura para meningite bacteriana",do:"Ceftriaxona 2g IV 12/12h + Vancomicina + Ampicilina",via:"IV",o:"Se LCR incerto/quadro grave/imunossuprimido — adicionar AMPI se >50a (Listeria)."},
+],
+alertas:[
+{t:"crit",x:"ACICLOVIR ANTES DA PCR. Cada hora de atraso piora outcome. PCR pode ser negativa nas 1ª 72h — não usar resultado precoce para descontinuar."},
+{t:"warn",x:"Encefalite autoimune (anti-NMDAR, anti-LGI1) — jovens, alteração comportamental, movimentos anormais, crises. Investigar se PCR negativa + RM atípica. Imunoglobulina + corticoide + plasmaférese."},
+{t:"info",x:"HSV poupa lobos frontais (preferência por temporal medial bilateral assimétrica). Aspecto na RM é praticamente diagnóstico."},
+],
+fisio:"HSV-1 alcança SNC via nervo olfatório/trigêmeo, com tropismo pelos lobos temporais mediais. Infecção citopática → necrose hemorrágica focal → edema cerebral → ↑PIC → herniação. Sem tratamento: 70% mortalidade. Sequelas em sobreviventes mesmo tratados: déficit cognitivo/memorial (lobo temporal é hipocampo).",
+mec:[
+{d:"Aciclovir",x:"Análogo da guanosina — fosforilado pela <strong>timidina-quinase viral</strong> (só vírus tem essa enzima, daí seletividade); a forma trifosfato compete com dGTP pela DNA polimerase viral → terminação de cadeia."},
+],
+diretriz:"IDSA Encephalitis 2008 (Tunkel AR et al., Clin Infect Dis 2008;47:303). British Encephalitis Society 2012. PCDT/MS.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"sind-serotonin", sis:"neuro", grav:"alta",
+nome:"Síndrome Serotoninérgica / NMS",
+sin:["síndrome serotoninérgica","NMS","síndrome neuroléptica maligna","hipertermia maligna"],
+def:"Síndrome serotoninérgica: TRIÁDE = alterações mentais + autonômicas (taquicardia, HAS, hipertermia, sudorese) + neuromusculares (CLÔNUS, hiperreflexia, tremor) após inserção/aumento de droga serotoninérgica. NMS: rigidez 'cano de chumbo' + hipertermia + alteração consc + autonômico após neuroléptico (D2-antagonista).",
+exames:["CPK (↑↑ ambos), mioglobina urinária","Função renal (rabdomiólise)","Hemograma, função hepática","Gaso arterial, lactato","Eletrólitos","TC crânio + LP se dúvida diagnóstica (excluir meningite)"],
+rx:[
+{d:"SUSPENDER agente causador",do:"Imediato",via:"—",o:"PILAR. Identificar gatilho (ISRS+IMAO+linezolida+tramadol+tryptano+ondansetron, etc.)."},
+{d:"Suporte agressivo",do:"Resfriamento ativo (manta + cristaloide gelado) + monitorização + hidratação 4-6 L/d",via:"IV",o:"Hipertermia >40°C → intervenção imediata."},
+{d:"Sedação BZD",do:"Diazepam 5-10 mg IV repetir ou midazolam BIC 0,05-0,2 mg/kg/h",via:"IV",o:"Reduz agitação, rigidez, autonomia. 1ª linha em ambas síndromes."},
+{d:"Ciproheptadina (S. serotoninérgica)",do:"12 mg VO/SNG ataque + 2 mg 2/2h até melhora (máx 32 mg/d)",via:"VO",o:"Antagonista 5-HT2A. Reservado para casos graves/refratários."},
+{d:"Bromocriptina + Dantrolene (NMS)",do:"Bromocriptina 2,5-5 mg 8/8h + Dantrolene 2,5 mg/kg IV até 10 mg/kg/d",via:"VO+IV",o:"NMS grave/refratário. Bromocriptina = agonista D2. Dantrolene reduz Ca²⁺ muscular."},
+{d:"IOT + curare",do:"Bloqueio neuromuscular se rigidez ameaça hipertermia/rabdo",via:"IV",o:"NÃO usar succinilcolina em NMS (risco hipercalemia)."},
+],
+alertas:[
+{t:"crit",x:"NMS rigidez tipo CANO DE CHUMBO (continuous), bradi-reflexia. Serotoninérgica = clônus + HIPERreflexia. Mnemonic: 'neuroléptico = NEUROlepticano' rígido; 'serotonin = SHAKES' (treme/clônus)."},
+{t:"crit",x:"HIPERTERMIA >40°C + rabdomiólise + IRA + CIVD → mortalidade 10-20% se não tratada agressivamente."},
+{t:"warn",x:"Drogas mais associadas: SS = ISRS+IMAO, linezolida, tramadol, MDMA, LSD. NMS = haloperidol, clorpromazina, depot, retirada abrupta de levodopa."},
+],
+fisio:"Serotoninérgica: excesso sináptico de 5-HT em receptores 5-HT2A/1A. Início rápido (horas após gatilho). NMS: bloqueio D2 striatal → rigidez e hipertermia central (hipotálamo). Início mais lento (dias-semanas). Ambas causam contratura muscular sustentada → calor + lactato + rabdomiólise + ↑K + acidose + IRA.",
+mec:[
+{d:"Ciproheptadina",x:"Anti-histamínico de 1ª geração com forte antagonismo 5-HT2A. Bloqueia ação serotoninérgica excessiva."},
+{d:"Bromocriptina",x:"Agonista D2 — desbloqueia receptores dopaminérgicos centrais."},
+{d:"Dantrolene",x:"Bloqueia receptor de rianodina (RyR1) no retículo sarcoplasmático → ↓liberação de Ca²⁺ → relaxa músculo esquelético sem ação central. Antídoto da hipertermia maligna anestésica também."},
+],
+diretriz:"Boyer EW, NEJM 2005;352:1112 (Serotonin Syndrome). Strawn JR, Am J Psychiatry 2007;164:870 (NMS).",
+fluxo:null,
+calcs:[],
+},
+
+/* ============== TRAUMA ============== */
+{id:"tce", sis:"trauma", grav:"alta",
+nome:"Trauma Cranioencefálico (TCE)",
+sin:["TCE","trauma craniano","Glasgow"],
+def:"Lesão craniana por mecanismo traumático. Classificar por Glasgow: LEVE 13-15 (75%), MODERADO 9-12 (15%), GRAVE 3-8 (10%). Outras escalas: AVPU, Marshall (TC).",
+exames:["Glasgow seriado (cada 30-60 min)","TC crânio sem contraste — INDICAÇÕES: Canadian CT Head, New Orleans (HSA, fratura, sinais neuro)","Glicemia capilar","Hemograma, coagulograma","Função renal","Álcool/drogas se suspeita","RX coluna cervical OU mantida proteção cervical"],
+rx:[
+{d:"ABCDE",do:"Vias aéreas (IOT se Glasgow ≤8) + cervical + ventilação SpO₂ >94% + circulação",via:"—",o:"PILAR. Hipotensão DOBRA mortalidade em TCE grave. Hipoxia idem."},
+{d:"Cabeceira 30°",do:"Posição neutra",via:"—",o:"Reduz PIC. NÃO se trauma raquimedular instável."},
+{d:"Manitol",do:"0,25-1 g/kg IV em 15-30 min",via:"IV",o:"Hipertensão intracraniana (HIC) com sinais clínicos (anisocoria, postura). Repetir 4-6h. Monitor osmolaridade <320."},
+{d:"Salina hipertônica 3%",do:"250 mL IV em 10-15 min",via:"IV",o:"Alternativa ao manitol — preferida em hipotensão/euvolemia. Verificar Na sérico (alvo 145-155)."},
+{d:"Anti-convulsivante profilático",do:"Levetiracetam 1 g IV ataque + 500 mg 12/12h × 7 dias",via:"IV",o:"TCE grave (Glasgow ≤8) ou contusão/hematoma — apenas 1ª semana (não previne crises tardias)."},
+{d:"Reversão de anticoagulante",do:"PCC 25-50 UI/kg (varfarina); idarucizumab (dabigatran); andexanet (rivaroxabana/apixabana)",via:"IV",o:"TCE + anticoag = emergência. Reverter ANTES de cirurgia."},
+{d:"Cirurgia",do:"Craniotomia evacuação OU craniectomia descompressiva",via:"Cirúrgico",o:"HSD/HED >10 mm ou desvio linha média >5 mm ou HIC refratária — chamar neurocirurgia."},
+],
+alertas:[
+{t:"crit",x:"Canadian CT Head: TC se Glasgow <15 em 2h, suspeita fratura aberta/afundada, sinais base de crânio, ≥2 vômitos, idade ≥65a, queda >0,9 m / >5 degraus, amnésia retrógrada >30 min."},
+{t:"crit",x:"Lúcido intervalo seguido de deterioração = HEMATOMA EXTRADURAL (artéria meníngea média) — emergência neurocirúrgica."},
+{t:"warn",x:"IDOSO em uso de anticoagulante mesmo com TCE leve → TC. Risco de HSD evolutivo."},
+{t:"warn",x:"Síndrome do BC (bebê chacoalhado): TCE pediátrico não acidental — investigar."},
+],
+fisio:"Lesão primária: imediata, mecânica — concussão, contusão, hematoma extradural (artéria meníngea média, fratura temporal), subdural (veias ponte, idoso/etilista, lesão por aceleração), lesão axonal difusa. Lesão secundária: subsequente, evitável — hipoxia, hipotensão, HIC, hipoglicemia, hipertermia, crises. <strong>Foco do manejo: prevenir lesão secundária</strong>. Manter PAM ≥80 (TCE grave alvo PIC <22, PPC 60-70).",
+mec:[
+{d:"Manitol",x:"Diurético osmótico — atrai água do parênquima cerebral para o intravascular → ↓edema cerebral + ↓PIC. Efeito reológico (↓viscosidade sangue, melhora perfusão)."},
+{d:"Salina hipertônica",x:"Gradiente osmótico via BBB → desloca água do intersticial cerebral. Vantagem sobre manitol: também melhora volemia."},
+],
+diretriz:"Brain Trauma Foundation 4ª ed. 2017 (Carney N et al., Neurosurgery 2017;80:6). ATLS 10ª ed. Canadian CT Head Rule (Stiell IG et al., Lancet 2001;357:1391).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"trauma-torax", sis:"trauma", grav:"alta",
+nome:"Trauma de Tórax",
+sin:["trauma torácico","pneumotórax hipertensivo","hemotórax","tórax instável","tamponamento traumático"],
+def:"Lesão torácica por mecanismo traumático — fechado (acidente, queda) ou penetrante (PAF, FAB). Avaliar lesões que matam rapidamente: 5 RAPIDAMENTE FATAIS = obstrução VA, PNT hipertensivo, PNT aberto, tamponamento, hemotórax maciço, tórax instável.",
+exames:["RX tórax inicial","FAST estendido (EFAST) — derrame pleural/pericárdico/PNT","TC tórax com contraste (estável)","ECG","Hemograma, gaso, lactato, tipagem","Troponina (contusão miocárdica)"],
+rx:[
+{d:"PNT HIPERTENSIVO",do:"Punção descompressiva IMEDIATA — 2º EIC linha hemiclavicular OU 5º EIC linha axilar média, cateter 14G longo",via:"—",o:"DIAGNÓSTICO CLÍNICO — NÃO esperar RX. Após, dreno torácico definitivo."},
+{d:"PNT ABERTO",do:"Curativo de 3 pontos (válvula unidirecional)",via:"—",o:"Selar 3 lados do curativo → escape ar mas não entrada. Dreno torácico definitivo."},
+{d:"HEMOTÓRAX MACIÇO",do:"Dreno torácico 32-36 Fr",via:"—",o:"Imediato >1500 mL ou >200 mL/h × 4h → TORACOTOMIA. Autotransfusão se disponível."},
+{d:"TAMPONAMENTO",do:"Pericardiocentese subxifoide ECO-guiada + ressuscitação volêmica",via:"—",o:"Pode reverter choque temporariamente. Cirurgia definitiva (toracotomia)."},
+{d:"TÓRAX INSTÁVEL",do:"O₂ + analgesia agressiva (bloqueio intercostal/peridural) + VNI/IOT se IRespA",via:"—",o:"Contusão pulmonar é o problema real. Hidratação cautelosa. Estabilização cirúrgica em casos selecionados."},
+{d:"ATB Profilático",do:"Cefazolina 2g IV se trauma penetrante + dreno",via:"IV",o:"24-48h. Reduz empiema."},
+],
+alertas:[
+{t:"crit",x:"FRATURA DE 1ª/2ª COSTELA = trauma grave — risco de lesão de aorta/grandes vasos. Investigar com angio-TC."},
+{t:"crit",x:"TORACOTOMIA DE REANIMAÇÃO: indicada em FAB/PAF torácico com perda de sinais vitais NO PRONTO-SOCORRO (não em pré-hospitalar prolongado, não em trauma fechado com PCR)."},
+{t:"warn",x:"Contusão miocárdica: traço suspeito + ECG anormal + ↑troponina. Geralmente conservador, monitorizar 24-48h."},
+{t:"warn",x:"Lesão diafragmática esquerda em trauma penetrante baixo — pode passar despercebida e levar a hérnia/encarceramento tardio. Sempre investigar."},
+],
+fisio:"Trauma fechado mais comum (acidente trânsito 70%, queda 15%, queda objeto 5%). Penetrante: arma branca (mais baixa energia) ou arma de fogo (alta energia, cavitação). Tamponamento em trauma: hemorragia rápida em saco pericárdico → 150-200 mL é suficiente para fisiopatologia (vs ~1L em crônico). Hemotórax: cada hemitorax cabe 2-3L = choque hemorrágico classe III-IV.",
+mec:[],
+diretriz:"ATLS 10ª ed. (American College of Surgeons 2018). EAST Guidelines.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"trauma-abd", sis:"trauma", grav:"alta",
+nome:"Trauma Abdominal",
+sin:["trauma abdominal","FAST","laparotomia"],
+def:"Lesão abdominal por mecanismo traumático fechado ou penetrante. Trauma fechado: acidente trânsito > queda; órgãos mais lesados: baço, fígado, rim. Penetrante: indicação cirúrgica mais liberal — qualquer FAB com peritonismo, FAF abdominal.",
+exames:["FAST (Focused Assessment with Sonography for Trauma) — 4 janelas","TC abdome com contraste (estável, FAST duvidoso)","DPL (lavado peritoneal diagnóstico) — caindo em desuso","Hemograma seriado","Lactato, base excess","Tipagem + prova cruzada"],
+rx:[
+{d:"INSTÁVEL + FAST+",do:"LAPAROTOMIA imediata",via:"Cirúrgico",o:"Sangramento intra-abdominal — não TC. Sala de cirurgia direto."},
+{d:"ESTÁVEL + Trauma fechado + FAST+",do:"TC com contraste → manejo conservador se grau baixo",via:"—",o:"Trauma esplênico/hepático grau I-III estável → conservador (sucesso 80-90%). Reavaliação frequente."},
+{d:"PENETRANTE ABD ANTERIOR",do:"FAB + peritonismo → laparotomia; FAB sem peritonismo + estável → exploração local da ferida",via:"—",o:"FAF abdominal: laparotomia em 95% — pode ser exploradora se via duvidosa."},
+{d:"Ressuscitação balanceada",do:"Hipotensão permissiva (PAS 80-90) até controle cirúrgico — cristaloide ≤1-2 L + transfusão 1:1:1",via:"IV",o:"NÃO super-ressuscitar pré-cirurgia (dilui coagulação, piora sangramento)."},
+{d:"Ácido tranexâmico",do:"1 g IV em 10 min + 1 g em 8h",via:"IV",o:"CRASH-2: reduz mortalidade se <3h do trauma. SEMPRE em hemorragia grave."},
+{d:"Embolização angiográfica",do:"—",via:"Endovascular",o:"Trauma esplênico/hepático ativo (blush no TC) em paciente estável."},
+],
+alertas:[
+{t:"crit",x:"Cinto de segurança 'sinal' (equimose abdominal transversal) + dor abdominal = lesão intestinal/mesentério até prova contrária. TC + reavaliação seriada."},
+{t:"crit",x:"GRAVIDEZ + trauma — proteger materna primeiro. β-hCG sempre. Anti-D se Rh-negativa. Imobilização lateralizada à esquerda."},
+{t:"warn",x:"Trauma pancreático é silencioso — amilase/lipase normais inicialmente; TC com contraste pode subdiagnosticar. Reavaliar."},
+],
+fisio:"Fechado: lesão por compressão direta, desaceleração (lacerações mesentério, pedículos vasculares), aumento súbito pressão intra-abdominal (ruptura órgão oco). Penetrante: FAB lacera estruturas no trajeto; FAF tem cavitação temporária (alta energia → dano periférico ao trajeto). Hemoperitônio = clínica de choque + irritação peritoneal tardia.",
+mec:[],
+diretriz:"ATLS 10ª ed. EAST Guidelines. WSES Splenic Trauma 2017 (Coccolini F et al., World J Emerg Surg 2017;12:40).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"fratura-quadril", sis:"trauma", grav:"media",
+nome:"Fratura de Quadril em Idoso",
+sin:["fratura quadril","fratura colo femoral","fratura transtrocantérica"],
+def:"Fratura proximal de fêmur (colo, transtrocantérica, subtrocantérica) — clássica do idoso após queda da própria altura. Sinal: rotação externa + encurtamento + dor + incapacidade carga. Mortalidade 30% em 1 ano se não operado precocemente.",
+exames:["RX bacia AP + lateral quadril","TC se RX inconclusivo (mais 5% RX-negativas)","Hemograma, função renal","ECG + RX tórax (pré-op)","Avaliação anestésica","Ecocardiograma se cardiopata"],
+rx:[
+{d:"Cirurgia em <48h",do:"Hemiartroplastia (colo desviada idoso), DHS/parafuso (intertroc), HD (jovem)",via:"Cirúrgico",o:"PILAR. Cada dia de atraso = ↑mortalidade. Múltiplas diretrizes apoiam <48h."},
+{d:"Profilaxia TVP",do:"Enoxaparina 40 mg SC/d ou HBPM ajustada",via:"SC",o:"INICIAR pré-op (suspender 12h antes) e manter 4-6 semanas pós-op."},
+{d:"Analgesia",do:"Bloqueio do fáscia ilíaca (3-Em-1) + paracetamol 1g 6/6h + dipirona",via:"IV/regional",o:"EVITAR opioides em idoso — delirium. Bloqueio regional 1ª linha — Cochrane recomendação forte."},
+{d:"Reposição volêmica",do:"Cristaloide cauteloso",via:"IV",o:"Idoso descompensa fácil. Avaliar volemia clinicamente."},
+{d:"Otimização cardíaca",do:"Manter β-bloqueador se uso, controlar PA, corrigir anemia (Hb >8)",via:"—",o:"Cirurgia geralmente cardio-tolerada — não atrasar para 'investigação' desnecessária."},
+{d:"Profilaxia delirium",do:"Hidratação adequada + reorientação + dispositivos auditivos/visuais + evitar BZD/anti-H1",via:"—",o:"Delirium pós-op em até 50% idosos. Haloperidol 0,25-0,5 mg em crise."},
+],
+alertas:[
+{t:"crit",x:"FRATURA + HIPOTENSÃO em idoso = considerar sangramento (trans/subtrocantérica pode perder 1-2 L). Reservar hemocomponentes."},
+{t:"warn",x:"FRATURA SEM TRAUMA significativo = fratura patológica (metástase óssea, mieloma, osteoporose grave) — investigar."},
+{t:"info",x:"Avaliação de osteoporose pós-fratura: investigação completa + bifosfonatos/denosumabe. ↓50% nova fratura em 3 anos."},
+],
+fisio:"Osteoporose senil + queda da própria altura. Colo femoral: fratura pode comprometer vascularização (artéria circunflexa femoral medial) → necrose avascular se desviada (Garden III-IV) → indicação de prótese ao invés de osteossíntese. Transtrocantérica: bem vascularizada, osteossíntese (DHS/PFN). Repouso prolongado → TEP, pneumonia, úlcera de pressão, sarcopenia, dependência permanente.",
+mec:[],
+diretriz:"AAOS 2021 Hip Fractures in Elderly. NICE NG124. Diretrizes SBOT.",
+fluxo:null,
+calcs:[],
+},
+
+/* ============== OUTRAS CRÍTICAS ============== */
+{id:"crise-falciforme", sis:"hemo", grav:"alta",
+nome:"Crise Falciforme (Vaso-oclusiva)",
+sin:["crise falciforme","anemia falciforme","CVO","STA","síndrome torácica aguda"],
+def:"Anemia falciforme (HbSS) com episódios agudos: CVO (dor óssea/torácica/abdominal súbita); STA (febre + sintomas resp + infiltrado RX); sequestro esplênico (criança, dor + esplenomegalia + ↓Hb); aplasia (parvovírus B19); priapismo; AVC; sepse (encapsulados).",
+exames:["Hemograma com reticulócitos","DHL, bilirrubina, haptoglobina (hemólise)","Função renal, eletrólitos","Hemocultura se febril","RX tórax (sempre se sintomas resp)","β-HCG mulher fértil","Tipagem completa (RhE, Kell — aloimunização)"],
+rx:[
+{d:"Analgesia ESCALONADA",do:"Dipirona 2g + Cetorolaco 30mg IV → Morfina 0,1 mg/kg IV (titular)",via:"IV",o:"NÃO subdosar. Crise falciforme dói tanto quanto IAM. PCA/BIC morfina se necessário. SUBESTIMAÇÃO da dor é a regra."},
+{d:"Hidratação",do:"SF 1-1,5× manutenção (NÃO bolus)",via:"IV",o:"Evitar super-hidratação (risco edema pulmonar)."},
+{d:"O₂",do:"Manter SpO₂ ≥95%",via:"—",o:"NÃO usar liberalmente — só se hipoxêmico. O₂ excessivo pode suprimir eritropoiese."},
+{d:"ATB (se febril/STA)",do:"Ceftriaxona 2g IV + Azitromicina 500 mg IV",via:"IV",o:"Cobertura pneumococo + Mycoplasma. Atypicals comuns em STA."},
+{d:"Transfusão simples",do:"CH 10-15 mL/kg",via:"IV",o:"Hb >7-9. NÃO ultrapassar Hb 10 (hiperviscosidade)."},
+{d:"Exsanguineotransfusão",do:"Eritroaférese ou exsang manual",via:"IV",o:"STA grave, AVC, falência multissistêmica, priapismo refratário. Alvo HbS <30%."},
+{d:"Heparina profilática",do:"Enoxaparina 40 mg SC/d",via:"SC",o:"Internação prolongada — alto risco TVP/TEP."},
+{d:"Tromboprofilaxia mecânica",do:"Meias compressivas",via:"—",o:"Sempre, mesmo em quem recebe heparina."},
+],
+alertas:[
+{t:"crit",x:"SÍNDROME TORÁCICA AGUDA (STA): febre + dispneia/dor torácica + infiltrado novo RX em paciente com anemia falciforme. Mortalidade 4-10% adultos. Atb + O₂ + transfusão se Hb<9 ou hipoxemia."},
+{t:"crit",x:"ANEMIA FALCIFORME + FEBRE = sepse até prova contrária. Asplenia funcional → pneumococo, H. influenzae, salmonella. Hemocultura + ATB IV imediato."},
+{t:"warn",x:"AVC isquêmico em criança falciforme: trombólise pode ser tentada (caso-a-caso); exsanguineo é central."},
+{t:"warn",x:"Priapismo >4h: aspiração + irrigação salina ± fenilefrina intracavernosa + exsanguineo. Urologia."},
+],
+fisio:"HbS (β6 Glu→Val): em desoxigenação, HbS polimeriza em fibras longas → hemácia em foice → adesão endotelial + rigidez + obstrução microvascular → isquemia tecidual + dor. Crises desencadeadas por: hipóxia, desidratação, infecção, frio, estresse, álcool, altitude. Pacientes têm asplenia funcional (sequestro autoinfartos no baço) → risco encapsulados.",
+mec:[
+{d:"Hidroxiureia (manutenção, não-crise)",x:"↑síntese de HbF (fetal) — HbF não polimeriza → reduz episódios e mortalidade. Mecanismo molecular não totalmente elucidado (envolve NO, citocinas)."},
+{d:"Voxelotor (manutenção)",x:"Liga-se à HbS estabilizando o estado oxigenado → menos polimerização. Disponibilidade limitada no SUS."},
+],
+diretriz:"ASH 2020 Sickle Cell (Liem RI et al., Blood Adv 2020;4:1554, DOI:10.1182/bloodadvances.2019001142). NHLBI 2014. PCDT MS Brasil.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"glaucoma-agudo", sis:"oft", grav:"alta",
+nome:"Glaucoma Agudo de Ângulo Fechado",
+sin:["glaucoma agudo","ângulo fechado","crise glaucomatosa"],
+def:"Elevação aguda da pressão intraocular (PIO) por bloqueio pupilar com ângulo iridocorneano fechado. CLÁSSICO: olho vermelho doloroso unilateral + halos coloridos + diminuição visual + náuseas/vômitos + pupila médio-fixa + córnea turva.",
+exames:["Tonometria — PIO geralmente 40-80 mmHg (normal 10-21)","Gonioscopia (oftalmologia)","Fundo de olho — escavação papilar","TC se dúvida diagnóstica/AVC"],
+rx:[
+{d:"Acetazolamida",do:"500 mg IV ou VO + 250 mg VO 6/6h",via:"IV/VO",o:"INIBIDOR anidrase carbônica — ↓produção humor aquoso. Cuidado em alérgicos a sulfa."},
+{d:"Manitol",do:"1-2 g/kg IV em 30-45 min",via:"IV",o:"Diurético osmótico — desidrata vítreo. Cuidado em IC, IRA."},
+{d:"Pilocarpina 2%",do:"1 gota OD 15/15 min × 1h, depois 6/6h",via:"Tópico",o:"Miótico — abre o ângulo. NÃO usar em ataque agudo da PIO muito alta (ineficaz com PIO >40 — isquemia da íris); SÓ após PIO ↓."},
+{d:"Timolol 0,5%",do:"1 gota OD 12/12h",via:"Tópico",o:"β-bloq → ↓produção humor aquoso. CI: asma, DPOC grave, BAV."},
+{d:"Brimonidina",do:"1 gota OD 8/8h",via:"Tópico",o:"α2-agonista — ↓produção + ↑drenagem."},
+{d:"Latanoprosta",do:"1 gota OD à noite",via:"Tópico",o:"↑drenagem uveoescleral. Adjuvante."},
+{d:"Antiemético",do:"Ondansetrona 4-8 mg IV",via:"IV",o:"Vômitos aumentam PIO. Tratar."},
+{d:"Iridotomia a laser",do:"YAG laser perfuração da íris periférica",via:"Procedimento",o:"DEFINITIVO. Após estabilizar PIO. Também no OUTRO olho profilaticamente."},
+],
+alertas:[
+{t:"crit",x:"PERDA VISUAL EM HORAS-DIAS se não tratado. Urgência oftalmológica REAL. Início imediato de medicação enquanto contata oftalmo."},
+{t:"warn",x:"Atropina e simpaticomiméticos PRECIPITAM ataque em pacientes predispostos (anatomia de ângulo estreito) — cuidado em pacientes mais velhos hipermétropes recebendo midriáticos."},
+],
+fisio:"Ângulo estreito anatômico (idoso, hipermetrope, mulher, asiático) + dilatação pupilar (escuridão, midriáticos, estresse) → bloqueio do trabeculado pela íris periférica → bloqueio do escoamento humor aquoso → ↑PIO súbita → isquemia da retina/nervo óptico. Sem tratamento: cegueira em 24-48h.",
+mec:[
+{d:"Acetazolamida",x:"Inibe anidrase carbônica → ↓formação HCO₃⁻ no epitélio ciliar → ↓secreção humor aquoso."},
+{d:"Timolol",x:"β-bloq não-seletivo → ↓ AMPc no epitélio ciliar → ↓produção humor aquoso."},
+{d:"Pilocarpina",x:"Agonista muscarínico → contração esfíncter pupilar (miose) → tração na íris periférica → abre ângulo iridocorneano."},
+],
+diretriz:"AAO Preferred Practice Pattern — Primary Angle Closure 2020.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"torcao-test", sis:"gu", grav:"alta",
+nome:"Torção Testicular",
+sin:["torção testicular","testículo torcido","torção cordão espermático"],
+def:"Rotação do cordão espermático → isquemia testicular. Dor escrotal súbita unilateral + náusea/vômito + reflexo cremastérico ausente + Prehn negativo (elevação NÃO alivia). PICO: 12-18 anos e neonatal.",
+exames:["USG doppler escrotal — ↓fluxo (sensibilidade 88-100%)","β-HCG (afastar gestação se mulher confundida)","Urocultura/EAS"],
+rx:[
+{d:"CIRURGIA URGENTE",do:"Exploração escrotal + destorção + orquiopexia bilateral",via:"Cirúrgico",o:"Janela viabilidade: 4-6h (100% salva), 12h (50%), >24h (≤10%). NÃO ESPERAR USG se quadro clássico."},
+{d:"Destorção manual",do:"Rotação externa do testículo (como abrir livro)",via:"—",o:"Apenas como ponte até cirurgia. NÃO substitui exploração."},
+{d:"Analgesia",do:"Dipirona 2g + Tramadol 100mg IV",via:"IV",o:"Cuidado para não mascarar exame seriado."},
+],
+alertas:[
+{t:"crit",x:"CADA HORA CONTA. Diagnóstico é CLÍNICO + USG. Quando há dúvida → operar (custo de orquiectomia desnecessária é menor que perda testicular)."},
+{t:"crit",x:"USG NORMAL NÃO EXCLUI (torção intermitente, fluxo preservado parcial)."},
+{t:"warn",x:"Diferencial: epididimite (febre, piúria, Prehn positivo, mais gradual), torção apêndice testicular (dor menor, blue dot sign), trauma."},
+],
+fisio:"Anomalia 'em badalo de sino' (bell-clapper) — testículo móvel dentro da vaginal por inserção alta → torção facilitada por contração cremastérica (frio, esporte, sono). Bilateral em 80% — daí orquiopexia BILATERAL. Após 6h, lesão isquêmica significativa; após 24h, geralmente necrose.",
+mec:[],
+diretriz:"AUA Guidelines on Testicular Torsion. EAU Pediatric Urology Guidelines 2023.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"insuf-adrenal", sis:"endo", grav:"alta",
+nome:"Insuficiência Adrenal Aguda (Crise Addisoniana)",
+sin:["insuficiência adrenal","crise addisoniana","Addison","crise suprarrenal"],
+def:"Falência aguda do córtex adrenal — hipotensão refratária + náusea/vômito + dor abdominal + hiponatremia + hipercalemia + hipoglicemia + febre. Suspeitar em corticoide crônico que interrompeu/perdeu dose em estresse, sepse, trauma.",
+exames:["Glicemia capilar","Eletrólitos (hipoNa + hiperK + hipoglicemia clássicos)","Cortisol sérico (basal — coletar ANTES da reposição)","ACTH (basal — diferenciar 1ª de 2ª)","Hemograma, função renal, gaso","Hemocultura, urinocultura se febril","TC abdome se primária aguda (hemorragia adrenal — Waterhouse-Friderichsen)"],
+rx:[
+{d:"Hidrocortisona",do:"100 mg IV bolus → 50 mg IV 6/6h × 24h → desmame",via:"IV",o:"NÃO esperar cortisol — dar imediatamente. Hidrocortisona tem mineralocorticoide intrínseco (não precisa fludrocortisona aguda)."},
+{d:"Cristaloide",do:"SF 0,9% 1 L IV em 1h, depois 1 L IV em 2-4h",via:"IV",o:"Reposição volêmica vigorosa. Pode chegar a 3-5 L primeiras 24h."},
+{d:"Correção glicêmica",do:"Glicose 50% 50 mL IV se hipoglicemia",via:"IV",o:"Manter SG 5% após estabilizar."},
+{d:"Tratar precipitante",do:"ATB se infecção, etc.",via:"—",o:"Sepse é o gatilho mais comum."},
+{d:"Manutenção crônica (após crise)",do:"Hidrocortisona 15-25 mg/d divididos (2/3 manhã, 1/3 tarde) + Fludrocortisona 0,05-0,2 mg/d (se 1ª)",via:"VO",o:"Educar sobre dose de estresse: dobrar/triplicar em febre, cirurgia, gestação, trauma. Cartão de identificação."},
+],
+alertas:[
+{t:"crit",x:"NÃO ESPERAR cortisol — coletar e tratar empiricamente em hipotensão refratária + hipoNa + hiperK + corticoide crônico recente."},
+{t:"crit",x:"Síndrome de Waterhouse-Friderichsen: hemorragia adrenal bilateral em sepse (meningococo, pseudomonas) → choque refratário + petéquias + insuficiência adrenal."},
+{t:"warn",x:"Suspensão abrupta de corticoide crônico (uso >3 sem em dose ≥7,5 mg prednisona) → supressão eixo. Desmame gradual ou cobertura de stress."},
+],
+fisio:"Primária (Addison): destruição córtex adrenal — autoimune (70% adultos), TB (BR), HIV, hemorragia, metástase. Manifesta-se com falta de cortisol E aldosterona → hipoNa + hiperK + hiperpigmentação (↑ACTH/MSH). Secundária: doença hipotálamo-hipófise → só falta cortisol (aldosterona preservada — pouca hipercalemia/hipotensão menos grave). Mais comum: SUSPENSÃO de corticoide crônico (eixo suprimido).",
+mec:[
+{d:"Hidrocortisona",x:"Cortisol sintético — atua em receptores glicocorticoide (anti-inflamatório, gliconeogênese, sensibilidade vascular a catecolaminas) e em altas doses também em mineralocorticoide (Na/K)."},
+{d:"Fludrocortisona",x:"Análogo da aldosterona — ↑reabsorção Na e excreção K nos túbulos coletores."},
+],
+diretriz:"Endocrine Society 2016 (Bornstein SR et al., J Clin Endocrinol Metab 2016;101:364). UpToDate.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"crise-tireo", sis:"endo", grav:"alta",
+nome:"Crise Tireotóxica (Tempestade Tireoidiana)",
+sin:["crise tireotóxica","tempestade tireoidiana","Graves","hipertireoidismo descompensado"],
+def:"Manifestação extrema do hipertireoidismo — febre alta + taquicardia >130 + arritmias + alteração mental (agitação → coma) + GI (vômitos, diarreia) + cardiopatia descompensada. Mortalidade 10-30% mesmo tratado. Escala de Burch-Wartofsky.",
+exames:["TSH (suprimido <0,01) + T4 livre + T3 livre","HMG, função hepática (alt comum)","Função renal, eletrólitos, cálcio","ECG (FA, taqui sinusal)","Hemocultura se febril (infecção é precipitante #1)","Beta-HCG mulher fértil"],
+rx:[
+{d:"Propranolol",do:"40-80 mg VO 4/4h OU 1-2 mg IV bolus repetir 15/15 min",via:"VO/IV",o:"1ª linha — controla taquicardia/HAS/agitação. Bloqueia conversão T4→T3 (efeito extra)."},
+{d:"Esmolol BIC",do:"50-200 mcg/kg/min",via:"IV",o:"Se intolerância a propranolol (asma) ou necessidade de titulação. Cuidado em IC."},
+{d:"Propiltiouracila (PTU)",do:"500-1000 mg VO ataque + 250 mg 4/4h",via:"VO/SNG",o:"1ª escolha NA CRISE (bloqueia conversão T4→T3 perifericamente, além de síntese). PREFERIR sobre metimazol em crise (não em manutenção crônica)."},
+{d:"Iodo (Lugol/SSKI)",do:"Lugol 8-10 gotas 6/6h OU SSKI 5 gotas 6/6h",via:"VO",o:"DAR 1H APÓS PTU (não antes — fornece substrato). Bloqueio Wolff-Chaikoff. Iopanato/ipodato (não disponível BR) é alternativa."},
+{d:"Hidrocortisona",do:"100 mg IV 8/8h",via:"IV",o:"Bloqueia conversão T4→T3 + reposição (insuficiência adrenal relativa frequente)."},
+{d:"Resfriamento + Paracetamol",do:"NÃO usar AAS (desloca T4 da TBG → piora)",via:"—",o:"Manta + paracetamol 1g 6/6h. Hipertermia agrava."},
+{d:"Suporte volêmico",do:"SF 0,9% guiado por volemia",via:"IV",o:"Vômitos + diarreia + sudorese causam desidratação importante."},
+],
+alertas:[
+{t:"crit",x:"DAR PTU ANTES do iodo. Iodo é substrato para síntese; dado antes do PTU pode piorar transitoriamente."},
+{t:"crit",x:"NÃO usar AAS para febre — desloca T4 da TBG → ↑hormônio livre."},
+{t:"warn",x:"Precipitantes: infecção (mais comum), cirurgia tireoide, parto, IAM, AVC, uso de contraste iodado (cuidado em pacientes Graves), suspensão de tioamida."},
+],
+fisio:"Crise no hipertireoidismo descompensado (geralmente Graves não tratado). Excesso de hormônio tireoidiano + ↑sensibilidade tecidual a catecolaminas → estado hipermetabólico extremo, taquicardia, hipertermia, lipólise + glicogenólise, vasodilatação, IC alto débito. Insulto agudo (infecção, cirurgia) precipita transformação de hipertireoidismo crônico em crise.",
+mec:[
+{d:"Propiltiouracila",x:"Inibe peroxidase tireoidiana (organificação iodo + acoplamento iodotirosinas) E inibe deiodinase tipo 1 perifericamente → ↓conversão T4→T3 (vantagem na crise)."},
+{d:"Iodo",x:"Bloqueio agudo organificação (Wolff-Chaikoff) — paradoxalmente, doses altas inibem síntese hormonal. Efeito imediato mas transitório (escape em 7-14 dias)."},
+{d:"Hidrocortisona",x:"Inibe deiodinase tipo 1, reduzindo conversão periférica T4→T3."},
+],
+diretriz:"American Thyroid Association 2016 Hyperthyroidism (Ross DS et al., Thyroid 2016;26:1343, DOI:10.1089/thy.2016.0229). Burch HB & Wartofsky L, JCEM 1993 (escala).",
+fluxo:null,
+calcs:[],
+},
+
+{id:"rabdomiolise", sis:"hidro", grav:"alta",
+nome:"Rabdomiólise",
+sin:["rabdomiólise","CPK alta","mioglobinúria"],
+def:"Lise muscular esquelética com liberação de mioglobina, K, fósforo, CK no plasma → risco de IRA por mioglobina + hipercalemia. CRITÉRIO: CK >5× LSN (geralmente >1000). Tríade clássica clássica: dor + fraqueza + urina escura (cor coca-cola).",
+exames:["CK, mioglobina sérica e urinária","Eletrólitos (K, Ca, P), ureia, Cr (IRA)","Gaso (acidose), lactato","Função hepática (TGO/TGP elevadas — não significa hepatite)","ECG (hiperK)","EAS (Hb+ sem hemácias = mioglobina), urocultura"],
+rx:[
+{d:"Hidratação AGRESSIVA",do:"SF 0,9% 1-1,5 L/h primeiras horas → ajustar para diurese 200-300 mL/h",via:"IV",o:"PILAR. Manter por 48-72h até CK ↓. Alvo: débito urinário ≥200 mL/h."},
+{d:"Alcalinização urinária (controverso)",do:"Bicarbonato 8,4% 100-150 mEq em 1L SG/SF — ajustar para pH urinário >6,5",via:"IV",o:"Pode reduzir nefrotoxicidade da mioglobina. NÃO se hipoCa, alcalemia, ICC."},
+{d:"Tratamento HIPERCALEMIA",do:"Ver patologia específica",via:"—",o:"Pode ser a 1ª manifestação. ECG! Cálcio + insulina/glicose + salbutamol."},
+{d:"Diálise",do:"—",via:"—",o:"IRA estabelecida com indicação clássica (uremia, sobrecarga, hiperK refratária, acidose grave). Não tem indicação profilática."},
+{d:"Manitol 20% (controverso)",do:"1 g/kg em 30 min após volemia repleta",via:"IV",o:"Sem evidência clara de benefício; risco de IRA osmótica. Geralmente NÃO recomendado."},
+],
+alertas:[
+{t:"crit",x:"HIPERCALEMIA é a maior ameaça aguda. ECG seriado. Tratar K >6 imediatamente mesmo sem ECG alterado."},
+{t:"crit",x:"HIPOCALCEMIA INICIAL (Ca entra no músculo lesado) seguida de HIPERCALCEMIA TARDIA (mobilização). NÃO repor Ca de rotina (piora deposição em mioócitos) — só se sintomática (tetania, QT longo)."},
+{t:"warn",x:"Etiologias: trauma/esmagamento, exercício extremo, alcoolismo (queda + decúbito prolongado), estatinas, drogas (cocaína, MDMA), neurolépticos, infecções (gripe, leptospirose), miopatias, hipertermia, isquemia compartimental."},
+],
+fisio:"Lise da miofibra → liberação maciça intracelular para circulação. Mioglobina passa pelo glomérulo, mas nos túbulos forma cilindros com proteína de Tamm-Horsfall + dissocia em ferro livre + heme → vasoconstrição renal + lesão tubular direta. Resultado: NTA isquêmica/tóxica. Hiperpotassemia + hiperfosfatemia (potencialmente fatais) por liberação intracelular.",
+mec:[
+{d:"Bicarbonato",x:"Alcaliniza a urina → reduz dissociação da mioglobina + ↓formação de cilindros + ↓oxidação heme → ↓nefrotoxicidade. Evidência clínica modesta."},
+],
+diretriz:"Bosch X et al., NEJM 2009;361:62. Diretrizes brasileiras IRA.",
+fluxo:null,
+calcs:[],
+},
+
+{id:"tentativa-suicidio", sis:"psiq", grav:"alta",
+nome:"Tentativa de Suicídio / Ideação Aguda",
+sin:["tentativa de suicídio","ideação suicida","autolesão"],
+def:"Comportamento autolesivo intencional com intenção de morrer OU ideação suicida estruturada (plano + método + intenção). Avaliar SEMPRE: ideação, plano, intenção, acesso a método letal, tentativa prévia, fatores de risco.",
+exames:["Avaliação clínica completa do método","Toxicologia (paracetamol, salicilatos, etanol)","Eletrólitos, função renal, hepática","ECG (se intoxicação)","Beta-HCG mulher fértil"],
+rx:[
+{d:"ESTABILIZAR clínica",do:"Tratar lesões/intoxicação conforme método",via:"—",o:"PRIMEIRO clinicamente, depois psiquiatria. ABCDE."},
+{d:"PROTEGER paciente",do:"Acompanhante 1:1, ambiente seguro (sem objetos cortantes/cordas/medicações)",via:"—",o:"Equipe de enfermagem orientada. Reduzir estímulos."},
+{d:"AVALIAÇÃO PSIQUIÁTRICA",do:"Avaliação por psiquiatra/psicólogo (Resolução CFM)",via:"—",o:"OBRIGATÓRIA. Determina: alta com plano de segurança vs. internação voluntária vs. involuntária (laudo médico)."},
+{d:"INTERNAÇÃO INVOLUNTÁRIA",do:"Comunicar MP em até 72h (Lei 10.216/2001)",via:"—",o:"Indicações: ideação ativa + plano + acesso meios; tentativa de alta letalidade; falta de suporte; comorbidade psiquiátrica grave."},
+{d:"Plano de segurança (se alta)",do:"Identificar sinais alarme + estratégias enfrentamento + acionar suporte + limitar meios + serviços emergência",via:"—",o:"Modelo Stanley-Brown. Família orientada. Retirar armas/medicações de casa."},
+{d:"Encaminhamento",do:"CAPS / consulta psiquiátrica em ≤7 dias",via:"—",o:"Continuidade do cuidado é fator protetor mais robusto."},
+],
+alertas:[
+{t:"crit",x:"ACOLHA SEM JULGAMENTO. Perguntar diretamente sobre ideação NÃO induz comportamento — falta de pergunta sim."},
+{t:"crit",x:"FATORES DE ALTO RISCO: tentativa prévia, plano estruturado, acesso a arma, álcool/drogas, depressão grave, psicose, idoso H solitário, dor crônica, doença terminal, perda recente."},
+{t:"warn",x:"Período pós-alta é de ALTO RISCO (especialmente 1ª semana). Garantir consulta em 24-72h, plano de segurança escrito."},
+{t:"info",x:"CVV 188 (24h, gratuito). CAPS-AD se comorbidade com substância. SAMU 192 transporte."},
+],
+fisio:"Multifatorial: transtorno mental (depressão 60%, dependência química, esquizofrenia, transtornos de personalidade), fatores biológicos (serotonina, neuroinflamação), psicossociais (perda, isolamento, dor, doença), genéticos (família). É manifestação de SOFRIMENTO + ↓capacidade de tolerar — não 'fraqueza' nem 'manipulação'.",
+mec:[],
+diretriz:"MS — Diretrizes para um Modelo Brasileiro de Prevenção do Suicídio (Portaria 1.876/2006). CFM 2.057/2013. WHO LIVE LIFE 2021. Lei 13.819/2019 (notificação compulsória).",
+fluxo:null,
+calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — DADOS CLÍNICOS PARTE 7
+   Tier 3: Infecto extras + Derm + Tox extras + Queimaduras + outras
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== INFECTO EXTRAS ============== */
+{id:"covid", sis:"infecto", grav:"media",
+nome:"COVID-19 (SARS-CoV-2)",
+sin:["covid","coronavírus","SARS-CoV-2"],
+def:"Infecção viral respiratória — sintomas variam de assintomático a SDRA. Quadros: leve (sintomas sem hipoxemia), moderado (pneumonia sem hipoxemia), grave (SpO₂ <94%, FR ≥30, infiltrados >50%), crítico (IRespA, choque, MOF).",
+exames:["RT-PCR ou antígeno SARS-CoV-2","RX/TC tórax (vidro fosco bilateral periférico)","HMG (linfopenia), PCR, D-dímero, ferritina, LDH","Gaso arterial","ECG, troponina"],
+rx:[
+{d:"O₂ suplementar",do:"Cânula → máscara → cateter alto fluxo → VNI → IOT conforme gravidade",via:"—",o:"Alvo SpO₂ 92-96% (gestantes 94-98%). Pronar acordado se SpO₂ <94% em O₂."},
+{d:"Dexametasona",do:"6 mg VO/IV/d × 10 dias",via:"VO/IV",o:"INDICADA APENAS se uso de O₂. RECOVERY: reduz mortalidade 36%→29% em VM. NÃO em leves."},
+{d:"Anticoagulação profilática",do:"Enoxaparina 40 mg SC/d (plena se TEV/D-dímero ↑↑)",via:"SC",o:"INTERNADOS — todos. CIVD/TEV comum."},
+{d:"Tocilizumabe",do:"8 mg/kg IV (máx 800 mg)",via:"IV",o:"Hipoxemia + ↑PCR — disponibilidade SUS limitada."},
+{d:"Nirmatrelvir/Ritonavir (Paxlovid)",do:"300/100 mg VO 12/12h × 5 dias",via:"VO",o:"Alto risco + sintomas <5d + sem O₂. Múltiplas interações medicamentosas."},
+],
+alertas:[
+{t:"crit",x:"DETERIORAÇÃO TARDIA (dia 7-10) — jovem aparentemente bem pode descompensar para SDRA. Vigilância SpO₂."},
+{t:"crit",x:"Hidroxicloroquina, ivermectina, azitromicina monoterapia, cloroquina, nitazoxanida NÃO TÊM EFICÁCIA comprovada. NÃO prescrever."},
+{t:"warn",x:"COVID longo: persistência >12 sem — fadiga, dispneia, déficit cognitivo. Encaminhar especialista."},
+],
+fisio:"SARS-CoV-2 entra via receptor ACE2 (epitélio respiratório + endotélio + intestino + rim + miocárdio). Tempestade de citocinas → SDRA + microtrombos + miocardite + IRA. Vacinas + Ômicron alteram apresentação (mais leve, menos anosmia).",
+mec:[
+{d:"Dexametasona",x:"Anti-inflamatório — reduz tempestade de citocinas tardia. Útil APENAS quando há inflamação significativa (uso de O₂)."},
+{d:"Nirmatrelvir",x:"Inibidor da protease principal (Mpro) do SARS-CoV-2 — bloqueia clivagem de poliproteínas virais. Ritonavir é booster (inibe CYP3A4)."},
+],
+diretriz:"NIH COVID-19 Treatment Guidelines (atualização contínua). MS Brasil. WHO Living Guidance.",
+fluxo:null, calcs:[],
+},
+
+{id:"influenza", sis:"infecto", grav:"media",
+nome:"Influenza / SRAG",
+sin:["influenza","gripe","H1N1","SRAG"],
+def:"Síndrome gripal: febre + tosse + dor garganta + cefaleia/mialgia abruptos. SRAG: dispneia + SpO₂ <95%. Sazonal. Tipos A (H1N1, H3N2 — mais graves), B.",
+exames:["PCR influenza A/B (gold standard)","Teste rápido antigênico (S 60-70%)","RX tórax","HMG, gaso"],
+rx:[
+{d:"Oseltamivir",do:"75 mg VO 12/12h × 5 dias",via:"VO",o:"Idealmente <48h. Em GRAVES: usar mesmo após 48h."},
+{d:"Oseltamivir UTI",do:"150 mg VO 12/12h × 10 dias (dobrada)",via:"VO",o:"Evidência fraca de superioridade — algumas diretrizes endossam."},
+{d:"Dipirona/Paracetamol",do:"500-1000 mg",via:"VO/IV",o:"NÃO AAS em <16a (Reye)."},
+{d:"O₂ + suporte",do:"VM protetora se SDRA",via:"—",o:"IOT precoce em piora rápida."},
+{d:"ATB superinfecção",do:"Ceftriaxona 2g + azitromicina 500 mg IV",via:"IV",o:"Recidiva febril → S. aureus, pneumococo, Strep A."},
+],
+alertas:[
+{t:"crit",x:"GRUPOS DE RISCO P/ ANTIVIRAL: gestantes, puérperas <6 sem, <2a, ≥60a, comorbidades (DM, cardiopatia, obesidade, imunosupressão), indígenas."},
+{t:"crit",x:"H1N1 pode causar SDRA fulminante em jovens — não subestimar dispneia."},
+{t:"warn",x:"Diferencial: COVID, RSV, parainfluenza. PCR painel é definitivo."},
+],
+fisio:"Vírus RNA. Replica em epitélio respiratório → necrose + inflamação. Sintomas sistêmicos por citocinas (IFN-α, IL-6, TNF). Complicações: pneumonia bacteriana secundária (S. aureus, pneumococo — causa #1 morte), miocardite, encefalite, Reye, Guillain-Barré.",
+mec:[
+{d:"Oseltamivir",x:"Inibidor neuraminidase — enzima viral que libera novas partículas da célula infectada. Inibição → vírus 'preso'."},
+],
+diretriz:"MS — Protocolo Influenza 2023. IDSA Seasonal Influenza 2018 (Uyeki TM et al., CID 2019;68:e1).",
+fluxo:null, calcs:[],
+},
+
+{id:"erisipela", sis:"infecto", grav:"media",
+nome:"Erisipela",
+sin:["erisipela"],
+def:"Infecção da derme superficial + linfáticos — placa eritematosa BEM DELIMITADA, calor, dor, edema, ± febre + linfangite. Diferente de celulite (mais profunda, limites menos nítidos). MMII 70%, face 5%.",
+exames:["Diagnóstico CLÍNICO","HMG + PCR se sistêmico","Hemoculturas se sepse","USG se suspeita abscesso"],
+rx:[
+{d:"Penicilina G Benzatina",do:"1.200.000 UI IM dose única",via:"IM",o:"1ª LINHA — Strep pyogenes. Não-graves, ambulatorial."},
+{d:"Cefalexina",do:"500 mg VO 6/6h × 7-10 dias",via:"VO",o:"Ambulatorial. Cobre Strep + S. aureus."},
+{d:"Penicilina G cristalina",do:"4 milhões UI IV 4/4h",via:"IV",o:"Internação — face, imunossuprimido, sepse, falha VO."},
+{d:"Clindamicina",do:"600-900 mg IV 8/8h",via:"IV",o:"Alergia à penicilina."},
+{d:"Suporte",do:"Elevação MMII + repouso + analgesia + marcação bordes",via:"—",o:"Caneta para avaliar progressão."},
+{d:"Profilaxia secundária",do:"Pen G Benzatina 1.2 mi IM 21/21 dias × 6-12m",via:"IM",o:"Recorrentes (≥2/ano) + linfedema."},
+],
+alertas:[
+{t:"crit",x:"FACE: risco trombose seio cavernoso. ATB IV + monitorização."},
+{t:"crit",x:"Diferenciar de FASCEÍTE NECROTIZANTE: dor desproporcional, bolhas, crepitação, necrose, sepse — emergência cirúrgica."},
+{t:"warn",x:"Porta de entrada: micose interdigital (tinea pedis) é #1 em MMII. TRATAR para prevenir recidiva."},
+],
+fisio:"Strep beta-hemolítico A (Strep pyogenes); raramente outras Strep ou S. aureus. Entra por solução de continuidade e dissemina pela derme + linfáticos. Hialuronidase + estreptocinase facilitam disseminação.",
+mec:[{d:"Penicilina G",x:"β-lactâmico — inibe transpeptidação na parede bacteriana. Strep pyogenes mantém sensibilidade quase universal."}],
+diretriz:"IDSA SSTI 2014 (Stevens DL et al., CID 2014;59:e10, DOI:10.1093/cid/ciu444).",
+fluxo:null, calcs:[],
+imgs:[
+{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Erysipelas2.jpg/640px-Erysipelas2.jpg",
+alt:"Erisipela em MMII — placa eritematosa bem delimitada",
+caption:"Erisipela em MMII — eritema bem delimitado, edema, bordes elevados.",
+source:"Wikimedia Commons (Domínio público)"},
+],
+},
+
+{id:"pep-hiv", sis:"infecto", grav:"alta",
+nome:"PEP — Profilaxia Pós-Exposição HIV",
+sin:["PEP","profilaxia pós-exposição","exposição HIV"],
+def:"Indicada em exposição com risco de transmissão HIV: ocupacional (perfurocortante, mucosa, pele não íntegra) OU sexual (sem proteção com fonte HIV+ ou desconhecida de alto risco) OU droga IV.",
+exames:["Teste rápido HIV exposto E fonte (se possível) — ANTES da PEP","Teste rápido sífilis, HBsAg, anti-HCV","Beta-HCG mulher fértil","Função hepática + renal (basal pré-TARV)"],
+rx:[
+{d:"TARV — Tenofovir + Lamivudina + Dolutegravir",do:"TDF 300 + 3TC 300 + DTG 50 mg, 1×/d × 28 dias",via:"VO",o:"INICIAR <72h (idealmente <2h). PCDT MS-Brasil 2017."},
+{d:"Hepatite B (vacina + IGHAHB)",do:"Vacina 3 doses + IGHAHB 0,06 mL/kg IM (até 7 dias)",via:"IM",o:"Não imunizado ou anti-HBs <10 + fonte HBsAg+."},
+{d:"Sífilis profilática",do:"Pen G Benzatina 2.4 milhões UI IM",via:"IM",o:"Exposição sexual + fonte com sífilis ativa."},
+{d:"Contracepção emergência",do:"Levonorgestrel 1,5 mg VO dose única",via:"VO",o:"Até 5 dias — direito da mulher em violência sexual."},
+{d:"Seguimento",do:"Teste HIV em 30 + 90 + 180 dias",via:"—",o:"+ transaminases. Suporte multidisciplinar se trauma."},
+],
+alertas:[
+{t:"crit",x:"JANELA = 72h. <2h é ideal. Após 72h, NÃO indicar (eficácia ~zero, toxicidade sem benefício)."},
+{t:"crit",x:"NUNCA atrasar PEP esperando teste fonte — iniciar empiricamente, SUSPENDER se fonte negativa."},
+{t:"warn",x:"Violência sexual: notificação compulsória (SINAN). Coleta material legal. Apoio multidisciplinar."},
+{t:"info",x:"PrEP é PRÉ-exposição (risco contínuo). PEP é depois do evento."},
+],
+fisio:"Risco transmissão HIV: perfurocortante ~0,3%; mucosa ~0,09%; anal receptivo ~1,4%; vaginal receptivo ~0,08%; oral muito baixo. Profilaxia bloqueia ciclo viral antes do estabelecimento sistêmico.",
+mec:[
+{d:"Tenofovir",x:"INTI análogo de nucleotídeo — bloqueia conversão RNA viral em DNA."},
+{d:"Dolutegravir",x:"Inibidor da integrase — bloqueia integração do DNA proviral no genoma."},
+],
+diretriz:"PCDT MS Brasil — PEP 2021. WHO PEP Guidelines.",
+fluxo:null, calcs:[],
+},
+
+/* ============== DERMATOLOGIA ============== */
+{id:"sjs-net", sis:"derm", grav:"alta",
+nome:"Stevens-Johnson / NET / DRESS",
+sin:["Stevens-Johnson","SJS","NET","necrólise epidérmica","DRESS"],
+def:"Reações cutâneas graves a fármacos. SJS: descamação <10% SCT + ≥2 mucosas. NET (Lyell): >30%. Overlap 10-30%. DRESS: rash + febre + linfadenopatia + eosinofilia + acometimento sistêmico (hepatite, nefrite).",
+exames:["HMG com diferencial (eosinofilia em DRESS)","Função renal + hepática","Eletrólitos","Hemoculturas","Biópsia de pele (necrose epidérmica)","RX tórax"],
+rx:[
+{d:"SUSPENDER agente causador",do:"IMEDIATO",via:"—",o:"PILAR. Identificar tudo nos últimos 1-8 sem (alopurinol, sulfa, anticonvulsivante aromático, AINE, β-lactâmico, dapsona, lamotrigina)."},
+{d:"Unidade de Queimados",do:"Transferência",via:"—",o:"NET >10% deve ser em centro especializado — manejo similar a queimadura grande."},
+{d:"Reposição volêmica",do:"Cristaloide 2 mL × kg × %SCT em 24h (50% nas 1ªs 8h)",via:"IV",o:"Como queimadura. Acesso central se >30%."},
+{d:"Cuidados de pele",do:"Não-aderente; prata ou Vaselina/petrolato",via:"—",o:"NÃO debridar agressivamente; evitar adesivos."},
+{d:"Cuidado ocular",do:"Lubrificação + corticoide tópico + descolamento sinéquias",via:"Tópico",o:"Oftalmologia precoce — sequelas oculares = causa #1 morbidade tardia."},
+{d:"DRESS — Corticoide",do:"Prednisolona 1 mg/kg/d com desmame lento (6-8 sem)",via:"VO/IV",o:"Maioria dos casos. Rebote frequente."},
+{d:"Ciclosporina (NET)",do:"3-5 mg/kg/d × 7-10 dias",via:"VO",o:"Evidência observacional. Promissor."},
+],
+alertas:[
+{t:"crit",x:"NÃO RE-EXPOR ao fármaco — risco NET fulminante. Anotar PRONTUÁRIO + cartão alerta + orientar."},
+{t:"crit",x:"Sinal de Nikolsky positivo + lesão alvo atípica + mucoso = SJS/NET até prova contrária."},
+{t:"warn",x:"DRESS aparece 2-8 sem APÓS início (mais tardio que SJS) — anticonvulsivante aromático + alopurinol clássicos."},
+{t:"warn",x:"SCORTEN: idade ≥40, FC ≥120, malignidade, SCT ≥10%, ureia ↑, glicose ↑, HCO₃ ↓. Cada ponto = ↑mortalidade."},
+],
+fisio:"Reação imune-mediada (T-citotóxica) com apoptose maciça de queratinócitos. HLA específicos predispõem (HLA-B*1502 + carbamazepina em asiáticos, HLA-B*5701 + abacavir). Descolamento epidérmico → 'queimadura interna' (perda barreira, eletrólitos, infecção). Mortalidade NET: 30-50%.",
+mec:[
+{d:"Ciclosporina",x:"Inibidor calcineurina — bloqueia ativação de células T citotóxicas."},
+],
+diretriz:"UK SJS/NET Guidelines 2016. Mockenhaupt M, RegisCAR.",
+fluxo:null, calcs:[],
+imgs:[
+{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Stevens-Johnson_syndrome.jpg/640px-Stevens-Johnson_syndrome.jpg",
+alt:"Lesões em alvo atípicas e descolamento epidérmico em SJS",
+caption:"SJS — lesões em alvo atípicas e descolamento epidérmico, com acometimento mucoso.",
+source:"Wikimedia Commons (CC BY-SA 3.0)"},
+],
+},
+
+{id:"herpes-zoster", sis:"derm", grav:"media",
+nome:"Herpes-Zóster",
+sin:["herpes zoster","zoster","cobreiro","neuralgia pós-herpética"],
+def:"Reativação do varicela-zóster latente em gânglio sensitivo → erupção vesicular dolorosa em UM DERMÁTOMO unilateral, sem ultrapassar linha média. Dor pode preceder lesões em 1-5 dias.",
+exames:["Diagnóstico CLÍNICO","PCR vesícula se atípico","HIV se <50a sem causa identificada"],
+rx:[
+{d:"Aciclovir",do:"800 mg VO 5×/d × 7 dias",via:"VO",o:"INICIAR <72h. Após 72h: só se ainda novas lesões."},
+{d:"Valaciclovir",do:"1 g VO 8/8h × 7 dias",via:"VO",o:"Mais conveniente (3×/d) — pró-droga, melhor biodisponibilidade."},
+{d:"Aciclovir IV",do:"10 mg/kg IV 8/8h × 7-10 dias",via:"IV",o:"Imunossuprimido, oftálmico, disseminado, SNC."},
+{d:"Analgesia",do:"Gabapentina 300-1200 mg/d divididos + dipirona + tramadol",via:"VO",o:"Dor neuropática. Amitriptilina 25-75 mg à noite alternativa."},
+{d:"Cuidado lesão",do:"Compressas frias + sabão neutro + curativo gaze",via:"Tópico",o:"NÃO usar antivirais tópicos isolados. NÃO romper vesículas."},
+],
+alertas:[
+{t:"crit",x:"ZÓSTER OFTÁLMICO (1º ramo trigêmeo, sinal Hutchinson — vesícula ponta nariz): EMERGÊNCIA oftalmológica. Aciclovir IV + oftalmo URGENTE. Risco ceratite, uveíte, cegueira."},
+{t:"crit",x:"Zóster DISSEMINADO (>20 vesículas fora dermátomo) → imunossupressão (HIV, neoplasia). Aciclovir IV + investigar."},
+{t:"warn",x:"Ramsay-Hunt: zóster gânglio geniculado — paralisia facial + vesículas conduto + perda auditiva. Aciclovir + corticoide."},
+{t:"warn",x:"Vacina (Shingrix): reduz incidência + neuralgia pós-herpética. >50a."},
+],
+fisio:"VZV permanece latente em gânglios da raiz dorsal pós-varicela. Reativa com idade + imunossupressão + estresse. Replicação no gânglio → migração axonal centrífuga → vesículas dermatomais. Inflamação ganglionar causa neuralgia (aguda e como neuralgia pós-herpética em até 30% >60a).",
+mec:[
+{d:"Aciclovir",x:"Análogo guanosina — ativado por timidina-quinase viral (seletividade); trifosfato compete com dGTP na DNA polimerase viral → terminação cadeia."},
+{d:"Gabapentina",x:"Ligante α2δ de canais cálcio neuronais → ↓liberação glutamato. Eficaz dor neuropática."},
+],
+diretriz:"IDSA Guidelines. CDC Shingles Guidelines.",
+fluxo:null, calcs:[],
+imgs:[
+{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Herpes_zoster_chest.png/480px-Herpes_zoster_chest.png",
+alt:"Vesículas agrupadas em base eritematosa em dermátomo torácico",
+caption:"Herpes-zóster torácico — vesículas agrupadas em base eritematosa, distribuição dermatomal unilateral.",
+source:"Wikimedia Commons / Fisle (CC BY-SA 3.0)"},
+],
+},
+
+/* ============== TOX EXTRAS ============== */
+{id:"tca-tox", sis:"tox", grav:"alta",
+nome:"Intoxicação por Antidepressivo Tricíclico",
+sin:["TCA","amitriptilina","nortriptilina","intoxicação ATC"],
+def:"Sobredose de TCA (amitriptilina, nortriptilina, imipramina, clomipramina) — anticolinérgico + cardiotóxico (Na⁺ canal) + neurotóxico. Tríade: alteração mental + cardiotoxicidade (QRS largo) + anticolinérgico. Pode evoluir rápido em horas.",
+exames:["ECG IMEDIATO + monitorização contínua","Gaso arterial (acidose piora cardiotoxicidade)","Nível sérico de TCA (não amplamente disponível BR)","Eletrólitos, glicemia","Função renal, hepática","Nível paracetamol, salicilato (coingestão)"],
+rx:[
+{d:"Bicarbonato de Sódio",do:"1-2 mEq/kg IV bolus + BIC mantendo pH 7,50-7,55",via:"IV",o:"PILAR. INDICAÇÕES: QRS >100 ms, hipotensão, arritmia ventricular. ALCALOSE desloca TCA do Na⁺ canal."},
+{d:"Carvão ativado",do:"1 g/kg VO/SNG",via:"VO/SNG",o:"<1-2h ingestão E via aérea protegida. NÃO em rebaixamento sem IOT (broncoaspiração)."},
+{d:"Hidratação",do:"SF 0,9% 20 mL/kg em bolus se hipoTA",via:"IV",o:"Cuidado em IC."},
+{d:"Noradrenalina",do:"0,05-2 mcg/kg/min BIC",via:"IV",o:"Hipotensão refratária a volume e bicarbonato. EVITAR dopamina (esgotamento por bloqueio de recaptação)."},
+{d:"Lidocaína (classe IB)",do:"1-1,5 mg/kg IV",via:"IV",o:"Arritmia ventricular refratária ao bicarbonato. ÚNICO antiarrítmico aceito. EVITAR IA, IC, III (prolongam QT)."},
+{d:"BZD",do:"Diazepam 5-10 mg IV se convulsão",via:"IV",o:"Convulsão é comum (delirium tremens-like)."},
+{d:"Sulfato de Mg",do:"2 g IV em 5 min",via:"IV",o:"Torsades."},
+{d:"IOT",do:"Sequência rápida",via:"—",o:"Glasgow ≤8 ou convulsão refratária. Hiperventilar levemente após (pH alvo 7,50)."},
+],
+alertas:[
+{t:"crit",x:"QRS >100 ms = preditor de convulsão; >160 ms = arritmia ventricular. BICARBONATO IMEDIATO."},
+{t:"crit",x:"Flumazenil NUNCA — pode precipitar convulsão em coingestão BZD."},
+{t:"crit",x:"Fisostigmina (anticolinesterásico) NUNCA em TCA — bradiarritmia fatal descrita."},
+{t:"warn",x:"R-wave em aVR >3 mm + S em I/aVL = sinais de toxicidade (Liebelt). Onda R aVR >3 mm = preditor arritmia."},
+],
+fisio:"TCAs bloqueiam: (1) recaptação noradrenalina/serotonina (efeito terapêutico); (2) receptores muscarínicos (anticolinérgico: midríase, taquicardia, retenção urinária, hipertermia, delirium); (3) α1-adrenérgicos (hipotensão ortostática); (4) Na⁺ canais cardíacos (QRS largo, arritmia ventricular — efeito 'tipo IA quinidina'); (5) GABA-A (limiar convulsivo ↓). Acidose AUMENTA fração não-ionizada do TCA → mais ligação a Na⁺ canal → cardiotoxicidade.",
+mec:[
+{d:"Bicarbonato",x:"Alcaliniza plasma → desloca TCA do Na⁺ canal por gradiente de prótons + Na⁺ extra compete pelo sítio. Resultado: QRS estreita, hipotensão melhora."},
+],
+diretriz:"AACT/EAPCCT 2007 Position Paper. Liebelt EL, Toxicol Rev 2005;24:243.",
+fluxo:null, calcs:[],
+},
+
+{id:"salicilato", sis:"tox", grav:"alta",
+nome:"Intoxicação por Salicilato (AAS)",
+sin:["salicilato","AAS","aspirina","intoxicação aspirina"],
+def:"Sobredose aguda ou crônica de salicilatos (AAS, óleo de Wintergreen, AINE). Clássico: alcalose RESPIRATÓRIA (centro respiratório estimulado) + acidose METABÓLICA (ânion gap) + alterações mentais + zumbido + hipertermia.",
+exames:["Nível sérico salicilato (séries 2/2h até pico/queda)","Gaso arterial (típica alcalose mista + acidose metabólica AG)","Glicemia capilar (hipo OU hiper)","Eletrólitos, função renal, hepática","Hemograma, coag","ECG (raro alterações)","Lactato"],
+rx:[
+{d:"Carvão ativado",do:"1 g/kg VO/SNG; doses repetidas 0,5 g/kg 4/4h em ingestão maciça",via:"VO/SNG",o:"INDICADO até várias horas — salicilatos formam bezoar. Via aérea protegida."},
+{d:"Reidratação",do:"SG/SF + glicose (HipoG cerebral mesmo com BG normal)",via:"IV",o:"Repor déficit. Salicilato causa diurese osmótica."},
+{d:"Bicarbonato (Alcalinização urinária)",do:"150 mEq em 1L SG 5% IV em 2h, ajustar manter pH urinário 7,5-8,0",via:"IV",o:"PILAR. ↑Excreção urinária 10-20×. K alvo >4 (hipoK impede alcalinização)."},
+{d:"Reposição de K",do:"KCl 40 mEq por L SG infundido",via:"IV",o:"Salicilato + alcalinização causam HIPOCALEMIA. Sem K, alcalinização falha."},
+{d:"Hemodiálise",do:"Indicação",via:"—",o:"INDICAÇÕES: nível >100 mg/dL agudo OU >60 mg/dL crônico; SNC alterado, IR, IC, edema pulmonar, acidose refratária. Indicar PRECOCEMENTE."},
+{d:"IOT — CUIDADO",do:"Manter hiperventilação após IOT",via:"—",o:"Hiperventilação compensa acidose. Se IOT com VM 'normal' → acidose piora drasticamente → óbito rápido. ALERTAR equipe."},
+],
+alertas:[
+{t:"crit",x:"IOT pode MATAR rápido se ventilação 'normal' for instituída. MANTER hiperventilação espontânea sempre que possível. Se IOT necessária: FR alta + Vt amplo."},
+{t:"crit",x:"INTOXICAÇÃO CRÔNICA é mais grave que aguda no mesmo nível sérico. Idoso confuso + acidose AG + alcalose resp em uso de AAS regular → suspeitar."},
+{t:"warn",x:"Wintergreen (metilsalicilato): 1 mL = ~1g de aspirina. Ingestão pediátrica de pequenas quantidades pode ser letal."},
+],
+fisio:"AAS é hidrolisado a salicilato (ácido fraco, pKa 3,0). Mecanismos tóxicos: (1) desacopla fosforilação oxidativa → hipertermia + acidose lática; (2) estimula centro respiratório → alcalose respiratória; (3) inibe ciclo de Krebs + síntese ácidos graxos → cetoacidose. Salicilato atravessa BHE em pH baixo — daí piora rápida em acidose. Edema pulmonar não-cardiogênico + cerebral em casos graves.",
+mec:[
+{d:"Bicarbonato",x:"Alcaliniza urina → ↑fração ionizada de salicilato no túbulo → menos reabsorção. Aumenta clearance dramaticamente. NB: alcalinização sistêmica também impede salicilato de entrar no SNC."},
+],
+diretriz:"AACT/EAPCCT Position Paper on Salicylate Poisoning 2015.",
+fluxo:null, calcs:[],
+},
+
+{id:"co-tox", sis:"tox", grav:"alta",
+nome:"Intoxicação por Monóxido de Carbono",
+sin:["CO","monóxido carbono","intoxicação CO"],
+def:"Inalação de CO (incêndio, exaustão de motor, aquecedor mal ventilado, fogão a lenha) → afinidade 240× pela Hb (carboxiHb) → hipóxia tissular. Clínica varia: cefaleia, náusea, confusão, síncope, dor torácica, coma. SpO₂ NORMAL (oxímetro não diferencia HbO₂ de HbCO).",
+exames:["CarboxiHb (cooximetria — específico): leve 10-20%, moderado 21-40%, grave >40%","Gaso arterial (acidose metabólica láctica)","ECG, troponina (isquemia miocárdica é comum)","Glicemia, eletrólitos","β-HCG","TC crânio se neuro alterado"],
+rx:[
+{d:"Remoção da fonte + O₂ 100%",do:"Máscara não-reinalante 15 L/min",via:"—",o:"PILAR. Reduz meia-vida CO de 4-6h (ar ambiente) para ~80 min."},
+{d:"O₂ hiperbárico (OHB)",do:"2,5-3 atm × 60-90 min",via:"—",o:"INDICAÇÕES: CarboxiHb >25%, perda consciência, gravidez (mesmo CO baixa), sintomas neuro persistentes, isquemia cardíaca, idade extrema. Meia-vida cai para ~20 min."},
+{d:"Suporte ABC",do:"IOT se rebaixamento; cristaloide se hipotensão",via:"—",o:"Cuidado com lesão térmica via aérea em vítima de incêndio."},
+{d:"Cianeto (suspeita coingestão em incêndio)",do:"Hidroxocobalamina 5 g IV em 15 min",via:"IV",o:"Se intoxicação por CIANETO suspeita (fumaça plástico/lã/seda + acidose lática grave + carboxiHb mod-grave + ↓consc). Tiossulfato + nitrito (Cyanide Antidote Kit) alternativa."},
+{d:"Aconselhamento",do:"Identificar fonte (engenheiro, equipe local) + prevenir recorrência",via:"—",o:"NÃO retornar até fonte sanada. Detector de CO."},
+],
+alertas:[
+{t:"crit",x:"SpO₂ NORMAL com clínica suspeita NÃO EXCLUI. Pedir COOXIMETRIA (gaso com Hb total) — oxímetro de pulso é cego para HbCO."},
+{t:"crit",x:"GESTANTE — feto tem afinidade Hb-CO MAIOR que mãe + eliminação mais lenta. Indicação ampla de OHB mesmo CO baixa."},
+{t:"warn",x:"Síndrome neurológica tardia (3-40 dias pós): parkinsonismo, déficit cognitivo, demência. OHB pode reduzir incidência."},
+{t:"info",x:"BR: câmaras hiperbáricas disponíveis em centros principais (transferir se viável)."},
+],
+fisio:"CO compete com O₂ pela Hb (afinidade 240×) → carboxiHb não transporta O₂. Curva de dissociação O₂-Hb desviada para esquerda → libera menos O₂ aos tecidos. Adicionalmente: CO se liga a mioglobina cardíaca + citocromo c oxidase → bloqueia respiração mitocondrial. Resultado: hipóxia tecidual + dano isquêmico (cérebro, coração).",
+mec:[
+{d:"O₂ 100%",x:"Lei de ação das massas — ↑PO₂ desloca CO da Hb. Hiperbárico aumenta drasticamente PO₂ dissolvido no plasma (~6 mL/dL vs 0,3) + acelera dissociação."},
+{d:"Hidroxocobalamina",x:"Sequestra cianeto formando cianocobalamina (vit B12) atóxica, excretada pelo rim."},
+],
+diretriz:"Undersea & Hyperbaric Medical Society 2019. CDC.",
+fluxo:null, calcs:[],
+},
+
+{id:"litio-tox", sis:"tox", grav:"alta",
+nome:"Intoxicação por Lítio",
+sin:["lítio","intoxicação lítio","Li"],
+def:"Toxicidade aguda (suicídio): sintomas GI predominam inicialmente. Crônica (paciente em uso terapêutico que descompensa por desidratação, IRA, AINE, IECA, tiazídico): mais grave, predominam neurológicos. Nível tóxico >1,5 mEq/L (terapêutico 0,6-1,2).",
+exames:["Nível sérico Li (séries — pico tardio em LP)","Função renal (Cr, ureia)","Eletrólitos (Na frequentemente alterado — diabetes insípido nefrogênico)","Cálcio, magnésio, fósforo","TSH (toxicidade tireoidiana crônica)","ECG (alargamento QT, alterações ST inespecíficas)","Gaso, glicemia","β-HCG"],
+rx:[
+{d:"SUSPENDER lítio + drogas que retém Li",do:"AINE, IECA/BRA, tiazídico, espironolactona",via:"—",o:"PILAR. Listar todas as drogas."},
+{d:"Hidratação SF 0,9%",do:"200-250 mL/h até diurese adequada",via:"IV",o:"Restaurar volemia + diurese. NÃO usar diurético salina forçada."},
+{d:"Carvão ativado — NÃO eficaz",do:"—",via:"—",o:"Lítio não adsorve em carvão. Útil só para coingestão."},
+{d:"Lavagem gástrica precoce",do:"<1h ingestão maciça, via aérea protegida",via:"—",o:"Considerar em maciça aguda."},
+{d:"HEMODIÁLISE",do:"4-6h",via:"—",o:"PILAR em casos graves. INDICAÇÕES: Li >4 mEq/L; >2,5 com sintomas neuro/cardiacos/renais; IR; sintomas que não melhoram. Pode rebote — repetir."},
+{d:"Manejo arritmia",do:"Conforme tipo",via:"—",o:"Lítio pode causar disfunção sinusal, BAV, QT longo, taquicardia ventricular."},
+{d:"BZD se convulsão",do:"Diazepam 5-10 mg IV",via:"IV",o:"Status epilepticus pode ocorrer."},
+],
+alertas:[
+{t:"crit",x:"Intoxicação CRÔNICA é mais grave que aguda no mesmo nível — distribuição tecidual completa. Paciente em uso terapêutico com desidratação/IRA pode ter sintomas graves com Li só levemente acima."},
+{t:"crit",x:"Sintomas NEURO: tremor → confusão → mioclonias → convulsão → coma. Sequelas neuro permanentes possíveis em casos graves (SILENT — Syndrome of Irreversible Lithium-Effectuated Neurotoxicity)."},
+{t:"warn",x:"Diabetes insípido NEFROGÊNICO induzido por Li — polidipsia, poliúria, hiperNa em uso crônico. Pode persistir após suspensão."},
+],
+fisio:"Lítio é cátion monovalente, similar ao Na. Excreção QUASE EXCLUSIVAMENTE renal — depende da filtração + 80% reabsorção túbulo proximal (como Na). Desidratação/sódio baixo → ↑reabsorção compensatória de Na + Li → níveis ↑. AINE, IECA, tiazídico fazem o mesmo. Mecanismo tóxico: depleção mioinositol cerebral, alteração 2º mensageiros, inibição GSK-3β (também base terapêutica em transtorno bipolar).",
+mec:[
+{d:"Hemodiálise",x:"Lítio é íon pequeno (massa 7), não-ligado a proteínas, baixo volume de distribuição. IDEAL para diálise — clearance dialisador >>renal. Rebote por redistribuição é regra; repetir."},
+],
+diretriz:"EXTRIP Workgroup 2015 — Decisões de extração por diálise.",
+fluxo:null, calcs:[],
+},
+
+/* ============== QUEIMADURAS ============== */
+{id:"queimaduras", sis:"trauma", grav:"alta",
+nome:"Queimaduras",
+sin:["queimaduras","queimadura","grande queimado"],
+def:"Lesão térmica/química/elétrica/radioativa. Profundidade: 1º grau (epiderme — hiperemia); 2º superficial (papilas — bolhas, dor); 2º profundo (reticular — bolhas, hipoestesia); 3º (subcutâneo, branca/preta, indolor); 4º (músculo/osso). SCT pela regra dos 9 ou Lund-Browder.",
+exames:["SCQ (% superfície corporal queimada) — regra dos 9","Gaso arterial + lactato + carboxiHb (incêndio)","HMG, eletrólitos, função renal, hepática","Cinacídio se incêndio (cianeto)","CPK (rabdomiólise se elétrica/extensa)","ECG (elétrica)","RX tórax (lesão inalatória), broncoscopia se suspeita"],
+rx:[
+{d:"ABCDE",do:"Via aérea PRECOCE se lesão inalatória",via:"—",o:"Edema progressivo em 24-48h → IOT enquanto fácil. Sinais: queimadura facial, vibrissa singed, escarro carbonáceo, rouquidão."},
+{d:"Reposição volêmica — fórmula Parkland",do:"Ringer Lactato 4 mL × kg × %SCQ em 24h (50% nas 1ªs 8h)",via:"IV",o:"INICIAR da HORA DA QUEIMADURA, não da admissão. Titular pela diurese (alvo 0,5-1 mL/kg/h adulto, 1-1,5 ped, 1-2 elétrica)."},
+{d:"Analgesia",do:"Morfina 0,1 mg/kg IV titulada",via:"IV",o:"Doses generosas. PCA quando possível."},
+{d:"ATB profilático",do:"NÃO indicado",via:"—",o:"Apenas se infecção estabelecida (cultura)."},
+{d:"Vacina antitetânica",do:"dT ± IGHAT",via:"IM",o:"Conforme esquema vacinal."},
+{d:"Curativos",do:"Hidrogel + sulfadiazina prata 1% + gaze",via:"Tópico",o:"Trocar 24/24h. NÃO romper bolhas tensas pequenas; debridar grandes."},
+{d:"Cirurgia",do:"Escarotomia em queimadura circular (extremidade, tórax)",via:"Cirúrgico",o:"Síndrome compartimental em 24-48h. Excisão tangencial + enxerto em 2º profundo e 3º precoce."},
+{d:"Critérios transferência (ABA)",do:"Centro de queimados",via:"—",o:">10% SCQ 2º grau, >5% 3º, face/mãos/pés/períneo/articulações, elétrica/química, inalatória, comorbidades, pediátrico, idoso."},
+],
+alertas:[
+{t:"crit",x:"VIA AÉREA — Se evidência inalatória, IOT EM PRECOCE em hospital com recursos. Edema rapidamente progressivo torna IOT mais difícil/impossível."},
+{t:"crit",x:"INTOXICAÇÃO CO + CIANETO em incêndio fechado. Suspeitar se acidose lática + ↓consc + carboxiHb >25%. Hidroxocobalamina 5g IV."},
+{t:"crit",x:"QUEIMADURA ELÉTRICA: SCQ visível subestima dano profundo. Avaliar rabdomiólise (CPK, urina escura), arritmias (ECG), sd compartimental, lesões internas."},
+{t:"warn",x:"NÃO usar gelo. NÃO romper bolhas pequenas. NÃO subdosar analgesia."},
+],
+fisio:"Lesão tecidual direta + resposta inflamatória sistêmica. >20% SCQ: extravasamento capilar generalizado → choque distributivo + hipovolemia maciça. Hipermetabolismo persistente por meses. Imunossupressão. Catabolismo. Infecção é causa #1 de morte após primeira semana. Lesão inalatória (até 30% mortalidade) por calor (via aérea superior) + toxinas (via aérea inferior) + CO/cianeto sistêmico.",
+mec:[
+{d:"Ringer Lactato",x:"Cristaloide balanceado — semelhança fisiológica ao plasma. Lactato metabolizado a bicarbonato compensa acidose."},
+{d:"Sulfadiazina de Prata",x:"Antiseptico tópico — sulfa + Ag⁺ ativo contra Gram+, Gram-, fungos. Penetração superficial."},
+],
+diretriz:"American Burn Association (ABA) 2018 Guidelines. ATLS 10ª ed. SBQ — Sociedade Brasileira de Queimaduras.",
+fluxo:null, calcs:[],
+imgs:[
+{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Wallace_rule_of_nines.png/640px-Wallace_rule_of_nines.png",
+alt:"Regra dos 9 de Wallace — distribuição de superfície corporal",
+caption:"Regra dos 9 (Wallace) — cabeça 9%, cada MS 9%, tronco anterior 18%, tronco posterior 18%, cada MI 18%, períneo 1%. Em criança: cabeça 18%, cada MI 13,5%.",
+source:"Wikimedia Commons"},
+],
+},
+
+/* ============== OUTRAS ============== */
+{id:"hipotermia", sis:"trauma", grav:"alta",
+nome:"Hipotermia",
+sin:["hipotermia","frio","T<35"],
+def:"Temperatura central <35°C. Leve 32-35: tremor + taquicardia + taquipneia. Moderada 28-32: ↓ tremor + arritmias + ↓consciência. Grave <28: ausência de tremor + bradicardia + apneia + risco FV.",
+exames:["Termômetro esofágico/retal/vesical (boca subestima)","ECG (J wave/Osborn em hipotermia <30°C)","Gaso arterial (sem correção de temperatura)","HMG, eletrólitos","Função renal, glicemia, alcoolemia, paracetamol","TC crânio se trauma","Coag (coagulopatia por hipotermia)"],
+rx:[
+{d:"Reaquecimento PASSIVO",do:"Cobertores, ambiente aquecido",via:"—",o:"LEVE (32-35°C). Tremor preservado = sucesso esperado."},
+{d:"Reaquecimento ATIVO externo",do:"Mantas térmicas, lâmpadas, banho morno",via:"—",o:"Moderada 28-32°C. ATENÇÃO: 'core temperature afterdrop' — sangue periférico frio retorna."},
+{d:"Reaquecimento ATIVO interno",do:"Cristaloide aquecido a 40°C; O₂ aquecido; lavagem pleural/peritoneal/vesical a 40-45°C",via:"IV/lavado",o:"Grave <28°C. Aquecer 1-2°C/h."},
+{d:"ECMO/Bypass CP",do:"Reaquecimento extracorpóreo",via:"—",o:"Hipotermia grave instável, PCR. 5-10°C/h. ELEVADA sobrevida em afogamento gelado."},
+{d:"ACLS modificado",do:"Não declarar morte até T >32-35°C ('No one is dead until warm and dead')",via:"—",o:"RCP/desfibrilação podem ser ineficazes <30°C. Persistir."},
+],
+alertas:[
+{t:"crit",x:"'NO ONE IS DEAD UNTIL WARM AND DEAD'. RCP prolongado em hipotermia → sobrevida descrita após >2h de PCR + reaquecimento ECMO."},
+{t:"crit",x:"MANIPULAÇÃO MÍNIMA em hipotermia grave — pode precipitar FV. Posicionar IV, gentilmente."},
+{t:"warn",x:"Causas/co-fatores: etilismo, idoso, hipotireoidismo, sepse, drogas (BZD, neurolépticos, opioide), TCE, hipoglicemia."},
+],
+fisio:"Termorregulação central (hipotálamo) falha → vasoconstrição + tremor inicial → conforme T cai, função celular se reduz progressivamente. Sistema cardiovascular: bradicardia, hipotensão, arritmias (FA → FV <28°C). SNC: ↓consc → coma <30°C. Respiratório: ↓FR → apneia. Renal: 'cold diuresis' (paradoxal). Coagulação: enzimática (inibida pelo frio) — coagulopatia mesmo sem CIVD.",
+mec:[],
+diretriz:"AHA ACLS 2020 — Hypothermia. Wilderness Medical Society 2019.",
+fluxo:null, calcs:[],
+},
+
+{id:"golpe-calor", sis:"trauma", grav:"alta",
+nome:"Golpe de Calor / Hipertermia",
+sin:["golpe de calor","insolação","heat stroke","exaustão por calor"],
+def:"Hipertermia >40°C + disfunção do SNC (confusão, convulsão, coma) por falha da termorregulação. Clássico (idoso, onda de calor) ou de esforço (atleta, militar). Diferente de exaustão por calor (T <40, sem disfunção SNC).",
+exames:["T central (retal/esofágico — fundamental)","Gaso, lactato, eletrólitos, glicemia","CPK, função renal (rabdomiólise)","Função hepática (lesão térmica)","Coag (CIVD)","ECG","β-HCG"],
+rx:[
+{d:"RESFRIAMENTO IMEDIATO",do:"Imersão em água gelada (atleta) OU spray + ventilador + gelo em axilas/inguinais/pescoço/poplítea",via:"—",o:"PILAR. CADA MINUTO conta. Meta: T <38,5°C em ≤30 min."},
+{d:"Hidratação cautelosa",do:"SF 0,9% guiado por SSVV (não bolus maciço)",via:"IV",o:"Hipovolemia frequente mas não dominante. Cuidado em idoso cardiopata."},
+{d:"BZD",do:"Diazepam 5-10 mg IV",via:"IV",o:"Calafrios + agitação (não usar antitérmico — ineficaz, hepatotóxico em paracetamol)."},
+{d:"NÃO usar antitérmicos",do:"Paracetamol/AINE",via:"—",o:"FALÊNCIA hipotalâmica — não responde. Risco hepato/nefrotoxicidade. Resfriar fisicamente."},
+{d:"Tratar complicações",do:"Rabdomiólise, IRA, CIVD, arritmia",via:"—",o:"Suporte. UTI."},
+{d:"Dantrolene",do:"NÃO eficaz",via:"—",o:"Útil em hipertermia MALIGNA anestésica, não em golpe de calor."},
+],
+alertas:[
+{t:"crit",x:"Termômetro RETAL/ESOFÁGICO — boca/axilar subestimam. Sem T central, não há diagnóstico."},
+{t:"crit",x:"HEAT STROKE clássico em idoso: mortalidade 10-60% conforme tempo até resfriamento. Onda de calor + paciente isolado em ambiente quente."},
+{t:"warn",x:"Drogas: anticolinérgicos, antipsicóticos, simpaticomiméticos (cocaína, anfetamina), diuréticos, álcool — TODOS aumentam risco."},
+],
+fisio:"Falha de dissipação de calor (radiação, condução, evaporação) supera produção endógena. Hipertermia >40-41°C causa desnaturação proteica + apoptose celular + permeabilidade intestinal (endotoxemia) → resposta inflamatória sistêmica + coagulopatia + falência multissistêmica. Diferente de febre (mediado por citocinas, set point hipotalâmico ajustado — resfriamento físico é ineficaz porque corpo resiste).",
+mec:[],
+diretriz:"American College of Sports Medicine 2007. Bouchama A, NEJM 2002;346:1978.",
+fluxo:null, calcs:[],
+},
+
+{id:"hemoptise", sis:"resp", grav:"alta",
+nome:"Hemoptise Maciça",
+sin:["hemoptise","sangramento pulmonar"],
+def:"Eliminação de sangue pela boca proveniente da via aérea (laringe/traqueia/brônquios/parênquima). Maciça: >200-600 mL/24h OU instabilidade hemodinâmica/respiratória. MORTALIDADE 50-80% maciça não tratada — risco PRINCIPAL é asfixia, não hipovolemia.",
+exames:["RX/TC tórax + angio-TC (definir sítio + etiologia)","HMG, coag, função renal, gaso","Tipagem + reserva CH","Broncoscopia (diagnóstica + terapêutica)"],
+rx:[
+{d:"POSICIONAR — decúbito LATERAL do lado SANGRANTE para baixo",do:"Se o sítio é conhecido",via:"—",o:"PILAR. Protege pulmão são. Se desconhecido — decúbito Trendelenburg (pulmonar)."},
+{d:"O₂ + via aérea",do:"IOT se necessário (tubo amplo)",via:"—",o:"Tubo grande (8.0+) para broncoscopia. CONSIDERAR IOT seletiva (Carlens) ou bloqueador brônquico do lado sangrante."},
+{d:"Suporte hemodinâmico",do:"Cristaloide + CH (tipo O- se urgente)",via:"IV",o:"Reverter anticoagulação se aplicável."},
+{d:"Ácido tranexâmico",do:"500-1000 mg IV em 10 min OU nebulizado 500 mg",via:"IV/Neb",o:"Reduz sangramento — Cochrane 2020. Pode repetir."},
+{d:"Broncoscopia rígida",do:"Aspiração + cauterização + tamponamento balão",via:"—",o:"Intervenção precoce em centro especializado."},
+{d:"Embolização ARTÉRIA BRÔNQUICA",do:"Angiografia + embolização",via:"Endovascular",o:"DEFINITIVO. Sucesso 85-95%. Disponível em centros referência."},
+{d:"Cirurgia",do:"Lobectomia",via:"Cirúrgico",o:"Falha de embolização, sangramento focal localizado."},
+],
+alertas:[
+{t:"crit",x:"ASFIXIA é a causa de morte, não hipovolemia. PROTEGER via aérea + pulmão são."},
+{t:"crit",x:"DECÚBITO LATERAL com sítio sangrante PARA BAIXO. Quando se sabe o lado, isso pode salvar a vida."},
+{t:"warn",x:"Etiologia em BR: tuberculose ativa/sequela (bronquiectasia, aspergiloma na cavitação), bronquiectasia, neoplasia, micetoma, vasculite, anticoag/anti-plaq, TEP."},
+{t:"info",x:"Hemoptise volumosa em paciente jovem feminina = arteriovenosa pulmonar (Osler-Weber-Rendu)?"},
+],
+fisio:"90% origem em artéria brônquica (alta pressão, sistêmica) — não em circulação pulmonar (baixa pressão). Causas: erosão por inflamação crônica (TB, bronquiectasia), ruptura aneurisma de Rasmussen (TB cavitária), neoplasia, infarto pulmonar (TEP). Anastomoses bronco-pulmonares aumentam em doença crônica.",
+mec:[
+{d:"Ácido tranexâmico",x:"Antifibrinolítico — análogo lisina, bloqueia sítios de ligação do plasminogênio. ↓dissolução do coágulo, permite hemostasia local."},
+],
+diretriz:"BTS Guidelines on Hemoptysis. CHEST Guidelines.",
+fluxo:null, calcs:[],
+},
+
+{id:"sdra", sis:"resp", grav:"alta",
+nome:"SDRA / ARDS",
+sin:["SDRA","ARDS","Berlin","Síndrome do Desconforto Respiratório Agudo"],
+def:"Síndrome inflamatória pulmonar AGUDA — Berlin 2012: início <7 dias + infiltrado bilateral RX/TC + sem evidência de origem cardíaca + hipoxemia. Leve (P/F 200-300, PEEP ≥5), moderada (P/F 100-200), grave (P/F <100).",
+exames:["Gaso arterial — calcular P/F","RX/TC tórax","Ecocardiograma (excluir cardiogênico)","HMG + cultura ampla (sepse é causa #1)","BNP, troponina"],
+rx:[
+{d:"Tratar CAUSA",do:"Sepse, pneumonia, aspiração, trauma, transfusão (TRALI), pancreatite",via:"—",o:"PILAR. Sem isso, suporte é apenas paliativo."},
+{d:"VM PROTETORA (Vt baixo)",do:"Vt 6 mL/kg peso PREDITO + Pplat <30 + driving pressure <15 cmH₂O",via:"VM",o:"ARDSnet — reduz mortalidade. Peso PREDITO (50 + 0,91 × (altura cm - 152,4) H, 45,5 + 0,91 × (altura cm - 152,4) M)."},
+{d:"PEEP MAIS ALTO",do:"Tabela PEEP/FiO₂ alta (ALVEOLI/EXPRESS)",via:"VM",o:"Mod-grave SDRA. Iniciar 10-12. Titular pela P/F."},
+{d:"Pronação 16h/d",do:"Posição prona em P/F <150",via:"—",o:"PROSEVA — ↓mortalidade significativamente. Manter 16h/24h, alternando."},
+{d:"Sedação + curare (BNM)",do:"Sedação profunda + cisatracurio 0,15 mg/kg + 0,3 mg/kg/h",via:"IV",o:"48h em SDRA grave inicial (P/F <120). Reduz mortalidade (ACURASYS). Reavaliar."},
+{d:"Balanço hídrico negativo",do:"Diurético se euvolêmico + estável",via:"IV",o:"FACTT trial — estratégia conservadora melhora dias livres VM."},
+{d:"ECMO",do:"VV-ECMO",via:"—",o:"P/F <80 refratário, hipercapnia severa, lesão pulmonar primária reversível. Transferir CENTRO referência."},
+{d:"NÃO usar — não recomendado",do:"Corticoide rotineiro, surfactante exógeno, β2 alta dose",via:"—",o:"Sem benefício. Corticoide em SDRA por COVID/pneumonia tem evidência (RECOVERY)."},
+],
+alertas:[
+{t:"crit",x:"VM PROTETORA é a única intervenção MORTALIDADE-REDUTORA com evidência sólida. Vt baixo + Pplat baixo SEMPRE — mesmo com 'rebote' de PCO₂ ('permissive hypercapnia')."},
+{t:"crit",x:"Pronação NÃO É opcional em P/F <150 — é intervenção de UTI básica em SDRA moderado-grave."},
+{t:"warn",x:"Diferencial: SDRA vs edema agudo cardiogênico — ECO + BNP + resposta a diurético. SDRA pode coexistir com IC."},
+],
+fisio:"Lesão alveolar difusa por estímulo direto (pneumonia, aspiração, contusão, inalação) ou indireto (sepse, pancreatite, transfusão, choque). Fase exsudativa (D1-7): edema rico em proteína + dano endotelial/epitelial + membranas hialinas. Fase proliferativa (D7-21): tentativa de reparo. Fase fibrótica (>21d): fibrose pulmonar.",
+mec:[
+{d:"Cisatracurio",x:"Bloqueador neuromuscular — antagonista nicotínico competitivo. Eliminação Hofmann (não-renal, não-hepática) — ideal em UTI."},
+],
+diretriz:"Berlin Definition (ARDS Definition Task Force, JAMA 2012;307:2526). ARDSnet (NEJM 2000;342:1301). PROSEVA (Guérin C et al., NEJM 2013;368:2159). ESICM/ATS/SCCM 2017 (Fan E et al., Am J Respir Crit Care Med 2017;195:1253, DOI:10.1164/rccm.201703-0548ST).",
+fluxo:null, calcs:[],
+},
+
+{id:"retencao-urinaria", sis:"gu", grav:"media",
+nome:"Retenção Urinária Aguda",
+sin:["retenção urinária","RUA","sondagem","cateterismo vesical"],
+def:"Incapacidade súbita de esvaziar a bexiga, ± dor suprapúbica + globo vesical palpável. H idoso: HPB descompensada (mais comum). M: causas diversas — bexiga neurogênica, ITU, fecaloma, medicações (anticolinérgicos, opioides).",
+exames:["Bexigoma palpável / USG point-of-care (>300-500 mL)","EAS + urocultura","Função renal (ureia/Cr — hidronefrose?)","PSA H >50a","Eletrólitos","RX abdome (fecaloma, urolitíase)"],
+rx:[
+{d:"Cateterismo VESICAL de alívio",do:"Foley 14-18 Fr lubrificada",via:"—",o:"DRENAR — alívio imediato. Esvaziar GRADUALMENTE (clampar após 500 mL × 10-15 min) para evitar hematúria 'ex-vacuo' e hipotensão."},
+{d:"Cateter SUPRAPÚBICO",do:"Punção 2 dedos acima da sínfise",via:"—",o:"Falha de Foley (estenose uretral, próstata muito aumentada, falha técnica) — chamar urologista."},
+{d:"α-bloqueador",do:"Tansulosina 0,4 mg VO/d ou Doxazosina 2-4 mg/d",via:"VO",o:"H com HPB — começar precoce. Aumenta taxa de sucesso de trial sem cateter."},
+{d:"ATB se ITU",do:"Conforme antibiograma; Ceftriaxona 1-2 g IV se febre/sepse",via:"IV/VO",o:"Trato urinário superior — sempre ATB."},
+{d:"Trial sem cateter (TWOC)",do:"Após 24-72h com α-bloq",via:"—",o:"Sucesso 40-60% em retenção 1ª. Falha → urologia para avaliar próstata + uretra."},
+{d:"Tratar fecaloma",do:"Toque retal + lavagem retal (glicerina 12% 500 mL)",via:"—",o:"Causa frequente em idoso/acamado. Sondagem alivia sintomas mas não trata."},
+],
+alertas:[
+{t:"crit",x:"BEXIGA NEUROGÊNICA com hidronefrose bilateral + sintomas neuro novos = SÍNDROME DA CAUDA EQUINA — urgência neurocirúrgica. Avaliar reflexos perineais."},
+{t:"warn",x:"Drenagem rápida >500 mL pode causar hipotensão por reflexo + hematúria ex-vácuo. CLAMPAR e drenar gradualmente."},
+{t:"warn",x:"H idoso com retenção urinária em uso recente de anticolinérgico (anti-H1 OTC, oxibutinina) — suspender medicação."},
+],
+fisio:"Causas obstrutivas: HPB (mais comum H), estenose uretral, cálculo impactado, neoplasia, fecaloma, prolapso. Causas neurogênicas: lesão medular, esclerose múltipla, AVC, DM, pós-anestesia/cirurgia. Farmacológicas: anticolinérgicos, opioides, β-bloq, BCC, anti-H1, descongestionantes. Bexiga aguda distendida → ↑pressão → refluxo vésico-ureteral → hidronefrose + lesão renal.",
+mec:[
+{d:"Tansulosina",x:"α1a-bloqueador seletivo (próstata) — relaxa músculo liso prostático/uretral, ↓resistência ao esvaziamento."},
+],
+diretriz:"EAU Guidelines Urological Trauma. AUA Guidelines.",
+fluxo:null, calcs:[],
+},
+
+{id:"priapismo", sis:"gu", grav:"alta",
+nome:"Priapismo",
+sin:["priapismo","ereção prolongada"],
+def:"Ereção persistente >4h, NÃO relacionada a estimulação sexual. ISQUÊMICO (baixo fluxo): doloroso, rígido, EMERGÊNCIA — falência fluxo arterial → necrose corpo cavernoso → impotência permanente. NÃO-ISQUÊMICO (alto fluxo): trauma perineal, indolor, parcial, NÃO urgência.",
+exames:["GASO sangue cavernoso (punção): isquêmico = PaO₂ <30, PaCO₂ >60, pH <7,25; não-isq = arterial","HMG (descartar falcêmico)","β-HCG não aplicável","Função renal","Investigar causa: falciforme (eletroforese), leucemia, drogas (sildenafil, cocaína, antipsicóticos)","Doppler peniano em casos selecionados"],
+rx:[
+{d:"ASPIRAÇÃO + IRRIGAÇÃO cavernosa",do:"Agulha 21G na lateral da base do pênis; aspirar 30-50 mL sangue + irrigar SF",via:"—",o:"1ª linha priapismo isquêmico <6h. Anestesia local (bloqueio peniano). Repetir conforme resposta."},
+{d:"Fenilefrina intracavernosa",do:"100-500 mcg/mL — 1 mL a cada 5-10 min (máx 1 mg) APÓS aspiração",via:"—",o:"Vasoconstrição local. Monitor PA (risco HAS sistêmica). Diluir 1 mL fenilefrina 10 mg em 99 mL SF (100 mcg/mL)."},
+{d:"Falcêmico — exsanguineotransfusão",do:"Eritroaférese, alvo HbS <30%",via:"IV",o:"Em PARALELO com manejo local. Não atrasar tratamento peniano."},
+{d:"Cirurgia (Shunt)",do:"Winter / Ebbehoj / Quackels / Grayhack",via:"Cirúrgico",o:"Falha de tratamento conservador >24-48h. Urologista."},
+{d:"Hidratação + analgesia",do:"IV vigorosa",via:"IV",o:"Especialmente em falcêmico."},
+],
+alertas:[
+{t:"crit",x:"PRIAPISMO ISQUÊMICO >24h = impotência permanente quase certa. EMERGÊNCIA — não 'aguardar resolução espontânea'."},
+{t:"crit",x:"Sildenafil/tadalafil + cocaína/anfetamina ou trazodona/risperidona — combinações de risco."},
+{t:"warn",x:"Diferenciar isquêmico (rígido + doloroso, alto risco) de não-isquêmico (parcial, indolor, pós-trauma — angiografia + embolização eletiva)."},
+],
+fisio:"Isquêmico (baixo fluxo): obstrução do retorno venoso pelo plexo venoso peniano → estagnação → hipóxia + acidose + edema endotelial → fibrose corpo cavernoso. Causas: falciforme (vaso-oclusão), leucemia/mieloma (hiperviscosidade), drogas (PDE5i, antipsicóticos, trazodona, anticoag, cocaína), idiopático. Não-isquêmico: laceração arterial peniana pós-trauma perineal → fluxo descontrolado, sem isquemia.",
+mec:[
+{d:"Fenilefrina",x:"α1-agonista puro → vasoconstrição. Reverte preenchimento corpo cavernoso."},
+],
+diretriz:"AUA Guidelines on Priapism 2003 (atualização 2021). EAU.",
+fluxo:null, calcs:[],
+},
+
+{id:"abscesso-peri", sis:"infecto", grav:"media",
+nome:"Abscesso Periamigdaliano (Quinsy)",
+sin:["abscesso periamigdaliano","Quinsy","peritonsilar"],
+def:"Coleção purulenta entre cápsula amigdaliana e músculo constrictor superior. Complicação de amigdalite — odinofagia intensa unilateral + voz 'em batata quente' + trismo + desvio da úvula + abaulamento do pilar amigdaliano + linfadenopatia cervical. Mais comum em adultos jovens.",
+exames:["Diagnóstico CLÍNICO — visualização do abaulamento + trismo + desvio úvula","HMG, PCR (leucocitose com desvio)","Hemoculturas se sepse","Cultura material drenado","TC pescoço com contraste se: complicação suspeita (extensão parafaríngea, Lemierre)"],
+rx:[
+{d:"DRENAGEM CIRÚRGICA",do:"Punção aspirativa OU incisão + drenagem com bisturi",via:"—",o:"PILAR. Anestesia local (xilocaína spray 10% + lidocaína injetável). OTORRINO ou emergencista experiente."},
+{d:"Ceftriaxona + Clindamicina",do:"1-2 g IV + 600 mg IV 8/8h",via:"IV",o:"Cobertura aerobios (Strep) + anaeróbios (Fusobacterium, Prevotella). MS-aprovado."},
+{d:"Ampicilina-sulbactam",do:"3 g IV 6/6h",via:"IV",o:"Alternativa monoterápica. Ou amoxicilina-clavulanato 1g VO 8/8h após melhora."},
+{d:"Corticoide",do:"Dexametasona 10 mg IV dose única",via:"IV",o:"Reduz edema + odinofagia + tempo internação. Evidência crescente."},
+{d:"Hidratação",do:"SF 0,9% — paciente geralmente desidratado (não engole)",via:"IV",o:""},
+{d:"Analgesia",do:"Dipirona + tramadol; eventualmente morfina",via:"IV",o:"Dor intensa."},
+{d:"Tonsilectomia (à quente)",do:"Procedimento eletivo após resolução",via:"Cirúrgico",o:"Recorrente (≥2 episódios) ou complicação tonsilar — eletiva. 'À quente' = durante episódio, controversa."},
+],
+alertas:[
+{t:"crit",x:"COMPLICAÇÕES TEMÍVEIS: extensão para espaço parafaríngeo → mediastinite descendente; Sd. de Lemierre (tromboflebite jugular interna por Fusobacterium); aspiração do conteúdo abscesso → pneumonia/SDRA."},
+{t:"crit",x:"Trismo grave + estridor + sialorreia = obstrução via aérea iminente — IOT com cuidado (preferencialmente acordada/fibroscopia)."},
+{t:"warn",x:"Diferenciar de amigdalite simples (sem abaulamento, úvula central, trismo leve)."},
+],
+fisio:"Inflamação periamigdaliana progride para abscesso loculado entre a cápsula amigdaliana e músculo constrictor superior. Polimicrobiana — Strep do grupo A (40-50%), anaeróbios (Fusobacterium, Prevotella, Peptostreptococcus). Tratamento pode incluir só drenagem agulha + ATB, sem incisão.",
+mec:[],
+diretriz:"IDSA Guidelines on Pharyngitis. UpToDate.",
+fluxo:null, calcs:[],
+},
+
+{id:"reacao-transf", sis:"hemo", grav:"alta",
+nome:"Reação Transfusional",
+sin:["reação transfusional","TRALI","TACO","RTA hemolítica"],
+def:"Reação adversa durante/após transfusão. Tipos críticos: HEMOLÍTICA AGUDA (incompatibilidade ABO, mortalidade alta), TRALI (lesão pulmonar relacionada à transfusão), TACO (sobrecarga circulatória), reação alérgica grave/anafilaxia. Outras: febril não-hemolítica, séptica, urticariforme.",
+exames:["PARAR transfusão IMEDIATAMENTE","Reavaliar identificação paciente x bolsa","Coombs direto + tipagem repetida","HMG, LDH, bilirrubina indireta, haptoglobina","EAS (Hb urinária = hemoglobinúria — hemólise)","Função renal","RX tórax (TRALI/TACO)","Hemoculturas do paciente + bolsa (reação séptica)","Eletrólitos, K (hemólise + hipercalemia)"],
+rx:[
+{d:"PARAR transfusão",do:"Imediato",via:"—",o:"PILAR. Manter acesso com SF separado."},
+{d:"Notificar banco de sangue",do:"Devolver bolsa + tubos para investigação",via:"—",o:"Sempre. Notificação compulsória."},
+{d:"Reação HEMOLÍTICA AGUDA",do:"Hidratação vigorosa (SF 200-500 mL/h) + manter PAM ≥65 + manitol/furosemida para débito >100 mL/h",via:"IV",o:"Proteção renal. ALERTAR CIVD. Hemodiálise se IRA."},
+{d:"TRALI",do:"Suporte ventilatório protetor (Vt 6 mL/kg) — geralmente requer IOT",via:"VM",o:"Distingue de TACO: TRALI sem sobrecarga, BNP normal, biópsia anti-HLA/HNA do doador. Mortalidade 5-25%."},
+{d:"TACO",do:"Diurético (furosemida 40-80 mg IV) + VNI + restrição volume",via:"IV",o:"Idoso, cardiopata, RN, IRC = risco. Prevenção: transfusão lenta + diurético entre bolsas."},
+{d:"ANAFILAXIA",do:"Adrenalina 0,3-0,5 mg IM + suporte (ver patologia)",via:"IM",o:"IgA deficiente + IgG anti-IgA é causa clássica."},
+{d:"Febril não-hemolítica",do:"Paracetamol 1 g + suspender bolsa se T >2°C acima basal ou sintomas",via:"VO/IV",o:"Reação mais comum. Geralmente benigna mas exclui sempre as graves."},
+{d:"Séptica",do:"ATB amplo espectro empírico (vancomicina + cefepima/ceftazidima)",via:"IV",o:"Bolsa contaminada (mais comum plaquetas armazenadas). Suporte sepse."},
+],
+alertas:[
+{t:"crit",x:"DOR LOMBAR + FEBRE + HIPOTENSÃO + URINA ESCURA durante transfusão = HEMÓLISE AGUDA INTRAVASCULAR. Parar imediato. Frequentemente fatal."},
+{t:"crit",x:"TRALI vs TACO: ambos têm dispneia + infiltrado RX nas primeiras 6h pós-transfusão. TACO = sobrecarga (↑BNP, ↑PA, ↑PVC); TRALI = lesão (BNP normal, sem sobrecarga, geralmente PA cai)."},
+{t:"warn",x:"REAÇÃO DEMORA: TRALI/TACO podem se apresentar até 6h pós; hemólise tardia até 14 dias."},
+{t:"info",x:"Hemovigilância: notificar SISVAN/HEMOVIGILÂNCIA."},
+],
+fisio:"Hemólise aguda: incompatibilidade ABO (erro de identificação — humano, não laboratorial). Anticorpos pré-formados do receptor atacam hemácias do doador → hemólise intravascular maciça → liberação Hb → IRA + CIVD + choque. TRALI: anticorpos anti-HLA/HNA do doador ativam neutrófilos do receptor → lesão alveolar. TACO: simples sobrecarga de volume. Anafilaxia: IgE-mediada, geralmente IgA-deficiente.",
+mec:[],
+diretriz:"AABB (American Association of Blood Banks). ANVISA — Hemovigilância. Diretrizes SUS para Hemoterapia.",
+fluxo:null, calcs:[],
+},
+
+{id:"civd", sis:"hemo", grav:"alta",
+nome:"CIVD — Coagulação Intravascular Disseminada",
+sin:["CIVD","DIC","coagulação intravascular disseminada","coagulopatia consumo"],
+def:"Síndrome adquirida de ativação patológica da coagulação → consumo de fatores e plaquetas → sangramento + microtromboses paradoxal. Sempre secundária — investigar a CAUSA. Critérios ISTH: TAP/INR, plaq, fibrinogênio, D-dímero — escore ≥5 = CIVD.",
+exames:["TP/INR, TTPA (alargados)","Fibrinogênio (BAIXO; alto não exclui — proteína de fase aguda)","D-dímero (MUITO ALTO)","Plaquetas (BAIXAS, em queda)","Esfregaço (esquistócitos — microangiopatia)","HMG completo + função renal/hepática","Investigar causa: hemoculturas, β-HCG, função tireoidiana, RX, TC"],
+rx:[
+{d:"TRATAR CAUSA",do:"Sepse → ATB + controle foco; obstétrica → resolução; trauma → cirurgia; neoplasia → quimio",via:"—",o:"PILAR. Sem isso, intervenção é paliativa."},
+{d:"Reposição fatores SE sangramento ATIVO",do:"PFC 10-15 mL/kg + crioprecipitado (fibrinogênio <100) + plaquetas (se <20-50k)",via:"IV",o:"NÃO repor por valores baixos isolados sem sangramento — alimenta a coagulação intravascular."},
+{d:"Heparina (microtromboses dominantes)",do:"HNF 500 UI/h IV (dose baixa) ou HBPM dose profilática",via:"IV/SC",o:"INDICAÇÕES: predomínio trombótico (pele, gangrena, IRA isquêmica), CIVD crônica de neoplasia, em ausência de sangramento ativo grave. CONTROVERSO em CIVD aguda."},
+{d:"Antifibrinolítico",do:"Ácido tranexâmico 1g IV — CAUTELOSO",via:"IV",o:"Excepcional — em CIVD com predomínio hiperfibrinolítico (leucemia M3, próstata, hemorragia maciça obstétrica) sob orientação hematologista."},
+{d:"Vit K",do:"10 mg IV/d × 3 dias",via:"IV",o:"Cofator dos fatores II/VII/IX/X — pode estar deficiente em CIVD prolongada."},
+{d:"Antitrombina, proteína C ativada",do:"—",via:"—",o:"NÃO recomendadas rotineiramente (Xigris retirado do mercado)."},
+],
+alertas:[
+{t:"crit",x:"CIVD é DIAGNÓSTICO DA DOENÇA DE BASE — não tratar 'a CIVD'. Tratar SEPSE, choque, neoplasia, HELLP, obstétrica, trauma."},
+{t:"crit",x:"NÃO repor sangue por números laboratoriais — repor SE sangramento ATIVO. Procoagulantes 'alimentam' processo intravascular."},
+{t:"warn",x:"Causas comuns BR: sepse (#1), obstétrica (DPP, embolia LA, HPP), trauma maciço, leucemia M3 (LMA M3 = emergência hematológica)."},
+],
+fisio:"Doença de base libera fator tecidual (TF) sistemicamente → ativação maciça e descontrolada da coagulação → microtrombos disseminados + consumo de fatores/plaquetas + ativação fibrinolítica secundária (PAI-1 alto inicialmente, depois tPA) → padrão paradoxal: trombose microvascular (lesão isquêmica MOF) + sangramento (consumo). LMA M3 (leucemia promielocítica): grânulos liberam TF + anexina A2 → hiperfibrinólise dominante.",
+mec:[],
+diretriz:"ISTH 2018 (Wada H et al., J Thromb Haemost 2018;16:1929). British Society for Haematology 2009.",
+fluxo:null, calcs:[],
+},
+
+);
 
 
 /* ===========================================================
@@ -6519,7 +7812,8 @@ const FLOWS_LIST = Object.keys(FLOWS);
 /* SISTEMAS está definido em data1.js. Aqui adicionamos ordem de exibição. */
 const SISTEMAS_ORD = {
   cardio:1, resp:2, neuro:3, gi:4, endo:5, gu:6, ost:7, psiq:8, hidro:9,
-  infecto:10, anaf:11, tox:12, pec:13, hemo:14, vaso:15, iot:16, gest:17
+  infecto:10, anaf:11, tox:12, pec:13, hemo:14, vaso:15, iot:16, gest:17,
+  obst:18, trauma:19, derm:20, oft:21
 };
 Object.keys(SISTEMAS_ORD).forEach(k => {
   if (SISTEMAS[k]) SISTEMAS[k].ord = SISTEMAS_ORD[k];
@@ -6641,6 +7935,22 @@ function mecHTML(mec) {
     return `<li><strong>${safeHtml(m.d||"")}</strong>${m.x ? " — " + safeHtml(m.x) : ""}</li>`;
   }).join("");
   return `<ul class="mec-list">${items}</ul>`;
+}
+
+/* Renderização de imagens — fallback gracioso se URL falhar.
+   img.onerror esconde o figure inteiro para não deixar quadro quebrado. */
+function imgsHTML(imgs) {
+  if (!imgs || !imgs.length) return "";
+  const figs = imgs.map((im, i) => `
+    <figure class="fig" id="fig-${i}">
+      <img loading="lazy" src="${esc(im.src)}" alt="${esc(im.alt||"")}"
+           onerror="this.closest('figure').style.display='none'">
+      <figcaption>
+        ${safeHtml(im.caption || im.alt || "")}
+        ${im.source ? `<br><span class="fig-source">Fonte: ${safeHtml(im.source)}</span>` : ""}
+      </figcaption>
+    </figure>`).join("");
+  return `<div class="figs-wrap">${figs}</div>`;
 }
 
 /* ============== ROUTER ============== */
@@ -6824,6 +8134,12 @@ function renderPatologia(id) {
       <div class="block">
         <h2>Exames essenciais</h2>
         ${examesHTML}
+      </div>` : ""}
+
+      ${p.imgs && p.imgs.length ? `
+      <div class="block">
+        <h2>Imagens / radiologia</h2>
+        ${imgsHTML(p.imgs)}
       </div>` : ""}
 
       ${p.rx && p.rx.length ? `
