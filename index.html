@@ -11025,6 +11025,669 @@ fluxo:null, diretriz:"AASM (American Academy of Sleep Medicine); ABS (Sono Brasi
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BLOCO PALIATIVOS (Parte 1)
+   Dor oncológica + Escada OMS + Dispneia + Náusea + Constipação
+   =========================================================== */
+
+/* ADICIONAR SISTEMA PALIATIVOS */
+if (!SISTEMAS.pali) {
+  SISTEMAS.pali = { nome: "Cuidados Paliativos", icone: "✿", cor: "#0F766E" };
+}
+
+PATOLOGIAS.push(
+
+/* ============== DOR ONCOLÓGICA / ESCADA OMS ============== */
+{id:"dor-oncologica", nome:"Dor Oncológica — Escada Analgésica da OMS adaptada", sis:"pali", grav:"variavel",
+cid:"R52.1/G89", ciap:"A01",
+sin:["Dor oncológica","Escada OMS","Morfina","Opioide","Analgesia paliativa","Dor crônica câncer","Dor mista"],
+def:"⚠ Dor crônica em paciente oncológico — manejo baseado na ESCADA ANALGÉSICA DA OMS (1986, atualizada). PRINCÍPIO MODERNO: subir/descer pela escada conforme INTENSIDADE da dor (não 'tentar tudo até falhar'). Adjuvantes em qualquer degrau. Via VO preferida, SC quando VO inviável. ⚠ DOR SEVERA = MORFINA DIRETA — não passar por tramadol/codeína.",
+quadro:["Avaliar DOR EM TODAS as consultas — 5º sinal vital","ESCALA: EVA 0-10 (numérica/visual analógica) OU verbal: leve / moderada / severa","Distinguir: NOCICEPTIVA somática (osso, partes moles — bem localizada), NOCICEPTIVA visceral (mal localizada, em cólica), NEUROPÁTICA (queimação, choque, parestesia — adjuvantes essenciais)","⚠ DOR INCIDENTAL: surge ao movimento — analgesia de RESGATE programada antes do esforço","⚠ DOR BREAKTHROUGH (irruptiva): pico súbito sobre dor basal controlada — resgate disponível"],
+diag:["⚠ CLÍNICO — caracterizar: localização, intensidade (EVA), tipo (somática/visceral/neuropática), fatores de melhora/piora, duração, função afetada","Mapear dor em corpo (estudo de Brewer)","Avaliar IMPACTO em sono, humor, função, social","⚠ ESCALAS recomendadas: EVA, Brief Pain Inventory (BPI), Faces (em pediatria/cognição limitada), PAINAD (demência)"],
+exames:["Rastrear sinais de DOR EMERGENTE: compressão medular (lombar+motor+esfincter), fratura patológica (dor mecânica nova), HIC, plexopatia","Imagem direcionada quando dor nova/mudança de padrão"],
+rx:[
+{etapa:"escala", d:"⚠ ⚠ ESCADA OMS — INTENSIDADE GUIA O DEGRAU"},
+{etapa:"escala", d:"⚠ DEGRAU 1 — Dor LEVE (EVA 1-3)"},
+{etapa:"escala", d:"DIPIRONA 500 mg-1 g VO 6/6h ad lib (REMUME, segura)", do:"500 mg-1 g 6/6h", via:"VO", o:""},
+{etapa:"escala", d:"PARACETAMOL 500-1000 mg 6/6h (máx 4 g/d)", do:"500-1000 mg 6/6h", via:"VO", o:"⚠ Hepatotoxicidade em dose alta crônica + alcoólatra/hepatopatia."},
+{etapa:"escala", d:"⚠ AINE — USO CAUTELOSO em oncológico (sangramento GI + nefrotox + cardiotox + plaquetopenia)", obs:"Ibuprofeno 600 mg 8/8h. Restringir a uso curto + paciente sem fatores de risco. EM PACIENTE COM TROMBOCITOPENIA, INSUFICIÊNCIA RENAL, IECA: ⚠ EVITAR."},
+{etapa:"escala", d:"⚠ ADJUVANTES indicados desde DEGRAU 1 se houver componente:"},
+{etapa:"escala", d:"DOR ÓSSEA: AINE quando seguro + BIFOSFONATOS (ác. zoledrônico 4 mg IV/mês — oncologia) + RADIOTERAPIA paliativa", obs:""},
+{etapa:"escala", d:"DOR NEUROPÁTICA: GABAPENTINA 300 mg HS titular até 900-1800 mg/d OU PREGABALINA 75 mg 12/12h titular até 300-600 mg/d OU AMITRIPTILINA 10-25 mg HS (cuidado idoso) OU DULOXETINA 30-60 mg/d", obs:""},
+{etapa:"escala", d:"COMPONENTE INFLAMATÓRIO/ANTITUMORAL/HIC: DEXAMETASONA 4-8 mg/d (reduzir gradativo). Em compressão medular: bolus 16 mg.", obs:""},
+{etapa:"escala", d:"⚠ DEGRAU 2 — Dor MODERADA (EVA 4-6)"},
+{etapa:"escala", d:"CODEÍNA 30-60 mg VO 4-6/6h (max 240 mg/d) — pro-droga, metabolismo CYP2D6 variável", do:"30-60 mg 4-6/6h", via:"VO", o:"⚠ ULTRAMETABOLIZADORES: morfinização rápida — risco intoxicação. POBRES METABOLIZADORES: ineficácia (~10% caucasianos). Crianças <12a + tonsilectomia: PROIBIDO."},
+{etapa:"escala", d:"TRAMADOL 50-100 mg VO 4-6/6h (max 400 mg/d) — opioide fraco com ação serotoninérgica/noradrenérgica", do:"50-100 mg 4-6/6h", via:"VO", o:"⚠ Útil quando há componente NEUROPÁTICO + nociceptivo. Cautela: convulsão, síndrome serotoninérgica com ISRS, hiponatremia em idoso."},
+{etapa:"escala", d:"⚠ EVOLUÇÃO MODERNA: o DEGRAU 2 está em desuso — em DOR MODERADA-SEVERA com expectativa de progressão, SUBIR DIRETO PARA MORFINA dose baixa (vide Degrau 3)"},
+{etapa:"escala", d:"⚠ ⚠ DEGRAU 3 — Dor SEVERA (EVA 7-10) ou Moderada com expectativa de progressão"},
+{etapa:"escala", d:"⚠ MORFINA — 1ª LINHA, padrão-ouro, mais barata + REMUME"},
+{etapa:"escala", d:"⚠ INÍCIO em paciente OPIOIDE-NAIVE: MORFINA SIMPLES 5-10 mg VO 4/4h + RESGATE 5 mg VO 1/1h se dor não controlada", do:"5-10 mg 4/4h", via:"VO", o:"⚠ Idoso/caquético/IRC: 2,5-5 mg 4/4h. Após 24-48h: somar TOTAL DAS 24H (basal + resgates) → DIVIDIR EM 2-3 DOSES de MORFINA LP (12/12h ou 8/8h). Manter 10-15% da DOSE DIÁRIA como RESGATE 1/1h."},
+{etapa:"escala", d:"⚠ MORFINA LIBERAÇÃO PROLONGADA (LP / MS Contin): 30 mg 12/12h é dose inicial habitual quando paciente já tolera morfina simples", do:"Calcular pelo total/24h", via:"VO", o:"⚠ ⚠ NÃO PARTIR / NÃO MASTIGAR a LP — engolir inteiro."},
+{etapa:"escala", d:"⚠ DOR INCIDENTAL/IRRUPTIVA — RESGATE com MORFINA SIMPLES VO (10-15% da dose diária total) repetido em 1/1h conforme necessário", obs:""},
+{etapa:"escala", d:"⚠ NÃO USAR DOSE MÁXIMA — TITULAR conforme efeito (não tem 'teto') + efeitos colaterais. Morfina pode chegar a 2-4 g/d em oncológico avançado."},
+{etapa:"escala", d:"⚠ ⚠ VIA SUBCUTÂNEA (SC) — quando VO inviável (vômito, disfagia, obstrução, agonia)"},
+{etapa:"escala", d:"⚠ CONVERSÃO VO → SC: dividir dose VO POR 2 (morfina VO 30 mg = morfina SC 15 mg)", obs:""},
+{etapa:"escala", d:"Administrar 4/4h SC + resgate; OU em bomba SC contínua (4-8 mg/h ajustar conforme dor)", obs:""},
+{etapa:"escala", d:"Sítios SC: deltoide, abdome, coxa, região peitoral; rodízio cada 5-7 dias", obs:""},
+{etapa:"escala", d:"⚠ OUTROS OPIOIDES FORTES (alternativas)"},
+{etapa:"escala", d:"OXICODONA LP 10-20 mg 12/12h — sem componente diferencial sobre morfina, mais cara, melhor em pruriginosos", do:"10-80 mg 12/12h", via:"VO", o:"Conversão: 10 mg oxicodona VO ≈ 15 mg morfina VO."},
+{etapa:"escala", d:"⚠ FENTANIL TRANSDÉRMICO 12-100 mcg/h — em paciente ESTÁVEL com dor controlada, intolerância VO/SC, ESTOMA, vômitos refratários", do:"12-100 mcg/h trocar 72h", via:"TD", o:"⚠ ⚠ NÃO USAR EM DOR AGUDA / INSTÁVEL (demora 12-24h para atingir e 12-24h para sair após retirar). Conversão: morfina VO 60 mg/d ≈ fentanil 25 mcg/h. ⚠ Cuidado com febre (↑ absorção), calor, banho quente."},
+{etapa:"escala", d:"⚠ ⚠ METADONA 2,5-5 mg 8-12/12h — uso em DOR REFRATÁRIA, dor neuropática complexa, rotação opioide", do:"2,5-30 mg 8-12/12h (titular lento)", via:"VO", o:"⚠ ⚠ ESPECIALISTA — meia-vida longa e variável (8-150h), conversão NÃO linear, QT longo, INTERAÇÕES MEDICAMENTOSAS importantes. Ótima em dor mista (NMDA antagonista)."},
+{etapa:"escala", d:"⚠ BUPRENORFINA TRANSDÉRMICA 5-20 mcg/h trocar 7d — alternativa em IRC, idoso, intolerância morfina", do:"5-20 mcg/h 7/7d", via:"TD", o:""},
+{etapa:"adj", d:"⚠ ROTAÇÃO DE OPIOIDES"},
+{etapa:"adj", d:"⚠ INDICAÇÃO: efeitos colaterais intoleráveis (sedação, mioclonia, alucinação) OU eficácia insuficiente apesar de titulação OU toxicidade renal pela morfina"},
+{etapa:"adj", d:"⚠ TABELA DE EQUIVALÊNCIA (MEDD — Morphine Equivalent Daily Dose):"},
+{etapa:"adj", d:"Morfina VO ≡ 1 (base)"},
+{etapa:"adj", d:"Codeína VO ≡ 0,15 (10 mg codeína = 1,5 mg morfina)"},
+{etapa:"adj", d:"Tramadol VO ≡ 0,1-0,2 (50 mg tramadol ≈ 5-10 mg morfina)"},
+{etapa:"adj", d:"Oxicodona VO ≡ 1,5 (10 mg oxicodona ≈ 15 mg morfina)"},
+{etapa:"adj", d:"Morfina SC/IV ≡ 2-3× VO (15 mg SC = 30-45 mg VO)"},
+{etapa:"adj", d:"Fentanil TD: 25 mcg/h ≈ morfina VO 60 mg/d"},
+{etapa:"adj", d:"⚠ Metadona: NÃO LINEAR (1-12% conforme dose total — referência especializada)"},
+{etapa:"adj", d:"⚠ ⚠ AO ROTACIONAR: REDUZIR 25-50% da dose calculada (cross-tolerance incompleta) — depois titular"},
+{etapa:"adj", d:"⚠ EFEITOS COLATERAIS — PROFILAXIA ATIVA"},
+{etapa:"adj", d:"⚠ CONSTIPAÇÃO (universal — 100%): PRESCREVER LAXATIVO COM A 1ª DOSE de opioide", obs:""},
+{etapa:"adj", d:"BISACODIL 5-10 mg HS + LACTULOSE 15-30 mL 2-3×/d", do:"", via:"VO", o:""},
+{etapa:"adj", d:"OU PEG (polietilenoglicol) 17 g/d", obs:""},
+{etapa:"adj", d:"REFRATÁRIO: METILNALTREXONA 8-12 mg SC 1×/d", obs:"Antagonista periférico — não atravessa BHE, mantém analgesia."},
+{etapa:"adj", d:"⚠ NÁUSEA (30% início — geralmente cede em 5-7d): HALOPERIDOL 0,5-2 mg VO 12/12h ad lib OU METOCLOPRAMIDA 10 mg 8/8h", obs:""},
+{etapa:"adj", d:"⚠ SEDAÇÃO INICIAL: comum primeiros 3-5d, geralmente cede. Se persistir: reduzir 25% OU adicionar metilfenidato 5-10 mg manhã (off-label)", obs:""},
+{etapa:"adj", d:"⚠ PRURIDO: anti-H1 (loratadina 10 mg/d). Refratário: rotacionar opioide", obs:""},
+{etapa:"adj", d:"⚠ MIOCLONIA / DELIRIUM: sinal de TOXICIDADE — reduzir dose, hidratar, rotacionar (especialmente em IRC com morfina — acúmulo do M3G/M6G)", obs:""},
+{etapa:"adj", d:"⚠ DEPRESSÃO RESPIRATÓRIA: raro em paciente em uso crônico bem titulado. Se ocorrer: reduzir dose; NALOXONA apenas se FR <8 ou sat <85% com bradipneia → 0,4 mg diluída em 9 mL, administrar 1 mL/min titular ao mínimo necessário (REVERSÃO COMPLETA pode precipitar dor severa + síndrome de abstinência)", obs:""},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO + DESMISTIFICAÇÃO"},
+{etapa:"alta", d:"⚠ DESMITIFICAR opiofobia — paciente E família. 'Não é viciante quando usado para dor'. Reforçar regularidade vs PRN"},
+{etapa:"alta", d:"⚠ ANTECIPAR resgates — prescrever desde início, ensinar registro de dose"},
+{etapa:"alta", d:"DIÁRIO DA DOR — quando ocorre, intensidade, fator desencadeante, resgates usados"},
+{etapa:"alta", d:"PSICOLOGIA, terapia ocupacional, fisioterapia — abordagem multimodal"},
+{etapa:"alta", d:"⚠ DOR REFRATÁRIA / COMPLEXA → REFERENCIAR equipe especializada em paliativos / dor: bloqueios, neurolíticos (plexo celíaco), radioterapia paliativa, intervencionismo"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ DOR SEVERA EM ONCOLÓGICO = MORFINA DIRETA. Não 'subir devagar' por tramadol/codeína — perde tempo, gera frustração + sofrimento. Iniciar 5-10 mg VO 4/4h em opioide-naive."},
+{nivel:"crit", txt:"⚠ CONSTIPAÇÃO É UNIVERSAL em opioide. PROFILAXIA com laxativo NA MESMA PRESCRIÇÃO desde a 1ª dose. Não esperar acontecer."},
+{nivel:"crit", txt:"⚠ ⚠ COMPRESSÃO MEDULAR é EMERGÊNCIA. Dor lombar nova/progressiva em oncológico + qualquer sinal motor/sensitivo/esfincteriano = DEXAMETASONA 16 mg IV imediata + RM coluna urgente + radioterapia/cirurgia urgente."},
+{nivel:"crit", txt:"⚠ OPIOIDE EM IRC: morfina acumula metabólitos NEUROTÓXICOS (M3G — mioclonia, alucinação, delirium). Em TFG <30: ROTACIONAR para fentanil/buprenorfina/metadona OU reduzir dose 25-50%."},
+{nivel:"warn", txt:"⚠ Fentanil TRANSDÉRMICO — NUNCA em DOR INSTÁVEL/AGUDA (demora 12-24h para atingir e 12-24h após retirar). Indicado apenas em dor estável bem-controlada por morfina prévia."},
+{nivel:"warn", txt:"⚠ METADONA: meia-vida muito variável, conversão NÃO linear, QT longo, múltiplas interações — USO ESPECIALISTA."},
+{nivel:"warn", txt:"⚠ Codeína: ULTRAMETABOLIZADORES (CYP2D6) podem ter intoxicação aguda. CRIANÇA <12a + tonsilectomia/adenoidectomia: PROIBIDO (FDA Black Box — mortes documentadas)."},
+{nivel:"warn", txt:"⚠ Tramadol + ISRS/IMAO/Tricíclico = SÍNDROME SEROTONINÉRGICA. Tramadol + Bupropiona = CONVULSÃO."},
+{nivel:"info", txt:"⚠ AINE em oncológico com risco — sangramento GI, plaquetopenia, IRC, IECA — USE COM CAUTELA. Dor óssea pode beneficiar de DEXAMETASONA + bifosfonato + radioterapia."},
+{nivel:"info", txt:"DOR NEUROPÁTICA: gabapentina/pregabalina + amitriptilina + duloxetina. Resposta gradual 2-4 sem. Esperar antes de mudar."},
+{nivel:"info", txt:"REFRATARIEDADE: pensar em compressão medular, fratura patológica, plexopatia, dor neuropática mal abordada, sofrimento existencial 'total pain' (Cicely Saunders)."},
+],
+fluxo:"escada-oms", diretriz:"OMS Cancer Pain Relief; ANCP (Academia Nacional de Cuidados Paliativos); IAHPC; ESMO."
+},
+
+/* ============== DISPNEIA EM PALIATIVOS ============== */
+{id:"dispneia-paliativa", nome:"Dispneia em Cuidados Paliativos — manejo sintomático", sis:"pali", grav:"moderada",
+cid:"R06.0", ciap:"R02",
+sin:["Dispneia paliativa","Falta de ar paliativos","Fome de ar","Morfina dispneia","Oxigenoterapia paliativa"],
+def:"⚠ DISPNEIA é o sintoma mais incapacitante em paliativos — gera angústia tão intensa quanto dor. ⚠ MORFINA em DOSE BAIXA é 1ª linha (efeito independente da analgesia). Manejar CAUSA + sintoma + ansiedade associada. Não confundir com hipoxemia (que pode coexistir mas não é causa única da sensação).",
+quadro:["⚠ Sensação SUBJETIVA de respiração desconfortável — paciente é fonte primária","Pode haver: taquipneia, uso de musculatura acessória, cianose, tiragem","⚠ Hipoxemia (Sat <90%) pode estar presente OU NÃO — dispneia é SENSAÇÃO, não hipoxemia","⚠ ANSIEDADE quase sempre presente — círculo vicioso ansiedade ↔ dispneia","⚠ Causas: progressão tumoral pulmonar, derrame pleural, linfangite carcinomatosa, TEP, ICC, anemia, infecção, fadiga muscular respiratória, ansiedade isolada"],
+diag:["⚠ CLÍNICO — escutar o paciente. Escala 0-10 análoga à dor","Saturometria — útil mas NÃO substitui sensação","Exame físico: ausculta (estertor, sibilo, derrame), uso de musculatura, esforço","Imagem direcionada conforme suspeita: Rx tórax (derrame, infiltrado, massa), USG pulmonar (derrame, B-lines)","Considerar D-dímero / angio-TC se TEP possível e plano modificará conduta","⚠ Em paciente em FIM DE VIDA: investigação minimalista — tratar sintoma é prioridade"],
+exames:["Saturometria","Rx tórax / USG conforme suspeita","Hemograma (anemia)","Avaliar causa reversível: derrame (toracocentese paliativa), broncoespasmo (broncodilatador), infecção (ATB)"],
+rx:[
+{etapa:"inicial", d:"⚠ AVALIAR + TRATAR CAUSA REVERSÍVEL primeiro"},
+{etapa:"inicial", d:"Derrame pleural sintomático: TORACOCENTESE PALIATIVA (até 1-1,5 L); se recidiva → drenagem com cateter pleural permanente / pleurodese"},
+{etapa:"inicial", d:"Broncoespasmo: SALBUTAMOL inalação 5 mg + IPRATRÓPIO 0,5 mg + considerar prednisolona 40 mg/d × 5d"},
+{etapa:"inicial", d:"Infecção: ATB EMPÍRICO (mesmo em paliativos quando há benefício sintomático)"},
+{etapa:"inicial", d:"Anemia sintomática (Hb <8 + dispneia): transfusão paliativa de CH 1 U"},
+{etapa:"inicial", d:"⚠ ⚠ NÃO investigar TEP em paciente em fase ATIVA DE MORTE — tratar com morfina"},
+{etapa:"escala", d:"⚠ ⚠ MEDIDAS NÃO-FARMACOLÓGICAS — sempre primeiro/em paralelo"},
+{etapa:"escala", d:"⚠ AR FRESCO na FACE — ventilador apontado para face do paciente. Trigeminal estímulo central reduz sensação de dispneia. NÃO é placebo — evidência sólida.", obs:""},
+{etapa:"escala", d:"POSIÇÃO ortostática / 'cocheiro' (sentado inclinado para frente)", obs:""},
+{etapa:"escala", d:"AMBIENTE: janela aberta, espaço amplo, sem aglomeração", obs:""},
+{etapa:"escala", d:"TÉCNICA RESPIRATÓRIA — respiração com lábios semicerrados, diafragmática", obs:""},
+{etapa:"escala", d:"⚠ COMUNICAÇÃO TRANQUILA, presença, reasseguramento — reduz ansiedade", obs:""},
+{etapa:"escala", d:"FISIOTERAPIA RESPIRATÓRIA — drenagem, técnicas de tosse, vibrocompressão", obs:""},
+{etapa:"escala", d:"⚠ ⚠ MORFINA — 1ª LINHA FARMACOLÓGICA"},
+{etapa:"escala", d:"⚠ OPIOIDE-NAIVE: MORFINA 2,5-5 mg VO 4/4h + RESGATE 2,5 mg 1/1h conforme necessário", do:"2,5-5 mg 4/4h", via:"VO", o:"⚠ Dose MENOR que para dor. Aumentar 25-50% se inefetiva. Estável: rotacionar para LP."},
+{etapa:"escala", d:"⚠ EM USO DE OPIOIDE: adicionar 25-50% à dose habitual OU aumentar a dose basal", obs:""},
+{etapa:"escala", d:"⚠ VIA SC: MORFINA 2-2,5 mg SC 4/4h se VO inviável", do:"2-2,5 mg 4/4h", via:"SC", o:""},
+{etapa:"escala", d:"⚠ INALAÇÃO de MORFINA: ⚠ NÃO RECOMENDADA — evidência negativa", obs:""},
+{etapa:"escala", d:"⚠ BENZODIAZEPÍNICO — quando há COMPONENTE ANSIEDADE proeminente ou dispneia refratária a opioide"},
+{etapa:"escala", d:"LORAZEPAM 0,5-1 mg VO/SL 6-8/8h ad lib (preferido por meia-vida intermediária)", do:"0,5-1 mg 6-8/8h", via:"VO/SL", o:""},
+{etapa:"escala", d:"MIDAZOLAM 1-2,5 mg SC 4/4h se sintomas mais agudos ou SC necessária", do:"1-2,5 mg 4/4h", via:"SC", o:""},
+{etapa:"escala", d:"⚠ Diazepam pode ser usado mas meia-vida longa em idoso/IH"},
+{etapa:"escala", d:"⚠ OXIGENOTERAPIA — papel limitado"},
+{etapa:"escala", d:"⚠ INDICADA quando Sat <90% E paciente sente alívio (ensaio terapêutico)", obs:""},
+{etapa:"escala", d:"Em paciente NORMOXÊMICO: ar fresco/ventilador é EQUIVALENTE ou superior", obs:""},
+{etapa:"escala", d:"⚠ NÃO PERSISTIR em paciente que não sente alívio — máscara/cânula podem aumentar desconforto, isolamento, ressecamento mucoso"},
+{etapa:"escala", d:"⚠ Em FASE ATIVA DE MORTE: geralmente RETIRAR oxigênio se não estiver dando conforto", obs:""},
+{etapa:"adj", d:"⚠ DEXAMETASONA — em dispneia por LINFANGITE CARCINOMATOSA, sd. de VEIA CAVA SUPERIOR, edema peritumoral"},
+{etapa:"adj", d:"4-8 mg VO/SC/IV manhã (até 16 mg em VCS aguda), titular para dose mínima efetiva", obs:""},
+{etapa:"adj", d:"⚠ FUROSEMIDA — em ICC descompensada / congestão pulmonar"},
+{etapa:"adj", d:"⚠ INALAÇÃO DE LIDOCAÍNA — para tosse refratária associada (off-label, especializado)", obs:""},
+{etapa:"adj", d:"⚠ DISPNEIA TERMINAL REFRATÁRIA — considerar SEDAÇÃO PALIATIVA (vide patologia 'sedacao-paliativa')"},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO É TRATAMENTO — sentar, presença, validar 'isso é assustador, vamos cuidar'"},
+{etapa:"alta", d:"INSTRUIR FAMÍLIA: nem todo aumento de respiração = sofrimento. Em fase ativa: respiração agônica/Cheyne-Stokes pode parecer angustiante para família mas paciente raramente sente"},
+{etapa:"alta", d:"PLANO DE CRISE: prescrição de resgate domiciliar (morfina simples, lorazepam SL, midazolam SC) com instruções claras"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ MORFINA EM DOSE BAIXA é 1ª LINHA para dispneia paliativa. Evidência sólida. Iniciar 2,5-5 mg VO 4/4h em opioide-naive. ⚠ Dispneia ≠ dor — dose menor."},
+{nivel:"crit", txt:"⚠ AR FRESCO NA FACE (ventilador) tem evidência sólida — não é placebo. Estímulo trigeminal reduz sensação. Usar SEMPRE como medida não-farmacológica primária."},
+{nivel:"warn", txt:"⚠ OXIGÊNIO tem papel LIMITADO — só quando Sat <90% E paciente sente alívio em ensaio. Em normoxêmico: ar fresco/ventilador é equivalente."},
+{nivel:"warn", txt:"⚠ BENZODIAZEPÍNICO em dispneia: 2ª linha — para componente ansioso ou refratariedade. NÃO INICIAR como 1ª linha (morfina vem primeiro)."},
+{nivel:"warn", txt:"⚠ NÃO INVESTIGAR TEP em paciente em FASE ATIVA DE MORTE — tratar com morfina + suporte. Em paciente com horizonte de meses: avaliar individualmente."},
+{nivel:"info", txt:"⚠ Em fase ativa: RESPIRAÇÃO AGÔNICA / Cheyne-Stokes é normal. Pode parecer angustiante para família mas paciente raramente sente. INSTRUIR a família é parte do tratamento."},
+{nivel:"info", txt:"⚠ DISPNEIA REFRATÁRIA a opioide + BZD + medidas: considerar SEDAÇÃO PALIATIVA proporcional."},
+],
+fluxo:null, diretriz:"ATS/ERS Dispneia Paliativa 2010-2021; ANCP; Hui et al."
+},
+
+/* ============== NÁUSEA E VÔMITO EM PALIATIVOS ============== */
+{id:"nausea-paliativa", nome:"Náusea e Vômito em Paliativos — manejo por mecanismo", sis:"pali", grav:"moderada",
+cid:"R11", ciap:"D09",
+sin:["Náusea paliativa","Vômito paliativo","Antiemético","Haloperidol náusea","Metoclopramida","Ondansetrona"],
+def:"⚠ Náusea/vômito acometem 40-70% de pacientes paliativos. ⚠ CHAVE: identificar MECANISMO predominante (4-5 mecanismos comuns) — o antiemético DEPENDE do mecanismo. Tratar com 'qualquer um' geralmente falha. ⚠ Sempre via SC quando vômito persistente.",
+quadro:["⚠ 5 MECANISMOS PRINCIPAIS (identificar para escolher droga):","(1) ⚠ ESTÍMULO QUÍMICO via CTZ (zona quimioceptora) — opioides, quimio recente, uremia, hipercalcemia, hiponatremia, infecção, drogas. Receptores D2 + 5-HT3","(2) ⚠ ESTASE GÁSTRICA / OBSTRUÇÃO PARCIAL — saciedade precoce, plenitude, refluxo. Tratamento PROCINÉTICO","(3) ⚠ ESTÍMULO VESTIBULAR / movimento — piora com mudança postural. Receptores H1 + muscarínicos","(4) ⚠ ESTÍMULO CORTICAL — ansiedade, ambiente, antecipação. BZD + suporte","(5) ⚠ ESTÍMULO VAGAL / mecanorreceptores — distensão GI, tumor abdominal, constipação, OBSTRUÇÃO MECÂNICA INTESTINAL — corticoide + opioide + antiemético + considerar octreotida","⚠ Constipação + impactação fecal é causa frequente e SUBESTIMADA — sempre avaliar"],
+diag:["⚠ ANAMNESE direcionada ao mecanismo:","'Quando começou?' (relação com novo medicamento, quimio, progressão tumoral)","'Sensação de plenitude precoce, refluxo, eructação?' → ESTASE","'Náusea piora com movimento?' → VESTIBULAR","'Ansiedade, antecipação à comida/quimio?' → CORTICAL","'Distensão abdominal, parada de eliminação?' → OBSTRUÇÃO MECÂNICA","Examinar abdome: distensão, RHA (silente / metálicos / aumentados), massas, fecaloma","Toque retal — descartar impactação","Investigar: eletrólitos (Na, Ca), função renal (uremia), causa infecciosa"],
+exames:["Eletrólitos (Na, Ca, Mg, K)","Função renal e hepática","Glicemia","⚠ Rx abdome em pé/decúbito — descartar OBSTRUÇÃO INTESTINAL (níveis hidroaéreos, distensão de alças)","Hemograma + PCR se infecção possível"],
+rx:[
+{etapa:"inicial", d:"⚠ AVALIAR + TRATAR causas REVERSÍVEIS específicas"},
+{etapa:"inicial", d:"Hipercalcemia (Ca corrigido >12): hidratação salina + ác. zoledrônico"},
+{etapa:"inicial", d:"Hiponatremia: investigar/corrigir SIADH, reposição cuidadosa"},
+{etapa:"inicial", d:"Uremia: avaliar diálise paliativa OU controle sintomático"},
+{etapa:"inicial", d:"⚠ Constipação grave / impactação: tratar (laxativos, lavagem retal, supositório)"},
+{etapa:"inicial", d:"⚠ HIC: dexametasona 8-16 mg/d"},
+{etapa:"escala", d:"⚠ ⚠ ESCOLHER ANTIEMÉTICO PELO MECANISMO"},
+{etapa:"escala", d:"⚠ (1) CTZ / QUÍMICO (opioide, quimio, uremia, hipercalcemia)"},
+{etapa:"escala", d:"⚠ HALOPERIDOL 0,5-2 mg VO/SC 12/12h ad lib — 1ª LINHA. Antagonista D2. Baixa sedação.", do:"0,5-2 mg 12/12h", via:"VO/SC", o:""},
+{etapa:"escala", d:"OU METOCLOPRAMIDA 10 mg VO/SC 6-8/8h (max 30 mg/d — limitação por extrapiramidal)", do:"10 mg 6/6h", via:"VO/SC", o:"Ação dupla: anti-D2 + procinética. ⚠ Sintomas extrapiramidais."},
+{etapa:"escala", d:"OU ONDANSETRONA 4-8 mg VO/SC 8/8h — útil em náusea por QUIMIO (5-HT3), pós-op, gestação", do:"4-8 mg 8/8h", via:"VO/SC", o:"⚠ Causa CONSTIPAÇÃO + QT longo."},
+{etapa:"escala", d:"⚠ (2) ESTASE GÁSTRICA / saciedade precoce / dispepsia / náusea pós-prandial"},
+{etapa:"escala", d:"⚠ METOCLOPRAMIDA 10 mg VO/SC 6-8/8h ANTES DAS REFEIÇÕES — 1ª LINHA (procinética via 5-HT4 + anti-D2)", do:"10 mg 6/6h", via:"VO/SC", o:""},
+{etapa:"escala", d:"BROMOPRIDA 10 mg VO/SC 6-8/8h — similar à metoclopramida", obs:""},
+{etapa:"escala", d:"⚠ ⚠ NÃO USAR em SUSPEITA DE OBSTRUÇÃO MECÂNICA (cólica, distensão, vômito persistente) — pode piorar"},
+{etapa:"escala", d:"⚠ (3) VESTIBULAR / cinetose / mudança postural"},
+{etapa:"escala", d:"DIMENIDRINATO 50-100 mg VO 6-8/8h — anti-H1 + anticolinérgico", do:"50-100 mg 6-8/8h", via:"VO", o:""},
+{etapa:"escala", d:"PROMETAZINA 25 mg VO/IM 8-12/12h — anti-H1 + anti-D2 (multimecanismo, sedativa)", do:"25 mg 8-12/12h", via:"VO/IM", o:""},
+{etapa:"escala", d:"ESCOPOLAMINA TRANSDÉRMICA — útil em vestibular + sialorreia (adesivo retroauricular)", obs:""},
+{etapa:"escala", d:"⚠ (4) CORTICAL / ansiedade / antecipação"},
+{etapa:"escala", d:"⚠ LORAZEPAM 0,5-1 mg VO/SL antes do estímulo (ex: antes da quimio)", do:"0,5-1 mg", via:"SL/VO", o:""},
+{etapa:"escala", d:"+ Suporte psicoterapêutico, técnicas de relaxamento, ambiente", obs:""},
+{etapa:"escala", d:"⚠ (5) MECANORRECEPTORES / OBSTRUÇÃO INTESTINAL MALIGNA"},
+{etapa:"escala", d:"⚠ ⚠ ABORDAGEM TRÍADE — corticoide + opioide + antiemético + ANTI-SECRETOR"},
+{etapa:"escala", d:"DEXAMETASONA 8-16 mg/d SC/IV (reduz edema peritumoral, anti-inflamatório, antiemético)", do:"8-16 mg/d", via:"SC/IV", o:""},
+{etapa:"escala", d:"MORFINA SC para dor/cólica + ANTIEMÉTICO (haloperidol; NÃO metoclopramida — pode piorar)", obs:""},
+{etapa:"escala", d:"⚠ ⚠ HIOSCINA BUTILBROMETO (Buscopan) 20 mg SC 6/6h — antiespasmódico para cólica obstrutiva", do:"20 mg 6/6h", via:"SC", o:""},
+{etapa:"escala", d:"⚠ ⚠ OCTREOTIDA 100-300 mcg SC 8/8h OU 300-900 mcg/d SC contínua — REDUZ secreção GI, descomprime alça obstruída (alternativa cirúrgica em paciente fora de cirurgia)", do:"100-900 mcg/d ÷ 8/8h ou contínua", via:"SC", o:"⚠ Especialista. Custo alto."},
+{etapa:"escala", d:"⚠ Avaliar SNG de alívio (descompressiva) — em obstrução alta, vômito incoercível, conforto", obs:""},
+{etapa:"adj", d:"⚠ NÁUSEA REFRATÁRIA — combinar drogas com MECANISMOS DIFERENTES"},
+{etapa:"adj", d:"Ex: haloperidol (D2) + ondansetrona (5-HT3) + dexametasona (anti-inflamatória)", obs:""},
+{etapa:"adj", d:"⚠ ⚠ LEVOMEPROMAZINA 6,25-12,5 mg VO/SC 12-24/24h — antiemético de AMPLO ESPECTRO (D2, 5-HT, H1, muscarínico) — 'limpa-tudo' em refratários", do:"6,25-12,5 mg HS ou 12/12h", via:"VO/SC", o:"⚠ Sedativa. Útil em fase mais avançada."},
+{etapa:"adj", d:"OLANZAPINA 2,5-10 mg/d — alternativa em refratários (off-label, evidência crescente)", obs:""},
+{etapa:"adj", d:"DRONABINOL / canabinoides — em alguns países disponíveis", obs:""},
+{etapa:"alta", d:"⚠ MEDIDAS NÃO-FARMACOLÓGICAS"},
+{etapa:"alta", d:"REFEIÇÕES PEQUENAS e frequentes; alimentos frios podem ser melhor tolerados; evitar odores fortes"},
+{etapa:"alta", d:"GENGIBRE 1-2 g/d (chá, balas) — evidência modesta", obs:""},
+{etapa:"alta", d:"AROMATERAPIA (menta, limão) — alguns pacientes respondem", obs:""},
+{etapa:"alta", d:"AMBIENTE ventilado, sem odores de cozinha, posição confortável", obs:""},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ IDENTIFICAR MECANISMO — antiemético sem mecanismo é tiro no escuro. Haloperidol em CTZ. Metoclopramida em ESTASE. Anti-H1 em VESTIBULAR. BZD em CORTICAL. Tríade (cortico + opioide + anti-D2 + hioscina + octreotida) em OBSTRUÇÃO."},
+{nivel:"crit", txt:"⚠ ⚠ METOCLOPRAMIDA / BROMOPRIDA são CONTRAINDICADAS em OBSTRUÇÃO INTESTINAL MECÂNICA — procinéticos pioram. Em suspeita: parar e investigar."},
+{nivel:"warn", txt:"⚠ ⚠ Constipação grave / impactação fecal é CAUSA FREQUENTE e SUBESTIMADA de náusea/vômito em paliativos. Toque retal + Rx abdome antes de assumir mecanismo central."},
+{nivel:"warn", txt:"⚠ ONDANSETRONA causa CONSTIPAÇÃO + QT longo. Em paciente já em opioide (constipação) ou em risco cardíaco: cuidado."},
+{nivel:"warn", txt:"⚠ HALOPERIDOL e PROMETAZINA em IDOSO: risco extrapiramidal + sedação. Doses baixas (haloperidol 0,5-1 mg)."},
+{nivel:"info", txt:"⚠ OBSTRUÇÃO INTESTINAL MALIGNA — abordagem tríade: dexametasona + opioide + hioscina butilbrometo (antiespasmódico) + considerar octreotida (anti-secretor). SNG descompressiva quando vômito incoercível."},
+{nivel:"info", txt:"⚠ NÁUSEA REFRATÁRIA: combinar drogas com mecanismos DIFERENTES, ou usar LEVOMEPROMAZINA (espectro amplo)."},
+],
+fluxo:"nausea-paliativa", diretriz:"NICE Palliative Care; ANCP; ESMO."
+},
+
+/* ============== CONSTIPAÇÃO INDUZIDA POR OPIOIDE ============== */
+{id:"constipacao-opioide", nome:"Constipação Induzida por Opioide (CIO) — profilaxia e manejo", sis:"pali", grav:"moderada",
+cid:"K59.0", ciap:"D12",
+sin:["Constipação opioide","CIO","Laxativo paliativo","Bisacodil","Lactulose","Metilnaltrexona","Naloxegol"],
+def:"⚠ ⚠ TODO paciente em opioide DESENVOLVE constipação (>90%). ⚠ É EFEITO COLATERAL PREVISÍVEL — sem tolerância significativa (não 'passa com tempo'). ⚠ PROFILAXIA ATIVA com laxativo na MESMA PRESCRIÇÃO do opioide. Falhar em prescrever laxativo = falhar como prescritor.",
+quadro:["⚠ Sintomas: evacuação <3×/sem, fezes endurecidas, esforço, sensação de evacuação incompleta, distensão, dor abdominal","⚠ Risco de IMPACTAÇÃO FECAL (fecaloma): toque retal — fezes endurecidas em ampola; em alta: paradoxalmente DIARREIA (escape ao redor do fecaloma) — não tratar como diarreia comum","Pode levar a: náusea, anorexia, distensão, dor, pseudo-obstrução"],
+diag:["⚠ Anamnese sobre hábito intestinal — frequência, consistência (Bristol 1-7), esforço, sensação","⚠ Toque retal em qualquer paciente com sintomas — DESCARTAR FECALOMA","Examinar abdome — distensão, dor, massas, RHA","Rx abdome se obstrução suspeita ou fecaloma alto"],
+exames:["Geralmente clínico","Eletrólitos (K, Ca — hipocalemia e hipercalcemia agravam)","Rx abdome se suspeita obstrução"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ PROFILAXIA OBRIGATÓRIA — prescrever laxativo COM A PRIMEIRA DOSE de opioide"},
+{etapa:"inicial", d:"⚠ ⚠ NÃO ESPERAR aparecer — manejar antes"},
+{etapa:"escala", d:"⚠ ESCALONAMENTO LAXATIVO"},
+{etapa:"escala", d:"⚠ ESQUEMA INICIAL — COMBINAR estimulante + osmótico"},
+{etapa:"escala", d:"BISACODIL 5-10 mg VO HS (estimulante de motilidade)", do:"5-10 mg HS", via:"VO", o:""},
+{etapa:"escala", d:"+ LACTULOSE 15-30 mL VO 12/12h ad lib (osmótico)", do:"15-30 mL 12/12h", via:"VO", o:"Pode causar flatulência. Sabor adocicado."},
+{etapa:"escala", d:"OU PEG (POLIETILENOGLICOL) 17 g em 240 mL água VO 1×/d (osmótico, melhor tolerado)", do:"17 g/d", via:"VO", o:"⚠ Custo maior."},
+{etapa:"escala", d:"⚠ AVALIAR EFICÁCIA em 2-3 DIAS — fezes Bristol 3-4, sem esforço"},
+{etapa:"adj", d:"⚠ ESCALONAR se inadequado:"},
+{etapa:"adj", d:"(1) Aumentar BISACODIL para 10-15 mg HS"},
+{etapa:"adj", d:"(2) Adicionar SUPOSITÓRIO de GLICERINA (estimulante retal) — se inicialmente sem evacuação"},
+{etapa:"adj", d:"(3) Adicionar ÓLEO MINERAL 15-30 mL VO HS (lubrificante)", obs:"⚠ Cuidado aspiração em idoso/disfagia."},
+{etapa:"adj", d:"(4) Aumentar LACTULOSE para 30-45 mL 8/8h"},
+{etapa:"adj", d:"(5) SENE 12-50 mg HS (estimulante alternativo)"},
+{etapa:"adj", d:"⚠ ⚠ REFRATÁRIO (apesar de combinação otimizada >5-7 dias):"},
+{etapa:"adj", d:"⚠ METILNALTREXONA 8 mg SC (peso 38-62 kg) ou 12 mg SC (>62 kg) cada 48h", do:"8-12 mg SC cada 48h", via:"SC", o:"⚠ Antagonista μ-opioide PERIFÉRICO — não atravessa BHE, mantém analgesia. Efeito laxativo em 30-60 min. ⚠ NÃO usar em obstrução suspeita."},
+{etapa:"adj", d:"⚠ NALOXEGOL 25 mg VO 1×/d em jejum (antagonista μ oral)", obs:""},
+{etapa:"adj", d:"⚠ NALDEMEDINA 0,2 mg VO 1×/d", obs:"Alternativa."},
+{etapa:"adj", d:"⚠ FECALOMA — diagnóstico + tratamento"},
+{etapa:"adj", d:"⚠ Toque retal — confirma fezes endurecidas em ampola"},
+{etapa:"adj", d:"DESIMPACTAÇÃO MANUAL — com luva lubrificada, paciente em decúbito lateral (analgesia/sedação leve pode ser necessária)"},
+{etapa:"adj", d:"SUPOSITÓRIO GLICERINA + LAVAGEM RETAL com solução fisiológica (200-500 mL) — para amolecer"},
+{etapa:"adj", d:"⚠ DESPRESCREVER 'enema de fosfato' em IDOSO/IRC — risco hiperfosfatemia"},
+{etapa:"alta", d:"⚠ MEDIDAS NÃO-FARMACOLÓGICAS"},
+{etapa:"alta", d:"Hidratação conforme tolerância (não forçar em fase ativa)"},
+{etapa:"alta", d:"Fibras solúveis em paciente FUNCIONAL — em fase avançada/anoréxico/desidratado: ⚠ EVITAR (sem água, pode piorar)"},
+{etapa:"alta", d:"Posição ortostática para evacuação se possível; banquinho sob pés"},
+{etapa:"alta", d:"Privacidade, tempo, ambiente confortável"},
+{etapa:"alta", d:"⚠ ATIVIDADE FÍSICA conforme tolerância — caminhada, mobilização"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ TODO PACIENTE EM OPIOIDE precisa de LAXATIVO PROFILÁTICO desde a 1ª dose. NÃO é opcional. NÃO esperar acontecer. Bisacodil 10 mg HS + Lactulose 15-30 mL 12/12h é esquema-base."},
+{nivel:"crit", txt:"⚠ FECALOMA pode se manifestar como DIARREIA paradoxal (escape ao redor) — NÃO TRATAR como diarreia comum. Toque retal antes."},
+{nivel:"warn", txt:"⚠ FIBRAS solúveis (psyllium, fibras) NÃO são adequadas em fase avançada/anoréxico/desidratado — sem água, pioram. Usar em paciente com função GI preservada e hidratação adequada."},
+{nivel:"warn", txt:"⚠ ENEMA DE FOSFATO em idoso/IRC: risco HIPERFOSFATEMIA / hipocalcemia. Preferir lavagem com solução fisiológica."},
+{nivel:"warn", txt:"⚠ METILNALTREXONA / NALOXEGOL: antagonistas PERIFÉRICOS — mantém analgesia central. Indicado em CIO REFRATÁRIA. ⚠ NÃO USAR em obstrução intestinal suspeita."},
+{nivel:"info", txt:"⚠ OUTROS opioides têm grau variável de constipação. METADONA, FENTANIL TD, BUPRENORFINA TD: constipação MENOR. Considerar rotação em refratários."},
+],
+fluxo:"constipacao-opioide", diretriz:"ANCP; MASCC; ESMO Constipation."
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BLOCO PALIATIVOS (Parte 2)
+   Delirium, Sedação Paliativa, Estertor, Anorexia/Caquexia,
+   Últimas Horas, Compressão Medular, Hipercalcemia, SPIKES
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== DELIRIUM TERMINAL ============== */
+{id:"delirium-paliativo", nome:"Delirium em Cuidados Paliativos — manejo agudo + terminal", sis:"pali", grav:"grave",
+cid:"F05/R41.0", ciap:"P71",
+sin:["Delirium paliativo","Confusão terminal","Agitação terminal","Haloperidol delirium","Levomepromazina"],
+def:"⚠ DELIRIUM acomete 80-90% de pacientes paliativos em últimos dias. ⚠ Avaliar SEMPRE: é REVERSÍVEL (infecção, droga, dor, eletrólitos, retenção) ou IRREVERSÍVEL (falência sistêmica em fase ativa)? Conduta varia drasticamente. Subtipos: HIPERATIVO (agitação, agressividade), HIPOATIVO (sonolência, retraimento — mais comum, mais subdiagnosticado), MISTO.",
+quadro:["⚠ Início AGUDO + flutuação + desatenção + alteração de consciência/cognição (DSM-5)","HIPERATIVO: agitação, agressividade, delírio, alucinação","HIPOATIVO: sonolência, retraimento, lentificação — frequentemente confundido com 'depressão' ou 'fadiga normal'","MISTO: alternância","⚠ DIFERENCIAR de demência (insidiosa) e depressão (humor)","⚠ Em fase ativa de morte: AGITAÇÃO TERMINAL — irreversível geralmente"],
+diag:["⚠ CAM (Confusion Assessment Method): (1) início agudo + flutuação + (2) desatenção + (3) pensamento desorganizado OU (4) nível alterado consciência","Escalas: RASS (agitação-sedação), MDAS (Memorial Delirium Assessment Scale)","⚠ ⚠ INVESTIGAR REVERSIBILIDADE — RAÍZES MNEMÔNICAS:","D — Drogas (opioide, BZD, anticolinérgico, corticoide, abstinência)","E — Eletrólitos (Na, Ca, glicemia, ureia)","L — Low O2 (hipoxemia, hipercapnia, anemia)","I — Infecção (urinária, respiratória, sistêmica)","R — Retenção (urinária, fecal — fecaloma)","I — Insultos intracraniais (mets, AVC, HIC)","U — Uremia, falência hepática","M — Mais — dor, ambiente, privação sensorial"],
+exames:["⚠ Triagem básica: hemograma, eletrólitos (Na, K, Ca corrigido, Mg), função renal+hepática, glicemia, gasometria, urocultura","SatO2 + Rx tórax se respiratório","Toque retal — fecaloma","Sondagem vesical se retenção","⚠ TC crânio se sinais focais novos / suspeita meta cerebral"],
+rx:[
+{etapa:"inicial", d:"⚠ AVALIAR FASE — REVERSÍVEL ou TERMINAL?"},
+{etapa:"inicial", d:"⚠ Paciente com horizonte de SEMANAS-MESES + delirium agudo = INVESTIGAR + reverter causa"},
+{etapa:"inicial", d:"⚠ Paciente em FASE ATIVA DE MORTE (horas-dias) + agitação = TRATAR SINTOMA (haloperidol, BZD se necessário)"},
+{etapa:"escala", d:"⚠ ⚠ MEDIDAS NÃO-FARMACOLÓGICAS — SEMPRE primeiro/em paralelo"},
+{etapa:"escala", d:"Ambiente CALMO, iluminação adequada (luz dia, escuro à noite), reorientação verbal frequente"},
+{etapa:"escala", d:"Presença de FAMILIAR conhecido + objetos familiares; música preferida"},
+{etapa:"escala", d:"REDUZIR estímulos: barulho, equipe rotativa, intervenções desnecessárias"},
+{etapa:"escala", d:"⚠ DESPRESCREVER drogas precipitantes: anticolinérgicos, BZD se possível (cuidado com abstinência), opioide em dose excessiva, corticoide"},
+{etapa:"escala", d:"⚠ TRATAR causas reversíveis identificadas: ATB se infecção, hidratação cuidadosa se desidratação, sondagem vesical se retenção, desimpactação fecal, correção eletrolítica"},
+{etapa:"escala", d:"⚠ ⚠ FARMACOTERAPIA — quando agitação compromete cuidado ou sofrimento"},
+{etapa:"escala", d:"⚠ HALOPERIDOL — 1ª LINHA"},
+{etapa:"escala", d:"VO: 0,5-2 mg 8-12/12h (idoso: 0,25-0,5 mg). Resgate 0,5-1 mg 1/1h se necessário", do:"0,5-2 mg 8-12/12h + resgate", via:"VO", o:""},
+{etapa:"escala", d:"⚠ SC: 1-2 mg cada 4-8h ou contínua 5-15 mg/d", do:"1-5 mg 4-8/8h SC", via:"SC", o:""},
+{etapa:"escala", d:"IV apenas em ambiente monitorado (QT)", obs:""},
+{etapa:"escala", d:"⚠ CUIDADO em IDOSO + cardiopata: QT longo (sem chegar a 30 mg/d evita risco maior)"},
+{etapa:"escala", d:"⚠ ⚠ EVITAR EM PARKINSON / corpos de Lewy — preferir QUETIAPINA"},
+{etapa:"escala", d:"⚠ AGITAÇÃO REFRATÁRIA / DELIRIUM HIPERATIVO INTENSO"},
+{etapa:"escala", d:"⚠ ⚠ LEVOMEPROMAZINA 12,5-25 mg VO/SC 8-12/12h — sedativa, antiemética, ansiolítica", do:"12,5-50 mg 8-12/12h", via:"VO/SC", o:"⚠ ⚠ Mais sedativa que haloperidol — útil quando se busca sedação leve a moderada. REMUME / FARMASUS."},
+{etapa:"escala", d:"⚠ ⚠ MIDAZOLAM SC 2,5-5 mg como resgate; BIC SC 0,5-2 mg/h em refratário", do:"2,5-5 mg SC", via:"SC", o:"⚠ Pode PIORAR delirium (paradoxo BZD) — usar em combinação com antipsicótico, raramente isolado."},
+{etapa:"escala", d:"⚠ CLORPROMAZINA, OLANZAPINA — alternativas"},
+{etapa:"escala", d:"⚠ QUETIAPINA 12,5-50 mg HS — em Parkinson/Lewy. Menos extrapiramidal.", obs:""},
+{etapa:"adj", d:"⚠ DESCONTINUAÇÃO DE BZD em uso crônico — não suspender abruptamente (precipita delirium pior). Reduzir 10-25% a cada 2-3 dias"},
+{etapa:"adj", d:"⚠ ABSTINÊNCIA ALCOÓLICA pode mimicar — tiamina 100 mg IV/IM + diazepam 5-10 mg conforme CIWA-Ar"},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO COM FAMÍLIA"},
+{etapa:"alta", d:"⚠ DELIRIUM TERMINAL — explicar à família que NÃO é sofrimento intencional, NÃO é 'enlouquecer', é manifestação da doença"},
+{etapa:"alta", d:"Orientar reorientação suave, presença, voz calma — não argumentar com delírios"},
+{etapa:"alta", d:"⚠ AGITAÇÃO TERMINAL pode REQUERER SEDAÇÃO PALIATIVA — discutir com família + equipe"},
+{etapa:"alta", d:"⚠ Após resolução em casos reversíveis: pode haver memórias angustiantes — apoio psicológico"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ INVESTIGAR REVERSIBILIDADE em delirium novo. Drogas + Eletrólitos + Infecção + Retenção + Dor + Hipoxia — checklist obrigatório."},
+{nivel:"crit", txt:"⚠ HALOPERIDOL é 1ª LINHA — VO ou SC. Dose baixa em idoso (0,25-0,5 mg)."},
+{nivel:"warn", txt:"⚠ HALOPERIDOL CONTRAINDICADO em Parkinson / demência de corpos de Lewy — pode precipitar rigidez grave / SNM. Usar QUETIAPINA."},
+{nivel:"warn", txt:"⚠ BZD ISOLADO em delirium hiperativo: pode PIORAR (paradoxo). Útil em combinação com antipsicótico, em abstinência alcoólica/BZD, ou em sedação paliativa intencional."},
+{nivel:"warn", txt:"⚠ DELIRIUM HIPOATIVO é MAIS COMUM e MAIS SUBDIAGNOSTICADO — paciente quieto/sonolento ≠ paciente em paz. Aplicar CAM."},
+{nivel:"info", txt:"⚠ AGITAÇÃO TERMINAL refratária a antipsicótico + BZD = considerar SEDAÇÃO PALIATIVA proporcional (vide patologia 'sedacao-paliativa')."},
+],
+fluxo:"delirium-paliativo", diretriz:"ANCP; APA Delirium; Inouye et al; ESMO."
+},
+
+/* ============== SEDAÇÃO PALIATIVA ============== */
+{id:"sedacao-paliativa", nome:"Sedação Paliativa — princípios e protocolo", sis:"pali", grav:"grave",
+cid:"Z51.5", ciap:"A20",
+sin:["Sedação paliativa","Sedação terminal","Midazolam paliativa","Sintoma refratário","Doutrina duplo efeito"],
+def:"⚠ SEDAÇÃO PALIATIVA = uso INTENCIONAL de sedativos para REDUZIR CONSCIÊNCIA de paciente em fim de vida com SINTOMA REFRATÁRIO insuportável. ⚠ ≠ EUTANÁSIA (intenção é aliviar sintoma, não causar morte — princípio do DUPLO EFEITO). ⚠ ≠ Sedação 'leve' em UTI. Pode ser PROPORCIONAL (manter o mínimo necessário para conforto) ou PROFUNDA (refratariedade grave).",
+quadro:["⚠ INDICAÇÕES: sintoma REFRATÁRIO + insuportável + em paciente com PROGNÓSTICO MUITO LIMITADO (horas-dias):","Dor refratária a opioide titulado","Dispneia refratária a opioide + BZD","Delirium / agitação terminal refratários","Vômito incoercível","Hemorragia maciça (cuidados de conforto)","Distresse existencial REFRATÁRIO (controverso — discussão multidisciplinar)","⚠ NÃO INDICAÇÃO: paciente com horizonte de semanas-meses + sintoma controlável"],
+diag:["⚠ AVALIAÇÃO MULTIDISCIPLINAR — discutir caso com equipe + família + paciente quando lúcido","⚠ Critérios para 'refratariedade':","Sintoma não controlado apesar de abordagem otimizada","Toxicidade inaceitável de tratamentos","Probabilidade muito baixa de resposta a outras terapias","⚠ DOCUMENTAR: intenção (alívio de sintoma, não acelerar morte), discussão com paciente/família, opções exploradas, plano de monitorização","⚠ TIPOS:","PROPORCIONAL: dose mínima para conforto, mantém consciência se possível","PROFUNDA CONTÍNUA: para refratariedade grave em fase ativa","TRANSITÓRIA: respiro temporário (ex: 'crise' aguda, depois reavaliar)"],
+exames:["Geralmente clínico","Foco em controle sintomático — exames adicionais apenas se mudam conduta"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ DECISÃO COMPARTILHADA — paciente (se lúcido), família, equipe multidisciplinar"},
+{etapa:"inicial", d:"⚠ DOCUMENTAR claramente: intenção (alívio sintoma refratário), sintoma alvo, opções exploradas e falhadas, plano de monitorização, comunicação com família"},
+{etapa:"inicial", d:"⚠ NÃO ABANDONAR cuidados — sedação paliativa NÃO É retirar cuidado, é INTENSIFICAR conforto"},
+{etapa:"escala", d:"⚠ MIDAZOLAM — 1ª LINHA"},
+{etapa:"escala", d:"⚠ INDUÇÃO: 2,5-5 mg SC bolus (idoso/caquético: 1-2,5 mg), repetir cada 10-15 min até conforto", do:"2,5-5 mg SC bolus", via:"SC", o:""},
+{etapa:"escala", d:"MANUTENÇÃO: BIC SC 0,5-2 mg/h (titular conforme RASS alvo)", do:"0,5-2 mg/h SC contínua", via:"SC", o:"⚠ Em paciente jovem/estável: doses maiores. Em idoso/caquético: doses bem menores."},
+{etapa:"escala", d:"Alternativa BIC IV 1-3 mg/h se via IV mantida", obs:""},
+{etapa:"escala", d:"⚠ RASS ALVO geralmente -2 a -3 (sedação leve a moderada — paciente arousable mas confortável); -4 a -5 em refratariedade extrema"},
+{etapa:"escala", d:"⚠ MIDAZOLAM REFRATÁRIO (raro):"},
+{etapa:"escala", d:"⚠ LEVOMEPROMAZINA SC 12,5-25 mg cada 4-6h OU BIC 50-100 mg/d — adicionar ao midazolam (efeito antiemético + sedativo + analgésico adjuvante)", do:"12,5-100 mg/d ÷ 4-6/6h ou BIC", via:"SC", o:""},
+{etapa:"escala", d:"⚠ FENOBARBITAL SC bolus 100-200 mg + BIC 600-1600 mg/d — sedação profunda em refratários", obs:"Especialista."},
+{etapa:"escala", d:"⚠ PROPOFOL BIC IV 0,5-2 mg/kg/h — em hospital com acesso IV mantido + monitor", obs:"Ambiente hospitalar."},
+{etapa:"escala", d:"⚠ CETAMINA SC — em dor refratária associada (efeito dissociativo + analgésico)", obs:"Especialista."},
+{etapa:"adj", d:"⚠ ⚠ MANTER OPIOIDE em paralelo — sedação NÃO substitui analgesia. Manter morfina, ajustar conforme dor/dispneia"},
+{etapa:"adj", d:"⚠ MANTER HIOSCINA se estertor; manter haloperidol se náusea"},
+{etapa:"adj", d:"⚠ DESPRESCREVER medicações não-essenciais (anti-hipertensivos, hipoglicemiantes, estatinas, etc) — fase ativa não justifica"},
+{etapa:"adj", d:"⚠ HIDRATAÇÃO — discussão individualizada"},
+{etapa:"adj", d:"Em fase ativa de morte: hidratação parenteral GERALMENTE NÃO BENEFICIA + pode piorar edema, estertor, sobrecarga. Suspender ou minimizar"},
+{etapa:"adj", d:"Em paciente com expectativa de dias-semanas + delirium hipoativo por desidratação: pode-se considerar hipodermoclise 500-1000 mL/d SC"},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO CONTINUA com família"},
+{etapa:"alta", d:"⚠ Reforçar: 'estamos aliviando o sofrimento, não acelerando a morte'"},
+{etapa:"alta", d:"Informar processo esperado: respiração pode ficar irregular, estertor pode aparecer (não é sufocamento subjetivo), pele pode ficar mosqueada/marmórea"},
+{etapa:"alta", d:"Encorajar família a falar com paciente, tocar, presença — audição persiste mais tempo"},
+{etapa:"alta", d:"⚠ APOIO ao LUTO — antecipatório + pós-óbito"},
+{etapa:"alta", d:"⚠ EQUIPE — apoio mútuo, supervisão; sedação paliativa é estresse emocional para profissionais"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ SEDAÇÃO PALIATIVA ≠ EUTANÁSIA. Intenção é aliviar sintoma refratário, não causar morte. Princípio do DUPLO EFEITO — ética + legalmente aceito no Brasil (Resolução CFM 1.805/2006 + 2.156/2016)."},
+{nivel:"crit", txt:"⚠ REFRATARIEDADE deve ser bem documentada — sintoma intratável apesar de abordagem otimizada, com baixa probabilidade de resposta a outras terapias. Discussão multidisciplinar."},
+{nivel:"warn", txt:"⚠ MIDAZOLAM SC é 1ª linha. Indução com bolus (2,5-5 mg) até conforto, depois BIC 0,5-2 mg/h. Idoso/caquético: doses menores."},
+{nivel:"warn", txt:"⚠ MANTER ANALGESIA — sedação não substitui opioide. Morfina + midazolam em paralelo."},
+{nivel:"info", txt:"⚠ HIDRATAÇÃO em fase ativa: GERALMENTE NÃO ÚTIL e pode piorar (edema, estertor, sobrecarga). Suspender ou minimizar (≤500 mL/d SC)."},
+{nivel:"info", txt:"⚠ DOCUMENTAR: intenção, sintoma alvo, opções falhadas, discussão com família, plano de monitorização. Proteção ética e legal."},
+],
+fluxo:"sedacao-paliativa", diretriz:"ANCP Diretrizes Sedação Paliativa; EAPC; CFM Res 1.805/2006 + 2.156/2016; Cherny+Radbruch."
+},
+
+/* ============== ESTERTOR TERMINAL / SIALORREIA ============== */
+{id:"estertor-terminal", nome:"Estertor da Morte / Sialorreia Terminal — manejo", sis:"pali", grav:"baixa",
+cid:"R09.8", ciap:"R02",
+sin:["Estertor terminal","Sororoca","Sialorreia paliativa","Hioscina","Escopolamina","Glicopirrônio"],
+def:"⚠ ESTERTOR DA MORTE = ruído de gorgolejo em paciente em FASE ATIVA por acúmulo de secreção em vias aéreas (tipo I — saliva, paciente inconsciente sem deglutir; tipo II — secreção brônquica). ⚠ É MAIS ANGUSTIANTE PARA FAMÍLIA que para paciente — sedado, geralmente não sofre. Manejo: posicionamento + antimuscarínico SC + comunicação familiar.",
+quadro:["⚠ RUÍDO de borbulhar / gorgolejar nas vias aéreas superiores em paciente em fase ativa de morte","Não confundir com obstrução de via aérea verdadeira / sufocamento","Paciente geralmente SEM esforço respiratório, sedado","⚠ Tipo I: secreção salivar acumulando (paciente inconsciente sem deglutir) — responde melhor ao antimuscarínico","⚠ Tipo II: secreção brônquica (causa subjacente — pneumonia, edema) — responde pior"],
+diag:["⚠ Clínico — característica auscultatória + fase ativa","Observar paciente — sem esforço, sem cianose proeminente significa pouca repercussão respiratória do estertor","⚠ Diferenciar: dispneia ativa (esforço, taquipneia, uso musculatura) vs estertor passivo (ruído sem esforço aparente)"],
+exames:["Geralmente nenhum — clínico"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ COMUNICAÇÃO COM FAMÍLIA — INTERVENÇÃO MAIS IMPORTANTE"},
+{etapa:"inicial", d:"⚠ Explicar: ruído é por acúmulo de saliva — paciente não está 'sufocando', não há sofrimento subjetivo significativo"},
+{etapa:"inicial", d:"⚠ Reasseguramento — 'isso é parte do processo, vamos tornar mais confortável'"},
+{etapa:"escala", d:"⚠ MEDIDAS NÃO-FARMACOLÓGICAS"},
+{etapa:"escala", d:"⚠ POSICIONAMENTO em DECÚBITO LATERAL — facilita drenagem por gravidade", obs:""},
+{etapa:"escala", d:"Cabeceira elevada 30°", obs:""},
+{etapa:"escala", d:"⚠ ⚠ NÃO ASPIRAR rotineiramente — invasivo, doloroso, estimula tosse, MAIS secreção reativa. Aspiração apenas se secreção volumosa e bloqueando aeração", obs:""},
+{etapa:"escala", d:"Cuidados orais — limpar boca com gaze úmida, hidratar mucosa", obs:""},
+{etapa:"escala", d:"⚠ REDUZIR HIDRATAÇÃO PARENTERAL — se em curso, suspender ou minimizar (piora estertor)", obs:""},
+{etapa:"escala", d:"⚠ ANTIMUSCARÍNICO SC — redução de secreção"},
+{etapa:"escala", d:"⚠ ⚠ HIOSCINA BUTILBROMETO (BUSCOPAN) 20 mg SC 4-6/6h OU BIC 60-120 mg/d", do:"20 mg 4-6/6h SC", via:"SC", o:"⚠ ⚠ NÃO atravessa BHE — sem sedação, sem delirium. SEGURO em paciente acordado. 1ª LINHA NO BRASIL (disponível)."},
+{etapa:"escala", d:"⚠ ESCOPOLAMINA (hioscina HIDROBROMETO) 0,4-0,6 mg SC 4-6/6h OU adesivo transdérmico 1 mg cada 72h", do:"0,4-0,6 mg 4-6/6h SC", via:"SC/TD", o:"⚠ Atravessa BHE — pode causar SEDAÇÃO + delirium em algumas pessoas. Adesivo é prático."},
+{etapa:"escala", d:"⚠ GLICOPIRRÔNIO 0,2-0,4 mg SC 4-6/6h — mais potente, NÃO atravessa BHE", obs:"Acesso difícil no SUS."},
+{etapa:"escala", d:"ATROPINA 0,4-0,6 mg SC 4-6/6h — alternativa em emergência (uso de injeção de atropina já disponível)", do:"0,4-0,6 mg 4-6/6h SC", via:"SC", o:"Atravessa BHE — risco delirium. Uso temporário."},
+{etapa:"escala", d:"⚠ INÍCIO PRECOCE é mais eficaz — antes que muita secreção acumule. Em fase ativa: PRESCREVER PROACTIVAMENTE"},
+{etapa:"adj", d:"⚠ EFICÁCIA da antimuscarínica é MODESTA — reduz secreção NOVA, não a secreção JÁ ACUMULADA"},
+{etapa:"adj", d:"Em refratários: posicionamento + redução de hidratação + paciência + apoio familiar"},
+{etapa:"alta", d:"⚠ FOCO EM CONFORTO familiar — explicar processo natural, reforçar que paciente está sereno"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ ESTERTOR É MAIS ANGUSTIANTE PARA A FAMÍLIA — paciente sedado raramente sofre. COMUNICAÇÃO FAMILIAR é tratamento principal."},
+{nivel:"crit", txt:"⚠ ⚠ NÃO ASPIRAR rotineiramente — invasivo, doloroso, aumenta secreção reativa. Apenas se secreção volumosa obstruindo aeração."},
+{nivel:"warn", txt:"⚠ HIOSCINA BUTILBROMETO (Buscopan) NÃO atravessa BHE — sem sedação/delirium adicional. 1ª linha no Brasil. ESCOPOLAMINA (hidrobrometo) atravessa BHE — risco delirium."},
+{nivel:"warn", txt:"⚠ REDUZIR HIDRATAÇÃO PARENTERAL em fase ativa — piora estertor (e edema, sobrecarga, secreção respiratória). Geralmente suspender."},
+{nivel:"info", txt:"⚠ ANTIMUSCARÍNICO precoce > tardio — secreção JÁ ACUMULADA não regride. Prescrever proactivamente quando estertor inicia."},
+],
+fluxo:null, diretriz:"ANCP; Wee-Hudson Sistema Review; EAPC."
+},
+
+/* ============== ANOREXIA E CAQUEXIA ============== */
+{id:"anorexia-caquexia", nome:"Anorexia / Caquexia Oncológica — manejo paliativo", sis:"pali", grav:"baixa",
+cid:"R63.0/C80", ciap:"T08",
+sin:["Caquexia","Anorexia oncológica","Megestrol","Mirtazapina paliativo","Dexametasona apetite"],
+def:"⚠ CAQUEXIA = perda involuntária de peso (>5% em 6m OU >2% se IMC baixo OU sarcopenia) + alterações metabólicas em paciente com doença sistêmica. ⚠ ≠ desnutrição por jejum — mesmo com nutrição não-reversível em fase avançada. ⚠ NÃO é falha do cuidador. Manejo: tratar reversíveis + apoiar família + foco em qualidade de vida (não em peso).",
+quadro:["Perda de peso involuntária","Anorexia (perda de apetite)","Sarcopenia (perda massa muscular)","Inflamação sistêmica (PCR↑, citocinas inflamatórias)","⚠ Estágios: pré-caquexia → caquexia → caquexia refratária (irreversível, fase ativa)","⚠ DISTINGUIR de causas REVERSÍVEIS associadas: náusea, dor, depressão, mucosite, alteração de paladar, candidíase oral, constipação, hipercalcemia, hipotireoidismo, fármaco"],
+diag:["⚠ Anamnese + exame: perda de peso real (pesar), apetite, sintomas associados","Avaliar SINTOMAS REVERSÍVEIS contributivos","⚠ ESCALAS: MUST (Malnutrition Universal Screening Tool), avaliação funcional (KPS/ECOG)","Imagem corporal — pode haver sofrimento associado"],
+exames:["Hemograma","Albumina, PCR","Cálcio corrigido","Função renal/hepática","TSH","Glicemia"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ COMUNICAÇÃO COM FAMÍLIA — MAIS IMPORTANTE QUE FÁRMACO"},
+{etapa:"inicial", d:"⚠ Explicar: caquexia é causada pela DOENÇA, não por 'falta de comida'. Forçar a comer NÃO recupera o paciente"},
+{etapa:"inicial", d:"⚠ Cultura brasileira valoriza 'comer bem' como sinal de saúde — pressão familiar pode causar SOFRIMENTO ao paciente"},
+{etapa:"inicial", d:"⚠ ⚠ Em FASE AVANÇADA / ATIVA: comer pouco é NORMAL e SAUDÁVEL — diminuição metabólica fisiológica"},
+{etapa:"inicial", d:"⚠ NÃO FORÇAR alimentação, SNG, NPT em fase ativa — pode causar dano (aspiração, edema, sofrimento)"},
+{etapa:"escala", d:"⚠ TRATAR CAUSAS REVERSÍVEIS ASSOCIADAS"},
+{etapa:"escala", d:"Náusea → antiemético adequado ao mecanismo (vide patologia)"},
+{etapa:"escala", d:"Dor → analgesia otimizada"},
+{etapa:"escala", d:"Depressão → ISRS, suporte"},
+{etapa:"escala", d:"Mucosite → bochechos antifúngicos, anti-séptico, anestésico tópico"},
+{etapa:"escala", d:"Candidíase oral → fluconazol 100 mg/d × 7-14d OU nistatina solução"},
+{etapa:"escala", d:"Constipação → manejo (vide patologia)"},
+{etapa:"escala", d:"Hipercalcemia → tratar"},
+{etapa:"escala", d:"⚠ MEDIDAS NÃO-FARMACOLÓGICAS"},
+{etapa:"escala", d:"⚠ Refeições PEQUENAS, frequentes, conforme PREFERÊNCIA do paciente — não impor 'cardápio saudável'"},
+{etapa:"escala", d:"Alimentos com odor + temperatura adaptados ao gosto do paciente"},
+{etapa:"escala", d:"AMBIENTE agradável, companhia, sem pressão"},
+{etapa:"escala", d:"AVALIAR sabor — câncer/quimio altera percepção (metalizado, ageusia, dosgeusia) — sucos cítricos podem ajudar"},
+{etapa:"escala", d:"⚠ COMPLEMENTOS NUTRICIONAIS (ex: Nutren, Nutridrink) — em fase não-terminal podem ajudar pacientes selecionados (preferir leve, sabor escolhido)"},
+{etapa:"escala", d:"⚠ NUTRIÇÃO ENTERAL/PARENTERAL — papel LIMITADO em caquexia oncológica avançada. Pode ser ÚTIL em obstrução mecânica reversível, pré-procedimento (cirurgia, RT), paciente com expectativa adequada"},
+{etapa:"escala", d:"⚠ ⚠ EM FASE ATIVA DE MORTE: NÃO INICIAR nutrição artificial; AVALIAR SUSPENSÃO se já em curso (decisão compartilhada)"},
+{etapa:"adj", d:"⚠ FARMACOTERAPIA — efeito MODESTO em apetite/peso, sem impacto em sobrevida ou função"},
+{etapa:"adj", d:"⚠ DEXAMETASONA 2-4 mg/d manhã — efeito CURTO PRAZO (4-6 sem) em apetite/bem-estar, antiemético, antiinflamatório", do:"2-4 mg/d manhã", via:"VO/SC", o:"⚠ Efeito DIMINUI com tempo. Efeitos colaterais cumulativos (miopatia, candida, hiperglicemia). Útil em PACIENTE EM SEMANAS-DIAS."},
+{etapa:"adj", d:"⚠ MEGESTROL ACETATO 160-800 mg/d — análogo progestágeno, efeito orexígeno e ganho de peso (gordura), poucas semanas para iniciar", do:"160-800 mg/d", via:"VO", o:"⚠ ⚠ RISCO TROMBOEMBÓLICO + supressão adrenal + edema. Cara. Útil em paciente com expectativa de meses."},
+{etapa:"adj", d:"⚠ MIRTAZAPINA 15-30 mg HS — antidepressivo com efeito orexígeno + sedativo + antiemético", do:"15-30 mg HS", via:"VO", o:"⚠ Particularmente útil em paciente com TRIPLA INDICAÇÃO: depressão + insônia + caquexia. (vide bloco psiq)"},
+{etapa:"adj", d:"⚠ OLANZAPINA 2,5-5 mg HS — efeito orexígeno + antiemético em refratários", obs:""},
+{etapa:"adj", d:"⚠ CANABINOIDES (dronabinol em alguns países) — efeito orexígeno modesto, mais útil em quimio-induzida", obs:""},
+{etapa:"adj", d:"⚠ TALIDOMIDA 100-200 mg/d — em caquexia HIV ou oncológica, efeito modesto, especialista (regulamentações específicas)", obs:""},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO + APOIO PSICOLÓGICO + ESPIRITUAL"},
+{etapa:"alta", d:"Caquexia é sinal de doença avançada — momento para conversas sobre objetivos de cuidado, expectativas"},
+{etapa:"alta", d:"⚠ Família frequentemente reage com EMPENHO em alimentar — redirecionar para presença, conversa, contato"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ NÃO FORÇAR alimentação em paciente em fase avançada/ativa. Comer pouco é NORMAL e SAUDÁVEL fisiologicamente. Pressionar gera sofrimento."},
+{nivel:"crit", txt:"⚠ NUTRIÇÃO PARENTERAL / SNG raramente beneficia em caquexia oncológica avançada — pode causar dano (aspiração, edema, sobrecarga, infecção)."},
+{nivel:"warn", txt:"⚠ DEXAMETASONA tem efeito CURTO PRAZO (4-6 sem) em apetite/bem-estar — útil em paciente em SEMANAS-DIAS. Cuidado com cumulativos."},
+{nivel:"warn", txt:"⚠ MEGESTROL tem efeito orexígeno mas RISCO TROMBOEMBÓLICO significativo. Em paciente com sobrevida estimada de meses + sem fatores de risco."},
+{nivel:"info", txt:"⚠ TRATAR CAUSAS REVERSÍVEIS (mucosite, candidíase, dor, náusea, depressão) PRIMEIRO. Pode haver melhora significativa sem ir para 'estimulador de apetite'."},
+{nivel:"info", txt:"⚠ MIRTAZAPINA: tripla indicação prática (depressão + insônia + ↓ peso) — combo útil em paciente paliativo selecionado."},
+],
+fluxo:null, diretriz:"ESPEN; ANCP; ASCO Cancer Cachexia 2020."
+},
+
+/* ============== ÚLTIMAS HORAS / KIT FIM DE VIDA / VIA SC ============== */
+{id:"ultimas-horas", nome:"Últimas Horas de Vida — Cuidados + Kit + Via Subcutânea (SC)", sis:"pali", grav:"grave",
+cid:"Z51.5", ciap:"A20",
+sin:["Fim de vida","Últimas horas","Kit paliativo","Via subcutânea","Hipodermoclise","Agonia"],
+def:"⚠ FASE ATIVA DE MORTE = horizonte de horas-dias. Sinais clínicos clássicos. ⚠ Foco TOTAL em CONFORTO + comunicação familiar. Via SUBCUTÂNEA é via central. KIT BÁSICO previamente prescrito permite resposta rápida em domicílio sem necessidade de UPA. ⚠ Permitir morte em DOMICÍLIO quando esse é o desejo do paciente — direito assegurado.",
+quadro:["⚠ SINAIS CLÍNICOS de FASE ATIVA (horas-dias):","↓ ingesta de líquidos e sólidos / dificuldade deglutição","Sonolência crescente, intervalos lúcidos cada vez menores","Respiração irregular — Cheyne-Stokes, pausas, agônica","Estertor terminal (gorgolejo)","Pele MOSQUEADA / marmórea / FRIA em extremidades, cianose periférica","Pulso fino, PA caindo","Diurese reduzida (oligo-anúria)","Alteração cognitiva — delirium, alucinações 'visitantes', referência a viagem","Aparente 'alívio' nas últimas horas em alguns (calm before)","⚠ Pode haver DESPERTAR antes do óbito ('lucidez terminal' / surge final) — frequentemente significativo emocionalmente"],
+diag:["⚠ CLÍNICO — reconhecimento de fase","Aceitação da família e do paciente quando possível — não 'forçar reanimação' em fase ativa","⚠ DOCUMENTAR: paciente em fase ativa, plano de cuidados (não-RCP em geral, foco conforto, via SC)","Discussão de OBJETIVOS DE CUIDADO — se ainda não feita, agora"],
+exames:["⚠ Geralmente NENHUM — exames adicionais não modificam conduta","Não fazer 'check' de exames laboratoriais de rotina","⚠ DESPRESCREVER medicações não-essenciais"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ ⚠ RECONHECIMENTO DA FASE — comunicar família com clareza"},
+{etapa:"inicial", d:"'Estamos entrando nos últimos dias/horas. O foco agora é conforto e presença'"},
+{etapa:"inicial", d:"⚠ Reorganizar prioridades: CONFORTO + DIGNIDADE + PRESENÇA FAMILIAR + AMBIENTE"},
+{etapa:"escala", d:"⚠ DESPRESCREVER medicações não-essenciais"},
+{etapa:"escala", d:"SUSPENDER: anti-hipertensivos, hipoglicemiantes, estatinas, suplementos, vitaminas, antiagregante, AAS preventivo, beta-bloqueador (avaliação caso a caso)"},
+{etapa:"escala", d:"MANTER: opioides, antiemético, sedativo, antimuscarínico (estertor), corticoide se útil sintomático"},
+{etapa:"escala", d:"⚠ AVALIAR via — VO frequentemente inviável (disfagia, sonolência)"},
+{etapa:"escala", d:"⚠ ⚠ VIA SUBCUTÂNEA (SC) — VIA CENTRAL EM PALIATIVOS"},
+{etapa:"escala", d:"⚠ ACESSO: cateter (butterfly 21-25 G ou cateter Saf-T-Intima 24G), sítios: deltóide, abdome, coxa anterior, infraclavicular, escapular"},
+{etapa:"escala", d:"⚠ RODÍZIO cada 5-7 dias OU se irritação local"},
+{etapa:"escala", d:"⚠ VOLUME por sítio: bolus ≤ 2 mL; infusão contínua ≤ 1-2 mL/h (até 4 mL/h se necessário)"},
+{etapa:"escala", d:"⚠ DROGAS COMPATÍVEIS SC: morfina, midazolam, haloperidol, levomepromazina, dexametasona, ondansetrona, metoclopramida, hioscina butilbrometo, escopolamina, octreotida, furosemida (volume baixo), enoxaparina, insulina"},
+{etapa:"escala", d:"⚠ ⚠ NÃO PODEM ser SC: clorpromazina (necrose), diazepam (precipitação), fenitoína (precipitação), ceftriaxona (necrose), eletrólitos concentrados (K+, NaCl 3%)"},
+{etapa:"escala", d:"⚠ HIPODERMOCLISE = hidratação SC com SF 0,9% ou SG 5%, ritmo 25-125 mL/h, até 1500 mL/d. Útil em desidratação leve-moderada. ⚠ Avaliar benefício em fase ativa (frequentemente NÃO indicada)"},
+{etapa:"escala", d:"⚠ ⚠ KIT FIM DE VIDA — PRESCRIÇÃO ANTECIPADA EM DOMICÍLIO"},
+{etapa:"escala", d:"⚠ Permite à família + cuidador responder a sintomas SEM emergência hospitalar"},
+{etapa:"escala", d:"⚠ Drogas + posologia + indicações específicas, dispostas em local acessível"},
+{etapa:"escala", d:"COMPOSIÇÃO BÁSICA (variável conforme paciente):"},
+{etapa:"escala", d:"(1) MORFINA simples solução oral OU ampola SC — DOR, DISPNEIA"},
+{etapa:"escala", d:"(2) MIDAZOLAM ampola 5 mg/mL SC — agitação, dispneia ansiosa, sedação proporcional"},
+{etapa:"escala", d:"(3) HALOPERIDOL ampola 5 mg/mL SC — náusea, delirium leve"},
+{etapa:"escala", d:"(4) HIOSCINA BUTILBROMETO 20 mg ampola SC — estertor, cólica"},
+{etapa:"escala", d:"(5) DEXAMETASONA 4 mg ampola SC — náusea, dispneia (selecionados)"},
+{etapa:"escala", d:"(6) LEVOMEPROMAZINA — em refratários"},
+{etapa:"escala", d:"+ SERINGAS (1, 5, 10 mL), agulhas 25G, gaze, álcool, papel-toalha"},
+{etapa:"escala", d:"+ FOLHA DE INSTRUÇÕES com indicações + doses + telefone do plantonista"},
+{etapa:"adj", d:"⚠ EQUIPE de SAD/EMAD ou cuidados paliativos domiciliar idealmente"},
+{etapa:"adj", d:"⚠ Em Estiva Gerbi: articular com SAD do município + matriciamento com paliativos regional"},
+{etapa:"adj", d:"⚠ NÃO HÁ 'protocolo único' — KIT É INDIVIDUALIZADO ao paciente e sintomas previsíveis"},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO COM FAMÍLIA"},
+{etapa:"alta", d:"⚠ Permitir / orientar: tocar, falar, despedidas — audição persiste até bem tarde"},
+{etapa:"alta", d:"⚠ Sinais de morte iminente: cianose, respiração agônica, ausência de pulso, mosqueamento — explicar antes de acontecer reduz pânico"},
+{etapa:"alta", d:"⚠ APÓS O ÓBITO: declaração de óbito em domicílio (em Estiva Gerbi, médico assistente declara — não precisa IML em óbito esperado de doença conhecida em paliativos)"},
+{etapa:"alta", d:"⚠ ATESTADO em paciente em paliativos: causa imediata + causa intermediária + causa básica (CID da doença oncológica/avançada de base)"},
+{etapa:"alta", d:"⚠ APOIO AO LUTO — antecipatório + pós-óbito. Acompanhamento da família é parte do cuidado paliativo"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ RECONHECER A FASE ATIVA — comunicar com clareza à família. Reorganizar para CONFORTO. Não 'forçar reanimação' em paciente em final de vida natural."},
+{nivel:"crit", txt:"⚠ ⚠ VIA SUBCUTÂNEA é VIA CENTRAL em paliativos. Acesso fácil + pouco doloroso + drogas múltiplas compatíveis. NÃO é 'segunda escolha' — em paliativos é PRIMEIRA."},
+{nivel:"warn", txt:"⚠ KIT FIM DE VIDA prescrito ANTECIPADAMENTE evita emergência domiciliar. Família/cuidador treinado pode administrar SC. Reduz hospitalização desnecessária."},
+{nivel:"warn", txt:"⚠ DESPRESCREVER em fase ativa: anti-hipertensivos, hipoglicemiantes, estatinas, suplementos. Manter: opioide, antiemético, sedativo, antimuscarínico, corticoide útil."},
+{nivel:"warn", txt:"⚠ ESTERTOR + RESPIRAÇÃO AGÔNICA podem parecer angustiantes para FAMÍLIA mas raramente são sofrimento para paciente. COMUNICAÇÃO é tratamento."},
+{nivel:"info", txt:"⚠ DECLARAÇÃO DE ÓBITO EM DOMICÍLIO em paciente em paliativos: médico assistente declara, NÃO precisa IML em óbito esperado de doença conhecida. Causa imediata + intermediária + básica (CID neoplasia/doença avançada)."},
+{nivel:"info", txt:"⚠ APOIO AO LUTO antecipatório + pós-óbito é parte do cuidado paliativo. Equipe inclui família como unidade de cuidado."},
+],
+fluxo:"ultimas-horas", diretriz:"ANCP; EAPC; PCMS-MS; LCP (Liverpool Care Pathway atualizado)."
+},
+
+/* ============== COMPRESSÃO MEDULAR MALIGNA ============== */
+{id:"compressao-medular-maligna", nome:"Compressão Medular Maligna — EMERGÊNCIA Oncológica", sis:"pali", grav:"grave",
+cid:"G95.2/C79.5", ciap:"L86",
+sin:["Compressão medular","CMM","Metástase coluna","Dexametasona compressão","Radioterapia paliativa urgente"],
+def:"⚠ ⚠ ⚠ EMERGÊNCIA ONCOLÓGICA — compressão por metástase epidural / vertebral. JANELA TERAPÊUTICA CURTA — déficit motor instalado >48h frequentemente IRREVERSÍVEL. ⚠ Reconhecimento + dexametasona + RM + radioterapia/cirurgia em HORAS. DOR LOMBAR NOVA/PROGRESSIVA em ONCOLÓGICO = investigar SEMPRE.",
+quadro:["⚠ DOR LOMBAR / TORÁCICA progressiva, mecânica, piora com decúbito — pode anteceder déficit em SEMANAS","⚠ DÉFICIT MOTOR — paraparesia / tetraparesia conforme nível","Alteração sensitiva com NÍVEL definido","⚠ DISFUNÇÃO ESFINCTERIANA — retenção urinária, constipação, incontinência (lesão tardia, prognóstico pior)","⚠ Sinais de neurônio motor superior abaixo da lesão (hiperreflexia, Babinski) em torácica; flacidez em síndrome cauda equina","Primários frequentes: mama, próstata, pulmão, mieloma múltiplo, rim, linfoma"],
+diag:["⚠ ⚠ ALTA SUSPEIÇÃO — dor lombar nova em oncológico = investigar SEMPRE","Exame neurológico CUIDADOSO: força (escala MRC), sensibilidade com NÍVEL, reflexos, tônus","⚠ TOQUE RETAL — avaliar tônus esfincteriano + bulbo-cavernoso"],
+exames:["⚠ ⚠ ⚠ RM COLUNA TOTAL (cervical + torácica + lombar) URGENTE — IDEALMENTE EM HORAS","⚠ Se RM indisponível: TC coluna com contraste OU mielo-TC (alternativa)","⚠ Rx coluna pode estar normal mesmo com compressão — não tranquiliza"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ ⚠ DEXAMETASONA EM BOLUS IMEDIATA — não esperar imagem"},
+{etapa:"inicial", d:"⚠ DEXAMETASONA 16 mg IV BOLUS ÚNICO, depois 4 mg IV 6/6h × 48h, depois reduzir conforme resposta", do:"16 mg IV bolus + 4 mg 6/6h", via:"IV", o:"⚠ NÃO ESPERAR confirmação — déficit pode evoluir em horas. Em paciente com forte suspeita: BOLUS imediato em qualquer setor (UBS, PA)."},
+{etapa:"inicial", d:"⚠ ANALGESIA — opioide adequado, geralmente em escalonamento rápido"},
+{etapa:"inicial", d:"⚠ ⚠ REFERENCIAMENTO IMEDIATO — RM URGENTE + oncologia/radioterapia/neurocirurgia"},
+{etapa:"escala", d:"⚠ TRATAMENTO DEFINITIVO"},
+{etapa:"escala", d:"⚠ ⚠ RADIOTERAPIA PALIATIVA URGENTE — em até 24-48h em paciente com déficit"},
+{etapa:"escala", d:"⚠ CIRURGIA DE DESCOMPRESSÃO + estabilização — indicada em paciente com bom performance + sobrevida estimada >3-6m + déficit estabelecido <48h + instabilidade espinhal + tumor radio-resistente (carcinoma renal, sarcoma)"},
+{etapa:"escala", d:"⚠ COMBINAÇÃO cirurgia + radioterapia adjuvante — em casos selecionados"},
+{etapa:"escala", d:"⚠ Em paciente com expectativa LIMITADA (semanas) ou já parapelégico há >48h: apenas DEXAMETASONA + ANALGESIA + suporte (déficit não recuperável)"},
+{etapa:"adj", d:"⚠ TROMBOPROFILAXIA — enoxaparina 40 mg SC 1×/d em paciente acamado por déficit"},
+{etapa:"adj", d:"⚠ MANEJO DE BEXIGA — sondagem vesical de demora ou intermitente; cateterismo conforme função"},
+{etapa:"adj", d:"⚠ MANEJO INTESTINAL — laxativos, supositórios, lavagem em paciente neurogênico"},
+{etapa:"adj", d:"⚠ FISIOTERAPIA / REABILITAÇÃO precoce"},
+{etapa:"adj", d:"⚠ BIFOSFONATO em metástase óssea (ácido zoledrônico 4 mg IV/mês) — preventivo de eventos esqueléticos"},
+{etapa:"alta", d:"⚠ COMUNICAÇÃO — explicar urgência + janela de oportunidade"},
+{etapa:"alta", d:"⚠ Após estabilização: discussão de objetivos de cuidado, prognóstico, retorno a casa, planejamento avançado"},
+{etapa:"alta", d:"⚠ APOIO ao paciente em adaptação (cadeirante, sondado) — fisioterapia, psicologia, social"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ ⚠ COMPRESSÃO MEDULAR = EMERGÊNCIA. Déficit motor >48h frequentemente IRREVERSÍVEL. ⚠ DEXAMETASONA 16 mg IV BOLUS IMEDIATA em suspeita — não esperar imagem."},
+{nivel:"crit", txt:"⚠ DOR LOMBAR NOVA/PROGRESSIVA em ONCOLÓGICO = SEMPRE INVESTIGAR. Pode anteceder déficit em semanas — JANELA para imagem + tratamento preventivo."},
+{nivel:"crit", txt:"⚠ ⚠ RM COLUNA TOTAL URGENTE — preferida. Se indisponível: TC com contraste / mielo-TC."},
+{nivel:"warn", txt:"⚠ RADIOTERAPIA PALIATIVA em 24-48h em paciente com déficit + sobrevida adequada. Cirurgia indicada em casos específicos (instabilidade, tumor radio-resistente, paciente com bom performance)."},
+{nivel:"warn", txt:"⚠ Em paciente em fase muito avançada ou já paraplégico >48h: foco em conforto + analgesia + suporte (não há recuperação esperada). NÃO submeter a procedimentos invasivos sem benefício."},
+],
+fluxo:"compressao-medular", diretriz:"NICE Spinal Cord Compression; NCCN; SBOC."
+},
+
+/* ============== HIPERCALCEMIA DA MALIGNIDADE ============== */
+{id:"hipercalcemia-maligna", nome:"Hipercalcemia da Malignidade — EMERGÊNCIA paliativa", sis:"pali", grav:"grave",
+cid:"E83.5", ciap:"T99",
+sin:["Hipercalcemia maligna","PTHrP","Bifosfonato","Ácido zoledrônico","Calcitonina","Denosumab"],
+def:"⚠ EMERGÊNCIA — cálcio iônico ou Ca total CORRIGIDO PELA ALBUMINA >12 mg/dL com sintomas (poliúria, polidipsia, fraqueza, letargia, confusão, náusea, constipação severa, arritmia). ⚠ Frequente em mama, pulmão, mieloma, rim, cabeça e pescoço. Mortalidade alta em hipercalcemia GRAVE (>14) — tratamento emergencial paliativo.",
+quadro:["⚠ NEURO: letargia, confusão, sonolência, coma (com Ca >15)","⚠ GU: poliúria (diabete insipidus nefrogênico), desidratação intensa","⚠ GI: constipação severa, náusea, vômito, anorexia, dor abdominal, pancreatite (raro)","⚠ MUSC: fraqueza, hipotonia, fraqueza proximal","⚠ CV: bradicardia, encurtamento QT, BLOQUEIO em hipercalcemia muito alta","Risco de PCR em Ca >15-16"],
+diag:["⚠ Cálcio total — sempre CORRIGIR PELA ALBUMINA: Ca corrigido = Ca medido + 0,8 × (4 − albumina)","Ou medir CÁLCIO IÔNICO (mais preciso)","⚠ Em paciente oncológico com sintomas inexplicados (letargia, constipação, fraqueza): SEMPRE pedir cálcio"],
+exames:["⚠ Cálcio total + albumina (calcular corrigido) OU cálcio iônico","Fósforo","Função renal — ureia, creatinina","Eletrólitos","PTH (afastar hiperparatireoidismo primário em casos atípicos)","ECG — QT, arritmia","Glicemia"],
+rx:[
+{etapa:"inicial", d:"⚠ ⚠ HIDRATAÇÃO VIGOROSA — pedra angular do tratamento"},
+{etapa:"inicial", d:"⚠ SOLUÇÃO SALINA 0,9% 200-500 mL/h IV — corrige desidratação + aumenta excreção renal de cálcio", do:"200-500 mL/h IV", via:"IV", o:"⚠ Volume total: 2-4 L em 24h. Monitor: PA, ausculta pulmonar, débito urinário, balanço."},
+{etapa:"inicial", d:"⚠ ⚠ EM PALIATIVO COM SOBREVIDA MUITO LIMITADA: avaliar SE TRATAR — vide alerta. Em fase ativa de morte: hipercalcemia pode ser via de morte 'mais suave' — discutir com paciente/família"},
+{etapa:"escala", d:"⚠ FUROSEMIDA 20-40 mg IV — usar APENAS após CORRIGIR desidratação. Aumenta cálcio urinário."},
+{etapa:"escala", d:"⚠ NÃO usar tiazídico (reduz cálcio urinário)"},
+{etapa:"escala", d:"⚠ ⚠ BIFOSFONATO — droga de DESFECHO"},
+{etapa:"escala", d:"⚠ ÁCIDO ZOLEDRÔNICO 4 mg IV em 15 min", do:"4 mg IV em 15 min", via:"IV", o:"⚠ INÍCIO de ação em 24-48h. Pico em 4-7 dias. Duração ~30 dias. Reduzir 50% se TFG 30-60. ⚠ EVITAR em TFG <30."},
+{etapa:"escala", d:"⚠ PAMIDRONATO 60-90 mg IV em 2-4h — alternativa", do:"60-90 mg IV em 2-4h", via:"IV", o:"Menos potente."},
+{etapa:"escala", d:"⚠ HIDRATAR adequadamente antes (>2L) — bifosfonato é nefrotóxico em desidratação"},
+{etapa:"escala", d:"⚠ CALCITONINA 4-8 UI/kg SC/IM 12/12h — ação RÁPIDA (12-24h) mas taquifilaxia em 48-72h", do:"4-8 UI/kg SC 12/12h", via:"SC/IM", o:"⚠ Útil em pacientes em ESPERA do efeito do bifosfonato (primeiras 24-48h). Eficácia decai."},
+{etapa:"escala", d:"⚠ DENOSUMAB 120 mg SC — anticorpo anti-RANKL. Alternativa em IRC (TFG <30 onde bifosfonato é proibido)", do:"120 mg SC dose única", via:"SC", o:"Custo alto. Especialista."},
+{etapa:"escala", d:"⚠ DEXAMETASONA — útil em hipercalcemia por LINFOMA, MIELOMA, GRANULOMATOSE (mediação 1,25-OH-vit D)", obs:"Não é eficaz em hipercalcemia por PTHrP."},
+{etapa:"adj", d:"⚠ EM HIPERCALCEMIA REFRATÁRIA / GRAVE COM IRC + RISCO DE VIDA: HEMODIÁLISE com banho baixo cálcio"},
+{etapa:"adj", d:"⚠ MOBILIZAÇÃO precoce (imobilidade piora hipercalcemia)"},
+{etapa:"alta", d:"⚠ DISCUTIR PROGNÓSTICO + OBJETIVOS — hipercalcemia maligna é frequentemente MARCADOR DE FASE AVANÇADA"},
+{etapa:"alta", d:"⚠ Sobrevida média após hipercalcemia maligna = ~30 dias (sem tratamento específico do tumor)"},
+{etapa:"alta", d:"⚠ TRATAR vs OBSERVAR — decisão depende de objetivos. Tratar pode reverter sintomas e dar 'tempo' para conversas/encerramentos; não tratar pode ser óbito sem sofrimento"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ ⚠ HIPERCALCEMIA MALIGNA é EMERGÊNCIA. Hidratação salina 0,9% 200-500 mL/h + bifosfonato (ác. zoledrônico 4 mg IV) + considerar calcitonina como ponte."},
+{nivel:"crit", txt:"⚠ ⚠ EM PALIATIVO AVANÇADO / FASE ATIVA: avaliar SE TRATAR. Hipercalcemia maligna é frequentemente VIA DE MORTE 'mais suave' que outras (letargia → coma). Discussão compartilhada com paciente/família."},
+{nivel:"warn", txt:"⚠ FUROSEMIDA: usar APENAS APÓS hidratação adequada. Tiazídico é CONTRAINDICADO (↓ excreção de cálcio)."},
+{nivel:"warn", txt:"⚠ ÁCIDO ZOLEDRÔNICO em TFG <30: EVITAR. Em TFG 30-60: 50% dose. Em IRC importante: denosumab é alternativa."},
+{nivel:"warn", txt:"⚠ DEXAMETASONA: útil em hipercalcemia por LINFOMA / MIELOMA / GRANULOMATOSE. NÃO é eficaz em hipercalcemia por PTHrP (mama, pulmão escamoso)."},
+{nivel:"info", txt:"⚠ SOBREVIDA MÉDIA após hipercalcemia maligna não tratada = ~30 dias. Tratar pode REVERTER sintomas e proporcionar TEMPO para conversas + encerramentos."},
+],
+fluxo:null, diretriz:"NCCN; ESMO; ASCO; Major et al; Stewart NEJM."
+},
+
+/* ============== COMUNICAÇÃO DE MÁS NOTÍCIAS — PROTOCOLO SPIKES ============== */
+{id:"comunicacao-spikes", nome:"Comunicação de Más Notícias — Protocolo SPIKES + Plano de Cuidado Avançado", sis:"pali", grav:"baixa",
+cid:"Z71", ciap:"A45",
+sin:["SPIKES","Más notícias","Comunicação difícil","Diretivas antecipadas","Plano de cuidado avançado","Diagnóstico câncer"],
+def:"⚠ COMUNICAÇÃO de más notícias é HABILIDADE CLÍNICA CENTRAL — não 'estilo pessoal'. Treinável, validada. ⚠ PROTOCOLO SPIKES (Baile et al, 2000) — 6 passos. Equivocada comunicação é causa frequente de SOFRIMENTO + processos. ⚠ Inclui: diagnóstico ruim, prognóstico limitado, discussão de objetivos de cuidado, decisões de fim de vida.",
+quadro:["⚠ MÁS NOTÍCIAS = qualquer informação que altere expectativas do paciente em relação ao futuro de forma adversa","Diagnóstico de doença grave (câncer, demência, IC, esclerose)","Progressão / recidiva","Falha de tratamento","Prognóstico limitado","Necessidade de mudança de objetivos (curativo → paliativo)","Discussão de fim de vida"],
+diag:["Não é diagnóstico — é HABILIDADE CLÍNICA","⚠ Auto-avaliação: 'Como estou para esta conversa? Tenho tempo, lugar, energia?'","⚠ Preparo prévio: ler prontuário, alinhar com equipe, ter dados objetivos prontos"],
+exames:["Não aplicável"],
+rx:[
+{etapa:"escala", d:"⚠ ⚠ PROTOCOLO SPIKES — 6 PASSOS"},
+{etapa:"escala", d:"⚠ S — SETTING (ambiente)"},
+{etapa:"escala", d:"AMBIENTE PRIVATIVO — sala fechada, sem interrupções"},
+{etapa:"escala", d:"TEMPO ADEQUADO — pelo menos 30 min, sem pressa de saída"},
+{etapa:"escala", d:"PRESENÇA DE FAMILIAR — se paciente desejar"},
+{etapa:"escala", d:"POSIÇÃO — sentar em altura do paciente, sem mesa entre vocês, sem celular"},
+{etapa:"escala", d:"DESLIGAR celular / pager. Comunicar à equipe 'não interromper'"},
+{etapa:"escala", d:"⚠ P — PERCEPTION (percepção do paciente)"},
+{etapa:"escala", d:"'O que você sabe sobre sua situação atual?'"},
+{etapa:"escala", d:"'O que os outros médicos disseram?'"},
+{etapa:"escala", d:"⚠ Calibrar — paciente está em NEGAÇÃO, em CONHECIMENTO PARCIAL, ou em CONHECIMENTO COMPLETO?"},
+{etapa:"escala", d:"Não 'corrigir' negação imediatamente — explorar com cuidado"},
+{etapa:"escala", d:"⚠ I — INVITATION (convite)"},
+{etapa:"escala", d:"'Quanta informação você gostaria de saber sobre os resultados?'"},
+{etapa:"escala", d:"'Você prefere que eu fale com você ou com alguém da família primeiro?'"},
+{etapa:"escala", d:"⚠ RESPEITAR — alguns pacientes preferem NÃO saber tudo (válido)"},
+{etapa:"escala", d:"⚠ K — KNOWLEDGE (compartilhar conhecimento)"},
+{etapa:"escala", d:"⚠ 'TIRO DE AVISO' (warning shot) — 'Preciso compartilhar algo difícil...' / 'Os resultados não são os que esperávamos...'"},
+{etapa:"escala", d:"DAR a notícia em LINGUAGEM SIMPLES, sem jargão"},
+{etapa:"escala", d:"PAUSA — silêncio é necessário, dar tempo para absorver"},
+{etapa:"escala", d:"PEDAÇOS pequenos — não despejar tudo de uma vez"},
+{etapa:"escala", d:"⚠ NÃO mentir / NÃO suavizar excessivamente — 'pequeno tumor', 'algumas células diferentes' geram confusão"},
+{etapa:"escala", d:"⚠ E — EMPATHY / EMOTIONS (responder a emoções)"},
+{etapa:"escala", d:"OBSERVAR reação — choro, raiva, silêncio, negação"},
+{etapa:"escala", d:"NOMEAR a emoção — 'Vejo que essa notícia foi muito difícil'"},
+{etapa:"escala", d:"VALIDAR — 'Faz sentido se sentir assim'"},
+{etapa:"escala", d:"⚠ NÃO oferecer soluções imediatas — primeiro sustentar emocionalmente"},
+{etapa:"escala", d:"SILÊNCIO é OK — não preencher com fala"},
+{etapa:"escala", d:"TOQUE (mão, ombro) se cultural/pessoalmente apropriado"},
+{etapa:"escala", d:"⚠ S — STRATEGY / SUMMARY (estratégia e síntese)"},
+{etapa:"escala", d:"⚠ Só após sustentar emocionalmente — verificar se paciente 'volta' para a conversa"},
+{etapa:"escala", d:"'Você gostaria de saber sobre os próximos passos?'"},
+{etapa:"escala", d:"OFERECER PLANO — opções de tratamento, encaminhamentos, próxima consulta"},
+{etapa:"escala", d:"VERIFICAR compreensão — 'pode me dizer o que entendeu?'"},
+{etapa:"escala", d:"OFERECER companhia continuada — 'vamos passar por isso juntos'"},
+{etapa:"escala", d:"AGENDAR próximo contato — 'nos vemos daqui a X dias'"},
+{etapa:"adj", d:"⚠ DISCUSSÃO DE OBJETIVOS DE CUIDADO"},
+{etapa:"adj", d:"⚠ 'Goals of care discussion' — em qualquer transição, idealmente ANTES de fase ativa"},
+{etapa:"adj", d:"PERGUNTAS NORTEADORAS:"},
+{etapa:"adj", d:"'O que é mais importante para você agora?'"},
+{etapa:"adj", d:"'O que faz a vida valer a pena para você?'"},
+{etapa:"adj", d:"'Em uma situação grave, o que você gostaria que fosse feito (ou não)?'"},
+{etapa:"adj", d:"'Você prefere mais tempo, mesmo se isso significar tratamentos agressivos? Ou prefere foco em conforto?'"},
+{etapa:"adj", d:"⚠ DIRETIVAS ANTECIPADAS DE VONTADE (DAV) — Resolução CFM 1.995/2012"},
+{etapa:"adj", d:"Paciente CAPAZ pode registrar em prontuário (preferível) ou em cartório quais tratamentos aceita/recusa em caso de impossibilidade futura de decidir"},
+{etapa:"adj", d:"Inclui: RCP, ventilação mecânica, hemodiálise, nutrição artificial, hidratação, transfusão"},
+{etapa:"adj", d:"Procurador de saúde — pessoa que toma decisões em nome do paciente quando incapaz"},
+{etapa:"adj", d:"⚠ ESPÓLIO ÉTICO — CFM permite limitar tratamentos não-curativos / disproporcionais conforme vontade do paciente (Res 1.805/2006 — ortotanásia)"},
+{etapa:"alta", d:"⚠ DOCUMENTAR no prontuário: conteúdo da conversa, presentes, decisões, plano"},
+{etapa:"alta", d:"⚠ COMUNICAR equipe — todos devem saber o que foi discutido, evitar contradições"},
+{etapa:"alta", d:"⚠ AUTO-CUIDADO do médico — má notícia é desgastante, considerar pausa, supervisão entre pares"},
+],
+alertas:[
+{nivel:"crit", txt:"⚠ COMUNICAÇÃO DE MÁS NOTÍCIAS é habilidade CLÍNICA CENTRAL — treinável. SPIKES (6 passos) é protocolo validado: Setting, Perception, Invitation, Knowledge, Empathy, Strategy."},
+{nivel:"warn", txt:"⚠ NÃO MENTIR / NÃO SUAVIZAR excessivamente. 'Pequeno tumor' / 'células diferentes' geram confusão. Honestidade clara em linguagem simples."},
+{nivel:"warn", txt:"⚠ RESPEITAR autonomia — alguns pacientes preferem NÃO SABER tudo. Convidar (Invitation step) é essencial."},
+{nivel:"info", txt:"⚠ DIRETIVAS ANTECIPADAS DE VONTADE (DAV) — Resolução CFM 1.995/2012. Registrar em prontuário tem validade. Inclui RCP, VM, hemodiálise, nutrição, hidratação. Procurador de saúde nomeado."},
+{nivel:"info", txt:"⚠ ORTOTANÁSIA — Res CFM 1.805/2006 permite limitar tratamentos disproporcionais conforme vontade do paciente terminal. Diferente de eutanásia."},
+],
+fluxo:"spikes", diretriz:"⚠ Baile WF et al. SPIKES. Oncologist 2000; CFM Res 1.805/2006 + 1.995/2012; ANCP; Vital Talk."
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CONTEÚDO MÉDICO-LEGAL
    Notificação compulsória + Templates de evolução + Receituário
    =========================================================== */
@@ -14075,6 +14738,216 @@ CALCS_EXTRA3.forEach(c => {
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — CALCULADORAS PALIATIVAS (PARTE 4)
+   KPS, ECOG, PPI, MEDD, ESAS
+   =========================================================== */
+
+const CALCS_EXTRA4 = [
+
+/* ============== KARNOFSKY (KPS) ============== */
+{id:"kps", nome:"Karnofsky Performance Status (KPS)", sis:"pali",
+desc:"Escala de status funcional 0-100 (maior = melhor). ⚠ Útil em cuidados paliativos para prognóstico e elegibilidade. KPS ≤40 = paciente predominantemente acamado, dependente, geralmente prognóstico <6 meses. KPS ≤20 = fase ativa de morte (dias-semanas).",
+fields:[
+{tipo:"select", id:"kps", label:"Selecione o nível funcional", opts:[
+{val:"100", label:"100 — Normal, sem queixas, sem evidência de doença"},
+{val:"90", label:"90 — Atividade normal, sintomas/sinais menores de doença"},
+{val:"80", label:"80 — Atividade normal com esforço, alguns sintomas"},
+{val:"70", label:"70 — Cuida de si, incapaz de atividade normal ou trabalho"},
+{val:"60", label:"60 — Requer assistência ocasional, capaz da maioria das necessidades pessoais"},
+{val:"50", label:"50 — Requer assistência considerável e cuidados médicos frequentes"},
+{val:"40", label:"40 — Incapacitado, requer cuidados especiais e assistência"},
+{val:"30", label:"30 — Severamente incapacitado, indicada hospitalização (morte não iminente)"},
+{val:"20", label:"20 — Muito doente, hospitalização necessária, suporte ativo necessário"},
+{val:"10", label:"10 — Moribundo, processos fatais progredindo rapidamente"},
+{val:"0", label:"0 — Morto"},
+]},
+],
+calc:function(v){
+  return parseInt(v.kps||0);
+},
+interp:function(s){
+  if(s>=80) return {risco:`KPS ${s} — Funcionalidade preservada`, acao:"Paciente capaz de atividades normais. Tratamento curativo/disease-modifier viável. Cuidados paliativos como camada complementar (sintomas, comunicação) — não é foco exclusivo.", cor:"ok"};
+  if(s>=60) return {risco:`KPS ${s} — Funcionalidade reduzida — independente parcial`, acao:"Cuidados paliativos integrados (modelo simultâneo). Discutir metas de cuidado. Atenção a sintomas (ESAS). Planejamento avançado de cuidados (DA). Suporte familiar. Em câncer avançado: prognóstico geralmente 3-6 meses.", cor:"warn"};
+  if(s>=40) return {risco:`KPS ${s} — Dependente — predominantemente em cama/cadeira`, acao:"⚠ Cuidados paliativos como FOCO principal. ⚠ Prognóstico geralmente <3 meses em câncer avançado. Acionar SAD/EMAD/hospice. Diretivas antecipadas IMPRESCINDÍVEIS. Conferir DNR/DNI. Suspender intervenções fúteis (rastreamentos, exames sem mudança de conduta). Ajustar via SC para drogas essenciais.", cor:"crit"};
+  if(s>=20) return {risco:`KPS ${s} — Acamado severo — fase final`, acao:"⚠ ⚠ FASE FINAL DA VIDA — semanas. Conforto absoluto. Suspender medicações fúteis (estatinas, anti-hipertensivos rotineiros, antiagregantes em prevenção primária, suplementos). Manter analgesia, antieméticos, anti-sialorreia. KIT FIM DE VIDA prescrito. Via SC. Comunicação clara com família sobre prognóstico iminente. SAD ativo.", cor:"crit"};
+  return {risco:`KPS ${s} — Moribundo / fase ativa de morte`, acao:"⚠ ⚠ ⚠ ÚLTIMAS HORAS-DIAS. Aplicar protocolo de últimas horas. Manter apenas medicações de conforto via SC (morfina, midazolam, haloperidol, hioscina butilbrometo, levomepromazina). Hidratação suspensa ou volume mínimo. Acompanhar família — rituais, despedidas. Preparar declaração de óbito em domicílio (se SAD).", cor:"crit"};
+}
+},
+
+/* ============== ECOG ============== */
+{id:"ecog", nome:"ECOG Performance Status", sis:"pali",
+desc:"Escala 0-5 mais usada em oncologia (Eastern Cooperative Oncology Group). Equivalente simplificado do KPS. ⚠ ECOG 3-4 = paciente predominantemente dependente — geralmente intervenções oncológicas curativas/agressivas suspensas; foco paliativo.",
+fields:[
+{tipo:"select", id:"ecog", label:"Selecione o ECOG", opts:[
+{val:"0", label:"0 — Totalmente ativo, sem restrição de atividade pré-doença"},
+{val:"1", label:"1 — Restrição em atividade física extenuante mas deambula, capaz de trabalho leve"},
+{val:"2", label:"2 — Deambula, capaz de auto-cuidado, INCAPAZ de trabalhar; em pé >50% do tempo"},
+{val:"3", label:"3 — Auto-cuidado LIMITADO; cama/cadeira >50% do tempo"},
+{val:"4", label:"4 — Totalmente incapaz de auto-cuidado; TOTALMENTE acamado"},
+{val:"5", label:"5 — Morto"},
+]},
+],
+calc:function(v){
+  return parseInt(v.ecog||0);
+},
+interp:function(s){
+  if(s===0) return {risco:`ECOG 0 — Funcionalidade plena`, acao:"Equivale a KPS 90-100. Tratamento curativo/disease-modifier pleno. Paliativos integrados como camada de sintomas e planejamento.", cor:"ok"};
+  if(s===1) return {risco:`ECOG 1 — Restrição leve`, acao:"Equivale a KPS 70-80. Tratamento ativo viável. Boa elegibilidade para protocolos quimioterápicos.", cor:"ok"};
+  if(s===2) return {risco:`ECOG 2 — Independente para auto-cuidado mas incapaz de trabalho`, acao:"Equivale a KPS 50-60. ⚠ Borderline para quimioterapia agressiva. Paliativos integrados. Discutir metas, sintomas, diretivas. Prognóstico geralmente <6 meses em câncer avançado.", cor:"warn"};
+  if(s===3) return {risco:`ECOG 3 — Dependente — cama/cadeira >50% tempo`, acao:"⚠ Equivale a KPS 30-40. ⚠ Quimioterapia agressiva geralmente CONTRAINDICADA — toxicidade > benefício. Foco paliativo predominante. SAD/EMAD/hospice. Diretivas antecipadas. Prognóstico geralmente <3 meses.", cor:"crit"};
+  if(s===4) return {risco:`ECOG 4 — Totalmente acamado — dependência total`, acao:"⚠ ⚠ Equivale a KPS 10-20. FASE FINAL — semanas. Apenas medidas de CONFORTO. Suspender intervenções fúteis. KIT FIM DE VIDA. Via SC para drogas essenciais. Suporte família.", cor:"crit"};
+  return {risco:`ECOG 5 — Morto`, acao:"—", cor:"crit"};
+}
+},
+
+/* ============== PPI — Palliative Prognostic Index ============== */
+{id:"ppi", nome:"PPI — Palliative Prognostic Index", sis:"pali",
+desc:"Índice prognóstico em câncer avançado — sobrevida em semanas. Usa Palliative Performance Scale (PPS, similar ao KPS) + ingesta oral + edema + dispneia em repouso + delirium. ⚠ PPI >6 = sobrevida <3 sem; PPI >4 = sobrevida <6 sem.",
+fields:[
+{tipo:"select", id:"pps", label:"PPS — Performance (similar ao KPS)", opts:[
+{val:"0", label:"0 — PPS ≥60 (independente parcial-total)"},
+{val:"2.5", label:"2,5 — PPS 30-50 (dependente, em cama/cadeira)"},
+{val:"4", label:"4 — PPS 10-20 (acamado severo, moribundo)"},
+]},
+{tipo:"select", id:"ingesta", label:"Ingesta oral", opts:[
+{val:"0", label:"0 — Normal (>1 refeição/dia)"},
+{val:"1", label:"1 — Moderadamente reduzida (1 refeição/dia ou menos)"},
+{val:"2.5", label:"2,5 — Muito reduzida (apenas bocados / colher) ou nada VO"},
+]},
+{tipo:"bool", id:"edema", label:"Edema presente (+1)"},
+{tipo:"bool", id:"dispneia", label:"Dispneia em REPOUSO presente (+3,5)"},
+{tipo:"bool", id:"delirium", label:"Delirium presente (excluindo causa reversível como opioide em dose alta) (+4)"},
+],
+calc:function(v){
+  let s = 0;
+  s += parseFloat(v.pps||0);
+  s += parseFloat(v.ingesta||0);
+  if(v.edema) s += 1;
+  if(v.dispneia) s += 3.5;
+  if(v.delirium) s += 4;
+  return Math.round(s*10)/10;
+},
+interp:function(s){
+  if(s<=2) return {risco:`PPI ${s} — Sobrevida estimada >6 semanas`, acao:"Prognóstico relativamente preservado para câncer avançado. Paliativos integrados. Discutir metas, planejamento de cuidados. Reavaliar a cada 1-2 semanas.", cor:"warn"};
+  if(s<=4) return {risco:`PPI ${s} — Sobrevida estimada 3-6 semanas`, acao:"⚠ Prognóstico LIMITADO. Conferir diretivas antecipadas. Aprofundar comunicação com paciente/família — SPIKES. Suspender intervenções fúteis (estatinas, anticoag em prevenção primária, controle glicêmico/pressórico rígido). Foco em sintomas: ESAS. SAD/hospice. Reavaliar semanalmente.", cor:"crit"};
+  return {risco:`PPI ${s} — Sobrevida estimada <3 semanas`, acao:"⚠ ⚠ FASE FINAL — dias a semanas. Foco em conforto absoluto. KIT FIM DE VIDA prescrito antecipadamente. Manter apenas medicações essenciais via SC quando VO inviável. Comunicação aberta com família — preparar para morte iminente. Suspender hidratação venosa rotineira (avaliar caso a caso conforme conforto). Avaliação diária.", cor:"crit"};
+}
+},
+
+/* ============== MEDD — Morphine Equivalent Daily Dose ============== */
+{id:"medd", nome:"MEDD — Dose Equivalente Diária de Morfina (Conversor de Opioides)", sis:"pali",
+desc:"Calcula a DOSE EQUIVALENTE DIÁRIA DE MORFINA VO (MEDD em mg/d) a partir de doses de outros opioides. ⚠ ⚠ Útil em ROTAÇÃO DE OPIOIDES — após calcular MEDD total, REDUZIR 25-50% no opioide novo (cross-tolerance INCOMPLETA). ⚠ METADONA tem conversão NÃO LINEAR — NÃO incluída neste calculador (requer especialista).",
+fields:[
+{tipo:"num", id:"morf_vo", label:"Morfina VO — mg/dia (somar todas tomadas)"},
+{tipo:"num", id:"morf_sc", label:"Morfina SC/IV — mg/dia"},
+{tipo:"num", id:"codeina", label:"Codeína VO — mg/dia"},
+{tipo:"num", id:"tramadol", label:"Tramadol VO — mg/dia"},
+{tipo:"num", id:"oxicodona", label:"Oxicodona VO — mg/dia"},
+{tipo:"num", id:"hidromorfona", label:"Hidromorfona VO — mg/dia"},
+{tipo:"num", id:"fentanil_td", label:"Fentanil adesivo TD — mcg/h (dose do patch)"},
+{tipo:"num", id:"bupre_td", label:"Buprenorfina adesivo TD — mcg/h (dose do patch)"},
+],
+calc:function(v){
+  let m = 0;
+  m += parseFloat(v.morf_vo||0) * 1;
+  m += parseFloat(v.morf_sc||0) * 3;
+  m += parseFloat(v.codeina||0) * 0.15;
+  m += parseFloat(v.tramadol||0) * 0.1;
+  m += parseFloat(v.oxicodona||0) * 1.5;
+  m += parseFloat(v.hidromorfona||0) * 4;
+  m += parseFloat(v.fentanil_td||0) * 2.4;
+  m += parseFloat(v.bupre_td||0) * 3;
+  return Math.round(m);
+},
+interp:function(s){
+  const reduzido25 = Math.round(s*0.75);
+  const reduzido50 = Math.round(s*0.5);
+  const morfSC = Math.round(s/3);
+  if(s===0) return {risco:`MEDD 0 mg/d`, acao:"Nenhum opioide computado. Verifique entradas.", cor:"ok"};
+  if(s<60) return {risco:`MEDD ≈ ${s} mg de morfina VO/dia (DOSE BAIXA-MODERADA)`, acao:`⚠ ROTAÇÃO de opioide: reduzir 25% → ${reduzido25} mg/d morfina VO equivalente. CONVERSÃO VO → SC: dividir por 3 → ${morfSC} mg/d morfina SC ÷ 4-6h. ⚠ Para dose de RESGATE: usar 10-15% da dose total diária a cada 4h PRN.`, cor:"ok"};
+  if(s<120) return {risco:`MEDD ≈ ${s} mg de morfina VO/dia (DOSE MODERADA-ALTA)`, acao:`⚠ ROTAÇÃO: reduzir 25-33% (cross-tolerance) → ${reduzido25} mg/d ou inferior. SC equivalente: ~${morfSC} mg/d. Dose resgate: 10-15% do total a cada 4h PRN. ⚠ Reavaliar adjuvantes (gabapentina, dexa, ADT) — pode haver dor mista refratária.`, cor:"warn"};
+  return {risco:`MEDD ≈ ${s} mg de morfina VO/dia (DOSE ALTA)`, acao:`⚠ ⚠ DOSE ALTA — considerar ROTAÇÃO DE OPIOIDE (cross-tolerance incompleta — reduzir 50% → ${reduzido50} mg/d ou menos). Considerar METADONA (especialista) ou via espinhal. Reavaliar componente neuropático/mecânico — adjuvantes essenciais. ⚠ Avaliar TOXICIDADE NEUROEXCITATÓRIA por opioide (mioclonia, alodinia, hiperalgesia) — sinal de necessidade rotação. SC: ~${morfSC} mg/d ÷ infusão contínua ou bolus 4-6h.`, cor:"crit"};
+}
+},
+
+/* ============== ESAS — Edmonton Symptom Assessment ============== */
+{id:"esas", nome:"ESAS — Edmonton Symptom Assessment System", sis:"pali",
+desc:"Avaliação sistemática de 9 SINTOMAS em paliativos — cada um em escala 0-10 (0=sem sintoma, 10=pior possível). ⚠ NÃO é diagnóstico nem prognóstico — é ferramenta para ACOMPANHAR sintomas longitudinalmente e direcionar conduta. Reaplicar semanalmente ou conforme mudança clínica. Sintomas ≥4 demandam intervenção ativa.",
+fields:[
+{tipo:"select", id:"dor", label:"Dor (0=sem dor, 10=pior dor)", opts:[
+{val:"0", label:"0 — Sem dor"},
+{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4 — Dor moderada"},
+{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7 — Dor importante"},
+{val:"8", label:"8"},{val:"9", label:"9"},
+{val:"10", label:"10 — Pior dor imaginável"},
+]},
+{tipo:"select", id:"cansaco", label:"Cansaço/fadiga (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"sono", label:"Sonolência (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"nausea", label:"Náusea (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"apetite", label:"Falta de apetite (0=apetite normal, 10=nenhum apetite)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"dispneia", label:"Falta de ar / dispneia (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"depressao", label:"Tristeza/depressão (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"ansiedade", label:"Ansiedade (0=sem, 10=pior)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+{tipo:"select", id:"bemestar", label:"Bem-estar geral (0=ótimo, 10=péssimo)", opts:[
+{val:"0", label:"0"},{val:"1", label:"1"},{val:"2", label:"2"},{val:"3", label:"3"},
+{val:"4", label:"4"},{val:"5", label:"5"},{val:"6", label:"6"},
+{val:"7", label:"7"},{val:"8", label:"8"},{val:"9", label:"9"},{val:"10", label:"10"},
+]},
+],
+calc:function(v){
+  let s = 0;
+  const sintomas = ['dor','cansaco','sono','nausea','apetite','dispneia','depressao','ansiedade','bemestar'];
+  for (const k of sintomas) s += parseInt(v[k]||0);
+  return s;
+},
+interp:function(s){
+  const max = 90;
+  if(s<=10) return {risco:`ESAS total ${s}/${max} — Sintomas leves`, acao:"Acompanhamento de rotina. Reaplicar em 1-2 semanas. Manter o que está funcionando.", cor:"ok"};
+  if(s<=30) return {risco:`ESAS total ${s}/${max} — Sintomas moderados`, acao:"⚠ Identificar sintoma(s) com score ≥4 e ENDEREÇAR especificamente: dor → ajustar analgesia/escada OMS; náusea → antiemético por mecanismo; dispneia → morfina baixa dose + ar fresco; ansiedade → lorazepam SOS + abordagem psicossocial; falta de apetite → não forçar, dexa curto prazo se indicado. Reaplicar em 1 semana.", cor:"warn"};
+  return {risco:`ESAS total ${s}/${max} — Sintomas intensos / múltiplos`, acao:"⚠ ⚠ Sofrimento significativo. Acionar EQUIPE COMPLETA — médico, enfermagem, psicologia, assistente social, espiritualidade. Revisar TODOS os sintomas ≥4 com plano específico. Considerar reavaliar prognóstico (PPI/KPS). Sedação paliativa: somente se sintoma refratário (não responde a manejo otimizado) E paciente em fase final. Reaplicar ESAS em 2-3 dias.", cor:"crit"};
+}
+},
+
+];
+
+/* Adicionar ao array CALCS principal */
+CALCS_EXTRA4.forEach(c => {
+  CALCS.push(c);
+  CALCS_BY_ID[c.id] = c;
+});
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CONVERSORES DE DROGAS/UNIDADES
    =========================================================== */
 
@@ -16311,6 +17184,778 @@ svg:`<svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg">
 <text x="80" y="1009" class="f-tx">► Profilaxia secundária com ATB/antifúngico em ciclos subsequentes — discussão oncologia</text>
 
 <text x="410" y="1075" text-anchor="middle" class="f-ts" style="font-size:10px;fill:var(--ink-3)">IDSA Neutropenic Fever 2010 (atualização 2018) • NCCN 2024 • MASCC Score</text>
+</svg>`
+};
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — FLUXOGRAMAS SVG (PARTE 3)
+   Cuidados Paliativos:
+   escada-oms, nausea-paliativa, constipacao-opioide,
+   delirium-paliativo, sedacao-paliativa, ultimas-horas,
+   compressao-medular, spikes
+   =========================================================== */
+
+/* ============== 1. ESCADA ANALGÉSICA OMS ADAPTADA ============== */
+FLOWS["escada-oms"] = {
+titulo: "Escada Analgésica da OMS Adaptada — Dor Oncológica",
+fonte: "OMS Cancer Pain Relief 1986/2018; ANCP",
+svg: `<svg viewBox="0 0 860 1080" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-oms" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="290" y="20" width="280" height="50" class="f-start"/>
+<text x="430" y="42" text-anchor="middle" class="f-tw">Dor em paciente oncológico</text>
+<text x="430" y="60" text-anchor="middle" class="f-tw" style="font-size:11px">Avaliar EVA 0-10 + tipo + adjuvantes</text>
+<line x1="430" y1="70" x2="430" y2="100" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="100" y="105" width="660" height="60" class="f-rect"/>
+<text x="430" y="128" text-anchor="middle" class="f-t">CARACTERIZAR a dor</text>
+<text x="430" y="148" text-anchor="middle" class="f-ts">Intensidade (EVA) + tipo (nociceptiva/neuropática/mista) + somática/visceral + adjuvantes necessários</text>
+<line x1="430" y1="165" x2="430" y2="195" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="50" y="200" width="220" height="170" class="f-ok"/>
+<text x="160" y="225" text-anchor="middle" class="f-t">DEGRAU 1 — Dor LEVE</text>
+<text x="160" y="244" text-anchor="middle" class="f-ts">EVA 1-3</text>
+<text x="160" y="268" text-anchor="middle" class="f-ts">DIPIRONA 1 g 6/6h</text>
+<text x="160" y="286" text-anchor="middle" class="f-ts">OU PARACETAMOL 750mg 6/6h</text>
+<text x="160" y="304" text-anchor="middle" class="f-ts">± AINE (uso cauteloso)</text>
+<text x="160" y="328" text-anchor="middle" class="f-tc">+ Adjuvantes desde já:</text>
+<text x="160" y="346" text-anchor="middle" class="f-ts">neuropática→gaba/preg/ADT</text>
+<text x="160" y="362" text-anchor="middle" class="f-ts">óssea→dexa+RT+bifosfonato</text>
+
+<rect x="320" y="200" width="220" height="170" class="f-warn"/>
+<text x="430" y="225" text-anchor="middle" class="f-t">DEGRAU 2 — MODERADA</text>
+<text x="430" y="244" text-anchor="middle" class="f-ts">EVA 4-6 (em desuso —</text>
+<text x="430" y="260" text-anchor="middle" class="f-ts">subir direto a morfina)</text>
+<text x="430" y="284" text-anchor="middle" class="f-ts">TRAMADOL 50-100mg 6/6h</text>
+<text x="430" y="302" text-anchor="middle" class="f-ts">OU CODEÍNA 30-60mg 6/6h</text>
+<text x="430" y="320" text-anchor="middle" class="f-ts">± Degrau 1 + adjuvantes</text>
+<text x="430" y="346" text-anchor="middle" class="f-tc">CUIDADO TRAMADOL:</text>
+<text x="430" y="362" text-anchor="middle" class="f-ts">convulsão, sd serotoninérgica</text>
+
+<rect x="590" y="200" width="220" height="170" class="f-crit"/>
+<text x="700" y="225" text-anchor="middle" class="f-t">DEGRAU 3 — SEVERA</text>
+<text x="700" y="244" text-anchor="middle" class="f-ts">EVA 7-10</text>
+<text x="700" y="268" text-anchor="middle" class="f-tc">MORFINA — 1ª LINHA</text>
+<text x="700" y="286" text-anchor="middle" class="f-ts">Opioide-naive:</text>
+<text x="700" y="304" text-anchor="middle" class="f-ts">5-10 mg VO 4/4h</text>
+<text x="700" y="322" text-anchor="middle" class="f-ts">+ resgate 5 mg 1/1h</text>
+<text x="700" y="346" text-anchor="middle" class="f-tc">Idoso/IRC: 2,5-5 mg</text>
+<text x="700" y="362" text-anchor="middle" class="f-ts">± Degrau 1 + adjuvantes</text>
+
+<line x1="700" y1="370" x2="700" y2="405" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="540" y="410" width="320" height="105" class="f-rect"/>
+<text x="700" y="432" text-anchor="middle" class="f-t">Após 24-48h titular</text>
+<text x="700" y="452" text-anchor="middle" class="f-ts">Somar TOTAL/24h (basal + resgates)</text>
+<text x="700" y="468" text-anchor="middle" class="f-ts">→ Converter para MORFINA LP 12/12h</text>
+<text x="700" y="486" text-anchor="middle" class="f-ts">Manter 10-15% da dose total como</text>
+<text x="700" y="502" text-anchor="middle" class="f-ts">RESGATE 1/1h para breakthrough</text>
+
+<line x1="700" y1="515" x2="700" y2="545" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="540" y="550" width="320" height="125" class="f-warn"/>
+<text x="700" y="575" text-anchor="middle" class="f-t">VIA SC quando VO inviável</text>
+<text x="700" y="595" text-anchor="middle" class="f-ts">vômito, disfagia, obstrução, agonia</text>
+<text x="700" y="615" text-anchor="middle" class="f-tc">Conversão VO→SC: ÷ 2</text>
+<text x="700" y="633" text-anchor="middle" class="f-ts">Ex: morfina VO 30 mg = SC 15 mg</text>
+<text x="700" y="651" text-anchor="middle" class="f-ts">4/4h SC OU bomba 4-8 mg/h</text>
+<text x="700" y="667" text-anchor="middle" class="f-ts">Sítios: deltoide, abdome, coxa</text>
+
+<rect x="50" y="410" width="450" height="265" class="f-rect"/>
+<text x="275" y="432" text-anchor="middle" class="f-t">PROFILAXIA OBRIGATÓRIA — Efeitos Colaterais</text>
+<text x="275" y="455" text-anchor="middle" class="f-tc">CONSTIPAÇÃO (UNIVERSAL — 100%)</text>
+<text x="275" y="473" text-anchor="middle" class="f-ts">⚠ Prescrever com a 1ª dose de opioide</text>
+<text x="275" y="491" text-anchor="middle" class="f-ts">BISACODIL 10 mg HS + LACTULOSE 15-30 mL 12/12h</text>
+<text x="275" y="515" text-anchor="middle" class="f-tc">NÁUSEA (30% inicial — passa 5-7d)</text>
+<text x="275" y="533" text-anchor="middle" class="f-ts">HALOPERIDOL 0,5-2 mg 12/12h ad lib</text>
+<text x="275" y="557" text-anchor="middle" class="f-tc">SEDAÇÃO INICIAL (passa 3-5d)</text>
+<text x="275" y="575" text-anchor="middle" class="f-ts">Persistente: reduzir 25% ou rotacionar</text>
+<text x="275" y="599" text-anchor="middle" class="f-tc">PRURIDO → anti-H1; refratário → rotacionar</text>
+<text x="275" y="617" text-anchor="middle" class="f-tc">MIOCLONIA/DELIRIUM → toxicidade</text>
+<text x="275" y="635" text-anchor="middle" class="f-ts">Especialmente IRC + morfina (M3G/M6G)</text>
+<text x="275" y="653" text-anchor="middle" class="f-ts">→ ROTACIONAR para fentanil/buprenorfina/metadona</text>
+
+<line x1="430" y1="675" x2="430" y2="705" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="100" y="710" width="660" height="115" class="f-warn"/>
+<text x="430" y="735" text-anchor="middle" class="f-t">ROTAÇÃO DE OPIOIDES — quando indicar</text>
+<text x="430" y="755" text-anchor="middle" class="f-ts">Efeitos colaterais intoleráveis (mioclonia, alucinação) OU eficácia insuficiente OU toxicidade renal</text>
+<text x="430" y="775" text-anchor="middle" class="f-tc">Equivalência (MEDD):  Morfina VO ≡ 1 (base)</text>
+<text x="430" y="793" text-anchor="middle" class="f-ts">Codeína VO ≡ 0,15 | Tramadol VO ≡ 0,1-0,2 | Oxicodona VO ≡ 1,5</text>
+<text x="430" y="809" text-anchor="middle" class="f-ts">Morfina SC ≡ 2-3× VO | Fentanil TD 25 mcg/h ≈ Morfina VO 60 mg/d</text>
+<text x="430" y="821" text-anchor="middle" class="f-tc">REDUZIR 25-50% da dose calculada (cross-tolerance incompleta) → depois titular</text>
+
+<line x1="430" y1="825" x2="430" y2="855" class="f-arr" marker-end="url(#arr-oms)"/>
+
+<rect x="100" y="860" width="660" height="100" class="f-crit"/>
+<text x="430" y="885" text-anchor="middle" class="f-t">DOR REFRATÁRIA — alternativas + referenciamento</text>
+<text x="430" y="905" text-anchor="middle" class="f-ts">METADONA (NMDA antagonista, dor neuropática) — especialista | FENTANIL TD em dor estável</text>
+<text x="430" y="923" text-anchor="middle" class="f-ts">OXICODONA LP | BUPRENORFINA TD (IRC, idoso)</text>
+<text x="430" y="941" text-anchor="middle" class="f-tc">Equipe de paliativos: bloqueios, neurolíticos (plexo celíaco), RT paliativa, intervencionismo</text>
+
+<rect x="100" y="975" width="660" height="80" class="f-ok"/>
+<text x="430" y="1000" text-anchor="middle" class="f-t">PRINCÍPIOS CHAVE</text>
+<text x="430" y="1018" text-anchor="middle" class="f-ts">⚠ Dor SEVERA = MORFINA DIRETA (não passar por tramadol/codeína)</text>
+<text x="430" y="1034" text-anchor="middle" class="f-ts">⚠ Sem dose máxima — TITULAR pela dor + efeitos colaterais</text>
+<text x="430" y="1050" text-anchor="middle" class="f-ts">⚠ Reavaliar SEMPRE: tipo, intensidade, função, resgates utilizados</text>
+</svg>`
+};
+
+/* ============== 2. NÁUSEA EM PALIATIVOS — POR MECANISMO ============== */
+FLOWS["nausea-paliativa"] = {
+titulo: "Náusea/Vômito em Paliativos — Manejo por Mecanismo",
+fonte: "ANCP; NICE Palliative Care; MASCC",
+svg: `<svg viewBox="0 0 860 1100" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="290" y="20" width="280" height="50" class="f-start"/>
+<text x="430" y="42" text-anchor="middle" class="f-tw">Náusea / Vômito em paciente paliativo</text>
+<text x="430" y="60" text-anchor="middle" class="f-tw" style="font-size:11px">PRIMEIRO: identificar MECANISMO predominante</text>
+<line x1="430" y1="70" x2="430" y2="100" class="f-arr" marker-end="url(#arr-na)"/>
+
+<rect x="100" y="105" width="660" height="120" class="f-warn"/>
+<text x="430" y="128" text-anchor="middle" class="f-t">AVALIAR REVERSÍVEIS primeiro</text>
+<text x="430" y="148" text-anchor="middle" class="f-ts">Hipercalcemia (Ca corrigido), hiponatremia, uremia, hipoxia, fármaco recente</text>
+<text x="430" y="166" text-anchor="middle" class="f-tc">⚠ TOQUE RETAL — descartar FECALOMA (causa frequente subestimada)</text>
+<text x="430" y="186" text-anchor="middle" class="f-ts">Rx abdome — descartar obstrução intestinal (níveis hidroaéreos, distensão)</text>
+<text x="430" y="206" text-anchor="middle" class="f-ts">HIC — dexametasona; constipação severa — manejo intensivo</text>
+
+<line x1="430" y1="225" x2="430" y2="255" class="f-arr" marker-end="url(#arr-na)"/>
+
+<text x="430" y="278" text-anchor="middle" class="f-t" style="font-size:14px">IDENTIFICAR MECANISMO PREDOMINANTE</text>
+
+<rect x="20" y="295" width="200" height="190" class="f-rect"/>
+<text x="120" y="320" text-anchor="middle" class="f-tc">(1) CTZ / QUÍMICO</text>
+<text x="120" y="338" text-anchor="middle" class="f-ts">Opioide, quimio, uremia,</text>
+<text x="120" y="354" text-anchor="middle" class="f-ts">hipercalcemia, infecção</text>
+<text x="120" y="376" text-anchor="middle" class="f-t">HALOPERIDOL</text>
+<text x="120" y="394" text-anchor="middle" class="f-ts">0,5-2 mg VO/SC 12/12h</text>
+<text x="120" y="412" text-anchor="middle" class="f-ts">+ resgate 0,5-1 mg 1/1h</text>
+<text x="120" y="434" text-anchor="middle" class="f-tc">Alternativas:</text>
+<text x="120" y="452" text-anchor="middle" class="f-ts">Metoclopramida 10 mg 6/6h</text>
+<text x="120" y="468" text-anchor="middle" class="f-ts">Ondansetrona 4-8 mg 8/8h</text>
+
+<rect x="230" y="295" width="200" height="190" class="f-warn"/>
+<text x="330" y="320" text-anchor="middle" class="f-tc">(2) ESTASE GÁSTRICA</text>
+<text x="330" y="338" text-anchor="middle" class="f-ts">Saciedade precoce, plenitude,</text>
+<text x="330" y="354" text-anchor="middle" class="f-ts">refluxo, dispepsia</text>
+<text x="330" y="376" text-anchor="middle" class="f-t">METOCLOPRAMIDA</text>
+<text x="330" y="394" text-anchor="middle" class="f-ts">10 mg VO/SC 6-8/8h</text>
+<text x="330" y="410" text-anchor="middle" class="f-ts">30 min ANTES das refeições</text>
+<text x="330" y="432" text-anchor="middle" class="f-ts">OU BROMOPRIDA 10 mg 8/8h</text>
+<text x="330" y="455" text-anchor="middle" class="f-tc">⚠ NÃO USAR se</text>
+<text x="330" y="471" text-anchor="middle" class="f-tc">obstrução mecânica</text>
+
+<rect x="440" y="295" width="200" height="190" class="f-rect"/>
+<text x="540" y="320" text-anchor="middle" class="f-tc">(3) VESTIBULAR</text>
+<text x="540" y="338" text-anchor="middle" class="f-ts">Piora com mudança</text>
+<text x="540" y="354" text-anchor="middle" class="f-ts">postural/movimento</text>
+<text x="540" y="376" text-anchor="middle" class="f-t">DIMENIDRINATO</text>
+<text x="540" y="394" text-anchor="middle" class="f-ts">50-100 mg 6-8/8h</text>
+<text x="540" y="416" text-anchor="middle" class="f-t">OU PROMETAZINA</text>
+<text x="540" y="434" text-anchor="middle" class="f-ts">25 mg 8-12/12h</text>
+<text x="540" y="456" text-anchor="middle" class="f-ts">Escopolamina TD</text>
+<text x="540" y="472" text-anchor="middle" class="f-ts">(adesivo retroauricular)</text>
+
+<rect x="650" y="295" width="200" height="190" class="f-rect"/>
+<text x="750" y="320" text-anchor="middle" class="f-tc">(4) CORTICAL</text>
+<text x="750" y="338" text-anchor="middle" class="f-ts">Ansiedade, antecipação</text>
+<text x="750" y="354" text-anchor="middle" class="f-ts">(ex: pré-quimio)</text>
+<text x="750" y="376" text-anchor="middle" class="f-t">LORAZEPAM</text>
+<text x="750" y="394" text-anchor="middle" class="f-ts">0,5-1 mg VO/SL</text>
+<text x="750" y="410" text-anchor="middle" class="f-ts">antes do estímulo</text>
+<text x="750" y="434" text-anchor="middle" class="f-tc">+ Suporte psicológico</text>
+<text x="750" y="452" text-anchor="middle" class="f-ts">relaxamento, ambiente,</text>
+<text x="750" y="468" text-anchor="middle" class="f-ts">não-farmacológicas</text>
+
+<rect x="200" y="510" width="460" height="190" class="f-crit"/>
+<text x="430" y="532" text-anchor="middle" class="f-t">(5) OBSTRUÇÃO INTESTINAL MALIGNA — abordagem TRÍADE</text>
+<text x="430" y="555" text-anchor="middle" class="f-tc">DEXAMETASONA 8-16 mg/d SC/IV</text>
+<text x="430" y="571" text-anchor="middle" class="f-ts">(reduz edema peritumoral, anti-inflamatório, antiemético)</text>
+<text x="430" y="591" text-anchor="middle" class="f-tc">+ MORFINA SC para dor/cólica</text>
+<text x="430" y="611" text-anchor="middle" class="f-tc">+ HIOSCINA BUTILBROMETO (Buscopan) 20 mg SC 6/6h</text>
+<text x="430" y="627" text-anchor="middle" class="f-ts">(antiespasmódico para cólica)</text>
+<text x="430" y="647" text-anchor="middle" class="f-tc">+ ANTIEMÉTICO: HALOPERIDOL (NÃO metoclopramida — pode piorar)</text>
+<text x="430" y="667" text-anchor="middle" class="f-tc">REFRATÁRIO: OCTREOTIDA 100-300 mcg SC 8/8h</text>
+<text x="430" y="683" text-anchor="middle" class="f-ts">(reduz secreção GI, descomprime alça — especialista)</text>
+
+<line x1="430" y1="700" x2="430" y2="730" class="f-arr" marker-end="url(#arr-na)"/>
+
+<rect x="100" y="735" width="660" height="135" class="f-warn"/>
+<text x="430" y="760" text-anchor="middle" class="f-t">NÁUSEA REFRATÁRIA — combinar mecanismos diferentes</text>
+<text x="430" y="780" text-anchor="middle" class="f-ts">Ex: HALOPERIDOL (D2) + ONDANSETRONA (5-HT3) + DEXAMETASONA (anti-inflam)</text>
+<text x="430" y="804" text-anchor="middle" class="f-tc">LEVOMEPROMAZINA 6,25-12,5 mg VO/SC 12-24/24h</text>
+<text x="430" y="820" text-anchor="middle" class="f-ts">'Limpa-tudo' — amplo espectro (D2, 5-HT, H1, muscarínico)</text>
+<text x="430" y="838" text-anchor="middle" class="f-ts">Útil em mecanismo não claro ou multifatorial — sedativa</text>
+<text x="430" y="858" text-anchor="middle" class="f-tc">Alternativa: OLANZAPINA 2,5-10 mg/d (off-label)</text>
+
+<rect x="100" y="885" width="660" height="115" class="f-ok"/>
+<text x="430" y="910" text-anchor="middle" class="f-t">MEDIDAS NÃO-FARMACOLÓGICAS</text>
+<text x="430" y="930" text-anchor="middle" class="f-ts">Refeições pequenas e frequentes • Alimentos frios podem ser melhor tolerados</text>
+<text x="430" y="948" text-anchor="middle" class="f-ts">Evitar odores fortes • Ambiente ventilado • Posição confortável</text>
+<text x="430" y="966" text-anchor="middle" class="f-ts">Gengibre 1-2 g/d (chá, balas) • Aromaterapia (menta, limão)</text>
+<text x="430" y="984" text-anchor="middle" class="f-tc">⚠ Em fase ativa: NÃO FORÇAR alimentação — comer pouco é normal</text>
+
+<rect x="100" y="1015" width="660" height="60" class="f-crit"/>
+<text x="430" y="1040" text-anchor="middle" class="f-t">PRINCÍPIOS CHAVE</text>
+<text x="430" y="1060" text-anchor="middle" class="f-ts">⚠ ⚠ Tratar SEM identificar mecanismo geralmente FALHA. Anamnese direcionada + mecanismo guia droga</text>
+</svg>`
+};
+
+/* ============== 3. CONSTIPAÇÃO INDUZIDA POR OPIOIDE ============== */
+FLOWS["constipacao-opioide"] = {
+titulo: "Constipação Induzida por Opioide — Profilaxia + Escalonamento",
+fonte: "MASCC; ANCP; ESMO",
+svg: `<svg viewBox="0 0 860 1000" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-co" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="280" y="20" width="300" height="60" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">Paciente iniciando OPIOIDE</text>
+<text x="430" y="64" text-anchor="middle" class="f-tw" style="font-size:11px">Constipação é UNIVERSAL — sem tolerância significativa</text>
+<line x1="430" y1="80" x2="430" y2="110" class="f-arr" marker-end="url(#arr-co)"/>
+
+<rect x="100" y="115" width="660" height="80" class="f-crit"/>
+<text x="430" y="140" text-anchor="middle" class="f-t">⚠ ⚠ PROFILAXIA OBRIGATÓRIA — prescrever JUNTO com a 1ª dose de opioide</text>
+<text x="430" y="160" text-anchor="middle" class="f-tc">BISACODIL 5-10 mg VO HS (estimulante)</text>
+<text x="430" y="178" text-anchor="middle" class="f-tc">+ LACTULOSE 15-30 mL VO 12/12h (osmótico)</text>
+
+<line x1="430" y1="195" x2="430" y2="225" class="f-arr" marker-end="url(#arr-co)"/>
+
+<rect x="200" y="230" width="460" height="60" class="f-rect"/>
+<text x="430" y="255" text-anchor="middle" class="f-t">REAVALIAR em 2-3 dias</text>
+<text x="430" y="273" text-anchor="middle" class="f-ts">Meta: fezes Bristol 3-4, sem esforço, ≥3×/sem</text>
+
+<line x1="430" y1="290" x2="200" y2="320" class="f-arr" marker-end="url(#arr-co)"/>
+<line x1="430" y1="290" x2="660" y2="320" class="f-arr" marker-end="url(#arr-co)"/>
+
+<rect x="60" y="325" width="280" height="60" class="f-ok"/>
+<text x="200" y="350" text-anchor="middle" class="f-t">ADEQUADO — manter</text>
+<text x="200" y="368" text-anchor="middle" class="f-ts">Continuar esquema base</text>
+
+<rect x="520" y="325" width="280" height="60" class="f-warn"/>
+<text x="660" y="350" text-anchor="middle" class="f-t">INADEQUADO — escalonar</text>
+<text x="660" y="368" text-anchor="middle" class="f-ts">↓</text>
+
+<line x1="660" y1="385" x2="660" y2="415" class="f-arr" marker-end="url(#arr-co)"/>
+
+<rect x="350" y="420" width="500" height="180" class="f-warn"/>
+<text x="600" y="445" text-anchor="middle" class="f-t">ESCALONAMENTO — passos sucessivos</text>
+<text x="600" y="468" text-anchor="middle" class="f-ts">(1) Aumentar BISACODIL para 10-15 mg HS</text>
+<text x="600" y="486" text-anchor="middle" class="f-ts">(2) Adicionar SUPOSITÓRIO de GLICERINA (estimulante retal)</text>
+<text x="600" y="504" text-anchor="middle" class="f-ts">(3) Aumentar LACTULOSE para 30-45 mL 8/8h</text>
+<text x="600" y="522" text-anchor="middle" class="f-ts">(4) OU substituir lactulose por PEG (polietilenoglicol) 17 g/d</text>
+<text x="600" y="540" text-anchor="middle" class="f-ts">(5) Adicionar SENE 12-50 mg HS (estimulante alternativo)</text>
+<text x="600" y="558" text-anchor="middle" class="f-ts">(6) ÓLEO MINERAL 15-30 mL VO HS (lubrificante — cautela aspiração)</text>
+<text x="600" y="580" text-anchor="middle" class="f-tc">Reavaliar a cada 2-3 dias após cada ajuste</text>
+
+<line x1="600" y1="600" x2="600" y2="630" class="f-arr" marker-end="url(#arr-co)"/>
+
+<rect x="350" y="635" width="500" height="120" class="f-crit"/>
+<text x="600" y="660" text-anchor="middle" class="f-t">REFRATÁRIO (>5-7 dias com esquema otimizado)</text>
+<text x="600" y="683" text-anchor="middle" class="f-tc">METILNALTREXONA 8 mg SC (38-62 kg) ou 12 mg SC (>62 kg) cada 48h</text>
+<text x="600" y="701" text-anchor="middle" class="f-ts">Antagonista μ-opioide PERIFÉRICO — não atravessa BHE</text>
+<text x="600" y="717" text-anchor="middle" class="f-ts">Mantém analgesia central. Efeito laxativo em 30-60 min.</text>
+<text x="600" y="737" text-anchor="middle" class="f-tc">⚠ NÃO usar se obstrução intestinal suspeita ou lesão GI ativa</text>
+
+<rect x="20" y="420" width="310" height="335" class="f-rect"/>
+<text x="175" y="445" text-anchor="middle" class="f-t">FECALOMA — diagnóstico</text>
+<text x="175" y="468" text-anchor="middle" class="f-tc">Sintomas:</text>
+<text x="175" y="486" text-anchor="middle" class="f-ts">• Constipação ≥3 dias</text>
+<text x="175" y="502" text-anchor="middle" class="f-ts">• Diarreia PARADOXAL</text>
+<text x="175" y="518" text-anchor="middle" class="f-ts">  (escape ao redor — NÃO tratar como diarreia!)</text>
+<text x="175" y="540" text-anchor="middle" class="f-tc">Diagnóstico:</text>
+<text x="175" y="558" text-anchor="middle" class="f-ts">⚠ Toque retal — fezes endurecidas</text>
+<text x="175" y="574" text-anchor="middle" class="f-ts">Rx abdome se alto</text>
+<text x="175" y="596" text-anchor="middle" class="f-tc">Tratamento:</text>
+<text x="175" y="614" text-anchor="middle" class="f-ts">• Desimpactação manual + lubrificante</text>
+<text x="175" y="630" text-anchor="middle" class="f-ts">• Supositório glicerina</text>
+<text x="175" y="646" text-anchor="middle" class="f-ts">• Lavagem retal SF 200-500 mL</text>
+<text x="175" y="668" text-anchor="middle" class="f-tc">⚠ NÃO USAR enema fosfato</text>
+<text x="175" y="684" text-anchor="middle" class="f-ts">em idoso/IRC (hiperfosfatemia)</text>
+<text x="175" y="706" text-anchor="middle" class="f-tc">Após resolução:</text>
+<text x="175" y="724" text-anchor="middle" class="f-ts">Otimizar profilaxia regular</text>
+<text x="175" y="740" text-anchor="middle" class="f-ts">+ avaliar rotação de opioide</text>
+
+<rect x="100" y="780" width="660" height="100" class="f-ok"/>
+<text x="430" y="805" text-anchor="middle" class="f-t">MEDIDAS NÃO-FARMACOLÓGICAS</text>
+<text x="430" y="825" text-anchor="middle" class="f-ts">Hidratação conforme tolerância • Atividade física se possível</text>
+<text x="430" y="843" text-anchor="middle" class="f-ts">Posição ortostática para evacuação • Banquinho sob pés</text>
+<text x="430" y="861" text-anchor="middle" class="f-ts">Privacidade, tempo, ambiente confortável</text>
+
+<rect x="100" y="895" width="660" height="80" class="f-warn"/>
+<text x="430" y="920" text-anchor="middle" class="f-t">⚠ FIBRAS solúveis (psyllium): EVITAR em fase avançada/anoréxico/desidratado</text>
+<text x="430" y="940" text-anchor="middle" class="f-ts">Sem água adequada, pioram constipação</text>
+<text x="430" y="958" text-anchor="middle" class="f-tc">Usar APENAS em paciente com função GI preservada + hidratação adequada</text>
+</svg>`
+};
+
+/* ============== 4. DELIRIUM PALIATIVO ============== */
+FLOWS["delirium-paliativo"] = {
+titulo: "Delirium em Cuidados Paliativos — Manejo",
+fonte: "ANCP; APA Delirium; NICE",
+svg: `<svg viewBox="0 0 860 1080" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-de" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="280" y="20" width="300" height="55" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">Suspeita de DELIRIUM</text>
+<text x="430" y="64" text-anchor="middle" class="f-tw" style="font-size:11px">Alteração aguda + flutuação + desatenção</text>
+<line x1="430" y1="75" x2="430" y2="105" class="f-arr" marker-end="url(#arr-de)"/>
+
+<rect x="100" y="110" width="660" height="80" class="f-rect"/>
+<text x="430" y="135" text-anchor="middle" class="f-t">CONFIRMAR — Critérios CAM</text>
+<text x="430" y="155" text-anchor="middle" class="f-ts">(1) Início agudo + flutuação + (2) Desatenção +</text>
+<text x="430" y="173" text-anchor="middle" class="f-ts">(3) Pensamento desorganizado OU (4) Nível alterado de consciência</text>
+
+<line x1="430" y1="190" x2="430" y2="220" class="f-arr" marker-end="url(#arr-de)"/>
+
+<rect x="100" y="225" width="660" height="170" class="f-crit"/>
+<text x="430" y="250" text-anchor="middle" class="f-t">INVESTIGAR REVERSIBILIDADE — Mnemônico D-E-L-I-R-I-U-M</text>
+<text x="170" y="278" class="f-tc">D — Drogas</text>
+<text x="170" y="294" class="f-ts">opioide, BZD, anticolinérgico, corticoide</text>
+<text x="170" y="312" class="f-tc">E — Eletrólitos</text>
+<text x="170" y="328" class="f-ts">Na, K, Ca, Mg, glicemia, ureia</text>
+<text x="170" y="346" class="f-tc">L — Low O₂ / hipoxemia</text>
+<text x="170" y="362" class="f-ts">SatO₂, gasometria, Hb, ICC, TEP</text>
+<text x="500" y="278" class="f-tc">I — Infecção</text>
+<text x="500" y="294" class="f-ts">urinária, respiratória, sistêmica</text>
+<text x="500" y="312" class="f-tc">R — Retenção</text>
+<text x="500" y="328" class="f-ts">urinária (sondagem) / fecal (toque retal)</text>
+<text x="500" y="346" class="f-tc">I — Intracraniana</text>
+<text x="500" y="362" class="f-ts">mets, AVC, HIC — TC se sinais focais</text>
+<text x="430" y="385" text-anchor="middle" class="f-tc">U — Uremia, falência hepática | M — Dor mal controlada, abstinência</text>
+
+<line x1="430" y1="395" x2="430" y2="425" class="f-arr" marker-end="url(#arr-de)"/>
+
+<rect x="100" y="430" width="660" height="140" class="f-ok"/>
+<text x="430" y="455" text-anchor="middle" class="f-t">MEDIDAS NÃO-FARMACOLÓGICAS — SEMPRE primeiro</text>
+<text x="430" y="478" text-anchor="middle" class="f-ts">⚠ Ambiente CALMO, iluminação adequada (luz dia / escuro à noite)</text>
+<text x="430" y="496" text-anchor="middle" class="f-ts">Presença de familiar conhecido + objetos familiares + música preferida</text>
+<text x="430" y="514" text-anchor="middle" class="f-ts">Reorientação verbal frequente + reduzir estímulos + reduzir equipe rotativa</text>
+<text x="430" y="534" text-anchor="middle" class="f-tc">⚠ DESPRESCREVER drogas precipitantes (anticolinérgicos, BZD se possível)</text>
+<text x="430" y="552" text-anchor="middle" class="f-tc">⚠ TRATAR causas reversíveis identificadas (ATB, hidratação, sondagem, eletrólitos)</text>
+
+<line x1="430" y1="570" x2="430" y2="600" class="f-arr" marker-end="url(#arr-de)"/>
+
+<text x="430" y="623" text-anchor="middle" class="f-t" style="font-size:14px">AGITAÇÃO compromete cuidado / paciente sofre</text>
+
+<line x1="430" y1="635" x2="200" y2="665" class="f-arr" marker-end="url(#arr-de)"/>
+<line x1="430" y1="635" x2="660" y2="665" class="f-arr" marker-end="url(#arr-de)"/>
+
+<rect x="50" y="670" width="320" height="170" class="f-crit"/>
+<text x="210" y="695" text-anchor="middle" class="f-t">SEM Parkinson / Lewy</text>
+<text x="210" y="718" text-anchor="middle" class="f-tc">HALOPERIDOL — 1ª LINHA</text>
+<text x="210" y="738" text-anchor="middle" class="f-ts">0,5-2 mg VO/SC 8-12/12h</text>
+<text x="210" y="754" text-anchor="middle" class="f-ts">+ resgate 0,5-1 mg 1/1h</text>
+<text x="210" y="772" text-anchor="middle" class="f-ts">Idoso: 0,25-0,5 mg</text>
+<text x="210" y="792" text-anchor="middle" class="f-tc">Refratário / hiperativo intenso:</text>
+<text x="210" y="810" text-anchor="middle" class="f-ts">LEVOMEPROMAZINA</text>
+<text x="210" y="826" text-anchor="middle" class="f-ts">12,5-25 mg VO/SC 8-12/12h</text>
+
+<rect x="490" y="670" width="320" height="170" class="f-warn"/>
+<text x="650" y="695" text-anchor="middle" class="f-t">COM Parkinson / Lewy</text>
+<text x="650" y="718" text-anchor="middle" class="f-tc">QUETIAPINA</text>
+<text x="650" y="738" text-anchor="middle" class="f-ts">12,5-50 mg HS</text>
+<text x="650" y="754" text-anchor="middle" class="f-ts">Menos extrapiramidal</text>
+<text x="650" y="772" text-anchor="middle" class="f-ts">que haloperidol</text>
+<text x="650" y="794" text-anchor="middle" class="f-tc">⚠ EVITAR haloperidol</text>
+<text x="650" y="810" text-anchor="middle" class="f-ts">(rigidez grave, SNM)</text>
+<text x="650" y="826" text-anchor="middle" class="f-ts">e clorpromazina</text>
+
+<line x1="430" y1="855" x2="430" y2="885" class="f-arr" marker-end="url(#arr-de)"/>
+
+<rect x="100" y="890" width="660" height="100" class="f-warn"/>
+<text x="430" y="915" text-anchor="middle" class="f-t">REFRATÁRIO a antipsicótico</text>
+<text x="430" y="938" text-anchor="middle" class="f-tc">+ MIDAZOLAM SC 2,5-5 mg como resgate; BIC SC 0,5-2 mg/h</text>
+<text x="430" y="954" text-anchor="middle" class="f-ts">⚠ BZD isolado pode PIORAR delirium (paradoxo) — usar EM COMBINAÇÃO</text>
+<text x="430" y="974" text-anchor="middle" class="f-tc">Considerar SEDAÇÃO PALIATIVA proporcional (vide fluxograma)</text>
+
+<rect x="100" y="1005" width="660" height="60" class="f-ok"/>
+<text x="430" y="1030" text-anchor="middle" class="f-t">⚠ DELIRIUM HIPOATIVO é MAIS COMUM e MAIS SUBDIAGNOSTICADO</text>
+<text x="430" y="1050" text-anchor="middle" class="f-ts">Paciente quieto/sonolento ≠ paciente em paz. Aplicar CAM ativamente.</text>
+</svg>`
+};
+
+/* ============== 5. SEDAÇÃO PALIATIVA ============== */
+FLOWS["sedacao-paliativa"] = {
+titulo: "Sedação Paliativa — Indicação + Protocolo",
+fonte: "ANCP; EAPC; CFM Res 1.805/2006 + 2.156/2016",
+svg: `<svg viewBox="0 0 860 1020" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-sp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="270" y="20" width="320" height="60" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">SINTOMA REFRATÁRIO em fase ativa</text>
+<text x="430" y="64" text-anchor="middle" class="f-tw" style="font-size:11px">Dor, dispneia, delirium, vômito, hemorragia, distresse</text>
+<line x1="430" y1="80" x2="430" y2="110" class="f-arr" marker-end="url(#arr-sp)"/>
+
+<rect x="100" y="115" width="660" height="105" class="f-warn"/>
+<text x="430" y="140" text-anchor="middle" class="f-t">CRITÉRIOS DE REFRATARIEDADE</text>
+<text x="430" y="160" text-anchor="middle" class="f-ts">(1) Sintoma NÃO CONTROLADO apesar de abordagem otimizada</text>
+<text x="430" y="178" text-anchor="middle" class="f-ts">(2) Toxicidade INACEITÁVEL de tratamentos disponíveis</text>
+<text x="430" y="196" text-anchor="middle" class="f-ts">(3) Probabilidade MUITO BAIXA de resposta a outras terapias</text>
+<text x="430" y="214" text-anchor="middle" class="f-tc">+ Prognóstico de horas-dias (fase ativa)</text>
+
+<line x1="430" y1="220" x2="430" y2="250" class="f-arr" marker-end="url(#arr-sp)"/>
+
+<rect x="100" y="255" width="660" height="100" class="f-crit"/>
+<text x="430" y="280" text-anchor="middle" class="f-t">DECISÃO COMPARTILHADA — multidisciplinar</text>
+<text x="430" y="302" text-anchor="middle" class="f-ts">Paciente (se lúcido), família, equipe</text>
+<text x="430" y="320" text-anchor="middle" class="f-tc">DOCUMENTAR: intenção (alívio sintoma, NÃO acelerar morte)</text>
+<text x="430" y="336" text-anchor="middle" class="f-ts">Sintoma alvo + opções exploradas + comunicação família + plano monitoramento</text>
+<text x="430" y="352" text-anchor="middle" class="f-tc">⚠ ⚠ DUPLO EFEITO — diferente de eutanásia (Res CFM 1.805/2006)</text>
+
+<line x1="430" y1="355" x2="430" y2="385" class="f-arr" marker-end="url(#arr-sp)"/>
+
+<rect x="100" y="390" width="660" height="180" class="f-rect"/>
+<text x="430" y="415" text-anchor="middle" class="f-t">MIDAZOLAM — 1ª LINHA</text>
+<text x="430" y="438" text-anchor="middle" class="f-tc">INDUÇÃO: 2,5-5 mg SC bolus (idoso/caquético: 1-2,5 mg)</text>
+<text x="430" y="454" text-anchor="middle" class="f-ts">Repetir cada 10-15 min até conforto</text>
+<text x="430" y="476" text-anchor="middle" class="f-tc">MANUTENÇÃO: BIC SC 0,5-2 mg/h</text>
+<text x="430" y="492" text-anchor="middle" class="f-ts">Titular conforme RASS alvo</text>
+<text x="430" y="514" text-anchor="middle" class="f-tc">RASS ALVO:</text>
+<text x="430" y="532" text-anchor="middle" class="f-ts">-2 a -3 (sedação leve-moderada — paciente arousable mas confortável)</text>
+<text x="430" y="550" text-anchor="middle" class="f-ts">-4 a -5 em refratariedade extrema</text>
+
+<line x1="430" y1="570" x2="430" y2="600" class="f-arr" marker-end="url(#arr-sp)"/>
+
+<rect x="100" y="605" width="660" height="135" class="f-warn"/>
+<text x="430" y="630" text-anchor="middle" class="f-t">REFRATÁRIO ao midazolam — adicionar</text>
+<text x="430" y="653" text-anchor="middle" class="f-tc">LEVOMEPROMAZINA SC 12,5-25 mg cada 4-6h</text>
+<text x="430" y="669" text-anchor="middle" class="f-ts">OU BIC SC 50-100 mg/d (efeito antiemético + sedativo + analgésico adjuvante)</text>
+<text x="430" y="691" text-anchor="middle" class="f-tc">FENOBARBITAL SC bolus 100-200 mg + BIC 600-1600 mg/d</text>
+<text x="430" y="707" text-anchor="middle" class="f-tc">PROPOFOL BIC IV 0,5-2 mg/kg/h (hospital monitorado)</text>
+<text x="430" y="723" text-anchor="middle" class="f-ts">CETAMINA SC em dor refratária associada (especialista)</text>
+
+<line x1="430" y1="740" x2="430" y2="770" class="f-arr" marker-end="url(#arr-sp)"/>
+
+<rect x="100" y="775" width="660" height="135" class="f-crit"/>
+<text x="430" y="800" text-anchor="middle" class="f-t">⚠ ⚠ MANTER em PARALELO</text>
+<text x="430" y="823" text-anchor="middle" class="f-tc">OPIOIDE — sedação NÃO substitui analgesia</text>
+<text x="430" y="839" text-anchor="middle" class="f-ts">Manter morfina (ou outro opioide) titulando conforme dor/dispneia</text>
+<text x="430" y="857" text-anchor="middle" class="f-tc">HIOSCINA BUTILBROMETO se estertor; HALOPERIDOL se náusea</text>
+<text x="430" y="879" text-anchor="middle" class="f-tc">DESPRESCREVER não-essenciais (anti-HAS, hipoglicemiantes, estatinas)</text>
+<text x="430" y="895" text-anchor="middle" class="f-tc">HIDRATAÇÃO — em fase ativa: geralmente SUSPENDER ou minimizar</text>
+
+<rect x="100" y="925" width="660" height="80" class="f-ok"/>
+<text x="430" y="950" text-anchor="middle" class="f-t">COMUNICAÇÃO CONTINUA com família</text>
+<text x="430" y="970" text-anchor="middle" class="f-ts">'Estamos aliviando o sofrimento, não acelerando a morte'</text>
+<text x="430" y="988" text-anchor="middle" class="f-ts">Encorajar família a falar/tocar — audição persiste até bem tarde</text>
+</svg>`
+};
+
+/* ============== 6. ÚLTIMAS HORAS ============== */
+FLOWS["ultimas-horas"] = {
+titulo: "Últimas Horas de Vida — Conforto + Via SC + Kit",
+fonte: "ANCP; EAPC; PCMS-MS",
+svg: `<svg viewBox="0 0 860 1080" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-uh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="270" y="20" width="320" height="55" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">RECONHECER fase ATIVA</text>
+<text x="430" y="64" text-anchor="middle" class="f-tw" style="font-size:11px">Horizonte de horas-dias</text>
+<line x1="430" y1="75" x2="430" y2="105" class="f-arr" marker-end="url(#arr-uh)"/>
+
+<rect x="100" y="110" width="660" height="135" class="f-warn"/>
+<text x="430" y="135" text-anchor="middle" class="f-t">SINAIS de fase ATIVA</text>
+<text x="170" y="158" class="f-ts">• ↓ ingesta líquidos/sólidos</text>
+<text x="170" y="176" class="f-ts">• Disfagia, sonolência crescente</text>
+<text x="170" y="194" class="f-ts">• Respiração irregular / Cheyne-Stokes</text>
+<text x="170" y="212" class="f-ts">• Estertor (gorgolejo)</text>
+<text x="430" y="158" class="f-ts">• Pele mosqueada / marmórea / fria</text>
+<text x="430" y="176" class="f-ts">• Pulso fino, PA caindo</text>
+<text x="430" y="194" class="f-ts">• Oligo-anúria</text>
+<text x="430" y="212" class="f-ts">• Delirium / alucinações ('visitantes')</text>
+<text x="430" y="232" text-anchor="middle" class="f-tc">Pode haver 'lucidez terminal' antes do óbito</text>
+
+<line x1="430" y1="245" x2="430" y2="275" class="f-arr" marker-end="url(#arr-uh)"/>
+
+<rect x="100" y="280" width="660" height="80" class="f-rect"/>
+<text x="430" y="305" text-anchor="middle" class="f-t">COMUNICAR FAMÍLIA — REORGANIZAR PRIORIDADES</text>
+<text x="430" y="325" text-anchor="middle" class="f-ts">'Estamos entrando nos últimos dias/horas. O foco agora é conforto e presença'</text>
+<text x="430" y="343" text-anchor="middle" class="f-tc">CONFORTO + DIGNIDADE + PRESENÇA FAMILIAR + AMBIENTE</text>
+
+<line x1="430" y1="360" x2="430" y2="390" class="f-arr" marker-end="url(#arr-uh)"/>
+
+<rect x="20" y="395" width="400" height="200" class="f-warn"/>
+<text x="220" y="420" text-anchor="middle" class="f-t">DESPRESCREVER não-essenciais</text>
+<text x="220" y="443" text-anchor="middle" class="f-tc">SUSPENDER:</text>
+<text x="220" y="461" text-anchor="middle" class="f-ts">anti-hipertensivos</text>
+<text x="220" y="477" text-anchor="middle" class="f-ts">hipoglicemiantes, estatinas</text>
+<text x="220" y="493" text-anchor="middle" class="f-ts">suplementos, vitaminas</text>
+<text x="220" y="509" text-anchor="middle" class="f-ts">antiagregantes preventivos</text>
+<text x="220" y="525" text-anchor="middle" class="f-ts">AAS preventivo</text>
+<text x="220" y="547" text-anchor="middle" class="f-tc">MANTER:</text>
+<text x="220" y="565" text-anchor="middle" class="f-ts">opioides, antiemético, sedativo</text>
+<text x="220" y="581" text-anchor="middle" class="f-ts">antimuscarínico (estertor),</text>
+<text x="220" y="595" text-anchor="middle" class="f-ts">corticoide se útil sintomático</text>
+
+<rect x="440" y="395" width="400" height="200" class="f-crit"/>
+<text x="640" y="420" text-anchor="middle" class="f-t">VIA SUBCUTÂNEA (SC) — central</text>
+<text x="640" y="443" text-anchor="middle" class="f-tc">Acesso: butterfly 21-25G</text>
+<text x="640" y="461" text-anchor="middle" class="f-ts">Sítios: deltóide, abdome,</text>
+<text x="640" y="477" text-anchor="middle" class="f-ts">coxa anterior, infraclavicular</text>
+<text x="640" y="493" text-anchor="middle" class="f-ts">Rodízio a cada 5-7 dias</text>
+<text x="640" y="515" text-anchor="middle" class="f-tc">Volume por sítio:</text>
+<text x="640" y="533" text-anchor="middle" class="f-ts">bolus ≤ 2 mL; BIC ≤ 1-2 mL/h</text>
+<text x="640" y="555" text-anchor="middle" class="f-tc">HIPODERMOCLISE:</text>
+<text x="640" y="573" text-anchor="middle" class="f-ts">SF 0,9% ou SG 5%</text>
+<text x="640" y="589" text-anchor="middle" class="f-ts">25-125 mL/h, até 1500 mL/d</text>
+
+<line x1="430" y1="595" x2="430" y2="625" class="f-arr" marker-end="url(#arr-uh)"/>
+
+<rect x="100" y="630" width="660" height="125" class="f-rect"/>
+<text x="430" y="655" text-anchor="middle" class="f-t">DROGAS COMPATÍVEIS SC vs CONTRAINDICADAS</text>
+<text x="430" y="678" text-anchor="middle" class="f-tc">✓ OK SC:</text>
+<text x="430" y="694" text-anchor="middle" class="f-ts">morfina, midazolam, haloperidol, levomepromazina, dexametasona, ondansetrona,</text>
+<text x="430" y="710" text-anchor="middle" class="f-ts">metoclopramida, hioscina butilbrometo, escopolamina, octreotida, furosemida (vol baixo)</text>
+<text x="430" y="732" text-anchor="middle" class="f-tc">✗ NÃO SC:</text>
+<text x="430" y="748" text-anchor="middle" class="f-ts">clorpromazina (necrose), diazepam (precipita), fenitoína, ceftriaxona, KCl, NaCl 3%</text>
+
+<line x1="430" y1="755" x2="430" y2="785" class="f-arr" marker-end="url(#arr-uh)"/>
+
+<rect x="100" y="790" width="660" height="195" class="f-crit"/>
+<text x="430" y="815" text-anchor="middle" class="f-t">KIT BÁSICO FIM DE VIDA — prescrição ANTECIPADA em domicílio</text>
+<text x="430" y="835" text-anchor="middle" class="f-ts">Permite resposta a sintomas SEM emergência hospitalar</text>
+<text x="170" y="858" class="f-tc">(1) MORFINA simples sol oral OU ampola SC</text>
+<text x="170" y="874" class="f-ts">dor, dispneia</text>
+<text x="170" y="894" class="f-tc">(2) MIDAZOLAM amp 5 mg/mL SC</text>
+<text x="170" y="910" class="f-ts">agitação, dispneia ansiosa, sedação</text>
+<text x="170" y="930" class="f-tc">(3) HALOPERIDOL amp 5 mg/mL SC</text>
+<text x="170" y="946" class="f-ts">náusea, delirium leve</text>
+<text x="500" y="858" class="f-tc">(4) HIOSCINA BUTIL 20 mg amp SC</text>
+<text x="500" y="874" class="f-ts">estertor, cólica</text>
+<text x="500" y="894" class="f-tc">(5) DEXAMETASONA 4 mg amp SC</text>
+<text x="500" y="910" class="f-ts">náusea, dispneia selecionados</text>
+<text x="500" y="930" class="f-tc">(6) LEVOMEPROMAZINA</text>
+<text x="500" y="946" class="f-ts">em refratários</text>
+<text x="430" y="975" text-anchor="middle" class="f-tc">+ seringas/agulhas + folha de instruções + telefone plantão</text>
+
+<rect x="100" y="1000" width="660" height="65" class="f-ok"/>
+<text x="430" y="1025" text-anchor="middle" class="f-t">DECLARAÇÃO DE ÓBITO EM DOMICÍLIO</text>
+<text x="430" y="1043" text-anchor="middle" class="f-ts">Médico assistente declara — NÃO precisa IML em óbito esperado de doença conhecida em paliativos</text>
+<text x="430" y="1057" text-anchor="middle" class="f-ts">Causa imediata + intermediária + básica (CID da neoplasia/doença avançada)</text>
+</svg>`
+};
+
+/* ============== 7. COMPRESSÃO MEDULAR MALIGNA ============== */
+FLOWS["compressao-medular"] = {
+titulo: "Compressão Medular Maligna — EMERGÊNCIA ONCOLÓGICA",
+fonte: "NICE Spinal Cord Compression; NCCN; SBOC",
+svg: `<svg viewBox="0 0 860 980" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-cm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="240" y="20" width="380" height="60" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">PACIENTE ONCOLÓGICO com</text>
+<text x="430" y="65" text-anchor="middle" class="f-tw" style="font-size:11px">dor lombar/torácica nova + déficit motor/sensitivo/esfincter</text>
+<line x1="430" y1="80" x2="430" y2="110" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="115" width="660" height="105" class="f-crit"/>
+<text x="430" y="140" text-anchor="middle" class="f-t">⚠ ⚠ EMERGÊNCIA — JANELA TERAPÊUTICA CURTA</text>
+<text x="430" y="160" text-anchor="middle" class="f-ts">Déficit motor instalado >48h frequentemente IRREVERSÍVEL</text>
+<text x="430" y="180" text-anchor="middle" class="f-tc">⚠ DOR LOMBAR NOVA em oncológico = SEMPRE investigar</text>
+<text x="430" y="198" text-anchor="middle" class="f-ts">Pode anteceder déficit em SEMANAS (janela para imagem + RT)</text>
+
+<line x1="430" y1="220" x2="430" y2="250" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="255" width="660" height="110" class="f-crit"/>
+<text x="430" y="280" text-anchor="middle" class="f-t">DEXAMETASONA EM BOLUS — IMEDIATA</text>
+<text x="430" y="303" text-anchor="middle" class="f-tc">DEXAMETASONA 16 mg IV BOLUS ÚNICO</text>
+<text x="430" y="320" text-anchor="middle" class="f-ts">depois 4 mg IV/VO 6/6h × 48h</text>
+<text x="430" y="338" text-anchor="middle" class="f-tc">⚠ ⚠ NÃO ESPERAR IMAGEM — bolus em qualquer setor (UBS, PA) em suspeita forte</text>
+<text x="430" y="358" text-anchor="middle" class="f-ts">+ ANALGESIA opioide adequada (escalonamento rápido)</text>
+
+<line x1="430" y1="365" x2="430" y2="395" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="400" width="660" height="80" class="f-warn"/>
+<text x="430" y="425" text-anchor="middle" class="f-t">RM COLUNA TOTAL URGENTE (cervical + torácica + lombar)</text>
+<text x="430" y="445" text-anchor="middle" class="f-tc">Idealmente em HORAS</text>
+<text x="430" y="463" text-anchor="middle" class="f-ts">Se RM indisponível: TC com contraste OU mielo-TC | ⚠ Rx pode ser normal</text>
+
+<line x1="430" y1="480" x2="430" y2="510" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="515" width="660" height="120" class="f-rect"/>
+<text x="430" y="540" text-anchor="middle" class="f-t">REFERENCIAMENTO + TRATAMENTO DEFINITIVO</text>
+<text x="430" y="563" text-anchor="middle" class="f-tc">RADIOTERAPIA PALIATIVA URGENTE em 24-48h</text>
+<text x="430" y="579" text-anchor="middle" class="f-ts">em paciente com déficit estabelecido</text>
+<text x="430" y="601" text-anchor="middle" class="f-tc">CIRURGIA DE DESCOMPRESSÃO + estabilização</text>
+<text x="430" y="617" text-anchor="middle" class="f-ts">se bom performance + sobrevida >3-6m + déficit <48h + instabilidade espinhal</text>
+<text x="430" y="633" text-anchor="middle" class="f-ts">ou tumor radio-resistente (renal, sarcoma)</text>
+
+<line x1="430" y1="635" x2="430" y2="665" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="670" width="660" height="105" class="f-warn"/>
+<text x="430" y="695" text-anchor="middle" class="f-t">CUIDADOS DE SUPORTE</text>
+<text x="430" y="715" text-anchor="middle" class="f-ts">• Tromboprofilaxia (enoxaparina 40 mg SC 1×/d) se acamado</text>
+<text x="430" y="731" text-anchor="middle" class="f-ts">• Sondagem vesical (retenção / esfincteriana)</text>
+<text x="430" y="747" text-anchor="middle" class="f-ts">• Manejo intestinal (laxativos, supositórios em paciente neurogênico)</text>
+<text x="430" y="763" text-anchor="middle" class="f-ts">• Fisioterapia / reabilitação precoce + bifosfonato (ác. zoledrônico 4 mg/mês)</text>
+
+<line x1="430" y1="775" x2="430" y2="805" class="f-arr" marker-end="url(#arr-cm)"/>
+
+<rect x="100" y="810" width="660" height="105" class="f-ok"/>
+<text x="430" y="835" text-anchor="middle" class="f-t">PACIENTE NÃO-CANDIDATO A INTERVENÇÃO</text>
+<text x="430" y="855" text-anchor="middle" class="f-ts">Fase muito avançada OU paraplégico >48h (sem recuperação esperada)</text>
+<text x="430" y="875" text-anchor="middle" class="f-tc">→ FOCO EM CONFORTO + ANALGESIA + SUPORTE</text>
+<text x="430" y="893" text-anchor="middle" class="f-ts">Não submeter a procedimentos invasivos sem benefício</text>
+<text x="430" y="909" text-anchor="middle" class="f-ts">Equipe de cuidados paliativos + apoio à adaptação (cadeirante, sondado)</text>
+</svg>`
+};
+
+/* ============== 8. SPIKES — Comunicação de Más Notícias ============== */
+FLOWS["spikes"] = {
+titulo: "Protocolo SPIKES — Comunicação de Más Notícias",
+fonte: "Baile WF et al. The Oncologist 2000;5:302-11",
+svg: `<svg viewBox="0 0 860 1050" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+<defs><marker id="arr-sk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-2)"/></marker></defs>
+<style>
+.f-rect{fill:var(--bg-elev);stroke:var(--ink-2);stroke-width:1.5;rx:8}
+.f-crit{fill:var(--crit-bg);stroke:var(--accent);stroke-width:2;rx:8}
+.f-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.5;rx:8}
+.f-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;rx:8}
+.f-start{fill:var(--accent);stroke:var(--accent-2);rx:30}
+.f-t{font:600 13px var(--font-body);fill:var(--ink)}
+.f-tw{font:600 13px var(--font-body);fill:#fff}
+.f-ts{font:500 11px var(--font-body);fill:var(--ink-2)}
+.f-tc{font:600 12px var(--font-body);fill:var(--accent-2)}
+.f-arr{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+</style>
+<rect x="280" y="20" width="300" height="55" class="f-start"/>
+<text x="430" y="45" text-anchor="middle" class="f-tw">Preparo para má notícia</text>
+<text x="430" y="64" text-anchor="middle" class="f-tw" style="font-size:11px">Diagnóstico/progressão/objetivos de cuidado</text>
+<line x1="430" y1="75" x2="430" y2="105" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="110" width="660" height="115" class="f-ok"/>
+<text x="430" y="135" text-anchor="middle" class="f-t">S — SETTING (ambiente)</text>
+<text x="430" y="158" text-anchor="middle" class="f-ts">Ambiente PRIVATIVO • Tempo adequado (≥30 min, sem pressa)</text>
+<text x="430" y="176" text-anchor="middle" class="f-ts">Presença de familiar se paciente desejar</text>
+<text x="430" y="194" text-anchor="middle" class="f-ts">Sentar em altura do paciente, sem mesa, sem celular</text>
+<text x="430" y="214" text-anchor="middle" class="f-tc">Desligar celular/pager — comunicar 'não interromper'</text>
+
+<line x1="430" y1="225" x2="430" y2="255" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="260" width="660" height="100" class="f-rect"/>
+<text x="430" y="285" text-anchor="middle" class="f-t">P — PERCEPTION (percepção do paciente)</text>
+<text x="430" y="308" text-anchor="middle" class="f-ts">'O que você sabe sobre sua situação atual?'</text>
+<text x="430" y="326" text-anchor="middle" class="f-ts">'O que os outros médicos disseram?'</text>
+<text x="430" y="346" text-anchor="middle" class="f-tc">Calibrar: negação / conhecimento parcial / completo — NÃO 'corrigir' negação imediatamente</text>
+
+<line x1="430" y1="360" x2="430" y2="390" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="395" width="660" height="100" class="f-warn"/>
+<text x="430" y="420" text-anchor="middle" class="f-t">I — INVITATION (convite)</text>
+<text x="430" y="443" text-anchor="middle" class="f-ts">'Quanta informação você gostaria de saber?'</text>
+<text x="430" y="461" text-anchor="middle" class="f-ts">'Você prefere que eu fale com você ou com a família primeiro?'</text>
+<text x="430" y="481" text-anchor="middle" class="f-tc">⚠ RESPEITAR — alguns pacientes preferem NÃO saber tudo (válido)</text>
+
+<line x1="430" y1="495" x2="430" y2="525" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="530" width="660" height="130" class="f-crit"/>
+<text x="430" y="555" text-anchor="middle" class="f-t">K — KNOWLEDGE (compartilhar conhecimento)</text>
+<text x="430" y="578" text-anchor="middle" class="f-tc">⚠ TIRO DE AVISO ('warning shot')</text>
+<text x="430" y="594" text-anchor="middle" class="f-ts">'Preciso compartilhar algo difícil...' / 'Os resultados não são os que esperávamos...'</text>
+<text x="430" y="614" text-anchor="middle" class="f-ts">DAR a notícia em LINGUAGEM SIMPLES, sem jargão</text>
+<text x="430" y="632" text-anchor="middle" class="f-ts">PAUSA — silêncio é necessário • PEDAÇOS pequenos — não despejar tudo</text>
+<text x="430" y="650" text-anchor="middle" class="f-tc">⚠ NÃO mentir / NÃO suavizar excessivamente</text>
+
+<line x1="430" y1="660" x2="430" y2="690" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="695" width="660" height="130" class="f-warn"/>
+<text x="430" y="720" text-anchor="middle" class="f-t">E — EMPATHY (responder a emoções)</text>
+<text x="430" y="743" text-anchor="middle" class="f-ts">OBSERVAR reação: choro, raiva, silêncio, negação</text>
+<text x="430" y="761" text-anchor="middle" class="f-tc">NOMEAR a emoção: 'Vejo que essa notícia foi muito difícil'</text>
+<text x="430" y="779" text-anchor="middle" class="f-ts">VALIDAR: 'Faz sentido se sentir assim'</text>
+<text x="430" y="797" text-anchor="middle" class="f-ts">⚠ NÃO oferecer soluções imediatas — primeiro sustentar emocionalmente</text>
+<text x="430" y="815" text-anchor="middle" class="f-tc">SILÊNCIO é OK • TOQUE (mão, ombro) se cultural/pessoalmente apropriado</text>
+
+<line x1="430" y1="825" x2="430" y2="855" class="f-arr" marker-end="url(#arr-sk)"/>
+
+<rect x="100" y="860" width="660" height="130" class="f-ok"/>
+<text x="430" y="885" text-anchor="middle" class="f-t">S — STRATEGY / SUMMARY (estratégia + síntese)</text>
+<text x="430" y="908" text-anchor="middle" class="f-ts">Só após sustentar emocionalmente — verificar se paciente 'volta'</text>
+<text x="430" y="926" text-anchor="middle" class="f-ts">'Você gostaria de saber sobre os próximos passos?'</text>
+<text x="430" y="944" text-anchor="middle" class="f-tc">OFERECER plano: tratamento, encaminhamentos, próxima consulta</text>
+<text x="430" y="962" text-anchor="middle" class="f-ts">VERIFICAR compreensão: 'Pode me dizer o que entendeu?'</text>
+<text x="430" y="980" text-anchor="middle" class="f-tc">AGENDAR próximo contato — 'vamos passar por isso juntos'</text>
+
+<rect x="100" y="1005" width="660" height="40" class="f-rect"/>
+<text x="430" y="1030" text-anchor="middle" class="f-ts">DOCUMENTAR conversa no prontuário • COMUNICAR equipe • AUTO-CUIDADO do médico</text>
 </svg>`
 };
 
@@ -25980,6 +27625,509 @@ referencias:["NICE Headache; AAN Migraine; ABE."],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 24)
+   Opioides Paliativos / Ambulatoriais
+   Tramadol, Codeína, Oxicodona LP, Metadona, Buprenorfina TD
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== TRAMADOL ============== */
+
+{id:"med-tramadol", classe:"Opioide fraco (atípico) + ação serotoninérgica/noradrenérgica", grupo:"analgesia",
+nome:"Tramadol",
+sin:["Tramal","Sylador","Tramax","Anangor"],
+formas:["Cápsula 50 mg","Comprimido SR 100 mg","Solução oral 100 mg/mL (gotas)","Ampola 50 mg/mL (1 mL, 2 mL)","REMUME — UBS uso interno (ampola) + algumas SES dispensam VO em FARMASUS"],
+resumo:"⚠ OPIOIDE FRACO ATÍPICO — Degrau 2 OMS. Ação DUAL: agonista μ FRACO + INIBE recaptação serotonina/noradrenalina (parecido com SNRI). ⚠ Útil em DOR MISTA (nociceptiva + neuropática). Eficácia ~5-10× MENOR que morfina. ⚠ ⚠ CONVULSÕES + SÍNDROME SEROTONINÉRGICA com ISRS/ISRSN/IMAO + uso recreativo crescente.",
+dose_rapida:"50-100 mg VO/IV 6/6h (máx 400 mg/d adulto; 300 mg/d idoso)",
+doses:[
+{ind:"⚠ Dor MODERADA aguda ou crônica (Degrau 2 OMS)", dose:"50-100 mg VO 4-6/6h ad lib (máx 400 mg/d). SR: 100-200 mg 12/12h (máx 400 mg/d)", obs:"⚠ Iniciar baixo (25-50 mg) em idoso, caquéticos. Pode causar náusea proeminente nos primeiros dias — geralmente passa."},
+{ind:"⚠ DOR NEUROPÁTICA (dor mista)", dose:"50-100 mg 8-12/12h, considerar SR", obs:"⚠ Útil em dor mista por ação dual SNRI-like. Eficácia comprovada em neuralgia diabética, pós-herpética."},
+{ind:"⚠ DOR EM CÂNCER MODERADA", dose:"50-100 mg 6/6h", obs:"⚠ Em dor SEVERA: SUBIR DIRETO PARA MORFINA, não 'tentar tramadol'."},
+{ind:"DOR PÓS-OP MODERADA", dose:"50-100 mg IV/IM 6/6h", obs:""},
+{ind:"Adultos jovens / não-idosos — uso de gotas", dose:"5-20 gotas (12,5-50 mg) 6/6h", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG 10-30: 50-100 mg 12/12h. TFG <10: 50 mg 12/12h. ⚠ Cuidado em paciente com convulsão.",
+iht:"⚠ Reduzir 50% em IH grave (Child C)",
+idoso:"⚠ Iniciar 25-50 mg. Máx 300 mg/d. Maior risco convulsão, hiponatremia, delirium.",
+gestante:"⚠ C — Cautela. Sintomas de descontinuação neonatal se uso 3º trimestre.",
+aleita:"⚠ Compatível em uso curto",
+ped:"⚠ ≥12a aprovado. ⚠ ⚠ <12a: PROIBIDO (FDA Black Box — morte por ultrametabolizadores). ⚠ <18a pós-tonsilectomia: PROIBIDO.",
+},
+mecanismo:"⚠ DUAL — (1) AGONISTA μ-opioide FRACO (~6000× menos potente que morfina); metabólito M1 (O-desmetiltramadol) é potente. (2) INIBE recaptação 5-HT e NA — efeito SNRI-like. Aproximadamente 10% caucasianos são POBRES METABOLIZADORES CYP2D6 — eficácia reduzida; ULTRA-RAPIDOS (~1-2%) podem ter intoxicação.",
+farmacocin:{
+absorc:"VO ~70% — com refeição não afeta",
+distrib:"Ampla",
+metab:"⚠ Hepático CYP2D6 (variabilidade genética) → M1 ativo",
+elimin:"Renal predominante",
+meiavida:"~5-7h (M1 ~9h)",
+ligacao:"~20%",
+},
+ef_colats:{
+comuns:["Náusea (frequente, geralmente passa em 3-7d)","Tontura","Sonolência","Boca seca","Constipação (menos que opioides fortes)","Sudorese","Cefaleia"],
+sérios:["⚠ ⚠ CONVULSÕES — risco DOSE-DEPENDENTE (especialmente >400 mg/d, em epilepsia, álcool, abstinência, BZD, ADT)","⚠ ⚠ SÍNDROME SEROTONINÉRGICA — com ISRS/ISRSN/IMAO/triptano/linezolida/ondansetrona dose alta","⚠ HIPONATREMIA (SIADH) em idoso","Depressão respiratória (rara em dose terapêutica)","Dependência / abuso (crescente)","Síndrome de abstinência em suspensão abrupta","Reações alérgicas","QT longo em dose alta"],
+},
+interacoes:["⚠ ⚠ ISRS, ISRSN, IMAO, tricíclicos, linezolida, ondansetrona dose alta: SÍNDROME SEROTONINÉRGICA","⚠ ⚠ Bupropiona: ↑ risco CONVULSÃO","⚠ Antipsicóticos, ADT: ↑ convulsão","INDUTORES CYP2D6 / CYP3A4 (rifampicina, carbamazepina, fenitoína): ↓ tramadol","INIBIDORES CYP2D6 (fluoxetina, paroxetina, bupropiona): ↑ tramadol (paradoxalmente — reduz M1 ativo, eficácia menor)","Álcool, BZD: depressão SNC somativa","Warfarina: ↑ INR"],
+contraindicacoes:["⚠ EPILEPSIA não controlada","⚠ ⚠ <12a","⚠ <18a pós-tonsilectomia/adenoidectomia","⚠ Intoxicação aguda por álcool, opioides, BZD","⚠ IMAO em 14 dias","Insuficiência respiratória grave","Hipersensibilidade"],
+monit:["Convulsão","Sódio sérico em idoso","Sintomas serotoninérgicos","Sinais de abuso"],
+gravidez:"C",
+sus:"REMUME — UBS uso interno (ampola); algumas SES em FARMASUS VO",
+referencias:["⚠ FDA Black Box <12a; PCDT-MS Dor crônica; NICE; ANCP."],
+},
+
+/* ============== CODEÍNA ============== */
+
+{id:"med-codeina", classe:"Opioide fraco (pro-droga)", grupo:"analgesia",
+nome:"Codeína",
+sin:["Codein","Tylex (codeína + paracetamol)","Codaten"],
+formas:["Comprimido 30 mg, 60 mg (sozinho ou em combinação com paracetamol)","Solução oral 3 mg/mL","Ampola 30 mg/mL IM/SC (raro Brasil)","FARMASUS (controle especial)"],
+resumo:"⚠ OPIOIDE FRACO — Degrau 2 OMS. PRO-DROGA — depende de CYP2D6 para conversão em MORFINA (10% da dose → morfina). ⚠ ⚠ EXTREMA VARIABILIDADE GENÉTICA — ULTRAMETABOLIZADORES (4-30% conforme etnia) podem ter intoxicação fatal; POBRES METABOLIZADORES (~10% caucasianos) têm zero efeito. ⚠ Também ANTITUSSÍGENO eficaz. ⚠ <12A E PÓS-TONSILECTOMIA: PROIBIDO (FDA Black Box).",
+dose_rapida:"30-60 mg VO 4-6/6h (máx 240 mg/d)",
+doses:[
+{ind:"⚠ Dor LEVE-MODERADA — Degrau 2 OMS", dose:"30-60 mg VO 4-6/6h ad lib (máx 240 mg/d, geralmente em combinação fixa com paracetamol)", obs:"⚠ Em paciente com dor SEVERA: SUBIR DIRETO PARA MORFINA."},
+{ind:"⚠ TOSSE seca refratária (antitussígeno)", dose:"15-30 mg VO 6/6h ad lib", obs:"Em adulto. Não usar em criança."},
+{ind:"DOR PÓS-OP MODERADA", dose:"30-60 mg VO 4-6/6h", obs:""},
+],
+ajustes:{
+irc:"⚠ Reduzir em IRC — metabolismo prejudicado",
+iht:"⚠ Reduzir 50% em IH",
+idoso:"⚠ Iniciar 15-30 mg. Constipação importante.",
+gestante:"⚠ C — Cautela. Sintomas de descontinuação neonatal.",
+aleita:"⚠ ⚠ EVITAR — em ULTRAMETABOLIZADORAS LACTANTES: morfina alta no leite → óbito do lactente reportado. FDA Black Box.",
+ped:"⚠ ⚠ ⚠ <12 ANOS: PROIBIDO (FDA Black Box 2017). Pós-tonsilectomia/adenoidectomia em <18a: PROIBIDO.",
+},
+mecanismo:"⚠ ⚠ PRO-DROGA — convertida pelo CYP2D6 em MORFINA (10% da dose) que é a forma ATIVA. Atividade direta da codeína mínima. Variabilidade interindividual ENORME conforme genótipo CYP2D6.",
+farmacocin:{
+absorc:"VO ~50%",
+distrib:"Ampla",
+metab:"⚠ Hepático CYP2D6 → MORFINA (10%) + outros metabólitos",
+elimin:"Renal",
+meiavida:"~2-4h",
+ligacao:"~7-25%",
+},
+ef_colats:{
+comuns:["Constipação (MUITO FREQUENTE — universal)","Náusea","Vômito","Sedação","Boca seca","Tontura","Sudorese"],
+sérios:["⚠ ⚠ DEPRESSÃO RESPIRATÓRIA em ULTRAMETABOLIZADORES — pode ser FATAL em criança/lactente","Dependência","Síndrome de abstinência","Reações alérgicas","Anafilaxia"],
+},
+interacoes:["⚠ INIBIDORES CYP2D6 (fluoxetina, paroxetina, bupropiona, quinidina): ↓ codeína → MORFINA → reduz analgesia","⚠ Álcool, BZD: depressão somativa","⚠ IMAO em 14 dias"],
+contraindicacoes:["⚠ ⚠ ⚠ <12 anos","⚠ ⚠ <18a pós-tonsilectomia/adenoidectomia","⚠ Lactante (ultrametabolizadoras)","⚠ Depressão respiratória aguda","⚠ Asma grave","⚠ Íleo paralítico","IMAO em 14 dias","Hipersensibilidade"],
+monit:["Constipação","Depressão respiratória especialmente em criança","Sintomas de abuso"],
+gravidez:"C",
+sus:"⚠ FARMASUS (controle especial) — disponibilidade variável",
+referencias:["⚠ FDA Black Box; OMS Cancer Pain; ANCP."],
+},
+
+/* ============== OXICODONA LP ============== */
+
+{id:"med-oxicodona", classe:"Opioide forte μ-agonista", grupo:"analgesia",
+nome:"Oxicodona (Liberação Prolongada)",
+sin:["Oxycontin","OxyContin","Tylex Oxi (combinado)","Oxicodone CR"],
+formas:["Comprimido LP (CR) 10 mg, 20 mg, 40 mg, 80 mg","⚠ NÃO REMUME — particular (CEAF em algumas SES em PCDT específico) — custo alto"],
+resumo:"⚠ ⚠ OPIOIDE FORTE — Degrau 3 OMS. POTÊNCIA ~1,5× morfina VO (10 mg oxicodona ≈ 15 mg morfina VO). Vantagens: BIODISPONIBILIDADE VO MELHOR que morfina (~60% vs ~25%), MENOS prurido (sem liberação de histamina), POSOLOGIA 12/12h LP. Desvantagens: ⚠ ALTO POTENCIAL DE ABUSO (epidemia opioide nos EUA), custo, não está no SUS.",
+dose_rapida:"10-20 mg VO 12/12h (LP)",
+doses:[
+{ind:"⚠ Dor ONCOLÓGICA / DOR SEVERA CRÔNICA — Degrau 3 OMS", dose:"⚠ Em opioide-NAIVE: 10 mg VO 12/12h (LP). Titular conforme dor + resgates", obs:"⚠ NÃO PARTIR / NÃO MASTIGAR LP — engolir inteiro. RESGATE para dor breakthrough: oxicodona simples (não disponível Brasil habitualmente) OU morfina simples 10% da dose diária."},
+{ind:"⚠ ROTAÇÃO de morfina para oxicodona", dose:"⚠ CONVERSÃO: morfina VO 15 mg = oxicodona VO 10 mg. ⚠ REDUZIR 25-50% na rotação (cross-tolerance incompleta), depois titular", obs:""},
+{ind:"⚠ Dor neuropática severa", dose:"10-40 mg 12/12h", obs:"Não é 1ª linha — adjuvantes (gaba/preg/ADT) preferidos. Útil em dor mista severa."},
+],
+ajustes:{
+irc:"⚠ TFG 10-50: começar 50% dose. TFG <10: cautela extra.",
+iht:"⚠ Reduzir 50% em IH",
+idoso:"⚠ Iniciar 5-10 mg 12/12h",
+gestante:"⚠ C — Cautela. Síndrome de descontinuação neonatal.",
+aleita:"⚠ Compatível em dose baixa",
+ped:"⚠ Não aprovada rotineira <11a",
+},
+mecanismo:"AGONISTA μ-opioide FORTE. Semelhante à morfina mas com metabolismo diferente (não gera M3G/M6G neurotóxicos como morfina).",
+farmacocin:{
+absorc:"VO ~60-87% (excelente — superior à morfina)",
+distrib:"Ampla",
+metab:"Hepático CYP3A4 + CYP2D6 → noroxicodona + oximorfona (ativa)",
+elimin:"Renal",
+meiavida:"~3-5h (forma simples); ~12h (LP)",
+ligacao:"~45%",
+},
+ef_colats:{
+comuns:["Constipação (universal — laxativo profilático)","Náusea (geralmente passa)","Sonolência","Boca seca","Tontura","Sudorese"],
+sérios:["⚠ Depressão respiratória","⚠ ⚠ POTENCIAL DE ABUSO MUITO ALTO — epidemia opioide nos EUA pegou força com oxicodona LP","Dependência","Síndrome de abstinência","Hipotensão postural","Mioclonia (rara)","Hipogonadismo, hipocortisolismo em uso crônico"],
+},
+interacoes:["⚠ ⚠ INIBIDORES CYP3A4 (cetoconazol, ritonavir, claritromicina, voriconazol): ↑↑ oxicodona","Indutores CYP3A4 (rifampicina, fenitoína, carbamazepina): ↓ oxicodona","Outros opioides, álcool, BZD: depressão somativa","IMAO em 14 dias","Naloxona reverte"],
+contraindicacoes:["⚠ Depressão respiratória aguda","⚠ Asma aguda grave","⚠ Íleo paralítico","⚠ IMAO em 14 dias","Hipersensibilidade","TCE com HIC"],
+monit:["Constipação","Depressão respiratória","Sinais de abuso","Função hepática/renal","Dor (escala)"],
+gravidez:"C",
+sus:"⚠ NÃO REMUME / particular — CEAF em algumas SES em PCDT específico (dor oncológica refratária)",
+referencias:["⚠ ANCP; OMS Cancer Pain; PCDT-MS Dor Oncológica."],
+},
+
+/* ============== METADONA ============== */
+
+{id:"med-metadona", classe:"Opioide forte μ-agonista + antagonista NMDA + inibidor recaptação 5-HT/NA", grupo:"analgesia",
+nome:"Metadona",
+sin:["Methadone","Mytedom","Eptadone (sol oral)"],
+formas:["Comprimido 5 mg, 10 mg","Solução oral 5 mg/mL","FARMASUS / Programa de Tratamento de Dependência de Opioides (uso específico) — em paliativos: prescrição especialista"],
+resumo:"⚠ ⚠ OPIOIDE FORTE COM PERFIL ÚNICO — agonista μ + antagonista NMDA (ação em dor neuropática) + inibidor recaptação 5-HT/NA. INDICAÇÕES: ⚠ DOR ONCOLÓGICA REFRATÁRIA, dor neuropática complexa, ROTAÇÃO DE OPIOIDE em paciente com toxicidade da morfina, ALTERNATIVA EM IRC (sem metabólitos ativos), tratamento de DEPENDÊNCIA DE OPIOIDES. ⚠ ⚠ USO ESPECIALISTA — múltiplos riscos. Meia-vida muito longa e VARIÁVEL. Conversão NÃO LINEAR. QT longo.",
+dose_rapida:"2,5-5 mg VO 8/8h ou 12/12h, titulação MUITO LENTA (5-7 dias entre ajustes)",
+doses:[
+{ind:"⚠ DOR ONCOLÓGICA REFRATÁRIA / ROTAÇÃO DE OPIOIDE", dose:"⚠ ⚠ ESPECIALISTA — em opioide-naive: 2,5-5 mg VO 8/8h × 4-7 dias antes de ajustar", obs:"⚠ ⚠ CONVERSÃO NÃO LINEAR. Aproximação:<br>- MEDD <60 mg/d: razão 4:1 (60 mg morfina/d ≈ 15 mg metadona/d)<br>- MEDD 60-300: razão 8:1<br>- MEDD 300-600: razão 10:1<br>- MEDD >600: razão 12:1+<br>⚠ Após conversão: REDUZIR 25-50% e titular."},
+{ind:"⚠ DOR NEUROPÁTICA refratária", dose:"2,5-5 mg 8-12/12h", obs:"⚠ Ação NMDA antagonista útil em dor neuropática."},
+{ind:"⚠ MANUTENÇÃO em dependência de opioide", dose:"⚠ Programa especializado — 60-120 mg/d VO 1×/d", obs:"⚠ NÃO É escopo do PA / UBS sem capacitação."},
+],
+ajustes:{
+irc:"⚠ ⚠ VANTAGEM — sem metabólitos ativos, segura em IRC inclusive HD",
+iht:"⚠ Reduzir em IH",
+idoso:"⚠ ⚠ Iniciar 2,5 mg + acompanhamento próximo. QT longo + meia-vida prolongada.",
+gestante:"⚠ C — Indicada em dependência gestacional (preferida sobre buprenorfina em alguns contextos). Síndrome de abstinência neonatal manejável.",
+aleita:"⚠ Compatível em dose terapêutica",
+ped:"⚠ Especialista pediátrico",
+},
+mecanismo:"⚠ ⚠ MÚLTIPLOS MECANISMOS — (1) AGONISTA μ-opioide forte. (2) ANTAGONISTA receptor NMDA — efeito ANALGÉSICO em dor neuropática + reduz tolerância opioide. (3) INIBIDOR recaptação 5-HT e NA — efeito antidepressivo-like. Daí: ÚTIL EM DOR MISTA REFRATÁRIA.",
+farmacocin:{
+absorc:"VO ~80%",
+distrib:"⚠ ⚠ MUITO AMPLA — lipofílica, acumula em tecidos",
+metab:"Hepático CYP3A4, CYP2B6, CYP2D6, CYP2C19 — múltiplas interações",
+elimin:"Fecal + renal",
+meiavida:"⚠ ⚠ MUITO VARIÁVEL: 8-150h (média 24-36h). Por isso ajuste DOSE só após 5-7 dias do nível em equilíbrio.",
+ligacao:"~85%",
+},
+ef_colats:{
+comuns:["Sedação","Constipação (menos que morfina)","Sudorese","Boca seca","Náusea (geralmente passa)","Hipotensão","Edema MMII"],
+sérios:["⚠ ⚠ ⚠ QT LONGO / TORSADES DE POINTES — EFEITO DOSE-DEPENDENTE. ECG basal + em titulação > 100 mg/d","⚠ ⚠ DEPRESSÃO RESPIRATÓRIA TARDIA — pela meia-vida acumulativa, pode ocorrer 2-7 dias após início/aumento de dose","⚠ MIOCLONIA, hipogonadismo, hipocortisolismo em uso crônico","Dependência (raríssima em uso analgésico bem indicado)","Síndrome de abstinência em suspensão"],
+},
+interacoes:["⚠ ⚠ MÚLTIPLAS INTERAÇÕES CYP — INIBIDORES (cetoconazol, ritonavir, claritromicina, fluoxetina): ↑↑ metadona","⚠ INDUTORES (rifampicina, fenitoína, carbamazepina, fenobarbital, efavirenz, erva-de-são-joão): ↓↓ metadona → abstinência","⚠ ⚠ QT-PROLONGADORES (ondansetrona, haloperidol, claritro, antiarrítmicos, antifúngicos, alguns ISRS): ↑ TORSADES","Álcool, BZD, outros opioides: depressão somativa","Antirretrovirais: complexo"],
+contraindicacoes:["⚠ ⚠ QT longo / arritmia ventricular","⚠ Depressão respiratória","⚠ Asma grave","⚠ Íleo","⚠ ⚠ IMAO em 14 dias","⚠ Uso simultâneo com QT-prolongadores em paciente de risco","Hipersensibilidade"],
+monit:["⚠ ⚠ ECG basal + em titulação, e a cada aumento >100 mg/d","Eletrólitos (K, Mg)","Resposta clínica em dor","Sinais de depressão respiratória especialmente 2-7 dias pós-aumento de dose"],
+gravidez:"C",
+sus:"FARMASUS / Programa específico — uso ESPECIALISTA",
+referencias:["⚠ ANCP; PCDT-MS Dor Oncológica; APM; ⚠ Krantz et al QT Warning."],
+},
+
+/* ============== BUPRENORFINA TRANSDÉRMICA ============== */
+
+{id:"med-buprenorfina", classe:"Opioide forte — agonista parcial μ + antagonista κ", grupo:"analgesia",
+nome:"Buprenorfina (transdérmica)",
+sin:["Restiva","Norspan","Butrans","BuTrans"],
+formas:["Adesivo transdérmico 5, 10, 20 mcg/h (semanal)","Comprimido sublingual 0,2 mg, 2 mg, 8 mg (raros — para dependência de opioides)","Ampola SC 0,3 mg/mL (raro)","⚠ NÃO REMUME — particular ou CEAF em PCDT específico"],
+resumo:"⚠ OPIOIDE FORTE — agonista PARCIAL μ (efeito teto em depressão respiratória — relativamente mais seguro) + antagonista κ (menos disforia). Adesivo SEMANAL (vantagem adesão). Indicações: dor crônica oncológica/não-oncológica em paciente ESTÁVEL, paciente com IRC (segura), idoso (menos sedação), intolerância à morfina. ⚠ Em dependência: uso especializado.",
+dose_rapida:"5-20 mcg/h adesivo — trocar a cada 7 dias",
+doses:[
+{ind:"⚠ DOR CRÔNICA ESTÁVEL — alternativa em opioide-naive ou intolerância a morfina", dose:"⚠ INÍCIO em opioide-naive: 5 mcg/h, titular para 10, 20 mcg/h ad lib. Trocar a cada 7 dias", obs:"⚠ Demora 24-72h para atingir efeito. NÃO USAR em dor instável/aguda."},
+{ind:"⚠ ROTAÇÃO de outro opioide", dose:"⚠ CONVERSÃO aproximada: morfina VO 30 mg/d ≈ buprenorfina 10 mcg/h; morfina VO 60 mg/d ≈ buprenorfina 20 mcg/h", obs:"⚠ Reduzir 25-50% na rotação."},
+{ind:"⚠ Paciente IDOSO / IRC com dor moderada-severa", dose:"5-20 mcg/h", obs:"⚠ Vantagem em IRC — segura (sem ajuste para TFG)."},
+],
+ajustes:{
+irc:"⚠ ⚠ VANTAGEM — sem ajuste em IRC inclusive HD (sem metabólitos ativos)",
+iht:"⚠ Reduzir em IH grave",
+idoso:"⚠ ADESIVO 5 mcg/h é frequentemente suficiente em idoso opioide-naive",
+gestante:"⚠ C — Sintomas de descontinuação neonatal",
+aleita:"⚠ Cautela",
+ped:"Não aprovada rotineira",
+},
+mecanismo:"⚠ AGONISTA PARCIAL μ (efeito TETO em depressão respiratória) + ANTAGONISTA κ. Tem alta afinidade ao receptor μ mas atividade parcial — pode REVERTER efeito de outros opioides em alta dose.",
+farmacocin:{
+absorc:"⚠ Transdérmica — 24-72h para atingir nível terapêutico; 12-24h após retirar adesivo para sair",
+distrib:"Ampla",
+metab:"Hepático CYP3A4",
+elimin:"Fecal predominante",
+meiavida:"~24-36h (transdérmica em estado estável)",
+ligacao:"~96%",
+},
+ef_colats:{
+comuns:["Reação no local do adesivo (eritema, prurido)","Náusea (geralmente passa)","Constipação (menos que morfina)","Cefaleia","Tontura","Sudorese"],
+sérios:["⚠ Depressão respiratória — com efeito teto (segurança relativa). Em alta dose + outros depressores: ainda possível","QT longo (raro)","Síndrome de abstinência se suspensão abrupta","Reação cutânea grave (raro)"],
+},
+interacoes:["⚠ Inibidores CYP3A4 (cetoconazol, ritonavir, claritro): ↑ buprenorfina","Indutores: ↓","⚠ Outros opioides em dose alta: buprenorfina pode REVERTER efeito (antagonismo parcial)","BZD, álcool: depressão somativa","IMAO em 14 dias","Naloxona: parcial — pode precisar dose alta"],
+contraindicacoes:["⚠ Depressão respiratória","⚠ Íleo","⚠ IMAO em 14 dias","Hipersensibilidade","Pele lesada onde aplicar"],
+monit:["Local do adesivo (rodar sítio)","Eficácia (após 72h estável)","Constipação","Depressão respiratória"],
+gravidez:"C",
+sus:"⚠ NÃO REMUME — particular ou CEAF em PCDT específico",
+referencias:["ANCP; OMS Cancer Pain; ESMO."],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 25)
+   Adjuvantes Paliativos
+   Antieméticos: Haloperidol, Levomepromazina, Metoclopramida, Bromoprida, Ondansetrona
+   Antimuscarínicos: Hioscina butilbrometo, Escopolamina hidrobrometo
+   Outros: Dexametasona, Octreotida, Bisacodil, Lactulose, Metilnaltrexona
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== HALOPERIDOL ============== */
+
+{id:"med-haloperidol", classe:"Antipsicótico típico (butirofenona) — D2 antagonista", grupo:"pali",
+nome:"Haloperidol",
+sin:["Haldol","Haloper","Halo"],
+formas:["Comprimido 1 mg, 5 mg","Solução oral 2 mg/mL (gotas)","Ampola 5 mg/mL IM/IV","Ampola decanoato 50 mg/mL IM (depot mensal — psiquiatria)","REMUME — UBS dispensação direta + FARMASUS (controle especial)"],
+resumo:"⚠ ⚠ ANTIPSICÓTICO TÍPICO — pedra angular em PALIATIVOS para NÁUSEA POR CTZ (opioide, uremia, hipercalcemia) e DELIRIUM. Doses pequenas (0,5-2 mg) muito eficazes para sintomas paliativos. ⚠ ⚠ EVITAR EM PARKINSON / corpos de Lewy. QT longo em dose alta. Via VO/SC bem tolerada em paliativos.",
+dose_rapida:"0,5-2 mg VO/SC 8-12/12h (paliativos); 5 mg IM (agitação aguda)",
+doses:[
+{ind:"⚠ ⚠ NÁUSEA / VÔMITO em paliativos — mecanismo CTZ (opioide, uremia, hipercalcemia, quimio recente)", dose:"0,5-2 mg VO/SC 8-12/12h ad lib", obs:"⚠ ⚠ 1ª LINHA em náusea por CTZ. Dose BAIXA — efeito antiemético com pouca sedação. Solução oral: 5 gotas = 0,5 mg."},
+{ind:"⚠ DELIRIUM em paliativos / hospitalizado", dose:"0,5-2 mg VO/SC 8-12/12h + resgate 0,5-1 mg 1/1h conforme necessário. Idoso: 0,25-0,5 mg", obs:"⚠ 1ª LINHA para delirium hiperativo. ⚠ Não em Parkinson."},
+{ind:"⚠ AGITAÇÃO PSICOMOTORA AGUDA (PA / emergência)", dose:"5 mg IM (eventualmente + prometazina 50 mg IM para reduzir extrapiramidal e somar sedação)", obs:"Pode repetir a cada 30-60 min até controle. Máx 20 mg/d."},
+{ind:"⚠ Hiperêmese gravídica refratária (off-label)", dose:"0,5-1 mg VO/SC 8/8h", obs:"Após falha de ondansetrona/metoclopramida."},
+{ind:"Esquizofrenia / TAB com sintomas psicóticos", dose:"5-15 mg/d (psiquiatria)", obs:""},
+],
+ajustes:{
+irc:"⚠ Cautela em IRC importante",
+iht:"⚠ Reduzir em IH",
+idoso:"⚠ ⚠ INICIAR 0,25-0,5 mg. Risco AVC + mortalidade em demência (Black Box FDA antipsicóticos). Avaliar risco-benefício, geralmente justificado em paliativos.",
+gestante:"⚠ C — em hiperêmese refratária: aceitável após outros. Sintomas extrapiramidais neonatais se uso 3º trim.",
+aleita:"Cautela — passa pelo leite",
+ped:"⚠ Especialista. Geralmente não em rotina <3a.",
+},
+mecanismo:"⚠ ANTAGONISTA D2 potente (zona quimioceptora CTZ, gânglios da base, mesolímbico). Pouco efeito anti-α1 e anti-H1 (menos sedativo que clorpro/levome).",
+farmacocin:{
+absorc:"VO ~60-70%",
+distrib:"Ampla, atravessa BHE",
+metab:"Hepático CYP3A4 e CYP2D6",
+elimin:"Renal + fecal",
+meiavida:"~18-25h (decanoato 3 sem)",
+ligacao:"~90%",
+},
+ef_colats:{
+comuns:["Sedação leve","Sintomas extrapiramidais (SEP) — bradicinesia, rigidez, distonia, tremor","Sialorreia / disartria","Constipação","Hipotensão (leve)","Acatisia"],
+sérios:["⚠ ⚠ SÍNDROME NEUROLÉPTICA MALIGNA (rara — hipertermia, rigidez muscular, alteração mental, CPK alta)","⚠ DISTONIA AGUDA / CRISE OCULOGÍRICA — tratar com biperideno 5 mg IM","⚠ QT LONGO / Torsades — risco em altas doses IV, especialmente >35 mg/d ou com QT-prolongadores","⚠ DISCINESIA TARDIA (uso crônico)","⚠ AVC + mortalidade em IDOSO com demência (Black Box)","Hiperprolactinemia","Convulsão (raro)"],
+},
+interacoes:["⚠ ⚠ QT-prolongadores (metadona, antiarrítmicos classe Ia/III, ondansetrona dose alta, macrolídeos, azólicos, alguns ISRS): risco TORSADES","⚠ Anticolinérgicos: somatório","⚠ Levodopa/agonistas DA: efeitos OPOSTOS — perda controle Parkinson","Lítio: ↑ neurotoxicidade","Álcool, BZD, opioides: sedação somativa","Indutores CYP (rifampicina, fenitoína, carbamazepina): ↓ haloperidol"],
+contraindicacoes:["⚠ ⚠ PARKINSON / demência de corpos de Lewy","⚠ Depressão SNC importante","⚠ QT longo congênito","⚠ Coma","⚠ Lesão de gânglios da base","Hipersensibilidade","Idoso com demência (relativa — Black Box em alguns contextos)"],
+monit:["⚠ Sinais extrapiramidais (escalas)","ECG basal em risco / dose alta","Sinais SNM","Resposta clínica"],
+gravidez:"C",
+sus:"⚠ REMUME — UBS dispensação direta + FARMASUS",
+referencias:["ANCP; APA Delirium; NICE Palliative; FDA Black Box demência."],
+},
+
+/* ============== LEVOMEPROMAZINA ============== */
+
+{id:"med-levomepromazina", classe:"Antipsicótico típico (fenotiazina) — amplo espectro D2/5-HT/H1/M1/α1", grupo:"pali",
+nome:"Levomepromazina",
+sin:["Neozine","Nozinan","Methotrimeprazine"],
+formas:["Comprimido 5 mg, 25 mg, 100 mg","Solução oral 40 mg/mL (gotas)","Ampola 25 mg/mL IM/SC","FARMASUS"],
+resumo:"⚠ ⚠ ANTIPSICÓTICO FENOTIAZINA — AMPLO ESPECTRO de receptores (D2 + 5-HT + H1 + M1 + α1). Indicações paliativas: NÁUSEA REFRATÁRIA (multimecanismo — 'limpa-tudo'), DELIRIUM AGITADO refratário, ANSIEDADE-AGITAÇÃO TERMINAL, SEDAÇÃO PROPORCIONAL adjuvante ao midazolam. ⚠ Mais sedativa que haloperidol — útil quando se busca sedação leve. Hipotensão postural significativa.",
+dose_rapida:"6,25-25 mg VO/SC 8-24/24h (paliativos)",
+doses:[
+{ind:"⚠ ⚠ NÁUSEA / VÔMITO REFRATÁRIO em paliativos — espectro amplo", dose:"6,25-12,5 mg VO/SC 12-24/24h ad lib (até 25 mg em refratários)", obs:"⚠ ⚠ 'Limpa-tudo' — útil quando mecanismo de náusea não claro ou multifatorial. Em paciente já em opioide + sem resposta a haloperidol/metoclopramida/ondansetrona."},
+{ind:"⚠ DELIRIUM AGITADO refratário em paliativos", dose:"12,5-25 mg VO/SC 8-12/12h + resgate", obs:"⚠ 2ª linha após haloperidol (mais sedativa)."},
+{ind:"⚠ AGITAÇÃO TERMINAL", dose:"25-50 mg SC 8-12/12h ou BIC SC 50-100 mg/d", obs:""},
+{ind:"⚠ ADJUVANTE em sedação paliativa (com midazolam)", dose:"12,5-25 mg SC 4-6/6h ou BIC SC 50-150 mg/d", obs:"⚠ Combinação útil — soma efeito antiemético + sedativo + analgésico adjuvante."},
+{ind:"⚠ Dor refratária (adjuvante)", dose:"6,25-25 mg HS — efeito analgésico adjuvante (modulação cortical)", obs:"Off-label paliativo."},
+{ind:"Esquizofrenia (psiquiatria)", dose:"75-300 mg/d ÷ 8/8h", obs:""},
+],
+ajustes:{
+irc:"⚠ Reduzir em IRC",
+iht:"⚠ ⚠ Reduzir 50% em IH",
+idoso:"⚠ ⚠ Iniciar 6,25 mg. Hipotensão postural acentuada. Black Box demência.",
+gestante:"⚠ C — Cautela. Sintomas extrapiramidais neonatais 3º trim.",
+aleita:"⚠ Evitar uso crônico",
+ped:"Especialista",
+},
+mecanismo:"⚠ Bloqueio MÚLTIPLO de receptores: D2 (antipsicótico, antiemético), 5-HT2 (antiemético, ansiolítico, analgésico), H1 (sedação, antiemético), M1 muscarínico (antiemético vestibular + anticolinérgico), α1 (hipotensão). Daí efeito amplo em paliativos.",
+farmacocin:{
+absorc:"VO ~50%",
+distrib:"⚠ MUITO AMPLA — lipofílica",
+metab:"Hepático",
+elimin:"Renal + fecal",
+meiavida:"~15-30h",
+ligacao:"Alta",
+},
+ef_colats:{
+comuns:["⚠ ⚠ SEDAÇÃO marcada","⚠ HIPOTENSÃO POSTURAL — especialmente no início","Anticolinérgico (boca seca, retenção urinária, visão turva, constipação)","Sintomas extrapiramidais (menos que haloperidol)","Tontura","Sialorreia paradoxal"],
+sérios:["⚠ ⚠ HIPOTENSÃO grave em dose IM rápida","⚠ QT longo","⚠ Síndrome neuroléptica maligna (rara)","⚠ AVC + mortalidade em idoso com demência","Discinesia tardia","Reação cutânea grave (raro)","Agranulocitose (raríssima)"],
+},
+interacoes:["⚠ Outros antipsicóticos, álcool, BZD, opioides: depressão SNC + sedação somativa","⚠ Anti-hipertensivos: hipotensão somativa","⚠ Anticolinérgicos: somatório","⚠ QT-prolongadores","Levodopa: efeitos opostos","IMAO em 14 dias"],
+contraindicacoes:["⚠ Coma / depressão SNC importante","⚠ Hipotensão grave","⚠ Parkinson","⚠ QT longo","⚠ Glaucoma ângulo fechado","⚠ HPB com retenção","Hipersensibilidade fenotiazinas","Lactente <2a"],
+monit:["PA postural — risco de queda","Sintomas extrapiramidais","ECG em risco","Sintomas anticolinérgicos","Resposta clínica"],
+gravidez:"C",
+sus:"⚠ FARMASUS",
+referencias:["ANCP; EAPC; Twycross R, et al."],
+},
+
+/* ============== DEXAMETASONA ============== */
+
+{id:"med-dexametasona", classe:"Glicocorticoide sintético potente, longa duração", grupo:"pali",
+nome:"Dexametasona",
+sin:["Decadron","Dexason","Dexarinil"],
+formas:["Comprimido 0,5 mg, 4 mg","Solução oral 0,1 mg/mL","Ampola 4 mg/mL e 10 mg/2,5 mL IM/IV/SC","Colírio, creme tópico","REMUME — algumas formas em UBS / FARMASUS"],
+resumo:"⚠ ⚠ CORTICOIDE POTENTE — pedra angular em PALIATIVOS por múltiplos usos: ⚠ COMPRESSÃO MEDULAR (16 mg IV bolus), HIC por metástase cerebral (4-16 mg/d), antiemético (quimio, opioide, obstrução intestinal), anorexia/bem-estar (4-6 sem), DISPNEIA por linfangite/VCS, dor óssea, anti-inflamatório. Potência 25× hidrocortisona, sem mineralocorticoide. ⚠ Efeitos colaterais cumulativos limitam uso crônico.",
+dose_rapida:"2-4 mg/d (apetite/anti-emético) até 16 mg/d (compressão medular, edema cerebral)",
+doses:[
+{ind:"⚠ ⚠ COMPRESSÃO MEDULAR MALIGNA — EMERGÊNCIA", dose:"16 mg IV BOLUS imediato + 4 mg IV/VO 6/6h × 48h, depois reduzir gradativo", obs:"⚠ ⚠ NÃO ESPERAR IMAGEM — bolus em suspeita clínica forte."},
+{ind:"⚠ EDEMA CEREBRAL por metástase / HIC", dose:"4-8 mg VO/IV 6/6h (até 16 mg em sintomas graves)", obs:"⚠ Reduzir gradualmente para dose mínima eficaz após melhora."},
+{ind:"⚠ DISPNEIA por LINFANGITE CARCINOMATOSA / SVCS / obstrução brônquica peritumoral", dose:"8-16 mg/d VO/IV/SC (geralmente manhã)", obs:""},
+{ind:"⚠ NÁUSEA REFRATÁRIA / quimioterapia / obstrução intestinal", dose:"4-8 mg VO/SC/IV 1-2×/d", obs:"⚠ Adjuvante eficaz — combinação com ondansetrona em quimio."},
+{ind:"⚠ ANOREXIA / BEM-ESTAR / FADIGA em paliativos", dose:"2-4 mg VO/manhã × 4-6 sem, depois reavaliar", obs:"⚠ ⚠ EFEITO CURTO PRAZO. Útil em paciente com expectativa de SEMANAS-MESES. Reduzir após melhora."},
+{ind:"⚠ DOR ÓSSEA por metástase", dose:"4-8 mg/d", obs:"⚠ Adjuvante — junto a opioide + AINE (se possível) + bifosfonato."},
+{ind:"COVID-19 com necessidade O2", dose:"6 mg VO/IV 1×/d × 10d", obs:""},
+{ind:"Tireoidite / crise tireotóxica", dose:"2 mg IV 6/6h", obs:"Bloqueia conversão T4→T3."},
+{ind:"Maturação pulmonar fetal", dose:"6 mg IM 12/12h × 4 doses", obs:"Obstetrícia."},
+],
+ajustes:{
+irc:"Sem ajuste",
+iht:"Cautela",
+idoso:"⚠ Risco aumentado: miopatia, hiperglicemia, infecção, fratura. Avaliar risco-benefício.",
+gestante:"⚠ C — em maturação pulmonar fetal: indicada. Uso prolongado: cautela.",
+aleita:"Compatível em dose paliativa",
+ped:"Conforme indicação especialista",
+},
+mecanismo:"⚠ GLICOCORTICOIDE SINTÉTICO — liga ao receptor citoplasmático, transcrição genética — efeitos anti-inflamatórios + imunossupressores + antiedema + antiemético central + apetite. Sem ação mineralocorticoide (não retém sódio). Potência ~25× hidrocortisona, ~7× prednisolona.",
+farmacocin:{
+absorc:"VO ~80-90%",
+distrib:"Ampla",
+metab:"Hepático CYP3A4",
+elimin:"Renal",
+meiavida:"~36-54h (efeito biológico) — explica DOSE ÚNICA DIÁRIA",
+ligacao:"~77%",
+},
+ef_colats:{
+comuns:["⚠ Hiperglicemia (pode descompensar diabetes)","⚠ Insônia (administrar manhã)","Ganho de peso","Edema (leve — sem mineralocorticoide)","Acne, equimoses, pele fina","Dispepsia","Aumento de apetite (benéfico em paliativos)"],
+sérios:["⚠ ⚠ MIOPATIA proximal (uso prolongado, principalmente esteróides)","⚠ ⚠ CANDIDÍASE oral / esofágica (frequente em paliativos com dexa)","⚠ INFECÇÕES OPORTUNISTAS (TB reativada, pneumocystose)","⚠ HIPERGLICEMIA / NOVA DM","⚠ SUPRESSÃO ADRENAL (uso >2-3 sem) — não suspender abruptamente","⚠ Psicose / mania por corticoide (raro em paliativos)","⚠ ÚLCERA péptica (cuidado em quem usa AINE)","⚠ OSTEOPOROSE / fratura","⚠ Cataratas / glaucoma (crônico)","HAS","Síndrome de Cushing iatrogênica"],
+},
+interacoes:["⚠ AINE: ↑ risco GI","⚠ ANTIDIABÉTICOS: ajuste necessário","⚠ Indutores CYP3A4 (rifampicina, fenitoína, carbamazepina): ↓ dexa","⚠ Inibidores CYP3A4 (cetoconazol, claritromicina, ritonavir): ↑ dexa","⚠ Anticoagulantes (warfarina): variável","Vacinas de vírus vivos: ⚠ EVITAR"],
+contraindicacoes:["⚠ Infecção fúngica sistêmica não tratada","⚠ Tuberculose ativa sem tratamento","Hipersensibilidade","Cautela em DM, HAS, úlcera, glaucoma"],
+monit:["Glicemia","PA","Função adrenal em uso prolongado","Sinais de infecção","Candida oral","Densitometria em uso crônico"],
+gravidez:"C",
+sus:"⚠ REMUME — algumas formas em UBS / FARMASUS",
+referencias:["ANCP; ESMO Bone Mets; NICE; Bristol Guideline."],
+},
+
+/* ============== METOCLOPRAMIDA ============== */
+
+{id:"med-metoclopramida", classe:"Procinético + antiemético (D2 antagonista + 5-HT4 agonista)", grupo:"pali",
+nome:"Metoclopramida",
+sin:["Plasil","Eucil","Plamet"],
+formas:["Comprimido 10 mg","Solução oral 4 mg/mL","Ampola 5 mg/mL (2 mL) IM/IV/SC","REMUME — UBS dispensação direta"],
+resumo:"⚠ DUPLO MECANISMO — (1) ANTAGONISTA D2 (CTZ central — antiemético) + (2) AGONISTA 5-HT4 + sensibiliza ACh em plexo mioentérico = PROCINÉTICO. Indicações: NÁUSEA por ESTASE GÁSTRICA + náusea química leve + dispepsia. ⚠ ⚠ CONTRAINDICADA EM OBSTRUÇÃO INTESTINAL MECÂNICA (procinético piora). ⚠ Extrapiramidais — limitar uso prolongado (FDA Warning ≤12 sem).",
+dose_rapida:"10 mg VO/IV/SC 6-8/8h (máx 30-40 mg/d)",
+doses:[
+{ind:"⚠ NÁUSEA POR ESTASE GÁSTRICA / dispepsia funcional / gastroparesia", dose:"10 mg VO 6-8/8h, idealmente 30 min ANTES DAS REFEIÇÕES + HS", obs:"⚠ ⚠ 1ª LINHA em estase. Procinético + antiemético."},
+{ind:"⚠ Náusea química leve / opioide-induzida", dose:"10 mg VO/SC 6-8/8h ad lib", obs:"Alternativa ao haloperidol em CTZ."},
+{ind:"⚠ Náusea pós-operatória / pós-quimioterapia (em combinação)", dose:"10 mg IV antes do procedimento", obs:"Combinação com ondansetrona + dexa em quimio altamente emetogênica."},
+{ind:"⚠ Enxaqueca com vômito (uso adjunto IV)", dose:"10 mg IV", obs:"Pode reduzir frequência."},
+{ind:"⚠ Galactagogo (off-label, raro)", dose:"10 mg 8/8h × dias", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG <40: reduzir 50%",
+iht:"⚠ Reduzir 50% em IH",
+idoso:"⚠ ⚠ Reduzir dose. Sintomas extrapiramidais + sedação mais frequentes.",
+gestante:"⚠ B — segura. Útil em hiperêmese gravídica leve.",
+aleita:"Compatível",
+ped:"⚠ ⚠ EVITAR <1 ano (risco extrapiramidal grave). Após 1a: cautela.",
+},
+mecanismo:"(1) ANTAGONISTA D2 na CTZ (antiemético central). (2) AGONISTA 5-HT4 + sensibiliza receptores muscarínicos do plexo mioentérico → ↑ liberação de ACh → ↑ tônus esfíncter esofágico inferior + ↑ contratilidade gástrica + relaxa piloro → PROCINÉTICO.",
+farmacocin:{
+absorc:"VO ~80%",
+distrib:"Ampla, atravessa BHE",
+metab:"Hepático",
+elimin:"Renal predominante",
+meiavida:"~5-6h",
+ligacao:"~30%",
+},
+ef_colats:{
+comuns:["⚠ Sonolência","⚠ Sintomas EXTRAPIRAMIDAIS — distonia aguda (especialmente em criança/jovem; crise oculogírica)","Fadiga","Diarreia","Cefaleia"],
+sérios:["⚠ ⚠ DISCINESIA TARDIA em uso prolongado >12 sem (FDA Warning — limitar)","⚠ ⚠ DISTONIA AGUDA / CRISE OCULOGÍRICA — tratar com BIPERIDENO 5 mg IM","⚠ Síndrome neuroléptica maligna (raro)","⚠ Hiperprolactinemia → galactorreia, ginecomastia, hipogonadismo","Hipotensão (em IV rápido)","Metahemoglobinemia em recém-nascido"],
+},
+interacoes:["⚠ Outros antipsicóticos: somatório extrapiramidal","⚠ Anticolinérgicos: REDUZEM efeito (antagonismo)","⚠ Opioides: somatório sedação","⚠ ⚠ ISRS/IMAO + metoclopramida: risco síndrome serotoninérgica","Levodopa: efeito antagônico","Digoxina: ↓ digoxina","Ciclosporina: ↑ absorção"],
+contraindicacoes:["⚠ ⚠ OBSTRUÇÃO INTESTINAL MECÂNICA","⚠ Perfuração / hemorragia GI","⚠ Convulsão de história","⚠ Feocromocitoma","⚠ Parkinson","Hipersensibilidade","Lactente <1a","IMAO em 14 dias"],
+monit:["⚠ Sintomas extrapiramidais — orientar paciente / família","Discinesia tardia em uso prolongado","Resposta clínica"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta",
+referencias:["FDA Warning DT 2009; ANCP; PCDT-MS."],
+},
+
+/* ============== BROMOPRIDA ============== */
+
+{id:"med-bromoprida", classe:"Procinético + antiemético (similar à metoclopramida)", grupo:"pali",
+nome:"Bromoprida",
+sin:["Digesan","Plamet","Bromoprida"],
+formas:["Cápsula 10 mg","Solução oral 4 mg/mL","Ampola 5 mg/mL (2 mL) IM/IV","REMUME — UBS dispensação direta"],
+resumo:"⚠ ANÁLOGO BRASILEIRO DA METOCLOPRAMIDA — mecanismo similar (D2 antagonista + procinético). Indicações similares: NÁUSEA + ESTASE GÁSTRICA + dispepsia. ⚠ Perfil de efeitos colaterais similar — extrapiramidais, ⚠ contraindicada em obstrução intestinal. Vantagem: tradição brasileira de uso + acesso fácil.",
+dose_rapida:"10 mg VO/IV/SC 6-8/8h",
+doses:[
+{ind:"⚠ NÁUSEA POR ESTASE GÁSTRICA / dispepsia funcional", dose:"10 mg VO 6-8/8h 30 min antes das refeições", obs:""},
+{ind:"⚠ Náusea química / opioide", dose:"10 mg VO/SC 6-8/8h", obs:""},
+{ind:"Náusea pós-op", dose:"10 mg IV / IM", obs:""},
+],
+ajustes:{
+irc:"⚠ Reduzir em IRC",
+iht:"⚠ Reduzir em IH",
+idoso:"⚠ Reduzir dose, vigilância extrapiramidal",
+gestante:"⚠ B — uso comum em hiperêmese leve no Brasil",
+aleita:"Compatível",
+ped:"≥6a (cautela em <12a)",
+},
+mecanismo:"D2 antagonista + ação procinética via plexo mioentérico (similar metoclopramida).",
+farmacocin:{
+absorc:"VO bem absorvida",
+distrib:"Ampla",
+metab:"Hepático",
+elimin:"Renal",
+meiavida:"~4-6h",
+ligacao:"Alta",
+},
+ef_colats:{
+comuns:["Sonolência","Sintomas extrapiramidais","Diarreia","Cefaleia"],
+sérios:["⚠ Distonia aguda","⚠ Discinesia tardia em uso prolongado","Hiperprolactinemia","Hipotensão em IV rápido"],
+},
+interacoes:["Similar à metoclopramida — vide acima"],
+contraindicacoes:["⚠ Obstrução intestinal mecânica","Perfuração GI","Convulsão","Feocromocitoma","Parkinson","Hipersensibilidade"],
+monit:["Sintomas extrapiramidais","Resposta clínica"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta",
+referencias:["ANVISA; consenso brasileiro."],
+},
+
+/* ============== ONDANSETRONA ============== */
+
+{id:"med-ondansetrona", classe:"Antiemético — antagonista 5-HT3", grupo:"pali",
+nome:"Ondansetrona",
+sin:["Zofran","Vonau","Nausedron","Ondansetron"],
+formas:["Comprimido 4 mg, 8 mg","Comprimido sublingual / orodispersível 4 mg, 8 mg","Solução oral 4 mg/5 mL","Ampola 2 mg/mL (2 mL, 4 mL) IM/IV/SC","REMUME — UBS dispensação direta (algumas SES); FARMASUS"],
+resumo:"⚠ ANTAGONISTA 5-HT3 — antiemético poderoso. Indicações principais: NÁUSEA POR QUIMIO ALTAMENTE EMETOGÊNICA, pós-op, gestação (off-label classe B), náusea oncológica refratária. ⚠ DESVANTAGENS: causa CONSTIPAÇÃO, QT longo (dose alta IV), cefaleia. ⚠ Não atua bem em náusea por ESTASE (não é procinético) — combinar com metoclopramida.",
+dose_rapida:"4-8 mg VO/SL/IV/SC 8/8h",
+doses:[
+{ind:"⚠ NÁUSEA / VÔMITO em QUIMIOTERAPIA altamente emetogênica (com dexa)", dose:"8 mg IV antes da quimio + 8 mg VO 12/12h × 3-5d", obs:"Combinação com dexametasona + aprepitanto em altamente emetogênica."},
+{ind:"⚠ NÁUSEA pós-op", dose:"4-8 mg IV/IM (pré ou intra-op)", obs:""},
+{ind:"⚠ NÁUSEA EM PALIATIVOS (refratária ou por mecanismo serotoninérgico — quimio recente, radioterapia)", dose:"4-8 mg VO/SC 8/8h", obs:"⚠ Útil em refratários ou em vômito após quimio/radioterapia. NÃO escolha 1ª em CTZ — preferir haloperidol."},
+{ind:"⚠ HIPERÊMESE GRAVÍDICA refratária", dose:"4-8 mg VO/SL 8/8h", obs:"⚠ Após falha de outras (metoclopramida, bromoprida). FDA atualizou — segurança 1º trim: dado misto mas baixo risco absoluto. Decisão compartilhada."},
+{ind:"Gastroenterite aguda em pediatria (uso restrito)", dose:"4-8 mg dose única", obs:"Reduz vômito, permite hidratação oral."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro",
+iht:"⚠ Reduzir em IH grave (Child C) — máx 8 mg/d",
+idoso:"Sem ajuste rotineiro — cuidado QT",
+gestante:"⚠ B — uso comum. Recente sinal de fenda palatina 1º trim (modesto, controverso) — preferir outras 1ª linha (metoclopramida, prometazina); usar se refratária.",
+aleita:"Compatível",
+ped:"⚠ Pode usar em ped. Considerar dose por peso.",
+},
+mecanismo:"⚠ ANTAGONISTA 5-HT3 — receptor seronérgico em CTZ central + aferentes vagais GI. Bloqueia náusea induzida por liberação de 5-HT (quimio, radio, distensão GI).",
+farmacocin:{
+absorc:"VO ~60%",
+distrib:"Ampla",
+metab:"Hepático CYP3A4, CYP2D6",
+elimin:"Renal",
+meiavida:"~3-6h",
+ligacao:"~70-76%",
+},
+ef_colats:{
+comuns:["⚠ CONSTIPAÇÃO (frequente — relevante em paciente com opioide)","Cefaleia","Fadiga","Tontura","Hipotensão leve","Boca seca","Rubor"],
+sérios:["⚠ ⚠ QT LONGO — DOSE-DEPENDENTE. Em IV >16 mg dose única: FDA WARNING. Em paciente cardíaco / eletrólitos baixos / outros QT-prolongadores: cuidado","⚠ Síndrome serotoninérgica (com SSRIs, tramadol, IMAO)","Reação alérgica","Hepatotoxicidade rara"],
+},
+interacoes:["⚠ ⚠ QT-prolongadores: ↑ TORSADES (metadona, antiarrítmicos, claritro, azólicos, haloperidol IV)","⚠ Tramadol / ISRS / IMAO: síndrome serotoninérgica","Inibidores CYP3A4 (cetoconazol): ↑ ondansetrona","Indutores CYP3A4 (rifampicina, fenitoína, carbamazepina): ↓","Apomorfina: hipotensão grave (CI)"],
+contraindicacoes:["⚠ QT longo congênito","⚠ Uso simultâneo com apomorfina","Hipersensibilidade","Síndrome serotoninérgica de risco (relativa)"],
+monit:["⚠ ECG basal em risco / dose IV alta","Eletrólitos (K, Mg)","Constipação","Resposta clínica"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta (algumas SES) + FARMASUS",
+referencias:["⚠ FDA QT Warning 2012; NCCN Antiemesis; ASCO; ANCP."],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — ENGINE PRINCIPAL
    Router por hash, render, busca fuzzy, toggle tema/modo
    =========================================================== */
@@ -25988,7 +28136,7 @@ referencias:["NICE Headache; AAN Migraine; ABE."],
 const SISTEMAS_ORD = {
   cardio:1, resp:2, neuro:3, gi:4, endo:5, gu:6, ost:7, psiq:8, hidro:9,
   infecto:10, anaf:11, tox:12, pec:13, hemo:14, vaso:15, iot:16, gest:17,
-  obst:18, trauma:19, derm:20, oft:21, anal:22, ubs:23, pulo:24, conv:25, proc:26, docs:27, med:28
+  obst:18, trauma:19, derm:20, oft:21, anal:22, pali:23, ubs:24, pulo:25, conv:26, proc:27, docs:28, med:29
 };
 Object.keys(SISTEMAS_ORD).forEach(k => {
   if (SISTEMAS[k]) SISTEMAS[k].ord = SISTEMAS_ORD[k];
@@ -26454,6 +28602,7 @@ window.gerarCROSS = function(patId) {
     "derm": "Dermatologia / Unidade de queimados (SJS/NET)",
     "gest": "Maternidade",
     "anal": "Suporte clínico",
+    "pali": "Equipe de Cuidados Paliativos / Hospice / Atenção Domiciliar (SAD-EMAD)",
     "proc": "Conforme procedimento",
     "ubs": "Conforme avaliação",
   };
@@ -26837,11 +28986,12 @@ function renderMedicacoes() {
     neuro: "Anticonvulsivantes / Neuro",
     psiq: "Psiquiátrico — Antidepressivos / Ansiolíticos / Hipnóticos",
     alergia: "Antialérgicos / Anti-histamínicos H1",
+    pali: "Paliativos — adjuvantes / antieméticos / antimuscarínicos / laxativos",
     gi: "Gastrintestinal (IBPs, H2, antieméticos)",
     ost: "Osteomuscular / Gota / Antirreumáticos",
     outros: "Outros",
   };
-  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","bd","neuro","psiq","alergia","gi","ost","outros"];
+  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","bd","neuro","psiq","alergia","pali","gi","ost","outros"];
 
   const sections = ord.filter(g => byGrupo[g]).map(g => {
     const cards = byGrupo[g].map(m => `
