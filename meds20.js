@@ -1,0 +1,193 @@
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 20)
+   Bloco E — Antivirais
+   Aciclovir, Valaciclovir, Oseltamivir, Famciclovir
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== ACICLOVIR ============== */
+
+{id:"med-aciclovir", classe:"Antiviral análogo nucleosídeo (anti-herpesvírus)", grupo:"atb",
+nome:"Aciclovir",
+sin:["Zovirax","Hervir","Aciclomed"],
+formas:["Comprimido 200 mg, 400 mg, 800 mg","Suspensão oral 200 mg/5 mL","Frasco-ampola 250 mg, 500 mg IV","Pomada oftálmica 3%","Creme 5%","REMUME — UBS dispensação direta + PFPB; ampola IV em UBS/PS"],
+resumo:"⚠ ESPECTRO: HERPESVÍRUS — HSV-1 (herpes labial, gengivoestomatite, encefalite, ceratite), HSV-2 (herpes genital), VZV (varicela, herpes zoster), EBV/CMV em alta dose (limitado). ⚠ PEGA BEM EM: herpes labial recorrente, herpes genital, varicela em adulto/imunossuprimido/grave, herpes zoster (especialmente <72h), encefalite herpética (1ª LINHA — EMERGÊNCIA), ceratite herpética. NÃO PEGA: outros vírus (influenza, HIV, hepatites).",
+dose_rapida:"VO: 400 mg 5×/d × 5-10d (variável); IV: 5-10 mg/kg 8/8h",
+doses:[
+{ind:"⚠ ⚠ ENCEFALITE HERPÉTICA — EMERGÊNCIA", dose:"⚠ 10 mg/kg IV 8/8h × 14-21 dias", obs:"⚠ INICIAR EMPÍRICO em todo paciente com sd. encefalítica + LCR sugestivo + RM/TC com alterações temporais — NÃO ESPERAR PCR confirmatório. Mortalidade não tratada >70%, tratada ~20%. ⚠ Tem sequelas neurológicas em sobreviventes."},
+{ind:"⚠ HERPES ZOSTER — adulto imunocompetente <72h", dose:"800 mg VO 5×/d × 7 dias", obs:"⚠ Iniciar em até 72H DO INÍCIO DAS LESÕES — reduz duração + risco de neuralgia pós-herpética. >72h: ainda iniciar se lesões novas surgindo ou em paciente com risco de complicação. ⚠ PCDT-MS: terapia padrão."},
+{ind:"⚠ HERPES ZOSTER OFTÁLMICO / GRAVE / IMUNOSSUPRIMIDO", dose:"10 mg/kg IV 8/8h × 7-10 dias OU aciclovir 800 mg VO 5×/d × 7-14d", obs:""},
+{ind:"⚠ HERPES GENITAL — 1º episódio (primoinfecção)", dose:"400 mg VO 8/8h OU 200 mg 5×/d × 7-10 dias", obs:"PCDT-MS IST."},
+{ind:"⚠ HERPES GENITAL — recorrência", dose:"400 mg VO 8/8h × 5 dias (iniciar nas primeiras 24h, idealmente pródromo)", obs:""},
+{ind:"⚠ HERPES GENITAL — supressivo crônico (≥6 recorrências/ano)", dose:"400 mg VO 12/12h ad lib", obs:"Reavaliar a cada 1 ano — pode interromper para ver frequência."},
+{ind:"⚠ HERPES LABIAL recorrente", dose:"400 mg VO 5×/d × 5 dias OU creme 5% 5×/d × 4 dias (eficácia tópica modesta)", obs:"Início no PRÓDROMO (sensação de queimação/formigamento)."},
+{ind:"⚠ VARICELA em ADULTO ou criança com fator de risco (>12a, gestante, imunossuprimido, comorbidade pulmonar)", dose:"800 mg VO 5×/d × 7 dias", obs:"⚠ Iniciar em até 24-72H DO INÍCIO DAS LESÕES — reduz duração e gravidade. Em criança saudável <12a: geralmente NÃO indica antiviral."},
+{ind:"⚠ VARICELA em IMUNOSSUPRIMIDO / GESTANTE / GRAVE", dose:"10 mg/kg IV 8/8h × 7-10 dias", obs:""},
+{ind:"⚠ Profilaxia pós-exposição (varicela em imunossuprimido / gestante suscetível)", dose:"800 mg VO 5×/d × 7 dias iniciando 7-10 dias pós-exposição", obs:"+ imunoglobulina anti-VZV (VZIG) se disponível em <96h."},
+{ind:"⚠ Gengivoestomatite herpética (HSV) — criança / adulto", dose:"15 mg/kg VO 5×/d × 7 dias (criança); 400 mg 5×/d × 7-10d (adulto)", obs:""},
+],
+ajustes:{
+irc:"⚠ AJUSTE OBRIGATÓRIO — TFG 25-50: 100% dose 12/12h. TFG 10-25: 100% 24/24h. TFG <10: 50% 24/24h. HD: pós.",
+iht:"Sem ajuste",
+idoso:"⚠ Ajustar pela função renal — risco neurotoxicidade (delirium, mioclonia, alucinações) em IRC.",
+gestante:"⚠ B — segura. Tratar herpes genital ativo no parto (suprimir 36 sem) reduz transmissão neonatal.",
+aleita:"Compatível",
+ped:"Suspensão pediátrica — doses específicas. Geralmente bem tolerada.",
+},
+mecanismo:"⚠ PRO-DROGA — fosforilada pela TIMIDINA-QUINASE VIRAL (não humana) → aciclovir trifosfato → INIBE DNA POLIMERASE VIRAL → bloqueia replicação. ⚠ ATIVAÇÃO SELETIVA em células infectadas — toxicidade mínima a célula sadia.",
+farmacocin:{
+absorc:"⚠ VO ~15-30% (BAIXA — explica frequência 5×/d). Valaciclovir (pro-droga) tem absorção 3-5× melhor.",
+distrib:"Ampla — atravessa BHE (relevante em encefalite)",
+metab:"Mínimo",
+elimin:"Renal (>90%)",
+meiavida:"~2,5-3h",
+ligacao:"~15%",
+},
+ef_colats:{
+comuns:["Náusea, vômito","Diarreia","Cefaleia","Mal-estar","Rash"],
+sérios:["⚠ NEFROTOXICIDADE — CRISTALÚRIA (infusão rápida IV, baixa hidratação). HIDRATAR ANTES E DURANTE infusão IV.","⚠ NEUROTOXICIDADE (delirium, alucinações, mioclonia, convulsão) — especialmente em IRC + dose alta. Reversível com suspensão.","Anemia, trombocitopenia (raro)","Reação no local IV (flebite)","Síndrome de Stevens-Johnson (raro)"],
+},
+interacoes:["⚠ Probenecida: ↑ aciclovir","Outros nefrotóxicos (AINE, contraste, aminoglicosídeo): nefrotoxicidade somativa","Tacrolimo, ciclosporina: cuidado"],
+contraindicacoes:["Hipersensibilidade"],
+monit:["⚠ Função renal — basal e em uso prolongado","⚠ Hidratação adequada (IV)","Sintomas neurológicos","Hemograma em uso prolongado"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta + PFPB. IV em UBS/PS para uso emergencial.",
+referencias:["⚠ PCDT-MS IST; PCDT-MS Hepatites e Herpes; IDSA HSV; Sanford."],
+},
+
+/* ============== VALACICLOVIR ============== */
+
+{id:"med-valaciclovir", classe:"Antiviral análogo nucleosídeo (anti-herpesvírus)", grupo:"atb",
+nome:"Valaciclovir",
+sin:["Valtrex","Valcir","Vacenagril"],
+formas:["Comprimido 500 mg, 1000 mg","⚠ Não REMUME nacional — PFPB em algumas SES; custo maior que aciclovir"],
+resumo:"⚠ PRO-DROGA DO ACICLOVIR — biodisponibilidade ORAL 3-5× MELHOR (~55%). Vantagem: POSOLOGIA MAIS CONVENIENTE (2-3×/d vs 5×/d aciclovir) — MELHOR ADESÃO. Mesmas indicações e espectro de aciclovir. Custo maior.",
+dose_rapida:"500-1000 mg VO 8-12/12h × 5-10 dias (variável)",
+doses:[
+{ind:"⚠ HERPES ZOSTER — adulto <72h", dose:"1000 mg VO 8/8h × 7 dias", obs:"⚠ Posologia mais simples que aciclovir 5×/d. Recomendada IDSA / PCDT."},
+{ind:"⚠ HERPES GENITAL — 1º episódio", dose:"1000 mg VO 12/12h × 7-10 dias", obs:""},
+{ind:"⚠ HERPES GENITAL — recorrência", dose:"500 mg VO 12/12h × 3 dias (curso curto) OU 1000 mg 1×/d × 5 dias", obs:""},
+{ind:"⚠ HERPES GENITAL — supressivo crônico", dose:"500 mg VO 1×/d (até 9 recorrências/ano) OU 1000 mg 1×/d (≥10 recorrências)", obs:""},
+{ind:"⚠ HERPES LABIAL recorrente", dose:"2000 mg VO 12/12h × 1 dia (curso ULTRA-CURTO de 24h)", obs:"⚠ ESQUEMA CURTÍSSIMO — alta dose × 2 doses no PRÓDROMO — quase tão eficaz quanto cursos mais longos."},
+{ind:"⚠ Profilaxia herpes transmissão sexual (paciente HSV-2+ em casal sorodiscordante)", dose:"500 mg/d", obs:"Reduz ~50% transmissão (em casais heterossexuais)."},
+{ind:"Varicela em adolescente/adulto", dose:"1000 mg VO 8/8h × 7 dias", obs:""},
+],
+ajustes:{
+irc:"⚠ AJUSTE — TFG 30-49: 1000 mg 12/12h. TFG 10-29: 1000 mg 24/24h. TFG <10: 500 mg 24/24h. HD: pós.",
+iht:"Sem ajuste",
+idoso:"⚠ Ajustar pela função renal — risco neurotoxicidade",
+gestante:"⚠ B — segura",
+aleita:"Compatível",
+ped:"≥2a (herpes labial); ≥12a (herpes genital)",
+},
+mecanismo:"PRO-DROGA — hidrolisada rapidamente a ACICLOVIR (primeiro passo intestinal/hepático). Após isso, mesmo mecanismo do aciclovir.",
+farmacocin:{
+absorc:"⚠ VO ~55% (3-5× melhor que aciclovir!) — refeição não afeta",
+distrib:"Ampla (como aciclovir)",
+metab:"Hepático: → aciclovir → fosforilação viral",
+elimin:"Renal",
+meiavida:"~3h",
+ligacao:"~15%",
+},
+ef_colats:{
+comuns:["Náusea","Cefaleia","Vômito","Diarreia"],
+sérios:["⚠ NEFROTOXICIDADE (cristalúria — manter hidratação)","⚠ NEUROTOXICIDADE em IRC + dose alta","⚠ ⚠ MICROANGIOPATIA TROMBÓTICA (TTP/SHU) — RARA mas DESCRITA em paciente IMUNOSSUPRIMIDO em DOSE ALTA — usar com cautela em transplantado","Trombocitopenia"],
+},
+interacoes:["Probenecida","Cimetidina: ↑ valaciclovir","Outros nefrotóxicos","Micofenolato"],
+contraindicacoes:["⚠ Imunossuprimido grave / transplantado em dose alta (risco TTP) — preferir aciclovir IV em risco","Hipersensibilidade"],
+monit:["Função renal","Hidratação","Hemograma + plaquetas em imunossuprimido"],
+gravidez:"B",
+sus:"PFPB em algumas SES",
+referencias:["PCDT-MS IST; IDSA; Sanford."],
+},
+
+/* ============== FAMCICLOVIR ============== */
+
+{id:"med-famciclovir", classe:"Antiviral análogo nucleosídeo (anti-herpesvírus)", grupo:"atb",
+nome:"Famciclovir",
+sin:["Penvir","Famvir"],
+formas:["Comprimido 125 mg, 250 mg, 500 mg","⚠ Não REMUME nacional — particular/PFPB algumas SES"],
+resumo:"⚠ PRO-DROGA DO PENCICLOVIR — alternativa ao valaciclovir. Posologia 2-3×/d. Mesmo espectro (HSV, VZV). USO MENOS COMUM no Brasil — geralmente quando paciente intolerante a aciclovir/valaciclovir.",
+dose_rapida:"125-500 mg VO 8-12/12h × 1-10 dias (variável)",
+doses:[
+{ind:"⚠ HERPES ZOSTER — adulto <72h", dose:"500 mg VO 8/8h × 7 dias", obs:""},
+{ind:"⚠ HERPES GENITAL — 1º episódio", dose:"250 mg VO 8/8h × 7-10 dias", obs:""},
+{ind:"⚠ HERPES GENITAL — recorrência", dose:"125 mg VO 12/12h × 5 dias OU 1000 mg 12/12h × 1 dia (curso curto)", obs:""},
+{ind:"⚠ HERPES GENITAL — supressivo crônico", dose:"250 mg VO 12/12h", obs:""},
+{ind:"⚠ HERPES LABIAL recorrente", dose:"1500 mg VO DOSE ÚNICA no pródromo", obs:""},
+],
+ajustes:{
+irc:"⚠ Ajuste pela TFG",
+iht:"Sem ajuste",
+idoso:"Ajustar pela função renal",
+gestante:"⚠ B — dados limitados",
+aleita:"Cautela",
+ped:"Limitada experiência",
+},
+mecanismo:"PRO-DROGA → PENCICLOVIR → fosforilada pela TK viral → inibe DNA polimerase viral.",
+farmacocin:{
+absorc:"VO ~77% (excelente)",
+distrib:"Ampla",
+metab:"Hepático rapidamente a penciclovir",
+elimin:"Renal",
+meiavida:"Penciclovir ~2h",
+ligacao:"~20%",
+},
+ef_colats:{
+comuns:["Cefaleia","Náusea","Diarreia","Fadiga"],
+sérios:["⚠ Nefrotoxicidade (raro)","Neurotoxicidade em IRC + dose alta","Trombocitopenia","Hepatite"],
+},
+interacoes:["Probenecida"],
+contraindicacoes:["Hipersensibilidade ao famciclovir/penciclovir"],
+monit:["Função renal"],
+gravidez:"B",
+sus:"⚠ Não REMUME nacional",
+referencias:["IDSA; Sanford."],
+},
+
+/* ============== OSELTAMIVIR ============== */
+
+{id:"med-oseltamivir", classe:"Antiviral inibidor da neuraminidase (anti-influenza)", grupo:"atb",
+nome:"Oseltamivir",
+sin:["Tamiflu"],
+formas:["Cápsula 30 mg, 45 mg, 75 mg","Pó para suspensão 6 mg/mL","⚠ REMUME — UBS dispensação direta DURANTE EPIDEMIAS / em paciente de RISCO ou GRAVE (PCDT-MS Influenza)"],
+resumo:"⚠ ⚠ ANTIVIRAL ESPECÍFICO PARA INFLUENZA A e B — incluindo H1N1, H3N2. NÃO ATIVO contra outros vírus respiratórios (rinovírus, RSV, adenovírus, parainfluenza, SARS-CoV-2). PEGA BEM EM: influenza confirmada ou suspeita em paciente de RISCO ou GRAVE. ⚠ EFICÁCIA é GRADUAL — reduz ~1 dia de sintomas se iniciado em 48h, reduz complicações em paciente de risco. NÃO MAGIC BULLET.",
+dose_rapida:"75 mg VO 12/12h × 5 dias (adulto); ⚠ INICIAR EM ATÉ 48H DO INÍCIO DOS SINTOMAS",
+doses:[
+{ind:"⚠ INFLUENZA confirmada/suspeita — TRATAMENTO em paciente de RISCO ou GRAVE", dose:"⚠ 75 mg VO 12/12h × 5 dias (adulto) — INICIAR EM ATÉ 48H, idealmente <24h", obs:"⚠ PCDT-MS Influenza: tratamento INDICADO em paciente com SÍNDROME GRIPAL + FATOR DE RISCO ou em SRAG (Síndrome Respiratória Aguda Grave) independente de fator de risco. ⚠ Em paciente JOVEM SAUDÁVEL sem fator de risco: benefício marginal — discussão compartilhada."},
+{ind:"⚠ INFLUENZA — fatores de risco para complicação", dose:"75 mg VO 12/12h × 5 dias", obs:"⚠ FATORES: gestantes/puérperas (até 14d pós-parto), <2a, ≥60a, imunossupressão (HIV/AIDS, neoplasia, transplante, corticoide), doença crônica (DPOC, DM, cardiopatia, IRC, hepatopatia, anemia falciforme), obesidade IMC ≥40, indígenas, populações vulneráveis."},
+{ind:"⚠ INFLUENZA GRAVE / SRAG / hospitalizado", dose:"75-150 mg VO 12/12h × 5-10 dias (estender em paciente grave/imunossuprimido)", obs:"⚠ Sem benefício comprovado de dose alta na maioria dos pacientes."},
+{ind:"⚠ Profilaxia pós-exposição (contactante de caso confirmado + alto risco)", dose:"75 mg VO 1×/d × 10 dias", obs:"⚠ Indicação restrita — preferir vacinação anual. Em surto institucional (lar de idoso, hospital) pode ser estratégia."},
+{ind:"Profilaxia em saúde pública (epidemia + alto risco)", dose:"75 mg/d × até 6 semanas", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG 30-60: 30-75 mg 12/12h. TFG 10-30: 75 mg 1×/d. TFG <10: 30 mg 1×/d. HD: dose após sessão.",
+iht:"Sem ajuste",
+idoso:"⚠ Ajustar pela função renal (frequentemente reduzida)",
+gestante:"⚠ ⚠ INDICADA na gestação — GESTANTE é POPULAÇÃO DE RISCO PARA INFLUENZA GRAVE. Categoria C mas benefício > risco em paciente sintomática. PCDT-MS: tratar.",
+aleita:"⚠ Compatível",
+ped:"⚠ ⚠ DOSE PEDIÁTRICA: <15 kg: 30 mg 12/12h; 15-23 kg: 45 mg 12/12h; 23-40 kg: 60 mg 12/12h; >40 kg: 75 mg 12/12h. ⚠ <1 ano: 3 mg/kg 12/12h.",
+},
+mecanismo:"⚠ INIBE NEURAMINIDASE viral → impede liberação de novas partículas virais da célula infectada → reduz disseminação. NÃO MATA o vírus, REDUZ REPLICAÇÃO.",
+farmacocin:{
+absorc:"VO ~80% — refeição não afeta significativamente",
+distrib:"Ampla — atinge trato respiratório bem",
+metab:"Hepático para oseltamivir carboxilato (forma ativa)",
+elimin:"Renal",
+meiavida:"~6-10h",
+ligacao:"~42%",
+},
+ef_colats:{
+comuns:["⚠ NÁUSEA / VÔMITO (frequente — tomar com alimento)","Cefaleia","Diarreia","Insônia","Tontura"],
+sérios:["⚠ EVENTOS NEUROPSIQUIÁTRICOS — confusão, agitação, alucinação, comportamento anormal — especialmente em criança/adolescente. Black box em alguns países. Monitor.","⚠ Reações de pele graves (raras) — Stevens-Johnson","Bradicardia, arritmia (raro)"],
+},
+interacoes:["⚠ Vacina influenza INATIVADA: sem interação (pode coadministrar)","⚠ Vacina influenza VIVA ATENUADA INTRANASAL (LAIV): EVITAR durante uso e até 2 sem após (oseltamivir inativa o vírus atenuado)","Probenecida: ↑ oseltamivir"],
+contraindicacoes:["Hipersensibilidade"],
+monit:["⚠ Sintomas neuropsiquiátricos em criança/adolescente — instruir família","Função renal","Resposta clínica"],
+gravidez:"⚠ C — INDICADA (benefício > risco em gestante sintomática)",
+sus:"⚠ ⚠ REMUME — UBS dispensação direta em paciente com indicação (PCDT-MS Influenza). Disponibilidade aumentada em sazonalidade gripal.",
+referencias:["⚠ PCDT-MS Influenza; CDC ACIP; IDSA Influenza."],
+},
+
+);

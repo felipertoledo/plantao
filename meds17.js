@@ -1,0 +1,228 @@
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 17)
+   Bloco E — Antidepressivos / ISRSs
+   Sertralina, Fluoxetina, Escitalopram, Citalopram, Paroxetina
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== SERTRALINA ============== */
+
+{id:"med-sertralina", classe:"ISRS — inibidor seletivo de recaptação de serotonina", grupo:"psiq",
+nome:"Sertralina",
+sin:["Zoloft","Sertran","Serenata","Tolrest"],
+formas:["Comprimido 25 mg, 50 mg, 100 mg","Solução oral 20 mg/mL","REMUME — FARMASUS (controle especial — receita C1)"],
+resumo:"⚠ ⚠ ISRS DE 1ª LINHA EM MAIORIA DAS INDICAÇÕES. Perfil de SEGURANÇA AMPLO — segura em cardiopata, idoso, gestação (mais estudada e mais segura), poucas interações. Início de ação 2-4 sem, pleno 4-6 sem.",
+dose_rapida:"50-200 mg/d (depressão); 25-200 mg/d (ansiedade — começar BAIXO)",
+doses:[
+{ind:"⚠ Depressão maior", dose:"25-50 mg/d × 1 sem, depois 50 mg/d. Titular a 100-200 mg/d se necessário em 2-4 sem", obs:"Dose efetiva mínima: 50 mg/d. Máx 200 mg/d."},
+{ind:"⚠ TAG / Transtorno ansioso", dose:"25 mg/d × 1 sem, depois 50 mg/d. Titular conforme tolerância 50-200 mg/d", obs:"⚠ Pode aumentar ansiedade nas primeiras 2 sem — orientar, persistir."},
+{ind:"⚠ Transtorno de pânico", dose:"12,5-25 mg/d × 1 sem, depois 25-50 mg/d. Titular lento 50-200 mg/d", obs:"⚠ Sensibilidade EXTREMA — começar muito baixo."},
+{ind:"⚠ TOC", dose:"50 mg/d, titular a 100-200 mg/d (doses mais altas em TOC — até 300 mg em alguns casos)", obs:"Início ação mais lento em TOC — pode levar 8-12 sem."},
+{ind:"⚠ TEPT", dose:"50-200 mg/d", obs:""},
+{ind:"⚠ Disforia pré-menstrual (DDPM)", dose:"50-100 mg/d contínuo OU 50-150 mg/d apenas na fase lútea", obs:""},
+{ind:"⚠ Fobia social", dose:"50-200 mg/d", obs:""},
+],
+ajustes:{
+irc:"Sem ajuste (não eliminada por rim)",
+iht:"⚠ Reduzir 50% em IH moderada-grave",
+idoso:"⚠ Iniciar 25 mg/d. Maior risco hiponatremia (SIADH), quedas, hemorragia GI.",
+gestante:"⚠ ⚠ C — MAIS SEGURA da classe na gestação. Sertralina + fluoxetina são preferidas. Riscos: hipertensão pulmonar persistente do RN (pequeno mas real, especialmente 3º trimestre), sintomas de descontinuação neonatal (irritabilidade, taquipneia, hipoglicemia — autolimitados). ⚠ NÃO SUSPENDER em gestante estabilizada se depressão moderada-grave.",
+aleita:"⚠ Compatível — mais segura da classe na lactação (níveis baixos no leite). Continuar.",
+ped:"⚠ ≥6a: 25 mg/d (TOC); ≥12a: depressão. Acompanhamento psiquiátrico. ⚠ Black box FDA para ideação suicida em <25a — monitor 1-2 sem.",
+},
+mecanismo:"INIBE recaptação de serotonina (5-HT) no neurônio pré-sináptico → ↑ disponibilidade sináptica. Mínima ação em outros neurotransmissores. Mecanismo terapêutico não totalmente esclarecido (provável neuroplasticidade após semanas).",
+farmacocin:{
+absorc:"VO ~88%. Refeição AUMENTA biodisponibilidade — tomar com alimento.",
+distrib:"Ampla, atravessa BHE",
+metab:"Hepático (CYP3A4, CYP2C19, CYP2B6)",
+elimin:"Renal + fecal",
+meiavida:"~26h (1×/d)",
+ligacao:"~98%",
+},
+ef_colats:{
+comuns:["⚠ DIARREIA (mais que outros ISRS — característica)","Náusea (geralmente transitória)","Cefaleia","Insônia ou sonolência","Sudorese","Tremor leve","DISFUNÇÃO SEXUAL (atraso ejaculatório, anorgasmia, ↓ libido) — frequente","Boca seca","Ganho de peso modesto a longo prazo"],
+sérios:["⚠ HIPONATREMIA (SIADH) — risco aumentado em idoso, diurético, baixa ingesta","⚠ HEMORRAGIA — ↑ risco GI alto (especialmente com AINE) e cerebral (em anticoagulado)","⚠ AUMENTO TRANSITÓRIO DE IDEAÇÃO SUICIDA nas 2-4 primeiras semanas em <25a (FDA black box)","⚠ SÍNDROME SEROTONINÉRGICA (em combinação com IMAO, tramadol, linezolida, triptanos, ondansetrona em dose alta)","⚠ SÍNDROME DE DESCONTINUAÇÃO (vertigem, parestesia 'choques elétricos', sintomas gripais, irritabilidade) — sertralina é INTERMEDIÁRIA neste aspecto","Mania/hipomania em paciente bipolar não diagnosticado","Prolongamento QT em dose alta (raro)","Disfunção plaquetária"],
+},
+interacoes:["⚠ IMAO (incluindo selegilina, linezolida, azul de metileno): SÍNDROME SEROTONINÉRGICA — proibir; washout 14 dias","⚠ Tramadol, linezolida, fentanil, triptanos: risco sd. serotoninérgica","⚠ Anticoagulantes orais (varfarina): ↑ INR e hemorragia","⚠ AINEs / ácido acetilsalicílico: hemorragia GI somativa","Pimozida: ↑ nível, QT","Lítio: cuidado","Inibidores CYP2D6: pequeno impacto"],
+contraindicacoes:["⚠ USO de IMAO em 14 dias","⚠ Hipersensibilidade","Uso concomitante com pimozida","Mania/hipomania ativa não tratada"],
+monit:["Resposta clínica em 4-6 sem","Sódio sérico em idoso/diurético (1-2 sem)","Suicidalidade primeiras 4 sem em <25a","INR se varfarina","Sintomas sexuais (frequente — discutir)"],
+gravidez:"C",
+sus:"⚠ REMUME — FARMASUS (receita controle especial C1). Disponibilidade ampla.",
+referencias:["DSM-5-TR; APA Practice; NICE; ABP. PCDT-MS Saúde Mental."],
+},
+
+/* ============== FLUOXETINA ============== */
+
+{id:"med-fluoxetina", classe:"ISRS — inibidor seletivo de recaptação de serotonina", grupo:"psiq",
+nome:"Fluoxetina",
+sin:["Prozac","Daforin","Eufor","Verotina"],
+formas:["Cápsula 10 mg, 20 mg","Solução oral 4 mg/mL","REMUME — UBS dispensação direta + PFPB + FARMASUS"],
+resumo:"⚠ ISRS DE 1ª LINHA AMBULATORIAL — disponibilidade ampla SUS. Vantagem: MEIA-VIDA MUITO LONGA (metabólito ativo 7-15 dias) — washout natural, útil em paciente NÃO-ADERENTE. Desvantagem: maior risco de interações (inibidor CYP2D6 forte). ⚠ Pode ATIVAR — útil em depressão com fadiga, mas pode piorar ansiedade.",
+dose_rapida:"20-60 mg/d (1×/d, manhã)",
+doses:[
+{ind:"⚠ Depressão maior", dose:"10-20 mg/d × 2 sem, depois 20-40 mg/d. Máx 80 mg/d", obs:"Dose efetiva mínima: 20 mg/d. Idoso/adolescente: começar 10 mg."},
+{ind:"⚠ TOC", dose:"20 mg/d, titular a 40-80 mg/d", obs:"Dose mais alta em TOC."},
+{ind:"⚠ Bulimia nervosa", dose:"60 mg/d", obs:"⚠ Indicação ESPECÍFICA — ÚNICA droga FDA-aprovada para bulimia."},
+{ind:"⚠ Disforia pré-menstrual (DDPM)", dose:"20 mg/d contínuo OU apenas fase lútea", obs:""},
+{ind:"⚠ Fobia social, pânico, TEPT", dose:"20-60 mg/d", obs:""},
+{ind:"⚠ Síndrome climatérica (sintomas vasomotores resistentes)", dose:"20 mg/d", obs:"Off-label, alternativa a TRH em paciente com contraindicação."},
+],
+ajustes:{
+irc:"Sem ajuste",
+iht:"⚠ Reduzir 50% em IH moderada-grave",
+idoso:"⚠ Iniciar 10 mg/d. Meia-vida ainda mais longa — acumulação. Maior risco hiponatremia, sangramento.",
+gestante:"⚠ C — Aceita na gestação, eficácia conhecida. Sertralina é alternativa com mais dados. ⚠ Em 3º trimestre risco aumentado de hipertensão pulmonar persistente do RN.",
+aleita:"⚠ Compatível mas concentração no leite materno > sertralina. Observar lactente para sedação, recusa alimentar.",
+ped:"⚠ ≥7a (TOC); ≥8a (depressão). Acompanhamento psiquiátrico. Black box FDA.",
+},
+mecanismo:"INIBE recaptação 5-HT. Metabólito ativo NORFLUOXETINA — meia-vida 7-15 dias (efeito prolongado mesmo após suspensão).",
+farmacocin:{
+absorc:"VO ~80%",
+distrib:"Ampla",
+metab:"Hepático (CYP2D6, CYP3A4 — INIBIDOR CYP2D6 forte)",
+elimin:"Renal + fecal",
+meiavida:"⚠ FLUOXETINA 1-3 dias / NORFLUOXETINA 7-15 dias — características próprias",
+ligacao:"~95%",
+},
+ef_colats:{
+comuns:["⚠ ATIVAÇÃO (insônia, agitação, ansiedade) — comum no início — tomar pela MANHÃ","Náusea (transitória)","Cefaleia","Tremor","Disfunção sexual","Anorexia / perda de peso modesta","Sudorese","Boca seca"],
+sérios:["⚠ HIPONATREMIA (SIADH) — risco em idoso","⚠ Hemorragia GI/cerebral (com AINE/anticoag)","⚠ Aumento de ideação suicida em <25a (black box)","⚠ Síndrome serotoninérgica (com IMAO, tramadol, triptanos)","⚠ Mania em bipolar","Disfunção sexual","Acatisia"],
+},
+interacoes:["⚠ IMAO: SD SEROTONINÉRGICA — proibido. ⚠ Washout 5-6 SEMANAS para iniciar IMAO após fluoxetina (vs 14 dias para outros ISRS)","⚠ Tramadol, linezolida, triptanos: sd. serotoninérgica","⚠ INIBIDOR CYP2D6 FORTE — múltiplas interações: tamoxifeno (↓ ativação), tricíclicos (↑ nível), antipsicóticos (↑ haloperidol, risperidona), metoprolol, codeína (↓ analgesia — não ativa em morfina)","⚠ Anticoagulantes: ↑ INR","AINEs: hemorragia GI","Pimozida: contraindicado","Tioridazina: contraindicado (QT)","Lítio: cuidado"],
+contraindicacoes:["⚠ IMAO em 14 dias antes / 5-6 sem depois","⚠ Pimozida, tioridazina (QT)","Hipersensibilidade","Mania ativa"],
+monit:["Resposta clínica 4-6 sem","Sódio em idoso","Suicidalidade primeiras 4 sem em <25a","Considerar washout LONGO em transição para IMAO","Disfunção sexual"],
+gravidez:"C",
+sus:"⚠ REMUME — UBS dispensação direta + PFPB + FARMASUS.",
+referencias:["DSM-5-TR; APA Practice; NICE; ABP."],
+},
+
+/* ============== ESCITALOPRAM ============== */
+
+{id:"med-escitalopram", classe:"ISRS — inibidor seletivo de recaptação de serotonina", grupo:"psiq",
+nome:"Escitalopram",
+sin:["Lexapro","Reconter","Esciton","Exodus"],
+formas:["Comprimido 10 mg, 15 mg, 20 mg","Solução oral 20 mg/mL","⚠ Não REMUME nacional. PFPB em algumas SES + FARMASUS controle especial"],
+resumo:"⚠ ISRS de PERFIL LIMPO — menos interações medicamentosas (não CYP2D6), bem tolerado, eficácia equivalente a sertralina. PREFERIDO em idoso polifarmacizado, hepatopata. Limitação: ⚠ DOSE MÁXIMA 20 mg (10 mg em idoso) por risco QT. Custo maior que fluoxetina/sertralina.",
+dose_rapida:"10-20 mg/d (idoso 5-10 mg/d)",
+doses:[
+{ind:"⚠ Depressão maior", dose:"5-10 mg/d × 1-2 sem, depois 10-20 mg/d", obs:"Dose efetiva 10 mg/d. ⚠ MÁX 20 mg/d (10 mg em idoso) — QT."},
+{ind:"⚠ TAG / pânico / fobia social", dose:"5 mg/d × 1 sem, depois 10-20 mg/d", obs:"⚠ Começar baixo em pânico."},
+{ind:"TOC, TEPT", dose:"10-20 mg/d", obs:""},
+{ind:"Disforia pré-menstrual", dose:"10-20 mg/d", obs:""},
+],
+ajustes:{
+irc:"TFG <20: cautela",
+iht:"⚠ Reduzir para 10 mg/d em IH moderada-grave",
+idoso:"⚠ ⚠ MÁX 10 mg/d — risco QT mais acentuado. Iniciar 5 mg.",
+gestante:"⚠ C — Dados crescentes. Sertralina e fluoxetina têm mais dados.",
+aleita:"Compatível",
+ped:"≥12a: 10 mg/d. Acompanhamento psiquiátrico.",
+},
+mecanismo:"INIBE recaptação 5-HT — enantiômero S do citalopram (10× mais potente que o R). Mínima interação com outros sistemas.",
+farmacocin:{
+absorc:"VO ~80%, sem interferência alimentar",
+distrib:"Ampla",
+metab:"Hepático (CYP2C19, CYP3A4 — pouco inibidor)",
+elimin:"Renal",
+meiavida:"~27-32h",
+ligacao:"~56%",
+},
+ef_colats:{
+comuns:["Náusea","Insônia","Sonolência","Disfunção sexual","Sudorese","Boca seca","Cefaleia"],
+sérios:["⚠ PROLONGAMENTO QT (especialmente >20 mg/d, idoso, eletrólitos baixos) — TORSADES","⚠ Hiponatremia (SIADH)","⚠ Hemorragia (com AINE/anticoag)","⚠ Aumento de ideação suicida em <25a","Síndrome serotoninérgica","Mania em bipolar"],
+},
+interacoes:["⚠ IMAO: SD SEROTONINÉRGICA","⚠ QT-PROLONGADORES: somatório (ondansetrona, antiarrítmicos, macrolídeos, antipsicóticos, metadona) — atenção","Tramadol, linezolida, triptanos","Anticoagulantes","AINEs","Omeprazol: ↑ escitalopram (inibe CYP2C19)"],
+contraindicacoes:["⚠ IMAO em 14 dias","⚠ QT longo, arritmia ventricular, IAM recente","Hipersensibilidade","Bradicardia, hipocalemia/magnesemia não corrigida"],
+monit:["⚠ ECG em risco (dose alta, idoso, polifarmácia QT)","Sódio em idoso","Suicidalidade primeiras 4 sem em <25a"],
+gravidez:"C",
+sus:"⚠ FARMASUS / componente complementar. PFPB em algumas SES.",
+referencias:["FDA QT Warning Citalopram/Escitalopram 2012; NICE."],
+},
+
+/* ============== CITALOPRAM ============== */
+
+{id:"med-citalopram", classe:"ISRS — inibidor seletivo de recaptação de serotonina", grupo:"psiq",
+nome:"Citalopram",
+sin:["Cipramil","Citta","Procimax"],
+formas:["Comprimido 20 mg, 40 mg","Solução oral 40 mg/mL","FARMASUS"],
+resumo:"⚠ ISRS racêmico (predecessor do escitalopram). Mesmo perfil de QT mas dose máx 40 mg/d (20 mg/d em idoso) — FDA Warning 2012. Atualmente PREFERIDO o escitalopram (enantiômero S puro, dobro da potência por mg).",
+dose_rapida:"20-40 mg/d (idoso 10-20 mg/d)",
+doses:[
+{ind:"Depressão maior", dose:"20 mg/d × 1 sem, depois 20-40 mg/d", obs:"⚠ MÁX 40 mg/d (20 mg em idoso, >60a, IH, CYP2C19 lento). FDA QT Warning."},
+{ind:"TAG, pânico, TOC, fobia social", dose:"10-40 mg/d", obs:""},
+],
+ajustes:{
+irc:"TFG <20: cautela",
+iht:"⚠ MÁX 20 mg/d",
+idoso:"⚠ ⚠ MÁX 20 mg/d — risco QT",
+gestante:"C",
+aleita:"Compatível",
+ped:"Acompanhamento psiquiátrico",
+},
+mecanismo:"INIBE recaptação 5-HT. Racêmico (R+S) — apenas S é ativo (escitalopram puro = mais eficaz por mg).",
+farmacocin:{
+absorc:"VO ~80%",
+distrib:"Ampla",
+metab:"Hepático CYP2C19",
+elimin:"Renal",
+meiavida:"~35h",
+ligacao:"~80%",
+},
+ef_colats:{
+comuns:["Náusea","Cefaleia","Insônia","Disfunção sexual","Sudorese","Boca seca"],
+sérios:["⚠ QT LONGO — torsades (FDA Warning)","⚠ Hiponatremia","⚠ Hemorragia","⚠ Suicidalidade em <25a","Síndrome serotoninérgica","Mania"],
+},
+interacoes:["⚠ IMAO","⚠ QT-prolongadores","Tramadol","Anticoagulantes","AINEs","Omeprazol (↑ citalopram)"],
+contraindicacoes:["IMAO","⚠ QT longo, arritmia ventricular","Hipersensibilidade"],
+monit:["ECG em risco","Sódio em idoso","Suicidalidade"],
+gravidez:"C",
+sus:"FARMASUS",
+referencias:["FDA QT Warning 2012; NICE."],
+},
+
+/* ============== PAROXETINA ============== */
+
+{id:"med-paroxetina", classe:"ISRS — inibidor seletivo de recaptação de serotonina", grupo:"psiq",
+nome:"Paroxetina",
+sin:["Aropax","Cebrilin","Pondera","Pamelor (NÃO — é nortriptilina)"],
+formas:["Comprimido 10 mg, 20 mg, 25 mg CR (controlled release)","FARMASUS"],
+resumo:"⚠ ISRS EFICAZ em ANSIEDADE / pânico / fobia social — historicamente preferido. PORÉM: PIOR PERFIL DE TOLERABILIDADE da classe — anticolinérgico (sedação, boca seca, constipação, retenção urinária), maior ganho de peso, síndrome de descontinuação INTENSA. ⚠ EVITAR em idoso. ⚠ EVITAR em gestação (anomalias cardíacas em meta-análises).",
+dose_rapida:"20-40 mg/d (CR 25-50 mg/d)",
+doses:[
+{ind:"Depressão maior", dose:"20 mg/d, titular a 40 mg/d. Máx 50 mg/d (60 mg em alguns países)", obs:""},
+{ind:"⚠ Transtorno de pânico", dose:"10 mg/d × 1 sem (sensibilidade), depois 20-40 mg/d", obs:"Início baixo — pacientes com pânico muito sensíveis."},
+{ind:"TAG, fobia social, TEPT, TOC", dose:"20-40 mg/d (TOC até 60 mg/d)", obs:""},
+{ind:"Disforia pré-menstrual", dose:"12,5-25 mg/d (CR)", obs:""},
+{ind:"Sintomas vasomotores climatério", dose:"7,5 mg/d (formulação específica em alguns países) OU 10-20 mg/d", obs:"Off-label."},
+],
+ajustes:{
+irc:"TFG <30: dose mais baixa",
+iht:"Cautela",
+idoso:"⚠ EVITAR — Beers Criteria — anticolinérgico, sedação, quedas",
+gestante:"⚠ D — EVITAR. Anomalias cardíacas em meta-análises (especialmente 1º trimestre). Trocar para sertralina/fluoxetina ANTES de gestar se possível.",
+aleita:"Compatível",
+ped:"⚠ ≥18a (não aprovada em <18a)",
+},
+mecanismo:"INIBE recaptação 5-HT + ATIVIDADE ANTICOLINÉRGICA mais pronunciada que outros ISRS.",
+farmacocin:{
+absorc:"VO ~50%",
+distrib:"Ampla",
+metab:"Hepático (CYP2D6 — INIBIDOR FORTE, similar à fluoxetina)",
+elimin:"Renal + fecal",
+meiavida:"~21h",
+ligacao:"~95%",
+},
+ef_colats:{
+comuns:["⚠ SEDAÇÃO (mais que outros ISRS)","⚠ Boca seca, constipação, retenção urinária (anticolinérgico)","Náusea","⚠ GANHO DE PESO (mais que outros ISRS)","⚠ DISFUNÇÃO SEXUAL marcada","Tontura, sudorese"],
+sérios:["⚠ SÍNDROME DE DESCONTINUAÇÃO INTENSA — vertigem, parestesia 'choque elétrico', sintomas gripais — PIOR da classe","Hiponatremia","Hemorragia","Suicidalidade em <25a","Síndrome serotoninérgica","Mania","Anomalias cardíacas fetais (1º trimestre)"],
+},
+interacoes:["⚠ IMAO","⚠ INIBIDOR CYP2D6 FORTE — tamoxifeno (não ativa — proibido em CA mama estrogênio+), tricíclicos, antipsicóticos, codeína","Tramadol","Anticoagulantes","AINEs","Pimozida, tioridazina (QT)"],
+contraindicacoes:["⚠ IMAO 14 dias","⚠ Gestação (relativa)","⚠ Idoso (relativa)","Pimozida, tioridazina","Hipersensibilidade"],
+monit:["Resposta clínica","Ganho de peso","⚠ Plano de SUSPENSÃO MUITO GRADUAL — reduzir 10% a cada 2-4 sem","Suicidalidade em <25a"],
+gravidez:"⚠ D",
+sus:"FARMASUS",
+referencias:["FDA Pregnancy Warning Paroxetine 2005; APA."],
+},
+
+);
