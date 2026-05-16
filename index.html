@@ -13857,6 +13857,224 @@ CALCS_EXTRA.forEach(c => {
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — CALCULADORAS ADICIONAIS (PARTE 3)
+   Padua, Caprini, BISAP, qSOFA, HAS-BLED, FOUR
+   =========================================================== */
+
+const CALCS_EXTRA3 = [
+
+/* ============== PADUA — TEV em paciente clínico hospitalizado ============== */
+{id:"padua", nome:"Padua — Risco de TEV em paciente clínico hospitalizado", sis:"hemo",
+desc:"Predictive score para TROMBOEMBOLISMO VENOSO em pacientes CLÍNICOS hospitalizados (não-cirúrgicos). Indica profilaxia farmacológica. Padua ≥4 = ALTO risco — anticoagulação profilática.",
+fields:[
+{tipo:"bool", id:"a", label:"Câncer ativo (metastático, ou tratamento <6m) (+3)"},
+{tipo:"bool", id:"b", label:"TEV prévio (excluir trombose venosa superficial) (+3)"},
+{tipo:"bool", id:"c", label:"Mobilidade reduzida — repouso no leito ≥3 dias (+3)"},
+{tipo:"bool", id:"d", label:"Trombofilia conhecida (deficiência AT, prot C/S, fator V Leiden, mutação protrombina, anticorpos antifosfolípide) (+3)"},
+{tipo:"bool", id:"e", label:"Trauma ou cirurgia recente (≤1 mês) (+2)"},
+{tipo:"bool", id:"f", label:"Idade ≥70 anos (+1)"},
+{tipo:"bool", id:"g", label:"Insuficiência cardíaca e/ou respiratória (+1)"},
+{tipo:"bool", id:"h", label:"IAM ou AVC agudo (+1)"},
+{tipo:"bool", id:"i", label:"Infecção aguda e/ou doença reumatológica (+1)"},
+{tipo:"bool", id:"j", label:"Obesidade (IMC ≥30) (+1)"},
+{tipo:"bool", id:"k", label:"Tratamento hormonal em vigência (ACO, TRH) (+1)"},
+],
+calc:function(v){
+  let s = 0;
+  if(v.a) s+=3; if(v.b) s+=3; if(v.c) s+=3; if(v.d) s+=3;
+  if(v.e) s+=2;
+  if(v.f) s+=1; if(v.g) s+=1; if(v.h) s+=1; if(v.i) s+=1; if(v.j) s+=1; if(v.k) s+=1;
+  return s;
+},
+interp:function(s){
+  if(s<4) return {risco:`Padua ${s} — BAIXO RISCO de TEV`, acao:"Profilaxia farmacológica NÃO INDICADA rotineiramente. Profilaxia MECÂNICA (deambulação precoce, meias de compressão) em todos. Reavaliar diariamente.", cor:"ok"};
+  return {risco:`Padua ${s} — ALTO RISCO de TEV (≥4)`, acao:"⚠ INDICAR profilaxia farmacológica: ENOXAPARINA 40 mg SC 1×/d OU HNF 5000 UI SC 8/8h. Avaliar contraindicações (sangramento ativo, plaquetopenia <50, IRC grave para enoxa). Em IRC grave: HNF é preferida. Reavaliar diariamente.", cor:"warn"};
+}
+},
+
+/* ============== CAPRINI — TEV em paciente cirúrgico ============== */
+{id:"caprini", nome:"Caprini — Risco de TEV em paciente cirúrgico", sis:"hemo",
+desc:"Score para TROMBOEMBOLISMO VENOSO em pacientes CIRÚRGICOS. Estratifica risco e indica intensidade da profilaxia. Versão simplificada.",
+fields:[
+{tipo:"select", id:"idade", label:"Idade", opts:[
+{val:"0", label:"0 — <41 anos"},
+{val:"1", label:"1 — 41-60 anos"},
+{val:"2", label:"2 — 61-74 anos"},
+{val:"3", label:"3 — ≥75 anos"},
+]},
+{tipo:"bool", id:"a", label:"Cirurgia menor planejada (+1)"},
+{tipo:"bool", id:"b", label:"IMC >25 (+1)"},
+{tipo:"bool", id:"c", label:"Edema MMII / varizes (+1)"},
+{tipo:"bool", id:"d", label:"Gestação ou puerpério (+1)"},
+{tipo:"bool", id:"e", label:"História de aborto inexplicado/recorrente (+1)"},
+{tipo:"bool", id:"f", label:"ACO ou TRH em uso (+1)"},
+{tipo:"bool", id:"g", label:"Sepse / pneumonia (<1m) (+1)"},
+{tipo:"bool", id:"h", label:"Função pulmonar anormal / DPOC (+1)"},
+{tipo:"bool", id:"i", label:"IAM agudo (+1)"},
+{tipo:"bool", id:"j", label:"ICC (<1m) (+1)"},
+{tipo:"bool", id:"k", label:"Repouso no leito (paciente clínico) (+1)"},
+{tipo:"bool", id:"l", label:"Cirurgia artroscópica (+2)"},
+{tipo:"bool", id:"m", label:"Cirurgia laparoscópica >45 min (+2)"},
+{tipo:"bool", id:"n", label:"Cirurgia aberta >45 min (+2)"},
+{tipo:"bool", id:"o", label:"Malignidade ativa (+2)"},
+{tipo:"bool", id:"p", label:"Confinamento ao leito >72h (+2)"},
+{tipo:"bool", id:"q", label:"Imobilização (gesso) <1m (+2)"},
+{tipo:"bool", id:"r", label:"Cateter venoso central (+2)"},
+{tipo:"bool", id:"s", label:"TEV prévio (+3)"},
+{tipo:"bool", id:"t", label:"História familiar de TEV (+3)"},
+{tipo:"bool", id:"u", label:"Fator V Leiden / mutação protrombina / antifosfolípide / outras trombofilias (+3)"},
+{tipo:"bool", id:"v", label:"AVC <1m (+5)"},
+{tipo:"bool", id:"w", label:"Artroplastia eletiva (+5)"},
+{tipo:"bool", id:"x", label:"Fratura quadril/pelve/perna (+5)"},
+{tipo:"bool", id:"y", label:"Trauma raquimedular agudo <1m (+5)"},
+],
+calc:function(v){
+  let s = parseInt(v.idade||0);
+  ['a','b','c','d','e','f','g','h','i','j','k'].forEach(k => { if(v[k]) s+=1; });
+  ['l','m','n','o','p','q','r'].forEach(k => { if(v[k]) s+=2; });
+  ['s','t','u'].forEach(k => { if(v[k]) s+=3; });
+  ['v','w','x','y'].forEach(k => { if(v[k]) s+=5; });
+  return s;
+},
+interp:function(s){
+  if(s===0) return {risco:`Caprini ${s} — RISCO MUITO BAIXO`, acao:"Deambulação precoce. Profilaxia farmacológica não indicada.", cor:"ok"};
+  if(s<=2) return {risco:`Caprini ${s} — BAIXO RISCO`, acao:"Profilaxia MECÂNICA (meias compressão / CPI). Considerar farmacológica conforme contexto cirúrgico.", cor:"ok"};
+  if(s<=4) return {risco:`Caprini ${s} — RISCO MODERADO`, acao:"Profilaxia FARMACOLÓGICA: enoxaparina 40 mg SC 1×/d OU HNF 5000 UI 8/8h. Considerar combinação mecânica + farmacológica.", cor:"warn"};
+  return {risco:`Caprini ${s} — ALTO RISCO`, acao:"⚠ Profilaxia FARMACOLÓGICA + MECÂNICA combinada. Considerar PROLONGAR profilaxia até 4-5 sem pós-alta em cirurgia oncológica abdominal/pélvica ou artroplastia. Enoxaparina 40 mg/d (ou 30 mg 12/12h em alto risco).", cor:"crit"};
+}
+},
+
+/* ============== BISAP — Pancreatite Aguda ============== */
+{id:"bisap", nome:"BISAP — Gravidade da Pancreatite Aguda", sis:"gi",
+desc:"Bedside Index for Severity in Acute Pancreatitis. Aplicar nas PRIMEIRAS 24H. Score ≥3 = pancreatite GRAVE (10-20% mortalidade) — UTI / acompanhamento próximo.",
+fields:[
+{tipo:"bool", id:"b", label:"BUN >25 mg/dL (Ureia >53) (+1)"},
+{tipo:"bool", id:"i", label:"Impaired mental status — alteração consciência (GCS <15) (+1)"},
+{tipo:"bool", id:"s", label:"SIRS — ≥2 dos critérios SIRS (Tax >38 ou <36, FC >90, FR >20 ou pCO₂ <32, leuco >12 ou <4 ou >10% bastões) (+1)"},
+{tipo:"bool", id:"a", label:"Age — idade >60 anos (+1)"},
+{tipo:"bool", id:"p", label:"Pleural effusion — derrame pleural na imagem (+1)"},
+],
+calc:function(v){
+  let s = 0;
+  ['b','i','s','a','p'].forEach(k => { if(v[k]) s+=1; });
+  return s;
+},
+interp:function(s){
+  if(s<=2) return {risco:`BISAP ${s} — Pancreatite LEVE-MODERADA (mortalidade <2%)`, acao:"Enfermaria. Hidratação vigorosa primeiras 24-48h (Ringer Lactato 250-500 mL/h, reavaliar). Analgesia (evitar AINE — preferir dipirona + opioide). Repouso digestivo até melhora da dor e queda de amilase/lipase. Investigar etiologia (USG vias biliares + perfil lipídico + cálcio + álcool).", cor:"ok"};
+  if(s===3) return {risco:`BISAP ${s} — Pancreatite POTENCIALMENTE GRAVE (mortalidade 5-8%)`, acao:"⚠ Considerar UTI / unidade semi-intensiva. Hidratação vigorosa, controle de dor, observação rigorosa. TC abdome 48-72h se piora ou suspeita de complicação. ⚠ ATB profilático NÃO indicado em pancreatite estéril.", cor:"warn"};
+  return {risco:`BISAP ${s} — Pancreatite GRAVE (mortalidade 10-20%)`, acao:"⚠ UTI. Suporte intensivo, hidratação dirigida por hemodinâmica, suporte ventilatório se SARA, RRT se IRA. ⚠ TC contrastada 72h para necrose. ATB se infecção confirmada (necrose infectada, colangite). Avaliação cirúrgica em coleções, necrosectomia tardia.", cor:"crit"};
+}
+},
+
+/* ============== qSOFA — Sepse ============== */
+{id:"qsofa", nome:"qSOFA — Triagem rápida de Sepse fora da UTI", sis:"infecto",
+desc:"Quick SOFA. Aplicar em paciente com infecção SUSPEITA fora da UTI. ⚠ qSOFA ≥2 = ALTO risco de mortalidade — investigar SEPSE (SOFA completo, lactato, hemoculturas, ATB precoce). ⚠ NÃO é diagnóstico de sepse — é FERRAMENTA DE TRIAGEM.",
+fields:[
+{tipo:"select", id:"fr", label:"Frequência respiratória", opts:[
+{val:"0", label:"0 — <22 ipm"},
+{val:"1", label:"1 — ≥22 ipm"},
+]},
+{tipo:"select", id:"mc", label:"Estado mental", opts:[
+{val:"0", label:"0 — Glasgow 15 (alerta)"},
+{val:"1", label:"1 — Glasgow <15 (qualquer alteração)"},
+]},
+{tipo:"select", id:"pas", label:"Pressão arterial sistólica", opts:[
+{val:"0", label:"0 — PAS >100 mmHg"},
+{val:"1", label:"1 — PAS ≤100 mmHg"},
+]},
+],
+calc:function(v){
+  let s = 0;
+  s += parseInt(v.fr||0);
+  s += parseInt(v.mc||0);
+  s += parseInt(v.pas||0);
+  return s;
+},
+interp:function(s){
+  if(s<2) return {risco:`qSOFA ${s} — Baixo risco`, acao:"Mantém investigação da infecção. Reavaliar serialmente — qSOFA pode subir. Considerar SIRS, NEWS2, hemograma, lactato, gasometria se suspeita clínica forte.", cor:"ok"};
+  return {risco:`qSOFA ${s} — ALTO RISCO de mortalidade (≥2) — possível SEPSE`, acao:"⚠ ⚠ INVESTIGAR SEPSE: 2 HEMOCULTURAS + URINOCULTURA + outras culturas conforme foco. LACTATO sérico. ⚠ ANTIBIÓTICO EMPÍRICO em ≤1 hora (cobertura do foco suspeito). CRISTALOIDE 30 mL/kg em 3h se hipoperfusão. Reavaliar PA, perfusão, diurese. Calcular SOFA completo. ⚠ Comunicar ao plantonista/UTI.", cor:"crit"};
+}
+},
+
+/* ============== HAS-BLED — Risco de Sangramento em Anticoagulação ============== */
+{id:"has-bled", nome:"HAS-BLED — Risco de Sangramento em paciente em anticoagulação (FA)", sis:"hemo",
+desc:"Avalia risco de sangramento maior em paciente com FA em anticoagulação. HAS-BLED ≥3 = alto risco — NÃO é razão para suspender anticoagulação, mas indica MONITORIZAÇÃO PRÓXIMA + correção de fatores reversíveis. Sempre comparar com CHA₂DS₂-VASc (risco trombótico).",
+fields:[
+{tipo:"bool", id:"h", label:"Hipertensão arterial NÃO controlada (PAS >160 mmHg) (+1)"},
+{tipo:"bool", id:"a1", label:"Função renal alterada (cr >2,3 OU TFG <60 OU diálise) (+1)"},
+{tipo:"bool", id:"a2", label:"Função hepática alterada (bilirrubina >2× OU TGO/TGP/FA >3×) (+1)"},
+{tipo:"bool", id:"s", label:"AVC prévio (especialmente hemorrágico) (+1)"},
+{tipo:"bool", id:"b", label:"Sangramento prévio ou predisposição (anemia significativa, sangramento ativo) (+1)"},
+{tipo:"bool", id:"l", label:"Labilidade do INR (tempo no alvo terapêutico <60% em uso de warfarina) (+1)"},
+{tipo:"bool", id:"e", label:"Idade >65 anos (+1)"},
+{tipo:"bool", id:"d1", label:"Uso de drogas que aumentam sangramento (AAS, AINE, antiplaquetário, corticoide alto) (+1)"},
+{tipo:"bool", id:"d2", label:"Uso de álcool (≥8 doses/sem) (+1)"},
+],
+calc:function(v){
+  let s = 0;
+  ['h','a1','a2','s','b','l','e','d1','d2'].forEach(k => { if(v[k]) s+=1; });
+  return s;
+},
+interp:function(s){
+  if(s<=2) return {risco:`HAS-BLED ${s} — Risco BAIXO-MODERADO de sangramento`, acao:"Anticoagulação geralmente segura. Manter monitorização habitual (INR mensal em warfarina; função renal a cada 6-12m em DOAC). Corrigir fatores reversíveis identificados.", cor:"ok"};
+  return {risco:`HAS-BLED ${s} — ALTO RISCO de sangramento (≥3)`, acao:"⚠ NÃO É RAZÃO PARA SUSPENDER anticoagulação (a menos que CHA₂DS₂-VASc seja baixo). ⚠ Comparar com CHA₂DS₂-VASc — geralmente benefício de anticoagular > risco. ⚠ CORRIGIR fatores reversíveis: tratar HAS, suspender AAS/AINE se possível, reduzir álcool, ajustar varfarina para INR no alvo. Monitorização mais próxima. Considerar DOAC vs varfarina (DOAC tem menor risco AVCh).", cor:"warn"};
+}
+},
+
+/* ============== FOUR — Coma ============== */
+{id:"four", nome:"FOUR Score — Avaliação do Coma (alternativa à Glasgow)", sis:"neuro",
+desc:"Full Outline of UnResponsiveness. Alternativa ao Glasgow em paciente INTUBADO (avalia tronco cerebral). Útil em UTI neurológica. Score 0-16 (maior = melhor).",
+fields:[
+{tipo:"select", id:"e", label:"Resposta ocular (E)", opts:[
+{val:"0", label:"0 — Olhos fechados, não abre com dor"},
+{val:"1", label:"1 — Olhos fechados, abre com dor"},
+{val:"2", label:"2 — Olhos fechados, abre ao chamado alto"},
+{val:"3", label:"3 — Olhos abertos mas sem rastrear"},
+{val:"4", label:"4 — Olhos abertos, rastreia ou pisca a comando"},
+]},
+{tipo:"select", id:"m", label:"Resposta motora (M)", opts:[
+{val:"0", label:"0 — Sem resposta à dor ou estado mioclônico"},
+{val:"1", label:"1 — Extensão à dor (descerebração)"},
+{val:"2", label:"2 — Flexão à dor (decortica​ção)"},
+{val:"3", label:"3 — Localiza a dor"},
+{val:"4", label:"4 — Polegar para cima / punho fechado / sinal de paz a comando"},
+]},
+{tipo:"select", id:"b", label:"Reflexos do tronco (B)", opts:[
+{val:"0", label:"0 — Pupila, córnea e tosse ausentes"},
+{val:"1", label:"1 — Pupila E córnea ausentes"},
+{val:"2", label:"2 — Pupila OU córnea ausentes"},
+{val:"3", label:"3 — Pupila pequena reativa"},
+{val:"4", label:"4 — Pupilas e córneas presentes"},
+]},
+{tipo:"select", id:"r", label:"Respiração (R)", opts:[
+{val:"0", label:"0 — Apneia ou respiração por ventilador apenas"},
+{val:"1", label:"1 — Respira acima da frequência do ventilador"},
+{val:"2", label:"2 — Sem entubação, padrão irregular"},
+{val:"3", label:"3 — Sem entubação, Cheyne-Stokes"},
+{val:"4", label:"4 — Sem entubação, padrão normal"},
+]},
+],
+calc:function(v){
+  return parseInt(v.e||0) + parseInt(v.m||0) + parseInt(v.b||0) + parseInt(v.r||0);
+},
+interp:function(s){
+  if(s>=12) return {risco:`FOUR ${s}/16 — Coma LEVE / consciência preservada`, acao:"Acompanhar. Monitor neurológico seriado. Avaliar causa.", cor:"ok"};
+  if(s>=7) return {risco:`FOUR ${s}/16 — Coma MODERADO`, acao:"⚠ UTI neurológica. Investigar etiologia: TC crânio, eletrólitos, glicemia, gasometria, tóxico, função hepática/renal, infecção. Suporte ventilatório conforme R-score.", cor:"warn"};
+  if(s>=3) return {risco:`FOUR ${s}/16 — Coma GRAVE`, acao:"⚠ UTI. Reflexos de tronco parcialmente preservados — não é morte encefálica mas prognóstico reservado. Investigação urgente, suporte intensivo.", cor:"crit"};
+  return {risco:`FOUR ${s}/16 — Coma PROFUNDO — possível morte encefálica`, acao:"⚠ ⚠ Reflexos de tronco ausentes ou mínimos. Avaliar critérios de MORTE ENCEFÁLICA (Resolução CFM 2.173/2017): coma aperceptivo, ausência de reflexos de tronco, apneia + teste confirmatório (EEG, Doppler TC, angiografia). 2 exames clínicos por médicos diferentes com intervalo conforme idade.", cor:"crit"};
+}
+},
+
+];
+
+/* Adicionar ao array CALCS principal */
+CALCS_EXTRA3.forEach(c => {
+  CALCS.push(c);
+  CALCS_BY_ID[c.id] = c;
+});
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CONVERSORES DE DROGAS/UNIDADES
    =========================================================== */
 
@@ -24952,6 +25170,816 @@ referencias:["⚠ PCDT-MS Influenza; CDC ACIP; IDSA Influenza."],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 21)
+   DOACs — Anticoagulantes Orais Diretos
+   Rivaroxabana, Apixabana, Dabigatrana, Edoxabana
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== RIVAROXABANA ============== */
+
+{id:"med-rivaroxabana", classe:"DOAC — inibidor direto do fator Xa", grupo:"anticoag",
+nome:"Rivaroxabana",
+sin:["Xarelto"],
+formas:["Comprimido 2,5 mg, 10 mg, 15 mg, 20 mg","⚠ CEAF (PCDT-MS FA não valvar idoso ≥75a) — fora deste perfil: particular"],
+resumo:"⚠ DOAC ORAL — INIBE FATOR Xa DIRETAMENTE. INDICAÇÕES: FA não-valvar (prevenção AVC), TVP/TEP (tratamento + prevenção secundária), profilaxia em ortopedia (joelho/quadril), doença arterial coronariana/periférica em dose baixa. VANTAGEM SOBRE WARFARINA: efeito previsível, sem monitoração de INR, menos interações, menos AVC hemorrágico. ⚠ DESVANTAGEM: SEM ANTÍDOTO AMPLAMENTE DISPONÍVEL no SUS (andexanet alfa restrito), CUSTO ALTO (CEAF apenas em PCDT específico), AJUSTE em IRC.",
+dose_rapida:"FA: 20 mg/d (15 mg se TFG 15-49); TVP/TEP: 15 mg 12/12h × 21d → 20 mg/d",
+doses:[
+{ind:"⚠ FA NÃO VALVAR — prevenção AVC (CHA₂DS₂-VASc ≥2 homem / ≥3 mulher)", dose:"20 mg VO 1×/d COM ALIMENTO ad lib", obs:"⚠ Reduzir para 15 mg/d se TFG 15-49. ⚠ ⚠ NÃO USAR em FA VALVAR (estenose mitral moderada-grave, prótese valvar mecânica) — warfarina obrigatória."},
+{ind:"⚠ TVP / TEP — fase de tratamento INICIAL", dose:"15 mg VO 12/12h × 21 DIAS, depois 20 mg VO 1×/d × 3-6 meses (ou indefinido)", obs:"⚠ Não precisa heparina inicial (vantagem sobre warfarina). Iniciar imediatamente após diagnóstico."},
+{ind:"⚠ TVP / TEP — prevenção secundária (após 6 meses)", dose:"10 mg VO 1×/d (extensão indefinida) OU 20 mg/d se alto risco recorrência", obs:""},
+{ind:"⚠ Profilaxia pós-cirurgia ortopédica (artroplastia quadril, joelho)", dose:"10 mg VO 1×/d, iniciar 6-10h pós-operatório. Duração: 35 dias (quadril) ou 14 dias (joelho)", obs:""},
+{ind:"⚠ DAC / DAP estável — em ASSOCIAÇÃO com AAS dose baixa (COMPASS)", dose:"2,5 mg VO 12/12h + AAS 100 mg/d", obs:"⚠ Cardiologia/vascular. Reduz eventos CV em DAC/DAP estável mas ↑ risco hemorragia. Decisão compartilhada."},
+],
+ajustes:{
+irc:"⚠ ⚠ AJUSTE OBRIGATÓRIO. TFG 15-49: 15 mg/d (FA) / dose habitual com cautela (TVP/TEP). TFG <15 ou HD: ⚠ NÃO USAR — preferir warfarina.",
+iht:"⚠ Child B/C: NÃO USAR — coagulopatia + acúmulo",
+idoso:"⚠ Risco hemorragia aumentado. Avaliar HAS-BLED. Ajustar pela função renal.",
+gestante:"⚠ ⚠ C — EVITAR. Atravessa placenta. Em gestação com indicação anticoag: enoxaparina é padrão.",
+aleita:"⚠ Evitar — passa pelo leite",
+ped:"⚠ Não aprovado <18a (alguns estudos pediátricos em curso para uso específico)",
+},
+mecanismo:"⚠ INIBE DIRETAMENTE o FATOR Xa (livre + complexo protrombinase) → bloqueia conversão protrombina → trombina → bloqueia coagulação. NÃO depende de antitrombina (diferença de heparina).",
+farmacocin:{
+absorc:"VO ~80-100% — ⚠ DOSES ≥15 mg COM ALIMENTO (absorção ↑). 10 mg pode ser sem alimento.",
+distrib:"Ampla",
+metab:"Hepático CYP3A4 + glicoproteína P",
+elimin:"⚠ Renal 36% (importante para ajuste IRC) + fecal",
+meiavida:"~5-9h (idoso 11-13h)",
+ligacao:"~92-95%",
+},
+ef_colats:{
+comuns:["Sangramento (variável — leve a grave)","Anemia","Náusea","Cefaleia","Tontura"],
+sérios:["⚠ ⚠ HEMORRAGIA MAIOR — GI, intracraniana, urinária, retroperitoneal. Risco menor que warfarina em AVC hemorrágico, similar/maior em GI.","⚠ Hemorragia espinhal/epidural em paciente com PUNÇÃO LOMBAR / ANESTESIA NEURAXIAL — protocolo de suspensão pré-procedimento","Trombose paradoxal em suspensão abrupta sem ponte","Reações alérgicas (raro)"],
+},
+interacoes:["⚠ ⚠ INIBIDORES POTENTES CYP3A4 + GP-P (cetoconazol, itraconazol, ritonavir): ↑↑ rivaroxabana — CONTRAINDICADO","⚠ INDUTORES POTENTES (rifampicina, fenitoína, carbamazepina, fenobarbital, erva-de-são-joão): ↓↓ — CONTRAINDICADO ou cautela","⚠ ⚠ AAS + AINE: hemorragia somativa","⚠ Outros anticoagulantes: NÃO ASSOCIAR (exceto em transição planejada)","Antiplaquetários (clopidogrel): hemorragia","Fluconazol em dose alta: ↑ rivaroxabana"],
+contraindicacoes:["⚠ ⚠ FA VALVAR (estenose mitral moderada-grave, prótese mecânica)","⚠ Sangramento ativo","⚠ Lesão com alto risco hemorrágico (úlcera GI ativa, neoplasia GI/urológica/pulmonar sangrando, varizes esofagianas, AVC hemorrágico recente)","⚠ IH grave (Child B/C)","⚠ TFG <15 / HD","Gestação, lactação","Hipersensibilidade","Punção neuraxial recente (cateter epidural)"],
+monit:["⚠ Função renal — basal + a cada 6-12 meses (mais frequente em idoso/IRC)","⚠ Função hepática basal","Hemoglobina, sinais de sangramento","Adesão (sem INR — paciente pode achar 'não precisa nada')","HAS-BLED em paciente novo"],
+gravidez:"⚠ C (evitar)",
+sus:"⚠ ⚠ CEAF — PCDT-MS específico (FA não valvar em idoso ≥75a, em alguns Estados). Fora deste perfil: particular ou judicialização.",
+referencias:["⚠ PCDT-MS FA; ROCKET-AF; EINSTEIN; COMPASS; ACC/AHA Guidelines."],
+},
+
+/* ============== APIXABANA ============== */
+
+{id:"med-apixabana", classe:"DOAC — inibidor direto do fator Xa", grupo:"anticoag",
+nome:"Apixabana",
+sin:["Eliquis"],
+formas:["Comprimido 2,5 mg, 5 mg","⚠ NÃO REMUME / NÃO CEAF — particular (custo alto)"],
+resumo:"⚠ DOAC anti-Xa — INIBIDOR DIRETO. ⚠ PERFIL MAIS SEGURO entre DOACs (menor risco de hemorragia GI, melhor em IRC moderada — TFG até 30, considerada em alguns casos com TFG 15-29). PERFIL CARDIOPROTETOR similar à rivaroxabana com MENOS efeitos adversos. ⚠ Desvantagem para Brasil: NÃO ESTÁ NO SUS — custo alto, acesso limitado.",
+dose_rapida:"FA: 5 mg 12/12h (2,5 mg se ≥2 critérios redução); TVP/TEP: 10 mg 12/12h × 7d → 5 mg 12/12h",
+doses:[
+{ind:"⚠ FA NÃO VALVAR — prevenção AVC", dose:"5 mg VO 12/12h. ⚠ REDUZIR PARA 2,5 mg 12/12h se ≥2 dos seguintes: idade ≥80a, peso ≤60 kg, creatinina ≥1,5 mg/dL", obs:"⚠ NÃO USAR em FA VALVAR."},
+{ind:"⚠ TVP / TEP — tratamento inicial", dose:"10 mg VO 12/12h × 7 DIAS, depois 5 mg 12/12h × 3-6 meses", obs:""},
+{ind:"⚠ TVP / TEP — prevenção secundária", dose:"2,5 mg VO 12/12h (após 6 meses) — extensão indefinida em alto risco recorrência", obs:""},
+{ind:"⚠ Profilaxia pós-cirurgia ortopédica (artroplastia quadril/joelho)", dose:"2,5 mg VO 12/12h, iniciar 12-24h pós-op. Duração 35d (quadril) / 12d (joelho)", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG 15-29: usar com CAUTELA (dose padrão 5 mg 12/12h, ou ajustar 2,5 mg conforme critérios). TFG <15 ou HD: dados muito limitados — geralmente evitar.",
+iht:"⚠ Child B: cautela. Child C: NÃO USAR.",
+idoso:"⚠ Reduzir conforme critérios (≥80a + outro fator)",
+gestante:"⚠ ⚠ EVITAR",
+aleita:"⚠ Evitar",
+ped:"⚠ Não aprovado <18a (algumas indicações pediátricas em estudo)",
+},
+mecanismo:"INIBE FATOR Xa DIRETAMENTE (livre + complexo).",
+farmacocin:{
+absorc:"VO ~50% — não precisa alimento",
+distrib:"Ampla",
+metab:"Hepático CYP3A4 + GP-P (parcial)",
+elimin:"⚠ Renal apenas 27% (MENOR que rivaroxabana — vantagem em IRC moderada) + fecal predominante",
+meiavida:"~12h (2×/d)",
+ligacao:"~87%",
+},
+ef_colats:{
+comuns:["Sangramento","Anemia","Náusea"],
+sérios:["⚠ Hemorragia — taxa GERAL e GI MENOR que outros DOACs em meta-análises","Hemorragia espinhal","Reações alérgicas"],
+},
+interacoes:["⚠ Inibidores potentes CYP3A4+GP-P (cetoconazol, ritonavir): ↑↑ apixabana","Indutores (rifampicina, fenitoína, carbamazepina): ↓↓","AAS, AINE","Outros anticoagulantes"],
+contraindicacoes:["FA valvar","Sangramento ativo","Lesão alto risco","IH grave","Gestação","Hipersensibilidade"],
+monit:["Função renal","Sangramento","Hemoglobina"],
+gravidez:"⚠ (evitar)",
+sus:"⚠ ⚠ NÃO REMUME — particular",
+referencias:["ARISTOTLE; AMPLIFY; ACC/AHA."],
+},
+
+/* ============== DABIGATRANA ============== */
+
+{id:"med-dabigatrana", classe:"DOAC — inibidor direto da trombina (fator IIa)", grupo:"anticoag",
+nome:"Dabigatrana etexilato",
+sin:["Pradaxa"],
+formas:["Cápsula 75 mg, 110 mg, 150 mg","⚠ NÃO REMUME — particular"],
+resumo:"⚠ ÚNICO DOAC INIBIDOR DIRETO DA TROMBINA (Fator IIa). VANTAGEM EXCLUSIVA: TEM ANTÍDOTO ESPECÍFICO — IDARUCIZUMABE (Praxbind) — reverte em minutos em sangramento grave / cirurgia de emergência. ⚠ Desvantagem: dispepsia frequente (até 25%), eliminação predominantemente renal (não usar em IRC grave), cápsulas não podem ser abertas.",
+dose_rapida:"FA: 150 mg 12/12h (110 mg se ≥80a ou alto risco); TVP/TEP: 150 mg 12/12h após heparina inicial",
+doses:[
+{ind:"⚠ FA NÃO VALVAR", dose:"150 mg VO 12/12h. ⚠ Reduzir para 110 mg 12/12h se: ≥80a OU alto risco hemorragia (HAS-BLED ≥3) OU uso de verapamil", obs:"⚠ NÃO em FA valvar."},
+{ind:"⚠ TVP / TEP", dose:"⚠ HEPARINA (HBPM ou HNF) × 5-10 DIAS, depois 150 mg VO 12/12h × 3-6 meses", obs:"⚠ Diferença dos anti-Xa: dabigatrana REQUER HEPARINA INICIAL (não atinge nível terapêutico rápido)."},
+{ind:"⚠ Profilaxia pós-cirurgia ortopédica", dose:"110 mg 1-4h pós-op, depois 220 mg 1×/d × 28-35d (quadril) ou 10d (joelho)", obs:""},
+],
+ajustes:{
+irc:"⚠ ⚠ TFG 30-50: 110 mg 12/12h. TFG <30: ⚠ ⚠ NÃO USAR (Brasil/EU; FDA permite 75 mg em TFG 15-30 — controverso). HD: contraindicada.",
+iht:"⚠ IH grave: contraindicada",
+idoso:"⚠ ≥80a: 110 mg 12/12h. Avaliar TFG rigorosamente.",
+gestante:"⚠ EVITAR",
+aleita:"⚠ Evitar",
+ped:"Não aprovada rotineira",
+},
+mecanismo:"⚠ PRO-DROGA — hidrolisada a DABIGATRANA → INIBE DIRETAMENTE A TROMBINA (Fator IIa) livre + ligada ao coágulo → bloqueia conversão fibrinogênio → fibrina.",
+farmacocin:{
+absorc:"⚠ VO ~6-7% (BAIXA — explica dose alta). Não com IBP de forma crônica em estômago vazio (↓ absorção mais relevante neste DOAC).",
+distrib:"Ampla",
+metab:"Mínimo CYP — substrato GP-P",
+elimin:"⚠ ⚠ RENAL ~80% (predominante — explica restrição em IRC)",
+meiavida:"~12-17h",
+ligacao:"~35%",
+},
+ef_colats:{
+comuns:["⚠ DISPEPSIA / pirose / dor abdominal — em até 25% (mais frequente que outros DOACs)","Sangramento","Anemia","Náusea"],
+sérios:["⚠ Hemorragia — maior risco GI que warfarina em alguns estudos","Hemorragia espinhal","IAM (controverso — sinal nominal em meta-análises)","Hipersensibilidade"],
+},
+interacoes:["⚠ INIBIDORES GP-P (verapamil, amiodarona, dronedarona, claritromicina, cetoconazol, dronedarona): ↑ dabigatrana","⚠ INDUTORES GP-P (rifampicina, erva-de-são-joão): ↓ dabigatrana","AAS, AINE","Outros anticoagulantes","⚠ IBP CRÔNICO: pode ↓ absorção (efeito modesto)"],
+contraindicacoes:["⚠ TFG <30","FA valvar","Sangramento ativo","Lesão alto risco","IH grave","Prótese valvar mecânica (FALHA em RE-ALIGN trial — proibida)","Gestação","Hipersensibilidade"],
+monit:["⚠ Função renal — basal + cada 6 meses ou mais frequente","Hemoglobina","Sintomas GI (dispepsia frequente — pode tomar com alimento)"],
+gravidez:"C (evitar)",
+sus:"⚠ NÃO REMUME — particular",
+referencias:["RE-LY; ACC/AHA; ⚠ RE-ALIGN (falha em prótese mecânica)."],
+},
+
+/* ============== EDOXABANA ============== */
+
+{id:"med-edoxabana", classe:"DOAC — inibidor direto do fator Xa", grupo:"anticoag",
+nome:"Edoxabana",
+sin:["Lixiana","Savaysa"],
+formas:["Comprimido 15 mg, 30 mg, 60 mg","⚠ NÃO REMUME — particular"],
+resumo:"⚠ DOAC anti-Xa — POSOLOGIA SIMPLES (1×/d). Indicado em FA não-valvar + TVP/TEP. ⚠ PARTICULARIDADE: NÃO USAR em paciente com TFG >95 mL/min/1,73m² (FA) — eficácia reduzida (vs warfarina). Menos usado no Brasil que rivaroxabana/apixabana.",
+dose_rapida:"60 mg/d (30 mg se ≥1 critério redução)",
+doses:[
+{ind:"⚠ FA NÃO VALVAR", dose:"60 mg VO 1×/d. ⚠ Reduzir para 30 mg/d se: TFG 15-50 OU peso ≤60 kg OU uso concomitante de inibidor GP-P (verapamil, dronedarona, claritromicina)", obs:"⚠ ⚠ NÃO USAR se TFG >95 (paradoxalmente — eficácia reduzida vs warfarina, ENGAGE AF-TIMI)."},
+{ind:"⚠ TVP / TEP", dose:"⚠ HEPARINA × 5-10 DIAS, depois 60 mg VO 1×/d × 3-6 meses (30 mg/d se critério redução)", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG 15-50: 30 mg/d. TFG >95: ⚠ EVITAR em FA (eficácia inferior à warfarina). TFG <15: NÃO USAR.",
+iht:"⚠ IH moderada-grave: NÃO USAR",
+idoso:"⚠ Reduzir conforme critérios",
+gestante:"⚠ EVITAR",
+aleita:"⚠ Evitar",
+ped:"Não aprovada",
+},
+mecanismo:"INIBE FATOR Xa DIRETAMENTE.",
+farmacocin:{
+absorc:"VO ~62% — sem efeito de alimento",
+distrib:"Ampla",
+metab:"Mínimo CYP — substrato GP-P",
+elimin:"Renal ~50% + fecal",
+meiavida:"~10-14h",
+ligacao:"~55%",
+},
+ef_colats:{
+comuns:["Sangramento","Anemia","Rash","Cefaleia"],
+sérios:["⚠ Hemorragia","⚠ Eficácia reduzida em FA com TFG >95 (clearance renal alto)","Hepatotoxicidade","Reações alérgicas"],
+},
+interacoes:["Inibidores GP-P (verapamil, dronedarona, claritromicina, cetoconazol, ritonavir): ↑ edoxabana","Indutores (rifampicina): ↓","AAS, AINE","Outros anticoagulantes"],
+contraindicacoes:["FA valvar","TFG <15","⚠ FA com TFG >95","Sangramento ativo","IH moderada-grave","Lesão alto risco","Gestação","Hipersensibilidade"],
+monit:["Função renal","Sangramento","Hemoglobina"],
+gravidez:"C (evitar)",
+sus:"⚠ NÃO REMUME — particular",
+referencias:["ENGAGE AF-TIMI 48; HOKUSAI-VTE; ACC/AHA."],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 22)
+   Antialérgicos / Anti-histamínicos H1
+   Loratadina, Cetirizina, Fexofenadina, Desloratadina, Dexclorfeniramina, Prometazina, Hidroxizina, Difenidramina
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== LORATADINA ============== */
+
+{id:"med-loratadina", classe:"Anti-histamínico H1 — 2ª geração (não-sedativo)", grupo:"alergia",
+nome:"Loratadina",
+sin:["Claritin","Loranil","Histadin"],
+formas:["Comprimido 10 mg","Xarope 1 mg/mL","REMUME — UBS dispensação direta + PFPB"],
+resumo:"⚠ ANTI-HISTAMÍNICO H1 DE 2ª GERAÇÃO — NÃO sedativo (não atravessa BHE significativamente). Indicações: RINITE ALÉRGICA (sazonal + perene), URTICÁRIA CRÔNICA, prurido alérgico. ⚠ NÃO É 1ª LINHA EM EMERGÊNCIA ALÉRGICA / ANAFILAXIA (lá: adrenalina + anti-H1 IV se disponível). Início de ação 1-3h, duração 24h.",
+dose_rapida:"10 mg VO 1×/d (adulto)",
+doses:[
+{ind:"⚠ RINITE ALÉRGICA / URTICÁRIA", dose:"10 mg VO 1×/d ad lib", obs:"⚠ Em urticária crônica refratária: ⚠ AUMENTAR DOSE até 4× (40 mg/d) — ARIA + EAACI permitem off-label antes de subir para imunobiológico."},
+{ind:"⚠ Prurido (alérgico, urticariforme)", dose:"10 mg/d", obs:""},
+{ind:"Pediatria", dose:"2-5 anos: 5 mg/d. ≥6a: 10 mg/d", obs:""},
+],
+ajustes:{
+irc:"TFG <30: 10 mg cada 48h",
+iht:"⚠ Reduzir em IH grave",
+idoso:"Geralmente sem ajuste — preferida sobre 1ª geração (sem efeito anticolinérgico)",
+gestante:"⚠ B — segura. Considerada SEGURA na gestação (a mais estudada da classe).",
+aleita:"Compatível",
+ped:"≥2a (xarope) — segura.",
+},
+mecanismo:"⚠ ANTAGONISTA H1 PERIFÉRICO (seletivo). NÃO atravessa BHE — sem sedação significativa. NÃO bloqueia muscarínicos (sem efeito anticolinérgico).",
+farmacocin:{
+absorc:"VO bem absorvida",
+distrib:"Ampla, periférica — pouco SNC",
+metab:"Hepático CYP3A4, CYP2D6 → desloratadina (metabólito ativo)",
+elimin:"Renal + fecal",
+meiavida:"~8-14h (metabólito ~28h — explica 1×/d)",
+ligacao:"~97%",
+},
+ef_colats:{
+comuns:["Sonolência LEVE (em <10% — muito menos que 1ª geração)","Cefaleia","Boca seca leve","Fadiga"],
+sérios:["⚠ QT longo em dose alta (raro)","Hepatotoxicidade rara","Reações alérgicas paradoxais (raro)"],
+},
+interacoes:["⚠ Inibidores CYP3A4 (cetoconazol, eritromicina, claritro): ↑ loratadina (significância clínica modesta)","⚠ Álcool: sedação somativa (mesmo em 2ª geração)","Outros sedativos"],
+contraindicacoes:["Hipersensibilidade"],
+monit:["Resposta clínica","Sintomas em uso prolongado"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta + PFPB.",
+referencias:["ARIA 2024; EAACI Urticaria 2022."],
+},
+
+/* ============== CETIRIZINA / LEVOCETIRIZINA ============== */
+
+{id:"med-cetirizina", classe:"Anti-histamínico H1 — 2ª geração", grupo:"alergia",
+nome:"Cetirizina",
+sin:["Zyrtec","Reactine","Cetrizyn","Levocetirizina (Xyzal)"],
+formas:["Comprimido 10 mg (cetirizina); 5 mg (levocetirizina)","Solução oral 1 mg/mL","PFPB"],
+resumo:"⚠ ANTI-HISTAMÍNICO H1 DE 2ª GERAÇÃO — INÍCIO MAIS RÁPIDO que loratadina (30-60 min). Pode ser MAIS SEDATIVO que loratadina (alguns pacientes — discreta sonolência). Indicações similares: rinite alérgica, urticária. ⚠ LEVOCETIRIZINA é enantiômero S puro (mais potente, dose metade — 5 mg).",
+dose_rapida:"10 mg/d (cetirizina); 5 mg/d (levocetirizina)",
+doses:[
+{ind:"⚠ RINITE ALÉRGICA / URTICÁRIA", dose:"Cetirizina 10 mg VO 1×/d; Levocetirizina 5 mg VO 1×/d", obs:"⚠ Urticária crônica: aumentar até 4× off-label (40/20 mg/d) — ARIA."},
+{ind:"Prurido", dose:"10 mg/d (cetirizina) ou 5 mg/d (levocetirizina)", obs:""},
+{ind:"Pediatria", dose:"Cetirizina 6-23m: 2,5 mg/d. 2-5a: 5 mg/d. ≥6a: 10 mg/d.", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG 30-49: 5 mg/d. TFG 10-29: 5 mg cada 48h. HD: contraindicada.",
+iht:"⚠ Reduzir",
+idoso:"⚠ 5 mg/d em ≥77a, especialmente com IRC",
+gestante:"⚠ B — segura",
+aleita:"Compatível",
+ped:"≥6 meses (solução)",
+},
+mecanismo:"ANTAGONISTA H1 — metabólito ativo da HIDROXIZINA, sem efeito sedativo significativo (atravessa BHE pouco). Levocetirizina é o enantiômero S (R inativo).",
+farmacocin:{
+absorc:"VO bem absorvida — refeição retarda mas não reduz",
+distrib:"Periférica",
+metab:"Mínimo (apenas 7% metabolizado)",
+elimin:"Renal predominante",
+meiavida:"~8h",
+ligacao:"~93%",
+},
+ef_colats:{
+comuns:["⚠ Sonolência (em ~10-15% — MAIS que loratadina, MENOS que 1ª geração)","Cefaleia","Boca seca","Fadiga"],
+sérios:["Reações alérgicas paradoxais (raras)","Síndrome do prurido grave em SUSPENSÃO ABRUPTA de uso prolongado (descrita) — reduzir gradativo se uso >meses"],
+},
+interacoes:["⚠ Álcool: sedação somativa","Outros depressores do SNC"],
+contraindicacoes:["Hipersensibilidade","TFG <10 (cetirizina HD: ⚠ evitar)"],
+monit:["Resposta clínica","Função renal em idoso/IRC"],
+gravidez:"B",
+sus:"PFPB",
+referencias:["ARIA 2024; EAACI."],
+},
+
+/* ============== FEXOFENADINA ============== */
+
+{id:"med-fexofenadina", classe:"Anti-histamínico H1 — 2ª geração", grupo:"alergia",
+nome:"Fexofenadina",
+sin:["Allegra","Allexofedrin","Fexodane"],
+formas:["Comprimido 60 mg, 120 mg, 180 mg","Suspensão oral 6 mg/mL","⚠ NÃO REMUME — PFPB em algumas SES; particular"],
+resumo:"⚠ ANTI-HISTAMÍNICO H1 DE 2ª GERAÇÃO — TEORICAMENTE A MENOS SEDATIVA da classe. ⚠ Filha do terfenadino (descontinuado por torsades) — fexofenadina é o metabólito ativo, SEM efeito QT clinicamente relevante. Indicações iguais aos outros. ⚠ Absorção REDUZIDA por suco de frutas (laranja, maçã, uva — efeito transportador OATP).",
+dose_rapida:"180 mg/d OU 60 mg 12/12h",
+doses:[
+{ind:"⚠ RINITE ALÉRGICA", dose:"180 mg VO 1×/d (1 comprimido pela manhã) OU 60 mg 12/12h", obs:""},
+{ind:"⚠ URTICÁRIA CRÔNICA", dose:"180 mg VO 1×/d (até 720 mg/d off-label em refratária — ARIA)", obs:""},
+{ind:"Pediatria", dose:"6m-2a: 15 mg 12/12h. 2-11a: 30 mg 12/12h. ≥12a: 60 mg 12/12h ou 180 mg/d", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG <80: 60 mg/d (adulto)",
+iht:"Sem ajuste rotineiro",
+idoso:"Avaliar função renal",
+gestante:"⚠ C — uso quando benefício > risco (loratadina é preferida na gestação)",
+aleita:"Compatível",
+ped:"Aprovada ≥6 meses",
+},
+mecanismo:"ANTAGONISTA H1 PERIFÉRICO SELETIVO — não atravessa BHE significativamente.",
+farmacocin:{
+absorc:"VO ~33% — ⚠ REDUZIDO por suco de laranja/maçã/uva (orientar SEPARAR 4h), reduzido por antiácidos com Al/Mg",
+distrib:"Periférica",
+metab:"Mínimo (não CYP)",
+elimin:"Fecal predominante",
+meiavida:"~14h",
+ligacao:"~70%",
+},
+ef_colats:{
+comuns:["⚠ Sonolência MUITO BAIXA (próxima a placebo)","Cefaleia","Náusea","Dispepsia"],
+sérios:["Reações alérgicas (raras)","Sem QT longo (vantagem sobre terfenadino descontinuado)"],
+},
+interacoes:["⚠ Suco frutas (OATP)","Antiácidos Al/Mg: ↓ absorção","Eritromicina, cetoconazol: ↑ nível (sem QT clinicamente relevante)"],
+contraindicacoes:["Hipersensibilidade"],
+monit:["Resposta clínica"],
+gravidez:"C",
+sus:"PFPB em algumas SES",
+referencias:["ARIA 2024."],
+},
+
+/* ============== DEXCLORFENIRAMINA ============== */
+
+{id:"med-dexclorfeniramina", classe:"Anti-histamínico H1 — 1ª geração (sedativo)", grupo:"alergia",
+nome:"Dexclorfeniramina",
+sin:["Polaramine","Clorfeniramina","Dexchlor"],
+formas:["Comprimido 2 mg","Xarope 0,4 mg/mL","Ampola 5 mg/mL IM/IV","REMUME — UBS dispensação direta + PFPB"],
+resumo:"⚠ ANTI-HISTAMÍNICO H1 DE 1ª GERAÇÃO — SEDATIVO E ANTICOLINÉRGICO. Disponível IM/IV (emergência alérgica). Indicações: ⚠ REAÇÃO ALÉRGICA AGUDA (urticária, prurido) em emergência. ⚠ EVITAR USO CRÔNICO — sedação, anticolinérgico (idoso: Beers Criteria — quedas, delirium, retenção urinária, glaucoma, demência).",
+dose_rapida:"2 mg VO 4-6/6h (adulto); 5 mg IM/IV em emergência",
+doses:[
+{ind:"⚠ REAÇÃO ALÉRGICA AGUDA (urticária, prurido)", dose:"2-4 mg VO 4-6/6h ou 5 mg IM/IV em emergência", obs:"⚠ NUNCA é o tratamento principal de ANAFILAXIA — adrenalina IM é primeira linha. Anti-H1 é ADJUNTO."},
+{ind:"⚠ Prurido alérgico", dose:"2 mg VO 4-6/6h", obs:""},
+{ind:"⚠ Anti-emético em vertigem / cinetose", dose:"2 mg VO 4-6/6h ad lib", obs:"Uso off-label."},
+{ind:"Pediatria", dose:"≥2a: 0,15 mg/kg/d ÷ 6/6h (máx 6 mg/d em <6a; 12 mg/d em ≥6a)", obs:""},
+],
+ajustes:{
+irc:"Cautela em IRC grave",
+iht:"Reduzir em IH",
+idoso:"⚠ ⚠ EVITAR — Beers Criteria — anticolinérgico, sedação, quedas, delirium, retenção, ↑ risco demência",
+gestante:"⚠ B — historicamente usada. Em rinite alérgica gestacional: PREFERIR loratadina (2ª geração).",
+aleita:"⚠ Pode reduzir produção de leite + sedação no lactente — evitar uso crônico",
+ped:"≥2a — uso restrito ao mínimo necessário",
+},
+mecanismo:"ANTAGONISTA H1 + atravessa BHE (SEDAÇÃO) + ANTIMUSCARÍNICO (efeito anticolinérgico) + ANTI-α1 (hipotensão).",
+farmacocin:{
+absorc:"VO bem absorvida",
+distrib:"AMPLA — atravessa BHE",
+metab:"Hepático",
+elimin:"Renal",
+meiavida:"~20-27h",
+ligacao:"~70%",
+},
+ef_colats:{
+comuns:["⚠ SEDAÇÃO marcada (até 50% pacientes)","⚠ ANTICOLINÉRGICO: boca seca, retenção urinária, visão turva, constipação","Tonteira","Coordenação prejudicada"],
+sérios:["⚠ Delirium em idoso","⚠ Glaucoma ângulo fechado","⚠ Retenção urinária em HPB","Excitação paradoxal em criança","Convulsão em superdose"],
+},
+interacoes:["⚠ Álcool, BZD, opioides, antidepressivos: SEDAÇÃO SOMATIVA","⚠ Anticolinérgicos: somatório (cuidado: ADT, oxibutinina, antipsicóticos, β2 inalado em alta dose)","IMAO: cuidado"],
+contraindicacoes:["⚠ Glaucoma ângulo fechado","⚠ HPB com retenção","⚠ Asma aguda grave","⚠ Idoso (relativa — Beers)","Lactente <2 anos","Hipersensibilidade","Crise epiléptica não controlada"],
+monit:["Sedação, função cognitiva","Sintomas anticolinérgicos","Resposta clínica"],
+gravidez:"B",
+sus:"⚠ REMUME — UBS dispensação direta + PFPB.",
+referencias:["⚠ Beers Criteria 2023; ARIA."],
+},
+
+/* ============== PROMETAZINA ============== */
+
+{id:"med-prometazina", classe:"Anti-histamínico H1 — 1ª geração (fenotiazina)", grupo:"alergia",
+nome:"Prometazina",
+sin:["Phenergan","Pamergan","Promezin"],
+formas:["Comprimido 25 mg","Solução oral 1 mg/mL","Ampola 50 mg/2 mL IM/IV","Creme tópico 2%","FARMASUS"],
+resumo:"⚠ ⚠ ANTI-HISTAMÍNICO H1 DE 1ª GERAÇÃO (FENOTIAZINA) — MUITO SEDATIVO + ANTI-EMÉTICO + ANTICOLINÉRGICO. Indicações: ⚠ ANTI-EMESE forte (gestação, pós-op, cinetose), reação alérgica aguda, sedação pré-procedimento. ⚠ MULTIPLOS RISCOS: distonia / sintomas extrapiramidais (fenotiazina), QT longo, ⚠ NUNCA EM <2 ANOS (depressão respiratória, morte — black box FDA).",
+dose_rapida:"25 mg VO/IM/IV 6-8/8h (adulto)",
+doses:[
+{ind:"⚠ ANTI-EMESE / náusea-vômito pós-op, gestação (HG), cinetose", dose:"25 mg VO/IM 6-8/8h ad lib", obs:"⚠ Hiperêmese gravídica — alternativa a metoclopramida/ondansetrona."},
+{ind:"⚠ Reação alérgica aguda (urticária, prurido)", dose:"25 mg VO/IM 6/6h", obs:"⚠ Anafilaxia: ADRENALINA primeiro; prometazina como adjunto somente."},
+{ind:"⚠ Sedação pré-procedimento (especialmente em UBS sem anestesista)", dose:"25-50 mg IM 30-60 min antes", obs:"⚠ Cuidado com sedação prolongada, queda."},
+{ind:"⚠ Insônia AGUDA TRANSITÓRIA (raro, NÃO ROTINEIRO)", dose:"25 mg HS PRN", obs:"⚠ NÃO USAR cronicamente — anticolinérgico em idoso."},
+{ind:"⚠ AGITAÇÃO PSICOMOTORA (com haloperidol)", dose:"50 mg IM + haloperidol 5 mg IM", obs:"⚠ Esquema clássico do PA — sedação + extrapiramidal preventivo do haloperidol."},
+{ind:"⚠ Crise de migrânea com vômito (em emergência)", dose:"25 mg IM/IV", obs:""},
+],
+ajustes:{
+irc:"Cautela",
+iht:"Reduzir dose",
+idoso:"⚠ ⚠ EVITAR — Beers (anticolinérgico forte, sedação prolongada, queda, delirium)",
+gestante:"⚠ C — em hiperêmese gravídica: usar quando benefício > risco. Evitar próximo ao parto (depressão respiratória neonatal).",
+aleita:"⚠ Pode reduzir produção láctea + sedação lactente — evitar uso crônico",
+ped:"⚠ ⚠ ⚠ NUNCA <2 ANOS — BLACK BOX FDA: depressão respiratória fatal. Em 2-12a: cautela extrema, dose mínima.",
+},
+mecanismo:"ANTAGONISTA H1 + ANTIMUSCARÍNICO + ANTI-D2 (efeito antiemético + extrapiramidal) + ANTI-α1 (hipotensão).",
+farmacocin:{
+absorc:"VO ~25%",
+distrib:"AMPLA — atravessa BHE",
+metab:"Hepático",
+elimin:"Renal + fecal",
+meiavida:"~9-16h",
+ligacao:"~90%",
+},
+ef_colats:{
+comuns:["⚠ SEDAÇÃO MARCADA","⚠ ANTICOLINÉRGICO marcado","Hipotensão postural","Tontura"],
+sérios:["⚠ ⚠ DEPRESSÃO RESPIRATÓRIA EM <2 ANOS — black box FDA","⚠ DISTONIA AGUDA / EXTRAPIRAMIDAL — tratar com biperideno IM","⚠ SÍNDROME NEUROLÉPTICA MALIGNA (raro)","⚠ NECROSE TISSULAR SE EXTRAVASAR IV — usar veia calibrosa, diluir","⚠ QT LONGO","Convulsão em superdose","Discinesia tardia em uso prolongado"],
+},
+interacoes:["⚠ Álcool, BZD, opioides: depressão SNC + respiratória","⚠ Anticolinérgicos: somatório","⚠ QT-prolongadores: ⚠ atenção","⚠ Antipsicóticos: somatório extrapiramidal","Tramadol: convulsão"],
+contraindicacoes:["⚠ ⚠ <2 ANOS","Coma, depressão SNC importante","Glaucoma ângulo fechado","HPB com retenção","⚠ Idoso (relativa)","Hipersensibilidade","Hipersensibilidade a fenotiazinas"],
+monit:["⚠ Vigilância respiratória especialmente em criança","Extrapiramidais (tratar com biperideno)","QT em risco","Sintomas anticolinérgicos"],
+gravidez:"C",
+sus:"FARMASUS (controle especial)",
+referencias:["⚠ FDA Black Box <2a; Beers Criteria; ABEnfar."],
+},
+
+/* ============== HIDROXIZINA ============== */
+
+{id:"med-hidroxizina", classe:"Anti-histamínico H1 — 1ª geração (piperazina)", grupo:"alergia",
+nome:"Hidroxizina",
+sin:["Hixizine","Pruri-gone","Marax"],
+formas:["Comprimido 25 mg","Solução oral 2 mg/mL","FARMASUS"],
+resumo:"⚠ ANTI-HISTAMÍNICO H1 DE 1ª GERAÇÃO — sedativo + ANSIOLÍTICO (efeito original — precursor das BZD). Indicações principais: PRURIDO RESISTENTE, urticária aguda, sedação pré-procedimento, ANSIEDADE leve, insônia transitória. ⚠ QT longo (alta dose ou em risco) — FDA Warning 2015.",
+dose_rapida:"25 mg VO 6-8/8h",
+doses:[
+{ind:"⚠ PRURIDO RESISTENTE / urticária", dose:"25 mg VO 6-8/8h × 5-10 dias", obs:"⚠ Útil quando 2ª geração não controla. Sedação ajuda à noite."},
+{ind:"⚠ Ansiedade / pré-anestesia", dose:"50-100 mg/d ÷ 6-8h (ansiedade); 50-100 mg IM 30-60 min pré-op", obs:""},
+{ind:"⚠ Insônia transitória", dose:"25-50 mg HS", obs:"⚠ Não rotineiro crônico."},
+{ind:"Pediatria — prurido/urticária", dose:"0,5-1 mg/kg 6/6h", obs:""},
+],
+ajustes:{
+irc:"Reduzir em TFG <50",
+iht:"Reduzir",
+idoso:"⚠ EVITAR — Beers (anticolinérgico, sedação, QT)",
+gestante:"⚠ C — Evitar 1º trimestre. Em hiperêmese refratária: aceitável 2-3º trimestre.",
+aleita:"⚠ Evitar em uso crônico",
+ped:"≥6 meses (com cautela)",
+},
+mecanismo:"ANTAGONISTA H1 + atravessa BHE (sedação + ansiolítico) + ANTIMUSCARÍNICO + 5-HT.",
+farmacocin:{
+absorc:"VO bem absorvida",
+distrib:"AMPLA — BHE",
+metab:"Hepático → CETIRIZINA (metabólito ativo, 2ª geração)",
+elimin:"Renal",
+meiavida:"~14-25h",
+ligacao:"Alta",
+},
+ef_colats:{
+comuns:["⚠ Sedação marcada","Anticolinérgico (boca seca, retenção)","Tontura","Cefaleia"],
+sérios:["⚠ QT LONGO — FDA Warning 2015 (especialmente >100 mg/d, idoso, eletrólitos baixos)","Convulsão em superdose","Excitação paradoxal em criança","Síndrome anticolinérgica","Hipotensão"],
+},
+interacoes:["⚠ QT-prolongadores","⚠ Álcool, BZD, opioides: sedação somativa","⚠ Anticolinérgicos","IMAO","Anti-hipertensivos: hipotensão"],
+contraindicacoes:["⚠ QT longo congênito ou adquirido","Glaucoma ângulo fechado","HPB com retenção","⚠ Idoso (relativa)","Gestação 1º trim (relativa)","Hipersensibilidade"],
+monit:["ECG em risco/dose alta","Sedação","Sintomas anticolinérgicos"],
+gravidez:"C",
+sus:"FARMASUS",
+referencias:["⚠ FDA QT Warning 2015; Beers."],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 23)
+   Anticonvulsivantes Ambulatoriais (uso crônico — manutenção)
+   Carbamazepina, Valproato, Lamotrigina, Levetiracetam, Oxcarbazepina, Gabapentina, Pregabalina, Topiramato
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== CARBAMAZEPINA ============== */
+
+{id:"med-carbamazepina", classe:"Anticonvulsivante — bloqueador canal sódio + estabilizador de humor", grupo:"neuro",
+nome:"Carbamazepina",
+sin:["Tegretol","Tegretard","Carbazina"],
+formas:["Comprimido 200 mg, 400 mg","Comprimido CR (controlled release) 200 mg, 400 mg","Suspensão 20 mg/mL (raro)","REMUME — FARMASUS (controle especial)"],
+resumo:"⚠ ANTICONVULSIVANTE clássico — 1ª linha em epilepsia FOCAL e em ⚠ NEURALGIA DO TRIGÊMEO (fármaco de escolha). Também: estabilizador de humor (bipolar), neuropatia. ⚠ POTENTE INDUTOR ENZIMÁTICO — múltiplas interações. ⚠ Stevens-Johnson em HLA-B*1502 (asiáticos) — testar antes em populações de risco.",
+dose_rapida:"200 mg 12/12h titular a 400-1200 mg/d ÷ 12/12h",
+doses:[
+{ind:"⚠ EPILEPSIA FOCAL (1ª linha)", dose:"200 mg VO 12/12h × 1 sem, depois aumentar 200 mg/sem até dose alvo. Habitual 400-1200 mg/d ÷ 12/12h. Máx 1600 mg/d", obs:"⚠ Iniciar lento — efeitos colaterais dose-dependentes (tontura, ataxia, sedação). Auto-induz metabolismo nas primeiras 2-4 sem (dose precisa subir)."},
+{ind:"⚠ ⚠ NEURALGIA DO TRIGÊMEO — 1ª LINHA", dose:"100-200 mg VO 12/12h, titular a 200-1200 mg/d ÷ 12/12h conforme dor", obs:"⚠ Excelente eficácia. Reduzir gradativamente após meses de controle."},
+{ind:"⚠ NEURALGIA PÓS-HERPÉTICA (alternativa)", dose:"100-400 mg/d", obs:""},
+{ind:"⚠ TRANSTORNO BIPOLAR — alternativa ao lítio", dose:"400-1200 mg/d", obs:"⚠ Psiquiatria. Não usar isolado em depressão bipolar."},
+{ind:"Síndrome de retirada de álcool grave", dose:"200 mg 8/8h × 5-7 dias", obs:""},
+{ind:"Diabetes insipidus central (off-label)", dose:"100-300 mg/d", obs:""},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro",
+iht:"⚠ Reduzir em IH",
+idoso:"⚠ Iniciar 100 mg 12/12h. Maior risco SIADH-hiponatremia, sedação, queda.",
+gestante:"⚠ ⚠ D — TERATOGÊNICA (espinha bífida 0,5-1%, anomalias craniofaciais, atrasos desenvolvimento). Em mulher idade fértil: usar contracepção + ácido fólico 5 mg/d antes da gestação. ⚠ ⚠ Trocar para LAMOTRIGINA ou LEVETIRACETAM antes da gestação se possível.",
+aleita:"Cautela — passa pelo leite (orientar sonolência, anorexia no lactente)",
+ped:"≥6a aprovada. Doses por peso.",
+},
+mecanismo:"⚠ BLOQUEIA CANAL DE SÓDIO DEPENDENTE DE VOLTAGEM no neurônio → estabiliza membrana → reduz disparo neuronal repetitivo. Auto-induz CYP3A4 → meia-vida REDUZ ao longo do tratamento.",
+farmacocin:{
+absorc:"VO ~80% (lenta, irregular)",
+distrib:"Ampla, atravessa BHE",
+metab:"⚠ Hepático CYP3A4 — INDUTOR FORTE (CYP3A4, CYP2C9, CYP2C19, GP-P) + AUTO-INDUTOR",
+elimin:"Renal + fecal",
+meiavida:"⚠ 25-65h inicial, REDUZ para 12-17h após auto-indução (em 2-4 sem)",
+ligacao:"~75%",
+},
+ef_colats:{
+comuns:["Tontura","Ataxia","Diplopia","Sonolência","Náusea","Cefaleia","Rash","⚠ HIPONATREMIA (SIADH) — frequente em idoso"],
+sérios:["⚠ ⚠ STEVENS-JOHNSON / NET — risco AUMENTADO em portadores de HLA-B*1502 (asiáticos — sul/leste Ásia, indígenas brasileiros podem ter). ⚠ Testar HLA-B*1502 em populações de risco antes de iniciar.","⚠ AGRANULOCITOSE / ANEMIA APLÁSICA (raro mas grave)","⚠ HEPATITE","⚠ SIADH / hiponatremia","⚠ TERATOGENICIDADE","⚠ Síndrome DRESS","Insuficiência cardíaca em alto grau","Bloqueio AV"],
+},
+interacoes:["⚠ ⚠ INDUTOR POTENTE CYP3A4 — REDUZ MUITAS DROGAS: warfarina, anticoncepcionais (FALHA), corticoides, ciclosporina, antifúngicos, ISRS, antipsicóticos atípicos, antirretrovirais, DOACs, ouros anticonvulsivantes (valproato, lamotrigina)","⚠ INIBIDORES CYP3A4 (macrolídeos, azólicos, fluoxetina, verapamil, diltiazem, suco de toranja): ↑↑ carbamazepina","⚠ Lítio: neurotoxicidade","Isoniazida: ↑ ambas, hepato"],
+contraindicacoes:["⚠ Hipersensibilidade","Bloqueio AV","Porfiria aguda","Histórico de aplasia/agranulocitose por droga","HLA-B*1502 positivo (relativa)","Uso concomitante com IMAO (14 dias)"],
+monit:["⚠ Hemograma — basal + a cada 1-3 meses inicialmente","⚠ Função hepática","⚠ Sódio sérico em idoso","Nível sérico (terapêutico 4-12 µg/mL)","Sinais cutâneos — IMEDIATA suspensão se rash"],
+gravidez:"⚠ D",
+sus:"⚠ REMUME — FARMASUS",
+referencias:["NICE Epilepsy; ABE."],
+},
+
+/* ============== ÁCIDO VALPROICO / VALPROATO ============== */
+
+{id:"med-valproato", classe:"Anticonvulsivante de amplo espectro + estabilizador de humor", grupo:"neuro",
+nome:"Ácido Valproico / Divalproato de Sódio",
+sin:["Depakote","Depakene","Valpakine","Epilim"],
+formas:["Comprimido 250 mg, 500 mg","Comprimido ER 250 mg, 500 mg","Cápsula 250 mg","Solução oral 50 mg/mL","Frasco-ampola IV 100 mg/mL","REMUME — FARMASUS"],
+resumo:"⚠ ANTICONVULSIVANTE DE AMPLO ESPECTRO — cobre TODAS as crises (focais, generalizadas tônico-clônicas, ausência, mioclônicas) — 1ª linha em ⚠ EPILEPSIA GENERALIZADA IDIOPÁTICA / ausência / mioclonias. Também: ⚠ ESTABILIZADOR DE HUMOR em bipolar (mania aguda), profilaxia de migrânea. ⚠ ⚠ TERATOGÊNICO POTENTE — categoria X em algumas indicações (espinha bífida 2-3%, defeitos cognitivos importantes).",
+dose_rapida:"250 mg 12/12h titular a 750-2000 mg/d ÷ 12/12h (10-60 mg/kg/d)",
+doses:[
+{ind:"⚠ EPILEPSIA GENERALIZADA (ausência, mioclônica, tônico-clônica primária)", dose:"500-2500 mg/d ÷ 12/12h (10-60 mg/kg/d). Iniciar 250-500 mg/d, titular gradativo", obs:"⚠ 1ª linha em síndrome epiléptica generalizada. ⚠ Pior eficácia em focal (mas cobre)."},
+{ind:"⚠ Estado epiléptico — alternativa a fenitoína", dose:"20-40 mg/kg IV bolus, depois 1-2 mg/kg/h", obs:""},
+{ind:"⚠ MANIA AGUDA (bipolar)", dose:"15-20 mg/kg/d, titular a 500-1500 mg/d", obs:""},
+{ind:"⚠ Profilaxia de MIGRÂNEA", dose:"250-500 mg/d", obs:""},
+{ind:"⚠ Demência com agressão (off-label)", dose:"250-500 mg/d", obs:""},
+],
+ajustes:{
+irc:"Pequeno ajuste em TFG <30",
+iht:"⚠ ⚠ EVITAR em IH ativa (hepatotoxicidade)",
+idoso:"⚠ Reduzir dose. Maior risco hepatotoxicidade, plaquetopenia.",
+gestante:"⚠ ⚠ ⚠ X / D — ⚠ TERATOGÊNICO POTENTE: espinha bífida 2-3%, defeitos cardíacos, cognitivos. ⚠ ⚠ EVITAR EM MULHER IDADE FÉRTIL sem contracepção rigorosa. Em epilepsia / bipolar gestante: trocar para lamotrigina / levetiracetam pré-concepcional.",
+aleita:"Compatível em baixa dose",
+ped:"≥10a. Crianças <2a: risco aumentado hepatotoxicidade FATAL.",
+},
+mecanismo:"⚠ Múltiplos: ↑ GABA + bloqueia canal Na + bloqueia canal Ca tipo T (relevante em ausência) + outros mecanismos.",
+farmacocin:{
+absorc:"VO ~100%",
+distrib:"Ampla",
+metab:"Hepático (UGT, CYP2C9)",
+elimin:"Renal",
+meiavida:"~9-16h",
+ligacao:"~90% — alta",
+},
+ef_colats:{
+comuns:["Náusea / GI (mais frequente com comprimido vs ER)","⚠ GANHO DE PESO","⚠ TREMOR","⚠ ALOPECIA (reversível)","Sonolência","Trombocitopenia leve","Hiperamonemia leve"],
+sérios:["⚠ ⚠ HEPATOTOXICIDADE FATAL — especialmente <2 anos em politerapia, doenças metabólicas (POLG mutações)","⚠ PANCREATITE","⚠ HIPERAMONEMIA com encefalopatia (em alguns sem hepatite franca)","⚠ TROMBOCITOPENIA + disfunção plaquetária","⚠ ⚠ TERATOGENICIDADE GRAVE","⚠ SÍNDROME DRESS","Hiperandrogenismo / SOP em mulher","Síndrome Parkinsoniana em idoso"],
+},
+interacoes:["⚠ INIBIDOR CYP / UGT — ↑ LAMOTRIGINA (risco SJS — usar dose lamotrigina REDUZIDA quando combinar), fenitoína, fenobarbital","⚠ Carbamazepina: ↓ valproato","⚠ AAS, AINE: deslocam valproato livre","Topiramato: hiperamonemia","Carbapenêmicos (meropenem): ↓↓ valproato → risco convulsão"],
+contraindicacoes:["⚠ ⚠ IH ativa ou histórico","⚠ Doenças metabólicas (POLG, distúrbio ureia)","⚠ Pancreatite prévia","⚠ Mulher idade fértil sem contracepção (relativa — discussão compartilhada)","⚠ Gestação (categoria X em algumas indicações — bipolar, migrânea)","Discrasia sanguínea","Hipersensibilidade","Porfiria"],
+monit:["⚠ TGO/TGP — basal + a cada 1-3 meses","⚠ Hemograma + plaquetas","⚠ Amilase / lipase em dor abdominal","Amônia em encefalopatia","Nível sérico (terapêutico 50-100 µg/mL)","Peso"],
+gravidez:"⚠ ⚠ X (bipolar/migrânea); D (epilepsia)",
+sus:"⚠ REMUME — FARMASUS",
+referencias:["NICE Epilepsy; ABE; ⚠ EMA Pregnancy Prevention Programme Valproato 2018."],
+},
+
+/* ============== LAMOTRIGINA ============== */
+
+{id:"med-lamotrigina", classe:"Anticonvulsivante de amplo espectro + estabilizador (depressão bipolar)", grupo:"neuro",
+nome:"Lamotrigina",
+sin:["Lamictal","Neural","Lamotrix"],
+formas:["Comprimido 25 mg, 50 mg, 100 mg, 200 mg","Comprimido dispersível 5 mg, 25 mg","⚠ CEAF (PCDT-MS epilepsia refratária) — algumas SES dispõem em FARMASUS"],
+resumo:"⚠ ANTICONVULSIVANTE DE AMPLO ESPECTRO — eficaz em FOCAL + GENERALIZADA. ⚠ INDICAÇÃO ESPECIAL EM PSIQUIATRIA: ⚠ ⚠ DEPRESSÃO BIPOLAR / PROFILAXIA DE FASE DEPRESSIVA — único estabilizador eficaz em depressão. ⚠ ⚠ TITULAÇÃO MUITO LENTA OBRIGATÓRIA — risco de Stevens-Johnson em titulação rápida (especialmente com valproato concomitante).",
+dose_rapida:"25 mg/d × 2 sem → 50 mg/d × 2 sem → 100 mg/d (epilepsia ~200-400 mg/d; bipolar 200 mg/d)",
+doses:[
+{ind:"⚠ EPILEPSIA FOCAL e GENERALIZADA — monoterapia", dose:"⚠ ⚠ TITULAÇÃO LENTA: 25 mg/d × 2 sem → 50 mg/d × 2 sem → 100 mg/d × 1 sem → 200 mg/d. Alvo 200-500 mg/d ÷ 12/12h", obs:"⚠ Não pular etapas. SJS / NET em titulação rápida."},
+{ind:"⚠ EPILEPSIA com VALPROATO concomitante", dose:"⚠ DOSE METADE: 25 mg cada 48h × 2 sem → 25 mg/d × 2 sem → 50 mg/d. Alvo 100-200 mg/d", obs:"⚠ ⚠ Valproato INIBE metabolismo da lamotrigina → ↑↑ nível → ↑ risco SJS."},
+{ind:"⚠ EPILEPSIA com CARBAMAZEPINA / fenobarbital / fenitoína (indutores) concomitante", dose:"⚠ DOSE DOBRADA: 50 mg/d × 2 sem → 100 mg/d × 2 sem → 200 mg/d. Alvo 300-500 mg/d", obs:""},
+{ind:"⚠ ⚠ DEPRESSÃO BIPOLAR / profilaxia fase depressiva — psiquiatria", dose:"25 mg/d × 2 sem → 50 mg/d × 2 sem → 100 mg/d × 1 sem → 200 mg/d. Alvo 100-200 mg/d", obs:"⚠ NÃO eficaz em mania aguda. NÃO eficaz como antidepressivo em depressão unipolar."},
+{ind:"Síndrome de Lennox-Gastaut", dose:"Conforme acima", obs:"Pediatria."},
+],
+ajustes:{
+irc:"⚠ TFG <30: redução 25-50%",
+iht:"⚠ Reduzir em IH",
+idoso:"⚠ Iniciar baixo, titular lento",
+gestante:"⚠ C — UM DOS ANTICONVULSIVANTES MAIS SEGUROS NA GESTAÇÃO. PREFERIDO sobre valproato/carbamazepina. ⚠ Nível pode CAIR no 3º trimestre — pode precisar ↑ dose, depois reduzir pós-parto.",
+aleita:"⚠ Compatível mas monitor lactente (rash, sedação)",
+ped:"≥2a (com supervisão neurológica)",
+},
+mecanismo:"⚠ Bloqueia canal SÓDIO DEPENDENTE DE VOLTAGEM → estabiliza membrana neuronal. ↓ liberação glutamato.",
+farmacocin:{
+absorc:"VO ~98%",
+distrib:"Ampla",
+metab:"⚠ Hepático UGT — ⚠ inibido por valproato; ⚠ induzido por carbamazepina, fenitoína, fenobarbital, ACO",
+elimin:"Renal",
+meiavida:"~25h (monoterapia); ~60h (com valproato); ~15h (com indutores)",
+ligacao:"~55%",
+},
+ef_colats:{
+comuns:["Tontura","Cefaleia","Visão turva","Náusea","Diplopia","⚠ RASH leve em ~10% — INTERROMPER IMEDIATAMENTE"],
+sérios:["⚠ ⚠ ⚠ STEVENS-JOHNSON / NET — risco maior em titulação rápida + valproato + criança. Mortalidade significativa. ⚠ INTERROMPER imediatamente ao primeiro sinal de rash sistêmico.","⚠ DRESS (Drug Reaction with Eosinophilia and Systemic Symptoms)","⚠ Síndrome de HEMOFAGOCITOSE","Insônia","Tremor","Ataxia"],
+},
+interacoes:["⚠ ⚠ VALPROATO: ↑↑ lamotrigina — dose metade, titulação ULTRA-LENTA","⚠ INDUTORES (carbamazepina, fenitoína, fenobarbital, rifampicina): ↓↓ — dose DOBRADA","⚠ ACO combinado: ↓ lamotrigina (etinilestradiol induz UGT) — pode haver flutuação nível durante ciclo. ⚠ Ao interromper ACO: lamotrigina pode subir até toxicidade."],
+contraindicacoes:["⚠ Hipersensibilidade","⚠ Histórico de rash por lamotrigina"],
+monit:["⚠ ⚠ Rash — orientar paciente: QUALQUER rash = parar e procurar emergência","Nível sérico (terapêutico 3-15 µg/mL — útil em gestação)","Resposta clínica"],
+gravidez:"C (uma das mais seguras)",
+sus:"⚠ CEAF — PCDT-MS Epilepsia refratária. FARMASUS em algumas SES.",
+referencias:["NICE Epilepsy; APA Bipolar; ABE."],
+},
+
+/* ============== LEVETIRACETAM ============== */
+
+{id:"med-levetiracetam", classe:"Anticonvulsivante de amplo espectro — moderno", grupo:"neuro",
+nome:"Levetiracetam",
+sin:["Keppra","Levbio","Levertan"],
+formas:["Comprimido 250 mg, 500 mg, 750 mg, 1000 mg","Comprimido XR 500 mg, 750 mg","Solução oral 100 mg/mL","Frasco-ampola IV 500 mg/5 mL","⚠ CEAF — PCDT-MS Epilepsia refratária"],
+resumo:"⚠ ⚠ ANTICONVULSIVANTE MODERNO — PERFIL DE TOLERABILIDADE EXCELENTE. AMPLO espectro (focal + generalizada). Vantagens: NÃO metabolizado pelo CYP (sem interações importantes), TITULAÇÃO RÁPIDA possível, sem teratogenicidade significativa (dos mais seguros na gestação), pode ser IV. ⚠ Desvantagem: pode causar IRRITABILIDADE / AGRESSIVIDADE / depressão (frequente — perguntar ativamente).",
+dose_rapida:"500 mg 12/12h, titular a 1000-3000 mg/d ÷ 12/12h",
+doses:[
+{ind:"⚠ EPILEPSIA FOCAL e GENERALIZADA — monoterapia ou adjunto", dose:"500 mg VO 12/12h × 2 sem, depois 1000 mg 12/12h. Alvo 1000-3000 mg/d ÷ 12/12h. Máx 3000 mg/d", obs:"⚠ Titulação RÁPIDA possível (diferença para lamotrigina, carbamazepina). Em emergência epiléptica IV: dose pronta de carga."},
+{ind:"⚠ Estado epiléptico — alternativa IV", dose:"60 mg/kg IV bolus em 15 min, depois manutenção", obs:"⚠ Alternativa segura em paciente sem acesso fácil a fenitoína IV / em criança."},
+{ind:"⚠ Profilaxia anti-convulsivante em TCE / pós-cirurgia neurológica", dose:"500-1500 mg 12/12h × 7 dias", obs:""},
+{ind:"⚠ Gestante com epilepsia que precisa de troca", dose:"Esquema padrão", obs:"⚠ Junto com lamotrigina, é o ANTICONVULSIVANTE PREFERIDO na gestação."},
+],
+ajustes:{
+irc:"⚠ AJUSTE pela TFG: 50-80: 500-1000 mg 12/12h. 30-49: 250-750 mg 12/12h. <30: 250-500 mg 12/12h. HD: pós-sessão.",
+iht:"Sem ajuste",
+idoso:"⚠ Ajustar pela TFG (frequentemente reduzida)",
+gestante:"⚠ ⚠ C — ⚠ UM DOS PREFERIDOS NA GESTAÇÃO (junto com lamotrigina). Sem aumento significativo de defeitos congênitos. ⚠ Nível pode CAIR no 2º-3º trimestre — pode precisar ↑ dose.",
+aleita:"⚠ Compatível",
+ped:"≥1 mês aprovada",
+},
+mecanismo:"⚠ MECANISMO ÚNICO — liga-se à PROTEÍNA DA VESÍCULA SINÁPTICA SV2A → modula liberação de neurotransmissores. Bloqueia canais Ca de alta voltagem.",
+farmacocin:{
+absorc:"VO ~100%",
+distrib:"Ampla",
+metab:"⚠ MÍNIMO METABOLISMO (24%) — SEM CYP → SEM INTERAÇÕES MEDICAMENTOSAS IMPORTANTES (vantagem MAIOR)",
+elimin:"Renal (~66% inalterada)",
+meiavida:"~6-8h",
+ligacao:"<10%",
+},
+ef_colats:{
+comuns:["⚠ ⚠ IRRITABILIDADE / AGRESSIVIDADE / mudanças de humor — em até 20% (perguntar ativamente)","⚠ DEPRESSÃO / ideação suicida (raro mas descrito)","Sonolência","Cefaleia","Astenia","Tontura"],
+sérios:["⚠ Eventos psiquiátricos (psicose, agitação) — raros mas reportados","Suicidalidade","Reações cutâneas (raras)","Pancreatite (raro)"],
+},
+interacoes:["⚠ ⚠ MÍNIMAS INTERAÇÕES — vantagem clínica MAIOR"],
+contraindicacoes:["⚠ Hipersensibilidade","Histórico psiquiátrico severo (relativa — monitorar)"],
+monit:["⚠ ⚠ HUMOR / SINTOMAS PSIQUIÁTRICOS — perguntar ativamente em consulta","Função renal","Nível sérico (terapêutico 12-46 µg/mL — pouco usado)","Resposta clínica"],
+gravidez:"C (um dos mais seguros)",
+sus:"⚠ CEAF — PCDT-MS Epilepsia refratária / Farmasus em algumas SES",
+referencias:["NICE; ABE; ⚠ EPILEPSIA na gestação (UK Pregnancy Register)."],
+},
+
+/* ============== OXCARBAZEPINA ============== */
+
+{id:"med-oxcarbazepina", classe:"Anticonvulsivante — bloqueador canal sódio (relacionado à carbamazepina)", grupo:"neuro",
+nome:"Oxcarbazepina",
+sin:["Trileptal","Oxcarb","Oleptal"],
+formas:["Comprimido 300 mg, 600 mg","Suspensão oral 60 mg/mL","REMUME — FARMASUS"],
+resumo:"⚠ ANÁLOGO DA CARBAMAZEPINA — pro-droga MHD. Vantagens: MENOS interações que carbamazepina (não auto-induz tão fortemente), MENOS efeitos colaterais cognitivos, sem necessidade de monitor hematológico tão rigoroso. ⚠ Desvantagem: MAIOR risco de HIPONATREMIA (até 30% em idoso) que carbamazepina. ⚠ Indicações: epilepsia focal, neuralgia do trigêmeo (alternativa).",
+dose_rapida:"300 mg 12/12h titular a 600-1200 mg/d ÷ 12/12h",
+doses:[
+{ind:"⚠ EPILEPSIA FOCAL", dose:"300 mg VO 12/12h × 1 sem, titular 300 mg/sem. Alvo 600-2400 mg/d ÷ 12/12h", obs:""},
+{ind:"⚠ NEURALGIA DO TRIGÊMEO (alternativa)", dose:"150-300 mg 12/12h, titular a 600-1200 mg/d", obs:"Quando carbamazepina não tolerada."},
+{ind:"Bipolar (alternativa)", dose:"600-2400 mg/d", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG <30: 50% dose inicial",
+iht:"Sem ajuste rotineiro",
+idoso:"⚠ Iniciar 150 mg 12/12h. ⚠ ⚠ Monitor sódio rigorosamente — risco SIADH-hiponatremia muito mais alto que carbamazepina (até 30%).",
+gestante:"⚠ C — Cautela. Lamotrigina/levetiracetam preferidos.",
+aleita:"Cautela",
+ped:"≥4a",
+},
+mecanismo:"PRO-DROGA → MHD (10,11-mono-hidroxi) → bloqueia canal Na dependente de voltagem.",
+farmacocin:{
+absorc:"VO ~100%",
+distrib:"Ampla",
+metab:"⚠ Hepático — INDUTOR MODERADO CYP3A4 (menos potente que carbamazepina) + auto-indutor menor",
+elimin:"Renal",
+meiavida:"~9h (MHD)",
+ligacao:"~40%",
+},
+ef_colats:{
+comuns:["⚠ ⚠ HIPONATREMIA — até 30% em idoso (frequente, monitor)","Tontura","Sonolência","Cefaleia","Náusea","Visão turva, diplopia","Ataxia"],
+sérios:["⚠ SIADH grave","Stevens-Johnson (menor risco que carbamazepina mas existe)","DRESS","Hepatotoxicidade rara"],
+},
+interacoes:["⚠ INDUTOR CYP3A4 — reduz: ACO (FALHA), warfarina, ciclosporina, antifúngicos","INIBIDORES (verapamil): ↑ oxcarbazepina","Outros anticonvulsivantes"],
+contraindicacoes:["⚠ Hipersensibilidade a oxcarbazepina/carbamazepina (50% cruzada)","Bloqueio AV"],
+monit:["⚠ ⚠ SÓDIO — basal + 2-4 sem + a cada 3-6m em idoso","Função hepática","Sinais cutâneos"],
+gravidez:"C",
+sus:"REMUME — FARMASUS",
+referencias:["NICE; ABE."],
+},
+
+/* ============== GABAPENTINA ============== */
+
+{id:"med-gabapentina", classe:"Anticonvulsivante / antineurálgico — modulador de canal de cálcio α2δ", grupo:"neuro",
+nome:"Gabapentina",
+sin:["Neurontin","Gabaneurin","Gamibetal"],
+formas:["Cápsula 300 mg, 400 mg","Comprimido 600 mg, 800 mg","⚠ CEAF (PCDT-MS dor neuropática refratária) — particular comum"],
+resumo:"⚠ INDICAÇÃO MAIS COMUM HOJE: ⚠ DOR NEUROPÁTICA — diabética, pós-herpética, lombociatalgia neuropática, fibromialgia. ⚠ Em epilepsia: hoje 2ª linha (lamotrigina, levetiracetam, oxcarbazepina preferidas em focal). ⚠ Vantagem: poucas interações. ⚠ Desvantagem: PERFIL DE ABUSO (sedação, euforia em alta dose — uso recreativo crescente), eficácia modesta em dor (NNT ~6).",
+dose_rapida:"300 mg HS dia 1 → 300 mg 12/12h dia 2 → 300 mg 8/8h dia 3 → titular conforme efeito até 900-3600 mg/d",
+doses:[
+{ind:"⚠ DOR NEUROPÁTICA (diabética, pós-herpética)", dose:"Iniciar 300 mg HS, titular gradualmente até 900-3600 mg/d ÷ 8/8h", obs:"⚠ Eficácia gradual — pode levar 2-4 sem para ver efeito. NNT ~6. ⚠ Pregabalina tem eficácia similar, posologia mais simples (2×/d), mas mesmo risco abuso."},
+{ind:"⚠ Epilepsia focal (adjunto)", dose:"900-3600 mg/d ÷ 8/8h", obs:"⚠ 2ª linha hoje."},
+{ind:"⚠ Síndrome das pernas inquietas", dose:"300-1800 mg HS", obs:""},
+{ind:"⚠ Abstinência alcoólica leve (alternativa BZD)", dose:"600-1200 mg/d ÷ 8/8h × 7 dias", obs:""},
+{ind:"⚠ Ansiedade generalizada (off-label, adjunto)", dose:"900-3600 mg/d", obs:""},
+{ind:"⚠ Climatério — fogachos refratários a TRH", dose:"600-2400 mg/d ÷ 8/8h", obs:""},
+],
+ajustes:{
+irc:"⚠ AJUSTE pela TFG: 50-79: 600-1800 mg/d ÷ 8/8h. 30-49: 300-900. 15-29: 150-600. <15: 150-300. HD: pós.",
+iht:"Sem ajuste",
+idoso:"⚠ Iniciar 300 mg/d, titular lento. Avaliar TFG.",
+gestante:"⚠ C — dados limitados",
+aleita:"Cautela",
+ped:"≥3a (epilepsia)",
+},
+mecanismo:"⚠ Liga-se à SUBUNIDADE α2δ do canal de CÁLCIO dependente de voltagem → reduz liberação de glutamato. ⚠ NÃO atua diretamente no GABA (apesar do nome).",
+farmacocin:{
+absorc:"⚠ ⚠ ABSORÇÃO SATURÁVEL — biodisp DIMINUI com dose (60% a 900 mg/d; 35% a 3600 mg/d). Dividir doses melhora absorção.",
+distrib:"Ampla",
+metab:"⚠ NÃO metabolizada",
+elimin:"⚠ Renal 100% (inalterada)",
+meiavida:"~5-7h",
+ligacao:"<3%",
+},
+ef_colats:{
+comuns:["⚠ Sonolência","Tontura","Ataxia","Edema periférico","Ganho de peso","Fadiga","Visão turva"],
+sérios:["⚠ Suicidalidade (sinal nominal)","⚠ ⚠ POTENCIAL DE ABUSO crescente — euforia, sedação em altas doses, mistura com opioides/álcool → ↑ depressão respiratória","Depressão respiratória + opioide","Rash","Edema generalizado"],
+},
+interacoes:["⚠ Antiácidos com Al/Mg: ↓ absorção (separar 2h)","Opioides: depressão respiratória somativa","Álcool, BZD: sedação somativa","Morfina: ↑ gabapentina"],
+contraindicacoes:["Hipersensibilidade","Cautela em paciente com história de uso de substâncias"],
+monit:["Função renal","Sedação","Sintomas humor / suicidalidade","Sinais de abuso"],
+gravidez:"C",
+sus:"⚠ CEAF — PCDT-MS Dor crônica neuropática refratária",
+referencias:["NICE Neuropathic Pain; ⚠ FDA Warning Respiratory Depression 2019."],
+},
+
+/* ============== PREGABALINA ============== */
+
+{id:"med-pregabalina", classe:"Antineurálgico / anticonvulsivante — modulador α2δ", grupo:"neuro",
+nome:"Pregabalina",
+sin:["Lyrica","Prebictal","Pregalex"],
+formas:["Cápsula 25 mg, 75 mg, 150 mg, 300 mg","⚠ CEAF (PCDT-MS Dor neuropática refratária) — particular comum"],
+resumo:"⚠ SIMILAR à gabapentina (mesmo mecanismo) com ABSORÇÃO LINEAR (não-saturável) — POSOLOGIA SIMPLIFICADA (2×/d). Indicações: dor neuropática (diabética, pós-herpética, central), fibromialgia, epilepsia focal (adjunto), ansiedade generalizada. ⚠ MESMO POTENCIAL DE ABUSO. ⚠ Eficácia ligeiramente superior à gabapentina + posologia melhor — geralmente preferida quando disponível.",
+dose_rapida:"75 mg 12/12h, titular a 150-600 mg/d ÷ 12/12h",
+doses:[
+{ind:"⚠ DOR NEUROPÁTICA (diabética, pós-herpética, central)", dose:"75 mg VO 12/12h × 1 sem, depois 150 mg 12/12h. Máx 600 mg/d ÷ 12/12h", obs:""},
+{ind:"⚠ FIBROMIALGIA", dose:"75-225 mg 12/12h", obs:""},
+{ind:"⚠ EPILEPSIA FOCAL (adjunto)", dose:"75-300 mg 12/12h", obs:""},
+{ind:"⚠ TAG (uso aprovado em alguns países)", dose:"75-300 mg/d ÷ 12/12h", obs:"⚠ Não 1ª linha — preferir ISRS."},
+],
+ajustes:{
+irc:"⚠ AJUSTE pela TFG: 30-59: 50% dose. 15-29: 25%. <15: 25 mg/d.",
+iht:"Sem ajuste",
+idoso:"⚠ Iniciar baixo, ajustar pela TFG",
+gestante:"⚠ C — dados limitados",
+aleita:"Cautela",
+ped:"≥1m (Lennox-Gastaut)",
+},
+mecanismo:"⚠ Liga-se à SUBUNIDADE α2δ do canal de cálcio voltagem-dependente → ↓ liberação glutamato.",
+farmacocin:{
+absorc:"⚠ VO ~90% — ABSORÇÃO LINEAR (não saturável — vantagem sobre gabapentina)",
+distrib:"Ampla",
+metab:"⚠ NÃO metabolizada",
+elimin:"⚠ Renal 90% inalterada",
+meiavida:"~6h",
+ligacao:"~0%",
+},
+ef_colats:{
+comuns:["Sonolência","Tontura","Edema periférico","Ganho de peso","Visão turva","Boca seca","Ataxia"],
+sérios:["⚠ ⚠ POTENCIAL DE ABUSO maior que gabapentina (lista de controlados — droga controlada em UK)","Depressão respiratória + opioide","Insuficiência cardíaca em alto grau (raro)","Encefalopatia em IRC sem ajuste"],
+},
+interacoes:["⚠ Opioides: depressão respiratória","Álcool, BZD: sedação somativa","Pioglitazona: edema","IECA: edema/angioedema"],
+contraindicacoes:["Hipersensibilidade","Cautela em paciente com história de abuso"],
+monit:["Função renal","Sedação","Edema, ganho de peso","Sinais de abuso"],
+gravidez:"C",
+sus:"⚠ CEAF — PCDT-MS Dor crônica neuropática refratária",
+referencias:["NICE; FDA Warning."],
+},
+
+/* ============== TOPIRAMATO ============== */
+
+{id:"med-topiramato", classe:"Anticonvulsivante de amplo espectro + profilaxia migrânea", grupo:"neuro",
+nome:"Topiramato",
+sin:["Topamax","Amato","Egide"],
+formas:["Comprimido 25 mg, 50 mg, 100 mg","CEAF (PCDT-MS Epilepsia / Migrânea refratária)"],
+resumo:"⚠ ANTICONVULSIVANTE DE AMPLO ESPECTRO — eficaz em focal + generalizada. ⚠ INDICAÇÃO MAIS COMUM HOJE: ⚠ ⚠ PROFILAXIA DE MIGRÂNEA (junto com propranolol — 1ª linha). Vantagem: PERDA DE PESO (útil em obesidade comórbida). Desvantagem: efeitos cognitivos significativos (lentificação, palavra na ponta da língua), nefrolitíase, parestesia, acidose metabólica, glaucoma agudo. ⚠ Apelido entre psiquiatras: 'dopamax'.",
+dose_rapida:"25 mg HS × 1 sem, titular 25-50 mg/sem até 100-200 mg/d ÷ 12/12h",
+doses:[
+{ind:"⚠ ⚠ PROFILAXIA DE MIGRÂNEA — 1ª LINHA (com propranolol)", dose:"25 mg HS × 1 sem, titular 25 mg/sem até 50-100 mg/d ÷ 12/12h. Máx 200 mg/d", obs:"⚠ Excelente em migrânea com aura, frequência ≥4/mês. Iniciar lento — efeitos cognitivos."},
+{ind:"⚠ EPILEPSIA FOCAL e GENERALIZADA", dose:"100-400 mg/d ÷ 12/12h", obs:""},
+{ind:"⚠ TRANSTORNO BIPOLAR (adjunto, off-label)", dose:"50-200 mg/d", obs:""},
+{ind:"⚠ Tratamento adjunto da OBESIDADE (off-label)", dose:"50-200 mg/d", obs:""},
+{ind:"⚠ COMPULSÃO ALIMENTAR / bulimia (off-label)", dose:"50-300 mg/d", obs:""},
+],
+ajustes:{
+irc:"⚠ TFG <70: reduzir 50%",
+iht:"Reduzir",
+idoso:"⚠ Iniciar 25 mg HS",
+gestante:"⚠ D — TERATOGÊNICO — anomalias craniofaciais (lábio leporino, fenda palatina). EVITAR em mulher fértil sem contracepção rigorosa.",
+aleita:"Cautela",
+ped:"≥2a (epilepsia)",
+},
+mecanismo:"⚠ Múltiplos: bloqueia Na + potencia GABA + bloqueia canais Ca + bloqueia receptores AMPA/cainato + INIBE ANIDRASE CARBÔNICA (explica acidose, parestesia, litíase renal, perda peso).",
+farmacocin:{
+absorc:"VO ~80%",
+distrib:"Ampla",
+metab:"Parcial hepático",
+elimin:"Renal 70% inalterada",
+meiavida:"~21h",
+ligacao:"~15%",
+},
+ef_colats:{
+comuns:["⚠ ⚠ EFEITOS COGNITIVOS — lentificação, palavra na ponta da língua, dificuldade concentração ('dopamax')","Parestesia (mãos, pés — inibição anidrase carbônica)","Anorexia / perda de peso","Disgeusia (sabor de refrigerante alterado)","Sonolência","Tontura","Cefaleia"],
+sérios:["⚠ ⚠ NEFROLITÍASE (cálculos de cálcio + fosfato) — orientar HIDRATAÇÃO","⚠ ⚠ ACIDOSE METABÓLICA HIPERCLORÊMICA","⚠ ⚠ GLAUCOMA DE ÂNGULO FECHADO AGUDO — RARO mas EMERGÊNCIA (dor ocular + visão turva, primeiras semanas — INTERROMPER imediatamente)","⚠ OLIGOIDROSE / HIPERTERMIA em criança (especialmente em calor)","⚠ TERATOGENICIDADE","Suicidalidade (sinal nominal)","Encefalopatia em hiperamonemia (com valproato)"],
+},
+interacoes:["⚠ ACO combinado: ↓ etinilestradiol em dose >200 mg/d","⚠ Valproato: hiperamonemia","Outros inibidores anidrase carbônica (acetazolamida): acidose somativa","Litio: ↑ lítio"],
+contraindicacoes:["⚠ Glaucoma","⚠ Nefrolitíase","⚠ Acidose metabólica","Gestação (relativa em mulher fértil sem contracepção)","Hipersensibilidade"],
+monit:["⚠ Função renal + bicarbonato (acidose) — basal + a cada 3-6m","Função cognitiva","Sintomas oculares — alerta urgente","Peso"],
+gravidez:"⚠ D",
+sus:"CEAF — PCDT-MS Migrânea / Epilepsia",
+referencias:["NICE Headache; AAN Migraine; ABE."],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — ENGINE PRINCIPAL
    Router por hash, render, busca fuzzy, toggle tema/modo
    =========================================================== */
@@ -25808,11 +26836,12 @@ function renderMedicacoes() {
     bd: "Broncodilatadores crônicos (Asma / DPOC manutenção)",
     neuro: "Anticonvulsivantes / Neuro",
     psiq: "Psiquiátrico — Antidepressivos / Ansiolíticos / Hipnóticos",
+    alergia: "Antialérgicos / Anti-histamínicos H1",
     gi: "Gastrintestinal (IBPs, H2, antieméticos)",
     ost: "Osteomuscular / Gota / Antirreumáticos",
     outros: "Outros",
   };
-  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","bd","neuro","psiq","gi","ost","outros"];
+  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","bd","neuro","psiq","alergia","gi","ost","outros"];
 
   const sections = ord.filter(g => byGrupo[g]).map(g => {
     const cards = byGrupo[g].map(m => `
