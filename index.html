@@ -7015,6 +7015,879 @@ diretriz:"SBD 2025 (Diretriz Brasileira). ADA Standards 2025. EASD-ADA Joint Sta
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PATOLOGIA DISLIPIDEMIA
+   Conforme: Atualização SBC Dislipidemia 2017 + AHA/ACC 2018-2024
+   + ESC 2019 + Update DBHA 2025 (componente CV)
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+{id:"dislipidemia", nome:"Dislipidemia", sis:"endo", grav:"baixa",
+cid:"E78", ciap:"T93",
+sin:["Colesterol alto","Hipercolesterolemia","Hiperlipidemia","Hipertrigliceridemia","LDL alto","Dislipidemia mista"],
+
+def:"Alteração do perfil lipídico — ↑ LDL e/ou ↑ TG e/ou ↓ HDL. Principal contribuinte modificável para aterosclerose. Tratamento NÃO é por número, mas por RISCO CV individual (estratificação determina alvo terapêutico).",
+
+quadro:[
+"ASSINTOMÁTICA na grande maioria — detectada em rastreio ou após complicação CV",
+"Sinais físicos em dislipidemia FAMILIAR/grave: xantomas tendinosos (cotovelo, Achilles), xantelasmas (pálpebras), arco corneano <45a, xantomas eruptivos em TG >1000",
+"HIPERTRIGLICERIDEMIA grave (TG >1000): risco de PANCREATITE AGUDA, lipemia retiniana, hepatomegalia (esteatose)",
+"Sintomas de doença vascular instalada: angina, claudicação, AVC, IAM",
+"Em homozigoto hipercolesterolemia familiar (raro): doença coronariana antes dos 20 anos",
+],
+
+diag:[
+"⚠ NÃO HÁ 'valor de corte' para diagnóstico isolado — é estratificação de risco",
+"RASTREAMENTO: ≥20 anos a cada 5 anos; mais cedo se fatores de risco",
+"PERFIL LIPÍDICO COMPLETO: CT, HDL, LDL (calculado ou direto), TG, não-HDL",
+"JEJUM 12h tradicional, mas guidelines recentes aceitam sem jejum (exceto se TG >400 — repetir em jejum)",
+"NÃO-HDL = CT − HDL (melhor preditor CV que LDL, especialmente em TG alto)",
+"Lp(a) — dosagem 1× na vida em paciente com história familiar de DCV precoce ou DCV pessoal precoce",
+"ApoB — dosagem opcional (mais acurada que LDL em dislipidemia mista)",
+"CALCULADORA de RCV: Brasil — escore SBC; ESC SCORE2/SCORE2-OP; EUA — PREVENT score ou Pooled Cohort Equations",
+],
+
+exames:[
+"Perfil lipídico completo (CT, HDL, LDL, TG, não-HDL)",
+"Glicemia jejum + HbA1c (rastreio DM2 — comum coexistir)",
+"TSH (hipotireoidismo causa dislipidemia 2ária)",
+"Creatinina + TFG (DRC altera perfil + ajusta dose de estatina)",
+"TGO/TGP basal (antes de iniciar estatina)",
+"CK basal APENAS se risco de miopatia (idoso frágil, hipotireoidismo, atleta, asiático)",
+"Microalbuminúria/RAC se HAS+DM",
+"ECG basal em ≥40 anos ou fator de risco",
+"Escore de cálcio coronariano (ECC) em RCV intermediário para reclassificar — exame promissor",
+],
+
+rx:[
+{etapa:"inicial", d:"⚠ 1º PASSO: ESTRATIFICAR RISCO CV — define ALVOS de LDL", o:"Tratamento NÃO é pelo número absoluto, mas pelo risco individual."},
+
+{etapa:"inicial", d:"RISCO MUITO ALTO (LDL alvo <50 mg/dL, ESC sugere <40): DCV aterosclerótica ESTABELECIDA (DAC, AVC, DAOP) OU DM + LOA OU DM ≥10a OU IRC TFG <30 OU LDL >190 + 1 FRCV OU HF com evento", o:"Estatina alta potência + considerar combinação (ezetimiba, PCSK9 se ainda fora do alvo)."},
+
+{etapa:"inicial", d:"RISCO ALTO (LDL alvo <70 mg/dL): DM2 SEM LOA com >10a OU múltiplos FRCV OU IRC G3a/G3b OU LDL 160-189 OU escore SBC alto", o:"Estatina alta potência ou moderada conforme tolerância."},
+
+{etapa:"inicial", d:"RISCO INTERMEDIÁRIO (LDL alvo <100 mg/dL): escore SBC 5-20% OU 1-2 FRCV", o:"Estatina moderada potência. Considerar ECC se reclassificação útil."},
+
+{etapa:"inicial", d:"RISCO BAIXO (LDL alvo <130 mg/dL): escore SBC <5% + sem FRCV", o:"MEV primeiro. Estatina só em LDL alto persistente após MEV."},
+
+{etapa:"inicial", d:"MUDANÇAS DE ESTILO DE VIDA (MEV) — aplicar SEMPRE, independente de medicação", o:"Pode reduzir LDL 10-20%, TG 30-50%, ↑ HDL 5-10%."},
+
+{etapa:"inicial", d:"DIETA: padrão MEDITERRÂNEA ou DASH. ↓ gordura saturada <7% das calorias. ↓ trans <1%. ↑ fibras 25-40 g/d. ↑ esteróis vegetais 2 g/d. ↑ frutas, legumes, peixe, leguminosas, oleaginosas", o:"Redução LDL 5-15%."},
+
+{etapa:"inicial", d:"PESO: perda 5-10% se IMC ≥25 (especialmente em TG alto e HDL baixo)", o:"Cada 10 kg de perda: TG ↓ ~20-30%, HDL ↑ ~5%."},
+
+{etapa:"inicial", d:"ATIVIDADE FÍSICA: 150 min/sem aeróbica moderada + 2-3× exercício resistido", o:"↑ HDL 5-10%, ↓ TG 10-20%."},
+
+{etapa:"inicial", d:"CESSAR TABAGISMO + álcool moderado (excesso ↑ TG) + manejar DM/HAS/IRC concomitantes", o:"Tabagismo é fator de risco maior — cessar tem benefício enorme."},
+
+{etapa:"escala", d:"⚠ ESTATINAS são 1ª LINHA — reduzem LDL 30-60% e desfechos CV (NNT 50-100 em prevenção 1ª, 25-50 em 2ª)", o:""},
+
+{etapa:"escala", d:"ALTA POTÊNCIA (LDL ↓ ≥50%): ATORVASTATINA 40-80 mg/d OU ROSUVASTATINA 20-40 mg/d", o:"Indicação: risco MUITO ALTO ou ALTO. Padrão em prevenção 2ária (pós-IAM, AVC, DAOP)."},
+
+{etapa:"escala", d:"MODERADA POTÊNCIA (LDL ↓ 30-50%): ATORVASTATINA 10-20 mg/d OU ROSUVASTATINA 5-10 mg/d OU SINVASTATINA 20-40 mg/d", o:"Indicação: risco INTERMEDIÁRIO. Sinvastatina é opção SUS."},
+
+{etapa:"escala", d:"BAIXA POTÊNCIA: SINVASTATINA 10 mg/d, PRAVASTATINA 10-20 mg/d, FLUVASTATINA 20-40 mg/d", o:"Raramente usada — apenas em paciente com baixo risco + intolerância à dose maior."},
+
+{etapa:"escala", d:"EXEMPLO 1 (pós-IAM, LDL alvo <50): ATORVASTATINA 40-80 mg VO 1×/d", o:"Reavaliar 6-8 sem. Se não atingir <50: somar ezetimiba 10 mg → se ainda não: PCSK9."},
+
+{etapa:"escala", d:"EXEMPLO 2 (DM2 + alto RCV, LDL alvo <70): ROSUVASTATINA 20 mg VO 1×/d", o:"Vantagem: T½ longa. Em DM2 estatina é PADRÃO independente do LDL basal."},
+
+{etapa:"escala", d:"EXEMPLO 3 (prevenção 1ª, RCV intermediário): SINVASTATINA 20-40 mg VO À NOITE", o:"Sinvastatina deve ser tomada à noite — biossíntese de colesterol é noturna. Atorva/rosuva: qualquer hora."},
+
+{etapa:"escala", d:"⚠ SE LDL acima do alvo após DOSE MÁXIMA de estatina tolerada: ADICIONAR EZETIMIBA 10 mg/d (reduz LDL adicional 18-22%)", o:"IMPROVE-IT trial: ezetimiba + estatina REDUZIU desfechos CV vs estatina isolada em pós-SCA. PADRÃO em 2ª linha."},
+
+{etapa:"escala", d:"SE AINDA fora do alvo: INIBIDOR PCSK9 (Evolocumabe/Repatha 140 mg SC 2/2sem OU Alirocumabe/Praluent 75-150 mg SC 2/2sem)", o:"Reduz LDL adicional 50-60%. Disponibilidade: privada/seguro/judicialização SUS. FOURIER, ODYSSEY OUTCOMES."},
+
+{etapa:"escala", d:"INCLISIRAN (Leqvio): siRNA SC 2×/ano após dose de carga. Não disponível Brasil 2025/2026", o:"Aprovado FDA/EMA. Aguardando disponibilidade BR."},
+
+{etapa:"escala", d:"ÁCIDO BEMPEDOICO (Nexletol — não disponível BR 2025/2026): VO, reduz LDL 17-25%. Útil em intolerância a estatina", o:"CLEAR Outcomes — redução modesta de desfechos."},
+
+{etapa:"adj", d:"⚠ HIPERTRIGLICERIDEMIA grave (TG ≥500): risco PANCREATITE AGUDA — TRATAR mesmo sem alto RCV", o:""},
+
+{etapa:"adj", d:"TG 150-499 (leve-moderada): otimizar MEV + estatina (alvo principal ainda é LDL/não-HDL)", o:"Não-HDL alvo = LDL alvo + 30. Em alto RCV + TG ≥150 em uso de estatina: REDUCE-IT — considerar icosapent etil."},
+
+{etapa:"adj", d:"TG 500-1000: FENOFIBRATO 160-200 mg/d + ômega-3 4 g/d + MEV (peso, álcool zero, DM controlado, dieta low-carb leve)", o:"Risco pancreatite. Avaliar causa 2ária (DM descompensado, álcool, hipotireoidismo, drogas)."},
+
+{etapa:"adj", d:"TG >1000 (extremo, risco iminente de pancreatite): FENOFIBRATO + ômega-3 + insulina (se DM) + dieta restritiva, álcool ZERO. Casos extremos: plasmaférese", o:"Encaminhar endocrino. Investigar causa familiar (deficiência LPL, ApoCII)."},
+
+{etapa:"adj", d:"NÃO COMBINAR GEMFIBROZILA com estatina (rabdomiólise 15× maior). FENOFIBRATO + estatina é aceitável MAS monitor CK", o:"Gemfibrozila praticamente não usada mais."},
+
+{etapa:"adj", d:"HDL BAIXO (<40 H, <50 M) ISOLADO: NÃO há droga eficaz para ↑ HDL e reduzir desfechos CV", o:"Foco: MEV (atividade física, perda peso, cessar tabagismo, álcool moderado). HDL baixo é MARCADOR de risco, não alvo terapêutico."},
+
+{etapa:"adj", d:"⚠ Suspeitar HIPERCOLESTEROLEMIA FAMILIAR se: LDL >190 sem causa 2ária OU LDL >160 + DCV precoce familiar OU xantomas/arco corneano <45a", o:"Prevalência 1:250 (heterozigota). RASTREAR FAMILIARES de 1º grau."},
+
+{etapa:"adj", d:"HF heterozigota: estatina ALTA POTÊNCIA precoce + ezetimiba + frequentemente PCSK9 (LDL <70 em prevenção 1ª, <50 em 2ª)", o:"Início de tratamento desde 8-10 anos em casos selecionados."},
+
+{etapa:"adj", d:"HF homozigota (raríssimo): LDL >500, DAC antes dos 20 anos. Tratamento: PCSK9 + aférese LDL + lomitapida + evinacumab", o:"Encaminhar centro de referência."},
+
+{etapa:"adj", d:"DM2 + DISLIPIDEMIA: estatina é PADRÃO independente do LDL basal. Alvo LDL <70 (alto) ou <50 (muito alto). Considerar SGLT-2/GLP-1", o:"DBHA/SBD 2025: pacote integrado HAS + DM + dislipidemia = redução máxima de mortalidade CV."},
+
+{etapa:"adj", d:"IRC + DISLIPIDEMIA: estatina em TFG ≥30 (atorvastatina, fluvastatina — não excretadas renalmente). TFG <30 sem diálise: dose baixa-moderada. DIÁLISE: NÃO iniciar (4D trial)", o:"KDIGO 2024."},
+
+{etapa:"adj", d:"GESTAÇÃO + DISLIPIDEMIA: ESTATINAS CONTRAINDICADAS (categoria X). Suspender pré-concepção. MEV + ômega-3 + colestiramina (resina, segura) se necessário", o:"Hipertrigliceridemia grave na gestação: insulina + dieta + plasmaférese."},
+
+{etapa:"adj", d:"IDOSO ≥75 anos: estatina em prevenção 1ª — decisão compartilhada. Em prevenção 2ária: manter. Reduzir dose se intolerância", o:"Avaliar fragilidade + expectativa de vida."},
+
+{etapa:"adj", d:"INTOLERÂNCIA A ESTATINA (mialgia, ↑CK): (1) confirmar com washout + reintrodução; (2) trocar de estatina (rosuvastatina geralmente melhor tolerada); (3) reduzir dose; (4) dose em dias alternados; (5) ezetimiba isolada; (6) PCSK9", o:"Verdadeira intolerância 1-5%. Efeito 'nocebo' significativo."},
+
+{etapa:"alta", d:"⚠ METAS DE LDL — SBC 2017 + AHA 2018 + ESC 2019", o:""},
+
+{etapa:"alta", d:"MUITO ALTO RCV: LDL <50 mg/dL (ESC: <40). Não-HDL <80. ApoB <65", o:"DCV estabelecida, DM com LOA, IRC TFG <30, HF com evento."},
+
+{etapa:"alta", d:"ALTO RCV: LDL <70 mg/dL. Não-HDL <100. ApoB <80", o:"DM ≥10a, IRC G3, LDL 160-189, múltiplos FRCV."},
+
+{etapa:"alta", d:"INTERMEDIÁRIO: LDL <100. Não-HDL <130", o:"1-2 FRCV ou escore 5-20%."},
+
+{etapa:"alta", d:"BAIXO: LDL <130", o:"Sem FRCV maiores."},
+
+{etapa:"alta", d:"SEGUIMENTO: perfil lipídico 4-12 sem após início/troca. Após meta: anual", o:"Aderência sempre. Reforçar MEV."},
+
+{etapa:"alta", d:"MONITOR LABORATORIAL: TGO/TGP basal + 8-12 sem + anual. CK apenas se sintomas. NÃO monitorar de rotina sem sintomas", o:"↑ TGO/TGP até 3× LSN sem sintomas: manter. >3× LSN: investigar/suspender."},
+
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento: (1) hipercolesterolemia familiar suspeita; (2) hipertrigliceridemia refratária; (3) intolerância a múltiplas estatinas; (4) PCSK9 com dificuldade de acesso", o:"Cardiologia, endocrinologia ou ambulatório especializado."},
+],
+
+alertas:[
+{nivel:"crit", txt:"HIPERTRIGLICERIDEMIA grave (TG >500-1000): RISCO PANCREATITE AGUDA. Tratar mesmo sem outro RCV. Fenofibrato + ômega-3 + MEV agressiva."},
+{nivel:"crit", txt:"GESTAÇÃO: ESTATINAS CONTRAINDICADAS (categoria X). Suspender 3 meses pré-concepção."},
+{nivel:"crit", txt:"NUNCA combinar GEMFIBROZILA com ESTATINA — rabdomiólise 15× maior. Fenofibrato + estatina é aceitável MAS monitor CK."},
+{nivel:"crit", txt:"SINVASTATINA 80 mg: CONTRAINDICADA (FDA 2011 — risco miopatia 4× maior). Limitar a 40 mg/d. Se LDL alvo não atingido: TROCAR estatina."},
+{nivel:"warn", txt:"TRATAMENTO NÃO É POR NÚMERO ISOLADO. Estratificar RCV ANTES de iniciar — alvo varia conforme risco."},
+{nivel:"warn", txt:"INTERAÇÃO crítica: sinvastatina/lovastatina + diltiazem/verapamil/eritromicina/itraconazol = ↑ estatina (rabdomiólise). Em paciente com BCC não-DHP: rosuvastatina ou pravastatina."},
+{nivel:"warn", txt:"DCV estabelecida: NÃO há LDL muito baixo — quanto menor, menor o risco (IMPROVE-IT, FOURIER, ODYSSEY)."},
+{nivel:"warn", txt:"INTOLERÂNCIA A ESTATINA: confirmar com washout + reexposição. Efeito NOCEBO significativo (até 30% das queixas)."},
+{nivel:"info", txt:"NÃO-HDL é alvo SECUNDÁRIO útil em TG alto. Não-HDL alvo = LDL alvo + 30."},
+{nivel:"info", txt:"ÔMEGA-3 OTC genérico NÃO tem evidência CV. Apenas ICOSAPENT ETIL (Vascepa, não BR) reduz MACE (REDUCE-IT)."},
+],
+
+fluxo:null,
+diretriz:"Atualização SBC Dislipidemia 2017. AHA/ACC 2018 + 2022. ESC 2019. KDIGO 2024. IMPROVE-IT. FOURIER. ODYSSEY OUTCOMES. REDUCE-IT. FIELD."
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PATOLOGIAS DE TIREOIDE
+   Hipotireoidismo + Hipertireoidismo/Tireotoxicose
+   Conforme: ATA 2014 (hipo) + ATA 2016 (hiper) + SBEM 2025
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* === HIPOTIREOIDISMO === */
+{id:"hipotireoidismo", nome:"Hipotireoidismo", sis:"endo", grav:"baixa",
+cid:"E03", ciap:"T86",
+sin:["Tireoide baixa","Hashimoto","Tireoidite autoimune","TSH alto"],
+
+def:"Deficiência de hormônio tireoidiano (T4/T3) — caracteriza-se por TSH alto + T4 livre baixo (primário) ou TSH baixo/normal + T4 livre baixo (central). Causa mais comum no Brasil: TIREOIDITE DE HASHIMOTO (autoimune).",
+
+quadro:[
+"INSIDIOSO — sintomas inespecíficos, frequentemente atribuídos a outras causas",
+"Fadiga, sonolência, intolerância ao frio, ganho de peso (1-3 kg), constipação, pele seca/áspera, queda de cabelo, voz rouca",
+"Bradicardia, hipertensão diastólica, derrame pericárdico (raro, em hipotireoidismo grave)",
+"Mialgia, parestesias (síndrome do túnel do carpo associada)",
+"Depressão, lentificação cognitiva, déficit de memória",
+"Mulher: irregularidade menstrual (menorragia), infertilidade, galactorreia",
+"COMA MIXEDEMATOSO (emergência rara): hipotermia, hipoventilação, hipotensão, hiponatremia, alteração consciência. Mortalidade 30-60%",
+],
+
+diag:[
+"⚠ TSH é o teste DE TRIAGEM mais sensível (primeiro a alterar)",
+"HIPOTIREOIDISMO PRIMÁRIO: TSH ↑ + T4L ↓ (ou normal em subclínico)",
+"HIPOTIREOIDISMO SUBCLÍNICO: TSH ↑ (4,5-10 ou 4,5-19,9 conforme guideline) + T4L NORMAL — abordagem é controversa",
+"HIPOTIREOIDISMO CENTRAL (hipofisário/hipotalâmico): TSH baixo/normal/levemente alto + T4L ↓ — raro, sempre investigar com RM se suspeitar",
+"Anti-TPO (anti-tireoperoxidase): positivo em 90% das tireoidites de Hashimoto. Anti-Tg também útil",
+"USG tireoide: NÃO é exame de rastreio — apenas se nódulo palpável, dor, suspeita CA",
+"Considerar causa 2ária: drogas (amiodarona, lítio, sunitinibe, IFN), pós-tireoidectomia, pós-radioiodo, deficiência iodo (raro Brasil)",
+],
+
+exames:[
+"TSH (rastreio + diagnóstico)",
+"T4 livre (confirmação + classificar 1ário vs central)",
+"Anti-TPO (autoimunidade — Hashimoto)",
+"T3 livre — pouco útil em rotina; apenas em hipertireoidismo ou suspeita de T3-toxicose",
+"Hemograma (anemia comum no hipotireoidismo — normo/macro)",
+"Perfil lipídico (LDL elevado é comum — pode normalizar com tratamento)",
+"Glicemia/HbA1c (hipotireoidismo + DM2 comum coexistir)",
+"Eletrólitos (hiponatremia em hipotireoidismo grave)",
+"CK (elevada em miopatia hipotireoidiana)",
+"Cortisol matinal se suspeita de Addison concomitante (Schmidt)",
+],
+
+rx:[
+{etapa:"inicial", d:"⚠ INDICAÇÃO de tratamento: TSH >10 OU TSH 4,5-10 com sintomas/sinais OU em gestação (mesmo subclínico)", o:"Hipotireoidismo subclínico assintomático com TSH 4,5-10: tratamento individualizado (idade, sintomas, anti-TPO, dislipidemia)."},
+
+{etapa:"inicial", d:"NÃO TRATAR rotineiramente: TSH 4,5-10 ASSINTOMÁTICO em idoso >70 anos (cuidado com sobretratamento — FA, osteoporose)", o:"Repetir TSH em 1-3 meses antes de iniciar — variação espontânea comum."},
+
+{etapa:"escala", d:"LEVOTIROXINA (T4) é 1ª LINHA — única opção em uso clínico", o:""},
+
+{etapa:"escala", d:"DOSE INICIAL em adulto SAUDÁVEL <60 anos: LEVOTIROXINA 1,6 mcg/kg/d (dose plena calculada por peso ideal)", o:"Ex: 70 kg × 1,6 = 112 mcg/d → 100-112 mcg/d. Pode iniciar dose plena em adulto saudável."},
+
+{etapa:"escala", d:"DOSE INICIAL em IDOSO ≥60a ou CARDIOPATA: 25-50 mcg/d, titular 25 mcg a cada 4-6 sem", o:"Início gradual evita precipitar angina/arritmia. Em coronariopata: 12,5-25 mcg/d inicial."},
+
+{etapa:"escala", d:"GESTANTE: necessidade aumenta 25-50% no 1º trim. ALVO TSH <2,5 no 1º trim, <3,0 no 2º/3º. Aumentar dose 30% assim que confirmar gravidez", o:"Hipotireoidismo materno não tratado: risco abortamento, RCIU, prejuízo cognitivo fetal."},
+
+{etapa:"escala", d:"CRIANÇA recém-nascida (hipotireoidismo congênito): 10-15 mcg/kg/d (dose alta — fundamental para neurodesenvolvimento)", o:"Triagem neonatal (teste do pezinho) é OBRIGATÓRIA. Iniciar antes de 2-3 semanas de vida."},
+
+{etapa:"adj", d:"COMO TOMAR: levotiroxina 30-60 min ANTES do café da manhã, COM ÁGUA, em jejum estrito. Sem outros medicamentos por 4h", o:"Absorção é melhor em jejum. Comida, café, soja, fibras, cálcio, ferro, antiácidos ↓ absorção significativamente."},
+
+{etapa:"adj", d:"INTERAÇÕES IMPORTANTES — separar 4h: ferro, cálcio, antiácidos, sucralfato, colestiramina, soja, suplementos minerais", o:"Em paciente com IBP: pode reduzir absorção — separar tomadas."},
+
+{etapa:"adj", d:"OUTROS FÁRMACOS que ↑ necessidade de levotiroxina: rifampicina, fenitoína, carbamazepina, fenobarbital, sertralina, amiodarona (paradoxal), estrogênio (anticoncepcional/TRH)", o:"Reavaliar TSH se iniciar/parar essas drogas."},
+
+{etapa:"adj", d:"GESTAÇÃO + HIPOTIREOIDISMO PRÉVIO: aumentar dose 25-30% (2 comprimidos extras/sem) assim que confirmar gestação. TSH cada 4 sem até 20 sem, depois cada 6-8 sem", o:"Pós-parto: voltar à dose pré-gestacional + dosar em 6 sem."},
+
+{etapa:"adj", d:"COMA MIXEDEMATOSO (EMERGÊNCIA): UTI + LEVOTIROXINA IV 200-400 mcg bolus, depois 50-100 mcg/d + HIDROCORTISONA IV 100 mg 8/8h (antes da T4 — risco crise adrenal) + suporte (aquecimento ativo, ventilação, hidratação cautelosa)", o:"Mortalidade 30-60% mesmo com tratamento. Identificar fator precipitante (infecção, IAM, fármaco sedativo, exposição ao frio)."},
+
+{etapa:"adj", d:"HIPOTIREOIDISMO SUBCLÍNICO (TSH 4,5-10): TRATAR se sintomático OU bócio OU dislipidemia OU infertilidade OU planejar gestação. NÃO tratar idoso >70a assintomático (risco sobretratamento)", o:"Repetir TSH em 3 meses antes de decidir."},
+
+{etapa:"alta", d:"⚠ ALVOS de TSH (geral, não-gestante): 0,4-4,0 mUI/L (alguns laboratórios usam 0,5-4,5)", o:""},
+
+{etapa:"alta", d:"IDOSO ≥70a: alvo TSH 4-6 mUI/L é aceitável (evitar sobretratamento — FA, osteoporose)", o:""},
+
+{etapa:"alta", d:"PÓS-CA TIREOIDE: alvo TSH varia conforme risco — supressivo (<0,1) em alto risco, baixo (0,1-0,5) em intermediário, normal em baixo risco", o:"Discussão com endocrinologia."},
+
+{etapa:"alta", d:"SEGUIMENTO: TSH 6-8 sem após início/ajuste de dose. Após estabilizar: 6-12 meses", o:"Dose estável raramente muda — reavaliar se sintomas, gestação, novo medicamento, perda/ganho de peso significativo."},
+
+{etapa:"alta", d:"SOBRETRATAMENTO (TSH <0,4 com sintomas): RISCOS — FA, osteoporose (mulher pós-menopausa), angina. REDUZIR dose 12,5-25 mcg, reavaliar 6 sem", o:"Em idoso: tolerar TSH levemente alto é preferível a suprimir."},
+
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento: (1) hipotireoidismo CENTRAL (RM); (2) suspeita Hashimoto + outras endocrinopatias (Schmidt); (3) sintomas persistentes apesar de TSH normalizado (avaliar T3, fatores associados); (4) gestação; (5) nódulo tireoidiano", o:"Endocrinologia."},
+],
+
+alertas:[
+{nivel:"crit", txt:"COMA MIXEDEMATOSO é emergência (mortalidade 30-60%) — UTI + levotiroxina IV + HIDROCORTISONA ANTES (risco crise adrenal). Identificar gatilho (infecção, IAM, sedativo)."},
+{nivel:"crit", txt:"GESTAÇÃO: aumentar dose 25-30% assim que confirmar gestação. TSH alvo <2,5 (1º trim), <3,0 (2º/3º). Hipo materno não tratado = risco fetal grave."},
+{nivel:"crit", txt:"INICIAR EM CARDIOPATA: dose 12,5-25 mcg/d (iniciar pequeno + titular lento). Dose plena pode precipitar angina/arritmia."},
+{nivel:"warn", txt:"ABSORÇÃO de levotiroxina: TOMAR EM JEJUM 30-60 min antes do café. Comida, café, ferro, cálcio, antiácidos, IBP, fibras, soja REDUZEM absorção. Separar 4h."},
+{nivel:"warn", txt:"SUBCLÍNICO ASSINTOMÁTICO (TSH 4,5-10) em IDOSO >70a: NÃO tratar rotineiramente — risco sobretratamento (FA, fratura) > benefício."},
+{nivel:"warn", txt:"HASHIMOTO + outras autoimunidades (DM1, Addison, vitiligo, celíaca): comum coexistir — investigar conforme sintomas (síndrome poliglandular)."},
+{nivel:"info", txt:"SINTOMAS PERSISTENTES com TSH normalizado: avaliar (1) aderência, (2) tomadas corretas (jejum), (3) interações, (4) outra causa (anemia, depressão, fibromialgia)."},
+],
+
+fluxo:null,
+diretriz:"ATA 2014 (American Thyroid Association). ATA 2017 (Gestação). SBEM 2025. Endocrine Society."
+},
+
+/* === HIPERTIREOIDISMO === */
+{id:"hipertireoidismo", nome:"Hipertireoidismo / Tireotoxicose", sis:"endo", grav:"moderada",
+cid:"E05", ciap:"T85",
+sin:["Tireoide alta","Graves","Doença de Basedow","Tireotoxicose","TSH baixo","Bócio difuso tóxico"],
+
+def:"Excesso de hormônio tireoidiano. Causa mais comum: DOENÇA DE GRAVES (autoimune, anticorpo TRAb estimulando receptor TSH). Outras: bócio multinodular tóxico, adenoma tóxico (Plummer), tireoidite (subaguda, pós-parto, induzida por amiodarona).",
+
+quadro:[
+"Hiperatividade adrenérgica: palpitação, taquicardia (FA em 10-20%), tremor fino, sudorese, intolerância ao calor, ansiedade, insônia",
+"Hipercatabolismo: perda de peso COM apetite aumentado, fraqueza muscular proximal, fadiga paradoxal",
+"GI: hiperdefecação, diarreia leve",
+"Pele: quente e úmida, eritema palmar, queda de cabelo, prurido",
+"Olho: olhar fixo, retração palpebral, lid lag (sinal de von Graefe) — em qualquer hipertireoidismo",
+"ESPECÍFICO DE GRAVES: OFTALMOPATIA (exoftalmia, edema periorbital, oftalmoplegia), mixedema pré-tibial, acropaquia",
+"FA: 10-20% em hipertireoidismo — INVESTIGAR TSH em TODA FA de novo diagnóstico",
+"TIREOTOXICOSE: termo que engloba TODAS as causas de excesso hormonal (incluindo tireoidite, exógeno)",
+"CRISE TIREOIDIANA (raro, mortalidade 10-30%): febre alta, taquicardia >140, agitação, vômito, diarreia, IC, alteração consciência",
+],
+
+diag:[
+"TSH SUPRIMIDO (<0,1) + T4 livre ↑ e/ou T3 livre ↑",
+"TSH suprimido + T4L/T3L NORMAIS = HIPERTIREOIDISMO SUBCLÍNICO",
+"TSH NORMAL/ALTO + T4L ALTO: suspeitar tumor hipofisário produtor TSH ou resistência (raríssimo)",
+"TRAb (anti-receptor de TSH): POSITIVO em DOENÇA DE GRAVES — confirma diagnóstico (não precisa cintilografia se TRAb+)",
+"Cintilografia tireoide com I-131 ou Tc-99m: captação difusa AUMENTADA = Graves; captação NODULAR = adenoma/bócio; captação BAIXA = tireoidite, exógeno, gestação (no jejum 12h)",
+"USG tireoide: bócio difuso (Graves), nódulos (adenoma/multinodular)",
+"Anti-TPO/Anti-Tg podem ser positivos em Graves (sobreposição com Hashimoto)",
+"TRAb é o mais ESPECÍFICO para Graves",
+],
+
+exames:[
+"TSH (rastreio)",
+"T4 livre + T3 livre (confirmação + classificar)",
+"TRAb (especialmente se suspeita Graves — confirma diagnóstico)",
+"Anti-TPO (sobreposição com tireoidite autoimune)",
+"USG tireoide + Doppler (vascularização ↑ em Graves)",
+"Cintilografia I-131 ou Tc-99m (diferencial entre Graves, multinodular, adenoma, tireoidite — NÃO fazer em gestante/lactante)",
+"ECG (FA, taquicardia, sinais de cardiopatia tireotóxica)",
+"Hemograma (linfocitose, anemia leve)",
+"Função hepática (T4 elevado pode ↑ TGO/TGP leve)",
+"Glicemia (intolerância à glicose comum)",
+"β-HCG em mulher fértil (hipertireoidismo gestacional fisiológico, mola)",
+],
+
+rx:[
+{etapa:"inicial", d:"⚠ 3 OPÇÕES DE TRATAMENTO DEFINITIVO em GRAVES: (1) anti-tireoidianos; (2) radioiodo; (3) tireoidectomia", o:"Escolha conforme: idade, gravidade, gestação, oftalmopatia, preferência paciente, comorbidades."},
+
+{etapa:"escala", d:"METIMAZOL é 1ª LINHA (anti-tireoidiano de escolha)", o:""},
+
+{etapa:"escala", d:"METIMAZOL — dose conforme gravidade: hipertireoidismo LEVE (T4L 1-1,5× LSN): 10-15 mg/d 1×/d. MODERADO (1,5-2× LSN): 20-30 mg/d. GRAVE (>2-3× LSN): 30-40 mg/d em 2-3 tomadas", o:"Dose inicial de 15-30 mg/d (1×/d) cobre maioria dos casos. Resposta em 4-8 sem. Manutenção: 5-15 mg/d."},
+
+{etapa:"escala", d:"PROPILTIOURACIL (PTU) — 2ª linha (alternativa ao metimazol)", o:""},
+
+{etapa:"escala", d:"PROPILTIOURACIL: 300-450 mg/d em 3 tomadas (100-150 mg 8/8h). Manutenção: 50-150 mg/d", o:"INDICAÇÕES ESPECÍFICAS de PTU sobre metimazol: (1) 1º TRIMESTRE de gestação (metimazol = aplasia cutis fetal); (2) CRISE TIREOIDIANA (PTU bloqueia conversão T4→T3 — vantagem aguda); (3) reação adversa leve ao metimazol."},
+
+{etapa:"escala", d:"PROPRANOLOL — controle adrenérgico SIMULTÂNEO ao anti-tireoidiano", o:"40-120 mg VO 6/6h ou 8/8h. Reduz sintomas (taquicardia, tremor, ansiedade) em 2-7 dias. Em asma: usar β1-seletivo (atenolol, bisoprolol) ou diltiazem/clonidina."},
+
+{etapa:"escala", d:"DOENÇA DE GRAVES — duração do tratamento medicamentoso: 12-18 MESES, depois tentar suspender (probabilidade de remissão definitiva ~30-50%)", o:"Predição de remissão: TRAb baixo ao final, bócio pequeno, T4 levemente alterado. Se recidiva: ablação (radioiodo) ou tireoidectomia."},
+
+{etapa:"escala", d:"RADIOIODO (I-131) — ablação tireoidiana — dose conforme tamanho/captação (geralmente 10-15 mCi)", o:"Eficácia >90%. Resultado: hipotireoidismo permanente em maioria (esperado e desejado). CONTRAINDICAÇÕES: gestação, lactação (interromper 4-6 sem antes), oftalmopatia ATIVA grave (pode piorar), CA tireoide suspeito."},
+
+{etapa:"escala", d:"TIREOIDECTOMIA — total ou subtotal. Cirurgião experiente", o:"INDICAÇÕES: bócio muito grande (sintomas compressivos), gestação com hipertireoidismo grave refratário, oftalmopatia ATIVA grave, recidiva após tentativa medicamentosa, preferência paciente."},
+
+{etapa:"adj", d:"⚠ CRISE TIREOIDIANA (emergência): TRATAMENTO AGRESSIVO multimodal em UTI", o:""},
+
+{etapa:"adj", d:"CRISE — pacote terapêutico (todos simultaneamente): (1) PTU 200-400 mg VO/SNG 4/4h (preferível ao metimazol em crise — bloqueia conversão T4→T3); (2) PROPRANOLOL 60-80 mg VO 4/4h ou 1 mg IV (reduz adrenérgico + ↓ T4→T3); (3) IODETO (Lugol 8 gotas 6/6h OU iodeto de potássio 1g IV) — 1h APÓS PTU (efeito Wolff-Chaikoff); (4) HIDROCORTISONA 100 mg IV 8/8h (reduz conversão T4→T3 + suporte adrenal); (5) suporte (febre — paracetamol, NÃO AAS!, hidratação, controle FC, identificar gatilho)", o:"Mortalidade 10-30%. Gatilhos: cirurgia em paciente não preparado, infecção, IAM, parto, sobrecarga iodada, retirada abrupta de anti-tireoidiano."},
+
+{etapa:"adj", d:"NÃO USAR AAS/SALICILATOS em crise — deslocam T4 da albumina, piorando tireotoxicose. Usar paracetamol", o:""},
+
+{etapa:"adj", d:"TIREOIDITE SUBAGUDA (Quervain) — quadro de dor cervical + tireotoxicose transitória. Tratar com AINE (ou prednisona se grave) + propranolol", o:"NÃO usar anti-tireoidianos (não há síntese aumentada). Captação cintilográfica BAIXA. VHS muito alta. Evolui em 4-8 sem para eutireoidismo (alguns evoluem para hipotireoidismo)."},
+
+{etapa:"adj", d:"GESTAÇÃO + HIPERTIREOIDISMO: PTU no 1º TRIMESTRE (15-450 mg/d) → trocar para METIMAZOL no 2º trimestre (5-30 mg/d). Alvos: T4L no terço superior do normal", o:"Não fazer radioiodo (atravessa placenta). Cirurgia apenas em refratariedade no 2º trim. TRAb materno passa placenta — risco hipertireoidismo neonatal."},
+
+{etapa:"adj", d:"HIPERTIREOIDISMO INDUZIDO POR AMIODARONA — 2 tipos: (1) Tipo 1: tireoide pré-existente + sobrecarga iodo → tratar com metimazol + perclorato; (2) Tipo 2: tireoidite destrutiva → tratar com corticoide", o:"Diferenciar com captação (baixa em ambos), Doppler (vascularização ↓ tipo 2), IL-6 (↑ tipo 2). Suspender amiodarona se possível."},
+
+{etapa:"adj", d:"OFTALMOPATIA DE GRAVES — tratamento separado: (1) ativa leve: corticoide tópico + lágrimas; (2) ativa moderada-grave: metilprednisolona IV pulsada (4,5-7,5 g em 12 sem); (3) refratária: teprotumumabe (Tepezza — não BR); (4) sequelas: cirurgia descompressiva", o:"Tabagismo PIORA significativamente — cessar é fundamental. Radioiodo pode PIORAR oftalmopatia ativa — preferir metimazol nesse caso."},
+
+{etapa:"alta", d:"⚠ ALVOS: TSH 0,4-4,0; T4L e T3L na metade inferior do normal (ou normais)", o:""},
+
+{etapa:"alta", d:"SEGUIMENTO sob anti-tireoidiano: T4L + T3L a cada 4-6 sem até estabilizar, depois 3 meses; TSH leva 6 meses para normalizar após hipertireoidismo prolongado", o:"NÃO basear ajuste só em TSH no início — pode persistir suprimido por meses."},
+
+{etapa:"alta", d:"PÓS-RADIOIODO ou TIREOIDECTOMIA: vigiar hipotireoidismo (TSH 4-6 sem, depois 3 meses), iniciar levotiroxina quando T4L ↓ ou sintomático", o:"~80-90% desenvolvem hipotireoidismo nos próximos 1-2 anos."},
+
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento à endocrinologia: (1) GRAVES — manejo de longo prazo, TRAb +, oftalmopatia; (2) crise tireoidiana; (3) gestação; (4) nódulo tireoidiano + tireotoxicose (Plummer); (5) suspeita CA tireoide", o:"Acompanhamento conjunto APS + endocrino."},
+],
+
+alertas:[
+{nivel:"crit", txt:"CRISE TIREOIDIANA: emergência (mortalidade 10-30%). UTI + PTU + propranolol + iodeto (1h APÓS PTU) + hidrocortisona + suporte. Gatilhos: cirurgia, infecção, parto, sobrecarga iodada."},
+{nivel:"crit", txt:"GESTAÇÃO 1º TRIMESTRE: PTU (não metimazol — risco aplasia cutis). 2º/3º trim: trocar para metimazol (PTU tem risco hepatotoxicidade)."},
+{nivel:"crit", txt:"AGRANULOCITOSE: efeito raro mas GRAVE de metimazol e PTU (0,2-0,5%). Avisar paciente: SE febre súbita + dor de garganta → suspender + hemograma URGENTE. Se <500 neutrófilos: internar."},
+{nivel:"crit", txt:"PTU — HEPATOTOXICIDADE FULMINANTE rara mas letal (especialmente em criança). FDA black box. Preferir metimazol exceto gestação 1º trim e crise."},
+{nivel:"warn", txt:"NÃO usar AAS em crise tireoidiana — desloca T4 da albumina, piora tireotoxicose. Paracetamol."},
+{nivel:"warn", txt:"FA de novo diagnóstico: DOSAR TSH SEMPRE — hipertireoidismo é causa frequente (10-20%) e reversível."},
+{nivel:"warn", txt:"OFTALMOPATIA DE GRAVES + RADIOIODO: pode PIORAR oftalmopatia ativa. Em oftalmopatia ativa: preferir metimazol ou cirurgia. TABAGISMO piora — cessar é crítico."},
+{nivel:"warn", txt:"HIPERTIREOIDISMO SUBCLÍNICO (TSH suprimido + T4L/T3L normais): tratar se idoso (FA, osteoporose), bócio progressivo ou sintomas. Subclínico assintomático em jovem: vigiar."},
+{nivel:"info", txt:"TRAb POSITIVO = Graves. Cintilografia não é necessária se TRAb +. Cintilografia: útil em TRAb negativo (diferencial Plummer, multinodular, tireoidite)."},
+],
+
+fluxo:null,
+diretriz:"ATA 2016 (American Thyroid Association — Hyperthyroidism). ATA 2017 (Gestação). SBEM 2025. Endocrine Society."
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PATOLOGIAS (BLOCO B)
+   DRGE / Dispepsia + Gota
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== DRGE / DISPEPSIA ============== */
+{id:"drge-dispepsia", nome:"DRGE / Dispepsia Funcional", sis:"gi", grav:"baixa",
+cid:"K21 (DRGE) / K30 (dispepsia)", ciap:"D03 (pirose) / D07 (dispepsia)",
+sin:["DRGE","Refluxo","Pirose","Azia","Queimação","Dispepsia funcional","Síndrome do desconforto pós-prandial","Síndrome da dor epigástrica"],
+
+def:"DRGE = retorno do conteúdo gástrico ao esôfago causando sintomas/lesão. Dispepsia funcional = sintomas no andar superior do abdome sem causa orgânica. Quadros frequentemente sobrepostos. Maioria responde a MEV + IBP.",
+
+quadro:[
+"DRGE TÍPICA: pirose retroesternal (queimação ascendente) + regurgitação ácida. Piora deitado, após refeição, agachamento, refeições gordurosas/picantes",
+"DRGE ATÍPICA: tosse crônica, rouquidão, asma de difícil controle, faringite, laringite posterior, erosão dental, dor torácica não-cardíaca",
+"DISPEPSIA FUNCIONAL — síndrome da dor epigástrica (EPS): dor/queimação epigástrica intermitente, NÃO relacionada a refeições",
+"DISPEPSIA FUNCIONAL — síndrome do desconforto pós-prandial (PDS): plenitude pós-prandial precoce, saciedade precoce, distensão epigástrica",
+"⚠ SINAIS DE ALARME (Red flags) — investigar com EDA: idade ≥55a sintomas novos, disfagia/odinofagia, perda de peso involuntária, anemia/sangramento, vômito persistente, massa palpável, história familiar CA gástrico precoce",
+],
+
+diag:[
+"DIAGNÓSTICO É CLÍNICO na maioria dos casos. Sintomas típicos + sem red flag = teste terapêutico com IBP por 4-8 semanas (ENDOSCOPIA NÃO ROTINA)",
+"EDA (endoscopia digestiva alta) INDICADA: red flags, falha de tratamento empírico, sintomas atípicos persistentes, idade ≥55a com sintomas novos",
+"EDA classifica esofagite (Los Angeles A-D). 50-60% dos pacientes com DRGE tem ENDOSCOPIA NORMAL (DRGE não erosiva — NERD) — endoscopia normal NÃO exclui DRGE",
+"pHmetria de 24h: padrão-ouro para confirmação em casos atípicos ou refratários (medir tempo de pH <4 + correlação com sintomas)",
+"Impedância-pHmetria: detecta refluxo NÃO ÁCIDO (em paciente com IBP refratário)",
+"Manometria esofágica: avalia motilidade, indicada pré-cirurgia ou suspeita de outras causas",
+"Pesquisa H. PYLORI em DISPEPSIA: teste-e-trate (test-and-treat) em <55a sem red flags — UREASE rápida em EDA, antígeno fecal ou ureia respiratória (sorologia é menos confiável)",
+],
+
+exames:[
+"História clínica detalhada (frequência, intensidade, gatilhos, sintomas atípicos, red flags)",
+"Hemograma (anemia ferropriva por sangramento oculto?)",
+"H. pylori (antígeno fecal ou ureia respiratória — preferíveis à sorologia)",
+"EDA — se red flags / falha de tratamento / ≥55a com sintomas novos",
+"⚠ NÃO solicitar rotineiramente: USG abdominal (não avalia esôfago/estômago), Rx contrastado (baixa sensibilidade), CT (sem indicação para DRGE/dispepsia)",
+"Eletrólitos / função renal em uso crônico de IBP (depleção de Mg, Ca)",
+"Densitometria óssea em uso crônico de IBP em fatores de risco para osteoporose",
+],
+
+rx:[
+// ============== INICIAL — MEV ==============
+{etapa:"inicial", d:"MUDANÇAS DE ESTILO DE VIDA — base de qualquer tratamento", o:"Aplicar SEMPRE, mesmo com indicação medicamentosa. Eficácia comparável a IBP de baixa dose em casos leves."},
+{etapa:"inicial", d:"PERDA DE PESO se IMC ≥25 — perda de 5 kg pode reduzir sintomas em 40%", o:"Aumento de IMC é o fator de risco mais bem estabelecido."},
+{etapa:"inicial", d:"ELEVAR CABECEIRA da cama 15-20 cm (calço, não travesseiro) — para sintomas noturnos", o:""},
+{etapa:"inicial", d:"NÃO DEITAR 2-3 H APÓS REFEIÇÕES; jantar leve 3h antes de dormir", o:""},
+{etapa:"inicial", d:"REDUZIR/EVITAR: gorduras saturadas, frituras, chocolate, hortelã, café, álcool, cítricos, tomate, refrigerantes — INDIVIDUALIZAR (cada paciente tem gatilhos próprios)", o:""},
+{etapa:"inicial", d:"CESSAR TABAGISMO — reduz tônus EEI (esfíncter esofágico inferior)", o:""},
+{etapa:"inicial", d:"REVISAR MEDICAMENTOS: AINEs, bisfosfonatos, anticolinérgicos, BCC, β-bloq, teofilina, doxiciclina podem agravar DRGE", o:""},
+{etapa:"inicial", d:"Roupas frouxas; evitar exercício extenuante após refeições", o:""},
+
+// ============== ESCALONAMENTO ==============
+{etapa:"escala", d:"⚠ TESTE TERAPÊUTICO com IBP — 4-8 SEMANAS em DRGE TÍPICA SEM RED FLAGS", o:""},
+{etapa:"escala", d:"Omeprazol 20-40 mg VO 1×/d EM JEJUM (30-60 min antes café)", o:"REMUME — 1ª escolha SUS. 40 mg em casos moderados-graves. Tomar antes do café (precisa de bomba de prótons ativa)."},
+{etapa:"escala", d:"Pantoprazol 40 mg VO 1×/d em jejum — alternativa com menos interações", o:"Preferir em paciente em uso de clopidogrel, varfarina, citalopram (omeprazol inibe CYP2C19)."},
+{etapa:"escala", d:"Esomeprazol 20-40 mg VO 1×/d em jejum — formulação mais nova, perfil similar", o:""},
+
+{etapa:"escala", d:"RESPOSTA INICIAL: avaliar em 4-8 semanas. Se sintomas controlados:", o:""},
+{etapa:"escala", d:"(1) DRGE EROSIVA confirmada por EDA: manter IBP em DOSE MÍNIMA EFICAZ a longo prazo", o:""},
+{etapa:"escala", d:"(2) DRGE não erosiva (NERD) / dispepsia: tentar STEP-DOWN — reduzir para meia dose, depois dias alternados, depois sob demanda (on-demand)", o:""},
+{etapa:"escala", d:"(3) Refratário (sintomas persistentes apesar de IBP em dose plena por 8 sem): aumentar para 12/12h × 4 sem, avaliar adesão/horário, considerar EDA + pHmetria", o:""},
+
+{etapa:"escala", d:"⚠ TIMING do IBP é CRÍTICO: tomar 30-60 MIN ANTES DO CAFÉ (precisa de bomba de prótons ATIVA para ser inibida). Tomar à noite/após café reduz eficácia em 40%", o:""},
+
+// ============== ADJUVANTES ==============
+{etapa:"adj", d:"BLOQUEADORES H2 — alternativa em DRGE leve, sintomas noturnos breakthrough, ou intolerância a IBP", o:""},
+{etapa:"adj", d:"Famotidina 20-40 mg VO 12/12h (antes refeições) ou 40 mg à noite", o:"PREFERIDA atualmente (ranitidina foi retirada em 2020 por NDMA — N-nitrosodimetilamina, contaminante carcinogênico)."},
+{etapa:"adj", d:"⚠ Ranitidina: RETIRADA do mercado globalmente em 2020. NÃO PRESCREVER", o:""},
+{etapa:"adj", d:"TAQUIFILAXIA: H2 perde eficácia em 2-6 semanas de uso contínuo — usar sob demanda ou intermitente, não contínuo crônico", o:""},
+
+{etapa:"adj", d:"SUCRALFATO 1 g VO 6/6h ou 4/4h (antes refeições + ao deitar)", o:"Forma barreira protetora sobre lesão. Útil em ESOFAGITE EROSIVA + GESTAÇÃO (categoria B). Tomar separado de outras drogas (afeta absorção)."},
+
+{etapa:"adj", d:"ANTIÁCIDOS (hidróxido de alumínio + magnésio, carbonato de cálcio) — alívio sintomático SOB DEMANDA. Não modificam doença", o:"Tomar separado de outras medicações (interfere absorção). Magnésio causa diarreia; alumínio causa constipação."},
+
+{etapa:"adj", d:"PROCINÉTICOS — adjuvantes em casos selecionados (DRGE + gastroparesia, regurgitação proeminente)", o:""},
+{etapa:"adj", d:"Domperidona 10 mg VO 8/8h (preferida — passa menos BBB que metoclopramida)", o:"⚠ Pode prolongar QT. EVITAR em cardiopata, ≥60 anos sem indicação clara, uso prolongado (limite 7 dias EMA)."},
+{etapa:"adj", d:"Metoclopramida 10 mg VO 8/8h — RESTRITA a uso ≤5 DIAS (sintomas extrapiramidais, discinesia tardia irreversível)", o:"Black box FDA. Evitar idoso. NÃO usar crônico."},
+
+// ============== H. PYLORI ==============
+{etapa:"adj", d:"⚠ H. PYLORI: TESTAR + TRATAR em DISPEPSIA não-investigada <55a sem red flags", o:""},
+{etapa:"adj", d:"ERRADICAÇÃO 1ª linha (14 dias): IBP 12/12h + Amoxicilina 1g 12/12h + Claritromicina 500 mg 12/12h", o:"Resistência à claritromicina aumentando — verificar padrão local."},
+{etapa:"adj", d:"ERRADICAÇÃO em alergia à penicilina: IBP + Claritromicina + Metronidazol 500 mg 12/12h × 14 dias", o:""},
+{etapa:"adj", d:"BISMUTO quádrupla (alta resistência): IBP + Bismuto + Tetraciclina + Metronidazol × 14 dias", o:"Subsalicilato/subcitrato de bismuto pouco disponível no Brasil."},
+{etapa:"adj", d:"CONFIRMAR ERRADICAÇÃO 4-8 sem após término (suspender IBP 2 sem antes do teste): antígeno fecal ou ureia respiratória", o:""},
+
+// ============== SITUAÇÕES ESPECIAIS ==============
+{etapa:"adj", d:"GESTAÇÃO: MEV + antiácidos + sucralfato (categoria B). IBP é seguro mas reservar para casos não responsivos (pantoprazol categoria B, omeprazol C — preferir pantoprazol)", o:""},
+{etapa:"adj", d:"PEDIATRIA: DRGE fisiológica do lactente é AUTOLIMITADA — espessamento de fórmula, posicionamento, NÃO usar IBP rotineiramente (sem evidência de eficácia em <1 ano)", o:""},
+{etapa:"adj", d:"IDOSO: cautela com IBP crônico (risco fratura, pneumonia, IRC, Mg/B12 baixos, C. difficile). Aplicar lente de PREVENÇÃO QUATERNÁRIA — usar dose mínima eficaz, considerar suspensão periódica", o:""},
+{etapa:"adj", d:"DRGE REFRATÁRIA verdadeira (IBP máximo + adesão + timing corretos): considerar CIRURGIA antirefluxo (fundoplicatura de Nissen) em paciente jovem motivado", o:"Cirurgia melhora qualidade de vida mas pode causar disfagia transitória, gases."},
+
+// ============== ALTA ==============
+{etapa:"alta", d:"⚠ ORIENTAR PACIENTE: tomar IBP 30-60 MIN antes do café. Resposta esperada em 1-2 semanas para sintomas, 8 semanas para cicatrização de esofagite", o:""},
+{etapa:"alta", d:"REAVALIAR em 4-8 semanas. Se controlado: TENTAR STEP-DOWN gradual (meia dose → dias alternados → on-demand)", o:""},
+{etapa:"alta", d:"USO CRÔNICO de IBP: avaliar PERIODICAMENTE a indicação. Riscos a longo prazo: ↓ B12, ↓ Mg, ↓ Ca/osteoporose-fratura, ↑ pneumonia, ↑ C. difficile, ↑ IRC, possível rebote ácido na suspensão", o:""},
+{etapa:"alta", d:"⚠ SUSPENSÃO DE IBP: tem REBOTE ÁCIDO (hipergastrinemia compensatória) em 4-6 semanas. Reduzir GRADUALMENTE — meia dose por 2 sem, depois dias alternados, depois sob demanda", o:""},
+{etapa:"alta", d:"SINAIS DE ALERTA — voltar antes: disfagia, perda de peso, vômito persistente, hematêmese, melena, dor torácica intensa", o:""},
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento gastroenterologia: (1) red flags; (2) refratário a IBP em dose plena 8 sem; (3) suspeita de Barrett; (4) candidato a cirurgia antirefluxo; (5) H. pylori resistente após 2ª tentativa", o:""},
+],
+
+alertas:[
+{nivel:"crit", txt:"RED FLAGS = ENDOSCOPIA URGENTE: disfagia, odinofagia, perda de peso involuntária, anemia/sangramento (hematêmese, melena), vômito persistente, massa palpável, idade ≥55a sintomas novos, hist familiar CA gástrico precoce."},
+{nivel:"crit", txt:"DOR TORÁCICA ATÍPICA: NÃO assumir DRGE em emergência sem excluir SCA primeiro — especialmente >45a, fatores de risco CV. ECG + troponina + clínica."},
+{nivel:"warn", txt:"TIMING DO IBP é CRÍTICO: 30-60 MIN ANTES DO CAFÉ. Tomar à noite/junto/após reduz eficácia em 40%. Orientar repetidamente."},
+{nivel:"warn", txt:"RANITIDINA: RETIRADA do mercado em 2020 (contaminação por NDMA — carcinogênico). NÃO PRESCREVER. Usar FAMOTIDINA."},
+{nivel:"warn", txt:"USO CRÔNICO DE IBP — aplicar P4: ↓ B12, ↓ Mg, ↓ Ca/fratura, ↑ pneumonia, ↑ C. difficile, ↑ IRC. Usar DOSE MÍNIMA EFICAZ, tentar step-down periódico."},
+{nivel:"warn", txt:"METOCLOPRAMIDA: limite ≤5 DIAS (sintomas extrapiramidais, discinesia tardia IRREVERSÍVEL). BLACK BOX FDA. Evitar idoso."},
+{nivel:"warn", txt:"H. PYLORI: testar + tratar dispepsia <55a sem red flags. Confirmar erradicação 4-8 sem após (suspender IBP 2 sem antes do teste)."},
+{nivel:"warn", txt:"REBOTE ÁCIDO ao suspender IBP — reduzir GRADUALMENTE. Suspensão abrupta após uso prolongado piora sintomas em 4-6 sem."},
+{nivel:"info", txt:"ENDOSCOPIA NORMAL não exclui DRGE — 50-60% dos pacientes tem DRGE não erosiva (NERD)."},
+{nivel:"info", txt:"INTERAÇÃO OMEPRAZOL + CLOPIDOGREL: omeprazol inibe CYP2C19 → reduz ativação clopidogrel. PREFERIR PANTOPRAZOL (mínima interação)."},
+],
+
+fluxo:null,
+diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 2022 (H. pylori). Choosing Wisely Brasil."
+},
+
+/* ============== GOTA ============== */
+{id:"gota", nome:"Gota / Artrite Gotosa", sis:"ost", grav:"baixa",
+cid:"M10", ciap:"T92",
+sin:["Gota","Artrite úrica","Crise gotosa","Podagra","Hiperuricemia sintomática","Tofo gotoso"],
+
+def:"Artropatia inflamatória por depósito de cristais de URATO MONOSSÓDICO (MSU) em articulações e tecidos. Quadro intermitente (crises) que evolui para forma crônica/tofácea. Hiperuricemia (ácido úrico >6,8 mg/dL) é fator necessário mas NÃO suficiente.",
+
+quadro:[
+"CRISE AGUDA (artrite gotosa aguda): dor de início RÁPIDO (pico em 12-24h), monoartrite intensa, vermelhidão, calor, edema, dor desproporcional ao exame",
+"PODAGRA = artrite da 1ª metatarsofalângica = sítio CLÁSSICO em 50-70% das primeiras crises. Outros: tarso, tornozelo, joelho, punho, dedos",
+"GATILHOS: trauma, álcool (especialmente cerveja, destilados), dieta rica em purinas (carne vermelha, frutos do mar), desidratação, diurético tiazídico/de alça, jejum, cirurgia, infecção",
+"PADRÃO CIRCADIANO: crise tipicamente noturna/madrugada",
+"FORMA CRÔNICA / TOFÁCEA: tofos (depósitos visíveis/palpáveis — orelha, mão, joelho, cotovelo, pé), artrite poliarticular, destruição articular",
+"COMPLICAÇÕES: nefrolitíase (ácido úrico), nefropatia úrica, síndrome metabólica associada",
+"HIPERURICEMIA ASSINTOMÁTICA: ácido úrico >6,8 mg/dL sem sintomas — NÃO TRATAR rotineiramente (P4)",
+],
+
+diag:[
+"DIAGNÓSTICO PADRÃO-OURO: artrocentese + microscopia com luz polarizada = cristais de urato monossódico (forma de agulha, biriffringência NEGATIVA)",
+"NA PRÁTICA: diagnóstico CLÍNICO em crise típica + hist prévio + ácido úrico elevado (mas pode estar NORMAL na crise em 30% dos casos — pode estar deslocado para a articulação)",
+"CRITÉRIOS ACR/EULAR 2015: pontuação clínica + laboratorial + imagem (USG/DECT)",
+"USG ARTICULAR: sinal de duplo contorno (depósito de cristais no cartilage), tofos hipoecoicos",
+"DECT (dual-energy CT): identifica depósitos de urato — útil em casos atípicos",
+"Rx: NORMAL nas primeiras crises. Cronicamente: erosões 'sacabocado' com bordas pendentes, preservação relativa do espaço articular",
+"DIFERENCIAR DE: artrite séptica (URGÊNCIA — sempre punciar!), pseudogota (CPPD — cristais romboides, birrefringência POSITIVA), AR, celulite, fratura por estresse",
+],
+
+exames:[
+"Ácido úrico sérico (mas pode estar normal na crise!) — repetir após 2 sem da crise",
+"Hemograma (leucocitose, plaquetose em crise inflamatória — diferenciar de séptica)",
+"PCR, VHS",
+"Creatinina + TFG (avalia nefropatia + doses de drogas)",
+"Glicemia jejum + HbA1c, perfil lipídico (síndrome metabólica frequente)",
+"Pesquisa rápida de cristais (artrocentese) — PADRÃO-OURO se diagnóstico duvidoso ou suspeita de séptica",
+"USG articular ou DECT — em casos atípicos",
+"URINA I + relação cálcio/creatinina (nefrolitíase)",
+"⚠ Em PRIMEIRA CRISE atípica ou monoartrite em paciente jovem: AFASTAR ARTRITE SÉPTICA com artrocentese (Gram + cultura + contagem celular)",
+],
+
+rx:[
+// ============== INICIAL — CRISE AGUDA ==============
+{etapa:"inicial", d:"⚠ TRATAMENTO DA CRISE AGUDA — INICIAR NAS PRIMEIRAS 24H (eficácia maior quanto mais precoce)", o:""},
+{etapa:"inicial", d:"REPOUSO + ELEVAÇÃO + GELO LOCAL 4-6×/d × 20 min", o:""},
+{etapa:"inicial", d:"⚠ NÃO INICIAR alopurinol/febuxostate durante a crise (pode prolongar). Se paciente JÁ está em uso: MANTER (não suspender)", o:""},
+
+// ============== ESCOLHA DO ANTI-INFLAMATÓRIO ==============
+{etapa:"escala", d:"⚠ 3 OPÇÕES iniciais — ESCOLHA conforme contraindicações:", o:""},
+
+{etapa:"escala", d:"(1) AINE — 1ª LINHA em paciente jovem, sem comorbidade significativa", o:""},
+{etapa:"escala", d:"Naproxeno 500 mg VO 12/12h × 5-7 dias (mais estudado para gota)", o:""},
+{etapa:"escala", d:"Ibuprofeno 600-800 mg VO 8/8h × 5-7 dias", o:""},
+{etapa:"escala", d:"Diclofenaco 50 mg VO 8/8h × 5-7 dias", o:""},
+{etapa:"escala", d:"Indometacina 50 mg VO 8/8h × 3-5 dias (clássica mas mais efeitos colaterais)", o:""},
+{etapa:"escala", d:"+ PROTETOR GÁSTRICO (omeprazol 20 mg) durante uso do AINE", o:""},
+
+{etapa:"escala", d:"AINE CONTRAINDICADO em: IRC TFG <30, ICC descompensada, doença ulcerosa ativa, anticoagulação, alergia a AAS, gestação 3º trim", o:""},
+
+{etapa:"escala", d:"(2) COLCHICINA — 1ª linha em paciente com contraindicação a AINE OU primeiros sintomas (<24h)", o:""},
+{etapa:"escala", d:"Esquema MODERNO (ACR 2020, low-dose): Colchicina 1,2 mg VO ATAQUE + 0,6 mg em 1h → DEPOIS 0,6 mg 12/12h × 5-7 dias", o:"Eficácia similar ao esquema clássico com MUITO MENOS efeitos GI (estudo AGREE)."},
+{etapa:"escala", d:"NÃO USAR esquema antigo (0,6 mg de hora em hora até diarreia ou 6 mg total) — abandonado por toxicidade", o:""},
+{etapa:"escala", d:"AJUSTE EM IRC: TFG 30-60: máx 1,2 mg/d. TFG <30: 0,3 mg/d ou contraindicado. EVITAR em HD.", o:""},
+{etapa:"escala", d:"INTERAÇÕES IMPORTANTES: estatinas (miopatia), claritromicina, ciclosporina, diltiazem, verapamil (todos aumentam toxicidade)", o:""},
+
+{etapa:"escala", d:"(3) CORTICOIDE — 1ª linha em paciente com múltiplas contraindicações OU artrite poliarticular OU não responde aos anteriores", o:""},
+{etapa:"escala", d:"Prednisona 30-40 mg VO 1×/d × 5-7 dias, depois desmamar em 5-7 dias", o:"NÃO precisa esquema longo. Tão eficaz quanto AINE."},
+{etapa:"escala", d:"OU Triamcinolona intra-articular 10-40 mg (se monoartrite): EXCELENTE opção, evita sistêmico", o:"⚠ EXCLUIR artrite séptica antes (artrocentese + Gram/cultura). Risco se aplicar em séptica."},
+{etapa:"escala", d:"OU metilprednisolona acetato 40-80 mg IM dose única (alternativa)", o:""},
+
+// ============== TRANSIÇÃO PARA TRATAMENTO HIPOURICÊMICO ==============
+{etapa:"adj", d:"⚠ TRATAMENTO HIPOURICÊMICO (CRÔNICO) — INICIAR APÓS RESOLUÇÃO DA CRISE (2-4 sem)", o:""},
+
+{etapa:"adj", d:"INDICAÇÕES (ACR 2020):", o:""},
+{etapa:"adj", d:"(1) ≥2 crises/ano OU", o:""},
+{etapa:"adj", d:"(2) Tofos (clínicos ou radiológicos) OU", o:""},
+{etapa:"adj", d:"(3) Nefrolitíase úrica OU", o:""},
+{etapa:"adj", d:"(4) IRC ≥G3 OU", o:""},
+{etapa:"adj", d:"(5) Considerar após PRIMEIRA crise se ácido úrico >9 ou jovem com fatores", o:""},
+
+{etapa:"adj", d:"⚠ NÃO TRATAR hiperuricemia ASSINTOMÁTICA (mesmo se >8) — exceto profilaxia em quimioterapia/síndrome de lise tumoral. NÚMERO ISOLADO NÃO É DOENÇA — P4", o:""},
+
+{etapa:"adj", d:"META do ácido úrico:", o:""},
+{etapa:"adj", d:"GERAL: <6 mg/dL", o:""},
+{etapa:"adj", d:"TOFÁCEA / artrite recorrente refratária: <5 mg/dL", o:""},
+
+{etapa:"adj", d:"ALOPURINOL — 1ª LINHA (>90% dos casos)", o:""},
+{etapa:"adj", d:"INÍCIO: 100 mg/d VO (50 mg/d se IRC TFG <30) — DOSE BAIXA INICIAL", o:""},
+{etapa:"adj", d:"TITULAR: aumentar 100 mg cada 2-4 sem até atingir meta. Dose habitual 300-600 mg/d. Dose máxima 800 mg/d", o:""},
+{etapa:"adj", d:"⚠ HLA-B*5801: rastrear em ASIÁTICOS (chineses Han, coreanos, tailandeses) — risco SSJ/NET. Em brasileiros: não rotina mas considerar em descendentes asiáticos", o:""},
+{etapa:"adj", d:"REAÇÕES: rash leve em 2-5% (suspender), DRESS/SSJ/NET (raras mas FATAIS), hepatotoxicidade", o:""},
+{etapa:"adj", d:"COM AZATIOPRINA/6-MP: CONTRAINDICAÇÃO (alopurinol inibe xantina oxidase → ↑↑ toxicidade)", o:""},
+
+{etapa:"adj", d:"FEBUXOSTATE — 2ª linha (intolerância ao alopurinol ou refratariedade)", o:""},
+{etapa:"adj", d:"40-80 mg VO 1×/d. Pode ir até 120 mg em casos refratários", o:""},
+{etapa:"adj", d:"VANTAGEM: não-purínico, não interage com azatioprina (mas cuidado igual em uso concomitante), eliminação hepática (menos ajuste em IRC)", o:""},
+{etapa:"adj", d:"⚠ ALERTA CV (CARES trial 2018): ↑ mortalidade CV em paciente com DCV estabelecida vs alopurinol. PREFERIR ALOPURINOL em paciente CV", o:""},
+
+{etapa:"adj", d:"⚠ PROFILAXIA durante início de hipouricemiante", o:""},
+{etapa:"adj", d:"Iniciar hipouricemiante AUMENTA RISCO DE CRISE nos primeiros 3-6 meses (mobilização de cristais)", o:""},
+{etapa:"adj", d:"PROFILAXIA: Colchicina 0,6 mg/d (0,3 mg/d se IRC) por 3-6 MESES após início do hipouricemiante", o:""},
+{etapa:"adj", d:"Alternativa: AINE em dose baixa (naproxeno 250 mg 12/12h) ou corticoide baixa dose", o:""},
+
+// ============== MEV E COMORBIDADES ==============
+{etapa:"adj", d:"MUDANÇAS DE ESTILO DE VIDA", o:""},
+{etapa:"adj", d:"DIETA: reduzir purinas — carne vermelha, vísceras, frutos do mar (mariscos, anchovas, sardinhas), caldos de carne. Pode laticínios desnatados (PROTETORES)", o:""},
+{etapa:"adj", d:"ÁLCOOL: REDUZIR — cerveja é o pior (purinas + álcool), destilados (vinho em dose baixa parece neutro)", o:""},
+{etapa:"adj", d:"FRUTOSE: reduzir (sucos industrializados, refrigerantes, doces) — ↑ síntese de urato", o:""},
+{etapa:"adj", d:"HIDRATAÇÃO: 2-3 L água/d (especialmente em nefrolitíase úrica)", o:""},
+{etapa:"adj", d:"PERDA DE PESO se obesidade: 5-10% reduz urato 1-2 mg/dL", o:""},
+{etapa:"adj", d:"REVISAR MEDICAMENTOS QUE AUMENTAM URATO: tiazídicos (substituir por losartana — uricosúrica), furosemida, ciclosporina, AAS dose baixa (paradoxal). Substituir quando possível", o:""},
+
+{etapa:"adj", d:"COMORBIDADES — investigar e tratar: HAS, DM2, dislipidemia, doença renal, sd metabólica (frequentemente coexistem)", o:""},
+
+// ============== ALTA ==============
+{etapa:"alta", d:"⚠ SEGUIMENTO: ácido úrico cada 2-4 sem durante titulação, depois 6/6m quando estável", o:""},
+{etapa:"alta", d:"REFORÇAR ADESÃO ao hipouricemiante — gota é DOENÇA CRÔNICA. Suspender = volta da doença. Pacientes frequentemente abandonam após melhora aparente", o:""},
+{etapa:"alta", d:"VIGILÂNCIA das comorbidades CV (gota = fator de risco CV independente)", o:""},
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento reumatologia: (1) refratariedade após alopurinol + febuxostate em dose máxima; (2) tofos extensos; (3) deformidade articular; (4) intolerância múltipla; (5) suspeita de gota atípica ou outra cristalopatia", o:""},
+],
+
+alertas:[
+{nivel:"crit", txt:"AFASTAR ARTRITE SÉPTICA em monoartrite aguda — emergência. Sempre considerar artrocentese (Gram, cultura, contagem celular). NÃO infiltrar corticoide sem excluir séptica."},
+{nivel:"crit", txt:"ALOPURINOL — SSJ/NET/DRESS são raras MAS FATAIS. HLA-B*5801 em asiáticos (rastrear). Rash leve = SUSPENDER. NÃO reiniciar se reação grave."},
+{nivel:"crit", txt:"ALOPURINOL + AZATIOPRINA/6-MP: CONTRAINDICAÇÃO ABSOLUTA — toxicidade hematológica grave (alopurinol inibe xantina oxidase que metaboliza azatioprina)."},
+{nivel:"warn", txt:"NÃO INICIAR hipouricemiante durante crise aguda (pode prolongar). Se paciente JÁ usa: MANTER. Iniciar 2-4 sem após resolução."},
+{nivel:"warn", txt:"COLCHICINA — usar esquema MODERNO low-dose (1,2 + 0,6 + 0,6 12/12h). Esquema antigo até diarreia FOI ABANDONADO por toxicidade."},
+{nivel:"warn", txt:"COLCHICINA + ESTATINA: risco miopatia. Colchicina + claritromicina/macrolídeos/ciclosporina/diltiazem/verapamil: ↑↑ toxicidade colchicina. Reduzir dose ou evitar."},
+{nivel:"warn", txt:"FEBUXOSTATE — CARES trial: ↑ mortalidade CV em paciente com DCV estabelecida vs alopurinol. PREFERIR ALOPURINOL em paciente com DCV."},
+{nivel:"warn", txt:"PROFILAXIA com colchicina 3-6 MESES ao iniciar hipouricemiante — sem isso, alta taxa de novas crises por mobilização."},
+{nivel:"warn", txt:"NÃO TRATAR hiperuricemia ASSINTOMÁTICA — aplicar P4. Tratar apenas pré-quimioterapia em risco de síndrome de lise tumoral."},
+{nivel:"info", txt:"GOTA = fator de risco CV independente. Investigar e tratar comorbidades (HAS, DM2, dislipidemia, IRC)."},
+{nivel:"info", txt:"LOSARTANA tem efeito URICOSÚRICO (reduz urato ~6%) — preferir em paciente com gota + HAS vs hidroclorotiazida (aumenta urato)."},
+],
+
+fluxo:null,
+diretriz:"ACR Guidelines Gout 2020. EULAR 2016+update. ACR/EULAR 2015 (classificação). CARES trial 2018."
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PATOLOGIAS (BLOCO C)
+   Deficiência de Vitamina D + Deficiência de Vitamina B12
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== DEFICIÊNCIA DE VITAMINA D ============== */
+{id:"deficiencia-vit-d", nome:"Deficiência de Vitamina D / Hipovitaminose D", sis:"endo", grav:"baixa",
+cid:"E55", ciap:"T91",
+sin:["Hipovitaminose D","Vit D baixa","Insuficiência de vit D","Deficiência de calciferol","Raquitismo (pediátrico)","Osteomalácia (adulto)"],
+
+def:"Níveis baixos de 25-hidroxivitamina D séricos. Vit D é um pró-hormônio (não vitamina clássica) — síntese cutânea pela exposição UVB + dieta. Atua em homeostase de cálcio, mineralização óssea, imunidade. ⚠ Controverso: rastreamento populacional NÃO é recomendado.",
+
+quadro:[
+"ASSINTOMÁTICA na maioria — descoberta por dosagem (frequentemente DESNECESSÁRIA — P4)",
+"DEFICIÊNCIA GRAVE / PROLONGADA: dor óssea/muscular, fraqueza muscular proximal, fadiga, ↑ risco de quedas e fraturas (idoso)",
+"RAQUITISMO em criança: atraso de fechamento de fontanelas, deformidades ósseas (varus, valgus), atraso pôndero-estatural, hipocalcemia/convulsão",
+"OSTEOMALÁCIA em adulto: dor óssea difusa, deformidades, fraturas patológicas",
+"HIPOCALCEMIA secundária (raro, em deficiência grave + má absorção): tetania, parestesias, espasmo carpopedal, convulsão",
+"⚠ MAIORIA dos pacientes com 'vit D baixa' é ASSINTOMÁTICA e não tem nenhuma das complicações acima",
+],
+
+diag:[
+"⚠ NÃO RASTREAR ROTINEIRAMENTE — USPSTF, ACP, Endocrine Society 2024 desencorajam rastreamento populacional. Dosagem APENAS se INDICAÇÃO clínica",
+"INDICAÇÕES de dosar 25-OH vit D: osteoporose, ≥2 fraturas frágeis, malabsorção (DII, doença celíaca, bariátrica), DRC G3+, hepatopatia crônica, uso prolongado de glicocorticoide/anticonvulsivante, hiperparatireoidismo, idoso institucionalizado, criança com sinais clínicos",
+"PADRÃO: dosar 25-HIDROXIVITAMINA D total (NÃO 1,25-OH — esta é regulada por PTH e não reflete reservas)",
+"CLASSIFICAÇÃO (controversa — varia por sociedade):",
+"DEFICIÊNCIA: <20 ng/mL (50 nmol/L) — Endocrine Society / SBEM",
+"INSUFICIÊNCIA: 20-30 ng/mL — categoria controversa, muitos especialistas consideram >20 suficiente para população geral",
+"SUFICIÊNCIA: ≥30 ng/mL (Endocrine Society) ou ≥20 ng/mL (IOM/USPSTF)",
+"TOXICIDADE: >100 ng/mL (raríssimo apenas com suplementação extrema)",
+"⚠ Endocrine Society 2024 mudou: NÃO recomenda buscar 'níveis ótimos >30' em pessoas saudáveis. Foco em GRUPOS de risco",
+],
+
+exames:[
+"25-OH vitamina D — APENAS se indicação clínica (vide acima)",
+"Cálcio total + albumina (ou cálcio iônico)",
+"Fósforo sérico",
+"Fosfatase alcalina (elevada em osteomalácia/raquitismo)",
+"PTH (hiperparatireoidismo secundário pode acompanhar)",
+"Creatinina + TFG",
+"⚠ NÃO PEDIR: 1,25-OH vit D (calcitriol) rotineiramente — não reflete reservas. Indicado apenas em DRC avançada e hipercalcemia inexplicada",
+"Em raquitismo / osteomalácia: Rx ossos longos / coluna (linhas de Looser, deformidades)",
+"Densitometria óssea — em osteoporose / fraturas",
+],
+
+rx:[
+// ============== AVALIAÇÃO ANTES DE TRATAR ==============
+{etapa:"inicial", d:"⚠ DECISÃO DE TRATAR — depende de NÍVEL + CONTEXTO + RISCO", o:""},
+{etapa:"inicial", d:"DEFICIÊNCIA franca <20 ng/mL: tratar — especialmente se sintomática, osteoporose, malabsorção, idoso", o:""},
+{etapa:"inicial", d:"INSUFICIÊNCIA 20-30 ng/mL em paciente saudável e assintomático: NÃO tratar rotineiramente — orientar exposição solar + dieta + suplementação preventiva se grupo de risco", o:"P4: foco em saúde geral, não em normalizar número."},
+{etapa:"inicial", d:"⚠ NÃO HÁ EVIDÊNCIA de benefício clínico em suplementar pessoas saudáveis para 'manter ≥30' (estudo VITAL 2019)", o:""},
+
+// ============== MUDANÇAS DE ESTILO DE VIDA ==============
+{etapa:"inicial", d:"EXPOSIÇÃO SOLAR — fonte principal (90%) da vit D em humanos", o:""},
+{etapa:"inicial", d:"15-30 min/dia em braços + pernas, sem protetor solar, entre 10-16h (Brasil — depende da latitude e fototipo)", o:"Fototipo escuro precisa mais tempo. Após exposição: protetor para reduzir CA pele. NÃO é dose única — necessita regularidade."},
+{etapa:"inicial", d:"DIETA: peixes gordos (salmão, sardinha, atum), gema de ovo, fígado, leite/iogurte/cereais fortificados — fontes brasileiras limitadas (alimentos fortificados não amplamente disponíveis)", o:""},
+
+// ============== SUPLEMENTAÇÃO ==============
+{etapa:"escala", d:"⚠ COLECALCIFEROL (vit D3) — PREFERIDO sobre ergocalciferol (D2) — meia-vida mais longa, eficácia maior", o:""},
+
+{etapa:"escala", d:"DEFICIÊNCIA <20 ng/mL em adulto: ATAQUE Colecalciferol 50.000 UI VO 1×/semana × 8-12 semanas (até nível >30) → MANUTENÇÃO 1.000-2.000 UI/d", o:"Reavaliar nível 3 meses após início. Manter manutenção continuamente em grupos de risco."},
+
+{etapa:"escala", d:"INSUFICIÊNCIA 20-30 ng/mL em GRUPO DE RISCO: Colecalciferol 1.000-2.000 UI/d (sem fase de ataque)", o:""},
+
+{etapa:"escala", d:"PROFILAXIA em adulto / idoso saudável (sem deficiência confirmada): 600-800 UI/d (RDA — IOM)", o:"Sociedade Endócrina recomendava 1.500-2.000 mas atualização 2024 desconsidera para população geral."},
+
+{etapa:"escala", d:"IDOSO ≥65a — recomendação para PREVENÇÃO DE QUEDAS/FRATURAS: 800-1.000 UI/d + cálcio 1.000-1.200 mg/d (se ingesta dietética insuficiente)", o:"Evidência: reduz quedas/fraturas em meta-análises."},
+
+{etapa:"escala", d:"GESTANTE / LACTANTE: 1.000 UI/d profilático. Em deficiência: 2.000 UI/d. Lactante precisa transmitir ao bebê (especialmente se aleitamento exclusivo)", o:""},
+
+{etapa:"escala", d:"LACTENTE em aleitamento materno exclusivo: 400 UI/d até 12 meses (SBP, MS, AAP) — leite materno tem pouco vit D", o:"Após introdução alimentar + sol: avaliar individualmente."},
+
+{etapa:"escala", d:"CRIANÇA >1a / ADOLESCENTE: 600-1.000 UI/d se grupo de risco (institucionalizada, fototipo escuro, pouca exposição solar, dieta restrita)", o:""},
+
+{etapa:"escala", d:"OBESIDADE: vit D é sequestrada no tecido adiposo — necessita doses 2-3× maiores para atingir mesmo nível sérico", o:""},
+
+{etapa:"escala", d:"MALABSORÇÃO (DII, doença celíaca, bariátrica, fibrose cística, hepatopatia colestática): doses muito maiores — 6.000-10.000 UI/d ou 50.000 UI/sem. Forma SOLÚVEL em óleo. Considerar 25-OH vit D direta", o:""},
+
+// ============== CÁLCIO COMBINADO ==============
+{etapa:"adj", d:"CÁLCIO — combinar com vit D se ingesta dietética insuficiente OU osteoporose", o:""},
+{etapa:"adj", d:"Carbonato de cálcio 500 mg de Ca elemental 1-2×/d (dose total 1.000-1.200 mg/d incluindo dieta)", o:"Tomar com refeição (necessita acidez). Constipa — orientar fibras + hidratação."},
+{etapa:"adj", d:"Citrato de cálcio 250 mg 1-2×/d — preferido em uso de IBP (não precisa de ácido) e em idoso", o:""},
+{etapa:"adj", d:"⚠ NÃO usar cálcio rotineiramente em paciente sem osteoporose / ingesta dietética adequada — meta-análises mostram aumento modesto de eventos CV", o:""},
+
+// ============== SITUAÇÕES ESPECIAIS ==============
+{etapa:"adj", d:"DRC AVANÇADA (TFG <30): conversão renal de 25-OH para 1,25-OH está comprometida — pode necessitar CALCITRIOL (1,25-OH vit D) ou paricalcitol", o:"Indicação: hiperparatireoidismo secundário, hipocalcemia, distúrbio mineral ósseo. Nefrologista decide."},
+
+{etapa:"adj", d:"HIPERPARATIREOIDISMO PRIMÁRIO: tratar deficiência de vit D pode aumentar PTH inicialmente — abordagem coordenada com endócrino", o:""},
+
+{etapa:"adj", d:"GLICOCORTICOIDE crônico: necessita vit D + cálcio profilático + considerar bisfosfonato (osteoporose por glicocorticoide)", o:""},
+
+{etapa:"adj", d:"PÓS-BARIÁTRICA: profilaxia vitalícia — vit D 2.000-3.000 UI/d, cálcio citrato 1.200-1.500 mg/d, B12, ferro, multivitamínico", o:""},
+
+{etapa:"adj", d:"⚠ NÃO SUPLEMENTAR VIT D PARA: prevenção CV (sem evidência — VITAL 2019), prevenção câncer, prevenção depressão, COVID-19 (sem evidência robusta), 'imunidade geral'", o:""},
+
+// ============== TOXICIDADE ==============
+{etapa:"adj", d:"⚠ TOXICIDADE: rara mas existe — geralmente em uso de doses muito altas crônicas (>40.000 UI/d) ou erro de prescrição", o:""},
+{etapa:"adj", d:"Quadro: HIPERCALCEMIA → poliúria, polidipsia, fadiga, náusea, constipação, confusão, IRA, calcificação metastática", o:""},
+{etapa:"adj", d:"Conduta: SUSPENDER vit D + suspender cálcio + hidratação vigorosa SF + (em hipercalcemia grave) bisfosfonato/calcitonina/glicocorticoide", o:"Demora SEMANAS A MESES para normalizar (meia-vida vit D longa)."},
+
+// ============== ALTA ==============
+{etapa:"alta", d:"⚠ REAVALIAR 25-OH vit D 3 MESES após início do tratamento", o:""},
+{etapa:"alta", d:"META: >20 ng/mL (suficiência para população geral). >30 só em grupos específicos (osteoporose, hiperparatireoidismo secundário) — discutível", o:""},
+{etapa:"alta", d:"MANUTENÇÃO: 1.000-2.000 UI/d em grupos de risco. Em saudável, exposição solar + dieta podem ser suficientes", o:""},
+{etapa:"alta", d:"⚠ NÃO REPETIR 25-OH vit D rotineiramente em paciente assintomático em uso de manutenção — sem evidência", o:""},
+{etapa:"alta", d:"P4: a maioria das pessoas NÃO precisa de dosagem nem suplementação. Cuidar de alimentação, exercício e sol é mais importante que normalizar número", o:""},
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento: (1) refratariedade ao tratamento; (2) hipocalcemia grave; (3) suspeita de raquitismo/osteomalácia ativa; (4) malabsorção subjacente não esclarecida", o:""},
+],
+
+alertas:[
+{nivel:"crit", txt:"HIPERCALCEMIA por toxicidade de vit D: poliúria, fadiga, IRA, confusão. Suspender + hidratação + tratar hipercalcemia. Meia-vida da vit D é longa — normalização demora semanas/meses."},
+{nivel:"warn", txt:"⚠ NÃO RASTREAR rotineiramente — Endocrine Society 2024, USPSTF, ACP, Choosing Wisely. Dosagem é exemplo CLÁSSICO de exame de baixo valor sem indicação clara."},
+{nivel:"warn", txt:"INDICAÇÕES de dosar: osteoporose, fraturas frágeis, malabsorção, DRC G3+, glicocorticoide crônico, hiperparatireoidismo, idoso institucionalizado, criança com sinais clínicos. APENAS isso."},
+{nivel:"warn", txt:"PREFERIR COLECALCIFEROL (D3) sobre ergocalciferol (D2) — meia-vida mais longa, eficácia maior."},
+{nivel:"warn", txt:"NÃO SUPLEMENTAR VIT D PARA prevenção de: CV (VITAL trial negativo), câncer, depressão, COVID, 'imunidade'. Sem evidência robusta."},
+{nivel:"warn", txt:"OBESIDADE: vit D é sequestrada no tecido adiposo — necessita doses 2-3× maiores para atingir mesmo nível sérico."},
+{nivel:"warn", txt:"MALABSORÇÃO (DII, celíaca, bariátrica): doses muito maiores OU forma solúvel/líquida OU calcitriol."},
+{nivel:"info", txt:"PEDIATRIA: lactente em AME — 400 UI/d até 12 meses (SBP, MS). Leite materno tem pouco vit D."},
+{nivel:"info", txt:"VITAMINA D3 (colecalciferol) > D2 (ergocalciferol). Sem 'vit D ativada' rotineira (calcitriol) — só em DRC avançada."},
+{nivel:"info", txt:"EXPOSIÇÃO SOLAR é a principal fonte (90%) — orientar fototipo + horário + duração. Não é substituível por suplementação ideal."},
+],
+
+fluxo:null,
+diretriz:"Endocrine Society Guidelines 2024 (atualização importante). SBEM. USPSTF. ACP. VITAL trial 2019. SBP (pediatria). IOM."
+},
+
+/* ============== DEFICIÊNCIA DE VITAMINA B12 ============== */
+{id:"deficiencia-vit-b12", nome:"Deficiência de Vitamina B12 / Anemia Megaloblástica", sis:"endo", grav:"baixa",
+cid:"D51 (anemia por def B12) / E53.8 (def B12 sem anemia)", ciap:"B81 (anemia) / T91 (deficiência nutricional)",
+sin:["Deficiência de cobalamina","B12 baixa","Anemia perniciosa","Anemia megaloblástica","Neuropatia por B12"],
+
+def:"Deficiência de cobalamina (vit B12). Causas: má absorção (anemia perniciosa autoimune, gastrite atrófica, ressecção ileal/bariátrica, doença celíaca, uso crônico de IBP/metformina), dieta restrita (vegano), idade avançada. Pode causar anemia macrocítica + sintomas neurológicos PROGRESSIVOS E IRREVERSÍVEIS se prolongados.",
+
+quadro:[
+"INSTALAÇÃO INSIDIOSA — reservas duram 3-5 ANOS após cessar absorção. Sintomas aparecem TARDE",
+"HEMATOLÓGICAS: anemia macrocítica (VCM >100), fadiga, palidez, dispneia aos esforços, glossite atrófica (língua lisa, vermelha, dolorida — Hunter), icterícia leve (hemólise intramedular)",
+"NEUROLÓGICAS — podem ocorrer SEM anemia: parestesias simétricas em luvas/meias, ↓ propriocepção e sensibilidade vibratória (cordões posteriores), DEGENERAÇÃO SUBAGUDA COMBINADA (mielose funicular — comprometimento cordões posteriores + laterais), ataxia, sinal de Romberg positivo, marcha de base alargada, fraqueza muscular",
+"NEUROPSIQUIÁTRICAS: alteração cognitiva, demência reversível (em fase inicial), depressão, irritabilidade, psicose ('insanidade megaloblástica' — raro)",
+"GI: glossite, queilite angular, diarreia, anorexia",
+"⚠ NEUROLÓGICAS PODEM SER IRREVERSÍVEIS se prolongadas — daí URGÊNCIA do tratamento",
+"⚠ NEUROPATIA SEM ANEMIA: pode acontecer (~25%). NÃO esperar anemia para tratar",
+],
+
+diag:[
+"VITAMINA B12 SÉRICA (cobalamina total): <200 pg/mL = DEFICIÊNCIA. 200-350 = limítrofe (avaliar contexto)",
+"⚠ B12 NORMAL NÃO EXCLUI deficiência funcional — em quadros sugestivos + B12 200-350: dosar HOLOTRANSCOBALAMINA, METILMALÔNICO (MMA), HOMOCISTEÍNA — elevados em deficiência",
+"MARCADORES FUNCIONAIS: ácido metilmalônico (MMA) elevado é mais sensível e específico. Homocisteína elevada (também elevada em def folato e IRC)",
+"HEMOGRAMA: VCM >100 (macrocitose), anemia se prolongada, hipersegmentação de neutrófilos (>5% com ≥5 lóbulos), pode haver leuco-trombocitopenia",
+"PERIFÉRICO: macrócitos, neutrófilos hipersegmentados, anisocitose (RDW alto)",
+"INVESTIGAR CAUSA:",
+"Anti-fator intrínseco (Anti-FI): específico para anemia perniciosa (50-70% sensibilidade, alta especificidade)",
+"Anti-células parietais: alta sensibilidade mas baixa especificidade",
+"Gastrina elevada (em gastrite atrófica)",
+"EDA + biópsia se suspeita gastrite atrófica autoimune (e rastreio CA gástrico — risco aumentado)",
+"⚠ NUNCA tratar def B12 sem investigar etiologia (anemia perniciosa = doença vitalícia)",
+],
+
+exames:[
+"Vitamina B12 sérica",
+"Hemograma + RDW + esfregaço periférico",
+"Ácido fólico (deficiência combinada é comum — sempre investigar junto)",
+"Ferritina (deficiência combinada é frequente em má absorção)",
+"TGO/TGP, LDH (hemólise intramedular eleva LDH)",
+"Bilirrubina indireta (hemólise)",
+"Creatinina + TFG",
+"⚠ EM DÚVIDA: MMA + homocisteína",
+"Anti-FI e anti-células parietais — anemia perniciosa",
+"Gastrina, EDA — gastrite atrófica",
+"Pesquisa de doença celíaca (anti-tTG IgA + IgA total)",
+"H. pylori (causa gastrite atrófica)",
+"Em vegano de longa data: avaliar dieta detalhadamente",
+],
+
+rx:[
+// ============== INICIAL — IDENTIFICAR CAUSA ==============
+{etapa:"inicial", d:"⚠ IDENTIFICAR ETIOLOGIA antes de iniciar — orienta duração e via", o:""},
+{etapa:"inicial", d:"CAUSAS COMUNS: (1) anemia perniciosa autoimune; (2) gastrite atrófica do idoso; (3) má absorção (DII, celíaca, ressecção ileal, bariátrica); (4) dieta vegana estrita; (5) MEDICAMENTOS — IBP crônico, metformina (até 30% após >4a), bloqueador H2", o:""},
+{etapa:"inicial", d:"⚠ NEM TODA def B12 precisa de IM — depende da etiologia e gravidade", o:""},
+
+// ============== REPOSIÇÃO IM ==============
+{etapa:"escala", d:"CIANOCOBALAMINA IM — esquema clássico em DEFICIÊNCIA GRAVE / NEUROLÓGICA / ABSORÇÃO COMPROMETIDA", o:""},
+{etapa:"escala", d:"FASE DE ATAQUE (depleção / sintomas neurológicos):", o:""},
+{etapa:"escala", d:"Cianocobalamina 1.000 mcg IM 1×/dia × 7 dias", o:""},
+{etapa:"escala", d:"Depois 1.000 mcg IM 1×/semana × 4 semanas", o:""},
+{etapa:"escala", d:"Depois 1.000 mcg IM 1×/mês INDEFINIDAMENTE (anemia perniciosa = vitalício)", o:""},
+
+{etapa:"escala", d:"ESQUEMA SIMPLIFICADO (deficiência sem neurológico grave):", o:"Cianocobalamina 1.000 mcg IM cada 1-3 dias × 6-7 doses → manutenção 1.000 mcg IM 1×/mês."},
+
+{etapa:"escala", d:"HIDROXICOBALAMINA — preferida em outros países (meia-vida maior). No Brasil, cianocobalamina é padrão (≈ 10-50% do custo da hidroxi)", o:""},
+
+// ============== REPOSIÇÃO ORAL ==============
+{etapa:"escala", d:"⚠ B12 VO EM ALTA DOSE — ALTERNATIVA EFICAZ na maioria dos casos (mesmo em anemia perniciosa)", o:""},
+{etapa:"escala", d:"Cianocobalamina 1.000-2.000 mcg VO 1×/d (sublingual ou oral)", o:"Mesmo sem fator intrínseco, ~1% é absorvido por DIFUSÃO PASSIVA — 1.000 mcg/d garante absorção de ~10 mcg/d (suficiente)."},
+
+{etapa:"escala", d:"Equivalência: VO 1.000-2.000 mcg/d ≈ IM 1.000 mcg/mês em manutenção", o:"Meta-análises e revisões Cochrane confirmam não-inferioridade em maioria dos casos."},
+
+{etapa:"escala", d:"INDICAÇÕES de PREFERIR IM: (1) sintomas neurológicos graves; (2) deficiência grave inicial (preferir IM × 1-2 sem, depois transição VO); (3) má adesão a VO; (4) má absorção severa (intestino curto, gastrectomia total — diferente de anemia perniciosa)", o:""},
+
+// ============== MEV E DIETA ==============
+{etapa:"adj", d:"DIETA: alimentos ricos em B12 — carnes, ovos, laticínios, peixes. Veganos: ALIMENTOS FORTIFICADOS (leveduras nutricionais, cereais, leites vegetais fortificados) + suplemento", o:""},
+
+{etapa:"adj", d:"VEGANOS / VEGETARIANOS estritos: REPOSIÇÃO PREVENTIVA — cianocobalamina 1.000 mcg VO 1-2×/semana (ou diário 10-25 mcg)", o:"Veganismo SEM suplemento de B12 = deficiência inevitável a médio prazo."},
+
+// ============== SITUAÇÕES ESPECIAIS ==============
+{etapa:"adj", d:"GESTAÇÃO + DEFICIÊNCIA: tratar agressivamente — déficit fetal causa atraso neurodesenvolvimento, defeitos de tubo neural", o:""},
+
+{etapa:"adj", d:"LACTENTE de MÃE VEGANA sem suplementação: risco GRAVE — pode ter encefalopatia. Garantir reposição materna na lactação + lactente conforme aleitamento", o:""},
+
+{etapa:"adj", d:"IDOSO: AVALIAR B12 em quadros de demência, neuropatia, anemia, glossite — pode ser causa REVERSÍVEL se tratada precoce", o:""},
+
+{etapa:"adj", d:"PÓS-BARIÁTRICA: profilaxia vitalícia — B12 1.000 mcg IM/mês ou 350-1.000 mcg VO/d", o:""},
+
+{etapa:"adj", d:"METFORMINA crônica: 10-30% após >4 anos desenvolve def B12. Considerar dosagem anual em uso prolongado", o:""},
+
+{etapa:"adj", d:"⚠ SEMPRE INVESTIGAR e tratar FOLATO concomitantemente — tratar APENAS folato com B12 baixa pode mascarar anemia mas PIORAR NEUROPATIA", o:""},
+
+// ============== MONITORAMENTO ==============
+{etapa:"alta", d:"⚠ RESPOSTA HEMATOLÓGICA: reticulocitose em 5-7 dias. Hb normaliza em 4-8 semanas. VCM normaliza em 4-8 semanas", o:""},
+
+{etapa:"alta", d:"RESPOSTA NEUROLÓGICA: pode demorar 6-12 meses. NEM SEMPRE REVERSÍVEL — danos prolongados (>6 meses) podem ser permanentes", o:""},
+
+{etapa:"alta", d:"REAVALIAR B12 após 1-3 meses do início. Após estável: anual (em causa reversível) ou semestral (em anemia perniciosa)", o:""},
+
+{etapa:"alta", d:"HIPOCALEMIA pode ocorrer no início do tratamento (consumo de K+ pela síntese hematopoiética intensificada) — monitorar/repor K+", o:""},
+
+{etapa:"alta", d:"ANEMIA PERNICIOSA = doença AUTOIMUNE VITALÍCIA: tratamento INDEFINIDO. Aumenta risco de CA gástrico — rastreio com EDA periódica (3-5/3-5 anos, discutível)", o:""},
+
+{etapa:"alta", d:"REAVALIAR DIAGNÓSTICO se não responde: (1) etiologia errada; (2) causa concomitante (ferropenia, doença crônica, hemoglobinopatia); (3) má adesão; (4) má absorção severa não diagnosticada", o:""},
+
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento: (1) sintomas neurológicos progressivos apesar de tratamento; (2) refratariedade; (3) suspeita de gastrite atrófica/CA gástrico; (4) doença hematológica subjacente", o:""},
+],
+
+alertas:[
+{nivel:"crit", txt:"⚠ NEUROPATIA POR B12 pode ser PROGRESSIVA E IRREVERSÍVEL — não esperar resolução completa em casos prolongados. TRATAR PRECOCEMENTE. Sintomas neurológicos podem ocorrer SEM anemia (~25%)."},
+{nivel:"crit", txt:"⚠ NÃO TRATAR APENAS FOLATO em paciente com B12 baixa — pode 'corrigir' anemia (folato resgata função hematopoiética) MAS PIORAR neuropatia. Sempre investigar B12 antes."},
+{nivel:"warn", txt:"B12 VO em alta dose (1.000-2.000 mcg/d) é EFICAZ na maioria dos casos — inclusive anemia perniciosa (absorção passiva ~1%). Cochrane confirma não-inferioridade. PREFERIR IM apenas em neuropatia grave, deficiência grave inicial, má adesão, má absorção severa."},
+{nivel:"warn", txt:"INVESTIGAR ETIOLOGIA antes de tratar — anemia perniciosa é VITALÍCIA + ↑ risco CA gástrico (rastreio EDA). Gastrite atrófica, doença celíaca, ressecção intestinal mudam manejo."},
+{nivel:"warn", txt:"VEGANOS / VEGETARIANOS ESTRITOS: deficiência inevitável sem suplementação. PROFILAXIA: 1.000 mcg VO 1-2×/sem ou 10-25 mcg/d. Atenção especial em gestação + lactação."},
+{nivel:"warn", txt:"METFORMINA crônica + IBP crônico: causas frequentes de def B12 (até 30% após >4 anos). Avaliar em paciente em uso de ambos."},
+{nivel:"warn", txt:"PÓS-BARIÁTRICA: profilaxia vitalícia de B12 + outras vitaminas/minerais."},
+{nivel:"warn", txt:"INICIO DO TRATAMENTO: pode causar HIPOCALEMIA (consumo K+ por hematopoiese intensa) — monitor + repor se necessário."},
+{nivel:"info", txt:"RESPOSTA: reticulocitose em 5-7 dias, Hb normaliza em 4-8 sem, VCM em 4-8 sem. Neurológica pode demorar 6-12 meses (parcial)."},
+{nivel:"info", txt:"MARCADORES FUNCIONAIS (MMA, homocisteína) — usar quando B12 limítrofe (200-350) + clínica sugestiva."},
+],
+
+fluxo:null,
+diretriz:"BSH (British Society for Haematology) Guidelines 2014. ESH. ASH. Cochrane B12 oral vs IM."
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — CONTEÚDO MÉDICO-LEGAL
    Notificação compulsória + Templates de evolução + Receituário
    =========================================================== */
@@ -16628,6 +17501,1501 @@ fluxo:null, calcs:[],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 6)
+   Lipemiantes — Estatinas + Ezetimiba
+   Conforme Atualização SBC Dislipidemia 2017 + AHA/ACC 2018-2024 + ESC 2019
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== ESTATINAS ============== */
+
+{id:"med-sinvastatina", classe:"Estatina de potência moderada (1ª geração)", grupo:"lipemiante",
+nome:"Sinvastatina",
+sin:["Zocor","Sinvascor","Sinvalip"],
+formas:["Comprimidos 10 mg, 20 mg, 40 mg — SUS/REMUME","Combinação fixa: sinvastatina + ezetimiba"],
+resumo:"Estatina clássica disponível no SUS. Potência MODERADA — reduz LDL 30-40%. Múltiplas interações (CYP3A4). Limite ATUAL 40 mg/d (FDA contraindicou 80 mg por miopatia/rabdomiólise).",
+dose_rapida:"20-40 mg VO 1×/d (à noite — pico de síntese hepática)",
+
+doses:[
+{ind:"Prevenção primária CV (HAS, DM, idade ≥40a, RCV moderado)", dose:"20 mg VO 1×/d à noite", obs:"Início após estratificação de risco (PREVENT, ESC SCORE2). Meta LDL conforme risco."},
+{ind:"Prevenção secundária (DAC, AVC, DAOP)", dose:"40 mg VO 1×/d à noite", obs:"Meta LDL <55 mg/dL (alto risco) — geralmente NÃO atingida só com sinvastatina. Combinar ezetimiba ou trocar para alta potência."},
+{ind:"DM2 + HAS + dislipidemia", dose:"20-40 mg/d", obs:"Meta LDL <70 (alto RCV) ou <55 (muito alto). Considerar atorvastatina/rosuvastatina."},
+{ind:"Hipercolesterolemia familiar (HF)", dose:"40 mg/d (máx em sinvastatina)", obs:"Geralmente insuficiente isolada — combinar ezetimiba ± iPCSK9. Encaminhar especialista."},
+{ind:"Pediatria — HF heterozigótica ≥10 anos", dose:"10-40 mg/d", obs:"Avaliar especialista (endocrinopediatria)."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro. ClCr <30: cautela com dose alta (rabdomiólise).",
+iht:"Hepatopatia ativa: CONTRAINDICADA. IH crônica estável: cautela, monitor TGO/TGP.",
+idoso:"Iniciar 10-20 mg. Maior risco miopatia em ≥75a.",
+gestante:"CATEGORIA X — CONTRAINDICADA (teratogenicidade — defeitos SNC, esqueleto). Suspender 1-3 meses antes de gestação planejada.",
+aleita:"CONTRAINDICADA.",
+ped:"HF heterozigótica ≥10a: 10-40 mg/d.",
+},
+
+mecanismo:"Inibe competitivamente a HMG-CoA redutase (enzima limitante da síntese de colesterol hepático) → ↓ síntese colesterol intrahepático → ↑ expressão de receptores LDL hepáticos → ↑ captação de LDL circulante → ↓ LDL plasmático. Efeitos PLEIOTRÓPICOS: estabilização placa aterosclerótica, anti-inflamatório, melhora função endotelial.",
+
+farmacocin:{
+absorc:"VO: 5% (1ª passagem hepática intensa — vantagem: ação direta no fígado)",
+distrib:"Hepatosseletiva (95% no fígado)",
+metab:"Hepático CYP3A4 → metabólito ativo (sinvastatina ácido)",
+elimin:"Biliar (60%) + renal (13%)",
+meiavida:"2h (sinvastatina) / ~5h (metabólito)",
+ligacao:"~95%",
+},
+
+espectro:["Prevenção primária CV em RCV moderado-alto","Prevenção secundária (DAC, AVC, DAOP)","DM2/HAS com dislipidemia","Hipercolesterolemia familiar (combinada)"],
+
+interacoes:[
+{droga:"Inibidores potentes CYP3A4 (claritromicina, eritromicina, itraconazol, cetoconazol, ritonavir)", efeito:"↑ sinvastatina 5-10× — RABDOMIÓLISE. CONTRAINDICAÇÃO. Suspender sinvastatina durante o ATB."},
+{droga:"Amiodarona, verapamil, diltiazem", efeito:"↑ sinvastatina — LIMITAR sinvastatina a 20 mg/d com amiodarona, 10 mg/d com verapamil/diltiazem."},
+{droga:"Ciclosporina, danazol, gemfibrozila", efeito:"CONTRAINDICAÇÃO (risco grave de rabdomiólise)."},
+{droga:"Suco de POMELO/grapefruit", efeito:"↑ sinvastatina 3-9× (inibe CYP3A4 intestinal) — EVITAR consumo regular."},
+{droga:"Varfarina", efeito:"Pode ↑ INR — monitor."},
+{droga:"Fibratos (especialmente gemfibrozila)", efeito:"↑ risco miopatia. Se necessário: preferir fenofibrato."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Mialgia (5-10%, geralmente reversível com suspensão), ↑ leve TGO/TGP, cefaleia, dispepsia, distúrbios do sono"},
+{tipo:"sério", item:"RABDOMIÓLISE (rara — 0,1-0,5/1000 paciente-ano; ↑ CK >10× + insuficiência renal aguda), hepatotoxicidade (TGO/TGP >3× LSN), miopatia inflamatória autoimune (rara — anticorpos anti-HMGCR)"},
+{tipo:"raro", item:"↑ glicemia / DM2 de novo (NNT ~250), neuropatia periférica, declínio cognitivo (controverso — evidência fraca)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"RABDOMIÓLISE: suspender se mialgia importante + CK >10× LSN + queixa muscular significativa. Tratar com hidratação + suspender. CK basal NÃO é recomendada de rotina — apenas se sintomas."},
+{nivel:"crit", txt:"FDA 2011: SINVASTATINA 80 mg = CONTRAINDICADA (risco miopatia 4× maior que 40 mg). DOSE MÁX 40 mg/d."},
+{nivel:"crit", txt:"GESTAÇÃO: CATEGORIA X — TERATOGÊNICA. Suspender 1-3 meses antes de gestação planejada. Se engravidar em uso: suspender imediatamente."},
+{nivel:"warn", txt:"INTERAÇÃO COM ATB: ao prescrever claritromicina/eritromicina/itraconazol em paciente em uso de sinvastatina, SUSPENDER sinvastatina durante o ATB. Reiniciar após. Azitromicina é SEGURA."},
+{nivel:"warn", txt:"MIALGIA: ocorre em 5-10%. Estratégia: (1) confirmar relação temporal; (2) dosar CK; (3) suspender 2-4 sem; (4) reintroduzir mesma estatina ou trocar para outra (rosuvastatina, pravastatina = menos miopatia); (5) considerar dose dia-sim/dia-não."},
+{nivel:"info", txt:"POTÊNCIA MODERADA: ↓ LDL 30-40%. Em alto RCV com LDL inicial alto, frequentemente insuficiente — preferir atorvastatina/rosuvastatina ou associar ezetimiba."},
+{nivel:"info", txt:"DM2 DE NOVO: estatinas aumentam risco de DM2 em ~9% (NNT ~250) — mas benefício CV supera amplamente. Não é motivo para suspender em paciente com indicação."},
+],
+
+preparo:"VO comprimido, à NOITE (HMG-CoA redutase tem pico de atividade noturno — eficácia máxima). Com ou sem alimento.",
+monitor:"Perfil lipídico basal + 6-12 sem após início/ajuste + anual. TGO/TGP basal + se sintomas hepáticos. CK apenas se mialgia. HbA1c em paciente DM2.",
+diretriz:"SBC Dislipidemia 2017 (Atualização). AHA/ACC Cholesterol 2018. ESC Dyslipidemias 2019.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-atorvastatina", classe:"Estatina de alta potência (2ª geração)", grupo:"lipemiante",
+nome:"Atorvastatina",
+sin:["Lipitor","Citalor","Vastiri"],
+formas:["Comprimidos 10, 20, 40, 80 mg — privada/SUS via PCDT (CEAF em alguns estados)","Combinação fixa: atorvastatina + ezetimiba"],
+resumo:"Estatina de ALTA potência. ↓ LDL 40-60% (40-80 mg). PADRÃO em alto/muito alto RCV. Disponível SUS via PCDT (LDL ≥130 em alto RCV apesar de sinvastatina).",
+dose_rapida:"10-80 mg VO 1×/d (qualquer horário — T½ longa)",
+
+doses:[
+{ind:"Prevenção secundária / muito alto RCV (DAC, AVC, DAOP, DM+DCV)", dose:"40-80 mg VO 1×/d", obs:"Meta LDL <55 mg/dL (DBHA/SBC 2017/AHA 2018). TNT, IDEAL trials — 80 mg superior em redução de eventos."},
+{ind:"Prevenção primária / alto RCV (DM2 + LOA, HF, HAS+LOA múltipla)", dose:"20-40 mg/d", obs:"Meta LDL <70 mg/dL."},
+{ind:"Prevenção primária / RCV moderado", dose:"10-20 mg/d", obs:"Meta LDL <100 mg/dL ou redução 30-50%."},
+{ind:"Hipercolesterolemia familiar heterozigótica", dose:"40-80 mg/d", obs:"Frequentemente combinada com ezetimiba ± iPCSK9 (alirocumabe, evolocumabe)."},
+{ind:"Pediatria — HF heterozigótica ≥10 anos", dose:"10-40 mg/d", obs:"Especialista."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro (90% biliar). Útil em DRC (vs rosuvastatina).",
+iht:"Hepatopatia ativa: CONTRAINDICADA. IH crônica: cautela.",
+idoso:"Iniciar 10-20 mg.",
+gestante:"CATEGORIA X — CONTRAINDICADA.",
+aleita:"CONTRAINDICADA.",
+ped:"HF heterozigótica ≥10a: 10-40 mg/d.",
+},
+
+mecanismo:"Mesmo das outras estatinas — inibe HMG-CoA redutase. Atorvastatina tem metabólito ativo (orto e para-hidroxi-atorvastatina) com T½ longa → cobertura 24h e dosagem em qualquer horário (vantagem vs sinvastatina).",
+
+farmacocin:{
+absorc:"VO: 14% (boa biodisponibilidade)",
+distrib:"Hepatosseletiva",
+metab:"Hepático CYP3A4 → metabólitos ATIVOS",
+elimin:"Biliar (90%) — vantagem em IRC",
+meiavida:"14h (metabólitos ativos 20-30h)",
+ligacao:">98%",
+},
+
+espectro:["Prevenção secundária CV (1ª escolha em alta potência)","Alto/muito alto RCV","HF heterozigótica","DM2 + alto RCV","Pós-SCA (carga de 80 mg pré-PCI — PROVE-IT)"],
+
+interacoes:[
+{droga:"Inibidores potentes CYP3A4 (claritromicina, itraconazol)", efeito:"↑ atorvastatina — limitar a 20 mg/d ou suspender durante."},
+{droga:"Ciclosporina", efeito:"↑ atorvastatina 6-8× — limitar a 10 mg/d."},
+{droga:"Gemfibrozila", efeito:"↑ risco rabdomiólise — preferir fenofibrato."},
+{droga:"Suco de pomelo", efeito:"↑ atorvastatina (menos que sinvastatina) — moderar consumo."},
+{droga:"Digoxina", efeito:"Atorvastatina ↑ digoxina ~20%."},
+{droga:"Anticoncepcionais orais", efeito:"Atorvastatina ↑ etinilestradiol/noretindrona ~20%."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Mialgia (5-10%, semelhante outras estatinas), ↑ leve TGO/TGP, cefaleia, dispepsia"},
+{tipo:"sério", item:"Rabdomiólise (rara), hepatotoxicidade, miopatia inflamatória autoimune"},
+{tipo:"raro", item:"↑ glicemia/DM2 de novo, declínio cognitivo (controverso)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"ALTA POTÊNCIA: 40-80 mg reduz LDL 50-60% — superior à sinvastatina. PADRÃO em alto/muito alto RCV (especialmente prevenção secundária)."},
+{nivel:"crit", txt:"GESTAÇÃO: CONTRAINDICADA (categoria X). Suspender pré-concepção."},
+{nivel:"warn", txt:"DOSE 80 mg: maior eficácia mas ↑ risco EA. Reservar para pacientes que NÃO atingem meta com 40 mg + ezetimiba."},
+{nivel:"warn", txt:"PCDT SUS: disponível para prevenção secundária em paciente com DAC/AVC/DAOP + LDL ≥70 apesar de sinvastatina 40 mg, OU prevenção primária com HF ou DM+LOA."},
+{nivel:"info", txt:"PÓS-SCA: PROVE-IT trial — atorvastatina 80 mg vs pravastatina 40 mg = redução 16% de eventos CV. Iniciar carga pré-PCI/STEMI."},
+{nivel:"info", txt:"VANTAGEM VS ROSUVASTATINA: melhor em IRC (sem necessidade ajuste). VS SINVASTATINA: menos interações relevantes, maior potência."},
+],
+
+preparo:"VO comprimido, qualquer horário (T½ longa). Com ou sem alimento.",
+monitor:"Perfil lipídico basal + 6-12 sem após início/ajuste + anual. TGO/TGP basal + se sintomas. CK se mialgia. HbA1c em DM2.",
+diretriz:"SBC Dislipidemia 2017. AHA/ACC 2018. PCDT MS Dislipidemia. TNT trial. PROVE-IT.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-rosuvastatina", classe:"Estatina de alta potência (2ª geração)", grupo:"lipemiante",
+nome:"Rosuvastatina",
+sin:["Crestor","Plenance","Trezor"],
+formas:["Comprimidos 5, 10, 20, 40 mg — privada","Combinação fixa: rosuvastatina + ezetimiba"],
+resumo:"Estatina de alta potência. ↓ LDL 45-63% (40 mg). MAIS POTENTE entre estatinas (mg por mg). T½ longa (19h). MENOR interação CYP. Cuidado em IRC.",
+dose_rapida:"5-40 mg VO 1×/d",
+
+doses:[
+{ind:"Prevenção secundária / muito alto RCV", dose:"20-40 mg/d", obs:"Meta LDL <55. JUPITER trial — eficaz mesmo em LDL 'normal' com PCR-us elevada."},
+{ind:"Alto RCV (DM2 + LOA, HF)", dose:"10-20 mg/d", obs:"Meta LDL <70."},
+{ind:"RCV moderado", dose:"5-10 mg/d", obs:"Meta LDL <100. SATURN, ASTEROID trials — regressão placa."},
+{ind:"HF homozigótica (rara)", dose:"20-40 mg/d", obs:"Combinada com ezetimiba ± iPCSK9 ± LDL-aférese."},
+{ind:"DM2 + IRC moderada (alternativa à atorvastatina)", dose:"5-20 mg/d (CUIDADO em ClCr <30)", obs:"Em ClCr <30: máx 10 mg/d."},
+],
+
+ajustes:{
+irc:"ClCr 30-60: cautela. ClCr <30: MÁX 10 mg/d (acúmulo — risco miopatia). ASIÁTICO: iniciar dose menor (5 mg).",
+iht:"Hepatopatia ativa: CONTRAINDICADA.",
+idoso:"Iniciar 5-10 mg.",
+gestante:"CATEGORIA X — CONTRAINDICADA.",
+aleita:"CONTRAINDICADA.",
+ped:"HF ≥10 anos: 5-20 mg/d.",
+},
+
+mecanismo:"Inibe HMG-CoA redutase. Diferenças importantes: (1) MAIS hidrofílica que sinvastatina/atorvastatina → atravessa menos BBB (menos efeitos cognitivos teóricos); (2) MENOR metabolismo CYP3A4 (~10%) → MENOS interações; (3) T½ ~19h → cobertura prolongada.",
+
+farmacocin:{
+absorc:"VO: 20%",
+distrib:"Hepatosseletiva (hidrofílica)",
+metab:"Mínimo (10% CYP2C9)",
+elimin:"Fezes (90% inalterada)",
+meiavida:"19h",
+ligacao:"~88%",
+},
+
+espectro:["Prevenção secundária CV","Alto/muito alto RCV","HF (incluindo homozigótica)","Pacientes com múltiplas interações medicamentosas (vantagem)","JUPITER: prevenção primária em PCR-us elevada"],
+
+interacoes:[
+{droga:"Ciclosporina", efeito:"↑ rosuvastatina 7× — CONTRAINDICAÇÃO ou limitar 5 mg/d."},
+{droga:"Gemfibrozila", efeito:"↑ rosuvastatina 2× — preferir fenofibrato."},
+{droga:"Varfarina", efeito:"Pode ↑ INR — monitor."},
+{droga:"Inibidores de protease HIV", efeito:"↑ rosuvastatina — ajuste."},
+{droga:"Antiácidos com alumínio/magnésio", efeito:"↓ absorção rosuvastatina — separar 2h."},
+{droga:"Inibidores potentes CYP3A4 (claritromicina, etc)", efeito:"MENOR interação que outras estatinas (rosuvastatina não é CYP3A4)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Mialgia (incidência similar outras estatinas), ↑ TGO/TGP, cefaleia, proteinúria leve (transitória — sem significado clínico)"},
+{tipo:"sério", item:"Rabdomiólise (rara, ↑ em ClCr <30 com dose alta), hepatotoxicidade, miopatia autoimune"},
+{tipo:"raro", item:"↑ glicemia (efeito de classe)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"IRC GRAVE (ClCr <30): MÁX 10 mg/d. Em diálise: começar 5 mg/d. Rabdomiólise descrita em dose alta + IRC."},
+{nivel:"crit", txt:"ASIÁTICOS (especialmente de origem chinesa/japonesa/vietnamita): metabolismo reduzido → ↑ exposição 2× → iniciar 5 mg/d e titular cautelosamente."},
+{nivel:"warn", txt:"INTERAÇÕES: VANTAGEM vs sinvastatina/atorvastatina — pouco metabolismo CYP3A4. Boa escolha em paciente com polifarmácia (transplantado, HIV, oncológico)."},
+{nivel:"warn", txt:"PROTEINÚRIA leve (dose-dependente): geralmente transitória, sem significado clínico. NÃO suspender por isto isoladamente."},
+{nivel:"info", txt:"POTÊNCIA: rosuvastatina 5 mg ≈ atorvastatina 10 mg ≈ sinvastatina 20 mg em redução de LDL (regra prática)."},
+{nivel:"info", txt:"JUPITER trial: rosuvastatina 20 mg em prevenção primária com LDL <130 + PCR-us ≥2 reduziu eventos CV 44%. Indicação controversa — discutir com paciente."},
+],
+
+preparo:"VO comprimido, qualquer horário. Com ou sem alimento.",
+monitor:"Perfil lipídico basal + 6-12 sem + anual. TGO/TGP, CK se mialgia. Função renal anual.",
+diretriz:"SBC Dislipidemia 2017. AHA/ACC 2018. JUPITER. STELLAR. SATURN.",
+fluxo:null, calcs:[],
+},
+
+/* ============== EZETIMIBA ============== */
+
+{id:"med-ezetimiba", classe:"Inibidor da absorção intestinal de colesterol", grupo:"lipemiante",
+nome:"Ezetimiba",
+sin:["Ezetrol","Zetia"],
+formas:["Comprimidos 10 mg — privada","Combinações fixas: ezetimiba + sinvastatina (Vytorin/Zetsim), ezetimiba + atorvastatina, ezetimiba + rosuvastatina"],
+resumo:"Inibe absorção intestinal de colesterol (NPC1L1). Reduz LDL 15-25% adicional quando associada à estatina. IMPROVE-IT trial: redução de eventos CV em pós-SCA. 2ª linha clássica após estatina.",
+dose_rapida:"10 mg VO 1×/d (sempre — única dose)",
+
+doses:[
+{ind:"DM/HAS/alto RCV com LDL não controlado por estatina máxima tolerada", dose:"10 mg VO 1×/d (qualquer horário)", obs:"Adicionar à estatina antes de pensar em iPCSK9. Reduz LDL ~20% adicional. IMPROVE-IT — reduz MACE em pós-SCA."},
+{ind:"Intolerância à estatina (mialgia)", dose:"10 mg/d isolada", obs:"Eficácia inferior à estatina (LDL ↓ 15-20%), mas opção em quem não tolera. Considerar pravastatina dose baixa + ezetimiba antes de monoterapia."},
+{ind:"Hipercolesterolemia familiar (combinada com estatina + iPCSK9)", dose:"10 mg/d", obs:"Esquema padrão em HF heterozigótica/homozigótica."},
+{ind:"Sitosterolemia (doença rara — acúmulo de fitoesteróis)", dose:"10 mg/d", obs:"Indicação específica — mecanismo de NPC1L1 inibe absorção também de fitoesteróis."},
+{ind:"Pediatria HF ≥10 anos", dose:"10 mg/d", obs:"Aprovada."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH moderada-grave: NÃO recomendada (estudos limitados).",
+idoso:"Sem ajuste.",
+gestante:"Sem dados — evitar (provavelmente categoria C, mas hipocolesterolemia gestacional é teoricamente prejudicial).",
+aleita:"Evitar.",
+ped:"≥10 anos: 10 mg/d.",
+},
+
+mecanismo:"Inibe seletivamente o transportador NPC1L1 (Niemann-Pick C1-like 1) na borda em escova do intestino → ↓ absorção de colesterol dietético + colesterol biliar → ↓ chegada ao fígado → ↑ expressão de receptores LDL → ↑ captação LDL plasmático. SINERGIA com estatinas: estatina ↓ síntese, ezetimiba ↓ absorção.",
+
+farmacocin:{
+absorc:"VO: bem absorvida + glucuronidação intestinal extensa → metabólito ATIVO (ezetimiba-glucuronídeo)",
+distrib:"Recirculação enterohepática (T½ efetiva longa)",
+metab:"Glucuronidação intestinal e hepática",
+elimin:"Fezes (78%) + renal (11%)",
+meiavida:"~22h (com recirculação)",
+ligacao:">90%",
+},
+
+espectro:["Adjuvante à estatina (LDL não controlado)","Intolerância à estatina","Hipercolesterolemia familiar","Sitosterolemia"],
+
+interacoes:[
+{droga:"Ciclosporina", efeito:"↑ ezetimiba — monitor."},
+{droga:"Colestiramina (sequestrante de ácidos biliares)", efeito:"↓ absorção ezetimiba — separar 2h antes ou 4h depois."},
+{droga:"Fibratos", efeito:"Sem aumento significativo do risco de miopatia (vs estatina + fibrato)."},
+{droga:"Varfarina", efeito:"Sem interação significativa."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Bem tolerada — perfil próximo ao placebo. Diarreia, dor abdominal, mialgia (rara), ↑ TGO/TGP leve"},
+{tipo:"sério", item:"Rabdomiólise (raríssima, descrita em combinação com estatina), hepatite (rara), pancreatite (raríssima), reação alérgica"},
+{tipo:"raro", item:"Angioedema"},
+],
+
+alertas:[
+{nivel:"warn", txt:"IMPROVE-IT trial (NEJM 2015): ezetimiba + sinvastatina vs sinvastatina isolada em pós-SCA — REDUÇÃO 6% MACE em 7 anos. Modesto mas significativo. PRIMEIRA evidência de redução de desfechos com não-estatina."},
+{nivel:"warn", txt:"ESQUEMA SBC/AHA: 'estatina máxima tolerada → + ezetimiba → + iPCSK9' (escalonamento). Cada degrau adiciona ~20% redução LDL."},
+{nivel:"info", txt:"COMBINAÇÃO FIXA é PREFERENCIAL — melhor adesão. Disponíveis: sinva/eze, atorva/eze, rosuva/eze."},
+{nivel:"info", txt:"PERFIL DE SEGURANÇA EXCELENTE — bem tolerada, mínimos EA. Pode ser usada em intolerância à estatina (eficácia menor mas alternativa válida)."},
+{nivel:"info", txt:"NÃO afeta absorção de vitaminas lipossolúveis (vs colestiramina/sequestrantes — que afetam)."},
+],
+
+preparo:"VO comprimido, qualquer horário, com ou sem alimento.",
+monitor:"Perfil lipídico basal + 6-12 sem após início + anual. TGO/TGP basal + 12 sem (especialmente em combinação com estatina).",
+diretriz:"SBC Dislipidemia 2017. AHA/ACC 2018. IMPROVE-IT (NEJM 2015).",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — MEDICAÇÕES (PARTE 8)
+   Lipemiantes complementares: fibratos, PCSK9, ácidos graxos
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* === FENOFIBRATO === */
+{id:"med-fenofibrato", classe:"Fibrato — agonista PPAR-α", grupo:"lipemiante",
+nome:"Fenofibrato",
+sin:["Lipanon","Lipidil","Tricor"],
+formas:["Cápsulas/comprimidos 160 mg, 200 mg, 250 mg — privada","Forma micronizada (melhor absorção): 130, 145 mg — privada"],
+resumo:"Fibrato — reduz TG 30-50%, ↑ HDL 10-20%. PRINCIPAL indicação: HIPERTRIGLICERIDEMIA grave (TG >500) para prevenir pancreatite. NÃO reduz mortalidade CV isolada.",
+dose_rapida:"160-200 mg VO 1×/d (com refeição principal)",
+
+doses:[
+{ind:"HIPERTRIGLICERIDEMIA GRAVE (TG >500 mg/dL) — prevenção pancreatite", dose:"160-200 mg VO 1×/d com refeição", obs:"INDICAÇÃO PRINCIPAL. TG >1000 = risco iminente de pancreatite aguda."},
+{ind:"Dislipidemia mista (após otimizar estatina)", dose:"160-200 mg/d + estatina", obs:"Em alto RCV com HDL baixo + TG alto, fenofibrato + estatina é razoável (ACCORD-Lipid — benefício em subgrupo TG ≥204 + HDL ≤34). NÃO usar gemfibrozila + estatina (rabdomiólise)."},
+{ind:"Retinopatia diabética (off-label — ACCORD-Eye, FIELD)", dose:"160 mg/d", obs:"ACCORD-Eye demonstrou redução de progressão de retinopatia em DM2 — uso emergente."},
+],
+
+ajustes:{
+irc:"ClCr 30-60: REDUZIR 50%. ClCr <30: CONTRAINDICADO (risco rabdomiólise).",
+iht:"IH grave: CONTRAINDICADO.",
+idoso:"Iniciar dose menor, monitor CK + Cr.",
+gestante:"CATEGORIA C — evitar (sem dados de segurança).",
+aleita:"Evitar.",
+ped:"Não recomendado.",
+},
+
+mecanismo:"Agonista PPAR-α → ↑ lipoproteína lipase + ↓ apoCIII → ↑ catabolismo de VLDL → REDUÇÃO TG. Também ↑ apoAI/AII → ↑ HDL. Efeito modesto em LDL (↓ ou neutro).",
+
+farmacocin:{
+absorc:"VO: melhor com comida (gordura aumenta absorção)",
+distrib:"Ampla, alta ligação proteica",
+metab:"Hepático",
+elimin:"Renal (60% — daí cuidado em IRC)",
+meiavida:"20-25h",
+ligacao:">99%",
+},
+
+espectro:["HIPERTRIGLICERIDEMIA grave (TG >500) — 1ª linha","Dislipidemia mista (em combinação com estatina, casos selecionados)","Retinopatia diabética (off-label)"],
+
+interacoes:[
+{droga:"Estatinas (especialmente sinvastatina, lovastatina)", efeito:"↑ risco rabdomiólise. FENOFIBRATO + ESTATINA é aceitável (vs GEMFIBROZILA + estatina que é contraindicada). Mas monitor CK + sintomas."},
+{droga:"Varfarina", efeito:"↑ INR significativamente — monitor."},
+{droga:"Ciclosporina", efeito:"↑ nefrotoxicidade. Evitar combinação."},
+{droga:"AINE", efeito:"↑ deslocamento da albumina."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Dispepsia, dor abdominal, ↑ CK leve, ↑ transaminases (10-20%), colelitíase (5-10% — fibratos ↑ saturação biliar)"},
+{tipo:"sério", item:"RABDOMIÓLISE (raro isoladamente, ↑ risco em IRC + combinação com estatina), HEPATOTOXICIDADE (suspender se TGO/TGP >3× LSN), pancreatite aguda paradoxal (rara), TVP (raro)"},
+{tipo:"raro", item:"Pneumonite intersticial, IRA, agranulocitose"},
+],
+
+alertas:[
+{nivel:"crit", txt:"PREVENÇÃO PANCREATITE: TG >500 mg/dL é INDICAÇÃO PRINCIPAL (não LDL). TG >1000 mg/dL = risco iminente de pancreatite aguda. NÃO substitui MEV (dieta + álcool + DM controlado)."},
+{nivel:"crit", txt:"NUNCA combinar GEMFIBROZILA com estatina (risco rabdomiólise 15× maior). Fenofibrato + estatina é aceitável MAS monitor CK + sintomas musculares."},
+{nivel:"crit", txt:"IRC: ClCr <30 = CONTRAINDICAÇÃO (rabdomiólise). ClCr 30-60: reduzir 50%."},
+{nivel:"warn", txt:"GESTAÇÃO + HIPERTRIGLICERIDEMIA: 3º trimestre pode haver TG >2000 com risco pancreatite. Insulina + dieta + plasmaférese podem ser necessários (fibrato categoria C — evitar mas pode ser usado em risco extremo)."},
+{nivel:"warn", txt:"NÃO REDUZ MORTALIDADE CV em monoterapia ou combinação universal (FIELD trial em DM2 — desfechos macrovasculares limitados). USE COM ESTATINA quando indicação combinada (ACCORD-Lipid subgrupo)."},
+{nivel:"info", txt:"COLELITÍASE: fibratos ↑ saturação biliar de colesterol — risco de cálculos. Não rastrear de rotina, mas alertar paciente sobre sintomas."},
+],
+
+preparo:"VO comprimido, COM REFEIÇÃO PRINCIPAL (gordura ↑ absorção, especialmente nas formulações não-micronizadas).",
+monitor:"Perfil lipídico 8-12 sem, TGO/TGP basal + 3 m + anual, CK se sintomas musculares, creatinina basal + anual.",
+diretriz:"SBC Dislipidemia 2017. AHA/ACC 2018. ACCORD-Lipid. FIELD. ENDOCRINE Society — Hipertrigliceridemia 2012.",
+fluxo:null, calcs:[],
+},
+
+/* === CIPROFIBRATO === */
+{id:"med-ciprofibrato", classe:"Fibrato — agonista PPAR-α", grupo:"lipemiante",
+nome:"Ciprofibrato",
+sin:["Lipless","Oroxadin"],
+formas:["Comprimidos 100 mg — privada"],
+resumo:"Fibrato com meia-vida MAIS LONGA (40-50h, vs fenofibrato 20h). Posologia 1×/d. Boa redução de TG 30-50%. Menos usado que fenofibrato.",
+dose_rapida:"100 mg VO 1×/d",
+
+doses:[
+{ind:"Hipertrigliceridemia grave", dose:"100 mg VO 1×/d", obs:"Alternativa ao fenofibrato. Não exige refeição (ao contrário do fenofibrato não-micronizado)."},
+],
+
+ajustes:{
+irc:"ClCr 30-60: 100 mg em dias alternados. ClCr <30: CONTRAINDICADO.",
+iht:"IH grave: contraindicado.",
+idoso:"Cautela.",
+gestante:"Evitar.",
+aleita:"Evitar.",
+ped:"Não recomendado.",
+},
+
+mecanismo:"Idêntico ao fenofibrato — agonista PPAR-α.",
+
+farmacocin:{absorc:"VO: boa", distrib:"Ampla", metab:"Hepático", elimin:"Renal", meiavida:"40-50h (a maior entre fibratos)", ligacao:">99%"},
+
+espectro:["Hipertrigliceridemia grave"],
+
+interacoes:[{droga:"Mesmas do fenofibrato", efeito:"Estatina, varfarina, ciclosporina."}],
+
+efeitos:[
+{tipo:"comum", item:"Dispepsia, ↑ enzimas hepáticas, mialgia"},
+{tipo:"sério", item:"Rabdomiólise, hepatotoxicidade"},
+{tipo:"raro", item:"Pneumonite, colelitíase"},
+],
+
+alertas:[
+{nivel:"warn", txt:"MEIA-VIDA LONGA (40-50h) — útil em paciente com dificuldade de aderência. Mas em caso de RA, demora a se resolver."},
+{nivel:"info", txt:"Menos prescrito que fenofibrato no Brasil — fenofibrato tem maior evidência (FIELD, ACCORD)."},
+],
+
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"Perfil lipídico, TGO/TGP, CK se sintomas.",
+diretriz:"SBC Dislipidemia 2017.",
+fluxo:null, calcs:[],
+},
+
+/* === ÔMEGA-3 (EPA + DHA / Icosapent ethyl) === */
+{id:"med-omega3", classe:"Ácidos graxos ômega-3 — EPA + DHA", grupo:"lipemiante",
+nome:"Ômega-3 (EPA/DHA, Icosapent etil)",
+sin:["Vascepa (icosapent etil — EPA isolado)","Omacor","Lovaza"],
+formas:["Cápsulas 1 g (mix EPA+DHA, suplemento sem prescrição)","Vascepa 1 g (icosapent etil — apenas EPA, prescrição) — privada"],
+resumo:"Ácidos graxos ômega-3. ICOSAPENT ETIL 2 g 2×/d é o ÚNICO com evidência CV sólida (REDUCE-IT — reduz MACE 25%). Suplementos genéricos OTC NÃO têm evidência CV.",
+dose_rapida:"Icosapent etil 2 g VO 2×/d | Suplementos OTC 2-4 g/d (sem evidência CV forte)",
+
+doses:[
+{ind:"Prevenção CV em ALTO RCV + TG persistentemente ≥150 (REDUCE-IT)", dose:"Icosapent etil 2 g VO 2×/d (4 g/d total)", obs:"REDUCE-IT trial — reduz MACE 25% em paciente com DCV ou DM + 1 FRCV + TG 150-499 em uso de estatina. EVIDÊNCIA REAL. Vascepa NÃO está disponível no Brasil em 2025/2026."},
+{ind:"Hipertrigliceridemia grave (TG >500)", dose:"2-4 g/d (EPA+DHA combinado)", obs:"Como adjuvante a fenofibrato. Redução TG ~30%."},
+],
+
+ajustes:{
+irc:"Sem ajuste.",
+iht:"Cautela.",
+idoso:"Sem ajuste.",
+gestante:"Categoria C — geralmente seguro.",
+aleita:"Compatível.",
+ped:"Não rotina.",
+},
+
+mecanismo:"EPA + DHA → ↓ síntese hepática de VLDL → ↓ TG. EPA (icosapent etil) tem efeito anti-inflamatório/antiarrítmico adicional, possivelmente responsável pelo benefício CV em REDUCE-IT.",
+
+farmacocin:{absorc:"VO: melhor com refeição rica em gordura", distrib:"Lipoproteínas", metab:"β-oxidação", elimin:"Não significativa renal", meiavida:"Variável", ligacao:"—"},
+
+espectro:["Prevenção CV em alto RCV + TG ≥150 (REDUCE-IT — apenas icosapent etil)","Hipertrigliceridemia grave (adjuvante)"],
+
+interacoes:[
+{droga:"Anticoagulantes (varfarina, DOAC)", efeito:"↑ risco sangramento em doses altas (>4 g/d). Monitor."},
+{droga:"AAS", efeito:"Aditivo antiagregante leve."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Eructação com sabor de peixe (mais frequente com formulações genéricas), náusea, diarreia"},
+{tipo:"sério", item:"Sangramento aumentado em altas doses + anticoagulantes, FA paradoxal (REDUCE-IT — ↑ leve de FA)"},
+{tipo:"raro", item:"Reação alérgica em alergia a peixe"},
+],
+
+alertas:[
+{nivel:"crit", txt:"SUPLEMENTOS GENÉRICOS de ômega-3 (OTC, sem prescrição) NÃO têm evidência CV — apenas reduzem TG modestamente. Vários ensaios randomizados (STRENGTH, ASCEND, VITAL) foram NEGATIVOS para mistura EPA+DHA."},
+{nivel:"warn", txt:"REDUCE-IT é com ICOSAPENT ETIL (EPA puro) — NÃO disponível no Brasil em 2025/2026 (importação possível em alguns casos). Suplementos brasileiros são EPA+DHA — eficácia CV não comprovada."},
+{nivel:"warn", txt:"REDUCE-IT mostrou ↑ leve de FA — pode haver troca de risco (↓ IAM/AVC vs ↑ FA/sangramento). Discussão compartilhada."},
+{nivel:"info", txt:"DIETA: 2 porções/sem de peixe gordo (salmão, sardinha) fornece EPA+DHA com benefício comprovado e baixo custo — orientação preferencial."},
+],
+
+preparo:"VO cápsula com refeição (gordura ↑ absorção).",
+monitor:"TG, sintomas sangramento.",
+diretriz:"REDUCE-IT trial. AHA Science Advisory 2019.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — MEDICAÇÕES (PARTE 9)
+   Drogas de tireoide — Levotiroxina + Metimazol + PTU + Iodeto
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* === LEVOTIROXINA === */
+{id:"med-levotiroxina", classe:"Hormônio tireoidiano sintético (T4)", grupo:"endocrino",
+nome:"Levotiroxina (T4)",
+sin:["Puran T4","Synthroid","Euthyrox","Levoid","Tirotil"],
+formas:["Comprimidos 12,5 / 25 / 37,5 / 50 / 62,5 / 75 / 88 / 100 / 112 / 125 / 137 / 150 / 175 / 200 mcg — SUS/REMUME (várias apresentações)"],
+resumo:"T4 sintético — 1ª linha em HIPOTIREOIDISMO. Posologia 1×/d EM JEJUM. Absorção crítica (comida e várias drogas reduzem). Margem terapêutica estreita: subdose = persistência sintomática; sobredose = sintomas tireotoxicose, FA, osteoporose.",
+dose_rapida:"1,6 mcg/kg/d VO 1×/d (jejum 30-60 min antes do café)",
+
+doses:[
+{ind:"Hipotireoidismo PRIMÁRIO em ADULTO SAUDÁVEL (<60a)", dose:"1,6 mcg/kg/d (peso ideal) VO 1×/d (manhã, jejum); pode iniciar dose plena", obs:"Ex 70 kg → 100-112 mcg/d. Reavaliar TSH em 6-8 sem."},
+{ind:"Hipotireoidismo em IDOSO ≥60a ou CARDIOPATA", dose:"25-50 mcg/d inicial; titular 25 mcg cada 4-6 sem", obs:"Início baixo evita precipitar angina/arritmia."},
+{ind:"Hipotireoidismo SEVERO em coronariopata", dose:"12,5-25 mcg/d inicial", obs:"Cardiologia: balancear risco isquêmico vs hipotireoidismo."},
+{ind:"Hipotireoidismo na GESTAÇÃO", dose:"Aumentar 25-30% (2 comp extra/sem) assim que confirmar gravidez", obs:"Alvo TSH <2,5 (1º trim), <3,0 (2º/3º). Reavaliar cada 4 sem até 20 sem."},
+{ind:"Hipotireoidismo CONGÊNITO (RN)", dose:"10-15 mcg/kg/d (dose alta — neurodesenvolvimento)", obs:"Iniciar antes de 2-3 sem de vida após triagem neonatal positiva."},
+{ind:"Coma MIXEDEMATOSO", dose:"200-400 mcg IV bolus, depois 50-100 mcg/d IV", obs:"UTI. Hidrocortisona ANTES da levotiroxina (risco crise adrenal)."},
+{ind:"Pós-CA TIREOIDE (terapia supressiva)", dose:"Variável conforme risco: dose plena + supressiva (TSH <0,1 alto risco, 0,1-0,5 intermediário)", obs:"Acompanhamento endocrinologia."},
+],
+
+ajustes:{
+irc:"Sem ajuste por TFG. Eliminação não renal.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Iniciar 25-50 mcg. Alvo TSH 4-6 (evitar sobretratamento → FA, osteoporose).",
+gestante:"AUMENTAR dose 25-30% assim que confirmar gestação. Alvo TSH <2,5 (1º trim).",
+aleita:"Compatível (passa pouco no leite).",
+ped:"Hipotireoidismo congênito: 10-15 mcg/kg/d. Criança >1a: 4-6 mcg/kg/d. Adolescente: 2-3 mcg/kg/d.",
+},
+
+mecanismo:"T4 sintético idêntico ao endógeno. Convertido perifericamente em T3 (forma ativa) — assim mantém balanço fisiológico. NÃO usar T3 (liotironina) isoladamente em rotina — picos não-fisiológicos. Reposição é vital para todo metabolismo.",
+
+farmacocin:{
+absorc:"VO: 60-80% (variável; reduzida por comida, café, ferro, cálcio, antiácidos, IBP, fibras, soja)",
+distrib:"Ampla, fortemente ligada à TBG",
+metab:"Conversão periférica T4→T3 (deiodinases)",
+elimin:"Bile/fezes",
+meiavida:"7 dias (longa — permite 1×/d e tolerar 1-2 esquecimentos)",
+ligacao:">99% (TBG, albumina)",
+},
+
+espectro:["Hipotireoidismo (qualquer causa)","Coma mixedematoso","Pós-CA tireoide (supressivo)","Bócio nodular (raramente, controverso)"],
+
+interacoes:[
+{droga:"Comida (especialmente café, soja, fibras)", efeito:"Reduz absorção 30-50%. Tomar EM JEJUM 30-60 min antes."},
+{droga:"Cálcio, ferro, antiácidos, sucralfato, colestiramina", efeito:"Reduzem absorção (formação de quelatos). Separar 4h."},
+{droga:"IBP (omeprazol)", efeito:"Reduz absorção (T4 precisa de ácido). Possível necessidade de ↑ dose."},
+{droga:"Estrogênio (anticoncepcional/TRH)", efeito:"↑ TBG → ↑ necessidade de T4 (dosar TSH 6-8 sem após início)."},
+{droga:"Rifampicina, fenitoína, carbamazepina, fenobarbital", efeito:"↑ metabolismo T4 → ↑ necessidade."},
+{droga:"Sertralina, amiodarona", efeito:"Podem alterar necessidade (mecanismos diversos)."},
+{droga:"Varfarina", efeito:"Hipertireoidismo ↑ catabolismo da varfarina (↑ INR durante reposição se hipertireoidiana iatrogênica)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Em dose adequada: nenhum (idêntico ao endógeno). Em SOBREDOSE: sintomas de hipertireoidismo (taquicardia, tremor, ansiedade, perda peso, insônia, sudorese, intolerância calor)"},
+{tipo:"sério", item:"SOBRETRATAMENTO CRÔNICO: FA (especialmente em idoso), OSTEOPOROSE (mulher pós-menopausa), angina/IAM em coronariopata"},
+{tipo:"raro", item:"Reação alérgica ao excipiente (lactose), cefaleia em início, alopecia transitória (1º mês)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"ABSORÇÃO É CRÍTICA: tomar 30-60 min ANTES do café da manhã, COM ÁGUA, em JEJUM ESTRITO. Comida, café, suco, cálcio, ferro, antiácidos, IBP, fibras, soja REDUZEM significativamente. Separar 4h de outras drogas."},
+{nivel:"crit", txt:"GESTAÇÃO: aumentar dose 25-30% (2 comprimidos extras/sem) assim que confirmar gestação. Hipotireoidismo materno não tratado = aborto, RCIU, prejuízo cognitivo fetal."},
+{nivel:"crit", txt:"INICIAR EM CARDIOPATA: 12,5-25 mcg/d. Dose plena pode precipitar IAM/arritmia."},
+{nivel:"warn", txt:"SOBRETRATAMENTO em IDOSO: alvo TSH 4-6 é aceitável. TSH <0,4 (sobreposse) → ↑ FA + osteoporose. REDUZIR dose."},
+{nivel:"warn", txt:"COMA MIXEDEMATOSO: dar HIDROCORTISONA ANTES da levotiroxina (T4 acelera metabolismo do cortisol — risco crise adrenal aguda)."},
+{nivel:"warn", txt:"TROCA DE MARCA: bioequivalência não é absoluta entre genéricos. Em paciente bem controlado: tentar manter mesma marca. Se trocar: reavaliar TSH 6-8 sem."},
+{nivel:"info", txt:"T4/T3 COMBINADO (Tertroxin): não recomendado em rotina. Apenas em casos selecionados com mutação DIO2 documentada e sintomas persistentes."},
+{nivel:"info", txt:"DOSE COMUM em adulto: 75-125 mcg/d. Idoso: 25-75 mcg/d. RN: 12,5-37,5 mcg/d."},
+],
+
+preparo:"VO comprimido, EM JEJUM 30-60 min antes do café, COM ÁGUA. Não com café/suco/leite.",
+monitor:"TSH 6-8 sem após início/ajuste; após estável: anual. T4L em hipotireoidismo central.",
+diretriz:"ATA 2014. ATA 2017 (gestação). SBEM 2025. Endocrine Society.",
+fluxo:null, calcs:[],
+},
+
+/* === METIMAZOL === */
+{id:"med-metimazol", classe:"Tionamida — anti-tireoidiano (inibidor TPO)", grupo:"endocrino",
+nome:"Metimazol (Tapazol)",
+sin:["Tapazol","Thyrozol","Methimazol"],
+formas:["Comprimidos 5 mg, 10 mg, 20 mg — SUS/CEAF"],
+resumo:"Tionamida — 1ª LINHA em hipertireoidismo (Graves, Plummer). Inibe síntese de T4/T3. Latência 4-8 sem (depleta hormônio estocado). NÃO usar no 1º trimestre da gestação (aplasia cutis fetal).",
+dose_rapida:"15-30 mg VO 1×/d (hipertireoidismo moderado)",
+
+doses:[
+{ind:"Hipertireoidismo LEVE (T4L 1-1,5× LSN)", dose:"10-15 mg VO 1×/d", obs:"Reavaliar T4L em 4-6 sem."},
+{ind:"Hipertireoidismo MODERADO (T4L 1,5-2× LSN)", dose:"20-30 mg VO 1×/d", obs:"Maioria dos casos. Dose única diária é tão eficaz quanto dividida."},
+{ind:"Hipertireoidismo GRAVE (T4L >2-3× LSN)", dose:"30-40 mg/d em 2-3 tomadas", obs:"Considerar 60 mg/d em casos extremos. Dividir doses ≥40 mg/d."},
+{ind:"Manutenção (após eutireoidismo)", dose:"5-15 mg/d 1×/d", obs:"Reduzir gradualmente conforme TSH/T4L."},
+{ind:"GESTAÇÃO 2º/3º trimestre (após PTU no 1º)", dose:"5-30 mg/d", obs:"Trocar do PTU para metimazol no 2º trim (PTU → hepatotoxicidade)."},
+{ind:"Pediatria", dose:"0,2-0,5 mg/kg/d divididos", obs:"Endocrinopediatria."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave: cautela.",
+idoso:"Iniciar dose plena conforme severidade. Monitor para EA.",
+gestante:"CONTRAINDICADO 1º TRIMESTRE (aplasia cutis fetal, aplasia coane, atresia esofágica). PERMITIDO 2º/3º trim. Dose mínima eficaz.",
+aleita:"Compatível (passa pouco no leite). PTU também aceitável.",
+ped:"0,2-0,5 mg/kg/d.",
+},
+
+mecanismo:"Inibe a tireoperoxidase (TPO) → bloqueia organificação do iodo + acoplamento de iodotirosinas → ↓ síntese de T4/T3. NÃO bloqueia liberação do hormônio estocado (latência 4-8 sem). Em altas doses, tem leve imunomodulação (pode ↓ TRAb).",
+
+farmacocin:{
+absorc:"VO: rápida (pico 1-2h)",
+distrib:"Concentra na tireoide",
+metab:"Hepático",
+elimin:"Renal (metabólitos)",
+meiavida:"6-8h (mas T½ TIREOIDIANA muito maior — permite dose única)",
+ligacao:"Baixa",
+},
+
+espectro:["Hipertireoidismo (Graves, multinodular tóxico, adenoma) — 1ª linha","Preparação pré-cirurgia tireoide","Preparação pré-radioiodo (controverso)","Tireotoxicose induzida por amiodarona tipo 1"],
+
+interacoes:[
+{droga:"Varfarina", efeito:"Hipertireoidismo ↑ catabolismo varfarina → ao tratar, INR pode SUBIR (necessidade reduzida)."},
+{droga:"Digoxina", efeito:"Hipertireoidismo ↑ depuração digoxina → ao tratar, dose pode SUBIR."},
+{droga:"β-bloqueadores", efeito:"COMBINAÇÃO PADRÃO em hipertireoidismo sintomático (controle adrenérgico)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Rash cutâneo (5-10% — geralmente leve, autolimitado), prurido, urticária, artralgia, dispepsia, alteração do paladar"},
+{tipo:"sério", item:"AGRANULOCITOSE (0,2-0,5% — neutrófilos <500), HEPATITE COLESTÁTICA (1-5%), VASCULITE ANCA (raro, em uso prolongado), pancreatite, anemia aplástica"},
+{tipo:"raro", item:"Síndrome lúpus-like, glomerulonefrite, hipoglicemia autoimune (raro)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"AGRANULOCITOSE: efeito raro mas GRAVE (0,2-0,5%). AVISAR PACIENTE: SE FEBRE SÚBITA + DOR DE GARGANTA → suspender + ir ao PS para hemograma URGENTE. Se neutrófilos <500: internar para isolamento + antibiótico empírico + G-CSF."},
+{nivel:"crit", txt:"GESTAÇÃO 1º TRIMESTRE: CONTRAINDICADO — risco aplasia cutis fetal, aplasia coana, atresia esofágica. USAR PTU no 1º trim, depois trocar para metimazol no 2º trim."},
+{nivel:"crit", txt:"HEPATITE COLESTÁTICA: 1-5% (menos que PTU). Vigilar icterícia + dor abdominal + ↑ TGO/TGP. Suspender se TGO/TGP >3× LSN."},
+{nivel:"warn", txt:"REAÇÃO CUTÂNEA LEVE (rash, prurido): geralmente autolimitada — pode manter com anti-histamínico. Rash GRAVE/SSJ: suspender + considerar PTU."},
+{nivel:"warn", txt:"LATÊNCIA 4-8 SEM para efeito pleno — combinar com β-BLOQ (controle sintomático imediato) é PADRÃO."},
+{nivel:"warn", txt:"DURAÇÃO em GRAVES: 12-18 meses — tentar suspender. Probabilidade de remissão definitiva 30-50%."},
+{nivel:"info", txt:"VASCULITE ANCA: raro mas descrito em uso prolongado (>1 ano). Investigar se sintomas (renais, pulmonares, cutâneos)."},
+],
+
+preparo:"VO comprimido, com ou sem alimento. Dose única diária é igualmente eficaz à dividida em doses moderadas.",
+monitor:"Hemograma basal + se febre/sintomas (NÃO de rotina). TGO/TGP basal + 4 sem + 3 meses. TSH/T4L 4-6 sem após início, depois cada 2-3 meses. TRAb 6-12 meses (preditor de remissão).",
+diretriz:"ATA 2016 (Hyperthyroidism). ATA 2017 (gestação). SBEM 2025.",
+fluxo:null, calcs:[],
+},
+
+/* === PROPILTIOURACIL (PTU) === */
+{id:"med-propiltiouracil", classe:"Tionamida — anti-tireoidiano (inibidor TPO + bloqueio T4→T3 periférico)", grupo:"endocrino",
+nome:"Propiltiouracil (PTU)",
+sin:["Propil","Propycil"],
+formas:["Comprimidos 100 mg — SUS/privada (menos disponível que metimazol)"],
+resumo:"Tionamida alternativa. INDICAÇÕES ESPECÍFICAS: 1º TRIMESTRE de gestação, CRISE TIREOIDIANA, intolerância ao metimazol. Vantagem: bloqueia conversão T4→T3 periférica (útil em crise). FDA black box: hepatotoxicidade.",
+dose_rapida:"100-150 mg VO 8/8h (hipertireoidismo) | 200-400 mg 4/4h (crise)",
+
+doses:[
+{ind:"Hipertireoidismo — INÍCIO (raro como 1ª linha)", dose:"100-150 mg VO 8/8h (300-450 mg/d)", obs:"Metimazol é preferível, EXCETO em casos específicos abaixo."},
+{ind:"GESTAÇÃO 1º TRIMESTRE", dose:"100-200 mg 8/8h (mín eficaz)", obs:"Trocar para METIMAZOL no 2º trim (PTU → risco hepatotoxicidade fulminante)."},
+{ind:"CRISE TIREOIDIANA — UTI", dose:"200-400 mg VO/SNG 4/4h", obs:"VANTAGEM em crise: bloqueia conversão T4→T3 periférica (efeito agudo). Combinar com iodeto 1h DEPOIS + propranolol + hidrocortisona."},
+{ind:"Reação adversa LEVE ao metimazol (rash, alergia)", dose:"100-150 mg 8/8h", obs:"Se reação grave a uma tionamida: NÃO substituir por outra (cross-reativity ~40-50%) — considerar radioiodo/cirurgia."},
+{ind:"Manutenção", dose:"50-150 mg/d divididos", obs:"Reduzir gradualmente."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave: CONTRAINDICADO (hepatotoxicidade adicional).",
+idoso:"Iniciar dose ajustada por gravidade.",
+gestante:"PERMITIDO 1º TRIMESTRE (alternativa ao metimazol que é teratogênico no 1º trim). Trocar para metimazol no 2º.",
+aleita:"Compatível.",
+ped:"NÃO RECOMENDADO em criança (hepatotoxicidade fatal descrita — FDA black box).",
+},
+
+mecanismo:"Inibe a TPO (igual metimazol) → bloqueia síntese de T4/T3. DIFERENÇA do metimazol: bloqueia também a DEIODINASE TIPO 1 → ↓ conversão T4→T3 periférica (útil em crise tireoidiana).",
+
+farmacocin:{
+absorc:"VO: rápida",
+distrib:"Concentra na tireoide",
+metab:"Hepático extenso",
+elimin:"Renal",
+meiavida:"~1-2h (curta — necessita 3-4×/d)",
+ligacao:"~80%",
+},
+
+espectro:["Gestação 1º trimestre","Crise tireoidiana (vantagem do bloqueio T4→T3)","Intolerância LEVE ao metimazol","Tempestade tireoidiana em UTI"],
+
+interacoes:[
+{droga:"Varfarina", efeito:"Como metimazol — INR pode subir ao tratar."},
+{droga:"β-bloqueadores", efeito:"COMBINAÇÃO padrão em hipertireoidismo sintomático."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Rash, prurido, artralgia, dispepsia (frequência similar metimazol)"},
+{tipo:"sério", item:"HEPATOTOXICIDADE FULMINANTE (rara mas MORTAL — FDA black box, principalmente em criança), agranulocitose (0,2-0,5%, similar metimazol), VASCULITE ANCA-positiva (mais frequente que metimazol)"},
+{tipo:"raro", item:"Aplasia medular, pancreatite, lúpus-like"},
+],
+
+alertas:[
+{nivel:"crit", txt:"HEPATOTOXICIDADE FULMINANTE: rara mas FATAL — FDA black box. Especialmente em CRIANÇA (causa de transplante hepático). PREFERIR metimazol em adulto e criança. Exceções: 1º trim gestação e crise."},
+{nivel:"crit", txt:"AGRANULOCITOSE: mesmo perfil do metimazol. Avisar paciente sobre febre + dor de garganta → hemograma urgente."},
+{nivel:"crit", txt:"INDICAÇÕES NICHO: (1) gestação 1º trim; (2) crise tireoidiana (bloqueio T4→T3); (3) intolerância leve ao metimazol. FORA dessas: preferir metimazol."},
+{nivel:"warn", txt:"POSOLOGIA 8/8h (inconveniente). Metimazol pode ser 1×/d em muitos pacientes."},
+{nivel:"warn", txt:"VASCULITE ANCA-positiva: mais comum em PTU do que metimazol. Em uso prolongado: vigilância clínica."},
+{nivel:"info", txt:"GESTAÇÃO: PTU no 1º trim → metimazol 2º/3º trim. Lactação: ambos compatíveis em dose baixa."},
+],
+
+preparo:"VO comprimido, 8/8h (3×/d). NÃO IV (não há formulação parenteral).",
+monitor:"Hemograma se sintomas (NÃO rotina), TGO/TGP basal + 2-4 sem + 3 meses (mais rigoroso que metimazol). TSH/T4L 4-6 sem. ANCA se sintomas.",
+diretriz:"ATA 2016. ATA 2017 (gestação). FDA Black Box.",
+fluxo:null, calcs:[],
+},
+
+/* === IODETO / LUGOL === */
+{id:"med-iodeto", classe:"Iodeto (Lugol, iodeto de potássio) — inibe liberação T4", grupo:"endocrino",
+nome:"Iodeto (Lugol / Iodeto de Potássio)",
+sin:["Lugol solução","SSKI (iodeto de potássio saturado)","Iosat (proteção radioativa)"],
+formas:["Lugol 5%: 1 gota = ~8 mg I (solução iodo-iodada)","SSKI: 1 gota = 50 mg KI","Comprimidos 130 mg KI (proteção radiativa) — não comerciais BR"],
+resumo:"Iodeto em ALTAS DOSES paradoxalmente INIBE liberação de hormônio tireoidiano (efeito Wolff-Chaikoff). Uso em CRISE TIREOIDIANA + preparação pré-cirurgia tireoide (Graves). Sempre 1h APÓS anti-tireoidiano.",
+dose_rapida:"Lugol 8 gotas VO 6/6h (crise) | 5-7 gotas 8/8h × 7-10 dias pré-cirurgia",
+
+doses:[
+{ind:"CRISE TIREOIDIANA (após PTU/metimazol)", dose:"Lugol 8-10 gotas VO/SNG 6/6h OU SSKI 5 gotas 6/6h", obs:"DAR APENAS 1H APÓS o anti-tireoidiano (PTU/metimazol). Se dar antes: paradoxalmente ↑ síntese hormonal (substrato para TPO). Após bloqueio da TPO, iodeto BLOQUEIA liberação."},
+{ind:"Preparação pré-tireoidectomia em Graves", dose:"Lugol 5-7 gotas VO 8/8h × 7-10 dias pré-cirurgia", obs:"Reduz vascularização da tireoide → menor sangramento cirúrgico."},
+{ind:"Proteção contra iodo radioativo (acidente nuclear/Chernobyl)", dose:"KI 130 mg/d (adulto) — bloqueia captação de I-131 pela tireoide", obs:"Apenas em acidente nuclear documentado. Iniciar pré-exposição se possível."},
+{ind:"Hipertireoidismo neonatal transitório (RN de mãe Graves)", dose:"Lugol 1 gota 8/8h", obs:"Endocrinopediatria — uso restrito."},
+],
+
+ajustes:{
+irc:"Cautela — eliminação renal.",
+iht:"Cautela.",
+idoso:"Cautela com risco cardíaco.",
+gestante:"Categoria D — risco bócio fetal. APENAS em casos extremos (não-evitáveis).",
+aleita:"Categoria D — pode causar hipotireoidismo neonatal.",
+ped:"RN/lactente em casos selecionados.",
+},
+
+mecanismo:"Em altas doses, iodeto provoca: (1) EFEITO WOLFF-CHAICKOFF — bloqueia organificação do iodo e liberação hormonal; (2) bloqueia liberação por desestabilização do colóide tireoidiano; (3) ↓ vascularização tireoidiana (efeito Plummer — útil pré-cirurgia). Efeito AGUDO mas TRANSITÓRIO (escape em 7-14 dias — não tratamento crônico).",
+
+farmacocin:{
+absorc:"VO: completa",
+distrib:"Tireoide concentra (efeito da bomba Na/I)",
+metab:"—",
+elimin:"Renal (urinária)",
+meiavida:"~1 dia (tireoide retém)",
+ligacao:"—",
+},
+
+espectro:["Crise tireoidiana — adjuvante","Preparação pré-tireoidectomia (Graves)","Proteção radiotiva"],
+
+interacoes:[
+{droga:"Amiodarona (contém iodo)", efeito:"Sobrecarga de iodo — pode desencadear tireotoxicose paradoxal ou hipotireoidismo."},
+{droga:"Lítio", efeito:"Sinergia em bloqueio liberação tireoidiana."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Gosto metálico, sialorreia, dispepsia, rinorreia, conjuntivite (iodismo)"},
+{tipo:"sério", item:"Hipertireoidismo PARADOXAL (Jod-Basedow — em paciente com bócio multinodular sem bloqueio TPO prévio), reação alérgica grave (raríssima — alergia a iodo)"},
+{tipo:"raro", item:"Bócio fetal (em uso prolongado materno)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"NÃO USAR ANTES de PTU/Metimazol — em paciente com TPO funcionante, iodeto serve de SUBSTRATO para síntese ↑ paradoxal (Jod-Basedow). USAR 1H APÓS anti-tireoidiano."},
+{nivel:"crit", txt:"USO BREVE APENAS — efeito ESCAPA em 7-14 dias. NÃO usar como tratamento crônico de hipertireoidismo."},
+{nivel:"warn", txt:"GESTAÇÃO: risco bócio/hipotireoidismo fetal. Categoria D — uso apenas em risco materno extremo."},
+{nivel:"warn", txt:"ALERGIA A IODO: contra-indica uso. Diferenciar alergia a iodo (ao próprio elemento — raríssima) vs alergia a contraste iodado (ao composto — mais comum)."},
+{nivel:"info", txt:"LUGOL vs SSKI: ambos eficazes. Lugol (5% iodo + 10% KI) — mais usado historicamente. SSKI mais concentrado em K."},
+],
+
+preparo:"VO em ÁGUA OU SUCO (mascara sabor). 1H APÓS anti-tireoidiano em crise.",
+monitor:"Sintomas, TSH/T4L em uso prolongado (>2 sem).",
+diretriz:"ATA 2016 (Hyperthyroidism — Storm). SBEM 2025.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 10)
+   Bloco B — DRGE/Dispepsia + Gota
+   IBPs + H2 + Sucralfato + Antiácidos + Alopurinol + Febuxostate + Colchicina
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== IBPs ============== */
+
+{id:"med-omeprazol", classe:"Inibidor de Bomba de Prótons (IBP) — 1ª geração", grupo:"gi",
+nome:"Omeprazol",
+sin:["Losec","Peprazol","Omepramax","Omezol"],
+formas:["Cápsulas 10 mg, 20 mg, 40 mg — SUS/REMUME (20 mg, 40 mg)","Frasco-ampola IV 40 mg"],
+resumo:"IBP de 1ª geração, mais usado no Brasil. Reduz acidez gástrica em 80-95%. TOMAR 30-60 MIN ANTES DO CAFÉ (precisa de bomba ativa para inibir). Cuidado interação com clopidogrel (CYP2C19).",
+dose_rapida:"20-40 mg VO 1×/d em jejum (30-60 min antes do café)",
+
+doses:[
+{ind:"DRGE não erosiva (NERD)", dose:"20 mg VO 1×/d × 4-8 sem", obs:"Step-down após controle: meia dose → dias alternados → sob demanda."},
+{ind:"DRGE erosiva (esofagite A-D)", dose:"40 mg VO 1×/d × 8 sem; manutenção 20-40 mg/d", obs:"Manutenção em dose mínima eficaz a longo prazo."},
+{ind:"Úlcera péptica gástrica", dose:"40 mg VO 1×/d × 8 sem (gástrica), 4-6 sem (duodenal)", obs:"+ erradicação H. pylori se positivo."},
+{ind:"Erradicação H. pylori (esquema 1ª linha)", dose:"20 mg VO 12/12h + amoxicilina 1g 12/12h + claritromicina 500 mg 12/12h × 14 dias", obs:"Confirmar erradicação 4-8 sem após (suspender IBP 2 sem antes)."},
+{ind:"Profilaxia de úlcera por estresse / AINE", dose:"20 mg VO 1×/d", obs:"Indicado em uso crônico de AINE + fator de risco (idade ≥65, hist úlcera, anticoagulação)."},
+{ind:"HDA / úlcera sangrando", dose:"80 mg IV bolus + 8 mg/h em BIC × 72h (alto risco rebleed)", obs:"Após endoscopia. Transicionar para VO após 72h se estável."},
+{ind:"Pediatria", dose:"1-2 mg/kg/d 1×/d (máx 40 mg/d)", obs:"Aprovado ≥1 ano. EVITAR em <1 ano (DRGE fisiológica)."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave (Child C): reduzir dose (máx 20 mg/d).",
+idoso:"Sem ajuste rotineiro. Cautela com uso crônico (riscos).",
+gestante:"Categoria C — preferir pantoprazol (B) se possível. Sucralfato/antiácido como 1ª linha.",
+aleita:"Compatível.",
+ped:"≥1 ano: 1-2 mg/kg/d. EVITAR rotineiro em <1 ano.",
+},
+
+mecanismo:"Inibe IRREVERSIVELMENTE a H+/K+ ATPase (bomba de prótons) nas células parietais gástricas — necessita bomba ATIVADA (após refeição) para se ligar. Por isso DEVE ser tomado em jejum, 30-60 min antes da refeição.",
+
+farmacocin:{
+absorc:"VO: 35-60% (degradado em pH ácido — formulação gastrorresistente). Cápsulas devem ser engolidas inteiras.",
+distrib:"Pouca BBB",
+metab:"Hepático CYP2C19 (extenso — metabolismo varia por polimorfismo: lentos vs ultrarrápidos)",
+elimin:"Renal (80%) + Biliar (20%)",
+meiavida:"0,5-1h plasmática (mas efeito 24-72h — ligação irreversível à bomba)",
+ligacao:"95%",
+},
+
+espectro:["DRGE (erosiva e não erosiva)","Dispepsia funcional","Úlcera péptica gástrica e duodenal","Erradicação H. pylori","Profilaxia úlcera (estresse, AINE)","Sd Zollinger-Ellison","HDA"],
+
+interacoes:[
+{droga:"Clopidogrel", efeito:"INIBE CYP2C19 → ↓ ativação clopidogrel → ↓ efeito antiagregante. EVITAR — preferir PANTOPRAZOL."},
+{droga:"Varfarina", efeito:"↑ INR levemente — monitor."},
+{droga:"Citalopram, escitalopram", efeito:"↑ concentração — risco QT longo (especialmente em idoso). Limitar citalopram ≤20 mg + omeprazol."},
+{droga:"Diazepam, fenitoína", efeito:"↑ concentrações por inibição CYP2C19."},
+{droga:"Cetoconazol, itraconazol, atazanavir", efeito:"↓ absorção dessas drogas (requerem pH ácido). EVITAR."},
+{droga:"Levotiroxina", efeito:"↓ absorção 30-50% em uso crônico — separar e/ou aumentar dose levotiroxina."},
+{droga:"Metotrexato (alta dose)", efeito:"↑ MTX — toxicidade. Suspender IBP em ciclos altos."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Cefaleia, diarreia, dor abdominal, náusea, constipação, flatulência"},
+{tipo:"sério", item:"⚠ USO CRÔNICO (>1 ano): ↓ B12 (anemia macrocítica, neuropatia), ↓ Mg (arritmias), ↓ Ca/fratura osteoporótica, ↑ pneumonia comunitária e nosocomial, ↑ C. difficile, ↑ IRC e nefrite intersticial aguda, possível ↑ demência (controverso)"},
+{tipo:"raro", item:"Reação de hipersensibilidade, hepatite, pancreatite, pólipos de glândulas fúndicas (benignos, regridem com suspensão)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"NEFRITE INTERSTICIAL AGUDA — pode causar IRA em paciente em IBP. Suspeitar se creatinina sobe sem outra explicação. Suspender + avaliar."},
+{nivel:"warn", txt:"TIMING É CRÍTICO: tomar 30-60 MIN ANTES DO CAFÉ. Tomar à noite/junto/após reduz eficácia em 40%."},
+{nivel:"warn", txt:"USO CRÔNICO — aplicar PREVENÇÃO QUATERNÁRIA: reavaliar periodicamente. Riscos: ↓ B12/Mg/Ca, ↑ pneumonia, ↑ C. difficile, ↑ IRC, possíveis efeitos cognitivos."},
+{nivel:"warn", txt:"COM CLOPIDOGREL: PREFERIR PANTOPRAZOL (omeprazol inibe ativação do clopidogrel via CYP2C19)."},
+{nivel:"warn", txt:"COM LEVOTIROXINA: omeprazol ↓ absorção 30-50%. Em uso crônico de ambos: separar 4h ou pode necessitar dose maior de levotiroxina."},
+{nivel:"warn", txt:"SUSPENSÃO ABRUPTA causa REBOTE ÁCIDO (hipergastrinemia compensatória). Reduzir GRADUALMENTE — meia dose por 2 sem → dias alternados → sob demanda."},
+{nivel:"info", txt:"GESTAÇÃO categoria C — preferir PANTOPRAZOL (B). MEV + antiácidos/sucralfato como 1ª escolha em gestante."},
+{nivel:"info", txt:"H. PYLORI: confirmar erradicação 4-8 sem após término do esquema. Suspender IBP 2 sem antes do teste (falso negativo)."},
+],
+
+preparo:"VO cápsula, 30-60 min antes do café, com água. Engolir INTEIRA (não abrir/triturar — formulação gastrorresistente).",
+monitor:"Em uso crônico: B12 anual, Mg em sintomas/AINE/diurético, função renal. TGO/TGP basal.",
+diretriz:"AGA 2022. ACG DRGE 2022. Maastricht VI (H. pylori). FDA 2009/2020 (alertas crônicos).",
+fluxo:null, calcs:[],
+},
+
+{id:"med-pantoprazol", classe:"Inibidor de Bomba de Prótons (IBP)", grupo:"gi",
+nome:"Pantoprazol",
+sin:["Pantozol","Pantoc","Pantogut"],
+formas:["Comprimidos 20 mg, 40 mg — privada / alguns estados SUS","Frasco-ampola IV 40 mg"],
+resumo:"IBP de PERFIL DE INTERAÇÃO MAIS BAIXO. PREFERIDO em paciente em uso de clopidogrel, varfarina, citalopram. Categoria B na gestação. Único IBP IV com perfil bem definido para HDA.",
+dose_rapida:"40 mg VO 1×/d em jejum (30-60 min antes do café)",
+
+doses:[
+{ind:"DRGE / esofagite", dose:"40 mg VO 1×/d × 4-8 sem", obs:"Manutenção 20-40 mg/d."},
+{ind:"Erradicação H. pylori", dose:"40 mg 12/12h + amoxicilina 1g 12/12h + claritromicina 500 mg 12/12h × 14 dias", obs:""},
+{ind:"HDA (alto risco rebleed pós-endoscopia)", dose:"80 mg IV bolus + 8 mg/h × 72h", obs:"Após endoscopia. IV preferido nas primeiras 72h."},
+{ind:"Profilaxia úlcera por estresse (UTI)", dose:"40 mg IV 1×/d ou 20 mg VO/SNG", obs:"Em paciente em VM, anticoagulação, choque, coagulopatia."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave: máx 20 mg/d.",
+idoso:"Sem ajuste rotineiro.",
+gestante:"CATEGORIA B — PREFERIDO entre IBPs em gestação.",
+aleita:"Compatível.",
+ped:"≥5 anos: 20-40 mg/d.",
+},
+
+mecanismo:"Mesmo do omeprazol — inibe H+/K+ ATPase. DIFERENÇAS: menor metabolismo via CYP2C19 → menos interações medicamentosas. Ativado apenas em pH muito baixo (mais seletivo).",
+
+farmacocin:{
+absorc:"VO: 77%",
+distrib:"Pouca BBB",
+metab:"Hepático CYP2C19 e CYP3A4 (mais balanceado — menos polimorfismo)",
+elimin:"Renal (80%)",
+meiavida:"1-2h (efeito 24h)",
+ligacao:"98%",
+},
+
+espectro:["DRGE / esofagite","Úlcera péptica","H. pylori","HDA","Profilaxia úlcera estresse (UTI)","Sd Zollinger-Ellison"],
+
+interacoes:[
+{droga:"Clopidogrel", efeito:"INTERAÇÃO MÍNIMA — PREFERIDO vs omeprazol em paciente em DAPT pós-IAM/AVC."},
+{droga:"Varfarina", efeito:"Mínima interação."},
+{droga:"Cetoconazol, atazanavir", efeito:"↓ absorção dessas drogas — evitar."},
+{droga:"Levotiroxina", efeito:"↓ absorção (similar ao omeprazol — separar)."},
+{droga:"Metotrexato dose alta", efeito:"↑ MTX — cuidado."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Similar omeprazol — cefaleia, diarreia, dor abdominal, náusea"},
+{tipo:"sério", item:"Riscos de uso crônico iguais aos demais IBPs"},
+{tipo:"raro", item:"Nefrite intersticial, hepatite"},
+],
+
+alertas:[
+{nivel:"warn", txt:"PREFERIR pantoprazol em: clopidogrel, varfarina, citalopram (menos interação CYP)."},
+{nivel:"warn", txt:"Mesmas precauções dos demais IBPs em uso crônico (B12, Mg, Ca, pneumonia, C. difficile, IRC)."},
+{nivel:"info", txt:"CATEGORIA B — preferido em gestação entre IBPs (omeprazol é C, esomeprazol B em outros guidelines)."},
+{nivel:"info", txt:"IV: mais usado em UTI para profilaxia de úlcera de estresse e em HDA."},
+],
+
+preparo:"VO comprimido, jejum, 30-60 min antes café. IV: diluir em 100 mL SF/SG5%, infundir 15-30 min.",
+monitor:"Em uso crônico: B12, Mg, função renal.",
+diretriz:"AGA. ACG. Maastricht VI.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-esomeprazol", classe:"Inibidor de Bomba de Prótons (IBP) — S-isômero do omeprazol", grupo:"gi",
+nome:"Esomeprazol",
+sin:["Nexium","Esopraz"],
+formas:["Comprimidos / cápsulas 20 mg, 40 mg — privada","Frasco-ampola IV 40 mg"],
+resumo:"S-isômero (esquerdo) do omeprazol — eficácia ligeiramente maior por menor metabolismo. Mais caro. Em prática, evidência de superioridade clínica é modesta vs omeprazol/pantoprazol.",
+dose_rapida:"20-40 mg VO 1×/d em jejum",
+
+doses:[
+{ind:"DRGE / esofagite", dose:"20-40 mg VO 1×/d × 4-8 sem", obs:""},
+{ind:"Erradicação H. pylori", dose:"20-40 mg 12/12h + esquema combinado × 14 dias", obs:""},
+{ind:"HDA", dose:"80 mg IV bolus + 8 mg/h × 72h", obs:""},
+],
+
+ajustes:{
+irc:"Sem ajuste.",
+iht:"IH grave: máx 20 mg/d.",
+idoso:"Sem ajuste.",
+gestante:"Categoria B (alguns guidelines) — alternativa ao pantoprazol.",
+aleita:"Compatível.",
+ped:"≥1 ano: dose por peso.",
+},
+
+mecanismo:"S-enantiomer do omeprazol — mesma ação. Vantagem teórica: AUC ligeiramente maior por menor metabolismo CYP2C19. Vantagem clínica modesta.",
+
+farmacocin:{
+absorc:"VO: 64-90% (maior que omeprazol)",
+distrib:"Pouca BBB",
+metab:"Hepático CYP2C19 (menor que omeprazol) + CYP3A4",
+elimin:"Renal (80%)",
+meiavida:"1-1,5h",
+ligacao:"97%",
+},
+
+espectro:["DRGE","Úlcera péptica","H. pylori","HDA"],
+
+interacoes:[
+{droga:"Clopidogrel", efeito:"Interação menor que omeprazol mas existe — pantoprazol é melhor escolha em DAPT."},
+{droga:"Cetoconazol, atazanavir", efeito:"↓ absorção."},
+{droga:"Levotiroxina", efeito:"↓ absorção."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Similar omeprazol"},
+{tipo:"sério", item:"Riscos uso crônico iguais"},
+{tipo:"raro", item:"Nefrite intersticial"},
+],
+
+alertas:[
+{nivel:"warn", txt:"BENEFÍCIO sobre omeprazol é MODESTO em estudos. Custo significativamente maior. Em SUS, omeprazol é padrão."},
+{nivel:"warn", txt:"Mesmas precauções de uso crônico dos demais IBPs."},
+],
+
+preparo:"VO comprimido em jejum, 30-60 min antes café.",
+monitor:"Uso crônico: B12, Mg.",
+diretriz:"AGA. ACG.",
+fluxo:null, calcs:[],
+},
+
+/* ============== BLOQUEADOR H2 ============== */
+
+{id:"med-famotidina", classe:"Bloqueador H2 — receptor histamínico H2 das células parietais", grupo:"gi",
+nome:"Famotidina",
+sin:["Famox","Famodin","Famotec"],
+formas:["Comprimidos 20 mg, 40 mg — privada","Frasco-ampola IV 20 mg"],
+resumo:"BLOQUEADOR H2 PREFERIDO desde retirada da ranitidina (2020 — contaminação NDMA). Menos potente que IBP. ÚTIL: sintomas noturnos breakthrough, dose sob demanda, intolerância a IBP.",
+dose_rapida:"20-40 mg VO 12/12h OU 40 mg VO à noite",
+
+doses:[
+{ind:"DRGE leve / sintomas breakthrough", dose:"20 mg VO 12/12h (manhã + noite) OU 40 mg à noite", obs:"Início de ação 30-60 min. Útil para sintomas previsíveis (após refeição, atividade física)."},
+{ind:"Manutenção pós-úlcera duodenal", dose:"20-40 mg/d à noite", obs:""},
+{ind:"Profilaxia úlcera de estresse (UTI)", dose:"20 mg IV 12/12h (alternativa a IBP)", obs:"Cautela: taquifilaxia em uso prolongado."},
+{ind:"Pediatria", dose:"0,5-1 mg/kg/d divididos 1-2× (máx 40 mg/d)", obs:""},
+],
+
+ajustes:{
+irc:"TFG <50: reduzir dose 50%. TFG <10: reduzir 75%.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Cautela — ajustar por função renal. Risco confusão/delirium em idoso com IRC.",
+gestante:"Categoria B — preferida entre H2.",
+aleita:"Compatível.",
+ped:"≥1 ano.",
+},
+
+mecanismo:"Antagonista competitivo do receptor H2 na célula parietal gástrica → reduz secreção ácida. Eficácia ~60-80% inferior ao IBP. Início rápido (30-60 min), pico em 1-3h.",
+
+farmacocin:{
+absorc:"VO: 40-50%",
+distrib:"Pouca BBB",
+metab:"Hepático mínimo (30%)",
+elimin:"Renal (70% inalterado)",
+meiavida:"3-4h",
+ligacao:"15-20%",
+},
+
+espectro:["DRGE leve / breakthrough","Úlcera péptica (manutenção)","Profilaxia úlcera estresse","Dispepsia funcional"],
+
+interacoes:[
+{droga:"Cetoconazol, itraconazol, atazanavir", efeito:"↓ absorção (precisam pH ácido) — separar 2-4h."},
+{droga:"AAS dose alta", efeito:"Pode mascarar sintomas de úlcera."},
+{droga:"Tacrolimus", efeito:"↑ tacrolimus em alguns relatos."},
+],
+
+efeitos:[
+{tipo:"comum", item:"GERALMENTE BEM TOLERADO — cefaleia leve, diarreia, constipação"},
+{tipo:"sério", item:"Em IRC sem ajuste: CONFUSÃO MENTAL, delirium (especialmente idoso)"},
+{tipo:"raro", item:"Trombocitopenia, agranulocitose (raras), bradicardia, prolongamento QT (raro)"},
+],
+
+alertas:[
+{nivel:"warn", txt:"RANITIDINA foi RETIRADA do mercado globalmente em 2020 (NDMA — N-nitrosodimetilamina, contaminante carcinogênico). USAR FAMOTIDINA como substituta."},
+{nivel:"warn", txt:"TAQUIFILAXIA: H2 perdem eficácia em 2-6 semanas de uso contínuo. Usar sob demanda ou intermitente, não contínuo crônico."},
+{nivel:"warn", txt:"AJUSTE EM IRC é OBRIGATÓRIO — sem ajuste causa CONFUSÃO/DELIRIUM em idoso."},
+{nivel:"info", txt:"VANTAGENS sobre IBP: início rápido (30 min), bom para sintomas previsíveis, perfil de segurança em uso intermitente, alternativa em intolerância a IBP."},
+{nivel:"info", txt:"NÃO substitui IBP em DRGE moderada/grave ou esofagite erosiva."},
+],
+
+preparo:"VO comprimido, com ou sem alimento. IV: diluir em 100 mL SF, infundir 15-30 min.",
+monitor:"Função renal em uso prolongado.",
+diretriz:"AGA. ACG. ANVISA 2020 (alerta ranitidina).",
+fluxo:null, calcs:[],
+},
+
+/* ============== SUCRALFATO ============== */
+
+{id:"med-sucralfato", classe:"Citoprotetor — sal de alumínio + sacarose sulfatada", grupo:"gi",
+nome:"Sucralfato",
+sin:["Sucrafilm","Sucrate"],
+formas:["Comprimidos 1 g — privada / SUS variável","Suspensão oral 200 mg/mL"],
+resumo:"Forma BARREIRA PROTETORA sobre lesão (úlcera) sem alterar pH. ÚTIL em: gestação (categoria B), esofagite erosiva, úlcera por estresse, refluxo biliar. Tomar SEPARADO de outras drogas.",
+dose_rapida:"1 g VO 6/6h OU 4/4h (antes refeições + ao deitar)",
+
+doses:[
+{ind:"Úlcera péptica ativa", dose:"1 g VO 6/6h × 4-8 sem", obs:"30 min antes refeições + ao deitar. Pode usar 2 g 12/12h."},
+{ind:"Esofagite erosiva", dose:"1 g VO 4-6h × 6-8 sem", obs:"Bom adjuvante ao IBP em casos refratários."},
+{ind:"Profilaxia úlcera estresse (alternativa)", dose:"1 g 6/6h VO/SNG", obs:"Menos efetivo que IBP. Usado quando IBP contraindicado."},
+{ind:"Refluxo biliar gastrite", dose:"1 g 6/6h", obs:"Útil — IBP não trata bile."},
+{ind:"Estomatite / mucosite por radioterapia", dose:"1 g/10 mL bochechar 4-6×/d", obs:"Off-label, evidência em RT cabeça-pescoço."},
+],
+
+ajustes:{
+irc:"TFG <30: usar com cautela ou evitar (acúmulo de alumínio — encefalopatia, osteomalacia).",
+iht:"Sem ajuste.",
+idoso:"Cautela em IRC (alumínio).",
+gestante:"CATEGORIA B — PREFERIDO em gestante (absorção sistêmica mínima).",
+aleita:"Compatível.",
+ped:"Dose por peso (40-80 mg/kg/d divididos 4×).",
+},
+
+mecanismo:"Em meio ÁCIDO forma um GEL VISCOSO que adere a base de úlcera/erosão (~6h proteção). Estimula produção local de prostaglandinas e bicarbonato. NÃO modifica pH gástrico — ação puramente LOCAL/BARREIRA.",
+
+farmacocin:{
+absorc:"VO: <5% (ação local, absorção sistêmica mínima — vantagem em gestação)",
+distrib:"Local — não distribui",
+metab:"Não metabolizado",
+elimin:"Fezes (alumínio absorvido: renal — preocupação em IRC)",
+meiavida:"6h proteção local",
+ligacao:"Local",
+},
+
+espectro:["Úlcera péptica","Esofagite erosiva","Refluxo biliar","Profilaxia úlcera estresse (alternativa)","Gestação (1ª linha)","Mucosite (off-label)"],
+
+interacoes:[
+{droga:"⚠ INTERAGE COM QUASE TUDO — reduz absorção", efeito:"Levotiroxina, fluoroquinolonas, tetraciclinas, varfarina, digoxina, fenitoína, ranitidina, cetoconazol. SEPARAR ≥2h."},
+{droga:"Antiácidos", efeito:"↓ eficácia do sucralfato (precisa de pH ácido para gel). Separar 30 min."},
+],
+
+efeitos:[
+{tipo:"comum", item:"CONSTIPAÇÃO (efeito mais comum — 2-15%), náusea leve, gosto metálico"},
+{tipo:"sério", item:"Em IRC: encefalopatia por alumínio, osteomalacia"},
+{tipo:"raro", item:"Bezoar (em UTI com SNG, raramente)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"IRC TFG <30: EVITAR ou usar com extrema cautela — risco de encefalopatia por alumínio e osteomalacia."},
+{nivel:"warn", txt:"INTERAGE COM QUASE TUDO — orientar paciente: tomar sucralfato 2h antes ou após qualquer outra medicação. Levotiroxina é particularmente afetada."},
+{nivel:"warn", txt:"TOMAR ANTES DAS REFEIÇÕES (30 min) — precisa pH ácido para formar gel. Antiácido inibe ação."},
+{nivel:"info", txt:"GESTAÇÃO categoria B — preferido por absorção mínima. Bom para esofagite de gestação."},
+{nivel:"info", txt:"CONSTIPAÇÃO é o efeito mais comum — orientar hidratação, fibras."},
+],
+
+preparo:"VO comprimido 30 min antes refeições + ao deitar (estômago vazio). Suspensão: agitar bem antes.",
+monitor:"Em IRC: níveis de alumínio se uso prolongado.",
+diretriz:"AGA. ACG.",
+fluxo:null, calcs:[],
+},
+
+/* ============== ALOPURINOL ============== */
+
+{id:"med-alopurinol", classe:"Inibidor da xantina oxidase — hipouricemiante", grupo:"ost",
+nome:"Alopurinol",
+sin:["Zyloric","Alopurin"],
+formas:["Comprimidos 100 mg, 300 mg — SUS/REMUME amplo"],
+resumo:"1ª LINHA em gota crônica (>90% dos casos). Reduz síntese de ácido úrico. INICIAR DOSE BAIXA + TITULAR. Risco RARO de DRESS/SSJ/NET — RASH = SUSPENDER. NUNCA combinar com azatioprina.",
+dose_rapida:"Iniciar 100 mg/d, titular 100 mg cada 2-4 sem até meta (3-600 mg/d habitual)",
+
+doses:[
+{ind:"Gota crônica (manutenção)", dose:"INICIAR 100 mg VO 1×/d × 2-4 sem", obs:"NÃO INICIAR durante crise aguda (pode prolongar). Se em uso: MANTER."},
+{ind:"Titulação", dose:"Aumentar 100 mg cada 2-4 sem até meta (ácido úrico <6 mg/dL ou <5 em tofácea)", obs:"Dose habitual 300-600 mg/d. Dose máxima 800 mg/d. Maioria fica com 300 mg/d."},
+{ind:"Gota + IRC TFG 30-60", dose:"INICIAR 50 mg/d, titular mais devagar", obs:"Pode atingir 300-600 mg/d com cuidado — não há limite absoluto baseado em TFG."},
+{ind:"Gota + IRC TFG <30", dose:"INICIAR 50 mg em dias alternados, titular muito devagar", obs:"Atingir meta com monitoramento."},
+{ind:"Profilaxia sd lise tumoral (pré-quimioterapia)", dose:"600 mg/d × 2-3 dias antes da QT, manter 300 mg/d durante", obs:"Alternativa: rasburicase em alto risco."},
+{ind:"Nefrolitíase úrica (sem gota)", dose:"100-300 mg/d", obs:"Junto com alcalinização urinária."},
+],
+
+ajustes:{
+irc:"TFG 30-60: iniciar 50 mg/d. TFG <30: 50 mg em dias alternados. Titular muito devagar. HD: 100 mg pós-diálise.",
+iht:"IH grave: cautela.",
+idoso:"Iniciar 50 mg/d, titular devagar.",
+gestante:"Categoria C — geralmente suspender. Em casos refratários: discutir individualizado.",
+aleita:"Excretado em leite — evitar.",
+ped:"Síndrome lise tumoral / hiperuricemia: 10 mg/kg/d.",
+},
+
+mecanismo:"Inibe XANTINA OXIDASE → bloqueia conversão hipoxantina → xantina → ácido úrico → ↓ síntese de urato. Metabolizado em OXIPURINOL (também ativo, meia-vida muito longa — 18-30h).",
+
+farmacocin:{
+absorc:"VO: 80-90%",
+distrib:"Ampla, atravessa BBB",
+metab:"Hepático → oxipurinol (metabólito ativo, eliminação renal lenta)",
+elimin:"Renal (oxipurinol 70%)",
+meiavida:"1-3h alopurinol, 18-30h oxipurinol",
+ligacao:"Baixa (<5%)",
+},
+
+espectro:["Gota crônica (1ª linha)","Hiperuricemia secundária (lise tumoral, quimioterapia)","Nefrolitíase úrica","Síndrome de Lesch-Nyhan"],
+
+interacoes:[
+{droga:"⚠ AZATIOPRINA, 6-MERCAPTOPURINA", efeito:"CONTRAINDICAÇÃO ABSOLUTA — alopurinol inibe xantina oxidase que metaboliza azatioprina → ↑↑ azatioprina → toxicidade hematológica grave (mielossupressão fatal). Se essencial usar: reduzir azatioprina a 25-33% da dose."},
+{droga:"Varfarina", efeito:"↑ INR — monitor."},
+{droga:"Ciclosporina, teofilina", efeito:"↑ níveis — monitorar."},
+{droga:"Tiazídicos, IECA", efeito:"↑ risco rash/hipersensibilidade ao alopurinol — cautela."},
+{droga:"Ampicilina/amoxicilina", efeito:"↑ rash."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Rash leve (2-5%), GI (náusea, diarreia), cefaleia"},
+{tipo:"sério", item:"⚠ SÍNDROME DE HIPERSENSIBILIDADE AO ALOPURINOL (AHS) — DRESS, SSJ, NET: RARO MAS POTENCIALMENTE FATAL (mortalidade até 25%). Início 2-8 sem após início. Risco: HLA-B*5801 (asiáticos), IRC, tiazídico"},
+{tipo:"raro", item:"Hepatotoxicidade, vasculite, pancitopenia, eosinofilia, nefrite intersticial"},
+],
+
+alertas:[
+{nivel:"crit", txt:"AZATIOPRINA / 6-MP: CONTRAINDICAÇÃO ABSOLUTA — toxicidade hematológica grave/fatal. Se essencial coadministrar: azatioprina a 25-33% da dose habitual + monitor rigoroso."},
+{nivel:"crit", txt:"AHS / DRESS / SSJ / NET: raro mas FATAL. SUSPENDER IMEDIATAMENTE ao primeiro sinal de rash, febre, eosinofilia, alteração hepática. NÃO reiniciar após reação grave."},
+{nivel:"crit", txt:"HLA-B*5801 em ASIÁTICOS (chineses Han, coreanos, tailandeses, indígenas americanos): testar antes de iniciar — alta especificidade para SSJ/NET. Brasileiros: considerar em descendentes asiáticos."},
+{nivel:"warn", txt:"NÃO INICIAR durante crise aguda — pode prolongar. Iniciar 2-4 sem após resolução da crise. Se paciente JÁ em uso: MANTER (não suspender)."},
+{nivel:"warn", txt:"PROFILAXIA com colchicina 0,6 mg/d (3-6 meses) ao iniciar alopurinol — previne crises por mobilização de cristais."},
+{nivel:"warn", txt:"IRC: ajustar dose. Estudo AASK + outros não mostraram alopurinol prevenindo progressão de DRC — não usar para esse fim."},
+{nivel:"info", txt:"META de ácido úrico: <6 mg/dL geral, <5 em tofácea/refratária. Sem ajuste pela meta, alta taxa de falha."},
+],
+
+preparo:"VO comprimido, após refeições, com bastante água. Hidratação ≥2L/d.",
+monitor:"Ácido úrico cada 2-4 sem durante titulação, 6/6m estável. Hemograma, função renal, TGO/TGP basal + 3/3m no 1º ano.",
+diretriz:"ACR 2020. EULAR 2016+update. ANVISA. CARES trial (segurança CV).",
+fluxo:null, calcs:[],
+},
+
+/* ============== FEBUXOSTATE ============== */
+
+{id:"med-febuxostate", classe:"Inibidor seletivo não-purínico da xantina oxidase", grupo:"ost",
+nome:"Febuxostate",
+sin:["Adenuric","Uloric"],
+formas:["Comprimidos 40 mg, 80 mg, 120 mg — privada"],
+resumo:"2ª linha em gota — intolerância ou refratariedade ao alopurinol. Vantagem: eliminação hepática (menos ajuste em IRC). ⚠ CARES trial: ↑ mortalidade CV em paciente com DCV vs alopurinol — preferir alopurinol em paciente CV.",
+dose_rapida:"40-80 mg VO 1×/d",
+
+doses:[
+{ind:"Gota crônica (intolerância ao alopurinol ou refratariedade)", dose:"40 mg VO 1×/d × 2-4 sem; se não atingir meta, aumentar para 80 mg/d", obs:"Máx 120 mg/d em refratária."},
+{ind:"Gota + IRC", dose:"Sem ajuste rotineiro até TFG ~30. TFG <30: cautela", obs:"Vantagem sobre alopurinol em IRC moderada."},
+],
+
+ajustes:{
+irc:"TFG ≥30: sem ajuste. TFG 15-29: máx 40 mg/d. TFG <15: evitar.",
+iht:"IH leve-moderada: sem ajuste. IH grave: evitar.",
+idoso:"Sem ajuste rotineiro.",
+gestante:"Categoria C — evitar.",
+aleita:"Evitar.",
+ped:"Não estabelecido.",
+},
+
+mecanismo:"Inibidor SELETIVO da xantina oxidase (XO) — bloqueia tanto a forma oxidada quanto a reduzida (alopurinol bloqueia só a reduzida). NÃO inibe outras enzimas do metabolismo de purinas → MENOS efeito sobre azatioprina (mas ainda CONTRAINDICADO em combinação por precaução).",
+
+farmacocin:{
+absorc:"VO: 50%",
+distrib:"Ampla",
+metab:"Hepático (glucuronidação) — vantagem em IRC",
+elimin:"Hepática (50%) + Renal (50%)",
+meiavida:"5-8h",
+ligacao:"99%",
+},
+
+espectro:["Gota crônica (2ª linha após alopurinol)","Intolerância ao alopurinol","Refratariedade","Síndrome lise tumoral (alternativa a alopurinol/rasburicase)"],
+
+interacoes:[
+{droga:"⚠ Azatioprina, 6-mercaptopurina", efeito:"CONTRAINDICAÇÃO por precaução — embora interação seja menor que com alopurinol, há relatos de toxicidade."},
+{droga:"Teofilina", efeito:"↑ teofilina."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Náusea, artralgia, ↑ TGO/TGP leve, rash"},
+{tipo:"sério", item:"⚠ ↑ MORTALIDADE CV em paciente com DCV estabelecida (CARES trial 2018 vs alopurinol)"},
+{tipo:"raro", item:"Hepatotoxicidade grave, SSJ/NET (raros mas descritos), trombose"},
+],
+
+alertas:[
+{nivel:"crit", txt:"⚠ CARES trial (NEJM 2018): febuxostate ↑ mortalidade CV em 22% vs alopurinol em paciente com DCV estabelecida. FDA emitiu black box. PREFERIR ALOPURINOL em paciente CV."},
+{nivel:"crit", txt:"AZATIOPRINA/6-MP: contraindicação por precaução (mesma razão do alopurinol)."},
+{nivel:"warn", txt:"Mesmas precauções: NÃO iniciar durante crise. Profilaxia com colchicina 3-6 meses. Suspender se rash significativo."},
+{nivel:"warn", txt:"HEPATOTOXICIDADE: monitor TGO/TGP basal + 2-4 sem + periodicamente. Suspender se ↑3× LSN."},
+{nivel:"info", txt:"VANTAGEM sobre alopurinol em IRC (menos ajuste). Custo significativamente maior — restringir a casos selecionados."},
+],
+
+preparo:"VO comprimido, qualquer hora, com ou sem alimento.",
+monitor:"Ácido úrico, hemograma, TGO/TGP, função renal e CV.",
+diretriz:"ACR 2020. EULAR. CARES trial 2018. FDA Black Box 2019.",
+fluxo:null, calcs:[],
+},
+
+/* ============== COLCHICINA ============== */
+
+{id:"med-colchicina", classe:"Alcaloide — anti-inflamatório (inibidor microtúbulos)", grupo:"ost",
+nome:"Colchicina",
+sin:["Colchis","Colcrys"],
+formas:["Comprimidos 0,5 mg, 1 mg — SUS/REMUME (0,5 mg)"],
+resumo:"Anti-inflamatório SELETIVO para CRISTALOPATIAS (gota, pseudogota, FMF — febre familiar mediterrânea, pericardite). ESQUEMA MODERNO low-dose. Janela terapêutica estreita — TOXICIDADE GRAVE em sobredosagem.",
+dose_rapida:"1,2 mg ATAQUE + 0,6 mg em 1h → 0,6 mg 12/12h × 5-7d (esquema moderno)",
+
+doses:[
+{ind:"Crise gotosa aguda (ESQUEMA MODERNO low-dose — ACR 2020)", dose:"1,2 mg VO ataque + 0,6 mg em 1h → 0,6 mg 12/12h × 5-7 dias", obs:"⚠ NÃO USAR ESQUEMA ANTIGO (0,6 mg de hora em hora até diarreia ou 6 mg total) — abandonado por toxicidade. Estudo AGREE confirmou eficácia similar com muito menos efeitos GI."},
+{ind:"Profilaxia ao iniciar hipouricemiante", dose:"0,6 mg VO 1×/d × 3-6 MESES", obs:"Reduz crises de mobilização. Sem isso, ~40% têm crise no início."},
+{ind:"Profilaxia crônica em gota refratária", dose:"0,6 mg/d", obs:""},
+{ind:"FMF (febre familiar mediterrânea)", dose:"1,2-2,4 mg/d divididos 2×", obs:"Tratamento crônico previne crises e amiloidose secundária."},
+{ind:"Pericardite (idiopática, pós-IAM)", dose:"0,6 mg 12/12h × 3 meses (aguda) ou 6 meses (recorrente)", obs:"Adicionar a AINE/AAS. COPE, ICAP, CORP-2 trials."},
+{ind:"Pseudogota (CPPD)", dose:"Mesmo esquema da gota", obs:""},
+{ind:"Doença de Behçet (manifestações cutâneas/articulares)", dose:"1-2 mg/d", obs:"Off-label, evidência."},
+],
+
+ajustes:{
+irc:"TFG 30-60: máx 1,2 mg/d. TFG <30: 0,3 mg/d ou contraindicado. HD: evitar.",
+iht:"IH grave (Child C): contraindicada. Child A/B: cautela, reduzir dose.",
+idoso:"Cautela — toxicidade mais frequente. Ajustar por função renal.",
+gestante:"Categoria C — geralmente evitar (mas usada em FMF gestante sob supervisão).",
+aleita:"Geralmente evitar (presente em leite).",
+ped:"Doses específicas para FMF (uso especializado).",
+},
+
+mecanismo:"Liga-se a TUBULINA → inibe polimerização de microtúbulos → bloqueia migração e fagocitose de neutrófilos → ↓ inflamação induzida por cristais. NÃO afeta urato sérico. EFEITO ANTIINFLAMATÓRIO SELETIVO para cristalopatias.",
+
+farmacocin:{
+absorc:"VO: 45%",
+distrib:"Concentra em leucócitos (intracellular) — meia-vida intracelular >24h",
+metab:"Hepático (CYP3A4) — ALTAMENTE SENSÍVEL a interações via CYP3A4 e P-gp",
+elimin:"Biliar (80%) + Renal (20%)",
+meiavida:"20-40h (mas efeito intracelular mais longo)",
+ligacao:"30-50%",
+},
+
+espectro:["Crise gotosa aguda","Profilaxia gota","FMF (febre familiar mediterrânea)","Pericardite (aguda + recorrente)","Pseudogota (CPPD)","Doença de Behçet (off-label)","Pericardite COVID/pós-IAM (uso restrito)"],
+
+interacoes:[
+{droga:"⚠ ESTATINAS (atorvastatina, sinvastatina, rosuvastatina)", efeito:"↑↑ risco de miopatia/rabdomiólise. Cautela em uso conjunto."},
+{droga:"⚠ CLARITROMICINA, eritromicina, telitromicina", efeito:"↑↑ colchicina (inibe CYP3A4 + P-gp) — pode causar INTOXICAÇÃO FATAL. EVITAR ou reduzir colchicina drasticamente."},
+{droga:"⚠ CICLOSPORINA, tacrolimus", efeito:"↑↑ colchicina — toxicidade. Evitar."},
+{droga:"⚠ DILTIAZEM, VERAPAMIL", efeito:"↑ colchicina (CYP3A4) — reduzir dose."},
+{droga:"Cetoconazol, itraconazol, ritonavir, atazanavir", efeito:"↑↑ colchicina — evitar ou reduzir."},
+{droga:"Suco de toranja", efeito:"↑ colchicina — evitar quantidade grande."},
+{droga:"Digoxina, fibratos", efeito:"↑ risco miopatia."},
+],
+
+efeitos:[
+{tipo:"comum", item:"GI (DIARREIA — 23% no esquema moderno, mas era 80% no antigo): náusea, vômito, dor abdominal — frequente, dose-dependente"},
+{tipo:"sério", item:"⚠ TOXICIDADE GRAVE em sobredosagem (acidental ou interação): MIELOSSUPRESSÃO (pancitopenia), neuropatia/miopatia, rabdomiólise, hepatotoxicidade, IRA, choque, FALÊNCIA MÚLTIPLA — sem antídoto, mortalidade alta em ingestão >0,8 mg/kg"},
+{tipo:"raro", item:"Alopecia (uso prolongado), ↑ CK (miopatia silenciosa), hipospermia"},
+],
+
+alertas:[
+{nivel:"crit", txt:"⚠ JANELA TERAPÊUTICA MUITO ESTREITA — toxicidade grave em sobredosagem. Ingestão >0,5 mg/kg = INTOXICAÇÃO GRAVE; >0,8 mg/kg pode ser FATAL (sem antídoto). Idoso/IRC: muito mais sensível."},
+{nivel:"crit", txt:"⚠ INTERAÇÃO CLARITROMICINA + COLCHICINA = INTOXICAÇÃO POTENCIALMENTE FATAL (CYP3A4 + P-gp). EVITAR combinação especialmente em IRC. Casos fatais documentados."},
+{nivel:"crit", txt:"ESQUEMA ANTIGO (até diarreia ou 6 mg total) FOI ABANDONADO — toxicidade inaceitável. USAR ESQUEMA LOW-DOSE 1,2 + 0,6 + 0,6 12/12h."},
+{nivel:"warn", txt:"AJUSTE EM IRC é CRÍTICO — TFG 30-60: máx 1,2 mg/d; TFG <30: 0,3 mg/d ou evitar. HD: contraindicada (não dialisa)."},
+{nivel:"warn", txt:"INTERAÇÃO COM ESTATINAS: risco miopatia adicional. Monitor CPK em uso prolongado conjunto."},
+{nivel:"warn", txt:"DIARREIA é SINAL DE TOXICIDADE — suspender e reavaliar. NÃO é meta terapêutica (era no esquema antigo)."},
+{nivel:"info", txt:"USO EM PERICARDITE: trials COPE, ICAP, CORP-2 estabeleceram benefício — pode prescrever em emergência pós-IAM ou pericardite idiopática."},
+{nivel:"info", txt:"COVID: COLCORONA trial (2021) — benefício modesto em paciente ambulatorial. NÃO é tratamento padrão atual."},
+],
+
+preparo:"VO comprimido, com ou sem alimento (com alimento se GI).",
+monitor:"Hemograma + CPK + função renal/hepática periodicamente em uso crônico.",
+diretriz:"ACR Gout 2020 + AGREE trial. ESC Pericardite 2015 (COPE, ICAP, CORP-2). FMF guidelines.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 11)
+   Bloco C — Vitaminas
+   Colecalciferol (D3) + Calcitriol + Cianocobalamina (B12)
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== VITAMINA D ============== */
+
+{id:"med-colecalciferol", classe:"Vitamina D3 (forma natural, animal)", grupo:"endocrino",
+nome:"Colecalciferol (Vit D3)",
+sin:["DePura","Adoxy","Iruxol","D3","Addera D3"],
+formas:["Cápsulas / drágeas 1.000 UI, 2.000 UI, 7.000 UI, 50.000 UI","Solução oral 200 UI/gota; 2000 UI/mL","SUS REMUME variável — algumas unidades têm colecalciferol 50.000 UI"],
+resumo:"Vitamina D3 = forma natural (vs ergocalciferol/D2 = vegetal/sintética). PREFERIDA por meia-vida mais longa e maior eficácia. Pró-hormônio — ativado em fígado (25-OH) e rim (1,25-OH). Suplementação NÃO substitui exposição solar regular.",
+dose_rapida:"1.000-2.000 UI VO 1×/d manutenção; 50.000 UI/sem × 8-12 sem em deficiência",
+
+doses:[
+{ind:"Deficiência <20 ng/mL (adulto) — ATAQUE", dose:"50.000 UI VO 1×/semana × 8-12 semanas (até 25-OH vit D >30 ng/mL)", obs:"Alternativa diária: 7.000-10.000 UI/d × 8-12 sem. Reavaliar nível 3 meses após início."},
+{ind:"Manutenção pós-deficiência", dose:"1.000-2.000 UI VO 1×/d (ou 7.000-14.000 UI 1×/sem)", obs:"Continuar em grupos de risco (idoso, malabsorção, fototipo escuro, baixa exposição solar)."},
+{ind:"Profilaxia em grupo de risco", dose:"1.000-2.000 UI VO 1×/d", obs:""},
+{ind:"Idoso ≥65a — prevenção quedas/fraturas", dose:"800-1.000 UI VO 1×/d + cálcio se ingesta dietética insuficiente", obs:"Reduz quedas e fraturas em meta-análises (efeito modesto)."},
+{ind:"Gestante / lactante", dose:"600-2.000 UI VO 1×/d", obs:"Em deficiência: dose maior. Lactante repõe ao bebê."},
+{ind:"Lactente em AME (aleitamento materno exclusivo)", dose:"400 UI VO 1×/d até 12 meses (SBP, MS)", obs:"Leite materno tem pouca vit D. Após introdução alimentar + sol: individualizar."},
+{ind:"Criança >1a em grupo de risco", dose:"600-1.000 UI/d", obs:""},
+{ind:"Obeso (IMC ≥30)", dose:"Dose 2-3× a usual (vit D é sequestrada em tecido adiposo)", obs:""},
+{ind:"Malabsorção (DII, celíaca, bariátrica)", dose:"6.000-10.000 UI/d ou 50.000 UI/sem", obs:"Considerar forma líquida / sublingual em má absorção severa."},
+{ind:"Glicocorticoide crônico", dose:"800-2.000 UI/d + cálcio + considerar bisfosfonato", obs:"Profilaxia de osteoporose induzida por glicocorticoide."},
+],
+
+ajustes:{
+irc:"TFG <30: conversão renal a 1,25-OH comprometida. Pode necessitar CALCITRIOL ou paricalcitol. Discutir com nefrologista.",
+iht:"IH grave: conversão hepática a 25-OH comprometida — eficácia reduzida.",
+idoso:"Mesma dose, monitor função renal e cálcio.",
+gestante:"Compatível. Dose padrão 600-2.000 UI/d.",
+aleita:"Compatível. Dose padrão da mãe + 400 UI/d ao bebê em AME.",
+ped:"Lactente AME: 400 UI/d. Criança >1a: 600-1.000 UI se risco.",
+},
+
+mecanismo:"PRÓ-HORMÔNIO. Síntese cutânea por UVB OU ingestão oral. Convertido em FÍGADO a 25-hidroxivitamina D (25-OH = forma de RESERVA, dosada em sangue), depois em RIM a 1,25-OH (calcitriol — forma ATIVA, regulada por PTH). Atua em receptor nuclear (VDR) — regula absorção intestinal de Ca + reabsorção renal de Ca + remodelação óssea + imunidade.",
+
+farmacocin:{
+absorc:"VO: 50-80%, melhora COM REFEIÇÃO GORDUROSA (lipofílica)",
+distrib:"Tecido adiposo (depósito principal — meia-vida muito longa)",
+metab:"Hepático (25-OH) + Renal (1,25-OH)",
+elimin:"Biliar/fezes (renal mínimo)",
+meiavida:"15-25 dias (forma circulante) — depósitos em tecido adiposo duram meses",
+ligacao:">99% (DBP, albumina)",
+},
+
+espectro:["Deficiência de vit D","Profilaxia em grupos de risco","Osteoporose (combinado com cálcio + outros)","Raquitismo / osteomalácia","Hipoparatireoidismo","Hiperparatireoidismo secundário","Pré-bariátrica e pós-bariátrica","Pediatria — AME"],
+
+interacoes:[
+{droga:"Anticonvulsivantes (fenitoína, fenobarbital, carbamazepina)", efeito:"Induzem CYP → ↑ metabolismo de vit D → ↓ níveis. Necessita dose maior em uso crônico."},
+{droga:"Rifampicina, isoniazida", efeito:"Indutores hepáticos — reduzem vit D ativa."},
+{droga:"Glicocorticoides", efeito:"Reduzem absorção intestinal de cálcio e aceleram metabolismo de vit D."},
+{droga:"Orlistat, colestiramina", efeito:"↓ absorção de vit D (lipofílica) — separar."},
+{droga:"Diuréticos tiazídicos + cálcio + vit D", efeito:"Risco de HIPERCALCEMIA — monitor Ca."},
+{droga:"Digoxina", efeito:"Hipercalcemia por vit D potencializa toxicidade da digoxina."},
+],
+
+efeitos:[
+{tipo:"comum", item:"BEM TOLERADO em doses terapêuticas — raramente náusea, constipação"},
+{tipo:"sério", item:"⚠ TOXICIDADE (raríssima, doses >40.000 UI/d crônicas): HIPERCALCEMIA — poliúria, polidipsia, fadiga, náusea, constipação, confusão, IRA, calcificação metastática, arritmia"},
+{tipo:"raro", item:"Alergia (excipientes)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"TOXICIDADE: rara mas existe. Quadro de HIPERCALCEMIA — suspender + hidratação + manejar hiperCa. Meia-vida longa → normalização demora SEMANAS A MESES."},
+{nivel:"warn", txt:"⚠ NÃO SUPLEMENTAR ROTINEIRAMENTE em pessoas saudáveis sem deficiência — VITAL trial 2019 não mostrou benefício CV, oncológico ou em depressão."},
+{nivel:"warn", txt:"PREFERIR D3 (colecalciferol) sobre D2 (ergocalciferol) — meia-vida mais longa, eficácia comprovadamente maior em meta-análises."},
+{nivel:"warn", txt:"OBESIDADE: vit D sequestrada em tecido adiposo — necessita doses 2-3× maiores para atingir mesmo nível sérico."},
+{nivel:"warn", txt:"DRC TFG <30: conversão renal de 25-OH a 1,25-OH comprometida — colecalciferol pode não ser suficiente. Considerar CALCITRIOL ou paricalcitol (decisão do nefrologista)."},
+{nivel:"warn", txt:"ANTICONVULSIVANTES + colecalciferol: indutores hepáticos reduzem níveis. Necessita dose maior."},
+{nivel:"info", txt:"TOMAR COM REFEIÇÃO GORDUROSA — melhora absorção (lipofílica)."},
+{nivel:"info", txt:"REAVALIAR 25-OH vit D 3 MESES após início. Sem necessidade de repetição rotineira em manutenção."},
+],
+
+preparo:"VO cápsula / drágea / solução, com refeição (gordura aumenta absorção).",
+monitor:"25-OH vit D 3 meses após início. Cálcio + creatinina basal e periodicamente.",
+diretriz:"Endocrine Society 2024. SBEM. IOM. SBP. VITAL trial 2019.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-calcitriol", classe:"Vit D ativa (1,25-OH colecalciferol)", grupo:"endocrino",
+nome:"Calcitriol (1,25-OH vit D)",
+sin:["Rocaltrol","Calcijex"],
+formas:["Cápsulas 0,25 mcg, 0,5 mcg — privada / SUS via CEAF (DRC)","Ampola IV 1 mcg/mL (uso em diálise)"],
+resumo:"FORMA ATIVA da vit D — pula a conversão hepática + renal. Indicação ESPECÍFICA: DRC AVANÇADA (TFG <30) com hiperparatireoidismo secundário, hipoparatireoidismo. NÃO usar em deficiência simples — colecalciferol é a escolha. Início rápido (4-8h), meia-vida CURTA (4-6h).",
+dose_rapida:"0,25-1 mcg VO 1×/d em DRC avançada",
+
+doses:[
+{ind:"DRC G4-G5 com hiperparatireoidismo secundário", dose:"INICIAR 0,25 mcg VO 1×/d, titular conforme PTH e Ca", obs:"Indicação especializada. Atualmente alternativas como PARICALCITOL (análogo seletivo) são preferidas em DRC pelo menor efeito hipercalcêmico."},
+{ind:"Hipoparatireoidismo (pós-tireoidectomia, autoimune, congênito)", dose:"0,25-2 mcg VO 1-2×/d + cálcio", obs:"Endocrino acompanha. Meta cálcio levemente abaixo do normal para evitar hipercalciúria."},
+{ind:"Diálise (suplementação peri-procedimento)", dose:"1-2 mcg IV ao final da sessão de HD 3×/sem", obs:""},
+{ind:"Raquitismo vit D-resistente (tipo I — falha 1α-hidroxilase)", dose:"0,25-1 mcg/d", obs:"Doença rara, manejo especializado."},
+],
+
+ajustes:{
+irc:"Apropriado para uso em DRC (não depende de hidroxilação renal — é a forma ativa).",
+iht:"IH grave: cautela.",
+idoso:"Iniciar dose menor, monitor Ca/creatinina.",
+gestante:"Categoria C — usar se benefício > risco (hipoparatireoidismo).",
+aleita:"Avaliar individualmente.",
+ped:"Hipoparatireoidismo / raquitismo: doses específicas.",
+},
+
+mecanismo:"FORMA ATIVA (1α,25-di-hidroxivitamina D3) — ação direta no receptor VDR. NÃO precisa ser hidroxilada → eficaz em DRC e hipoparatireoidismo. Início rápido + meia-vida curta = MAIOR RISCO de hipercalcemia vs colecalciferol.",
+
+farmacocin:{
+absorc:"VO: rápida (pico 4-6h)",
+distrib:"Ampla",
+metab:"Hepático",
+elimin:"Biliar",
+meiavida:"4-6h (curta — vantagem em ajuste rápido)",
+ligacao:">99%",
+},
+
+espectro:["DRC com hiperparatireoidismo secundário","Hipoparatireoidismo","Diálise","Raquitismo vit D-resistente tipo I","Pseudohipoparatireoidismo"],
+
+interacoes:[
+{droga:"Diuréticos tiazídicos", efeito:"↑ hipercalcemia — monitor."},
+{droga:"Digoxina", efeito:"Hipercalcemia potencializa toxicidade."},
+{droga:"Antiácidos com magnésio", efeito:"Hipermagnesemia em DRC — evitar combinação prolongada."},
+{droga:"Cálcio (suplementação)", efeito:"Sinergismo — risco de hipercalcemia em sobredosagem combinada."},
+{droga:"Indutores CYP (fenitoína, carbamazepina, rifampicina)", efeito:"↓ calcitriol — necessita dose maior."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Hipercalcemia leve — depende da dose"},
+{tipo:"sério", item:"⚠ HIPERCALCEMIA (mais frequente vs colecalciferol — início rápido). Calcificação metastática (vascular, tecidos moles) em sobredosagem prolongada. ↑ PRODUTO Ca×P em DRC"},
+{tipo:"raro", item:"Reação alérgica (rara)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"HIPERCALCEMIA: monitorar Ca + Ca×P em DRC. Suspender se Ca >10,5 ou Ca×P >55. Sintomas: poliúria, confusão, IRA, arritmia."},
+{nivel:"warn", txt:"⚠ INDICAÇÃO ESPECÍFICA — não usar em DEFICIÊNCIA SIMPLES de vit D (colecalciferol é a escolha). Calcitriol é para DRC, hipoparatireoidismo."},
+{nivel:"warn", txt:"MAIS PROPENSO À HIPERCALCEMIA que colecalciferol — início rápido + meia-vida curta. Monitor mais frequente."},
+{nivel:"warn", txt:"EM DRC: PARICALCITOL (análogo seletivo) é alternativa MENOS hipercalcêmica — preferido em algumas situações."},
+{nivel:"info", txt:"NÃO REFLETE em dosagem de 25-OH vit D — não monitorar por essa via."},
+],
+
+preparo:"VO cápsula, com ou sem alimento. IV: lento.",
+monitor:"Cálcio sérico SEMANAL/QUINZENAL ao titular, depois mensal. PTH, fósforo, função renal. Ca×P em DRC.",
+diretriz:"KDIGO MBD 2017+update. SBN. Endocrine Society.",
+fluxo:null, calcs:[],
+},
+
+/* ============== VITAMINA B12 ============== */
+
+{id:"med-cianocobalamina", classe:"Vitamina B12 — cobalamina sintética", grupo:"endocrino",
+nome:"Cianocobalamina (Vit B12)",
+sin:["B12","Cobalamina","Citoneurim B12","Tridose B12","Cobaltavit"],
+formas:["Ampola IM 1.000 mcg/mL — SUS/REMUME (1.000 mcg)","Comprimidos 250 mcg, 500 mcg, 1.000 mcg","Sublingual 1.000 mcg","Combinações com B1+B6 (Citoneurim — uso restrito, evitar excesso de B6)"],
+resumo:"Tratamento da deficiência de B12. PADRÃO BRASILEIRO. Via IM em deficiência grave/neurológica; VO ALTA DOSE é eficaz em maioria dos casos (mesmo anemia perniciosa). Em SUS, ampola IM é padrão.",
+dose_rapida:"1.000 mcg IM 1×/d × 7d → 1×/sem × 4 sem → 1×/mês (vitalício em perniciosa)",
+
+doses:[
+{ind:"Anemia megaloblástica com sintomas neurológicos / deficiência grave — ATAQUE", dose:"1.000 mcg IM 1×/dia × 7 dias", obs:"Pode ser feito em UBS por enfermagem. Reservar IM para deficiência grave ou neurológica."},
+{ind:"Continuação da fase de ataque", dose:"1.000 mcg IM 1×/semana × 4 semanas", obs:""},
+{ind:"Manutenção (anemia perniciosa, gastrite atrófica, pós-bariátrica)", dose:"1.000 mcg IM 1×/MÊS VITALÍCIO", obs:"Doença autoimune VITALÍCIA — paciente entende necessidade contínua."},
+{ind:"VO em alta dose — ALTERNATIVA EFICAZ (mesmo em anemia perniciosa)", dose:"Cianocobalamina 1.000-2.000 mcg VO ou sublingual 1×/d", obs:"Cochrane confirma não-inferioridade vs IM. Absorção passiva ~1% — mesmo sem fator intrínseco, 1.000 mcg/d garante absorção de ~10 mcg/d (suficiente)."},
+{ind:"Esquema simplificado (deficiência sem neurológico grave)", dose:"1.000 mcg IM cada 1-3 dias × 6-7 doses → 1.000 mcg IM 1×/mês", obs:""},
+{ind:"Profilaxia em veganos / vegetarianos estritos", dose:"1.000 mcg VO 1-2×/SEMANA OU 10-25 mcg/d", obs:"Suplementação preventiva. Veganismo SEM B12 = deficiência inevitável."},
+{ind:"Profilaxia pós-bariátrica", dose:"1.000 mcg IM 1×/mês OU 350-1.000 mcg VO/d", obs:"Vitalício."},
+{ind:"Profilaxia em uso crônico de IBP / metformina", dose:"Avaliar dosagem anual. Repor se baixa: 1.000 mcg VO/d", obs:"Não é profilaxia universal — avaliar caso a caso."},
+{ind:"Gestante / lactante com deficiência", dose:"Igual ao adulto — tratar agressivamente", obs:"Déficit fetal causa atraso neurodesenvolvimento + DTN."},
+{ind:"Lactente sintomático (mãe vegana sem suplementação)", dose:"Encaminhar pediatria — doses específicas + correção materna", obs:""},
+{ind:"Pediatria — anemia megaloblástica", dose:"50-100 mcg IM 1×/dia × 1-2 sem → semanal", obs:""},
+],
+
+ajustes:{
+irc:"Sem ajuste. Alguns guidelines preferem hidroxicobalamina em IRC.",
+iht:"Sem ajuste.",
+idoso:"Sem ajuste. AVALIAR B12 em demência, neuropatia, anemia.",
+gestante:"Compatível. Tratar deficiência agressivamente.",
+aleita:"Compatível.",
+ped:"Dose menor (50-100 mcg IM).",
+},
+
+mecanismo:"Cofator de DUAS enzimas: (1) METIONINA SINTASE (converte homocisteína → metionina → SAM — síntese de mielina + DNA); (2) METIL-MALONIL-CoA MUTASE (catabolismo de ácidos graxos ímpares). Deficiência → ↑ MMA + ↑ homocisteína + síntese de DNA deficiente (megaloblastose) + desmielinização (neuropatia).",
+
+farmacocin:{
+absorc:"IM: 100%. VO ALTA DOSE: ~1% por difusão passiva (suficiente em 1.000-2.000 mcg/d). VO normal precisa de FATOR INTRÍNSECO (FI) gástrico — falta em anemia perniciosa.",
+distrib:"Fígado (depósito principal — reservas duram 3-5 ANOS)",
+metab:"Convertida em metilcobalamina e adenosilcobalamina",
+elimin:"Biliar (recirculação êntero-hepática)",
+meiavida:"Plasma curto, depósito hepático LONGO",
+ligacao:"Haptocorrina + transcobalamina II (forma ativa, holotranscobalamina)",
+},
+
+espectro:["Anemia megaloblástica","Anemia perniciosa","Neuropatia por def B12","Profilaxia em vegano / pós-bariátrica","Suplementação em uso crônico IBP / metformina","Deficiência por má absorção","Síndrome de Imerslund-Gräsbeck"],
+
+interacoes:[
+{droga:"Cloranfenicol", efeito:"Pode reduzir resposta hematológica à B12 (raro)."},
+{droga:"IBP, metformina (uso crônico)", efeito:"REDUZEM ABSORÇÃO — são CAUSA frequente de deficiência (não interação direta)."},
+{droga:"Antiácidos, H2-bloqueadores", efeito:"↓ absorção (necessita ácido para liberar B12 da proteína)."},
+{droga:"Ácido fólico em ALTA DOSE", efeito:"⚠ Pode 'corrigir' anemia mas PIORAR neuropatia em def B12 não diagnosticada. Investigar B12 antes de tratar folato."},
+],
+
+efeitos:[
+{tipo:"comum", item:"BEM TOLERADO. IM: dor local, eritema. VO: raramente diarreia"},
+{tipo:"sério", item:"HIPOCALEMIA no início do tratamento (consumo K+ por hematopoiese intensa) — monitor + repor"},
+{tipo:"raro", item:"Reação alérgica (rara, geralmente ao excipiente em IM), acne, exantema, rebote (no tratamento de anemia grave)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"⚠ NÃO TRATAR APENAS FOLATO em paciente com B12 não dosada — folato 'corrige' anemia mas PIORA neuropatia em def B12. Sempre dosar B12 antes."},
+{nivel:"warn", txt:"VO EM ALTA DOSE (1.000-2.000 mcg/d) é EFICAZ em maioria dos casos, INCLUSIVE anemia perniciosa (absorção passiva ~1%). Cochrane confirma não-inferioridade vs IM. PREFERIR IM apenas em: (1) sintomas neurológicos graves; (2) deficiência grave inicial (1-2 sem IM depois VO); (3) má adesão; (4) má absorção severa não-perniciosa."},
+{nivel:"warn", txt:"INVESTIGAR ETIOLOGIA antes de tratar — anemia perniciosa é VITALÍCIA + ↑ risco de CA gástrico (rastreio EDA periódica). Anti-FI, anti-células parietais."},
+{nivel:"warn", txt:"INÍCIO DO TRATAMENTO: HIPOCALEMIA por consumo K+ (hematopoiese intensa). Monitor + repor K+ se queda."},
+{nivel:"warn", txt:"NEUROPATIA POR B12: tratamento precoce é CRÍTICO — danos prolongados (>6 meses) podem ser IRREVERSÍVEIS. Resposta neurológica pode demorar 6-12 meses (parcial)."},
+{nivel:"warn", txt:"VEGANOS / VEGETARIANOS estritos: profilaxia OBRIGATÓRIA. 1.000 mcg VO 1-2×/sem ou 10-25 mcg/d. Especial atenção em gestação e lactação (risco fetal/neonatal)."},
+{nivel:"info", txt:"RESPOSTA HEMATOLÓGICA: reticulocitose 5-7 dias, Hb normaliza 4-8 sem, VCM normaliza 4-8 sem."},
+{nivel:"info", txt:"HIDROXICOBALAMINA é forma preferida em outros países (meia-vida mais longa) — no Brasil cianocobalamina é padrão por custo e disponibilidade."},
+{nivel:"info", txt:"COMBINAÇÕES B1+B6+B12 (Citoneurim): cuidado com excesso CRÔNICO de B6 — neuropatia paradoxal por B6 em uso prolongado >100 mg/d. Preferir B12 isolada se possível."},
+],
+
+preparo:"IM: aplicar no glúteo / deltoide. VO: comprimido ou sublingual, qualquer hora.",
+monitor:"Hemograma + reticulócitos 5-7 dias após início. B12 + hemograma 1-3 meses depois. Em anemia perniciosa: anual.",
+diretriz:"BSH 2014. Cochrane oral vs IM. AAFP. SBPM.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — ENGINE PRINCIPAL
    Router por hash, render, busca fuzzy, toggle tema/modo
    =========================================================== */
@@ -16716,10 +19084,12 @@ function gravBadge(g) {
 }
 
 function alertHTML(a) {
-  const tipo = a.t || "info";
+  // Aceita ambos schemas: {t, x} (legado patologias) e {nivel, txt} (medicações + novas patologias)
+  const tipo = a.t || a.nivel || "info";
+  const texto = a.x !== undefined ? a.x : a.txt;
   const cls = "alert-" + (tipo === "crit" ? "crit" : tipo === "warn" ? "warn" : tipo === "ok" ? "ok" : "info");
   const ic = tipo === "crit" ? "⚠" : tipo === "warn" ? "!" : tipo === "ok" ? "✓" : "ℹ";
-  return `<div class="alert ${cls}"><span class="ai alert-ic">${ic}</span><div>${safeHtml(a.x)}</div></div>`;
+  return `<div class="alert ${cls}"><span class="ai alert-ic">${ic}</span><div>${safeHtml(texto)}</div></div>`;
 }
 
 /* Renderização de prescrição.
@@ -17470,10 +19840,11 @@ function renderMedicacoes() {
     cardio: "Cardiovascular",
     resp: "Respiratório / Broncodilatadores",
     neuro: "Anticonvulsivantes / Neuro",
-    gi: "Gastrintestinal",
+    gi: "Gastrintestinal (IBPs, H2, antieméticos)",
+    ost: "Osteomuscular / Gota / Antirreumáticos",
     outros: "Outros",
   };
-  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","neuro","gi","outros"];
+  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","neuro","gi","ost","outros"];
 
   const sections = ord.filter(g => byGrupo[g]).map(g => {
     const cards = byGrupo[g].map(m => `
