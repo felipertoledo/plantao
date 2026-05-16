@@ -6700,7 +6700,7 @@ PATOLOGIAS.push(
 cid:"I10", ciap:"K86",
 sin:["HAS","Hipertensão arterial","Pressão alta","Hipertensão essencial","Pressão alta crônica"],
 
-resumo:"Doença crônica multifatorial caracterizada por PA ≥140/90 mmHg sustentada. Principal fator de risco CV modificável. DBHA 2025 reclassificou pré-hipertensão (120-139/80-89) e definiu META UNIVERSAL <130/80 mmHg.",
+def:"Doença crônica multifatorial caracterizada por PA ≥140/90 mmHg sustentada. Principal fator de risco CV modificável. DBHA 2025 reclassificou pré-hipertensão (120-139/80-89) e definiu META UNIVERSAL <130/80 mmHg.",
 
 quadro:[
 "GERALMENTE ASSINTOMÁTICA — diagnóstico em rastreio ou após complicação ('hipertensão é doença silenciosa')",
@@ -6833,6 +6833,182 @@ alertas:[
 
 fluxo:null,
 diretriz:"DBHA 2025 (SBC/SBH/SBN). ESC HTN 2024. ACC/AHA 2025. KDIGO 2024 (em IRC). ACOG Hypertension in Pregnancy 2020 (em gestante)."
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — PATOLOGIA DM2 (SBD 2025)
+   Diabetes Mellitus Tipo 2 — abordagem completa
+   conforme Diretriz SBD 2025 + ADA Standards 2025
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+{id:"diabetes-tipo-2", nome:"Diabetes Mellitus Tipo 2 (DM2)", sis:"endo", grav:"moderada",
+cid:"E11", ciap:"T90",
+sin:["DM2","Diabetes tipo 2","Diabetes mellitus","Açúcar alto","Hiperglicemia crônica"],
+
+def:"Doença crônica multifatorial — hiperglicemia por resistência insulínica + disfunção progressiva das células β. SBD 2025 mudou paradigma: METFORMINA NÃO É MAIS EXCLUSIVA em 1ª linha — escolha individualizada por RCV, IMC e HbA1c.",
+
+quadro:[
+"Frequentemente ASSINTOMÁTICO — descoberta em rastreio ou após complicação (DM2 'silencioso' por anos)",
+"Sintomas clássicos (em hiperglicemia >250 mg/dL): poliúria, polidipsia, polifagia, perda de peso involuntária",
+"Sintomas inespecíficos: fadiga, visão turva, infecções recorrentes (urinárias, candidíase, pele), cicatrização lenta",
+"Sintomas de complicações crônicas (presentes no diagnóstico em ~50% dos DM2): neuropatia (parestesia/dor MMII), retinopatia (visão), nefropatia (proteinúria/edema), DAOP (claudicação), DAC/AVC",
+"Apresentação aguda: CAD euglicêmica (em uso SGLT-2), CAD clássica, EHH (estado hiperglicêmico hiperosmolar — glicemia >600, desidratação grave, alteração consciência)",
+"Acantose nigricans (hiperpigmentação aveludada em pescoço/axilas) sugere resistência insulínica grave",
+],
+
+diag:[
+"GLICEMIA DE JEJUM ≥126 mg/dL (jejum ≥8h) em DUAS ocasiões — ou em uma com clínica clássica",
+"HbA1c ≥6,5% (método certificado NGSP) em DUAS ocasiões — ou uma com clínica",
+"TOTG 75 g — glicemia 2h ≥200 mg/dL",
+"GLICEMIA OCASIONAL ≥200 mg/dL + sintomas clássicos = diagnóstico em UMA medida",
+"PRÉ-DIABETES: glicemia jejum 100-125 OU HbA1c 5,7-6,4% OU TOTG 2h 140-199",
+"⚠ SBD 2025 NOVA: RASTREAMENTO em adultos ≥35 anos (era ≥45) — ou antes se fatores de risco",
+"FATORES DE RISCO para rastreio precoce: IMC ≥25 + 1 fator (HAS, dislipidemia, sedentarismo, hist familiar DM, SOP, etnia de risco, DCV, hist DMG)",
+],
+
+exames:[
+"⚠ AVALIAÇÃO INICIAL completa após diagnóstico:",
+"HbA1c (basal + cada 3 meses até controle, depois 6/6m)",
+"Perfil lipídico (CT, HDL, LDL, TG) — meta LDL <70 em alto RCV, <55 em muito alto",
+"Creatinina + TFG estimada (CKD-EPI 2021)",
+"RAZÃO ALBUMINÚRIA/CREATININÚRIA (RAC) — rastreio nefropatia. <30: normal; 30-300: micro; >300: macro",
+"TGO/TGP (rastreio NASH em DM2 + obesidade)",
+"TSH (associação DM2 + tireoidopatia)",
+"ECG basal (HVE, isquemia silenciosa)",
+"FUNDOSCOPIA ANUAL (rastreio retinopatia)",
+"EXAME DE PÉS ANUAL (monofilamento 10g, diapasão 128Hz, pulso pedioso, inspeção)",
+"Estratificação de risco CV (PREVENT, ESC SCORE2, ou clínica)",
+],
+
+rx:[
+// ============== INICIAL — MEV ==============
+{etapa:"inicial", d:"MUDANÇAS DE ESTILO DE VIDA (MEV) — aplicar SEMPRE em conjunto com medicação", o:"Pode reduzir HbA1c 0,5-2%. Em pré-diabetes ou DM2 leve: pode normalizar glicemia."},
+{etapa:"inicial", d:"DIETA: padrão mediterrânea ou DASH; reduzir carboidratos refinados; ↑ fibras (25-30 g/d); proteína magra; ↓ sódio. Contagem de carboidratos em DM1, opcional em DM2", o:"Considerar nutricionista. Redução HbA1c 0,5-1%."},
+{etapa:"inicial", d:"PESO: meta perda 5-10% se IMC ≥25 (cada 1 kg de perda ≈ ↓ 0,1% HbA1c)", o:"Em obesidade grau 2/3 + DM2: avaliar CIRURGIA BARIÁTRICA (IMC ≥35 + DM = boa resposta)."},
+{etapa:"inicial", d:"ATIVIDADE FÍSICA: 150 min/sem aeróbica moderada + 2-3× exercício resistido + reduzir tempo sentado", o:"Reduz HbA1c 0,5-1%, melhora sensibilidade insulínica."},
+{etapa:"inicial", d:"CESSAR TABAGISMO + álcool moderado (≤2 doses/d H, ≤1 D) + sono adequado (7-9h)", o:"Tabagismo é fator de risco MAIOR em DM (CV + nefropatia + neuropatia)."},
+{etapa:"inicial", d:"EDUCAÇÃO em DM: HGT, reconhecer hipo/hiperglicemia, dias de doença, cuidados com pés, vacinação (influenza anual, pneumococo, dT, Hep B, COVID)", o:"Educação estruturada melhora desfechos a longo prazo."},
+
+// ============== ESTRATIFICAÇÃO DE RISCO CV ==============
+{etapa:"escala", d:"⚠ ESTRATIFICAÇÃO DE RISCO CV — CHAVE para escolha terapêutica SBD 2025. 4 categorias: BAIXO, INTERMEDIÁRIO, ALTO, MUITO ALTO", o:""},
+
+{etapa:"escala", d:"RCV BAIXO: ♂ <55a / ♀ <65a + SEM fatores de risco + DM <10 anos + HbA1c <7,5% + sem LOA", o:""},
+
+{etapa:"escala", d:"RCV INTERMEDIÁRIO: ♂ ≥55a OU ♀ ≥65a + 1-2 fatores de risco (HAS, dislipidemia, tabagismo, hist familiar) + sem LOA", o:""},
+
+{etapa:"escala", d:"RCV ALTO: ≥3 fatores de risco OU DM ≥10a OU LOA (TFG 30-60, RAC 30-300, retinopatia, HVE)", o:""},
+
+{etapa:"escala", d:"RCV MUITO ALTO: DAC/AVC/DAOP ESTABELECIDOS, OU TFG <30, OU RAC >300, OU múltiplas LOA", o:"Categoria que MUDA radicalmente a escolha terapêutica — SGLT-2/GLP-1 com benefício CV são obrigatórios."},
+
+// ============== ESCALONAMENTO MEDICAMENTOSO ==============
+{etapa:"escala", d:"⚠ SBD 2025 — METFORMINA NÃO É MAIS EXCLUSIVA em 1ª linha. Escolha individualizada por: (1) RCV; (2) IMC; (3) HbA1c", o:""},
+
+{etapa:"escala", d:"R3 — RCV BAIXO/INTERMEDIÁRIO + SEM obesidade + HbA1c <7,5%: METFORMINA monoterapia (1ª linha clássica)", o:"Iniciar 500 mg 12/12h com refeições, titular cada 1-2 sem até 850 mg 8/8h ou 1000 mg 12/12h. Dose máx eficaz 2-2,5 g/d."},
+
+{etapa:"escala", d:"RCV ALTO ou MUITO ALTO (independente da HbA1c): iniciar SGLT-2 ou GLP-1 PRECOCEMENTE — benefício CV comprovado", o:"DAPA, EMPA, SEMA, LIRA têm evidência. Não esperar falha de outra classe. Pode combinar com metformina ou usar isolada."},
+
+{etapa:"escala", d:"DM2 + OBESIDADE (IMC ≥30): PREFERIR GLP-1 ou TIRZEPATIDA (perda de peso 5-22%) ou SGLT-2 (perda 2-3 kg)", o:"Beneficio metabólico + cardiovascular + ponderal simultâneo."},
+
+{etapa:"escala", d:"DM2 + IC com FE REDUZIDA (com ou sem comorbidade): SGLT-2 (DAPA/EMPA) é OBRIGATÓRIO — pilar do tratamento", o:"DAPA-HF, EMPEROR — reduz mortalidade e hospitalização. Pode iniciar mesmo SEM DM."},
+
+{etapa:"escala", d:"DM2 + DRC (TFG <60 ou RAC >30): SGLT-2 (DAPA/EMPA) é OBRIGATÓRIO se TFG ≥25", o:"DAPA-CKD, EMPA-KIDNEY — nefroproteção independente de DM. Pode usar até TFG 25 (DAPA) ou 20 (EMPA)."},
+
+{etapa:"escala", d:"DM2 + DAC/AVC ESTABELECIDOS: combinação SGLT-2 + GLP-1 + metformina (se tolerada) + iSRA + estatina", o:"Cardioprotection máxima. Aspirina em prevenção secundária."},
+
+// ============== INSULINOTERAPIA EM DM2 ==============
+{etapa:"escala", d:"⚠ R16 — SINAIS DE INSULINOPENIA (poliúria, polidipsia, perda de peso, cetose, HbA1c ≥10%): TERAPIA BASEADA EM INSULINA (TBI) inicial — independente de RCV", o:"Estabilizar glicemia rapidamente. Após estabilização, R17: pode substituir por dupla/tripla VO."},
+
+{etapa:"escala", d:"INSULINA BASAL inicial em DM2: 0,1-0,2 U/kg/d (NPH ou análoga — glargina/degludeca) à noite OU dividida 2×/d", o:"Titular 2 U cada 3 dias até glicemia jejum 80-130. Manter metformina. Reduzir sulfonilureia (risco hipoglicemia)."},
+
+{etapa:"escala", d:"BASAL-BOLUS em DM2 avançada: basal 50% + prandial 50% dividido 3 refeições", o:"Quando HbA1c persiste alto apesar de basal isolada + outras drogas."},
+
+// ============== EXEMPLOS DE COMBINAÇÕES ==============
+{etapa:"escala", d:"EXEMPLO 1 (DM2 RCV baixo, HbA1c 7%): METFORMINA 500 mg 12/12h, titular para 850 mg 8/8h. Reavaliar 3 meses", o:"1ª linha clássica. Bom para iniciar."},
+
+{etapa:"escala", d:"EXEMPLO 2 (DM2 + DAC + HbA1c 8%): METFORMINA 850 mg 8/8h + EMPAGLIFLOZINA 10 mg/d + ATORVASTATINA 40 mg + AAS 100 mg + LISINOPRIL/LOSARTANA", o:"Cardioproteção máxima. Reduz MACE + nefropatia."},
+
+{etapa:"escala", d:"EXEMPLO 3 (DM2 + IMC 35 + HbA1c 8,5%): METFORMINA + SEMAGLUTIDA 0,5-1 mg SC/sem (titulação). Avaliar tirzepatida se acessível", o:"Perda de peso + controle glicêmico + benefício CV."},
+
+{etapa:"escala", d:"EXEMPLO 4 (DM2 + IC FE reduzida): DAPAGLIFLOZINA 10 mg/d + LOSARTANA + CARVEDILOL + ESPIRONOLACTONA + furosemida (conforme congestão)", o:"Trio CV moderno + diurese. Pode dispensar metformina se IRC."},
+
+// ============== METAS GLICÊMICAS ==============
+{etapa:"adj", d:"⚠ METAS HbA1c — INDIVIDUALIZADAS conforme paciente (SBD 2025):", o:""},
+
+{etapa:"adj", d:"HbA1c <7% — META GERAL para maioria dos adultos com DM2", o:"Reduz desfechos microvasculares (retinopatia, neuropatia, nefropatia)."},
+
+{etapa:"adj", d:"HbA1c <6,5% — em paciente JOVEM, recém-diagnóstico, sem comorbidades", o:"Se atingível sem hipoglicemia significativa."},
+
+{etapa:"adj", d:"HbA1c <8% (ou <8,5%) — em IDOSO frágil, expectativa de vida limitada, hipoglicemias frequentes, complicações avançadas", o:"Risco de hipoglicemia em idoso > benefício de controle estrito."},
+
+{etapa:"adj", d:"GLICEMIAS-ALVO: pré-prandial 80-130 mg/dL | pós-prandial 2h <180 mg/dL | bedtime 90-150 mg/dL", o:"Time-in-range (CGM): >70% entre 70-180 mg/dL."},
+
+// ============== SITUAÇÕES ESPECIAIS ==============
+{etapa:"adj", d:"GESTANTE com DM2 pré-existente: INSULINA é padrão-ouro (NPH ou análogas glargina/asparte/detemir). Metformina pode ser mantida no 1º trim em algumas situações (especialmente SOP)", o:"PROIBIDOS: SGLT-2, GLP-1, sulfonilureias (exceto glibenclamida em DMG — uso restrito), DPP-4. Meta HbA1c <6,5% antes da concepção."},
+
+{etapa:"adj", d:"DM GESTACIONAL (DMG): MEV + monitorização. Se inadequado: INSULINA (preferida) ou METFORMINA (categoria B)", o:"Glibenclamida não recomendada em DMG (passa placenta — hipoglicemia neonatal)."},
+
+{etapa:"adj", d:"IDOSO ≥65 anos: EVITAR sulfonilureias (risco hipoglicemia grave). PREFERIR: metformina (com TFG monitorada), DPP-4 (perfil seguro), SGLT-2 (se sem hipotensão postural), GLP-1 (se sem perda excessiva de peso)", o:"Meta HbA1c <7,5-8% em idoso saudável; <8-8,5% em frágil."},
+
+{etapa:"adj", d:"DRC (TFG <60): metformina TFG 30-45 reduzir 50%, TFG <30 contraindicada. PREFERIR: SGLT-2 (nefroprotetor), GLP-1 (sem ajuste até TFG 15), DPP-4 (ajustar)", o:"Sulfonilureia: contraindicada em TFG <30 (hipoglicemia). Pioglitazona: cuidado (retenção)."},
+
+{etapa:"adj", d:"OBESIDADE significativa (IMC ≥30, especialmente ≥35): GLP-1 (semaglutida) ou TIRZEPATIDA são 1ª escolha — perda 5-22%. AVALIAR cirurgia bariátrica em IMC ≥35 + DM2", o:"Pioglitazona, sulfonilureia, insulina causam ganho de peso — evitar quando possível."},
+
+{etapa:"adj", d:"NASH (esteato-hepatite não-alcoólica) + DM2: PIOGLITAZONA tem benefício histológico (PIVENS). SGLT-2 e GLP-1 também melhoram esteatose", o:"Avaliar TGO/TGP + elastografia (fibroscan) em DM2 + obesidade."},
+
+{etapa:"adj", d:"PEDIATRIA — DM2 (crescente em adolescentes obesos): METFORMINA é 1ª linha (≥10 anos). Insulina se HbA1c muito alta. Liraglutida e empagliflozina aprovadas FDA ≥10a", o:"MEV é fundamental. Educação familiar."},
+
+// ============== HIPOGLICEMIA ==============
+{etapa:"adj", d:"⚠ HIPOGLICEMIA: glicemia <70 mg/dL. Classificar: nível 1 (70-54), nível 2 (<54 — grave bioquímica), nível 3 (alteração consciência — grave clínica)", o:""},
+
+{etapa:"adj", d:"MANEJO HIPOGLICEMIA LEVE (paciente consciente): 15 g de CHO de absorção rápida (3 balas, 1 sachê glicose, 150 mL suco), reavaliar 15 min. Se persistir, repetir. Após: refeição completa", o:"Regra dos 15 (15 g, 15 min). Manter HGT pós-correção."},
+
+{etapa:"adj", d:"HIPOGLICEMIA GRAVE (inconsciente / convulsão): GLICOSE 50% 50 mL IV em 5 min (após tiamina se etilista) OU GLUCAGON 1 mg IM/SC (em casa). Após: BIC glicose 5-10% se sulfonilureia (risco prolongado)", o:"Em paciente com glibenclamida: internar para BIC glicose 24-48h (hipoglicemia recorrente)."},
+
+{etapa:"adj", d:"PREVENÇÃO: educação, evitar drogas de alto risco (glibenclamida, insulina sem ajuste), reduzir álcool em jejum, identificar hipoglicemia inadvertida", o:"Em paciente com hipoglicemia inadvertida: relaxar meta HbA1c, considerar CGM."},
+
+// ============== EMERGÊNCIAS — CAD E EHH ==============
+{etapa:"adj", d:"⚠ CETOACIDOSE DIABÉTICA (CAD): glicemia >250 mg/dL (ou euglicêmica em SGLT-2) + cetonas + acidose (pH <7,3, bicarb <15). Mais em DM1, mas em DM2 grave também", o:""},
+
+{etapa:"adj", d:"CAD — manejo: (1) HIDRATAÇÃO SF 0,9% 1L em 1h + 500 mL/h depois; (2) INSULINA REGULAR 0,1 U/kg IV bolus + 0,1 U/kg/h BIC; (3) K+ — reposição se K<5,5 (BIC 20-40 mEq/L); (4) bicarbonato APENAS se pH<6,9", o:"Não cessar insulina BIC até pH normalizar + bicarbonato >18 + ânion gap normal. Transição para SC apenas após resolução."},
+
+{etapa:"adj", d:"ESTADO HIPERGLICÊMICO HIPEROSMOLAR (EHH): glicemia >600 + osmolaridade >320 + ALTERAÇÃO consciência + SEM cetose significativa. Tipicamente em IDOSO com DM2 + infecção/desidratação", o:""},
+
+{etapa:"adj", d:"EHH — manejo: hidratação MAIS AGRESSIVA (déficit pode ser 8-12L), insulina mais cautelosa (queda lenta), K+, identificar gatilho (infecção em 60%)", o:"Mortalidade EHH (15-20%) > CAD (~1%) — pacientes mais frágeis."},
+
+// ============== METAS E SEGUIMENTO ==============
+{etapa:"alta", d:"⚠ SEGUIMENTO REGULAR — DM2 controlada: retorno 3-6 meses. DM2 em ajuste: retorno 1-3 meses. DM2 instável: mensal", o:""},
+
+{etapa:"alta", d:"AVALIAÇÃO ANUAL completa: HbA1c 2-4×/ano (3-6/6m); RAC anual; fundoscopia anual; exame de pés anual; perfil lipídico anual; ECG; pressão arterial", o:"Rastreio LOA é fundamental — complicações são preveníveis com controle."},
+
+{etapa:"alta", d:"MANEJO INTEGRADO de RISCO CV: HAS (meta <130/80), dislipidemia (LDL <70 em alto RCV, <55 em muito alto), aspirina em prevenção SECUNDÁRIA, cessar tabagismo", o:"Tratamento de DM2 isolado é INSUFICIENTE — manejo do RCV global salva vidas."},
+
+{etapa:"alta", d:"VACINAÇÃO em DM2: INFLUENZA anual + PNEUMOCÓCICA (13v + 23v, esquema sequencial) + dT/dTpa + HEPATITE B (se susceptível) + HERPES ZOSTER (≥50a) + COVID-19", o:"DM2 = imunossupressão relativa, risco infeccioso aumentado."},
+
+{etapa:"alta", d:"REMISSÃO de DM2: possível com perda de peso significativa (≥10-15 kg), especialmente pós-bariátrica ou com GLP-1/tirzepatida. Não 'curado' — risco de recorrência se ganhar peso", o:"DiRECT trial: 46% remissão com perda >15 kg em 1 ano."},
+
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento à especialidade: (1) DM1 ou autoimune; (2) HbA1c >10% persistente; (3) hipoglicemia inadvertida grave; (4) complicações avançadas (retinopatia proliferativa, IRC estágio ≥4, pé diabético); (5) gestação/pré-gestacional; (6) bomba/CGM", o:"Endocrinologia. Manter acompanhamento conjunto na APS."},
+],
+
+alertas:[
+{nivel:"crit", txt:"CETOACIDOSE EUGLICÊMICA em uso de SGLT-2: paciente com sintomas cetose (náusea, vômito, dor abdominal, dispneia) mas glicemia próxima do normal. SUSPEITAR + dosar cetonas + gasometria. Fatores: jejum prolongado, álcool, infecção, redução insulina. SUSPENDER SGLT-2 + insulina + glicose + hidratação."},
+{nivel:"crit", txt:"CIRCUNSTÂNCIAS para SUSPENDER METFORMINA: contraste iodado IV (48h antes/depois), sepse, IAM, IC descompensada, hipóxia, cirurgia maior, gastroenterite com desidratação. Reintroduzir após estabilização. Risco ACIDOSE LÁTICA."},
+{nivel:"crit", txt:"HIPOGLICEMIA GRAVE EM IDOSO com glibenclamida: pode durar HORAS-DIAS. TRATAR: glicose 50% IV + BIC glicose 5% 24-48h. INTERNAR. PREFERIR outras classes em idoso."},
+{nivel:"crit", txt:"GESTAÇÃO + DM2: SGLT-2, GLP-1, sulfonilureias (exceto glibenclamida em DMG), DPP-4 são PROIBIDOS. INSULINA é padrão-ouro. Metformina pode ser usada em casos específicos."},
+{nivel:"warn", txt:"⚠ SBD 2025 — METFORMINA NÃO É MAIS EXCLUSIVA em 1ª linha. Em paciente com RCV alto/muito alto: iniciar SGLT-2 ou GLP-1 PRECOCEMENTE (mesmo se HbA1c baixa)."},
+{nivel:"warn", txt:"GLP-1/TIRZEPATIDA + sintomas GI persistentes >4-8 sem: avaliar gastroparesia diabética. Titulação lenta reduz EA. Pancreatite: suspender se dor abdominal súbita + amilase/lipase ↑."},
+{nivel:"warn", txt:"DM2 + IC com FE REDUZIDA: pioglitazona é CONTRAINDICADA (retenção líquida → piora IC). Preferir SGLT-2 (pilar moderno)."},
+{nivel:"warn", txt:"DM2 + DRC: metformina ajustar/contraindicada conforme TFG. SGLT-2 é nefroprotetor — manter mesmo com TFG 25-30. GLP-1: sem ajuste."},
+{nivel:"info", txt:"SBD 2025 RASTREIO: a partir de 35 anos (era 45 anos). Em fatores de risco: antes."},
+{nivel:"info", txt:"PERDA DE PESO em DM2 obeso: cada 1 kg ≈ 0,1% redução HbA1c. Cirurgia bariátrica em IMC ≥35 + DM2 = melhor desfecho metabólico (remissão em ~60% em 5 anos)."},
+],
+
+fluxo:null,
+diretriz:"SBD 2025 (Diretriz Brasileira). ADA Standards 2025. EASD-ADA Joint Statement. DAPA-HF/CKD. EMPA-REG OUTCOME. SUSTAIN-6. PCDT MS DM2."
 },
 
 );
@@ -14978,6 +15154,1480 @@ fluxo:null, calcs:[],
 
 
 /* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — BIBLIOTECA DE MEDICAÇÕES (PARTE 5)
+   14 hipoglicemiantes orais e injetáveis (DM2)
+   Conforme Diretriz SBD 2025 + ADA 2025
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== BIGUANIDA ============== */
+
+{id:"med-metformina", classe:"Biguanida — sensibilizador insulínico hepático", grupo:"antidiabetico",
+nome:"Metformina",
+sin:["Glifage","Glucoformin","Dimefor","Glucophage"],
+formas:["Comprimidos 500 mg, 850 mg, 1000 mg — SUS/REMUME","Liberação prolongada (XR/SR): 500, 750, 1000 mg — privada"],
+resumo:"Sensibilizador insulínico hepático. 1ª linha em DM2 de baixo/intermediário risco CV (SBD 2025). Reduz HbA1c 1-2%. Neutra/positiva para peso. NÃO causa hipoglicemia.",
+dose_rapida:"500 mg VO 12/12h inicial; titular até 850 mg 8/8h ou 1000 mg 12/12h (máx 2,5 g/d)",
+
+doses:[
+{ind:"DM2 — 1ª linha em RCV baixo/intermediário (SBD 2025 R3)", dose:"500 mg VO 12/12h com refeição × 1-2 sem; titular para 850 mg 12/12h, depois 850 mg 8/8h conforme tolerância", obs:"Dose máxima eficaz: 2-2,5 g/d (acima disso sem benefício, mais EA). Iniciar pequeno + titular = reduz intolerância GI."},
+{ind:"DM2 com IMC ≥30 + RCV baixo", dose:"500-2500 mg/d", obs:"Considerar combinação com GLP-1/SGLT2 se obesidade significativa."},
+{ind:"Pré-diabetes (alto risco DM2)", dose:"500-1000 mg 12/12h", obs:"DPP trial: reduziu 31% incidência DM2 (vs 58% com MEV). MEV ainda é 1ª linha."},
+{ind:"Síndrome dos ovários policísticos (SOP)", dose:"500-1500 mg/d", obs:"Restaura ciclos menstruais, reduz hiperandrogenismo. Útil em SOP + obesidade."},
+{ind:"Pediatria — DM2 (10-16 anos)", dose:"500 mg/d inicial, titular até 2 g/d", obs:"FDA aprovada ≥10 anos."},
+],
+
+ajustes:{
+irc:"TFG 30-45: REDUZIR 50%, máx 1 g/d, MONITOR. TFG <30: CONTRAINDICADA (risco acidose lática).",
+iht:"IH grave (sem álcool): contraindicada se aguda. Estável: cautela.",
+idoso:"Iniciar 500 mg, titular lento. Dosar TFG anual.",
+gestante:"CATEGORIA B — pode usar em DM gestacional (alternativa à insulina). SOP com gestação: manter no 1º trimestre. ADA 2025: insulina é padrão-ouro.",
+aleita:"Compatível (baixa transferência).",
+ped:"500-2000 mg/d em ≥10 anos.",
+},
+
+mecanismo:"Ativa AMP-quinase (AMPK) hepática → ↓gliconeogênese + ↑sensibilidade insulínica periférica (músculo). Reduz absorção intestinal de glicose. NÃO estimula secreção de insulina pelas células β → NÃO causa hipoglicemia em monoterapia. Efeito secundário benéfico: leve perda ou neutralidade ponderal.",
+
+farmacocin:{
+absorc:"VO: 50-60% (intestino delgado)",
+distrib:"Não atravessa BBB",
+metab:"NÃO metabolizada",
+elimin:"Renal (90% inalterada — secreção tubular)",
+meiavida:"4-9h",
+ligacao:"Mínima",
+},
+
+espectro:["DM2 — 1ª linha em RCV baixo/intermediário","Pré-diabetes (alto risco)","SOP (sensibilizador insulínico)","DM gestacional (alternativa à insulina, off-label)","Combinada com qualquer outra classe"],
+
+interacoes:[
+{droga:"Contraste iodado IV (TC com contraste)", efeito:"SUSPENDER metformina 48h antes + dosar Cr pós-procedimento. Risco IRA + acidose lática."},
+{droga:"Álcool", efeito:"↑ risco acidose lática. Orientar moderação. Em alcoolista crônico: contraindicada."},
+{droga:"Cimetidina", efeito:"↑ metformina (competição secreção tubular)."},
+{droga:"Diuréticos de alça, AINE", efeito:"↓ TFG → cuidado em descompensação aguda (gastroenterite com diarreia/desidratação) — SUSPENDER temporariamente."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Distúrbios GI: náusea, dor abdominal, DIARREIA (10-30%), gosto metálico, anorexia. Geralmente melhoram em 2-4 sem."},
+{tipo:"sério", item:"ACIDOSE LÁTICA (rara, ~0,03/1000 pacientes-ano): em IRC, hipóxia, hepatopatia, alcoolismo, sepse. Letal em 30-50% se não tratada."},
+{tipo:"raro", item:"Deficiência de B12 (uso prolongado >5 anos — 5-30%) — dosar anual, suplementar se baixa. Acidose lática associada a sepse/hipóxia."},
+],
+
+alertas:[
+{nivel:"crit", txt:"ACIDOSE LÁTICA: SUSPEITAR em paciente com dor abdominal + náusea + dispneia + acidose metabólica de causa não-clara. Lactato >5 + pH <7,35 + biguanida no plasma. TRATAR: suspender + bicarbonato + HEMODIÁLISE (remove metformina). Mortalidade alta."},
+{nivel:"crit", txt:"SUSPENSÃO em situações de risco: contraste iodado (48h antes/depois), sepse, IAM, IC descompensada, hipóxia, cirurgia maior, gastroenterite com desidratação. Reintroduzir após estabilização."},
+{nivel:"crit", txt:"TFG <30 = CONTRAINDICAÇÃO. TFG 30-45: dose máx 1 g/d. TFG ≥45: dose plena. Monitor anual."},
+{nivel:"warn", txt:"INTOLERÂNCIA GI: estratégia (1) iniciar 500 mg 1×/d × 1 sem, depois 12/12h; (2) tomar COM refeição; (3) forma XR/SR é melhor tolerada (privada); (4) se persiste >4 sem: trocar de classe."},
+{nivel:"warn", txt:"DEFICIÊNCIA B12: uso >5 anos pode reduzir B12 — dosar anualmente, suplementar se <300 pg/mL. Pode causar neuropatia + anemia macrocítica."},
+{nivel:"info", txt:"NÃO é mais EXCLUSIVA em 1ª linha (SBD 2025) — em paciente com RCV alto/muito alto, iniciar diretamente com SGLT-2 ou GLP-1 (eficácia CV comprovada)."},
+],
+
+preparo:"VO comprimido, COM REFEIÇÃO (reduz EA GI). XR/SR: 1× ao dia com jantar.",
+monitor:"HbA1c 3-6/6m, creatinina + TFG basal + anual, B12 anual em uso >5 anos.",
+diretriz:"SBD 2025 R3. ADA Standards 2025. UKPDS. DPP trial.",
+fluxo:null, calcs:[],
+},
+
+/* ============== SULFONILUREIAS ============== */
+
+{id:"med-glibenclamida", classe:"Sulfonilureia de 2ª geração — secretagogo de insulina", grupo:"antidiabetico",
+nome:"Glibenclamida (Gliburida)",
+sin:["Daonil","Glimax"],
+formas:["Comprimidos 5 mg — SUS/REMUME"],
+resumo:"Sulfonilureia mais usada SUS. POTENTE — reduz HbA1c 1-2%. RISCO HIPOGLICEMIA prolongada (especialmente idoso). Sem benefício CV. Caindo em uso (preferir gliclazida).",
+dose_rapida:"2,5-5 mg VO 1-2×/d (máx 20 mg/d)",
+
+doses:[
+{ind:"DM2 — em paciente sem outras opções (custo)", dose:"2,5 mg VO 1×/d (manhã) inicial; titular até 10-20 mg/d divididos", obs:"Tomar 30 min antes do café da manhã. Maior dose = jantar."},
+{ind:"DM2 + Metformina", dose:"5-10 mg/d + metformina", obs:"Combinação clássica SUS — barata, eficaz, mas risco hipoglicemia."},
+],
+
+ajustes:{
+irc:"TFG <60: REDUZIR 50%. TFG <30: CONTRAINDICADA (hipoglicemia prolongada).",
+iht:"IH moderada/grave: contraindicada.",
+idoso:"EVITAR se possível — alto risco hipoglicemia grave. Preferir gliclazida MR ou outras classes (DPP-4, SGLT-2).",
+gestante:"NÃO recomendada — preferir insulina ou metformina.",
+aleita:"Evitar — passa em leite.",
+ped:"Não recomendada.",
+},
+
+mecanismo:"Bloqueia canal K-ATP nas células β pancreáticas → despolarização → influxo de Ca²⁺ → secreção de insulina. Estímulo é INDEPENDENTE de glicemia (por isso causa hipoglicemia mesmo em glicemia normal).",
+
+farmacocin:{
+absorc:"VO: rápida",
+distrib:"Ampla",
+metab:"Hepático (CYP2C9) → metabólitos ATIVOS",
+elimin:"Renal (50%) + biliar — METABÓLITOS ATIVOS em IRC = hipoglicemia prolongada",
+meiavida:"5-10h (metabólitos: mais longa)",
+ligacao:">99%",
+},
+
+espectro:["DM2 — opção SUS de baixo custo (limitações)","Combinada com metformina"],
+
+interacoes:[
+{droga:"β-bloqueadores", efeito:"Mascaram sintomas hipoglicemia (tremor, palpitação) — perigoso."},
+{droga:"AINE, sulfas, fluconazol, varfarina", efeito:"Deslocam glibenclamida da albumina → ↑ efeito, hipoglicemia."},
+{droga:"Álcool", efeito:"Potencializa hipoglicemia + efeito dissulfiram-like."},
+{droga:"Tiazídicos, corticoides", efeito:"Hiperglicemia — antagonizam."},
+],
+
+efeitos:[
+{tipo:"comum", item:"HIPOGLICEMIA (mais comum/grave que outras sulfonilureias), ganho de peso (1-3 kg), náusea, rash"},
+{tipo:"sério", item:"HIPOGLICEMIA GRAVE PROLONGADA — internação. ESPECIALMENTE em idoso, IRC, jejum prolongado. Mortalidade descrita."},
+{tipo:"raro", item:"Anemia hemolítica em deficiência G6PD, colestase, eritema multiforme, hiponatremia (SIADH)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"HIPOGLICEMIA GRAVE PROLONGADA: glibenclamida (metabólitos ativos) causa hipoglicemia que pode durar HORAS-DIAS, especialmente em idoso/IRC. TRATAR: glicose 50% 50 mL IV (após tiamina se etilista) + BIC glicose 5% × 24-48h (NÃO suficiente glicose VO única). Internar."},
+{nivel:"crit", txt:"IDOSO ≥65 anos: SUBSTITUIR por outras classes (gliclazida MR, DPP-4, SGLT-2). Hipoglicemia em idoso = risco fratura, IAM, AVC, óbito (3-5× mais comum vs gliclazida)."},
+{nivel:"warn", txt:"PREFERIR GLICLAZIDA MR sobre glibenclamida — meia-vida controlada, menos hipoglicemia, mais cardioseguro (estudo ADVANCE)."},
+{nivel:"warn", txt:"GANHO DE PESO 1-3 kg — antagoniza meta de perda de peso em DM2 com obesidade."},
+{nivel:"info", txt:"SEM BENEFÍCIO CV (DBHA/SBD 2025 — sulfonilureia não tem evidência de redução de desfechos CV)."},
+],
+
+preparo:"VO 30 min ANTES da refeição (café, jantar).",
+monitor:"HbA1c, glicemias capilares, sintomas hipoglicemia.",
+diretriz:"SBD 2025. ADA 2025.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-gliclazida", classe:"Sulfonilureia de 2ª geração — formulação MR (modified release)", grupo:"antidiabetico",
+nome:"Gliclazida MR",
+sin:["Diamicron MR","Azukon MR"],
+formas:["Comprimidos 30 mg MR (mais usado) ou 60 mg MR — SUS/REMUME"],
+resumo:"Sulfonilureia preferida atualmente. Formulação MR (liberação modificada) reduz hipoglicemia. Cardiosegura (ADVANCE trial). 1×/d.",
+dose_rapida:"30-120 mg VO 1×/d (manhã, com café)",
+
+doses:[
+{ind:"DM2 — alternativa à glibenclamida (PREFERIDA)", dose:"30 mg VO 1×/d (manhã) inicial; titular cada 2-4 sem até 120 mg/d", obs:"Tomar com café da manhã. Dose máxima 120 mg/d (4 comp de 30 mg)."},
+{ind:"DM2 + Metformina", dose:"30-120 mg/d + metformina", obs:"Boa combinação. Menor hipoglicemia que glibenclamida."},
+],
+
+ajustes:{
+irc:"TFG 30-60: cautela, monitor. TFG <30: evitar (risco hipoglicemia).",
+iht:"Cautela em IH moderada/grave.",
+idoso:"PREFERIDA vs glibenclamida (perfil mais seguro). Iniciar 30 mg.",
+gestante:"NÃO recomendada — preferir insulina.",
+aleita:"Evitar.",
+ped:"Não rotina.",
+},
+
+mecanismo:"Mesma classe da glibenclamida — bloqueio K-ATP → secreção de insulina. Diferenças: (1) sem metabólitos ATIVOS (vs glibenclamida); (2) formulação MR libera lentamente em 24h; (3) maior seletividade para receptor SUR1 pancreático (menos efeito CV adverso vs glibenclamida).",
+
+farmacocin:{
+absorc:"VO MR: liberação prolongada 24h",
+distrib:"Ampla",
+metab:"Hepático CYP2C9",
+elimin:"Renal (60-70% metabólitos INATIVOS)",
+meiavida:"~10-12h",
+ligacao:"~95%",
+},
+
+espectro:["DM2 — preferida vs glibenclamida","Combinada com metformina","DM2 em paciente que precisa de baixo custo + 1×/d"],
+
+interacoes:[
+{droga:"β-bloqueadores", efeito:"Mascaram sintomas hipoglicemia."},
+{droga:"AINE, sulfas, fluconazol", efeito:"Deslocam da albumina — hipoglicemia."},
+{droga:"Álcool", efeito:"Potencializa hipoglicemia."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Hipoglicemia (menor que glibenclamida), ganho de peso leve, náusea"},
+{tipo:"sério", item:"Hipoglicemia grave (menos frequente que glibenclamida), reação alérgica"},
+{tipo:"raro", item:"Anemia hemolítica em G6PD, colestase, hiponatremia"},
+],
+
+alertas:[
+{nivel:"warn", txt:"PREFERIDA vs glibenclamida — ADVANCE trial demonstrou segurança CV + menor hipoglicemia. Em idoso: opção razoável dentro das sulfonilureias."},
+{nivel:"warn", txt:"FORMULAÇÃO MR é IMPORTANTE — comprimido não-MR teve hipoglicemia maior. Confirmar 'MR' na receita."},
+{nivel:"info", txt:"GANHO DE PESO menor que glibenclamida (1-2 kg). Sem benefício CV específico."},
+],
+
+preparo:"VO comprimido MR, INTEIRO (não partir/mastigar — formulação prolongada). Manhã com café.",
+monitor:"HbA1c, glicemias.",
+diretriz:"SBD 2025. ADVANCE trial.",
+fluxo:null, calcs:[],
+},
+
+/* ============== DPP-4 ============== */
+
+{id:"med-sitagliptina", classe:"Inibidor da DPP-4 — incretínico", grupo:"antidiabetico",
+nome:"Sitagliptina",
+sin:["Januvia","Galvus (vildagliptina similar)","Onglyza (saxagliptina)"],
+formas:["Comprimidos 25, 50, 100 mg — SUS via CEAF (PCDT específico) e privada"],
+resumo:"Inibidor DPP-4 — aumenta GLP-1/GIP endógenos. Reduz HbA1c 0,5-1%. Neutro para peso. NÃO causa hipoglicemia. Bem tolerado. SEM benefício CV específico mas CARDIOSEGURO.",
+dose_rapida:"100 mg VO 1×/d",
+
+doses:[
+{ind:"DM2 — opção em paciente que não pode usar SGLT-2/GLP-1 ou prefere VO", dose:"100 mg VO 1×/d (qualquer horário)", obs:"Pode ser combinada com metformina, sulfonilureia, insulina."},
+{ind:"DM2 + Metformina", dose:"100 mg/d + metformina", obs:"Combinação fixa: sitagliptina + metformina (Janumet)."},
+{ind:"DM2 em idoso (alternativa à sulfonilureia)", dose:"100 mg/d (TFG ≥45 mL/min)", obs:"Sem hipoglicemia, sem ganho de peso — perfil seguro."},
+],
+
+ajustes:{
+irc:"TFG 30-45: 50 mg/d. TFG <30 ou HD: 25 mg/d.",
+iht:"IH leve-moderada: sem ajuste. IH grave: cautela.",
+idoso:"Sem ajuste. Boa opção em idoso por perfil seguro.",
+gestante:"Categoria B — preferir insulina (longa experiência).",
+aleita:"Cautela.",
+ped:"Não recomendada.",
+},
+
+mecanismo:"Inibe enzima DPP-4 (dipeptidil peptidase-4) → preserva GLP-1 e GIP endógenos (incretinas pós-prandiais) → ↑ secreção de insulina GLICOSE-DEPENDENTE (apenas quando há hiperglicemia) + ↓ glucagon. POR ISSO não causa hipoglicemia em monoterapia.",
+
+farmacocin:{
+absorc:"VO: 87% — pode tomar com ou sem alimento",
+distrib:"Ampla",
+metab:"Mínimo — excretada inalterada",
+elimin:"Renal (79%)",
+meiavida:"12h (permite 1×/d)",
+ligacao:"38%",
+},
+
+espectro:["DM2 — alternativa em idoso, paciente que evita injetáveis","DM2 + IRC moderada (com ajuste de dose)","Combinada com metformina, sulfonilureia, insulina"],
+
+interacoes:[
+{droga:"Digoxina", efeito:"↑ digoxina ~11% (sem ajuste rotineiro)."},
+{droga:"Inibidores ACE (raro)", efeito:"Angioedema potencializado (caso raro descrito)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Cefaleia, nasofaringite, infecções urinárias leves"},
+{tipo:"sério", item:"PANCREATITE AGUDA (raro mas descrito — dor abdominal súbita + amilase/lipase ↑), ANGIOEDEMA (raro), reação de hipersensibilidade"},
+{tipo:"raro", item:"Penfigoide bolhoso (DPP-4 efeito de classe), insuficiência cardíaca (saxagliptina especificamente — SAVOR-TIMI 53)"},
+],
+
+alertas:[
+{nivel:"warn", txt:"PANCREATITE: suspender se dor abdominal súbita + amilase/lipase elevadas. Investigar. Em histórico de pancreatite: considerar evitar (preferir outra classe)."},
+{nivel:"warn", txt:"SAXAGLIPTINA (similar): SAVOR-TIMI 53 mostrou ↑ HOSPITALIZAÇÃO POR IC. Sitagliptina, alogliptina, linagliptina: neutras. Em IC: evitar saxagliptina."},
+{nivel:"warn", txt:"PENFIGOIDE BOLHOSO: efeito de classe DPP-4 — pode aparecer após meses-anos de uso. Suspender."},
+{nivel:"info", txt:"PERFIL: sem hipoglicemia, neutro para peso, bem tolerado. BOA OPÇÃO em IDOSO ou paciente que evita injetáveis. Reduz HbA1c menos que SGLT-2/GLP-1 (~0,5-1%)."},
+{nivel:"info", txt:"PCDT SUS: disponível para DM2 com HbA1c não controlada apesar de metformina + sulfonilureia OU contraindicação a sulfonilureia."},
+],
+
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"HbA1c, função renal, sinais pancreatite.",
+diretriz:"SBD 2025. ADA 2025. TECOS trial (cardiossegurança).",
+fluxo:null, calcs:[],
+},
+
+/* ============== SGLT-2 ============== */
+
+{id:"med-dapagliflozina", classe:"Inibidor SGLT-2 — co-transportador Na+/glicose renal", grupo:"antidiabetico",
+nome:"Dapagliflozina",
+sin:["Forxiga"],
+formas:["Comprimidos 5 mg, 10 mg — privada/SUS via CEAF (em alguns estados, com critérios)"],
+resumo:"SGLT-2 com benefício CV/renal COMPROVADO. 1ª linha em DM2 com alto/muito alto RCV (SBD 2025). Reduz HbA1c 0,5-1% + perda peso 2-3 kg + redução PA + redução mortalidade CV e IC.",
+dose_rapida:"10 mg VO 1×/d (manhã)",
+
+doses:[
+{ind:"DM2 — 1ª linha em ALTO/MUITO ALTO RCV (SBD 2025)", dose:"10 mg VO 1×/d", obs:"Iniciar precocemente — benefício CV demonstrado independente de HbA1c. DECLARE-TIMI 58 trial."},
+{ind:"IC com FE REDUZIDA (com ou sem DM!)", dose:"10 mg/d", obs:"DAPA-HF trial — reduz mortalidade e hospitalização em IC FE reduzida MESMO em paciente SEM DM. PADRÃO MODERNO."},
+{ind:"IC com FE PRESERVADA", dose:"10 mg/d", obs:"DELIVER trial (2022) — também eficaz em IC FE preservada/levemente reduzida."},
+{ind:"DRC + DM2 (nefroproteção)", dose:"10 mg/d", obs:"DAPA-CKD trial — reduz progressão IRC + mortalidade em DM2 + DRC. Pode iniciar com TFG ≥25."},
+],
+
+ajustes:{
+irc:"TFG ≥45: dose plena (10 mg). TFG 25-45: 10 mg ainda eficaz (DAPA-CKD). TFG <25: efeito glicêmico mínimo, mas benefício CV/renal pode persistir — discutir.",
+iht:"IH grave: cautela (5 mg inicial).",
+idoso:"Cuidado com depleção volêmica/hipotensão postural. Iniciar 5 mg em frágil.",
+gestante:"CATEGORIA C — NÃO usar 2º-3º trimestre (nefrotoxicidade fetal).",
+aleita:"Evitar.",
+ped:"Não rotina.",
+},
+
+mecanismo:"Inibe SGLT-2 no túbulo proximal renal → reduz reabsorção de glicose → GLICOSÚRIA (paciente excreta 50-80 g de glicose/dia) → ↓glicemia, peso, PA. Mecanismos pleiotrópicos cardiorrenais: redução pré-carga, melhora hemodinâmica renal, redução inflamação, ↑cetoadaptação (combustível alternativo cardíaco).",
+
+farmacocin:{
+absorc:"VO: 78%",
+distrib:"Ampla",
+metab:"Glucuronidação (UGT1A9)",
+elimin:"Renal (75%)",
+meiavida:"12h",
+ligacao:"~91%",
+},
+
+espectro:["DM2 com ALTO/MUITO ALTO RCV (1ª linha SBD 2025)","IC com FE reduzida COM OU SEM DM (DAPA-HF — padrão)","IC com FE preservada","DRC + DM (nefroproteção)","Insuficiência cardíaca + DM2"],
+
+interacoes:[
+{droga:"Diuréticos de alça/tiazídicos", efeito:"Depleção volêmica aditiva — cuidado em idoso/frágil. Reduzir diurético antes."},
+{droga:"Insulina, sulfonilureia", efeito:"↑ risco hipoglicemia em combinação — reduzir dose."},
+{droga:"Rifampicina", efeito:"↓ dapagliflozina (indução UGT)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"INFECÇÕES URINÁRIAS / GENITAIS (candidíase 3-10%), poliúria, sede, depleção volêmica leve, hipotensão postural"},
+{tipo:"sério", item:"CETOACIDOSE EUGLICÊMICA (rara mas descrita — glicemia normal/quase normal mas cetose + acidose), fasciite necrosante perineal (gangrena de Fournier — raríssimo, fatal), depleção volêmica grave"},
+{tipo:"raro", item:"Fratura óssea (canagliflozina mais), amputação MMII (canagliflozina — CANVAS), reação alérgica grave"},
+],
+
+alertas:[
+{nivel:"crit", txt:"CETOACIDOSE EUGLICÊMICA: rara mas grave — paciente com sintomas cetose (náusea, vômito, dor abdominal, dispneia) mas glicemia próxima do normal. SUSPEITAR + dosar cetonas + gasometria. Fatores: jejum prolongado, álcool, infecção, redução de insulina basal. TRATAR: suspender SGLT-2 + insulina + glicose + hidratação."},
+{nivel:"crit", txt:"GANGRENA DE FOURNIER (fasciite necrosante perineal): raríssima mas pode ser FATAL. Avisar paciente: procurar emergência se DOR/EDEMA/ERITEMA na região perineal/genital + febre + queda do estado geral."},
+{nivel:"warn", txt:"SUSPENDER em situações de jejum prolongado: pré-operatório (24-48h antes), gastroenterite com vômito/diarreia, infecção grave, IAM. Reintroduzir após estabilização."},
+{nivel:"warn", txt:"INFECÇÕES GENITAIS: prevenir com higiene perineal adequada. Tratar com antifúngico tópico. Não suspende rotina."},
+{nivel:"info", txt:"BENEFÍCIO PRINCIPAL = mortalidade CV + IC + nefroproteção, MESMO em paciente sem DM. Iniciar PRECOCEMENTE em RCV alto, sem esperar falha de outra classe (mudança de paradigma SBD 2025)."},
+],
+
+preparo:"VO comprimido, com ou sem alimento, manhã.",
+monitor:"HbA1c, função renal, sinais infecção genital/urinária. Em IC: peso, BNP.",
+diretriz:"SBD 2025. ADA 2025. DAPA-HF. DAPA-CKD. DECLARE-TIMI 58. DELIVER.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-empagliflozina", classe:"Inibidor SGLT-2 — co-transportador Na+/glicose renal", grupo:"antidiabetico",
+nome:"Empagliflozina",
+sin:["Jardiance"],
+formas:["Comprimidos 10 mg, 25 mg — privada/SUS via CEAF (em alguns estados)"],
+resumo:"SGLT-2 com a EVIDÊNCIA CV MAIS ROBUSTA (EMPA-REG OUTCOME — 1º estudo a mostrar redução de mortalidade CV em DM2). 1ª linha em DM2 + alto RCV.",
+dose_rapida:"10-25 mg VO 1×/d (manhã)",
+
+doses:[
+{ind:"DM2 — 1ª linha em ALTO/MUITO ALTO RCV (SBD 2025)", dose:"10 mg VO 1×/d; pode subir 25 mg se necessário controle glicêmico", obs:"EMPA-REG OUTCOME: reduziu mortalidade CV em 38% em DM2 + DCV estabelecida."},
+{ind:"IC com FE REDUZIDA (com ou sem DM!)", dose:"10 mg/d", obs:"EMPEROR-Reduced trial — padrão moderno em IC FE reduzida."},
+{ind:"IC com FE PRESERVADA", dose:"10 mg/d", obs:"EMPEROR-Preserved (2021) — primeiro tratamento eficaz em IC FE preservada/levemente reduzida."},
+{ind:"DRC + DM2", dose:"10 mg/d", obs:"EMPA-KIDNEY trial — reduz progressão IRC + mortalidade."},
+],
+
+ajustes:{
+irc:"TFG ≥45: 10-25 mg. TFG 30-45: 10 mg. TFG <30: efeito glicêmico mínimo, benefício CV pode persistir — discutir individual.",
+iht:"IH grave: cautela.",
+idoso:"Cuidado com depleção volêmica.",
+gestante:"NÃO usar 2º-3º trimestre.",
+aleita:"Evitar.",
+ped:"Não rotina.",
+},
+
+mecanismo:"Mesmo da dapagliflozina (inibição SGLT-2). Empagliflozina tem maior seletividade SGLT-2/SGLT-1 (>2500×) — pode ter perfil de segurança ligeiramente diferente.",
+
+farmacocin:{
+absorc:"VO: ~85%",
+distrib:"Ampla",
+metab:"Glucuronidação",
+elimin:"Renal (54%) + fezes",
+meiavida:"12-13h",
+ligacao:"~86%",
+},
+
+espectro:["DM2 — 1ª linha em alto RCV (EMPA-REG)","IC FE reduzida COM OU SEM DM (EMPEROR-Reduced)","IC FE preservada (EMPEROR-Preserved)","DRC + DM (EMPA-KIDNEY)"],
+
+interacoes:[
+{droga:"Diuréticos", efeito:"Depleção volêmica aditiva."},
+{droga:"Insulina, sulfonilureia", efeito:"Hipoglicemia em combinação — reduzir dose."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Infecções genitais (candidíase), ITU, poliúria, depleção volêmica leve"},
+{tipo:"sério", item:"Cetoacidose euglicêmica, gangrena de Fournier (raríssima), depleção volêmica grave"},
+{tipo:"raro", item:"Reação alérgica grave"},
+],
+
+alertas:[
+{nivel:"crit", txt:"Mesmos alertas da dapagliflozina (cetoacidose euglicêmica, gangrena Fournier). SUSPENDER em jejum prolongado, pré-op, sepse."},
+{nivel:"warn", txt:"EMPA-REG OUTCOME (NEJM 2015) foi o PRIMEIRO trial a mostrar redução de mortalidade CV em DM2 com classe além de insulina — mudou paradigma SGLT-2."},
+{nivel:"info", txt:"DAPA vs EMPA: ambas são SGLT-2 com evidências sólidas. Empagliflozina tem mais estudos em IC. Dapagliflozina aprovada em DRC mesmo sem DM. SBD 2025 considera equivalentes."},
+],
+
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"HbA1c, função renal, sinais infecção.",
+diretriz:"SBD 2025. EMPA-REG OUTCOME. EMPEROR-Reduced/Preserved. EMPA-KIDNEY.",
+fluxo:null, calcs:[],
+},
+
+/* ============== GLP-1 ANALOGS ============== */
+
+{id:"med-semaglutida", classe:"Agonista do receptor GLP-1 — incretínico", grupo:"antidiabetico",
+nome:"Semaglutida",
+sin:["Ozempic (SC 1×/sem)","Wegovy (obesidade SC)","Rybelsus (VO 1×/d)"],
+formas:["SC 1×/SEM: caneta 0,25/0,5/1/2 mg (Ozempic)","SC 1×/SEM: caneta 1,7/2,4 mg (Wegovy — obesidade)","VO 1×/d: comprimido 3/7/14 mg (Rybelsus) — em jejum 30 min antes 1ª refeição"],
+resumo:"Análogo GLP-1 SC semanal (ou VO diário). Benefício CV (SUSTAIN-6) + nefroproteção + PERDA DE PESO 5-15%. 1ª linha em DM2 + obesidade ou alto RCV (SBD 2025).",
+dose_rapida:"SC: 0,25 mg/sem × 4 sem → 0,5 mg/sem × 4 sem → 1 mg/sem (máx 2 mg/sem)",
+
+doses:[
+{ind:"DM2 — 1ª linha em OBESIDADE (IMC ≥30) ou ALTO RCV (SBD 2025)", dose:"SC: 0,25 mg/sem × 4 sem → 0,5 mg/sem × 4 sem → 1 mg/sem (manutenção); pode subir 2 mg/sem", obs:"Titulação lenta REDUZ EA GI (náusea). Mesmo dia da semana."},
+{ind:"Obesidade SEM DM (Wegovy)", dose:"Titulação até 2,4 mg/sem (16 sem)", obs:"STEP-1 trial: ~15% redução de peso. Indicação isolada para obesidade."},
+{ind:"DM2 — Rybelsus VO", dose:"3 mg/d × 30 dias → 7 mg/d × 30 dias → 14 mg/d", obs:"EM JEJUM com 1/2 copo água, AGUARDAR 30 min até primeira refeição. Absorção é crítica."},
+{ind:"DM2 + IC / DAC estabelecida", dose:"0,5-2 mg/sem", obs:"SUSTAIN-6 — reduz desfechos CV maiores (MACE) 26%."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 15. <15: cautela.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Sem ajuste — usar dose padrão. Cuidado com EA GI.",
+gestante:"Categoria C — EVITAR. Suspender 2 meses antes de gestação planejada.",
+aleita:"Sem dados — evitar.",
+ped:"≥12 anos (Wegovy obesidade): aprovado FDA.",
+},
+
+mecanismo:"Análogo do GLP-1 (incretina endógena) com meia-vida muito mais longa (T½ ~165h). Efeitos: (1) ↑secreção de insulina GLICOSE-DEPENDENTE; (2) ↓secreção glucagon; (3) RETARDA esvaziamento gástrico → saciedade precoce; (4) AÇÃO NO SNC (hipotálamo) → ↓apetite → PERDA DE PESO; (5) efeitos pleiotrópicos cardiovasculares.",
+
+farmacocin:{
+absorc:"SC: pico em 1-3 dias | VO: muito baixa (apenas 0,4-1%, requer absorção em jejum)",
+distrib:"Ampla",
+metab:"Proteólise (peptídeo)",
+elimin:"Renal/fezes",
+meiavida:"~165h (1 semana) — permite SC semanal",
+ligacao:">99%",
+},
+
+espectro:["DM2 + obesidade (IMC ≥30) — 1ª linha SBD 2025","DM2 + alto/muito alto RCV (SUSTAIN-6)","DM2 + DRC (FLOW trial — nefroproteção)","Obesidade SEM DM (Wegovy — STEP-1)","DM2 refratária a metformina"],
+
+interacoes:[
+{droga:"Sulfonilureias, insulina", efeito:"↑ hipoglicemia — reduzir dose dessas em ~20-30%."},
+{droga:"Drogas VO de absorção pH-dependente (levotiroxina, alguns antibióticos)", efeito:"Retardo do esvaziamento gástrico pode reduzir absorção."},
+{droga:"Varfarina", efeito:"Pode alterar INR — monitorar."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Náusea (40%, geralmente transitória 4-8 sem), vômito, diarreia, constipação, dor abdominal, dispepsia, ↓ apetite (efeito buscado), fadiga, cefaleia"},
+{tipo:"sério", item:"PANCREATITE AGUDA (rara mas descrita), gastroparesia (em DM autonômico), CARCINOMA MEDULAR DE TIREOIDE (apenas em estudos animais — black box FDA), reação no local da injeção, retinopatia diabética piora súbita (se controle glicêmico muito rápido)"},
+{tipo:"raro", item:"Ileus, vesicultopatia (colelitíase em uso prolongado)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"CONTRAINDICAÇÃO: História pessoal/familiar de CARCINOMA MEDULAR DE TIREOIDE ou neoplasia endócrina múltipla tipo 2 (MEN2) — risco descrito em estudos animais (BLACK BOX FDA)."},
+{nivel:"crit", txt:"PANCREATITE: suspender se dor abdominal súbita persistente + náusea + amilase/lipase elevadas. Em histórico de pancreatite recorrente: contraindicação relativa."},
+{nivel:"warn", txt:"NÁUSEA: 40% inicial — titulação LENTA (4 semanas em cada dose) reduz. Orientar refeições pequenas, evitar gorduras. Geralmente desaparece em 4-8 semanas."},
+{nivel:"warn", txt:"RYBELSUS VO: ABSORÇÃO É CRÍTICA — EM JEJUM, com 1/2 copo de ÁGUA (não suco/café), AGUARDAR 30 MIN até comer/beber/tomar outra droga. Falha de adesão a esse protocolo = falha terapêutica."},
+{nivel:"warn", txt:"PIORA RETINOPATIA: SUSTAIN-6 mostrou ↑ piora de retinopatia preexistente em pacientes com queda rápida de HbA1c. Fazer fundoscopia antes de iniciar em paciente com retinopatia diabética."},
+{nivel:"info", txt:"VIAS: SC semanal é PADRÃO. VO diário (Rybelsus) é alternativa para quem evita agulhas, mas absorção é desafio."},
+{nivel:"info", txt:"PERDA DE PESO MÉDIA: STEP trials ~15% em 68 sem (~14-17 kg em obeso). Em DM2: SUSTAIN ~5-6 kg adicional. Maior perda entre GLP-1 atuais."},
+],
+
+preparo:"SC: caneta pré-preenchida — abdômen, coxa, braço. Mesmo dia da semana. Rotacionar locais. VO: jejum estrito + 30 min depois.",
+monitor:"HbA1c 3-6/6m, peso, função renal, fundoscopia em retinopatia, sintomas pancreatite.",
+diretriz:"SBD 2025. ADA 2025. SUSTAIN-6. STEP-1/2/3. FLOW.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-liraglutida", classe:"Agonista GLP-1 — incretínico", grupo:"antidiabetico",
+nome:"Liraglutida",
+sin:["Victoza (DM2)","Saxenda (obesidade)"],
+formas:["SC 1×/d: caneta 6 mg/mL (Victoza 1,2-1,8 mg/d para DM, Saxenda 3 mg/d para obesidade)"],
+resumo:"GLP-1 de meia-vida média (13h). Posologia DIÁRIA (vs semanal da semaglutida). Benefício CV (LEADER trial). Perda peso 3-6 kg. Substituto razoável onde semaglutida indisponível.",
+dose_rapida:"DM2: 0,6 mg SC × 1 sem → 1,2 mg/d → 1,8 mg/d. Obesidade: até 3 mg/d",
+
+doses:[
+{ind:"DM2 — alternativa à semaglutida", dose:"0,6 mg SC 1×/d × 1 sem → 1,2 mg/d × 1 sem → 1,8 mg/d (manutenção)", obs:"Injeção 1×/d — menos prática que semaglutida semanal."},
+{ind:"Obesidade SEM DM (Saxenda)", dose:"0,6 mg/d, titular 0,6 mg/sem até 3 mg/d", obs:"SCALE trial — ~5-8% redução de peso. Menor que semaglutida."},
+{ind:"DM2 + DAC estabelecida (LEADER)", dose:"1,8 mg/d", obs:"LEADER trial — reduz MACE 13% em DM2 + DCV."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 15.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Sem ajuste — cuidado EA GI.",
+gestante:"Evitar.",
+aleita:"Evitar.",
+ped:"≥12 anos (Saxenda obesidade): aprovado FDA.",
+},
+
+mecanismo:"Mesmo da semaglutida — agonista GLP-1. Diferença: meia-vida 13h (vs 165h da semaglutida) → injeção diária.",
+
+farmacocin:{
+absorc:"SC: pico 8-12h",
+distrib:"Ampla",
+metab:"Proteólise",
+elimin:"Não significativa renal",
+meiavida:"~13h",
+ligacao:">98%",
+},
+
+espectro:["DM2 — alternativa","Obesidade (Saxenda)","DM2 + DCV (LEADER)"],
+
+interacoes:[{droga:"Sulfonilureias, insulina", efeito:"Hipoglicemia — reduzir dose."}],
+
+efeitos:[
+{tipo:"comum", item:"Náusea, vômito, diarreia, constipação, dor abdominal, ↓ apetite"},
+{tipo:"sério", item:"Pancreatite, carcinoma medular tireoide (caixa preta), gastroparesia"},
+{tipo:"raro", item:"Vesiculopatia"},
+],
+
+alertas:[
+{nivel:"crit", txt:"Mesmas contraindicações da semaglutida (CMT, MEN2, pancreatite)."},
+{nivel:"warn", txt:"PERDA DE PESO MENOR que semaglutida (~3-5 kg vs 5-15 kg). Em obesidade significativa: preferir semaglutida ou tirzepatida."},
+{nivel:"info", txt:"VANTAGEM: 1×/d permite dose mais ajustável dia-a-dia. Boa para iniciar em paciente com muita náusea (controle mais fino)."},
+],
+
+preparo:"SC caneta — abdômen, coxa, braço. Rotacionar.",
+monitor:"HbA1c, peso, função renal, sintomas pancreatite.",
+diretriz:"SBD 2025. LEADER. SCALE.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-tirzepatida", classe:"Agonista dual GIP + GLP-1 — incretínico", grupo:"antidiabetico",
+nome:"Tirzepatida",
+sin:["Mounjaro (DM2)","Zepbound (obesidade)"],
+formas:["SC 1×/SEM: caneta 2,5 / 5 / 7,5 / 10 / 12,5 / 15 mg — privada apenas"],
+resumo:"AGONISTA DUAL GIP + GLP-1. Eficácia GLICÊMICA E PONDERAL SUPERIOR aos GLP-1 isolados. Reduz HbA1c 2-2,5% + perda peso 15-22%. Aprovado SURMOUNT (obesidade) e SURPASS (DM2).",
+dose_rapida:"2,5 mg SC 1×/sem × 4 sem → titular 2,5 mg cada 4 sem (máx 15 mg/sem)",
+
+doses:[
+{ind:"DM2 — opção em obesidade significativa ou refratariedade", dose:"2,5 mg SC 1×/sem × 4 sem → 5 mg → 7,5 mg → 10 mg → 12,5 mg → 15 mg (cada degrau 4 sem)", obs:"Maior eficácia anti-hiperglicêmica/ponderal disponível atualmente (SURPASS trials)."},
+{ind:"Obesidade SEM DM (Zepbound)", dose:"Até 15 mg/sem", obs:"SURMOUNT-1: 22% redução de peso (~22 kg em 72 sem) — maior eficácia ponderal já descrita farmacoterapia."},
+{ind:"DM2 + alto RCV", dose:"10-15 mg/sem", obs:"SURPASS-CVOT — em andamento, evidência CV em desenvolvimento."},
+],
+
+ajustes:{
+irc:"Sem ajuste até TFG 15.",
+iht:"IH grave: cautela.",
+idoso:"Sem ajuste.",
+gestante:"Categoria C — evitar.",
+aleita:"Evitar.",
+ped:"Não recomendada.",
+},
+
+mecanismo:"AGONISTA DUAL: ativa receptores de GIP (peptídeo insulinotrópico glicose-dependente) E GLP-1. Efeito sinérgico em: secreção insulina, redução glucagon, retardo esvaziamento gástrico, ↓ apetite. Mecanismo dual explica eficácia superior aos GLP-1 isolados.",
+
+farmacocin:{
+absorc:"SC: pico ~24-72h",
+distrib:"Ampla",
+metab:"Proteólise",
+elimin:"—",
+meiavida:"~5 dias",
+ligacao:">99%",
+},
+
+espectro:["DM2 com obesidade significativa","DM2 refratária","Obesidade isolada (Zepbound)","Em desenvolvimento: NASH, IC, apneia obstrutiva"],
+
+interacoes:[{droga:"Sulfonilureias, insulina", efeito:"Hipoglicemia — reduzir."}],
+
+efeitos:[
+{tipo:"comum", item:"Náusea (mais intensa que GLP-1 isolado), vômito, diarreia, constipação, dispepsia, ↓ apetite"},
+{tipo:"sério", item:"Pancreatite (raro), hipoglicemia (com sulfonilureia/insulina), reações alérgicas, vesiculopatia"},
+{tipo:"raro", item:"Carcinoma medular tireoide (mesma classe-warning)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"CONTRAINDICAÇÃO: História pessoal/familiar de carcinoma medular de tireoide ou MEN2 (mesma classe-warning dos GLP-1)."},
+{nivel:"warn", txt:"NÁUSEA INTENSA: titulação MAIS LENTA que GLP-1 isolado (4 sem em cada dose). Adesão pode ser desafio inicial."},
+{nivel:"warn", txt:"CUSTO ALTO — não disponível SUS. Acesso limitado em maioria dos pacientes. Em paciente com cobertura/plano: opção quando GLP-1 isolado insuficiente."},
+{nivel:"info", txt:"SURMOUNT-1: 22% perda de peso em obesidade — maior já descrita em farmacoterapia (compatível com bariátrica). Mudança de paradigma."},
+],
+
+preparo:"SC caneta — abdômen/coxa/braço. Mesmo dia da semana.",
+monitor:"HbA1c, peso, função renal, sintomas pancreatite/vesiculopatia.",
+diretriz:"SBD 2025. SURPASS-1/2/3/4. SURMOUNT-1/2/3/4.",
+fluxo:null, calcs:[],
+},
+
+/* ============== TZD ============== */
+
+{id:"med-pioglitazona", classe:"Tiazolidinediona (TZD) — sensibilizador insulínico PPAR-γ", grupo:"antidiabetico",
+nome:"Pioglitazona",
+sin:["Actos","Stanglit"],
+formas:["Comprimidos 15 mg, 30 mg, 45 mg — privada"],
+resumo:"Sensibilizador insulínico via PPAR-γ. Reduz HbA1c 0,5-1,4%. Benefício em NASH/esteato-hepatite. Uso restrito — ganho peso, retenção líquida, fraturas, risco câncer bexiga (controverso).",
+dose_rapida:"15-45 mg VO 1×/d",
+
+doses:[
+{ind:"DM2 — uso seletivo (NASH, refratariedade)", dose:"15 mg VO 1×/d inicial; titular até 45 mg/d", obs:"Resposta lenta — esperar 8-12 sem para efeito pleno. Pouco usada em 1ª linha."},
+{ind:"DM2 + NASH (esteato-hepatite não-alcoólica)", dose:"15-45 mg/d", obs:"PIVENS trial — pioglitazona melhora histologia NASH (única droga aprovada off-label para NASH)."},
+{ind:"DM2 com resistência insulínica grave", dose:"30-45 mg/d", obs:"Útil em síndrome metabólica com IMC alto + acantose nigricans."},
+],
+
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 15. <15: cautela (retenção líquida).",
+iht:"IH ativa: CONTRAINDICADA. Em IH conhecida: dosar TGO/TGP basal e periódico.",
+idoso:"Cuidado com retenção líquida + IC + fraturas.",
+gestante:"Categoria C — evitar.",
+aleita:"Evitar.",
+ped:"Não recomendada.",
+},
+
+mecanismo:"Agonista PPAR-γ (receptor nuclear de adipócitos) → ↑ sensibilidade insulínica em músculo, fígado, adipócitos. Redistribuição de gordura (de visceral para subcutâneo). Efeito demora 4-12 semanas para atingir pico.",
+
+farmacocin:{
+absorc:"VO: pico 2h",
+distrib:"Ampla",
+metab:"Hepático (CYP2C8) — metabólitos ativos",
+elimin:"Biliar/fecal",
+meiavida:"3-7h (metabólitos 16-24h)",
+ligacao:">99%",
+},
+
+espectro:["DM2 com resistência insulínica grave","DM2 + NASH","DM2 refratária às outras opções (combinação)","Síndrome metabólica grave"],
+
+interacoes:[
+{droga:"Insulina", efeito:"Retenção líquida potencializada — risco IC. CUIDADO em combinação."},
+{droga:"Gemfibrozila", efeito:"↑ pioglitazona 3× (inibidor CYP2C8) — reduzir dose."},
+{droga:"Rifampicina", efeito:"↓ pioglitazona (indutor)."},
+],
+
+efeitos:[
+{tipo:"comum", item:"GANHO DE PESO (2-5 kg), retenção hídrica/edema, anemia leve (diluicional), congestão nasal"},
+{tipo:"sério", item:"INSUFICIÊNCIA CARDÍACA (precipita ou piora — efeito de classe TZD), FRATURAS ÓSSEAS (especialmente mulher pós-menopausa), hepatotoxicidade (rara)"},
+{tipo:"raro", item:"CÂNCER DE BEXIGA (debate — meta-análise sugere ↑ risco em uso prolongado >2 anos, evidência inconsistente)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"INSUFICIÊNCIA CARDÍACA: CONTRAINDICADA em IC NYHA III-IV. Em IC I-II: cautela e monitor. Pode precipitar/piorar IC mesmo em paciente sem disfunção prévia. ROSIGLITAZONA foi retirada do mercado por isto."},
+{nivel:"warn", txt:"FRATURAS: ↑ risco em mulher pós-menopausa (efeito ósseo via PPAR-γ). Avaliar densitometria + risco quedas antes de iniciar."},
+{nivel:"warn", txt:"CÂNCER DE BEXIGA: controvérsia — meta-análises sugerem risco ↑ modesto em uso prolongado. EVITAR em paciente com histórico de CA bexiga ou hematúria inexplicada."},
+{nivel:"warn", txt:"PESO + EDEMA: 2-5 kg em 6 meses. Em paciente com obesidade significativa: classe não preferida."},
+{nivel:"info", txt:"PIVENS trial: única droga com benefício histológico documentado em NASH — possível uso off-label nesse cenário."},
+],
+
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"HbA1c, peso, edema, TGO/TGP basal + 2-3m + 6/6m, sintomas IC.",
+diretriz:"SBD 2025. PIVENS (NASH). PROactive trial.",
+fluxo:null, calcs:[],
+},
+
+/* ============== INSULINAS BASAIS ANÁLOGAS ============== */
+
+{id:"med-insulina-glargina", classe:"Insulina análoga BASAL de longa ação — U100/U300", grupo:"antidiabetico",
+nome:"Insulina Glargina",
+sin:["Lantus (U100)","Toujeo (U300)","Basaglar (biossimilar)"],
+formas:["Caneta/refil 100 UI/mL (U100 — Lantus, Basaglar) — privada/SUS via PCDT","Caneta 300 UI/mL (U300 — Toujeo) — privada"],
+resumo:"Insulina análoga basal de longa ação (24h, U100; 36h, U300). Substituiu NPH em maioria dos países. Padrão SUS via PCDT/CEAF em alguns estados. Menor variabilidade + menor hipoglicemia noturna vs NPH.",
+dose_rapida:"Inicial 0,1-0,2 U/kg/d SC 1×/d (manhã ou noite, mesmo horário diário)",
+
+doses:[
+{ind:"DM1 — insulina basal (esquema basal-bolus)", dose:"40-50% da dose total diária como basal. Iniciar 0,2-0,3 U/kg/d", obs:"Combinada com insulina análoga rápida (lispro, asparte, glulisina) em refeições."},
+{ind:"DM2 — adição à medicação oral quando HbA1c não controlada", dose:"0,1-0,2 U/kg/d SC, titular 2 U cada 3 dias até glicemia jejum 80-130", obs:"Manter metformina. Avaliar redução de sulfonilureia (risco hipoglicemia)."},
+{ind:"DM2 — esquema basal-bolus avançado", dose:"50% dose total como basal + 50% prandial dividido em 3 refeições", obs:"Quando HbA1c persiste alto apesar de basal isolada."},
+{ind:"Pediatria — DM1", dose:"0,2-0,3 U/kg/d", obs:"Aprovada ≥6 anos (U100)."},
+],
+
+ajustes:{
+irc:"REDUZIR conforme TFG (eliminação reduzida). TFG <60: ~25% redução. TFG <30: 50% redução. Monitor.",
+iht:"IH grave: redução de necessidade insulínica — monitor.",
+idoso:"Iniciar dose menor. Vigilância hipoglicemia.",
+gestante:"Categoria C — pode usar (estudos mais limitados que NPH). Algumas diretrizes preferem detemir/NPH em gestação.",
+aleita:"Compatível.",
+ped:"Aprovada ≥6 anos.",
+},
+
+mecanismo:"Análogo de insulina com substituições aminoacídicas que aumentam ponto isoelétrico → microprecipitação subcutânea → liberação lenta e CONTÍNUA por 24h (U100) ou 36h (U300). SEM PICO marcado → reduz hipoglicemia noturna.",
+
+farmacocin:{
+absorc:"SC: lenta e contínua (24h U100; 36h U300)",
+distrib:"Sistêmica",
+metab:"Periférico (subcutâneo)",
+elimin:"Renal",
+meiavida:"~12h (U100) | ~19h (U300)",
+ligacao:"—",
+},
+
+espectro:["DM1 (basal em basal-bolus)","DM2 com HbA1c não controlada por VO","DM2 — esquema basal-bolus","Substituto NPH em paciente com hipoglicemia noturna recorrente"],
+
+interacoes:[
+{droga:"Outras insulinas", efeito:"Coordenar esquema."},
+{droga:"β-bloqueadores", efeito:"Mascaram sintomas hipoglicemia (tremor, palpitação)."},
+{droga:"Sulfonilureias, álcool", efeito:"Hipoglicemia aditiva."},
+{droga:"Corticoides", efeito:"Hiperglicemia — necessitar ↑ insulina."},
+],
+
+efeitos:[
+{tipo:"comum", item:"Hipoglicemia (mas MENOR que NPH — especialmente noturna), reação local (eritema, lipohipertrofia), ganho de peso (1-3 kg)"},
+{tipo:"sério", item:"Hipoglicemia grave, lipohipertrofia significativa (ROTACIONAR locais!), reação alérgica rara"},
+{tipo:"raro", item:"Edema (raramente)"},
+],
+
+alertas:[
+{nivel:"crit", txt:"NUNCA misturar glargina com outras insulinas na mesma seringa — formulação especial (pH ácido) precipita se combinada. Aplicar separadamente."},
+{nivel:"warn", txt:"ROTACIONAR locais de injeção (abdômen, coxa, braço, glúteo) para evitar LIPOHIPERTROFIA (massa subcutânea que reduz absorção, causa glicemia errática)."},
+{nivel:"warn", txt:"HORÁRIO FIXO diário — variação de >2h reduz cobertura. Manter rotina."},
+{nivel:"info", txt:"U300 (Toujeo) tem duração ainda maior (36h) — útil em paciente com variação 6/6h em U100. Mas U300 tem ~30% menor potência por mL — atenção ao volume na transição."},
+{nivel:"info", txt:"SUSTITUIÇÃO NPH → glargina: dose inicial ~80% da dose NPH (glargina é mais potente clinicamente). Ajustar."},
+],
+
+preparo:"SC caneta — abdômen, coxa, braço, glúteo. Não agitar (não é suspensão). Rotacionar. Manter na geladeira fechada; em uso pode permanecer ambiente até 28 dias.",
+monitor:"HbA1c, glicemias capilares (pré-refeições + bedtime), sintomas hipoglicemia.",
+diretriz:"SBD 2025. ADA 2025. PCDT MS DM2 (insulina análoga em casos específicos).",
+fluxo:null, calcs:[],
+},
+
+{id:"med-insulina-degludeca", classe:"Insulina análoga BASAL de ultra-longa ação", grupo:"antidiabetico",
+nome:"Insulina Degludeca",
+sin:["Tresiba"],
+formas:["Caneta 100 UI/mL (FlexTouch) — privada"],
+resumo:"Insulina basal de ULTRA-LONGA ação (>42h). Maior flexibilidade de horário (pode variar até 8h dia a dia). MENOR hipoglicemia noturna e total vs glargina (DEVOTE trial).",
+dose_rapida:"0,1-0,2 U/kg/d SC 1×/d (horário flexível — pode variar 8-40h entre doses)",
+
+doses:[
+{ind:"DM1/DM2 — insulina basal com necessidade de flexibilidade", dose:"0,1-0,2 U/kg/d SC 1×/d", obs:"Pode variar horário diariamente (mín 8h entre doses). Útil em paciente com rotina irregular."},
+{ind:"DM2 com hipoglicemias recorrentes em glargina", dose:"Conversão 1:1 (mesma dose unitária)", obs:"DEVOTE trial — reduz hipoglicemia grave 40% vs glargina."},
+],
+
+ajustes:{
+irc:"REDUZIR conforme TFG.",
+iht:"Reduzir.",
+idoso:"Iniciar dose menor — boa opção pela maior margem de segurança.",
+gestante:"Categoria C — dados limitados.",
+aleita:"Sem dados.",
+ped:"≥1 ano (FDA).",
+},
+
+mecanismo:"Análogo de insulina que forma MULTI-HEXÂMEROS estáveis no subcutâneo → liberação progressiva por >42h. PRINCIPAL VANTAGEM: meia-vida ultra-longa permite flexibilidade de horário (rara em insulinas).",
+
+farmacocin:{
+absorc:"SC: liberação prolongada",
+distrib:"Sistêmica",
+metab:"—",
+elimin:"—",
+meiavida:"~25h | ação >42h",
+ligacao:"—",
+},
+
+espectro:["DM1/DM2 com rotina irregular","DM com hipoglicemias recorrentes em glargina","Crianças (FDA aprovou ≥1 ano)"],
+
+interacoes:[{droga:"Como glargina", efeito:"Mesmas interações de insulinas."}],
+
+efeitos:[
+{tipo:"comum", item:"Hipoglicemia (menor que glargina), ganho de peso, reação local"},
+{tipo:"sério", item:"Hipoglicemia grave (raro), lipohipertrofia"},
+{tipo:"raro", item:"Reação alérgica"},
+],
+
+alertas:[
+{nivel:"warn", txt:"DEVOTE trial: degludeca reduziu hipoglicemia grave 40% e noturna 53% vs glargina — em paciente de alto risco hipoglicemia, considerar substituição."},
+{nivel:"info", txt:"FLEXIBILIDADE: pode variar horário diário (mín 8h entre doses) — útil em paciente com rotina noturna/irregular."},
+{nivel:"info", txt:"CUSTO ELEVADO — pouco disponível SUS. Alternativa quando glargina não tolerada."},
+],
+
+preparo:"SC caneta — rotacionar. Ambiente após início; geladeira lacrado.",
+monitor:"HbA1c, glicemias.",
+diretriz:"SBD 2025. DEVOTE trial.",
+fluxo:null, calcs:[],
+},
+
+/* ============== INSULINAS PRANDIAIS ANÁLOGAS ============== */
+
+{id:"med-insulina-lispro", classe:"Insulina análoga PRANDIAL de ação ultrarrápida", grupo:"antidiabetico",
+nome:"Insulina Lispro (e similares: Asparte, Glulisina)",
+sin:["Humalog (lispro)","NovoRapid (asparte)","Apidra (glulisina)","Lyumjev (ultrarrápida 2ª geração)"],
+formas:["Caneta/refil 100 UI/mL — privada/SUS via PCDT","Frasco 100 UI/mL"],
+resumo:"Análogas prandiais (bolus) ultrarrápidas. Início 5-15 min, pico 1-2h, duração 3-5h. Aplicar IMEDIATAMENTE antes refeição (até 15 min após permitido). Substituem regular em DM1 e DM2 basal-bolus.",
+dose_rapida:"0,05-0,15 U/kg por refeição (4-15 U típico em adulto)",
+
+doses:[
+{ind:"DM1 — bolus prandial (esquema basal-bolus)", dose:"0,05-0,15 U/kg/refeição (~4-15 U), calculado por contagem de carboidratos (1 U / 10-15 g CHO) + fator correção", obs:"FATOR CORREÇÃO típico: 1 U reduz ~30-50 mg/dL (regra 1800 para análogas: 1800÷dose total diária)."},
+{ind:"DM2 — bolus prandial em basal-bolus", dose:"4-10 U pré-refeição inicialmente; titular conforme HGT 2h pós-refeição", obs:"Iniciar com refeição maior do dia, expandir conforme necessário."},
+{ind:"Pré-operatório / DKA leve / hiperglicemia em ambulatório", dose:"Conforme protocolo (5-10 U SC PRN se glicemia >200)", obs:"Início rápido permite uso para correção."},
+{ind:"Pediatria — DM1", dose:"Mesma fórmula adulto, ajustada por peso e contagem CHO", obs:"Aprovada ≥1 ano. Educação em contagem CHO é fundamental."},
+],
+
+ajustes:{
+irc:"Reduzir dose 25-50% em TFG <30 (menor depuração).",
+iht:"Reduzir.",
+idoso:"Iniciar dose menor.",
+gestante:"Categoria B — pode usar (asparte tem mais evidência em gestação).",
+aleita:"Compatível.",
+ped:"Aprovadas ≥1 ano.",
+},
+
+mecanismo:"Análogos de insulina com substituições aminoacídicas que IMPEDEM formação de hexâmeros → absorção mais rápida (vs regular). Início 5-15 min (vs 30 min da regular). Vantagem: pode aplicar IMEDIATAMENTE antes da refeição (até 15 min após).",
+
+farmacocin:{
+absorc:"SC: início 5-15 min, pico 1-2h",
+distrib:"Sistêmica",
+metab:"Periférico",
+elimin:"Renal/hepático",
+meiavida:"Ação 3-5h",
+ligacao:"—",
+},
+
+espectro:["DM1 — esquema basal-bolus padrão","DM2 — esquema basal-bolus avançado","DM gestacional (asparte preferida)","Bomba de insulina","Correção rápida em hiperglicemia"],
+
+interacoes:[{droga:"Mesmas das insulinas", efeito:"Coordenar com basal e drogas que alteram glicemia."}],
+
+efeitos:[
+{tipo:"comum", item:"Hipoglicemia pós-prandial se dose inadequada/atrasa refeição, reação local, lipohipertrofia"},
+{tipo:"sério", item:"Hipoglicemia grave"},
+{tipo:"raro", item:"Reação alérgica"},
+],
+
+alertas:[
+{nivel:"crit", txt:"APLICAR IMEDIATAMENTE ANTES DA REFEIÇÃO (ou até 15 min após). Aplicar e não comer = HIPOGLICEMIA. Em paciente com gastroparesia: ajustar timing ou trocar para regular."},
+{nivel:"warn", txt:"DIFERENCIAR DA REGULAR: regular = início 30 min (aplicar 30 min antes), ação 6-8h. Análogas = início 5-15 min (aplicar imediatamente), ação 3-5h. ERRO COMUM = confundir → hipoglicemia ou hiperglicemia."},
+{nivel:"warn", txt:"LYUMJEV (lispro de 2ª geração) é AINDA mais rápida — início 1-3 min. Aprovada para bomba e inj direto."},
+{nivel:"info", txt:"PCDT SUS: disponível em casos específicos (DM1, DM2 com basal-bolus, gestação). Caso contrário: insulina regular cobre necessidade prandial."},
+],
+
+preparo:"SC caneta — abdômen para refeições (absorção mais rápida). Rotacionar dentro da área. NÃO usar coxa para prandial (absorção mais lenta).",
+monitor:"HbA1c, glicemias pré e 2h pós-prandiais.",
+diretriz:"SBD 2025. ADA 2025. PCDT MS.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — MEDICAÇÕES (PARTE 6)
+   ANTI-HIPERTENSIVOS COMPLEMENTARES — disponíveis no
+   mercado brasileiro, conforme DBHA 2025
+   =========================================================== */
+
+MEDICACOES.push(
+
+/* ============== BRA — MAIS OPÇÕES ============== */
+
+{id:"med-olmesartana", classe:"BRA — Bloqueador AT1", grupo:"anti_hipertensivo",
+nome:"Olmesartana",
+sin:["Benicar","Benicar HCT","Olmetec"],
+formas:["Comprimidos 20, 40 mg — privada","Combinações fixas: olmesartana+HCTZ; olmesartana+anlodipino (Sevikar)"],
+resumo:"BRA com maior potência por mg. Eficácia 24h excelente. Cuidado raro com ENTEROPATIA SPRUE-LIKE em uso prolongado.",
+dose_rapida:"20-40 mg VO 1×/d",
+doses:[
+{ind:"HAS — monoterapia ou combinada", dose:"20 mg VO 1×/d inicial; titular até 40 mg/d", obs:"Combinações fixas com HCTZ ou anlodipino (Sevikar) disponíveis."},
+{ind:"DM2 com microalbuminúria", dose:"20-40 mg/d", obs:"ROADMAP — estudos sugerem nefroproteção."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro. ClCr <20: cautela.",
+iht:"IH grave: cautela.",
+idoso:"Sem ajuste.",
+gestante:"CATEGORIA D — contraindicado 2º-3º trim.",
+aleita:"Evitar.",
+ped:"≥6 anos: especializado.",
+},
+mecanismo:"Antagonista AT1 — maior potência por mg entre BRA. Forte ligação ao receptor. Pró-droga ativada por hidrólise.",
+farmacocin:{absorc:"VO: 26%", distrib:"Ampla", metab:"Hidrólise rápida", elimin:"Fezes + Renal", meiavida:"10-15h", ligacao:">99%"},
+espectro:["HAS","HAS resistente","DM2 com microalbuminúria","Combinação BCC (Sevikar)"],
+interacoes:[
+{droga:"AINE, K+, IECA, espironolactona", efeito:"Hipercalemia, IRA."},
+{droga:"Antiácidos", efeito:"↓ absorção — separar 2h."},
+{droga:"Lítio", efeito:"↑ lítio."},
+],
+efeitos:[
+{tipo:"comum", item:"Tontura, hipercalemia leve, ↑Cr leve"},
+{tipo:"sério", item:"Angioedema raro, ENTEROPATIA SPRUE-LIKE (diarreia crônica + perda peso + atrofia vilositária — reversível ao suspender)"},
+{tipo:"raro", item:"Hepatotoxicidade"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado."},
+{nivel:"warn", txt:"ENTEROPATIA SPRUE-LIKE: efeito raro mas DESCRITO ESPECIFICAMENTE para olmesartana. Suspeitar em uso prolongado (meses-anos) com diarreia crônica + perda peso + má-absorção. SUSPENDER → resolução em semanas. Pode confundir com doença celíaca (biópsia parecida)."},
+{nivel:"warn", txt:"MAIOR POTÊNCIA por mg entre BRA — útil em HAS resistente. Cuidado com hipotensão em idoso magro."},
+{nivel:"info", txt:"SEVIKAR (olmesartana + anlodipino): combinação fixa moderna com bom perfil em HAS estágio 2-3."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, K+, creatinina basal + 1-2 sem + 1 mês + 6 meses. Vigilar diarreia crônica em uso prolongado.",
+diretriz:"DBHA 2025. ROADMAP trial. FDA warning (sprue-like).",
+fluxo:null, calcs:[],
+},
+
+{id:"med-candesartana", classe:"BRA — Bloqueador AT1", grupo:"anti_hipertensivo",
+nome:"Candesartana",
+sin:["Atacand","Blopress"],
+formas:["Comprimidos 8, 16, 32 mg — privada"],
+resumo:"BRA com forte evidência em IC (CHARM trial). Boa cobertura 24h. Alternativa moderna à losartana.",
+dose_rapida:"8-32 mg VO 1×/d",
+doses:[
+{ind:"HAS", dose:"8 mg VO 1×/d inicial; titular até 32 mg/d", obs:""},
+{ind:"IC com FE reduzida (CHARM-Alternative)", dose:"4-32 mg/d (alvo dose máxima tolerada)", obs:"CHARM — reduz mortalidade em IC FE reduzida em pacientes intolerantes a IECA."},
+{ind:"IC com FE preservada (CHARM-Preserved)", dose:"32 mg/d", obs:"Benefício mais modesto."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 30.",
+iht:"IH grave: iniciar 4 mg.",
+idoso:"Iniciar 4 mg.",
+gestante:"CATEGORIA D — contraindicado.",
+aleita:"Evitar.",
+ped:"1-17 anos: dose por peso.",
+},
+mecanismo:"BRA com MAIOR AFINIDADE pelo receptor AT1 entre BRA e dissociação mais lenta — eficácia anti-hipertensiva prolongada.",
+farmacocin:{absorc:"VO: 15% (pró-droga)", distrib:"Ampla", metab:"Mínimo", elimin:"Renal 33% + Bile 67%", meiavida:"9-12h", ligacao:">99%"},
+espectro:["HAS","IC com FE reduzida (CHARM)","IC FE preservada"],
+interacoes:[{droga:"Mesmas dos BRA", efeito:"AINE, K+, IECA."}],
+efeitos:[
+{tipo:"comum", item:"Tontura, hipercalemia leve"},
+{tipo:"sério", item:"Angioedema, IRA, hipercalemia grave"},
+{tipo:"raro", item:"Hepatite"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado."},
+{nivel:"warn", txt:"CHARM trials: evidência sólida em IC — boa escolha quando IECA não tolerado."},
+{nivel:"info", txt:"DOSE EQUIVALENTE: 16 mg candesartana ≈ 50 mg losartana ≈ 80 mg valsartana."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, K+, Cr basal + 1-2 sem + 1 mês + 6 meses.",
+diretriz:"DBHA 2025. CHARM-Alternative, CHARM-Preserved.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-irbesartana", classe:"BRA — Bloqueador AT1", grupo:"anti_hipertensivo",
+nome:"Irbesartana",
+sin:["Aprovel","Avapro","Coaprovel (combinada)"],
+formas:["Comprimidos 75, 150, 300 mg — privada"],
+resumo:"BRA com evidência sólida em nefroproteção em DM2 (IDNT, IRMA-2). Posologia 1×/d simples.",
+dose_rapida:"150-300 mg VO 1×/d",
+doses:[
+{ind:"HAS", dose:"150 mg VO 1×/d inicial; titular até 300 mg/d", obs:"Combinação fixa com HCTZ (Coaprovel)."},
+{ind:"Nefropatia diabética em DM2 (IDNT, IRMA-2)", dose:"300 mg/d", obs:"IDNT — reduz progressão IRC em DM2 com nefropatia estabelecida. IRMA-2 — previne progressão de micro para macroalbuminúria."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 30.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Iniciar 75 mg.",
+gestante:"CATEGORIA D — contraindicado.",
+aleita:"Evitar.",
+ped:"≥6 anos: 75-150 mg/d.",
+},
+mecanismo:"BRA com farmacocinética prolongada permitindo cobertura 24h em dose única.",
+farmacocin:{absorc:"VO: 60-80%", distrib:"Ampla", metab:"CYP2C9 mínimo", elimin:"Fezes 80%", meiavida:"11-15h", ligacao:"~96%"},
+espectro:["HAS","Nefropatia diabética DM2 (IDNT, IRMA-2)","DM2 com microalbuminúria"],
+interacoes:[{droga:"Mesmas dos BRA", efeito:"AINE, K+, IECA."}],
+efeitos:[
+{tipo:"comum", item:"Tontura, hipercalemia leve, fadiga"},
+{tipo:"sério", item:"Angioedema, IRA"},
+{tipo:"raro", item:"Hepatite, anemia"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado."},
+{nivel:"warn", txt:"NEFROPROTEÇÃO DM2: IDNT/IRMA-2 são estudos clássicos — irbesartana tem evidência específica em nefroproteção diabética."},
+{nivel:"info", txt:"Coaprovel (irbesartana 150/300 mg + HCTZ 12,5 mg) — combinação fixa útil."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, K+, Cr basal + 1-2 sem + 1 mês + 6 meses + RAC anual em DM.",
+diretriz:"DBHA 2025. IDNT (NEJM 2001). IRMA-2.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-azilsartana", classe:"BRA — Bloqueador AT1 (mais recente)", grupo:"anti_hipertensivo",
+nome:"Azilsartana (medoxomila)",
+sin:["Edarbi","Edarbyclor (combinada)"],
+formas:["Comprimidos 20, 40, 80 mg — privada"],
+resumo:"BRA mais recente. MAIOR POTÊNCIA anti-hipertensiva entre BRA em estudos head-to-head. Evidência CV de longo prazo ainda em desenvolvimento.",
+dose_rapida:"40-80 mg VO 1×/d",
+doses:[
+{ind:"HAS — refratária a outros BRA", dose:"40 mg VO 1×/d inicial; titular até 80 mg/d", obs:"Em meta-análises diretas, superou valsartana, olmesartana e candesartana em redução de PA."},
+{ind:"HAS estágio 2-3", dose:"80 mg/d", obs:"Pode evitar terapia tripla em alguns pacientes."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro até TFG 30.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Sem ajuste.",
+gestante:"CATEGORIA D — contraindicado.",
+aleita:"Evitar.",
+ped:"Não recomendada.",
+},
+mecanismo:"BRA com dissociação MAIS LENTA do receptor AT1 entre as BRA → maior eficácia 24h. Pró-droga (medoxomila → azilsartana ácida).",
+farmacocin:{absorc:"VO: 60%", distrib:"Ampla", metab:"CYP2C9", elimin:"Fezes 55% + Renal 42%", meiavida:"11h", ligacao:">99%"},
+espectro:["HAS — maior potência anti-hipertensiva","HAS refratária a outros BRA"],
+interacoes:[{droga:"Mesmas dos BRA", efeito:"AINE, K+, IECA."}],
+efeitos:[
+{tipo:"comum", item:"Diarreia (mais incidente que outras BRA), tontura, hipotensão postural"},
+{tipo:"sério", item:"Angioedema, IRA"},
+{tipo:"raro", item:"Hepatite"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado."},
+{nivel:"warn", txt:"POUCA EVIDÊNCIA CV de longo prazo — droga ainda relativamente recente. Eficácia anti-hipertensiva é o ponto forte."},
+{nivel:"info", txt:"Opção quando outros BRA insuficientes. Custo é maior."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, K+, Cr basal + 1-2 sem + 1 mês + 6 meses.",
+diretriz:"DBHA 2025. Estudos Sica et al.",
+fluxo:null, calcs:[],
+},
+
+/* ============== IECA — MAIS OPÇÕES ============== */
+
+{id:"med-lisinopril", classe:"IECA de longa ação — NÃO-pró-droga", grupo:"anti_hipertensivo",
+nome:"Lisinopril",
+sin:["Prinivil","Zestril"],
+formas:["Comprimidos 5, 10, 20 mg — privada"],
+resumo:"IECA de longa ação. NÃO-PRÓ-DROGA (ativo direto, sem necessidade de fígado). Vantagem em hepatopata. Posologia 1×/d. Eliminação predominantemente renal.",
+dose_rapida:"10-40 mg VO 1×/d",
+doses:[
+{ind:"HAS", dose:"10 mg VO 1×/d inicial; titular até 40 mg/d (máx 80 mg/d)", obs:"Posologia 1×/d. Dose mais alta que enalapril por equivalência."},
+{ind:"IC com FE reduzida (ATLAS trial)", dose:"2,5-5 mg/d inicial; titular até 35-40 mg/d", obs:"ATLAS — alta dose reduz hospitalização mais que baixa dose. SOLVD também."},
+{ind:"Pós-IAM com disfunção VE (GISSI-3)", dose:"5-10 mg/d", obs:"Iniciar 24h pós-IAM se PAS >100."},
+{ind:"Nefropatia diabética/proteinúrica", dose:"10-40 mg/d", obs:"Reduz proteinúria + progressão IRC."},
+],
+ajustes:{
+irc:"ClCr 30-60: 50% da dose. ClCr <30: 25%. HD: 2,5-5 mg pós-HD.",
+iht:"NÃO É PRÓ-DROGA → SEM AJUSTE em IH (vantagem vs enalapril/ramipril).",
+idoso:"Iniciar 2,5-5 mg.",
+gestante:"CATEGORIA D — contraindicado 2º-3º trim.",
+aleita:"Compatível em dose baixa.",
+ped:"≥6 anos: 0,07-0,6 mg/kg/d.",
+},
+mecanismo:"IECA — inibe ECA. DIFERENÇA dos outros: NÃO É PRÓ-DROGA (forma ativa direta). Não depende de conversão hepática. Vantagem em IH grave (vs enalapril/ramipril/perindopril que são pró-drogas).",
+farmacocin:{absorc:"VO: 25-50% (sem efeito de comida)", distrib:"Ampla", metab:"NÃO metabolizada", elimin:"Renal (100% inalterada)", meiavida:"~12h (permite 1×/d)", ligacao:"<10%"},
+espectro:["HAS","IC com FE reduzida (ATLAS, SOLVD)","Pós-IAM (GISSI-3)","Nefropatia diabética","VANTAGEM em HEPATOPATA (não-pró-droga)"],
+interacoes:[
+{droga:"AINE", efeito:"REDUZ efeito + IRA + hipercalemia."},
+{droga:"K+, espironolactona", efeito:"Hipercalemia."},
+{droga:"BRA", efeito:"Não combinar."},
+{droga:"Sacubitril/valsartana", efeito:"CONTRAINDICAÇÃO — wash-out 36h."},
+],
+efeitos:[
+{tipo:"comum", item:"Tosse seca (10-15%), tontura, hipotensão, hipercalemia, ↑Cr"},
+{tipo:"sério", item:"Angioedema raro, IRA aguda, hipercalemia grave"},
+{tipo:"raro", item:"Neutropenia, hepatite"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado 2º-3º trimestre."},
+{nivel:"warn", txt:"VANTAGEM em HEPATOPATA: lisinopril NÃO é pró-droga (vs enalapril/ramipril/perindopril que precisam de ativação hepática). Em IH grave: mantém eficácia plena."},
+{nivel:"warn", txt:"ELIMINAÇÃO 100% RENAL: ajustar cuidadosamente em IRC. Diferente do enalapril (parcial hepático)."},
+{nivel:"info", txt:"ATLAS trial: dose alta (32,5-35 mg/d) reduz hospitalização por IC mais que dose baixa (2,5-5 mg/d). Titular sempre que tolerar."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, K+, Cr basal + 1-2 sem + 1 mês + 6 meses + anual.",
+diretriz:"DBHA 2025. ATLAS trial. GISSI-3. SOLVD.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-perindopril", classe:"IECA de longa ação — pró-droga", grupo:"anti_hipertensivo",
+nome:"Perindopril (arginina ou erbumina)",
+sin:["Coversyl","Coversum"],
+formas:["Comprimidos 4, 8 mg (erbumina) ou 5, 10 mg (arginina) — privada","Combinações fixas: perindopril + indapamida (Preterax/Noliprel); perindopril + anlodipino"],
+resumo:"IECA de longa ação. Evidência CV sólida (EUROPA — DAC estável). Combinação com indapamida é PADRÃO em pós-AVC (PROGRESS). Excelente tolerabilidade.",
+dose_rapida:"4-8 mg VO 1×/d (erbumina) ou 5-10 mg/d (arginina)",
+doses:[
+{ind:"HAS", dose:"4-5 mg VO 1×/d inicial; titular até 8-10 mg/d", obs:"Posologia 1×/d. Boa tolerância."},
+{ind:"DAC estável (EUROPA trial)", dose:"8 mg/d", obs:"EUROPA — reduz desfechos CV em DAC estável, independente de HAS."},
+{ind:"Pós-AVC isquêmico (PROGRESS — com indapamida)", dose:"4 mg + indapamida 2,5 mg/d", obs:"PROGRESS — reduz recorrência AVC em 28%. PADRÃO pós-AVC."},
+{ind:"IC com FE preservada (PEP-CHF)", dose:"4-8 mg/d", obs:"Benefício modesto em FE preservada."},
+{ind:"DM2 + macroalbuminúria (ADVANCE)", dose:"4-8 mg/d", obs:"ADVANCE — combinada com indapamida reduz desfechos macrovasculares e mortalidade total em DM2."},
+],
+ajustes:{
+irc:"ClCr 30-60: 2-4 mg/d. ClCr <30: 2 mg dias alternados. HD: pós-HD.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Iniciar 2 mg.",
+gestante:"CATEGORIA D — contraindicado.",
+aleita:"Compatível em dose baixa.",
+ped:"Não recomendada.",
+},
+mecanismo:"IECA pró-droga — perindopril → perindoprilato ativo. Alta lipossolubilidade → penetração tecidular profunda (cardiovascular, renal) → efeito tecidular potente além do hemodinâmico.",
+farmacocin:{absorc:"VO: 65-70%", distrib:"Alta penetração tecidular", metab:"Hepático → perindoprilato (ativo)", elimin:"Renal", meiavida:"Perindopril 1h | Perindoprilato 30-120h efeito clínico", ligacao:"~20%"},
+espectro:["HAS","DAC estável (EUROPA)","Pós-AVC (PROGRESS — com indapamida)","IC com FE reduzida/preservada","DM2 + nefropatia (ADVANCE)"],
+interacoes:[
+{droga:"AINE, K+, BRA", efeito:"Como demais IECA."},
+{droga:"Sacubitril/valsartana", efeito:"CONTRAINDICAÇÃO — wash-out 36h."},
+],
+efeitos:[
+{tipo:"comum", item:"Tosse seca, tontura, hipotensão"},
+{tipo:"sério", item:"Angioedema, IRA, hipercalemia"},
+{tipo:"raro", item:"Neutropenia"},
+],
+alertas:[
+{nivel:"crit", txt:"GESTAÇÃO: contraindicado."},
+{nivel:"warn", txt:"PROGRESS trial: perindopril + indapamida (Preterax/Noliprel) é PADRÃO pós-AVC isquêmico — reduz recorrência 28%."},
+{nivel:"warn", txt:"EUROPA trial: perindopril em DAC estável reduz desfechos CV 20% — mesmo SEM HAS, IC ou disfunção VE."},
+{nivel:"info", txt:"ARGININA vs ERBUMINA: mesma molécula ativa. Doses ligeiramente diferentes (4 mg erbumina ≈ 5 mg arginina)."},
+],
+preparo:"VO comprimido, em jejum (manhã, 30 min antes do café — absorção 2× melhor que com comida).",
+monitor:"PA, K+, Cr basal + 1-2 sem + 1 mês + 6 meses.",
+diretriz:"DBHA 2025. EUROPA trial. PROGRESS trial. ADVANCE.",
+fluxo:null, calcs:[],
+},
+
+/* ============== BCC DIIDROPIRIDÍNICOS DE 3ª GERAÇÃO ============== */
+
+{id:"med-lercanidipino", classe:"BCC diidropiridínico de 3ª geração", grupo:"anti_hipertensivo",
+nome:"Lercanidipino",
+sin:["Zanidip","Zanedip"],
+formas:["Comprimidos 10, 20 mg — privada"],
+resumo:"BCC-DHP de 3ª geração — MENOS EDEMA MALEOLAR que anlodipino (5-10% vs 10-20%). Boa alternativa em paciente intolerante ao anlodipino.",
+dose_rapida:"10-20 mg VO 1×/d (EM JEJUM)",
+doses:[
+{ind:"HAS — alternativa ao anlodipino (especialmente se edema)", dose:"10 mg VO 1×/d inicial; titular até 20 mg/d", obs:"TOMAR EM JEJUM (15 min antes da refeição) — comida triplica a absorção (risco hipotensão)."},
+{ind:"HAS em idoso (boa tolerância)", dose:"10 mg/d", obs:"Menos taquicardia reflexa e edema vs outros BCC."},
+],
+ajustes:{
+irc:"Sem ajuste até TFG 30. <30: cautela.",
+iht:"IH leve-moderada: sem ajuste. IH grave: cautela.",
+idoso:"Iniciar 10 mg.",
+gestante:"Categoria C — evitar (preferir nifedipino retard).",
+aleita:"Sem dados.",
+ped:"Não recomendada.",
+},
+mecanismo:"BCC-DHP de 3ª geração — alta seletividade vascular + ativação gradual por depósito lipossolúvel em membrana → vasodilatação progressiva → MENOS taquicardia reflexa e MENOS edema maleolar.",
+farmacocin:{absorc:"VO: 10% em jejum. Comida ↑ 3× absorção → tomar EM JEJUM.", distrib:"Alta lipossolubilidade — depósito em membrana vascular", metab:"Hepático CYP3A4", elimin:"Fezes 50% + Renal", meiavida:"8-10h (efeito clínico 24h)", ligacao:">98%"},
+espectro:["HAS — alternativa ao anlodipino","HAS com edema refratário ao anlodipino","HAS em idoso"],
+interacoes:[
+{droga:"Inibidores CYP3A4 (cetoconazol, claritromicina)", efeito:"↑ lercanidipino — hipotensão. EVITAR."},
+{droga:"Suco de grapefruit/pomelo", efeito:"↑ lercanidipino significativamente — EVITAR."},
+{droga:"Indutores CYP3A4 (rifampicina, fenitoína)", efeito:"↓ lercanidipino."},
+],
+efeitos:[
+{tipo:"comum", item:"Edema maleolar (MENOR que anlodipino), cefaleia, rubor, palpitação"},
+{tipo:"sério", item:"Hipotensão grave (em uso pós-prandial), bradicardia"},
+{tipo:"raro", item:"Hiperplasia gengival"},
+],
+alertas:[
+{nivel:"crit", txt:"TOMAR EM JEJUM (15 min antes da refeição) — comida triplica absorção → risco hipotensão grave."},
+{nivel:"crit", txt:"SUCO DE GRAPEFRUIT/POMELO — aumenta drasticamente a concentração. EVITAR completamente."},
+{nivel:"warn", txt:"VANTAGEM PRINCIPAL: MENOS EDEMA MALEOLAR que anlodipino (5-10% vs 10-20%). Indicado se paciente teve que suspender anlodipino por edema."},
+{nivel:"info", txt:"MANIDIPINO é alternativa similar — também BCC-DHP de 3ª geração com perfil de edema melhor."},
+],
+preparo:"VO comprimido, EM JEJUM (15 min antes da refeição) — CRÍTICO.",
+monitor:"PA, FC, edema MMII basal + 4 sem.",
+diretriz:"DBHA 2025.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-manidipino", classe:"BCC diidropiridínico de 3ª geração", grupo:"anti_hipertensivo",
+nome:"Manidipino",
+sin:["Manyper","Caldine"],
+formas:["Comprimidos 10, 20 mg — privada"],
+resumo:"BCC-DHP de 3ª geração — perfil similar ao lercanidipino. MENOS EDEMA. Tomar com café (vs lercanidipino em jejum).",
+dose_rapida:"10-20 mg VO 1×/d (com café)",
+doses:[
+{ind:"HAS — alternativa ao anlodipino", dose:"10 mg VO 1×/d (manhã com café); titular até 20 mg/d", obs:"Tomar com refeição (vs lercanidipino que é em jejum)."},
+],
+ajustes:{
+irc:"Sem ajuste até TFG 30.",
+iht:"IH grave: contraindicado.",
+idoso:"Iniciar 10 mg.",
+gestante:"Categoria C — evitar.",
+aleita:"Sem dados.",
+ped:"Não recomendada.",
+},
+mecanismo:"BCC-DHP de 3ª geração — mesma classe do lercanidipino. Liberação gradual em membrana vascular.",
+farmacocin:{absorc:"VO: ~15% (comida ↑ absorção)", distrib:"Alta lipossolubilidade", metab:"CYP3A4", elimin:"Fezes", meiavida:"4-8h (efeito 24h)", ligacao:">99%"},
+espectro:["HAS — alternativa ao anlodipino","HAS com edema refratário"],
+interacoes:[{droga:"Mesmas do lercanidipino", efeito:"CYP3A4, grapefruit."}],
+efeitos:[
+{tipo:"comum", item:"Edema maleolar (menor que anlodipino), cefaleia, rubor"},
+{tipo:"sério", item:"Hipotensão"},
+{tipo:"raro", item:"Hepatotoxicidade"},
+],
+alertas:[
+{nivel:"warn", txt:"MENOR edema maleolar que anlodipino — alternativa em paciente intolerante."},
+{nivel:"info", txt:"DIFERENÇA do lercanidipino: tomar com café (vs lercanidipino em jejum). Conferir orientação."},
+],
+preparo:"VO comprimido, com café da manhã.",
+monitor:"PA, FC, edema MMII.",
+diretriz:"DBHA 2025.",
+fluxo:null, calcs:[],
+},
+
+/* ============== BCC NÃO-DIIDROPIRIDÍNICOS ============== */
+
+{id:"med-verapamil", classe:"BCC NÃO-diidropiridínico — cronotrópico negativo", grupo:"anti_hipertensivo",
+nome:"Verapamil",
+sin:["Dilacoron"],
+formas:["Comprimidos 80, 120 mg (curta ação) — SUS","Comprimidos retard 120, 180, 240 mg — privada","Ampolas 5 mg/2 mL (IV — arritmia)"],
+resumo:"BCC NÃO-DHP — bloqueia condução AV. Útil em FA com RVR, TSV, angina. CONTRAINDICADO em IC com FE reduzida e BAV. NÃO combinar com β-bloq.",
+dose_rapida:"VO retard 120-240 mg/d | IV 5-10 mg lento (FA aguda)",
+doses:[
+{ind:"FA com RVR (controle FC ambulatorial)", dose:"120-360 mg/d VO retard divididos em 1-2 tomadas", obs:"Alternativa a β-bloq. Útil em asma/DPOC ativo (não broncoconstritor)."},
+{ind:"TSV — cardioversão aguda (alternativa adenosina)", dose:"IV 5-10 mg em 2 min; pode repetir 10 mg em 30 min", obs:"Cuidado: hipotensão grave. Preferir adenosina. NÃO em WPW + FA."},
+{ind:"Angina (incluindo Prinzmetal)", dose:"120-240 mg/d", obs:"Vasodilatação coronariana + cronotrópico negativo."},
+{ind:"HAS — uso seletivo (NÃO 1ª linha)", dose:"120-240 mg/d retard", obs:"Útil em HAS + arritmia supraventricular."},
+{ind:"Profilaxia enxaqueca (off-label)", dose:"120-240 mg/d", obs:"Uso em neurologia."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave: reduzir 50%.",
+idoso:"Iniciar 40 mg 8/8h ou 120 mg retard 1×/d. Risco constipação grave.",
+gestante:"Categoria C — pode usar em arritmia.",
+aleita:"Compatível em dose baixa.",
+ped:"Uso especializado.",
+},
+mecanismo:"BCC NÃO-DHP — bloqueia canais Ca²⁺ tipo-L em musculatura lisa vascular E miocárdio (vs DHP que é seletivo vascular). Efeitos: vasodilatação + ↓ cronotropismo nodal AV + ↓ inotropismo.",
+farmacocin:{absorc:"VO: 20-35% (1ª passagem extensa)", distrib:"Ampla", metab:"CYP3A4 → norverapamil (ativo)", elimin:"Renal 70%", meiavida:"3-7h | Retard 12-16h", ligacao:"~90%"},
+espectro:["FA com RVR","TSV (cardioversão aguda IV)","Angina (incluindo vasoespástica)","HAS com arritmia","Profilaxia enxaqueca"],
+interacoes:[
+{droga:"β-bloqueadores", efeito:"BRADICARDIA / BAV GRAVE — NÃO combinar VO."},
+{droga:"Digoxina", efeito:"↑ digoxina 50-75% — reduzir digoxina."},
+{droga:"Sinvastatina", efeito:"↑ estatina — rabdomiólise. Limitar sinvastatina 20 mg/d."},
+{droga:"Grapefruit", efeito:"↑ verapamil — evitar."},
+],
+efeitos:[
+{tipo:"comum", item:"CONSTIPAÇÃO (30-40% — efeito clássico), bradicardia, hipotensão postural, cefaleia, edema MMII"},
+{tipo:"sério", item:"BAV avançado, IC aguda em FE reduzida (CONTRAINDICAÇÃO), hipotensão grave (IV rápido)"},
+{tipo:"raro", item:"Hiperplasia gengival, ginecomastia, hepatite"},
+],
+alertas:[
+{nivel:"crit", txt:"CONTRAINDICADO em IC com FE REDUZIDA (depressão miocárdica → piora). CONTRAINDICADO em BAV 2°/3° grau sem MP. CONTRAINDICADO em FA com WPW (acelera via acessória — FV)."},
+{nivel:"crit", txt:"NÃO COMBINAR com β-BLOQ VO — risco BAV avançado, bradicardia sintomática, IC aguda."},
+{nivel:"crit", txt:"IV em FA com WPW: pode degenerar para FV. Identificar QRS largo + irregular ANTES — cardioversão elétrica."},
+{nivel:"warn", txt:"CONSTIPAÇÃO importante (30-40%) — fibras + hidratação. Em idoso: pode causar fecaloma."},
+{nivel:"info", txt:"VERAPAMIL vs DILTIAZEM: verapamil mais cronotrópico negativo e constipação; diltiazem mais vasodilatador e menos constipação."},
+],
+preparo:"VO comprimido. IV bolus: 5-10 mg em 2 min sob monitor ECG.",
+monitor:"PA, FC, ECG (PR, BAV), intestinal.",
+diretriz:"DBHA 2025. ESC AF 2024.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-diltiazem", classe:"BCC NÃO-diidropiridínico — controle FC + vasodilatador", grupo:"anti_hipertensivo",
+nome:"Diltiazem",
+sin:["Cardizem","Cardizem CD","Balcor"],
+formas:["Comprimidos 30, 60 mg (curta ação) — privada","Cápsulas retard 90, 120, 180, 240, 300 mg — privada","Ampolas 25 mg (IV — FA aguda)"],
+resumo:"BCC NÃO-DHP — alternativa ao verapamil com MENOR efeito inotrópico negativo e MENOS constipação. Controle FC em FA + vasodilatador.",
+dose_rapida:"180-360 mg/d VO retard | IV bolus 0,25 mg/kg",
+doses:[
+{ind:"FA com RVR (controle FC ambulatorial)", dose:"180-360 mg/d VO retard 1×/d", obs:"Alternativa ao verapamil — MENOS constipação."},
+{ind:"FA com RVR aguda (IV)", dose:"0,25 mg/kg IV bolus em 2 min (~15-20 mg em 70 kg); pode repetir 0,35 mg/kg em 15 min; BIC 5-15 mg/h", obs:"Útil em paciente SEM IC. Monitor PA contínuo."},
+{ind:"Angina (especialmente vasoespástica)", dose:"180-360 mg/d", obs:"Vasodilatador coronariano + ↓ FC."},
+{ind:"HAS com arritmia (uso seletivo)", dose:"180-360 mg/d retard", obs:"Não 1ª linha em HAS isolada."},
+],
+ajustes:{
+irc:"Sem ajuste rotineiro.",
+iht:"IH grave: reduzir 50%.",
+idoso:"Iniciar 60-120 mg/d.",
+gestante:"Categoria C.",
+aleita:"Compatível em dose baixa.",
+ped:"Uso especializado.",
+},
+mecanismo:"BCC NÃO-DHP — bloqueia canais Ca²⁺ tipo-L. Vs verapamil: MAIOR vasodilatador, MENOR cronotrópico/inotrópico negativo. Vs DHP: tem efeito nodal AV (útil em FA).",
+farmacocin:{absorc:"VO: 40-60% (1ª passagem)", distrib:"Ampla", metab:"CYP3A4 → desacetildiltiazem (ativo)", elimin:"Renal 35% + Fezes 65%", meiavida:"3-5h | Retard 5-7h", ligacao:"~80%"},
+espectro:["FA com RVR","Angina vasoespástica","HAS + arritmia"],
+interacoes:[
+{droga:"β-bloqueadores", efeito:"BAV/bradicardia — NÃO combinar VO."},
+{droga:"Digoxina", efeito:"↑ digoxina ~20%."},
+{droga:"Sinvastatina", efeito:"↑ estatina — limitar 20 mg/d."},
+{droga:"Inibidores CYP3A4", efeito:"↑ diltiazem."},
+],
+efeitos:[
+{tipo:"comum", item:"Bradicardia, hipotensão postural, edema maleolar, constipação (MENOR que verapamil)"},
+{tipo:"sério", item:"BAV avançado, IC aguda em FE reduzida (cuidado), bradicardia sintomática"},
+{tipo:"raro", item:"Hiperplasia gengival, hepatite"},
+],
+alertas:[
+{nivel:"crit", txt:"CONTRAINDICADO em IC com FE REDUZIDA descompensada, BAV 2°/3° grau sem MP, FA com WPW."},
+{nivel:"crit", txt:"NÃO COMBINAR com β-bloq VO — risco BAV/bradicardia."},
+{nivel:"warn", txt:"DILTIAZEM vs VERAPAMIL: diltiazem é MAIS vasodilatador + MENOS constipação + MENOR depressão miocárdica. Preferível em maioria dos cenários."},
+{nivel:"info", txt:"FORMULAÇÕES MÚLTIPLAS: curta (30/60 mg 8/8h), retard 1×/d ou 12/12h. Confirmar nome comercial."},
+],
+preparo:"VO comprimido, com ou sem alimento. IV: bolus 2 min sob monitor ECG.",
+monitor:"PA, FC, ECG, edema.",
+diretriz:"DBHA 2025. ESC AF 2024.",
+fluxo:null, calcs:[],
+},
+
+/* ============== β-BLOQUEADORES — MAIS OPÇÕES ============== */
+
+{id:"med-propranolol", classe:"β-bloqueador NÃO-seletivo (β1 + β2)", grupo:"anti_hipertensivo",
+nome:"Propranolol",
+sin:["Inderal","Pranolol"],
+formas:["Comprimidos 10, 40, 80 mg — SUS/REMUME","Cápsulas LP 80, 120, 160 mg — privada","Ampolas 1 mg/mL (IV — emergência)"],
+resumo:"β-bloq não-seletivo clássico, SUS amplamente disponível. Indicações específicas: TIREOTOXICOSE, profilaxia ENXAQUECA, TREMOR ESSENCIAL, ansiedade situacional, SANGRAMENTO VARICOSO. NÃO 1ª linha em HAS.",
+dose_rapida:"VO: 40-160 mg/d em 2-3 tomadas | Crise tireoidiana IV: 1-5 mg lento",
+doses:[
+{ind:"Tireotoxicose / Crise tireoidiana (controle adrenérgico)", dose:"40-120 mg VO 6/6h ou 8/8h | Crise: 1-5 mg IV lento ou 60-80 mg VO 4/4h", obs:"Bloqueia efeitos adrenérgicos + inibe conversão T4→T3 periférica. Combinar com PTU/metimazol + lugol."},
+{ind:"Profilaxia de enxaqueca", dose:"40-160 mg/d divididos", obs:"1ª linha em profilaxia farmacológica."},
+{ind:"Tremor essencial", dose:"40-320 mg/d divididos", obs:"Eficácia em 50-70%."},
+{ind:"Ansiedade situacional / desempenho", dose:"10-40 mg VO 30-60 min antes do evento", obs:"Bloqueia sintomas autonômicos."},
+{ind:"Sangramento varicoso esofágico (profilaxia)", dose:"20-40 mg 12/12h, titular até FC <55-60 ou ↓25% basal", obs:"Reduz pressão portal. Carvedilol é alternativa."},
+{ind:"HAS / Pós-IAM (uso seletivo)", dose:"40-80 mg 12/12h", obs:"NÃO 1ª linha (DBHA 2025). Bisoprolol/metoprolol succ/carvedilol têm mais evidência em IC pós-IAM."},
+],
+ajustes:{
+irc:"Sem ajuste (eliminação hepática).",
+iht:"IH grave: reduzir 50%.",
+idoso:"Iniciar 10-20 mg.",
+gestante:"Categoria C — pode causar RCIU/bradicardia neonatal. Preferir alternativa em HAS gestante.",
+aleita:"Compatível em dose baixa.",
+ped:"0,5-4 mg/kg/d divididos.",
+},
+mecanismo:"β-bloqueador NÃO-SELETIVO — bloqueia β1 (FC, DC) E β2 (broncoconstrição, vasoconstrição periférica, glicogenólise). LIPOSSOLÚVEL — atravessa BBB (efeitos centrais).",
+farmacocin:{absorc:"VO: 30% (1ª passagem extensa)", distrib:"Lipossolúvel — alta BBB", metab:"CYP1A2, CYP2D6 — extenso", elimin:"Renal (metabólitos)", meiavida:"3-6h | LP 8-11h", ligacao:"~90%"},
+espectro:["Tireotoxicose / crise tireoidiana","Profilaxia enxaqueca","Tremor essencial","Ansiedade situacional","Sangramento varicoso esofágico","HAS (uso seletivo)","Hipertensão portal"],
+interacoes:[
+{droga:"BCC não-DHP (verapamil, diltiazem)", efeito:"Bradicardia/BAV — NÃO combinar VO."},
+{droga:"Adrenalina (em anafilaxia)", efeito:"Bloqueio β-2 paradoxal → crise hipertensiva + broncoespasmo refratário. Usar GLUCAGON."},
+{droga:"Insulina/sulfonilureia", efeito:"Mascarar hipoglicemia (sintomas adrenérgicos)."},
+],
+efeitos:[
+{tipo:"comum", item:"Bradicardia, fadiga, extremidades frias, BRONCOESPASMO (β2 não-seletivo), hipotensão postural, pesadelos (atravessa BBB), disfunção sexual"},
+{tipo:"sério", item:"Bradicardia grave/BAV, BRONCOESPASMO em asma/DPOC (CONTRAINDICAÇÃO), IC aguda em FE reduzida, mascaramento de hipoglicemia, depressão"},
+{tipo:"raro", item:"Síndrome de retirada (rebote HAS + IAM)"},
+],
+alertas:[
+{nivel:"crit", txt:"ASMA ATIVA + DPOC com broncoespasmo: CONTRAINDICADO (β2 não-seletivo). Preferir bisoprolol/nebivolol/metoprolol (β1-seletivos)."},
+{nivel:"crit", txt:"DM + HIPOGLICEMIAS frequentes: propranolol mascara TODOS os sintomas adrenérgicos. Em β1-seletivo: só palpitação é mascarada."},
+{nivel:"crit", txt:"NÃO SUSPENDER ABRUPTAMENTE — síndrome de retirada (rebote HAS + risco IAM em DAC). Reduzir 50% por 1-2 sem."},
+{nivel:"warn", txt:"ANAFILAXIA em paciente em propranolol: adrenalina pode ter resposta paradoxal — GLUCAGON 1-5 mg IV bolus é a alternativa."},
+{nivel:"info", txt:"PROFILAXIA ENXAQUECA é indicação CLÁSSICA. Topiramato e amitriptilina são alternativas."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, FC (manter ≥55), glicemia em DM, sintomas broncoespasmo, humor.",
+diretriz:"DBHA 2025. Cochrane (enxaqueca). Diretrizes Tireoide.",
+fluxo:null, calcs:[],
+},
+
+{id:"med-nebivolol", classe:"β1-bloqueador altamente cardiosseletivo + vasodilatador (NO)", grupo:"anti_hipertensivo",
+nome:"Nebivolol",
+sin:["Nebilet","Nebilenin"],
+formas:["Comprimidos 5 mg — privada"],
+resumo:"β1-bloqueador de 3ª geração com efeito vasodilatador adicional via óxido nítrico (NO). MENOS efeitos colaterais (broncoespasmo, disfunção sexual). Boa opção em idoso (SENIORS).",
+dose_rapida:"5-10 mg VO 1×/d",
+doses:[
+{ind:"HAS — uso seletivo (paciente intolerante a outros β-bloq)", dose:"5 mg VO 1×/d inicial; titular até 10 mg/d", obs:"Não 1ª linha em HAS isolada (DBHA 2025)."},
+{ind:"IC com FE reduzida em IDOSO (SENIORS trial)", dose:"1,25 mg/d inicial; DOBRAR cada 2 sem até 10 mg/d", obs:"SENIORS — eficácia em ≥70 anos. Alternativa em idoso intolerante."},
+{ind:"HAS com disfunção erétil (perfil favorável)", dose:"5 mg/d", obs:"MENOR disfunção sexual via vasodilatação por NO."},
+],
+ajustes:{
+irc:"ClCr <30: iniciar 2,5 mg.",
+iht:"IH grave: cautela.",
+idoso:"Iniciar 2,5 mg.",
+gestante:"Categoria C — evitar.",
+aleita:"Cautela.",
+ped:"Não recomendada.",
+},
+mecanismo:"β1-bloqueador HIGHLY seletivo (maior seletividade β1/β2 entre β-bloq) + vasodilatador via ↑ óxido nítrico (NO) endotelial. Perfil sexual + metabólico melhor que outros β-bloq.",
+farmacocin:{absorc:"VO: 12-96% (variabilidade CYP2D6)", distrib:"Ampla", metab:"CYP2D6 — metabólitos ativos", elimin:"Renal e fezes", meiavida:"10-50h (depende CYP2D6)", ligacao:"~98%"},
+espectro:["HAS — opção em intolerância","IC com FE reduzida em idoso (SENIORS)","HAS com disfunção erétil"],
+interacoes:[
+{droga:"BCC não-DHP", efeito:"Bradicardia/BAV — não combinar."},
+{droga:"Inibidores CYP2D6 (fluoxetina, paroxetina, bupropiona)", efeito:"↑ nebivolol — hipotensão."},
+],
+efeitos:[
+{tipo:"comum", item:"Cefaleia, fadiga, bradicardia (menor que atenolol), edema (menor)"},
+{tipo:"sério", item:"Bradicardia grave/BAV"},
+{tipo:"raro", item:"Broncoespasmo (raríssimo — alta seletividade β1)"},
+],
+alertas:[
+{nivel:"warn", txt:"MAIOR SELETIVIDADE β1 entre β-bloq — MELHOR perfil em DPOC, asma controlada, DM."},
+{nivel:"warn", txt:"VASODILATADOR via NO — perfil sexual MELHOR que outros β-bloq."},
+{nivel:"info", txt:"CYP2D6: 5-10% da população são metabolizadores lentos → ↑ efeito. Iniciar dose menor em risco."},
+{nivel:"info", txt:"SENIORS trial: eficácia em ≥70 anos com IC. Alternativa quando bisoprolol/carvedilol mal tolerados."},
+],
+preparo:"VO comprimido, com ou sem alimento.",
+monitor:"PA, FC, sintomas IC.",
+diretriz:"DBHA 2025. SENIORS trial.",
+fluxo:null, calcs:[],
+},
+
+/* ============== POUPADOR K+ ADICIONAL ============== */
+
+{id:"med-amilorida", classe:"Diurético poupador de K+ (bloq canal ENaC)", grupo:"anti_hipertensivo",
+nome:"Amilorida (Moduretic)",
+sin:["Moduretic (combinada com HCTZ — única apresentação BR)"],
+formas:["Amilorida 5 mg + HCTZ 50 mg (Moduretic) — combinação fixa única disponível no Brasil"],
+resumo:"Poupador de K+ via bloqueio ENaC. NO BRASIL: APENAS em combinação fixa Moduretic. Útil em HAS resistente leve + hipocalemia.",
+dose_rapida:"1 comprimido Moduretic VO 1×/d (manhã)",
+doses:[
+{ind:"HAS — combinada quando hipocalemia com tiazídico", dose:"1 comp Moduretic (5 mg/50 mg) VO 1×/d (manhã)", obs:"Útil quando paciente desenvolve hipocalemia com HCTZ — amilorida compensa."},
+{ind:"HAS resistente leve com hipocalemia", dose:"1 comp/d", obs:"Quando espironolactona é mal tolerada (ginecomastia em homem). 3ª-4ª linha."},
+],
+ajustes:{
+irc:"ClCr <60: cuidado (hipercalemia). ClCr <30: CONTRAINDICADA.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Iniciar dose menor. Risco hipercalemia.",
+gestante:"Categoria B — uso restrito.",
+aleita:"Compatível.",
+ped:"Não recomendada.",
+},
+mecanismo:"Bloqueia canal ENaC (Epithelial Sodium Channel) no ducto coletor → ↑ excreção Na+ MAS retém K+/H+. NÃO depende de aldosterona (vs espironolactona).",
+farmacocin:{absorc:"VO: 15-25%", distrib:"Não atravessa BBB", metab:"NÃO metabolizada", elimin:"Renal 50% inalterada", meiavida:"6-9h", ligacao:"Mínima"},
+espectro:["HAS + hipocalemia por tiazídico","HAS resistente leve","Alternativa à espironolactona quando ginecomastia"],
+interacoes:[
+{droga:"iSRA, K+, espironolactona", efeito:"HIPERCALEMIA — não combinar ou monitor rigoroso."},
+{droga:"AINE", efeito:"Hipercalemia + IRA."},
+{droga:"Lítio", efeito:"↑ lítio."},
+],
+efeitos:[
+{tipo:"comum", item:"Hipercalemia (mecanismo principal), náusea, tontura"},
+{tipo:"sério", item:"Hipercalemia grave em IRC/idoso/iSRA, IRA"},
+{tipo:"raro", item:"Ginecomastia (muito menor que espironolactona)"},
+],
+alertas:[
+{nivel:"crit", txt:"HIPERCALEMIA: contraindicada se K+ basal >5,5 ou ClCr <30. Monitor K+ basal + 1 sem + 4 sem."},
+{nivel:"warn", txt:"MODURETIC: única apresentação BR é em COMBINAÇÃO FIXA com HCTZ 50 mg. Limitação: HCTZ 50 mg é dose alta — em paciente que precisa só de poupador, dose excessiva de tiazídico."},
+{nivel:"warn", txt:"ALTERNATIVA: espironolactona é mais usada (evidência em IC, cirrose, HAS resistente). Amilorida útil em intolerância à espironolactona (ginecomastia)."},
+],
+preparo:"VO comprimido, manhã.",
+monitor:"PA, K+, Cr basal + 1 sem + 1 mês + 6 meses.",
+diretriz:"DBHA 2025.",
+fluxo:null, calcs:[],
+},
+
+/* ============== SIMPATOLÍTICO CENTRAL ADICIONAL ============== */
+
+{id:"med-clonidina", classe:"Simpatolítico central — agonista α2", grupo:"anti_hipertensivo",
+nome:"Clonidina",
+sin:["Atensina","Catapresan"],
+formas:["Comprimidos 0,1 mg, 0,15 mg, 0,2 mg — SUS","Adesivo transdérmico 0,1-0,3 mg/24h — privada"],
+resumo:"Simpatolítico central α2-agonista. Uso em URGÊNCIA HIPERTENSIVA, HAS resistente, abstinência alcoólica/opioide, tireotoxicose. RISCO REBOTE se suspenso abruptamente.",
+dose_rapida:"Urgência: 0,1-0,2 mg VO | Crônico: 0,1 mg 8/8h ou 12/12h",
+doses:[
+{ind:"URGÊNCIA hipertensiva (sem LOA aguda)", dose:"0,1-0,2 mg VO, repetir 0,1 mg cada 1-2h se necessário (máx 0,7 mg em 24h)", obs:"Início 30-60 min. Alternativa ao captopril 25 mg SL. Sedação esperada."},
+{ind:"HAS resistente (4ª-5ª droga)", dose:"0,1 mg 8/8h ou 12/12h inicial; titular até 0,3 mg 8/8h", obs:"Posologia inconveniente — alternativa: adesivo 1×/sem."},
+{ind:"Síndrome de abstinência alcoólica/opioide", dose:"0,1-0,2 mg 8/8h", obs:"Reduz hiperatividade simpática (taquicardia, HAS, agitação)."},
+{ind:"TDAH em criança (off-label)", dose:"0,05-0,2 mg/d", obs:"Especializado — neuro/psiquiatria infantil."},
+{ind:"Tireotoxicose (alternativa a β-bloq em asma)", dose:"0,1-0,2 mg 8/8h", obs:"Reduz sintomas adrenérgicos."},
+{ind:"Fogachos da menopausa (off-label)", dose:"0,05-0,1 mg 12/12h", obs:"Alternativa não-hormonal."},
+],
+ajustes:{
+irc:"ClCr <30: reduzir 50%.",
+iht:"Sem ajuste rotineiro.",
+idoso:"Iniciar 0,05 mg 12/12h. Risco sedação + hipotensão postural alto.",
+gestante:"Categoria C — pode usar se essencial.",
+aleita:"Compatível em dose baixa.",
+ped:"TDAH off-label.",
+},
+mecanismo:"Agonista α2 central no SNC → reduz tônus simpático periférico → ↓ FC + ↓ PA. Em uso crônico há down-regulation dos receptores → SUSPENSÃO ABRUPTA = rebote adrenérgico (taquicardia, HAS grave).",
+farmacocin:{absorc:"VO: 75-95% | Adesivo: 24h", distrib:"Atravessa BBB", metab:"Hepático parcial", elimin:"Renal 50% inalterada", meiavida:"6-20h", ligacao:"~30%"},
+espectro:["Urgência hipertensiva (alternativa ao captopril)","HAS resistente (linha tardia)","Abstinência alcoólica/opioide","TDAH em criança","Tireotoxicose (em asma)","Fogachos da menopausa"],
+interacoes:[
+{droga:"β-bloqueadores", efeito:"Suspensão da clonidina + β-bloq simultâneo = CRISE HIPERTENSIVA. Suspender β-bloq ANTES da clonidina."},
+{droga:"Antidepressivos tricíclicos", efeito:"Reduzem efeito da clonidina (bloqueiam α2)."},
+{droga:"Álcool, sedativos", efeito:"Sedação aditiva."},
+],
+efeitos:[
+{tipo:"comum", item:"SEDAÇÃO importante, boca seca (>50%), hipotensão postural, bradicardia, constipação, disfunção sexual"},
+{tipo:"sério", item:"REBOTE HIPERTENSIVO se suspenso abruptamente (HAS grave + taquicardia em 24-48h), depressão, BAV, bradicardia grave"},
+{tipo:"raro", item:"Síndrome de Raynaud, alucinações, parkinsonismo"},
+],
+alertas:[
+{nivel:"crit", txt:"REBOTE HIPERTENSIVO: NUNCA suspender abruptamente em uso >2 semanas — rebote 24-48h após (HAS grave, taquicardia, sudorese, agitação, risco AVC/IAM). DESMAMAR gradualmente em 1-2 semanas."},
+{nivel:"crit", txt:"INTERAÇÃO com β-BLOQUEADOR: se paciente usa AMBOS, RETIRAR β-BLOQ PRIMEIRO (vários dias antes) e depois clonidina. Suspensão simultânea = crise."},
+{nivel:"warn", txt:"SEDAÇÃO LIMITA USO em paciente que dirige/trabalho com atenção. Em idoso: risco queda."},
+{nivel:"warn", txt:"BOCA SECA: efeito muito frequente — hidratação, gomas sem açúcar. Pode causar má aderência."},
+{nivel:"info", txt:"ADESIVO TRANSDÉRMICO: troca semanal — adesão melhor, mas reação local em 30-50%."},
+],
+preparo:"VO comprimido. Adesivo: aplicar em pele íntegra do tronco superior/braço.",
+monitor:"PA, FC, sintomas posturais, sedação.",
+diretriz:"DBHA 2025.",
+fluxo:null, calcs:[],
+},
+
+/* ============== VASODILATADOR — MINOXIDIL ============== */
+
+{id:"med-minoxidil", classe:"Vasodilatador arterial direto — abridor canal K-ATP", grupo:"anti_hipertensivo",
+nome:"Minoxidil (oral)",
+sin:["Loniten (oral)","Rogaine (tópico — alopecia, NÃO HAS)"],
+formas:["Comprimidos 5, 10 mg (oral — HAS resistente extrema) — privada","Solução tópica 2-5% — APENAS para alopecia, não para HAS"],
+resumo:"VASODILATADOR ARTERIAL EXTREMAMENTE POTENTE — ÚLTIMA LINHA em HAS resistente refratária. SEMPRE combinado com β-bloq + diurético de alça. Efeito colateral notório: HIPERTRICOSE.",
+dose_rapida:"5-40 mg VO 1-2×/d (uso especializado)",
+doses:[
+{ind:"HAS RESISTENTE REFRATÁRIA — ÚLTIMA LINHA", dose:"5 mg VO 1×/d inicial; titular cada 3 dias até 10-40 mg/d em 1-2 tomadas (máx 100 mg/d)", obs:"SEMPRE combinado com β-bloq (controle taquicardia reflexa) + DIURÉTICO DE ALÇA (controle retenção)."},
+],
+ajustes:{
+irc:"Reduzir dose. ClCr <30: cautela extrema.",
+iht:"Cautela.",
+idoso:"Iniciar 2,5 mg. Risco IC + hipertricose alto.",
+gestante:"Categoria C — evitar.",
+aleita:"Sem dados.",
+ped:"Especializado.",
+},
+mecanismo:"Pró-droga — minoxidil sulfato (ativo) abre canais K-ATP em musculatura lisa arterial → hiperpolarização → vasodilatação ARTERIAL POTENTE (não venosa). Ativa simpático reflexamente → taquicardia + retenção de Na+/H2O → necessidade obrigatória de β-bloq + diurético.",
+farmacocin:{absorc:"VO: 90%", distrib:"Ampla", metab:"Hepático (sulfação)", elimin:"Renal", meiavida:"3-4h (efeito 24h)", ligacao:"Mínima"},
+espectro:["HAS resistente REFRATÁRIA — última linha (após espironolactona, bisoprolol, doxazosina)","Alopecia androgenética — formulação TÓPICA APENAS"],
+interacoes:[
+{droga:"β-bloqueadores", efeito:"COMBINAÇÃO OBRIGATÓRIA — minoxidil isolado causa taquicardia extrema."},
+{droga:"Diuréticos de alça (furosemida)", efeito:"COMBINAÇÃO OBRIGATÓRIA — minoxidil isolado causa retenção massiva."},
+],
+efeitos:[
+{tipo:"comum", item:"HIPERTRICOSE (80%! — pelos no rosto, tronco, MMII; reversível 1-6 meses pós-suspensão), retenção líquida/edema, taquicardia reflexa, cefaleia"},
+{tipo:"sério", item:"DERRAME PERICÁRDICO (3% — tamponamento possível), IC por sobrecarga volume, hipotensão grave, isquemia miocárdica (taquicardia)"},
+{tipo:"raro", item:"Necrose papilar renal, alterações ECG"},
+],
+alertas:[
+{nivel:"crit", txt:"NUNCA USAR ISOLADO — sempre combinado com β-BLOQ + DIURÉTICO DE ALÇA. Sem essa combinação: descompensação CV grave."},
+{nivel:"crit", txt:"DERRAME PERICÁRDICO em 3% — pode causar tamponamento. ECO basal e 4-6 sem. Suspender se sintomas."},
+{nivel:"crit", txt:"ÚLTIMA LINHA — usar APENAS quando HAS resistente comprovada após exclusão de HAS secundária, otimização de adesão, falência de espironolactona + bisoprolol/doxazosina."},
+{nivel:"warn", txt:"HIPERTRICOSE em 80% — orientar paciente ANTES (motivo principal de descontinuação, especialmente mulheres). Reversível em 1-6 meses pós-suspensão."},
+{nivel:"info", txt:"VERSÃO TÓPICA (Rogaine): apenas alopecia androgenética — NÃO usar via oral para alopecia."},
+],
+preparo:"VO comprimido. Sempre prescrever com β-bloq + diurético de alça concomitantes.",
+monitor:"PA, FC, peso (retenção), ECG, ECO 4-6 sem (pericárdio), eletrólitos, função renal.",
+diretriz:"DBHA 2025.",
+fluxo:null, calcs:[],
+},
+
+);
+
+
+/* ===========================================================
    VOVÔMINIC EMERGÊNCIA — ENGINE PRINCIPAL
    Router por hash, render, busca fuzzy, toggle tema/modo
    =========================================================== */
@@ -15197,8 +16847,8 @@ function scheduleImgCheck(blockId) {
 function navigate(path) {
   if (path && path !== location.hash) {
     location.hash = path;
-    return; // hashchange handler dispara
   }
+  // Sempre chamar explicitamente — alguns webviews/mobile não disparam hashchange consistentemente
   routeFromHash();
 }
 
@@ -15814,6 +17464,8 @@ function renderMedicacoes() {
     analgesia: "Analgésicos / Opioides",
     antiarritmico: "Antiarrítmicos",
     anti_hipertensivo: "Anti-hipertensivos (HAS crônica)",
+    antidiabetico: "Antidiabéticos / Insulinas (DM)",
+    lipemiante: "Lipemiantes (Dislipidemia)",
     endocrino: "Endócrino / Metabólico / Diuréticos",
     cardio: "Cardiovascular",
     resp: "Respiratório / Broncodilatadores",
@@ -15821,7 +17473,7 @@ function renderMedicacoes() {
     gi: "Gastrintestinal",
     outros: "Outros",
   };
-  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","atb","anticoag","endocrino","cardio","resp","neuro","gi","outros"];
+  const ord = ["vasopressor","sedativo","analgesia","antiarritmico","anti_hipertensivo","antidiabetico","lipemiante","atb","anticoag","endocrino","cardio","resp","neuro","gi","outros"];
 
   const sections = ord.filter(g => byGrupo[g]).map(g => {
     const cards = byGrupo[g].map(m => `
