@@ -88,6 +88,66 @@ function gravBadge(g) {
   return '<span class="badge badge-ok">baixa</span>';
 }
 
+/* richText: para campos longos estruturados (sus_tx, freire, p4, etc).
+   Respeita quebras de linha simples (\n → <br>), quebras duplas (\n\n → novo parágrafo),
+   e detecta padrões comuns:
+   - Linhas começando com A), B), 1., 2. → cabeçalho de seção (negrito)
+   - Linhas começando com • → item de lista
+   - Linhas iniciadas por espaços + - → sub-item indentado
+   Mantém safe tags (strong, em, etc.) via safeHtml. */
+function richText(s) {
+  if (s == null || s === "") return "";
+  // Primeiro escapa HTML perigoso (mantém safe tags)
+  const safe = safeHtml(s);
+
+  // Divide por linhas em branco (separação de parágrafos)
+  const blocks = safe.split(/\n\s*\n/);
+
+  return blocks.map(block => {
+    const lines = block.split('\n');
+    let html = '';
+    let inList = false;
+    let inSubList = false;
+
+    const closeLists = () => {
+      let out = '';
+      if (inSubList) { out += '</ul>'; inSubList = false; }
+      if (inList)    { out += '</ul>'; inList = false; }
+      return out;
+    };
+
+    for (const rawLine of lines) {
+      const line = rawLine.replace(/\s+$/, '');
+      if (!line.trim()) continue;
+
+      // Detecta sub-bullet: começa com 2+ espaços + (- ou •)
+      const subMatch = line.match(/^\s{2,}[-•]\s+(.*)$/);
+      // Detecta bullet: começa com • (com 0-1 espaço) ou - no início
+      const bulletMatch = line.match(/^[•-]\s+(.*)$/);
+      // Detecta cabeçalho A) B) ou 1) 2) ou 1. 2.
+      const headerMatch = line.match(/^([A-Z]\)|[0-9]+[.)])\s+(.*)$/);
+
+      if (subMatch) {
+        if (!inList) { html += '<ul class="rt-list">'; inList = true; }
+        if (!inSubList) { html += '<ul class="rt-sublist">'; inSubList = true; }
+        html += '<li>' + subMatch[1] + '</li>';
+      } else if (bulletMatch) {
+        if (inSubList) { html += '</ul>'; inSubList = false; }
+        if (!inList) { html += '<ul class="rt-list">'; inList = true; }
+        html += '<li>' + bulletMatch[1] + '</li>';
+      } else if (headerMatch) {
+        html += closeLists();
+        html += '<div class="rt-head">' + headerMatch[1] + ' ' + headerMatch[2] + '</div>';
+      } else {
+        html += closeLists();
+        html += '<div class="rt-line">' + line + '</div>';
+      }
+    }
+    html += closeLists();
+    return '<div class="rt-para">' + html + '</div>';
+  }).join('');
+}
+
 function alertHTML(a) {
   // Aceita ambos schemas: {t, x} (legado patologias) e {nivel, txt} (medicações + novas patologias)
   const tipo = a.t || a.nivel || "info";
@@ -270,11 +330,31 @@ function renderHome() {
   const calcsCtx = CALCS.filter(fitCtx);
   const medsCtx = (typeof MEDICACOES !== 'undefined') ? MEDICACOES.filter(fitCtx) : [];
   
-  const sisOrd = Object.entries(SISTEMAS).sort((a,b) => a[1].ord - b[1].ord);
-  const cardsSis = sisOrd.map(([k,s]) => {
-    const ct = patsCtx.filter(p => p.sis === k).length;
-    if (!ct) return "";
-    return `
+  // Categorias de sistemas para agrupamento visual da home
+  const CATEGORIAS = [
+    {
+      id: 'pa',
+      titulo: '🚨 Emergência & Plantão',
+      legenda: 'Patologias agudas, prescrições prontas, fluxogramas',
+      sistemas: ['cardio','resp','neuro','gi','endo','gu','ost','psiq','hidro',
+                 'infecto','anaf','tox','pec','hemo','vaso','iot',
+                 'gest','obst','trauma','derm','oft','anal','pali']
+    },
+    {
+      id: 'mfc',
+      titulo: '🌳 Atenção Primária / MFC',
+      legenda: 'Cuidado longitudinal, PTS, prevenção quaternária',
+      sistemas: ['cron','idoso','smen','vacina','ubs']
+    },
+    {
+      id: 'recursos',
+      titulo: '📋 Recursos & Utilitários',
+      legenda: 'Procedimentos, docs médico-legais, conversores',
+      sistemas: ['proc','docs','pulo','conv','med']
+    }
+  ];
+
+  const cardSisHTML = (k, s, ct) => `
       <button class="sys-card" onclick="navigate('#/s/${k}')" style="--sys-color:${s.cor}">
         <span class="sys-bar"></span>
         <div class="sys-card-body">
@@ -282,7 +362,29 @@ function renderHome() {
           <p>${ct} ${ct===1?"patologia":"patologias"}</p>
         </div>
       </button>`;
-  }).join("");
+
+  const gruposHTML = CATEGORIAS.map(cat => {
+    // Filtra os sistemas dessa categoria que TÊM patologias no contexto atual
+    const sistemas = cat.sistemas
+      .map(k => ({ k, s: SISTEMAS[k], ct: patsCtx.filter(p => p.sis === k).length }))
+      .filter(item => item.s && item.ct > 0)
+      // Ordem alfabética dentro da categoria
+      .sort((a, b) => a.s.nome.localeCompare(b.s.nome, 'pt-BR'));
+
+    if (!sistemas.length) return '';
+
+    const cards = sistemas.map(({k,s,ct}) => cardSisHTML(k, s, ct)).join('');
+    return `
+      <div class="sys-group">
+        <div class="sys-group-head">
+          <h3 class="sys-group-title">${cat.titulo}</h3>
+          <p class="sys-group-legenda">${cat.legenda}</p>
+        </div>
+        <div class="sys-grid">${cards}</div>
+      </div>`;
+  }).join('');
+
+  const cardsSis = gruposHTML;
 
   const totalP = patsCtx.length;
   const totalC = calcsCtx.length;
@@ -334,7 +436,7 @@ function renderHome() {
         <h2>Por sistema</h2>
         <p class="lead">Toque para abrir as patologias do sistema</p>
       </div>
-      <div class="sys-grid">${cardsSis}</div>
+      <div class="sys-groups">${cardsSis}</div>
     </section>
 
     <section class="container">
@@ -385,16 +487,16 @@ function renderPatologia(id) {
     ${p.intro ? `
     <div class="block">
       <h2>Introdução</h2>
-      <p class="lead">${safeHtml(p.intro)}</p>
+      ${richText(p.intro)}
     </div>` : ""}
     <div class="block">
       <h2>Fisiopatologia</h2>
-      <p class="lead">${safeHtml(p.fisio || "Sem detalhe específico.")}</p>
+      ${richText(p.fisio || "Sem detalhe específico.")}
     </div>
     ${p.apresentacao ? `
     <div class="block">
       <h2>Apresentação clínica</h2>
-      <p class="lead">${safeHtml(p.apresentacao)}</p>
+      ${richText(p.apresentacao)}
     </div>` : ""}
     ${p.sintomas && p.sintomas.length ? `
     <div class="block">
@@ -404,37 +506,37 @@ function renderPatologia(id) {
     ${p.profilaxia ? `
     <div class="block">
       <h2>Profilaxia e cuidados</h2>
-      <p class="lead">${safeHtml(p.profilaxia)}</p>
+      ${richText(p.profilaxia)}
     </div>` : ""}
     ${p.freire ? `
     <div class="block block-freire">
       <h2>🗣️ Orientação ao paciente (lente freireana)</h2>
-      <p class="lead">${safeHtml(p.freire)}</p>
+      ${richText(p.freire)}
     </div>` : ""}
     ${p.sus_tx ? `
     <div class="block">
       <h2>Tratamento no SUS</h2>
-      <p class="lead">${safeHtml(p.sus_tx)}</p>
+      ${richText(p.sus_tx)}
     </div>` : ""}
     ${p.padrao_ouro ? `
     <div class="block">
       <h2>Tratamento padrão-ouro</h2>
-      <p class="lead">${safeHtml(p.padrao_ouro)}</p>
+      ${richText(p.padrao_ouro)}
     </div>` : ""}
     ${p.prog ? `
     <div class="block">
       <h2>Prognóstico</h2>
-      <p class="lead">${safeHtml(p.prog)}</p>
+      ${richText(p.prog)}
     </div>` : ""}
     ${p.acomp ? `
     <div class="block">
       <h2>Acompanhamento</h2>
-      <p class="lead">${safeHtml(p.acomp)}</p>
+      ${richText(p.acomp)}
     </div>` : ""}
     ${p.p4 ? `
     <div class="block block-p4">
       <h2>🛡️ Prevenção Quaternária</h2>
-      <p class="lead">${safeHtml(p.p4)}</p>
+      ${richText(p.p4)}
     </div>` : ""}
     ${p.mec && p.mec.length ? `
     <div class="block">

@@ -31,6 +31,7 @@ const SISTEMAS = {
   smen:     { nome: "Saúde Mental (MFC)",    icone: "✦", cor: "#9333EA" },
   idoso:    { nome: "Saúde do Idoso (MFC)",  icone: "👴", cor: "#7C2D12" },
   anal:     { nome: "Analgesia",             icone: "◴", cor: "#A16207" },
+  pali:     { nome: "Cuidados Paliativos",   icone: "❀", cor: "#0F766E" },
   pulo:     { nome: "Pulo do Gato",          icone: "★", cor: "#F59E0B" },
   conv:     { nome: "Conversores / Calc",    icone: "↔", cor: "#2563EB" },
   proc:     { nome: "Procedimentos",         icone: "✣", cor: "#7C2D12" },
