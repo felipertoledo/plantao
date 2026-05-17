@@ -1,41 +1,75 @@
-# Vovôminic Doutô — Versão FLAT (sem pastas)
+# Vovôminic Doutô — Guia Clínico
 
-Versão para upload **direto** no repositório `felipertoledo/plantao` sem subdiretórios.
+Guia clínico educacional em medicina, baseado em diretrizes brasileiras e internacionais.
+Cobre **Pronto Atendimento (PA)** e **Atenção Primária à Saúde (UBS)**.
 
-## Por que esta versão?
+**Sem fins lucrativos** — Felipe Ribeiro Toledo (CRM-SP 216.986) · @vovôminic
 
-GitHub.dev / upload web do GitHub não preserva estrutura de pastas. Esta versão tem todos os arquivos no raiz, com prefixos por categoria:
+---
 
-- `pat-*.js` — patologias (18 arquivos)
-- `meds-*.js` — medicações (14 arquivos)
-- `calcs-*.js` — calculadoras (7 arquivos)
-- `flows-*.js` — fluxogramas (4 arquivos)
-- `ui-*.js` — auxiliares de interface (5 arquivos)
-- `app.js`, `init.js`, `indexes.js` — núcleo
+## Conteúdo (após Rodada 3)
 
-Total: 50 scripts + index.html + README.md + .nojekyll
+- **280 patologias** (PA + UBS) com CID-10 + CIAP-2 (255 com CIAP, 91%)
+- **192 medicações** com fontes (REMUME, RDC, bula, ANVISA)
+- **71 calculadoras** clínicas
+- **29 fluxogramas** decisionais
+- **12 figuras** cardio
 
-## Deploy
+## Adicionado na Rodada 3 (+8 patologias UBS — sistema "idoso")
 
-1. Apague o conteúdo atual do repositório `plantao/`
-2. Copie TODOS os arquivos deste ZIP direto para o raiz do repositório
-3. Faça commit
-4. Aguarde ~1 min — disponível em `felipertoledo.github.io/plantao/`
+- **AGA — Avaliação Geriátrica Ampla** — protocolo completo (Katz, Lawton, TUG, MEEM/MoCA, GDS-15, Fried)
+- **Polifarmácia + Despresecrição** — Beers 2023 + STOPP-START v3 + casos clínicos típicos
+- **Quedas em idoso** — avaliação multifatorial + Otago + intervenção ambiental
+- **Demência** — Mini-Cog, MEEM, MoCA, dx diferencial, BPSD, cuidado do cuidador
+- **Delirium** — CAM, mnemônico de causas, manejo não-farmacológico primeiro
+- **Osteoporose** — FRAX, DMO, bisfosfonatos, drug holiday
+- **Fragilidade/Sarcopenia** — Fried, SARC-F, EWGSOP2, exercício resistido + proteína
+- **Incontinência urinária** — DIAPPERS, Kegel, treino vesical, fralda PFPB
 
-**IMPORTANTE**: o arquivo `.nojekyll` é obrigatório (oculto, começa com ponto). Confirme que ele subiu.
+## Rodadas anteriores
 
-## Estado do site
+**Rodada 1**: Infra (filtro contexto Plantão/UBS/Tudo + rename Vovôminic Doutô + CIAP-2 universal + link WhitePobre)
 
-- 272 patologias (CID + CIAP-2)
-- 192 medicações
-- 71 calculadoras
-- 29 fluxogramas
-- 12 figuras cardio
-- Toggle Plantão / UBS / Tudo
-- Link para WhitePobre Pediatria
+**Rodada 2 (+21 UBS)**:
+- Vacinação (12): PEP + calendários PNI 2026 + CRIE + hesitação + EAPV + ocupacional + resgate
+- Crônicos MFC com PTS (3): HAS, DM2, Síndrome Metabólica
+- Saúde Mental MFC (6): Depressão, Ansiedade, Álcool, Tabagismo, Insônia, Sofrimento Psíquico
 
-## Conteúdo UBS (rodadas 1+2)
+## Estrutura UBS expandida — campos renderizados no modo completo
 
-- Vacinação: 12 patologias (PEP + calendários PNI 2026 + CRIE + hesitação + EAPV + ocupacional + resgate)
-- Crônicos MFC com PTS: HAS, DM2, Síndrome Metabólica
-- Saúde Mental MFC: Depressão, Ansiedade, Álcool, Tabagismo, Insônia, Sofrimento Psíquico
+Cada patologia UBS tem:
+- `intro` — Introdução
+- `apresentacao` — Apresentação clínica
+- `sintomas[]` — Sinais e sintomas
+- `fisio` — Fisiopatologia
+- `profilaxia` — Profilaxia e cuidados
+- `freire` — 🗣️ Orientação ao paciente (lente freireana, bloco verde)
+- `sus_tx` — Tratamento no SUS
+- `padrao_ouro` — Tratamento padrão-ouro
+- `prog` — Prognóstico
+- `acomp` — Acompanhamento
+- `p4` — 🛡️ Prevenção Quaternária (bloco laranja)
+
+## Sistema de filtro
+
+Toggle no início da home: **⚡ Plantão** · **🌳 UBS** · **⚙ Tudo**
+- **Plantão**: 257 patologias / 192 meds / 71 calcs
+- **UBS**: 225 patologias / 176 meds / 59 calcs
+- **Tudo**: tudo visível
+
+## Próxima rodada (4)
+
+Rastreamento das sociedades brasileiras + MS + Prevenção Quaternária explícita:
+- Mama (INCA + SBM + USPSTF)
+- Colo uterino (INCA + FEBRASGO)
+- Colorretal (SBCP + INCA + USPSTF)
+- Próstata (SBU + USPSTF — discussão compartilhada)
+- AAA (SBACV)
+- DM2 (SBD)
+- Dislipidemia (SBC)
+- IST (PCDT IST/AIDS MS)
+- Síntese P4 — Choosing Wisely Brasil
+
+## Licença
+
+CC BY-SA 4.0 — uso educacional, atribuição obrigatória, derivados sob mesma licença.

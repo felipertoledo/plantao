@@ -109,10 +109,10 @@ acomp:"Acompanhamento a cada 2-4 semanas até estabilização. A cada 3 meses qu
 p4:"⚠ NÃO medicalizar tristeza reativa normal (luto, desemprego, divórcio recente) — apoio e escuta antes de droga. ⚠ Diferenciar SOFRIMENTO SOCIAL (pobreza, violência) de transtorno mental — droga não trata desigualdade. ⚠ Bipolar mal-diagnosticado como 'depressão recorrente' + ISRS = INDUÇÃO DE MANIA. Pesquisar episódios maníacos/hipomaníacos prévios SEMPRE. ⚠ Idoso + ISRS = atenção HIPONATREMIA (SIADH). Monitorar Na nas primeiras semanas. ⚠ Não combinar ISRS + IMAO (síndrome serotoninérgica). ⚠ Não fazer 'desintoxicação serotoninérgica' (pseudociência). ⚠ Antidepressivo NÃO é 'remédio do bom humor' — é tratamento para doença, com efeitos colaterais. Decisão compartilhada.",
 calcs:["phq9","audit-c"],
 alertas:[
-{tipo:"crit",texto:"PERGUNTAR sobre suicídio NÃO induz suicídio. NÃO perguntar é negligência."},
-{tipo:"crit",texto:"Bipolar + ISRS isolado = risco de virada maníaca. Investigar episódios prévios SEMPRE antes de prescrever AD."},
-{tipo:"warn",texto:"PHQ-9 ≥15 ou ideação suicida ativa: matriciamento CAPS, considerar internação."},
-{tipo:"info",texto:"Resposta a AD: 4-6 semanas. Não trocar antes de tempo adequado."}
+{t:"crit",x:"PERGUNTAR sobre suicídio NÃO induz suicídio. NÃO perguntar é negligência."},
+{t:"crit",x:"Bipolar + ISRS isolado = risco de virada maníaca. Investigar episódios prévios SEMPRE antes de prescrever AD."},
+{t:"warn",x:"PHQ-9 ≥15 ou ideação suicida ativa: matriciamento CAPS, considerar internação."},
+{t:"info",x:"Resposta a AD: 4-6 semanas. Não trocar antes de tempo adequado."}
 ],
 mec:[
 {drg:"Sertralina/Fluoxetina/Paroxetina", classe:"ISRS", acao:"Inibe recaptação de serotonina na fenda sináptica → ↑disponibilidade serotonina", uso:"1ª linha; perfil seguro; latência 2-6 sem"},
@@ -210,9 +210,9 @@ acomp:"Médica a cada 2-4 sem início; mensal nos 3 primeiros meses; trimestral 
 p4:"⚠ BENZODIAZEPÍNICO crônico é uma das piores prescrições da medicina brasileira. Em idoso = QUEDA, FRATURA, DEMÊNCIA. Em adulto = dependência. NÃO INICIAR e DESPRESCREVER quando possível (redução de 25% a cada 2-4 sem). ⚠ Atribuir todo sintoma físico a 'ansiedade' SEM investigar é negligência (palpitação pode ser arritmia). ⚠ Não 'tratar' ansiedade situacional adaptativa (medo apropriado de evento real) — escuta e suporte. ⚠ Café e álcool: subestimados como pioradores. Investigar. ⚠ Não combinar ISRS + IMAO (síndrome serotoninérgica).",
 calcs:["audit-c"],
 alertas:[
-{tipo:"crit",texto:"BZD em idoso = Beers/STOPP-START. RISCO ALTO de queda/fratura/demência. Despreescrever."},
-{tipo:"warn",texto:"BZD: NÃO iniciar como manutenção. Se já em uso, descalonar 25%/2-4 sem."},
-{tipo:"info",texto:"Pânico: psicoeducar que 'crise não mata' é parte central do tratamento."}
+{t:"crit",x:"BZD em idoso = Beers/STOPP-START. RISCO ALTO de queda/fratura/demência. Despreescrever."},
+{t:"warn",x:"BZD: NÃO iniciar como manutenção. Se já em uso, descalonar 25%/2-4 sem."},
+{t:"info",x:"Pânico: psicoeducar que 'crise não mata' é parte central do tratamento."}
 ],
 mec:[
 {drg:"Sertralina/Fluoxetina/Paroxetina", classe:"ISRS", acao:"Inibe recaptação de serotonina", uso:"1ª linha em todos transtornos de ansiedade"},
@@ -329,10 +329,10 @@ acomp:"Após detoxificação: acompanhamento estreito (semanal a mensal) por 6-1
 p4:"⚠ NÃO moralizar, julgar, ameaçar. Backfire effect: confronto reduz adesão. ⚠ Detoxificação ambulatorial: NÃO em paciente com história de delirium tremens, convulsão por abstinência, comorbidade grave. Internar. ⚠ Tiamina ANTES de glicose em paciente alcoólico (não, sempre administrar tiamina primeiro/junto, NUNCA glicose isolada em desnutrido alcoolista = risco Wernicke). ⚠ BZD em paciente com risco de abuso e ainda usando álcool = perigoso. ⚠ Não use 'remédio para parar de beber' como bala mágica — é coadjuvante. ⚠ Família coerciva pode piorar — orientar Al-Anon.",
 calcs:["audit-c","ciwa","ciwa-ar"],
 alertas:[
-{tipo:"crit",texto:"Wernicke = tríade oftalmoplegia + ataxia + confusão. TIAMINA IV imediata, não esperar exame."},
-{tipo:"crit",texto:"Detox ambulatorial CONTRAINDICADA se: CIWA-Ar grave, história delirium/convulsão, comorbidade grave. INTERNAR."},
-{tipo:"warn",texto:"Glicose IV em paciente desnutrido sem tiamina = pode PRECIPITAR Wernicke. TIAMINA PRIMEIRO."},
-{tipo:"info",texto:"AUDIT em toda consulta — rastreio é cuidado, não controle."}
+{t:"crit",x:"Wernicke = tríade oftalmoplegia + ataxia + confusão. TIAMINA IV imediata, não esperar exame."},
+{t:"crit",x:"Detox ambulatorial CONTRAINDICADA se: CIWA-Ar grave, história delirium/convulsão, comorbidade grave. INTERNAR."},
+{t:"warn",x:"Glicose IV em paciente desnutrido sem tiamina = pode PRECIPITAR Wernicke. TIAMINA PRIMEIRO."},
+{t:"info",x:"AUDIT em toda consulta — rastreio é cuidado, não controle."}
 ],
 diretriz:"OMS. AUDIT — Manual para uso na Atenção Primária 2001. CAB nº 34 — Saúde Mental [CAB-SM 2013]. PCDT Transtornos por Uso de Álcool MS. TMFC 2ª ed 2019."
 },
@@ -419,9 +419,9 @@ prog:"Cessação aos 30a: recupera ~10 anos de expectativa de vida. Aos 50a: ~6 
 acomp:"Acompanhamento sistemático por 12 meses. Recaída é COMUM e parte do processo — retomar imediatamente com novo plano. Pacientes geralmente precisam 5-7 tentativas antes de cessação definitiva.",
 p4:"⚠ NÃO moralizar ('você é viciado'). ⚠ NÃO suspender tratamento por 1 'cigarrinho' isolado (lapso ≠ recaída — retomar). ⚠ Bupropiona: cuidado em histórico de convulsão, transtorno alimentar. ⚠ TRN em IAM agudo recente (<2 sem): cautela. ⚠ Cigarro eletrônico NÃO é cessação — pode manter dependência. ⚠ 'Café com tabaco' é forte gatilho — orientar.",
 alertas:[
-{tipo:"info",texto:"Conselho breve estruturado aumenta cessação em ~5% por encontro. Repetir em CADA consulta."},
-{tipo:"warn",texto:"Bupropiona contraindicada: convulsão, transtorno alimentar, abstinência alcoólica/BZD recente."},
-{tipo:"info",texto:"Recaída é parte do processo (média 5-7 tentativas). NÃO desistir do paciente."}
+{t:"info",x:"Conselho breve estruturado aumenta cessação em ~5% por encontro. Repetir em CADA consulta."},
+{t:"warn",x:"Bupropiona contraindicada: convulsão, transtorno alimentar, abstinência alcoólica/BZD recente."},
+{t:"info",x:"Recaída é parte do processo (média 5-7 tentativas). NÃO desistir do paciente."}
 ],
 mec:[
 {drg:"Bupropiona", classe:"NDRI / inibidor recaptação NA-DA", acao:"Bloqueia recaptação noradrenalina e dopamina; reduz craving e sintomas abstinência", uso:"PNCT 1ª linha; iniciar 1-2 sem antes do Quit Day"},
@@ -520,9 +520,9 @@ prog:"Insônia bem manejada (TCC-I) tem resposta sustentada em 60-80% dos casos.
 acomp:"Reavaliação a cada 2-4 sem inicialmente. Mensal nos primeiros 3 meses. Diário do sono é ferramenta de seguimento. Despreescrição gradual de hipnóticos quando estabilizado.",
 p4:"⚠ HIPNÓTICO crônico em idoso = QUEDA, FRATURA, DEMÊNCIA. Beers e STOPP-START contraindicam. ⚠ NÃO iniciar BZD/Z-drug 'só para começar a dormir' — alta dependência. ⚠ Insônia muitas vezes é SINTOMA — tratar a causa (ansiedade, depressão, dor) é mais efetivo que hipnótico. ⚠ Idoso com 'insônia há 20 anos em uso de clonazepam': despreescrever GRADUALMENTE (25%/2-4 sem). ⚠ Melatonina não é 'remédio natural inofensivo' — pode interagir. ⚠ Diagnosticar SAOS antes de prescrever hipnótico em paciente roncador.",
 alertas:[
-{tipo:"crit",texto:"Hipnótico crônico em idoso = QUEDA + FRATURA + DEMÊNCIA. Despreescrever."},
-{tipo:"warn",texto:"BZD/Z-drug: ≤2-4 semanas. NÃO iniciar como manutenção."},
-{tipo:"info",texto:"TCC-I é mais eficaz e segura que hipnótico no longo prazo."}
+{t:"crit",x:"Hipnótico crônico em idoso = QUEDA + FRATURA + DEMÊNCIA. Despreescrever."},
+{t:"warn",x:"BZD/Z-drug: ≤2-4 semanas. NÃO iniciar como manutenção."},
+{t:"info",x:"TCC-I é mais eficaz e segura que hipnótico no longo prazo."}
 ],
 diretriz:"American Academy of Sleep Medicine — Clinical Practice Guideline for Chronic Insomnia 2021. TMFC 2ª ed 2019. NICE Insomnia Guidance 2021. Beers AGS 2023."
 },
@@ -594,9 +594,9 @@ acomp:"Reavaliações em 2-4 sem inicialmente. Manter porta aberta. Reconhecer m
 p4:"⚠⚠⚠ ESTE É O TEMA P4 POR EXCELÊNCIA NA SAÚDE MENTAL. ⚠ NÃO prescrever ISRS em luto recente sem critérios para transtorno depressivo. ⚠ NÃO prescrever BZD para 'aguentar o velório'. ⚠ NÃO patologizar climatério como 'depressão' automaticamente. ⚠ NÃO patologizar resposta emocional do desempregado, separado, vítima de violência. ⚠ Recusar prescrição autoritária NÃO É NEGAR CUIDADO — é cuidar com mais qualidade. ⚠ Comprimido pode silenciar sintomas, mas NÃO RESOLVE causa social/relacional/existencial. ⚠ Acolher a pressão familiar/social por 'um remédio' com diplomacia: 'vou te acompanhar, e se não melhorar a gente reavalia'. ⚠ Suprimir luto pode atrasar elaboração. ⚠ Reconhecer que ESCUTA é intervenção legítima, embora invisível em sistemas que pagam por procedimento.",
 calcs:["phq9","audit-c"],
 alertas:[
-{tipo:"info",texto:"Sofrimento normal NÃO é diagnóstico — não medicalizar."},
-{tipo:"warn",texto:"Sinais de alarme para transtorno: cronicidade, anedonia completa, ideação suicida persistente, sintomas psicóticos, disfunção marcada."},
-{tipo:"crit",texto:"Ideação suicida em qualquer contexto: avaliar e abordar — não banalizar como 'fala de momento'."}
+{t:"info",x:"Sofrimento normal NÃO é diagnóstico — não medicalizar."},
+{t:"warn",x:"Sinais de alarme para transtorno: cronicidade, anedonia completa, ideação suicida persistente, sintomas psicóticos, disfunção marcada."},
+{t:"crit",x:"Ideação suicida em qualquer contexto: avaliar e abordar — não banalizar como 'fala de momento'."}
 ],
 diretriz:"TMFC 2ª ed 2019 — capítulos de saúde mental e P4. Norman AH, Tesser CD. Prevenção Quaternária na Atenção Primária à Saúde. Cad. Saúde Pública 2009. Marc Jamoulle. P4 conceptualization. Movimento HumanizaSUS — PNH."
 }
