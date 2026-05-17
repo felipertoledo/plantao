@@ -9,7 +9,7 @@ PATOLOGIAS.push(
 /* ============== PSIQ (9) ============== */
 
 {
-  id:"acatisia", sis:"psiq", grav:"baixa",
+  id:"acatisia", contexto:["pa","ubs"], sis:"psiq", grav:"baixa",
   nome:"Acatisia",
   sin:["acatisia","SEP","inquietação motora"],
   def:"Inquietação motora subjetiva e objetiva — paciente refere \"não consegue ficar parado\". Efeito adverso de antipsicóticos, metoclopramida, ISRS.",
@@ -32,7 +32,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"agitacao", sis:"psiq", grav:"alta",
+  id:"agitacao", contexto:["pa","ubs"], sis:"psiq", grav:"alta",
   nome:"Agitação Psicomotora",
   sin:["agitação","violência","contenção"],
   def:"Agitação intensa com risco para paciente/equipe. Etiologia orgânica (delirium, intox), psiquiátrica ou comportamental.",
@@ -55,7 +55,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"ansiedade", sis:"psiq", grav:"baixa",
+  id:"ansiedade", contexto:["pa","ubs"], sis:"psiq", grav:"baixa",
   nome:"Crise de Ansiedade / Pânico",
   sin:["ansiedade","pânico","ataque de pânico"],
   def:"Início súbito de medo intenso + sintomas físicos: taquicardia, sudorese, tremor, dispneia, dor torácica, parestesia, despersonalização. Pico em 10 min, autolimitada.",
@@ -76,7 +76,7 @@ PATOLOGIAS.push(
   diretriz:"APA Practice Guideline for Panic Disorder.",
   calcs:[],
 },
-{id:"depressao", nome:"Depressão Maior (TDM) — diagnóstico + tratamento ambulatorial", sis:"psiq", grav:"moderada",
+{id:"depressao", contexto:["pa","ubs"], nome:"Depressão Maior (TDM) — diagnóstico + tratamento ambulatorial", sis:"psiq", grav:"moderada",
 cid:"F32/F33", ciap:"P76",
 sin:["TDM","Depressão maior","Depressão unipolar","Episódio depressivo","ISRS","PHQ-9","Ideação suicida"],
 def:"⚠ Transtorno depressivo maior (TDM) caracterizado por ≥5 sintomas (DSM-5-TR) por ≥2 SEMANAS, incluindo OBRIGATORIAMENTE humor deprimido OU anedonia. Diferenciar de tristeza situacional, luto, transtorno bipolar (sempre RASTREAR mania), distimia. Tratamento inicial AMBULATORIAL com ISRS + psicoterapia. ⚠ AVALIAÇÃO DE RISCO SUICIDA é parte do diagnóstico.",
@@ -132,7 +132,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"DSM-5-TR; APA Practice Guideline; NICE Depression; ABP. PHQ-9 validado pt-BR."
 },
-{id:"insonia", nome:"Insônia crônica — abordagem ambulatorial", sis:"psiq", grav:"baixa",
+{id:"insonia", contexto:["pa","ubs"], nome:"Insônia crônica — abordagem ambulatorial", sis:"psiq", grav:"baixa",
 cid:"F51.0/G47.0", ciap:"P06",
 sin:["Insônia","Dificuldade para dormir","TCC-I","Higiene do sono","Hipnóticos"],
 def:"⚠ Dificuldade de INICIAR ou MANTER o sono, ou DESPERTAR PRECOCE, com SOFRIMENTO ou PREJUÍZO funcional, ≥3 noites/semana por ≥3 meses (crônica) ou <3 meses (aguda). ⚠ Tratamento 1ª LINHA é TCC-I (terapia cognitivo-comportamental para insônia). Hipnótico é 2ª linha, curto prazo. Sempre INVESTIGAR causa secundária.",
@@ -194,7 +194,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AASM (American Academy of Sleep Medicine); ABS (Sono Brasil); NICE Insomnia."
 },
-{id:"panico", nome:"Transtorno de Pânico — manejo da crise e crônico", sis:"psiq", grav:"moderada",
+{id:"panico", contexto:["pa","ubs"], nome:"Transtorno de Pânico — manejo da crise e crônico", sis:"psiq", grav:"moderada",
 cid:"F41.0", ciap:"P74",
 sin:["Pânico","Transtorno do pânico","Crise de pânico","Agorafobia","Ataque pânico"],
 def:"⚠ Ataques recorrentes de PÂNICO ESPONTÂNEOS (sem gatilho identificável) + preocupação persistente sobre novos ataques OU mudança maladaptativa de comportamento (evitação) ≥1 mês. Crise: início abrupto, pico em 10 min, autonômico + cognitivo (medo de morrer/enlouquecer). Frequentemente confundido com IAM/TEP — DDX antes de rotular. Tratamento: ISRS + TCC.",
@@ -243,7 +243,7 @@ alertas:[
 fluxo:null, diretriz:"DSM-5-TR; NICE Panic; ABP."
 },
 {
-  id:"sind-psicotica", sis:"psiq", grav:"alta",
+  id:"sind-psicotica", contexto:["pa","ubs"], sis:"psiq", grav:"alta",
   nome:"Síndrome Psicótica Aguda",
   sin:["psicose","surto psicótico","esquizofrenia","delírio"],
   def:"Delírios + alucinações + alteração do pensamento. 1º episódio = ↑investigação orgânica (orgânica até prova contrária).",
@@ -266,7 +266,7 @@ fluxo:null, diretriz:"DSM-5-TR; NICE Panic; ABP."
   diretriz:"ABP; APA.",
   calcs:[],
 },
-{id:"tag", nome:"Transtorno de Ansiedade Generalizada (TAG) — manejo ambulatorial", sis:"psiq", grav:"baixa",
+{id:"tag", contexto:["pa","ubs"], nome:"Transtorno de Ansiedade Generalizada (TAG) — manejo ambulatorial", sis:"psiq", grav:"baixa",
 cid:"F41.1", ciap:"P74",
 sin:["TAG","Ansiedade generalizada","ISRS ansiedade","Ansiedade crônica","GAD-7"],
 def:"⚠ Transtorno caracterizado por ANSIEDADE EXCESSIVA + PREOCUPAÇÃO INCONTROLÁVEL >6 MESES sobre múltiplos eventos, com ≥3 sintomas físicos/cognitivos (DSM-5-TR). Diferenciar de ansiedade situacional, transtorno de pânico, depressão ansiosa, causas orgânicas (hipertireoidismo, feocromocitoma). Tratamento ambulatorial — ISRS/ISRSN + TCC.",
@@ -311,7 +311,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"DSM-5-TR; NICE Anxiety; ABP. GAD-7 validado pt-BR."
 },
-{id:"tentativa-suicidio", sis:"psiq", grav:"alta",
+{id:"tentativa-suicidio", contexto:["pa","ubs"], sis:"psiq", grav:"alta",
 nome:"Tentativa de Suicídio / Ideação Aguda",
 sin:["tentativa de suicídio","ideação suicida","autolesão"],
 def:"Comportamento autolesivo intencional com intenção de morrer OU ideação suicida estruturada (plano + método + intenção). Avaliar SEMPRE: ideação, plano, intenção, acesso a método letal, tentativa prévia, fatores de risco.",

@@ -8,7 +8,7 @@ PATOLOGIAS.push(
 
 /* ============== DERM (2) ============== */
 
-{id:"herpes-zoster", sis:"derm", grav:"media",
+{id:"herpes-zoster", contexto:["pa","ubs"], sis:"derm", grav:"media",
 nome:"Herpes-Zóster",
 sin:["herpes zoster","zoster","cobreiro","neuralgia pós-herpética"],
 def:"Reativação do varicela-zóster latente em gânglio sensitivo → erupção vesicular dolorosa em UM DERMÁTOMO unilateral, sem ultrapassar linha média. Dor pode preceder lesões em 1-5 dias.",
@@ -40,7 +40,7 @@ caption:"Herpes-zóster torácico — vesículas agrupadas em base eritematosa, 
 source:"Wikimedia Commons / Fisle (CC BY-SA 3.0)"},
 ],
 },
-{id:"sjs-net", sis:"derm", grav:"alta",
+{id:"sjs-net", contexto:["pa","ubs"], sis:"derm", grav:"alta",
 nome:"Stevens-Johnson / NET / DRESS",
 sin:["Stevens-Johnson","SJS","NET","necrólise epidérmica","DRESS"],
 def:"Reações cutâneas graves a fármacos. SJS: descamação <10% SCT + ≥2 mucosas. NET (Lyell): >30%. Overlap 10-30%. DRESS: rash + febre + linfadenopatia + eosinofilia + acometimento sistêmico (hepatite, nefrite).",
@@ -80,7 +80,7 @@ source:"Wikimedia Commons / DermNet (CC BY-NC-ND 3.0)"},
 
 /* ============== OFT (1) ============== */
 
-{id:"glaucoma-agudo", sis:"oft", grav:"alta",
+{id:"glaucoma-agudo", contexto:["pa","ubs"], sis:"oft", grav:"alta",
 nome:"Glaucoma Agudo de Ângulo Fechado",
 sin:["glaucoma agudo","ângulo fechado","crise glaucomatosa"],
 def:"Elevação aguda da pressão intraocular (PIO) por bloqueio pupilar com ângulo iridocorneano fechado. CLÁSSICO: olho vermelho doloroso unilateral + halos coloridos + diminuição visual + náuseas/vômitos + pupila médio-fixa + córnea turva.",
@@ -113,7 +113,7 @@ calcs:[],
 /* ============== OST (4) ============== */
 
 {
-  id:"fratura-exposta", sis:"ost", grav:"alta",
+  id:"fratura-exposta", contexto:["pa","ubs"], sis:"ost", grav:"alta",
   nome:"Fratura Exposta",
   sin:["fratura exposta","Gustilo","fratura aberta"],
   def:"Fratura óssea com solução de continuidade da pele. Classificação Gustilo-Anderson I–IIIC.",
@@ -135,7 +135,7 @@ calcs:[],
   diretriz:"Tornetta P, AAOS; SBOT.",
   calcs:[],
 },
-{id:"gota", nome:"Gota / Artrite Gotosa", sis:"ost", grav:"baixa",
+{id:"gota", contexto:["pa","ubs"], nome:"Gota / Artrite Gotosa", sis:"ost", grav:"baixa",
 cid:"M10", ciap:"T92",
 sin:["Gota","Artrite úrica","Crise gotosa","Podagra","Hiperuricemia sintomática","Tofo gotoso"],
 
@@ -271,7 +271,7 @@ fluxo:null,
 diretriz:"ACR Guidelines Gout 2020. EULAR 2016+update. ACR/EULAR 2015 (classificação). CARES trial 2018."
 },
 {
-  id:"gota", sis:"ost", grav:"baixa",
+  id:"gota", contexto:["pa","ubs"], sis:"ost", grav:"baixa",
   nome:"Crise de Gota",
   sin:["gota","artrite urato","podagra"],
   def:"Artrite aguda, monoarticular, intensa — \"acordou doendo\". Podagra (1ª MTF) clássica. Diagnóstico: cristais de urato monossódico no líquido sinovial (negativamente birrefringentes).",
@@ -294,7 +294,7 @@ diretriz:"ACR Guidelines Gout 2020. EULAR 2016+update. ACR/EULAR 2015 (classific
   calcs:[],
 },
 {
-  id:"lombalgia", sis:"ost", grav:"baixa",
+  id:"lombalgia", contexto:["pa","ubs"], sis:"ost", grav:"baixa",
   nome:"Lombalgia Mecânica / Torcicolo",
   sin:["lombalgia","dor lombar","torcicolo","cervicalgia"],
   def:"Dor mecânica musculoesquelética sem sinais de alarme. Diagnóstico clínico.",

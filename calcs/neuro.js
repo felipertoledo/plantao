@@ -5,7 +5,7 @@
 
 CALCS.push(
 {
-id:"abcd2", nome:"ABCD²", sis:"neuro",
+id:"abcd2", contexto:["pa","ubs"], nome:"ABCD²", sis:"neuro",
 desc:"Risco de AVC em 2 e 7 dias após AIT.",
 fields:[
 {tipo:"bool", id:"a", label:"Age — ≥ 60 anos", peso:1},
@@ -33,7 +33,7 @@ interp:function(s){
 }
 },
 {
-id:"aspects", nome:"ASPECTS (TC)", sis:"neuro",
+id:"aspects", contexto:["pa","ubs"], nome:"ASPECTS (TC)", sis:"neuro",
 desc:"Avaliação de áreas isquêmicas precoces na TC sem contraste em AVC de circulação anterior (ACM). Pontuação 10 (normal) → 0 (infarto extenso). Cada uma das 10 regiões = 1 ponto, subtrair se hipodensa.",
 fields:[
 {tipo:"bool", id:"c", label:"Caudado hipodenso", peso:1},
@@ -58,7 +58,7 @@ interp:function(s){
   return {risco:"Infarto extenso (> 1/3 ACM)", acao:"Trombólise/trombectomia geralmente contraindicadas — alto risco hemorrágico", cor:"crit"};
 }
 },
-{id:"four", nome:"FOUR Score — Avaliação do Coma (alternativa à Glasgow)", sis:"neuro",
+{id:"four", contexto:["pa","ubs"], nome:"FOUR Score — Avaliação do Coma (alternativa à Glasgow)", sis:"neuro",
 desc:"Full Outline of UnResponsiveness. Alternativa ao Glasgow em paciente INTUBADO (avalia tronco cerebral). Útil em UTI neurológica. Score 0-16 (maior = melhor).",
 fields:[
 {tipo:"select", id:"e", label:"Resposta ocular (E)", opts:[
@@ -100,7 +100,7 @@ interp:function(s){
   return {risco:`FOUR ${s}/16 — Coma PROFUNDO — possível morte encefálica`, acao:"⚠ ⚠ Reflexos de tronco ausentes ou mínimos. Avaliar critérios de MORTE ENCEFÁLICA (Resolução CFM 2.173/2017): coma aperceptivo, ausência de reflexos de tronco, apneia + teste confirmatório (EEG, Doppler TC, angiografia). 2 exames clínicos por médicos diferentes com intervalo conforme idade.", cor:"crit"};
 }
 },
-{id:"gcs", nome:"Glasgow Coma Scale (GCS) — Interativo", sis:"neuro",
+{id:"gcs", contexto:["pa","ubs"], nome:"Glasgow Coma Scale (GCS) — Interativo", sis:"neuro",
 desc:"Escala de coma de Glasgow. 3 componentes: ocular, verbal, motor. Total 3-15. Padrão de avaliação neurológica e prognóstico em TCE.",
 fields:[
 {tipo:"select", id:"e", label:"Abertura ocular (E)", opts:[
@@ -143,7 +143,7 @@ interp:function(s){
 }
 },
 {
-id:"nihss", nome:"NIHSS", sis:"neuro",
+id:"nihss", contexto:["pa","ubs"], nome:"NIHSS", sis:"neuro",
 desc:"Avaliação de gravidade no AVC isquêmico. Itens individuais com soma 0–42.",
 fields:[
 {tipo:"select", id:"i1a", label:"1a — Nível de consciência",
@@ -190,7 +190,7 @@ interp:function(s){
   return {risco:"AVC grave", acao:"Trombólise + trombectomia. Risco de transformação hemorrágica ↑.", cor:"crit"};
 }
 },
-{id:"nihss", nome:"NIHSS — National Institutes of Health Stroke Scale", sis:"neuro",
+{id:"nihss", contexto:["pa","ubs"], nome:"NIHSS — National Institutes of Health Stroke Scale", sis:"neuro",
 desc:"Escala completa para gravidade de AVC isquêmico. 11 itens, total 0-42. Decisão de trombólise + monitoramento evolutivo.",
 fields:[
 {tipo:"select", id:"1a", label:"1a. Nível de consciência", opts:[

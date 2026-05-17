@@ -9,7 +9,7 @@ PATOLOGIAS.push(
 /* ============== ENDO (11) ============== */
 
 {
-  id:"cad-ehh", sis:"endo", grav:"alta",
+  id:"cad-ehh", contexto:["pa","ubs"], sis:"endo", grav:"alta",
   nome:"CAD / EHH",
   sin:["CAD","EHH","cetoacidose","cetoacidose diabética","estado hiperosmolar"],
   def:"CAD: glicemia >200 + acidose (pH<7,3 ou HCO3<18) + cetonas+. EHH: glicemia >600 + osmolaridade >320 + leve ou nenhuma cetose + alteração de consciência.",
@@ -41,7 +41,7 @@ PATOLOGIAS.push(
   fluxo:"cad",
   calcs:["aniongap","osm","corr-na"],
 },
-{id:"crise-tireo", sis:"endo", grav:"alta",
+{id:"crise-tireo", contexto:["pa","ubs"], sis:"endo", grav:"alta",
 nome:"Crise Tireotóxica (Tempestade Tireoidiana)",
 sin:["crise tireotóxica","tempestade tireoidiana","Graves","hipertireoidismo descompensado"],
 def:"Manifestação extrema do hipertireoidismo — febre alta + taquicardia >130 + arritmias + alteração mental (agitação → coma) + GI (vômitos, diarreia) + cardiopatia descompensada. Mortalidade 10-30% mesmo tratado. Escala de Burch-Wartofsky.",
@@ -70,7 +70,7 @@ diretriz:"American Thyroid Association 2016 Hyperthyroidism (Ross DS et al., Thy
 fluxo:null,
 calcs:[],
 },
-{id:"deficiencia-vit-b12", nome:"Deficiência de Vitamina B12 / Anemia Megaloblástica", sis:"endo", grav:"baixa",
+{id:"deficiencia-vit-b12", contexto:["pa","ubs"], nome:"Deficiência de Vitamina B12 / Anemia Megaloblástica", sis:"endo", grav:"baixa",
 cid:"D51 (anemia por def B12) / E53.8 (def B12 sem anemia)", ciap:"B81 (anemia) / T91 (deficiência nutricional)",
 sin:["Deficiência de cobalamina","B12 baixa","Anemia perniciosa","Anemia megaloblástica","Neuropatia por B12"],
 
@@ -191,7 +191,7 @@ alertas:[
 fluxo:null,
 diretriz:"BSH (British Society for Haematology) Guidelines 2014. ESH. ASH. Cochrane B12 oral vs IM."
 },
-{id:"deficiencia-vit-d", nome:"Deficiência de Vitamina D / Hipovitaminose D", sis:"endo", grav:"baixa",
+{id:"deficiencia-vit-d", contexto:["pa","ubs"], nome:"Deficiência de Vitamina D / Hipovitaminose D", sis:"endo", grav:"baixa",
 cid:"E55", ciap:"T91",
 sin:["Hipovitaminose D","Vit D baixa","Insuficiência de vit D","Deficiência de calciferol","Raquitismo (pediátrico)","Osteomalácia (adulto)"],
 
@@ -310,7 +310,7 @@ alertas:[
 fluxo:null,
 diretriz:"Endocrine Society Guidelines 2024 (atualização importante). SBEM. USPSTF. ACP. VITAL trial 2019. SBP (pediatria). IOM."
 },
-{id:"diabetes-tipo-2", nome:"Diabetes Mellitus Tipo 2 (DM2)", sis:"endo", grav:"moderada",
+{id:"diabetes-tipo-2", contexto:["pa","ubs"], nome:"Diabetes Mellitus Tipo 2 (DM2)", sis:"endo", grav:"moderada",
 cid:"E11", ciap:"T90",
 sin:["DM2","Diabetes tipo 2","Diabetes mellitus","Açúcar alto","Hiperglicemia crônica"],
 
@@ -474,7 +474,7 @@ alertas:[
 fluxo:null,
 diretriz:"SBD 2025 (Diretriz Brasileira). ADA Standards 2025. EASD-ADA Joint Statement. DAPA-HF/CKD. EMPA-REG OUTCOME. SUSTAIN-6. PCDT MS DM2."
 },
-{id:"dislipidemia", nome:"Dislipidemia", sis:"endo", grav:"baixa",
+{id:"dislipidemia", contexto:["pa","ubs"], nome:"Dislipidemia", sis:"endo", grav:"baixa",
 cid:"E78", ciap:"T93",
 sin:["Colesterol alto","Hipercolesterolemia","Hiperlipidemia","Hipertrigliceridemia","LDL alto","Dislipidemia mista"],
 
@@ -616,7 +616,7 @@ fluxo:null,
 diretriz:"Atualização SBC Dislipidemia 2017. AHA/ACC 2018 + 2022. ESC 2019. KDIGO 2024. IMPROVE-IT. FOURIER. ODYSSEY OUTCOMES. REDUCE-IT. FIELD."
 },
 {
-  id:"glicemia-hosp", sis:"endo", grav:"baixa",
+  id:"glicemia-hosp", contexto:["pa","ubs"], sis:"endo", grav:"baixa",
   nome:"Controle Glicêmico Hospitalar",
   sin:["hiperglicemia","controle glicêmico","diabetes hospitalar"],
   def:"Alvo glicêmico 140–180 mg/dL em paciente hospitalizado. Hiperglicemia hospitalar (>140 sem DM prévio) tem pior prognóstico.",
@@ -635,7 +635,7 @@ diretriz:"Atualização SBC Dislipidemia 2017. AHA/ACC 2018 + 2022. ESC 2019. KD
   diretriz:"ADA Standards of Care 2025 (Diabetes Care 2025).",
   calcs:[],
 },
-{id:"hipertireoidismo", nome:"Hipertireoidismo / Tireotoxicose", sis:"endo", grav:"moderada",
+{id:"hipertireoidismo", contexto:["pa","ubs"], nome:"Hipertireoidismo / Tireotoxicose", sis:"endo", grav:"moderada",
 cid:"E05", ciap:"T85",
 sin:["Tireoide alta","Graves","Doença de Basedow","Tireotoxicose","TSH baixo","Bócio difuso tóxico"],
 
@@ -736,7 +736,7 @@ fluxo:null,
 diretriz:"ATA 2016 (American Thyroid Association — Hyperthyroidism). ATA 2017 (Gestação). SBEM 2025. Endocrine Society."
 },
 {
-  id:"hipoglicemia", sis:"endo", grav:"alta",
+  id:"hipoglicemia", contexto:["pa","ubs"], sis:"endo", grav:"alta",
   nome:"Hipoglicemia",
   sin:["hipoglicemia","hipo"],
   def:"Glicemia <70 mg/dL. Tríade de Whipple: glicemia baixa + sintomas + melhora com glicose. Em DM: <54 grave; <70 alerta.",
@@ -759,7 +759,7 @@ diretriz:"ATA 2016 (American Thyroid Association — Hyperthyroidism). ATA 2017 
   diretriz:"ADA Standards of Care 2025.",
   calcs:[],
 },
-{id:"hipotireoidismo", nome:"Hipotireoidismo", sis:"endo", grav:"baixa",
+{id:"hipotireoidismo", contexto:["pa","ubs"], nome:"Hipotireoidismo", sis:"endo", grav:"baixa",
 cid:"E03", ciap:"T86",
 sin:["Tireoide baixa","Hashimoto","Tireoidite autoimune","TSH alto"],
 
@@ -851,7 +851,7 @@ alertas:[
 fluxo:null,
 diretriz:"ATA 2014 (American Thyroid Association). ATA 2017 (Gestação). SBEM 2025. Endocrine Society."
 },
-{id:"insuf-adrenal", sis:"endo", grav:"alta",
+{id:"insuf-adrenal", contexto:["pa","ubs"], sis:"endo", grav:"alta",
 nome:"Insuficiência Adrenal Aguda (Crise Addisoniana)",
 sin:["insuficiência adrenal","crise addisoniana","Addison","crise suprarrenal"],
 def:"Falência aguda do córtex adrenal — hipotensão refratária + náusea/vômito + dor abdominal + hiponatremia + hipercalemia + hipoglicemia + febre. Suspeitar em corticoide crônico que interrompeu/perdeu dose em estresse, sepse, trauma.",
@@ -881,7 +881,7 @@ calcs:[],
 /* ============== HIDRO (8) ============== */
 
 {
-  id:"hipercalcemia", sis:"hidro", grav:"alta",
+  id:"hipercalcemia", contexto:["pa","ubs"], sis:"hidro", grav:"alta",
   nome:"Hipercalcemia",
   sin:["hipercalcemia","Ca alto"],
   def:"Ca total >10,5. Severa >14 com sintomas: \"stones, bones, abdominal moans, psychiatric overtones\". Crise hipercalcêmica >14 = emergência.",
@@ -906,7 +906,7 @@ calcs:[],
   calcs:[],
 },
 {
-  id:"hipercalemia", sis:"hidro", grav:"alta",
+  id:"hipercalemia", contexto:["pa"], sis:"hidro", grav:"alta",
   nome:"Hipercalemia",
   sin:["hipercalemia","K alto","potássio alto"],
   def:"K⁺ >5,5 mEq/L. Grave se >6,5 OU alterações ECG (T apiculada → P achatada → QRS alargado → padrão sinusoidal → FV).",
@@ -941,7 +941,7 @@ calcs:[],
   calcs:[],
 },
 {
-  id:"hiperna", sis:"hidro", grav:"alta",
+  id:"hiperna", contexto:["pa","ubs"], sis:"hidro", grav:"alta",
   nome:"Hipernatremia",
   sin:["hipernatremia","Na alto","sódio alto"],
   def:"Na >145 mEq/L. Quase sempre deficit de água. Sintomas: sede, letargia, irritabilidade, convulsão (sobretudo se aguda).",
@@ -962,7 +962,7 @@ calcs:[],
   calcs:["corr-na"],
 },
 {
-  id:"hipocalcemia", sis:"hidro", grav:"media",
+  id:"hipocalcemia", contexto:["pa","ubs"], sis:"hidro", grav:"media",
   nome:"Hipocalcemia",
   sin:["hipocalcemia","Ca baixo"],
   def:"Ca total <8,5 OU Ca iônico <1,1. Sintomas: parestesia, Chvostek, Trousseau, tetania, prolongamento QT.",
@@ -983,7 +983,7 @@ calcs:[],
   calcs:[],
 },
 {
-  id:"hipocalemia", sis:"hidro", grav:"media",
+  id:"hipocalemia", contexto:["pa"], sis:"hidro", grav:"media",
   nome:"Hipocalemia",
   sin:["hipocalemia","K baixo","potássio baixo"],
   def:"K⁺ <3,5 mEq/L. Grave se <2,5 ou ECG alterado (onda U, T aplanada, depressão ST, prolongamento QT, arritmias).",
@@ -1004,7 +1004,7 @@ calcs:[],
   calcs:[],
 },
 {
-  id:"hipomg", sis:"hidro", grav:"media",
+  id:"hipomg", contexto:["pa","ubs"], sis:"hidro", grav:"media",
   nome:"Hipo/Hipermagnesemia",
   sin:["hipomagnesemia","Mg","magnésio"],
   def:"HipoMg <1,7. Sintomas: tetania, arritmia, QT longo, hipoK/hipoCa refratários. HiperMg >2,5 (geralmente iatrogênica em IRC, eclâmpsia).",
@@ -1025,7 +1025,7 @@ calcs:[],
   calcs:[],
 },
 {
-  id:"hipona", sis:"hidro", grav:"alta",
+  id:"hipona", contexto:["pa","ubs"], sis:"hidro", grav:"alta",
   nome:"Hiponatremia",
   sin:["hiponatremia","Na baixo","sódio baixo","SIADH"],
   def:"Na <135 mEq/L. Aguda <48h (alto risco edema cerebral) vs crônica >48h (risco MIELINÓLISE PONTINA se corrigida rápido demais). Classificar: hipo/iso/hipertônica × hipo/eu/hipervolêmica.",
@@ -1049,7 +1049,7 @@ calcs:[],
   diretriz:"European Society of Endocrinology/ESICM/ERA-EDTA Hyponatremia 2014 (Spasovski G et al., Eur J Endocrinol 2014;170:G1–G47, DOI:10.1530/EJE-13-1020).",
   calcs:["corr-na"],
 },
-{id:"rabdomiolise", sis:"hidro", grav:"alta",
+{id:"rabdomiolise", contexto:["pa","ubs"], sis:"hidro", grav:"alta",
 nome:"Rabdomiólise",
 sin:["rabdomiólise","CPK alta","mioglobinúria"],
 def:"Lise muscular esquelética com liberação de mioglobina, K, fósforo, CK no plasma → risco de IRA por mioglobina + hipercalemia. CRITÉRIO: CK >5× LSN (geralmente >1000). Tríade clássica clássica: dor + fraqueza + urina escura (cor coca-cola).",

@@ -8,7 +8,7 @@ PATOLOGIAS.push(
 
 /* ============== PALI (12) ============== */
 
-{id:"anorexia-caquexia", nome:"Anorexia / Caquexia Oncológica — manejo paliativo", sis:"pali", grav:"baixa",
+{id:"anorexia-caquexia", contexto:["pa","ubs"], nome:"Anorexia / Caquexia Oncológica — manejo paliativo", sis:"pali", grav:"baixa",
 cid:"R63.0/C80", ciap:"T08",
 sin:["Caquexia","Anorexia oncológica","Megestrol","Mirtazapina paliativo","Dexametasona apetite"],
 def:"⚠ CAQUEXIA = perda involuntária de peso (>5% em 6m OU >2% se IMC baixo OU sarcopenia) + alterações metabólicas em paciente com doença sistêmica. ⚠ ≠ desnutrição por jejum — mesmo com nutrição não-reversível em fase avançada. ⚠ NÃO é falha do cuidador. Manejo: tratar reversíveis + apoiar família + foco em qualidade de vida (não em peso).",
@@ -58,7 +58,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"ESPEN; ANCP; ASCO Cancer Cachexia 2020."
 },
-{id:"compressao-medular-maligna", nome:"Compressão Medular Maligna — EMERGÊNCIA Oncológica", sis:"pali", grav:"grave",
+{id:"compressao-medular-maligna", contexto:["pa","ubs"], nome:"Compressão Medular Maligna — EMERGÊNCIA Oncológica", sis:"pali", grav:"grave",
 cid:"G95.2/C79.5", ciap:"L86",
 sin:["Compressão medular","CMM","Metástase coluna","Dexametasona compressão","Radioterapia paliativa urgente"],
 def:"⚠ ⚠ ⚠ EMERGÊNCIA ONCOLÓGICA — compressão por metástase epidural / vertebral. JANELA TERAPÊUTICA CURTA — déficit motor instalado >48h frequentemente IRREVERSÍVEL. ⚠ Reconhecimento + dexametasona + RM + radioterapia/cirurgia em HORAS. DOR LOMBAR NOVA/PROGRESSIVA em ONCOLÓGICO = investigar SEMPRE.",
@@ -93,7 +93,7 @@ alertas:[
 ],
 fluxo:"compressao-medular", diretriz:"NICE Spinal Cord Compression; NCCN; SBOC."
 },
-{id:"comunicacao-spikes", nome:"Comunicação de Más Notícias — Protocolo SPIKES + Plano de Cuidado Avançado", sis:"pali", grav:"baixa",
+{id:"comunicacao-spikes", contexto:["pa","ubs"], nome:"Comunicação de Más Notícias — Protocolo SPIKES + Plano de Cuidado Avançado", sis:"pali", grav:"baixa",
 cid:"Z71", ciap:"A45",
 sin:["SPIKES","Más notícias","Comunicação difícil","Diretivas antecipadas","Plano de cuidado avançado","Diagnóstico câncer"],
 def:"⚠ COMUNICAÇÃO de más notícias é HABILIDADE CLÍNICA CENTRAL — não 'estilo pessoal'. Treinável, validada. ⚠ PROTOCOLO SPIKES (Baile et al, 2000) — 6 passos. Equivocada comunicação é causa frequente de SOFRIMENTO + processos. ⚠ Inclui: diagnóstico ruim, prognóstico limitado, discussão de objetivos de cuidado, decisões de fim de vida.",
@@ -162,7 +162,7 @@ alertas:[
 ],
 fluxo:"spikes", diretriz:"⚠ Baile WF et al. SPIKES. Oncologist 2000; CFM Res 1.805/2006 + 1.995/2012; ANCP; Vital Talk."
 },
-{id:"constipacao-opioide", nome:"Constipação Induzida por Opioide (CIO) — profilaxia e manejo", sis:"pali", grav:"moderada",
+{id:"constipacao-opioide", contexto:["pa","ubs"], nome:"Constipação Induzida por Opioide (CIO) — profilaxia e manejo", sis:"pali", grav:"moderada",
 cid:"K59.0", ciap:"D12",
 sin:["Constipação opioide","CIO","Laxativo paliativo","Bisacodil","Lactulose","Metilnaltrexona","Naloxegol"],
 def:"⚠ ⚠ TODO paciente em opioide DESENVOLVE constipação (>90%). ⚠ É EFEITO COLATERAL PREVISÍVEL — sem tolerância significativa (não 'passa com tempo'). ⚠ PROFILAXIA ATIVA com laxativo na MESMA PRESCRIÇÃO do opioide. Falhar em prescrever laxativo = falhar como prescritor.",
@@ -210,7 +210,7 @@ alertas:[
 ],
 fluxo:"constipacao-opioide", diretriz:"ANCP; MASCC; ESMO Constipation."
 },
-{id:"delirium-paliativo", nome:"Delirium em Cuidados Paliativos — manejo agudo + terminal", sis:"pali", grav:"grave",
+{id:"delirium-paliativo", contexto:["pa","ubs"], nome:"Delirium em Cuidados Paliativos — manejo agudo + terminal", sis:"pali", grav:"grave",
 cid:"F05/R41.0", ciap:"P71",
 sin:["Delirium paliativo","Confusão terminal","Agitação terminal","Haloperidol delirium","Levomepromazina"],
 def:"⚠ DELIRIUM acomete 80-90% de pacientes paliativos em últimos dias. ⚠ Avaliar SEMPRE: é REVERSÍVEL (infecção, droga, dor, eletrólitos, retenção) ou IRREVERSÍVEL (falência sistêmica em fase ativa)? Conduta varia drasticamente. Subtipos: HIPERATIVO (agitação, agressividade), HIPOATIVO (sonolência, retraimento — mais comum, mais subdiagnosticado), MISTO.",
@@ -257,7 +257,7 @@ alertas:[
 ],
 fluxo:"delirium-paliativo", diretriz:"ANCP; APA Delirium; Inouye et al; ESMO."
 },
-{id:"dispneia-paliativa", nome:"Dispneia em Cuidados Paliativos — manejo sintomático", sis:"pali", grav:"moderada",
+{id:"dispneia-paliativa", contexto:["pa","ubs"], nome:"Dispneia em Cuidados Paliativos — manejo sintomático", sis:"pali", grav:"moderada",
 cid:"R06.0", ciap:"R02",
 sin:["Dispneia paliativa","Falta de ar paliativos","Fome de ar","Morfina dispneia","Oxigenoterapia paliativa"],
 def:"⚠ DISPNEIA é o sintoma mais incapacitante em paliativos — gera angústia tão intensa quanto dor. ⚠ MORFINA em DOSE BAIXA é 1ª linha (efeito independente da analgesia). Manejar CAUSA + sintoma + ansiedade associada. Não confundir com hipoxemia (que pode coexistir mas não é causa única da sensação).",
@@ -312,7 +312,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"ATS/ERS Dispneia Paliativa 2010-2021; ANCP; Hui et al."
 },
-{id:"dor-oncologica", nome:"Dor Oncológica — Escada Analgésica da OMS adaptada", sis:"pali", grav:"variavel",
+{id:"dor-oncologica", contexto:["pa","ubs"], nome:"Dor Oncológica — Escada Analgésica da OMS adaptada", sis:"pali", grav:"variavel",
 cid:"R52.1/G89", ciap:"A01",
 sin:["Dor oncológica","Escada OMS","Morfina","Opioide","Analgesia paliativa","Dor crônica câncer","Dor mista"],
 def:"⚠ Dor crônica em paciente oncológico — manejo baseado na ESCADA ANALGÉSICA DA OMS (1986, atualizada). PRINCÍPIO MODERNO: subir/descer pela escada conforme INTENSIDADE da dor (não 'tentar tudo até falhar'). Adjuvantes em qualquer degrau. Via VO preferida, SC quando VO inviável. ⚠ DOR SEVERA = MORFINA DIRETA — não passar por tramadol/codeína.",
@@ -391,7 +391,7 @@ alertas:[
 ],
 fluxo:"escada-oms", diretriz:"OMS Cancer Pain Relief; ANCP (Academia Nacional de Cuidados Paliativos); IAHPC; ESMO."
 },
-{id:"estertor-terminal", nome:"Estertor da Morte / Sialorreia Terminal — manejo", sis:"pali", grav:"baixa",
+{id:"estertor-terminal", contexto:["pa","ubs"], nome:"Estertor da Morte / Sialorreia Terminal — manejo", sis:"pali", grav:"baixa",
 cid:"R09.8", ciap:"R02",
 sin:["Estertor terminal","Sororoca","Sialorreia paliativa","Hioscina","Escopolamina","Glicopirrônio"],
 def:"⚠ ESTERTOR DA MORTE = ruído de gorgolejo em paciente em FASE ATIVA por acúmulo de secreção em vias aéreas (tipo I — saliva, paciente inconsciente sem deglutir; tipo II — secreção brônquica). ⚠ É MAIS ANGUSTIANTE PARA FAMÍLIA que para paciente — sedado, geralmente não sofre. Manejo: posicionamento + antimuscarínico SC + comunicação familiar.",
@@ -427,7 +427,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"ANCP; Wee-Hudson Sistema Review; EAPC."
 },
-{id:"hipercalcemia-maligna", nome:"Hipercalcemia da Malignidade — EMERGÊNCIA paliativa", sis:"pali", grav:"grave",
+{id:"hipercalcemia-maligna", contexto:["pa","ubs"], nome:"Hipercalcemia da Malignidade — EMERGÊNCIA paliativa", sis:"pali", grav:"grave",
 cid:"E83.5", ciap:"T99",
 sin:["Hipercalcemia maligna","PTHrP","Bifosfonato","Ácido zoledrônico","Calcitonina","Denosumab"],
 def:"⚠ EMERGÊNCIA — cálcio iônico ou Ca total CORRIGIDO PELA ALBUMINA >12 mg/dL com sintomas (poliúria, polidipsia, fraqueza, letargia, confusão, náusea, constipação severa, arritmia). ⚠ Frequente em mama, pulmão, mieloma, rim, cabeça e pescoço. Mortalidade alta em hipercalcemia GRAVE (>14) — tratamento emergencial paliativo.",
@@ -463,7 +463,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"NCCN; ESMO; ASCO; Major et al; Stewart NEJM."
 },
-{id:"nausea-paliativa", nome:"Náusea e Vômito em Paliativos — manejo por mecanismo", sis:"pali", grav:"moderada",
+{id:"nausea-paliativa", contexto:["pa","ubs"], nome:"Náusea e Vômito em Paliativos — manejo por mecanismo", sis:"pali", grav:"moderada",
 cid:"R11", ciap:"D09",
 sin:["Náusea paliativa","Vômito paliativo","Antiemético","Haloperidol náusea","Metoclopramida","Ondansetrona"],
 def:"⚠ Náusea/vômito acometem 40-70% de pacientes paliativos. ⚠ CHAVE: identificar MECANISMO predominante (4-5 mecanismos comuns) — o antiemético DEPENDE do mecanismo. Tratar com 'qualquer um' geralmente falha. ⚠ Sempre via SC quando vômito persistente.",
@@ -522,7 +522,7 @@ alertas:[
 ],
 fluxo:"nausea-paliativa", diretriz:"NICE Palliative Care; ANCP; ESMO."
 },
-{id:"sedacao-paliativa", nome:"Sedação Paliativa — princípios e protocolo", sis:"pali", grav:"grave",
+{id:"sedacao-paliativa", contexto:["pa","ubs"], nome:"Sedação Paliativa — princípios e protocolo", sis:"pali", grav:"grave",
 cid:"Z51.5", ciap:"A20",
 sin:["Sedação paliativa","Sedação terminal","Midazolam paliativa","Sintoma refratário","Doutrina duplo efeito"],
 def:"⚠ SEDAÇÃO PALIATIVA = uso INTENCIONAL de sedativos para REDUZIR CONSCIÊNCIA de paciente em fim de vida com SINTOMA REFRATÁRIO insuportável. ⚠ ≠ EUTANÁSIA (intenção é aliviar sintoma, não causar morte — princípio do DUPLO EFEITO). ⚠ ≠ Sedação 'leve' em UTI. Pode ser PROPORCIONAL (manter o mínimo necessário para conforto) ou PROFUNDA (refratariedade grave).",
@@ -566,7 +566,7 @@ alertas:[
 ],
 fluxo:"sedacao-paliativa", diretriz:"ANCP Diretrizes Sedação Paliativa; EAPC; CFM Res 1.805/2006 + 2.156/2016; Cherny+Radbruch."
 },
-{id:"ultimas-horas", nome:"Últimas Horas de Vida — Cuidados + Kit + Via Subcutânea (SC)", sis:"pali", grav:"grave",
+{id:"ultimas-horas", contexto:["pa","ubs"], nome:"Últimas Horas de Vida — Cuidados + Kit + Via Subcutânea (SC)", sis:"pali", grav:"grave",
 cid:"Z51.5", ciap:"A20",
 sin:["Fim de vida","Últimas horas","Kit paliativo","Via subcutânea","Hipodermoclise","Agonia"],
 def:"⚠ FASE ATIVA DE MORTE = horizonte de horas-dias. Sinais clínicos clássicos. ⚠ Foco TOTAL em CONFORTO + comunicação familiar. Via SUBCUTÂNEA é via central. KIT BÁSICO previamente prescrito permite resposta rápida em domicílio sem necessidade de UPA. ⚠ Permitir morte em DOMICÍLIO quando esse é o desejo do paciente — direito assegurado.",

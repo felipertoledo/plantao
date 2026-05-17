@@ -4,7 +4,7 @@
    =========================================================== */
 
 CONVERSORES.push(
-{id:"bic-mcg-min", nome:"BIC: mcg/kg/min ↔ mL/h", sis:"conv",
+{id:"bic-mcg-min", contexto:["pa","ubs"], nome:"BIC: mcg/kg/min ↔ mL/h", sis:"conv",
 desc:"Conversão entre dose contínua (mcg/kg/min) e velocidade da bomba de infusão (mL/h). Drogas vasoativas, sedativos, etc.",
 fields:[
 {tipo:"num", id:"peso", label:"Peso do paciente (kg)", min:1, max:300, step:0.1},
@@ -29,7 +29,7 @@ interp:function(s){
   return {risco:`${s} mL/h`, acao:`Programar a bomba para ${s} mL/h. Conferir: dose × peso × 60 ÷ (droga em mcg / volume).`, cor:"ok"};
 }
 },
-{id:"opioide-conv", nome:"Equipotência de Opioides", sis:"conv",
+{id:"opioide-conv", contexto:["pa","ubs"], nome:"Equipotência de Opioides", sis:"conv",
 desc:"Conversão entre opioides (potência relativa à morfina). Útil em rotação por intolerância/eficácia/disponibilidade.",
 fields:[
 {tipo:"sel", id:"de", label:"Converter DE:", opcoes:[
@@ -88,7 +88,7 @@ interp:function(s){
     cor:"warn"};
 }
 },
-{id:"gotas-mlh", nome:"Gotas/min ↔ mL/h", sis:"conv",
+{id:"gotas-mlh", contexto:["pa","ubs"], nome:"Gotas/min ↔ mL/h", sis:"conv",
 desc:"Conversão entre velocidade em gotas/min (gotejamento manual) e mL/h (bomba/cálculo).",
 fields:[
 {tipo:"sel", id:"tipo", label:"Tipo de equipo", opcoes:[
@@ -118,7 +118,7 @@ interp:function(s){
   return {risco:`${s}`, acao:"Resultado calculado. Para 'gotas/min': contar 1 minuto. Para macrogotas/microgotas, conferir embalagem do equipo.", cor:"ok"};
 }
 },
-{id:"na-corrigido", nome:"Na⁺ corrigido pela glicemia", sis:"conv",
+{id:"na-corrigido", contexto:["pa","ubs"], nome:"Na⁺ corrigido pela glicemia", sis:"conv",
 desc:"Hiperglicemia causa hiponatremia diluicional. Calcular Na real é importante na CAD/EHH.",
 fields:[
 {tipo:"num", id:"na", label:"Sódio medido (mEq/L)", min:100, max:200, step:0.1},
@@ -140,7 +140,7 @@ interp:function(s){
   return {risco:`Na corrigido ${s} mEq/L — Normal`, acao:"Hiponatremia era apenas diluicional pela hiperglicemia.", cor:"ok"};
 }
 },
-{id:"ca-corrigido", nome:"Cálcio corrigido pela albumina", sis:"conv",
+{id:"ca-corrigido", contexto:["pa","ubs"], nome:"Cálcio corrigido pela albumina", sis:"conv",
 desc:"Hipoalbuminemia subestima cálcio (40% do Ca circula ligado à albumina). Importante em sepse, hepatopata, desnutrido.",
 fields:[
 {tipo:"num", id:"ca", label:"Cálcio total medido (mg/dL)", min:4, max:15, step:0.1},
@@ -161,7 +161,7 @@ interp:function(s){
   return {risco:`Ca corrigido ${s} mg/dL — Normal`, acao:"Padrão normal (8,5-10,5).", cor:"ok"};
 }
 },
-{id:"anion-gap", nome:"Anion Gap (com correção albumina)", sis:"conv",
+{id:"anion-gap", contexto:["pa","ubs"], nome:"Anion Gap (com correção albumina)", sis:"conv",
 desc:"Diagnóstico diferencial de acidose metabólica. Anion gap ↑ = ácido endógeno/exógeno acumulado (CAD, lactato, urêmica, intoxicação).",
 fields:[
 {tipo:"num", id:"na", label:"Sódio (mEq/L)", min:120, max:180, step:0.1},
@@ -188,7 +188,7 @@ interp:function(s){
   return {risco:`AG ${s} — Muito aumentado`, acao:"Acidose grave. Mnemônico MUDPILES: Metanol, Urêmica, Diabetes (CAD), Paraldeído, Isoniazida/Ferro, Lactato, Etilenoglicol, Salicilatos. Tratar causa.", cor:"crit"};
 }
 },
-{id:"def-hco3", nome:"Déficit de Bicarbonato", sis:"conv",
+{id:"def-hco3", contexto:["pa","ubs"], nome:"Déficit de Bicarbonato", sis:"conv",
 desc:"Estimativa do déficit de HCO₃⁻ para reposição em acidose metabólica grave. Geralmente reservado para pH <7,1 ou shock.",
 fields:[
 {tipo:"num", id:"peso", label:"Peso (kg)", min:20, max:200, step:1},
@@ -212,7 +212,7 @@ interp:function(s){
     cor:"warn"};
 }
 },
-{id:"osm", nome:"Osmolaridade plasmática", sis:"conv",
+{id:"osm", contexto:["pa","ubs"], nome:"Osmolaridade plasmática", sis:"conv",
 desc:"Calcular osmolaridade efetiva. Útil em CAD/EHH (osm efetiva guia ritmo de correção), suspeita de intoxicação (gap osmolar).",
 fields:[
 {tipo:"num", id:"na", label:"Sódio (mEq/L)", min:100, max:200, step:0.1},

@@ -8,7 +8,7 @@ MEDICACOES.push(
 
 /* ============== OST (3) ============== */
 
-{id:"med-alopurinol", classe:"Inibidor da xantina oxidase — hipouricemiante", grupo:"ost",
+{id:"med-alopurinol", contexto:["pa","ubs"], classe:"Inibidor da xantina oxidase — hipouricemiante", grupo:"ost",
 nome:"Alopurinol",
 sin:["Zyloric","Alopurin"],
 formas:["Comprimidos 100 mg, 300 mg — SUS/REMUME amplo"],
@@ -75,7 +75,7 @@ monitor:"Ácido úrico cada 2-4 sem durante titulação, 6/6m estável. Hemogram
 diretriz:"ACR 2020. EULAR 2016+update. ANVISA. CARES trial (segurança CV).",
 fluxo:null, calcs:[],
 },
-{id:"med-colchicina", classe:"Alcaloide — anti-inflamatório (inibidor microtúbulos)", grupo:"ost",
+{id:"med-colchicina", contexto:["pa","ubs"], classe:"Alcaloide — anti-inflamatório (inibidor microtúbulos)", grupo:"ost",
 nome:"Colchicina",
 sin:["Colchis","Colcrys"],
 formas:["Comprimidos 0,5 mg, 1 mg — SUS/REMUME (0,5 mg)"],
@@ -146,7 +146,7 @@ monitor:"Hemograma + CPK + função renal/hepática periodicamente em uso crôni
 diretriz:"ACR Gout 2020 + AGREE trial. ESC Pericardite 2015 (COPE, ICAP, CORP-2). FMF guidelines.",
 fluxo:null, calcs:[],
 },
-{id:"med-febuxostate", classe:"Inibidor seletivo não-purínico da xantina oxidase", grupo:"ost",
+{id:"med-febuxostate", contexto:["pa","ubs"], classe:"Inibidor seletivo não-purínico da xantina oxidase", grupo:"ost",
 nome:"Febuxostate",
 sin:["Adenuric","Uloric"],
 formas:["Comprimidos 40 mg, 80 mg, 120 mg — privada"],

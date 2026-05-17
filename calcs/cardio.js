@@ -5,7 +5,7 @@
 
 CALCS.push(
 {
-id:"chads-va", nome:"CHA₂DS₂-VA", sis:"cardio",
+id:"chads-va", contexto:["pa","ubs"], nome:"CHA₂DS₂-VA", sis:"cardio",
 desc:"Risco anual de AVC em FA não-valvar. Diretriz SBC 2025 substituiu CHA₂DS₂-VASc por CHA₂DS₂-VA (removeu sexo).",
 fields:[
 {tipo:"bool", id:"c", label:"Insuficiência cardíaca / disfunção VE", peso:1},
@@ -34,7 +34,7 @@ interp:function(s){
   return {risco:"Muito alto (≥ 9,8%/ano)", acao:"Anticoagular indefinidamente — DOAC ou varfarina (RNI 2-3)", cor:"crit"};
 }
 },
-{id:"geneva", nome:"Geneva Score Revisado — TEP", sis:"cardio",
+{id:"geneva", contexto:["pa","ubs"], nome:"Geneva Score Revisado — TEP", sis:"cardio",
 desc:"Alternativa ao Wells para probabilidade pré-teste de TEP. Vantagem: 100% objetivo (sem 'julgamento clínico'). Útil para padronização.",
 fields:[
 {tipo:"bool", id:"a", label:"Idade > 65 anos (+1)"},
@@ -65,7 +65,7 @@ interp:function(s){
 }
 },
 {
-id:"grace", nome:"GRACE (simplificado)", sis:"cardio",
+id:"grace", contexto:["pa","ubs"], nome:"GRACE (simplificado)", sis:"cardio",
 desc:"Risco de óbito intra-hospitalar em SCA. Esta versão usa as variáveis principais com cálculo simplificado de pontos.",
 fields:[
 {tipo:"num", id:"idade", label:"Idade", hint:"anos", unidade:"a"},
@@ -106,7 +106,7 @@ interp:function(s){
 }
 },
 {
-id:"hasbled", nome:"HAS-BLED", sis:"cardio",
+id:"hasbled", contexto:["pa","ubs"], nome:"HAS-BLED", sis:"cardio",
 desc:"Risco anual de sangramento maior com anticoagulação em FA. Não contraindica anticoagulação — sinaliza necessidade de modificar fatores reversíveis.",
 fields:[
 {tipo:"bool", id:"h", label:"Hipertensão não controlada (PAS > 160)", peso:1},
@@ -130,7 +130,7 @@ interp:function(s){
 }
 },
 {
-id:"heart", nome:"HEART Score", sis:"cardio",
+id:"heart", contexto:["pa","ubs"], nome:"HEART Score", sis:"cardio",
 desc:"Risco de evento cardíaco maior (EAM/revascularização/morte) em 6 semanas em pacientes com dor torácica no PS.",
 fields:[
 {tipo:"select", id:"hist", label:"História",
@@ -154,7 +154,7 @@ interp:function(s){
 }
 },
 {
-id:"killip", nome:"Killip", sis:"cardio",
+id:"killip", contexto:["pa","ubs"], nome:"Killip", sis:"cardio",
 desc:"Classificação clínica de IC pós-IAM. Preditor de mortalidade.",
 fields:[
 {tipo:"select", id:"k", label:"Classe Killip",
@@ -173,7 +173,7 @@ interp:function(s){
   return {risco:"81% mortalidade", acao:"UTI, vasopressor (NE), inotrópico (dobutamina), considerar suporte circulatório", cor:"crit"};
 }
 },
-{id:"perc", nome:"PERC — Critérios de Exclusão de TEP", sis:"cardio",
+{id:"perc", contexto:["pa","ubs"], nome:"PERC — Critérios de Exclusão de TEP", sis:"cardio",
 desc:"Em pacientes com BAIXA suspeita clínica de TEP (Wells/Geneva baixo), se TODOS os 8 critérios negativos → TEP excluído sem D-dímero. Útil para evitar testes adicionais.",
 fields:[
 {tipo:"bool", id:"a", label:"Idade ≥ 50 anos"},
@@ -194,7 +194,7 @@ interp:function(s){
 }
 },
 {
-id:"pesi", nome:"PESI simplificado (sPESI)", sis:"cardio",
+id:"pesi", contexto:["pa","ubs"], nome:"PESI simplificado (sPESI)", sis:"cardio",
 desc:"Mortalidade em 30 dias após TEP confirmado. Sinaliza candidatos a manejo ambulatorial.",
 fields:[
 {tipo:"bool", id:"a", label:"Idade > 80 anos", peso:1},
@@ -215,7 +215,7 @@ interp:function(s){
 }
 },
 {
-id:"timi", nome:"TIMI Risk — SCA sem supra", sis:"cardio",
+id:"timi", contexto:["pa","ubs"], nome:"TIMI Risk — SCA sem supra", sis:"cardio",
 desc:"Risco de óbito/IAM/revascularização urgente em 14 dias em AI/IAMSST.",
 fields:[
 {tipo:"bool", id:"a", label:"Idade ≥ 65 anos", peso:1},
@@ -238,7 +238,7 @@ interp:function(s){
 }
 },
 {
-id:"wells-tep", nome:"Wells — TEP (Tromboembolismo Pulmonar)", sis:"cardio",
+id:"wells-tep", contexto:["pa","ubs"], nome:"Wells — TEP (Tromboembolismo Pulmonar)", sis:"cardio",
 desc:"Probabilidade clínica pré-teste para TEP. NÃO confundir com Wells-TVP (escala diferente, para trombose venosa profunda).",
 fields:[
 {tipo:"bool", id:"a", label:"Sinais clínicos de TVP", peso:3},
@@ -262,7 +262,7 @@ interp:function(s){
 }
 },
 {
-id:"wells-tvp", nome:"Wells — TVP (Trombose Venosa Profunda)", sis:"cardio",
+id:"wells-tvp", contexto:["pa","ubs"], nome:"Wells — TVP (Trombose Venosa Profunda)", sis:"cardio",
 desc:"Probabilidade clínica pré-teste para TVP de MMII. NÃO confundir com Wells-TEP (escala diferente, para tromboembolismo pulmonar).",
 fields:[
 {tipo:"bool", id:"a", label:"Câncer ativo", peso:1},

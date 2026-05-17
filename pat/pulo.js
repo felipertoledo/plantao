@@ -8,7 +8,7 @@ PATOLOGIAS.push(
 
 /* ============== PULO (42) ============== */
 
-{id:"pulo-abscesso-pequeno", nome:"Drenar abscesso pequeno sem dor — field block perilesional", sis:"pulo", grav:"baixa",
+{id:"pulo-abscesso-pequeno", contexto:["pa","ubs"], nome:"Drenar abscesso pequeno sem dor — field block perilesional", sis:"pulo", grav:"baixa",
 cid:"L02", ciap:"S10",
 sin:["Abscesso","I&D","Drenagem","Field block","Bloqueio perilesional","Abscesso cutâneo"],
 def:"Abscesso pequeno cutâneo = drenagem é IMPRESCINDÍVEL (antibiótico isolado é insuficiente). Anestesia INTRALESIONAL é INEFICAZ (pH ácido inativa lidocaína). Usar BLOQUEIO PERILESIONAL (field block) — infiltrar ao redor da lesão, não dentro.",
@@ -57,7 +57,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"IDSA. Tintinalli. Roberts & Hedges."
 },
-{id:"pulo-acesso-venoso", nome:"Acesso venoso difícil — transiluminação + posicionamento", sis:"pulo", grav:"moderada",
+{id:"pulo-acesso-venoso", contexto:["pa"], nome:"Acesso venoso difícil — transiluminação + posicionamento", sis:"pulo", grav:"moderada",
 cid:"-", ciap:"-",
 sin:["Punção venosa difícil","Sem veia","Transiluminação","Lanterna celular","Bíceps manobra"],
 def:"Paciente DIFÍCIL DE PUNCIONAR (desidratado, criança, obeso, drogadição, idoso, queimado) = combinar TRANSILUMINAÇÃO (lanterna celular por trás), CALOR LOCAL, manobra do BÍCEPS, garroteamento alternativo. Antes de chamar anestesista ou intraóssea.",
@@ -114,7 +114,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AHA. NAEMT. PALS. ACLS."
 },
-{id:"pulo-adesivo-grudado", nome:"Adesivo / cola super bonder na pele — óleo / vaselina", sis:"pulo", grav:"baixa",
+{id:"pulo-adesivo-grudado", contexto:["pa","ubs"], nome:"Adesivo / cola super bonder na pele — óleo / vaselina", sis:"pulo", grav:"baixa",
 cid:"-", ciap:"S15",
 sin:["Cola super bonder","Esparadrapo grudado","Adesivo grudado","Cianoacrilato","Remover adesivo"],
 def:"COLA DE CIANOACRILATO (Super Bonder) ou ESPARADRAPO antigo aderido na pele = NÃO TENTAR ARRANCAR — risco de avulsão cutânea. Aplicar ÓLEO / VASELINA / ACETONA (em local apropriado) por 5-10 min — solta gentilmente.",
@@ -151,7 +151,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"Tintinalli. Roberts & Hedges. Industrial first aid guides."
 },
-{id:"pulo-adrenalina-sangramento", nome:"Compressa com adrenalina — sangramento que não para", sis:"pulo", grav:"baixa",
+{id:"pulo-adrenalina-sangramento", contexto:["pa","ubs"], nome:"Compressa com adrenalina — sangramento que não para", sis:"pulo", grav:"baixa",
 cid:"-", ciap:"-",
 sin:["Adrenalina tópica","Vasoconstrição local","Hemostasia tópica","Corte sangrante","Ferida sangrante","Sangramento que não para"],
 
@@ -206,7 +206,7 @@ alertas:[
 fluxo:null,
 diretriz:"Tintinalli ER. Roberts & Hedges ER procedures. Prática plantonista global."
 },
-{id:"pulo-agua-viva", nome:"Picada de água-viva e caravela — água quente (não vinagre para tudo)", sis:"pulo", grav:"baixa",
+{id:"pulo-agua-viva", contexto:["pa","ubs"], nome:"Picada de água-viva e caravela — água quente (não vinagre para tudo)", sis:"pulo", grav:"baixa",
 cid:"T63.6", ciap:"S99",
 sin:["Água-viva","Caravela","Medusa","Queimadura de mar","Picada de cnidário","Vinagre","Água quente"],
 
@@ -285,7 +285,7 @@ alertas:[
 fluxo:null,
 diretriz:"American Red Cross. Brazilian Society of Toxinology. SBP."
 },
-{id:"pulo-anel-dedo", nome:"Anel preso em dedo edemaciado — técnica do fio dental", sis:"pulo", grav:"baixa",
+{id:"pulo-anel-dedo", contexto:["pa","ubs"], nome:"Anel preso em dedo edemaciado — técnica do fio dental", sis:"pulo", grav:"baixa",
 cid:"-", ciap:"S15",
 sin:["Anel preso","Aliança presa","Anel apertado","Fio dental no anel","String technique"],
 
@@ -352,7 +352,7 @@ alertas:[
 fluxo:null,
 diretriz:"BMJ Procedure Reviews. Roberts & Hedges ER Procedures."
 },
-{id:"pulo-anzol", nome:"Anzol cravado — técnicas de remoção", sis:"pulo", grav:"baixa",
+{id:"pulo-anzol", contexto:["pa"], nome:"Anzol cravado — técnicas de remoção", sis:"pulo", grav:"baixa",
 cid:"W34", ciap:"S15",
 sin:["Anzol","Anzol no dedo","Fishhook","Linha de pesca","Pescador"],
 
@@ -426,7 +426,7 @@ alertas:[
 fluxo:null,
 diretriz:"Tintinalli. Roberts & Hedges ER Procedures. CDC tetanus."
 },
-{id:"pulo-asma-espacador-pet", nome:"Crise asmática sem nebulizador — espaçador de garrafa PET", sis:"pulo", grav:"moderada",
+{id:"pulo-asma-espacador-pet", contexto:["pa","ubs"], nome:"Crise asmática sem nebulizador — espaçador de garrafa PET", sis:"pulo", grav:"moderada",
 cid:"J45.9", ciap:"R96",
 sin:["Asma sem nebulização","Espaçador caseiro","Espaçador de garrafa","Spacer PET","Bombinha sem espaçador","Crise asmática plantão"],
 
@@ -490,7 +490,7 @@ alertas:[
 fluxo:null,
 diretriz:"GINA 2024-2025. Cochrane Review (Cates 2013). SBP. SBPT."
 },
-{id:"pulo-asma-sem-nada", nome:"Crise asmática sem MDI nem nebulizador — adrenalina IM/SC", sis:"pulo", grav:"alta",
+{id:"pulo-asma-sem-nada", contexto:["pa"], nome:"Crise asmática sem MDI nem nebulizador — adrenalina IM/SC", sis:"pulo", grav:"alta",
 cid:"J46", ciap:"R96",
 sin:["Asma sem broncodilatador","Adrenalina IM asma","Terbutalina SC","Asma SUS rural"],
 def:"Cenário catástrofe — UBS rural ou ambulância sem broncodilatador inalatório. ADRENALINA IM trata crise asmática grave (efeito β-2 sistêmico) — funciona também se anafilaxia. Salbutamol SC/IM é alternativa quando disponível.",
@@ -518,7 +518,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"GINA 2024-2025. SBP. ALS algorithms."
 },
-{id:"pulo-carrapato", nome:"Remoção de carrapato — pinça reta e devagar", sis:"pulo", grav:"baixa",
+{id:"pulo-carrapato", contexto:["pa","ubs"], nome:"Remoção de carrapato — pinça reta e devagar", sis:"pulo", grav:"baixa",
 cid:"B88.0", ciap:"S73",
 sin:["Carrapato","Carrapato grudado","Picada de carrapato","Tique","Doença de Lyme","Febre maculosa"],
 
@@ -584,7 +584,7 @@ alertas:[
 fluxo:null,
 diretriz:"CDC Tick Removal. MS Brasil — Febre Maculosa. PCDT-MS Rickettsioses."
 },
-{id:"pulo-cateter-dificil", nome:"Cateterismo vesical difícil — Coudé e técnica anatômica", sis:"pulo", grav:"moderada",
+{id:"pulo-cateter-dificil", contexto:["pa","ubs"], nome:"Cateterismo vesical difícil — Coudé e técnica anatômica", sis:"pulo", grav:"moderada",
 cid:"-", ciap:"-",
 sin:["Sonda vesical difícil","Coudé","Cateter falhou","HPB cateter","Retenção urinária"],
 def:"CATETER DE FOLEY que NÃO passa — geralmente em homem com HPB (próstata aumentada faz angulação no colo vesical). Soluções: (1) Posicionar pênis verticalmente; (2) sonda COUDÉ (ponta curva); (3) lubrificação abundante + lidocaína gel; (4) cistostomia se tudo falhar.",
@@ -629,7 +629,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"EAU Guidelines. SBU. Roberts & Hedges."
 },
-{id:"pulo-colica-lactente", nome:"Cólica do lactente — 5 S's de Karp", sis:"pulo", grav:"baixa",
+{id:"pulo-colica-lactente", contexto:["pa","ubs"], nome:"Cólica do lactente — 5 S's de Karp", sis:"pulo", grav:"baixa",
 cid:"R10.4", ciap:"D02",
 sin:["Cólica do lactente","Colic","5 S's","Bebê chorando","Choro inconsolável","Bebê inquieto","Period of PURPLE crying"],
 
@@ -721,7 +721,7 @@ alertas:[
 fluxo:null,
 diretriz:"Harvey Karp — Happiest Baby on the Block. AAP. Ronald Barr — Period of PURPLE crying. SBP."
 },
-{id:"pulo-conv-febril", nome:"Convulsão febril em criança — NÃO conter, NÃO objeto na boca", sis:"pulo", grav:"moderada",
+{id:"pulo-conv-febril", contexto:["pa","ubs"], nome:"Convulsão febril em criança — NÃO conter, NÃO objeto na boca", sis:"pulo", grav:"moderada",
 cid:"R56.0", ciap:"N07",
 sin:["Convulsão febril","Crise febril","Febre convulsiva","Convulsão na criança","Status febril"],
 
@@ -823,7 +823,7 @@ alertas:[
 fluxo:null,
 diretriz:"AAP Febrile Seizures Guidelines. SBP. ILAE."
 },
-{id:"pulo-corpo-narina", nome:"Corpo estranho em narina — pressão positiva contralateral", sis:"pulo", grav:"baixa",
+{id:"pulo-corpo-narina", contexto:["pa","ubs"], nome:"Corpo estranho em narina — pressão positiva contralateral", sis:"pulo", grav:"baixa",
 cid:"T17.1", ciap:"R87",
 sin:["Corpo estranho nasal","Objeto no nariz","Bolinha de gude no nariz","Botão no nariz","Feijão no nariz","Beijo materno","Mother's kiss"],
 
@@ -886,7 +886,7 @@ alertas:[
 fluxo:null,
 diretriz:"AAP / ENT. Cochrane review (Mother's Kiss). BMJ technique reviews."
 },
-{id:"pulo-cotovelo-baba", nome:"Cotovelo de babá — subluxação da cabeça do rádio", sis:"pulo", grav:"baixa",
+{id:"pulo-cotovelo-baba", contexto:["pa","ubs"], nome:"Cotovelo de babá — subluxação da cabeça do rádio", sis:"pulo", grav:"baixa",
 cid:"S53.0", ciap:"L80",
 sin:["Cotovelo de babá","Pronação dolorosa","Subluxação da cabeça do rádio","Nursemaid elbow","Pulled elbow"],
 def:"SUBLUXAÇÃO da cabeça do rádio em criança 1-4 anos — TRAÇÃO axial no antebraço estendido (puxar braço quando criança vai cair, levantar pela mão). Quadro: criança não move o braço, segurando-o em pronação. REDUÇÃO POR SUPINAÇÃO + FLEXÃO é tão simples que resolve na UBS em 30 segundos.",
@@ -923,7 +923,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAP. SBP. Cochrane Review Nursemaid Elbow."
 },
-{id:"pulo-crede", nome:"Retenção urinária — manobra de Credé / Valsalva miccional", sis:"pulo", grav:"moderada",
+{id:"pulo-crede", contexto:["pa","ubs"], nome:"Retenção urinária — manobra de Credé / Valsalva miccional", sis:"pulo", grav:"moderada",
 cid:"R33", ciap:"U08",
 sin:["Retenção urinária","Manobra de Credé","Bexiga neurogênica","Valsalva miccional"],
 def:"MANOBRA DE CREDÉ = compressão manual suprapúbica para esvaziar bexiga = útil em RETENÇÃO POR HIPOATIVIDADE DETRUSORA / BEXIGA NEUROGÊNICA, pós-cirúrgica, parto. ⚠ NÃO USAR se OBSTRUÇÃO (HPB, cálculo, tumor) — refluxo vesico-ureteral / lesão renal.",
@@ -964,7 +964,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"EAU Guidelines. SBU. Bexiga neurogênica protocols."
 },
-{id:"pulo-crupe-leve", nome:"Crupe leve / tosse de cachorro — ar úmido e calmaria", sis:"pulo", grav:"baixa",
+{id:"pulo-crupe-leve", contexto:["pa","ubs"], nome:"Crupe leve / tosse de cachorro — ar úmido e calmaria", sis:"pulo", grav:"baixa",
 cid:"J05", ciap:"R77",
 sin:["Crupe","Laringotraqueíte","Tosse de cachorro","Estridor noturno","Westley score"],
 def:"CRUPE VIRAL (laringotraqueíte por parainfluenza, RSV, influenza) — criança 6m-6a com tosse 'rouca/de cachorro' + estridor inspiratório + rouquidão. CASO LEVE (sem estridor em repouso): conduta domiciliar com ar úmido/frio + calmaria + corticoide oral. Não precisa internar.",
@@ -996,7 +996,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"SBP. AAP Croup Guidelines. Westley score."
 },
-{id:"pulo-cunningham-ombro", nome:"Cunningham — redução de luxação anterior de ombro sem sedação", sis:"pulo", grav:"moderada",
+{id:"pulo-cunningham-ombro", contexto:["pa"], nome:"Cunningham — redução de luxação anterior de ombro sem sedação", sis:"pulo", grav:"moderada",
 cid:"S43.0", ciap:"L80",
 sin:["Luxação ombro","Ombro deslocado","Cunningham","Redução sem sedação","Luxação anterior","Massagem trapézio"],
 
@@ -1080,7 +1080,7 @@ alertas:[
 fluxo:null,
 diretriz:"Cunningham et al. (Med J Aust 2003+). BMJ Procedure Review. ER textbooks."
 },
-{id:"pulo-dente-avulsao", nome:"Dente avulsionado — janela de reimplantação", sis:"pulo", grav:"alta",
+{id:"pulo-dente-avulsao", contexto:["pa"], nome:"Dente avulsionado — janela de reimplantação", sis:"pulo", grav:"alta",
 cid:"S03.2", ciap:"D19",
 sin:["Dente arrancado","Avulsão dental","Trauma dental","Reimplantação de dente","Leite para dente","Dente caiu no trauma"],
 
@@ -1151,7 +1151,7 @@ alertas:[
 fluxo:null,
 diretriz:"IADT (International Association of Dental Traumatology) Guidelines 2020. ABO (Associação Brasileira de Odontologia)."
 },
-{id:"pulo-engasgo-bebe", nome:"Engasgo em bebê <1 ano — golpes nas costas + compressões torácicas", sis:"pulo", grav:"alta",
+{id:"pulo-engasgo-bebe", contexto:["pa"], nome:"Engasgo em bebê <1 ano — golpes nas costas + compressões torácicas", sis:"pulo", grav:"alta",
 cid:"T17", ciap:"R87",
 sin:["Engasgo bebê","Aspiração corpo estranho lactente","Heimlich bebê","BLS pediátrico"],
 def:"OBSTRUÇÃO de via aérea por corpo estranho em <1 ano = NÃO USAR HEIMLICH (compressão abdominal lesa órgãos abdominais do lactente). USAR alternância de 5 GOLPES NAS COSTAS + 5 COMPRESSÕES TORÁCICAS até desobstruir ou perda de consciência.",
@@ -1186,7 +1186,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AHA PALS 2020+update. ILCOR. AAP."
 },
-{id:"pulo-epistaxe", nome:"Epistaxe — protocolo de compressão + adrenalina/lidocaína", sis:"pulo", grav:"baixa",
+{id:"pulo-epistaxe", contexto:["pa","ubs"], nome:"Epistaxe — protocolo de compressão + adrenalina/lidocaína", sis:"pulo", grav:"baixa",
 cid:"R04.0", ciap:"R06",
 sin:["Epistaxe","Sangramento nasal","Plexo de Kiesselbach","Tampão nasal","Sangue pelo nariz"],
 def:"~90% das epistaxes são ANTERIORES (plexo de Kiesselbach, Little's area) e resolvem com COMPRESSÃO MANUAL CORRETA (cartilagem, não osso) × 10 min + adrenalina+lidocaína tópica se persistir. Posteriores (10%) são mais graves, podem precisar de balão.",
@@ -1234,7 +1234,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAO-HNS. SBORL."
 },
-{id:"pulo-epley-vppb", nome:"Manobra de Epley — VPPB do canal posterior", sis:"pulo", grav:"baixa",
+{id:"pulo-epley-vppb", contexto:["pa","ubs"], nome:"Manobra de Epley — VPPB do canal posterior", sis:"pulo", grav:"baixa",
 cid:"H81.1", ciap:"H82",
 sin:["VPPB","Vertigem posicional","Epley","Vertigem benigna","Cristais","Vertigem com posição","Canal posterior","Otolitíase"],
 
@@ -1308,7 +1308,7 @@ alertas:[
 fluxo:null,
 diretriz:"AAO-HNS Guidelines VPPB 2017+. Bárány Society. Cochrane Reviews Vestibular Disorders."
 },
-{id:"pulo-farpa-vegetal", nome:"Farpa profunda / espinho — bicarbonato vs adesivo", sis:"pulo", grav:"baixa",
+{id:"pulo-farpa-vegetal", contexto:["pa","ubs"], nome:"Farpa profunda / espinho — bicarbonato vs adesivo", sis:"pulo", grav:"baixa",
 cid:"T14", ciap:"S14",
 sin:["Farpa","Espinho","Vegetal cravado","Bicho-de-pé","Tunga","Removendo farpa"],
 def:"Pequenas farpas/espinhos visíveis = pinça reta. Farpas pequenas SUPERFICIAIS (de difícil pinça) = ADESIVO (durex/fita) puxa por adesão. Farpas vegetais SUBMERSAS profundas = PASTA DE BICARBONATO faz a pele 'expulsar' o material em 24-48h.",
@@ -1348,7 +1348,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"Roberts & Hedges. PCDT-MS Tungíase."
 },
-{id:"pulo-fragmento-dente", nome:"Fragmento dental (não avulsionado) — guardar em soro/leite", sis:"pulo", grav:"baixa",
+{id:"pulo-fragmento-dente", contexto:["pa","ubs"], nome:"Fragmento dental (não avulsionado) — guardar em soro/leite", sis:"pulo", grav:"baixa",
 cid:"S02.5", ciap:"D19",
 sin:["Fratura coronária","Fragmento dental","Quebra dente","Trauma dental"],
 def:"FRATURA CORONÁRIA dental sem avulsão — paciente traz o FRAGMENTO. Pode ser COLADO de volta ao dente pelo dentista em algumas horas — preservação em SORO ou LEITE (NUNCA água) mantém viabilidade. Diferente da AVULSÃO COMPLETA (dente inteiro fora).",
@@ -1388,7 +1388,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"IADT Guidelines 2020. ABO. Ellis classification."
 },
-{id:"pulo-hiperventilacao", nome:"Hiperventilação — NÃO saco de papel (mito perigoso)", sis:"pulo", grav:"moderada",
+{id:"pulo-hiperventilacao", contexto:["pa","ubs"], nome:"Hiperventilação — NÃO saco de papel (mito perigoso)", sis:"pulo", grav:"moderada",
 cid:"R06.4", ciap:"R02",
 sin:["Hiperventilação","Síndrome hiperventilação","Saco de papel","Alcalose respiratória","Tetania"],
 def:"HIPERVENTILAÇÃO causa alcalose respiratória → parestesia, tetania leve, tontura, dor torácica atípica. NÃO usar saco de papel (CAUSAS DE MORTE documentadas — hipoxia em causa orgânica oculta). Tratamento: respiração LENTA controlada + reassurance.",
@@ -1431,7 +1431,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AHA. NIH. Anti-mythological emergency literature."
 },
-{id:"pulo-hipo-sem-acesso", nome:"Hipoglicemia sem acesso venoso — glicose por mucosa", sis:"pulo", grav:"alta",
+{id:"pulo-hipo-sem-acesso", contexto:["pa"], nome:"Hipoglicemia sem acesso venoso — glicose por mucosa", sis:"pulo", grav:"alta",
 cid:"E16.2", ciap:"T87",
 sin:["Hipoglicemia sem acesso","Glicose oral","Glicose mucosa","Pasta de açúcar","Mel na bochecha","Glucagon"],
 
@@ -1496,7 +1496,7 @@ alertas:[
 fluxo:null,
 diretriz:"ADA Standards 2025. SBD 2025. ALS algoritmos."
 },
-{id:"pulo-im-crianca", nome:"Aplicação IM em criança — abraço de borboleta + distração", sis:"pulo", grav:"baixa",
+{id:"pulo-im-crianca", contexto:["pa","ubs"], nome:"Aplicação IM em criança — abraço de borboleta + distração", sis:"pulo", grav:"baixa",
 cid:"-", ciap:"-",
 sin:["Vacina criança","IM criança","Abraço borboleta","Bear hug","Distração"],
 def:"Aplicação intramuscular em criança ATIVA/AGITADA = CONTENÇÃO COMPASSIVA (não trauma) + DISTRAÇÃO + posição + agulha rápida. Reduz dor, estresse e necessidade de repetir.",
@@ -1545,7 +1545,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"SBP. AAP. Pediatric Pain Society."
 },
-{id:"pulo-impactacao-globus", nome:"Impactação alimentar esofágica + sensação de globus", sis:"pulo", grav:"baixa",
+{id:"pulo-impactacao-globus", contexto:["pa"], nome:"Impactação alimentar esofágica + sensação de globus", sis:"pulo", grav:"baixa",
 cid:"T18.1 (impactação) / R09.8 (globus)", ciap:"D02 / R29",
 sin:["Engasgo","Comida entalada","Bolo alimentar","Globus","Sensação de bola na garganta","Disfagia psicogênica","Impactação esofágica","Steakhouse syndrome"],
 
@@ -1611,7 +1611,7 @@ alertas:[
 fluxo:null,
 diretriz:"ASGE Guidelines Foreign Body. ACG. UpToDate."
 },
-{id:"pulo-intraosseo", nome:"Acesso intraósseo de emergência — tibial / umeral", sis:"pulo", grav:"alta",
+{id:"pulo-intraosseo", contexto:["pa"], nome:"Acesso intraósseo de emergência — tibial / umeral", sis:"pulo", grav:"alta",
 cid:"-", ciap:"-",
 sin:["IO","Intraósseo","EZ-IO","Tibial proximal","Umeral proximal","Acesso de emergência"],
 def:"ACESSO INTRAÓSSEO (IO) — quando acesso venoso falha em emergência. Inserção em 30-60 SEGUNDOS. Permite TODAS as medicações IV (incluindo adrenalina, vasopressor, sangue). Indicações: PCR, choque, sepse grave, qualquer paciente que precise de acesso urgente após falha venosa.",
@@ -1671,7 +1671,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AHA ACLS. PALS. ILCOR. EZ-IO training."
 },
-{id:"pulo-lavagem-ocular", nome:"Lavagem ocular grande volume — cânula nasal invertida (Morgan caseira)", sis:"pulo", grav:"moderada",
+{id:"pulo-lavagem-ocular", contexto:["pa","ubs"], nome:"Lavagem ocular grande volume — cânula nasal invertida (Morgan caseira)", sis:"pulo", grav:"moderada",
 cid:"T26", ciap:"F79",
 sin:["Lavagem ocular","Queimadura química","Morgan lens","Cânula nasal lavagem"],
 def:"EXPOSIÇÃO QUÍMICA OCULAR (cal, cimento, ácido, álcali, detergente concentrado) = URGÊNCIA — IRRIGAR IMEDIATAMENTE com SF/Ringer abundante. Sem lente de Morgan? CÂNULA NASAL INVERTIDA é alternativa (pontas vão para os olhos, conectada a equipo SF).",
@@ -1714,7 +1714,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAO. Wills Eye Manual. EYE (oftalmo de emergência)."
 },
-{id:"pulo-olho-vermelho", nome:"Olho vermelho — diferenciar com a 'luz do nariz'", sis:"pulo", grav:"moderada",
+{id:"pulo-olho-vermelho", contexto:["pa","ubs"], nome:"Olho vermelho — diferenciar com a 'luz do nariz'", sis:"pulo", grav:"moderada",
 cid:"H10/H15/H20", ciap:"F02",
 sin:["Olho vermelho","Hiperemia conjuntival","Uveíte","Esclerite","Episclerite","Conjuntivite","Glaucoma agudo"],
 def:"NA APS — diferenciar olho vermelho banal (conjuntivite/episclerite) de RED FLAGS (uveíte, esclerite, glaucoma agudo, ceratite). TRUQUE: aplicar PHENILEFRINA 2,5% colírio no fundo de saco — em 5 min, episclerite/conjuntivite EMBRANQUECEM (vasos superficiais); esclerite/uveíte NÃO embranquecem (profundo).",
@@ -1771,7 +1771,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAO. SBO. Wills Eye Manual."
 },
-{id:"pulo-ouvido-aviao", nome:"Otalgia de viagem aérea — manobras de equalização", sis:"pulo", grav:"baixa",
+{id:"pulo-ouvido-aviao", contexto:["pa","ubs"], nome:"Otalgia de viagem aérea — manobras de equalização", sis:"pulo", grav:"baixa",
 cid:"H68", ciap:"H81",
 sin:["Barotrauma","Otalgia em avião","Pressão no ouvido","Tuba auditiva","Valsalva","Toynbee","Otite barotraumática"],
 
@@ -1851,7 +1851,7 @@ alertas:[
 fluxo:null,
 diretriz:"AAO-HNS. ICAO Medical. PADI/DAN."
 },
-{id:"pulo-parafimose", nome:"Parafimose — redução manual com compressão", sis:"pulo", grav:"moderada",
+{id:"pulo-parafimose", contexto:["pa","ubs"], nome:"Parafimose — redução manual com compressão", sis:"pulo", grav:"moderada",
 cid:"N47", ciap:"Y06",
 sin:["Parafimose","Prepúcio preso","Glande estrangulada","Redução prepúcio","Anel prepucial"],
 
@@ -1916,7 +1916,7 @@ alertas:[
 fluxo:null,
 diretriz:"Roberts & Hedges. AUA (American Urological Association). UpToDate."
 },
-{id:"pulo-peace-love", nome:"Entorse aguda — PEACE & LOVE (não mais PRICE)", sis:"pulo", grav:"baixa",
+{id:"pulo-peace-love", contexto:["pa","ubs"], nome:"Entorse aguda — PEACE & LOVE (não mais PRICE)", sis:"pulo", grav:"baixa",
 cid:"S93 / S86", ciap:"L77",
 sin:["Entorse tornozelo","Entorse joelho","PRICE","PEACE LOVE","RICE","Lesão de tecidos moles","Lesão ligamentar"],
 
@@ -1984,7 +1984,7 @@ alertas:[
 fluxo:null,
 diretriz:"Dubois & Esculier (Br J Sports Med 2019). NICE Guidelines. SBOT."
 },
-{id:"pulo-pico-vs-panico", nome:"Pico hipertensivo vs ataque de pânico — diferenciar", sis:"pulo", grav:"moderada",
+{id:"pulo-pico-vs-panico", contexto:["pa","ubs"], nome:"Pico hipertensivo vs ataque de pânico — diferenciar", sis:"pulo", grav:"moderada",
 cid:"R45 / I10", ciap:"P74 / K85",
 sin:["Crise hipertensiva","Pânico","Ansiedade","Pico hipertensivo","Falsa emergência hipertensiva"],
 def:"PA elevada + sintomas agudos NÃO é necessariamente emergência hipertensiva. ATAQUE DE PÂNICO frequentemente cursa com HAS reativa, palpitação, dispneia, sudorese. SEM LOA, NÃO é emergência. Tratar o pânico, não o número.",
@@ -2034,7 +2034,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"DBHA 2025. APA. NICE Panic Disorder."
 },
-{id:"pulo-pl-dificil", nome:"Punção lombar difícil — posição sentada inclinada", sis:"pulo", grav:"moderada",
+{id:"pulo-pl-dificil", contexto:["pa"], nome:"Punção lombar difícil — posição sentada inclinada", sis:"pulo", grav:"moderada",
 cid:"-", ciap:"-",
 sin:["Punção lombar","PL","LCR","Liquor","Punção liquórica","Paciente obeso PL","Pediatria PL"],
 
@@ -2109,7 +2109,7 @@ alertas:[
 fluxo:null,
 diretriz:"Roberts & Hedges. Cochrane Review PL position. ESA. WFSA."
 },
-{id:"pulo-reduzir-dedo", nome:"Redução de luxação de dedo — IFP/IFD/mallet", sis:"pulo", grav:"moderada",
+{id:"pulo-reduzir-dedo", contexto:["pa","ubs"], nome:"Redução de luxação de dedo — IFP/IFD/mallet", sis:"pulo", grav:"moderada",
 cid:"S63.2", ciap:"L80",
 sin:["Luxação dedo","Mallet finger","Boutonnière","IFP luxada","Dedo deslocado"],
 def:"Luxações de articulações interfalângicas (IFP, IFD) DORSAIS são as mais comuns — geralmente em esporte/trauma. REDUÇÃO MANUAL após anestesia em bloqueio digital — tração axial suave + flexão. Confirmar com Rx PÓS-redução. Imobilizar e encaminhar.",
@@ -2153,7 +2153,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAOS. SBOT. Hand Society."
 },
-{id:"pulo-solucos", nome:"Soluços incoercíveis — manobras vagais e farmacologia", sis:"pulo", grav:"baixa",
+{id:"pulo-solucos", contexto:["pa","ubs"], nome:"Soluços incoercíveis — manobras vagais e farmacologia", sis:"pulo", grav:"baixa",
 cid:"R06.6", ciap:"D04",
 sin:["Soluço","Soluços persistentes","Hiccup","Singultus","Soluços intratáveis"],
 
@@ -2233,7 +2233,7 @@ alertas:[
 fluxo:null,
 diretriz:"Cochrane Hiccups. AGA. UpToDate."
 },
-{id:"pulo-sumo-psicotico", nome:"Abordagem ao paciente psicótico agitado — 'sumô' 5 pessoas", sis:"pulo", grav:"alta",
+{id:"pulo-sumo-psicotico", contexto:["pa"], nome:"Abordagem ao paciente psicótico agitado — 'sumô' 5 pessoas", sis:"pulo", grav:"alta",
 cid:"F23", ciap:"P98",
 sin:["Paciente agitado","Psicose aguda","Contenção","Sumô","Abordagem 5 pessoas","Surto psicótico"],
 def:"PACIENTE PSICÓTICO/AGITADO/AGRESSIVO — abordagem física com 5 PESSOAS TREINADAS é MAIS SEGURA e MAIS RÁPIDA que 1 ou 2 (paradoxal). Reduz lesão para paciente E equipe. Combinado com de-escalada verbal + medicação química rápida.",
@@ -2295,7 +2295,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"APA. Joint Commission. Project BETA (Best practices in Evaluation and Treatment of Agitation)."
 },
-{id:"pulo-sutura-let", nome:"Sutura sem dor — anestésico tópico LET", sis:"pulo", grav:"baixa",
+{id:"pulo-sutura-let", contexto:["pa","ubs"], nome:"Sutura sem dor — anestésico tópico LET", sis:"pulo", grav:"baixa",
 cid:"-", ciap:"-",
 sin:["LET","Anestesia tópica","Sutura criança","Lidocaína gel","EMLA","Field block"],
 def:"LET (Lidocaína 4% + Epinefrina 1:2000 + Tetracaína 0,5%) — anestésico tópico aplicado em gaze sobre ferida ANTES de infiltração ou às vezes EM SUBSTITUIÇÃO. Reduz dramaticamente dor da injeção, especialmente em CRIANÇA. Disponível em farmácia de manipulação.",
@@ -2328,7 +2328,7 @@ alertas:[
 ],
 fluxo:null, diretriz:"AAFP. Roberts & Hedges ER Procedures."
 },
-{id:"pulo-tampao-cerume", nome:"Tampão de cerume — preparo prévio com óleo mineral", sis:"pulo", grav:"baixa",
+{id:"pulo-tampao-cerume", contexto:["pa","ubs"], nome:"Tampão de cerume — preparo prévio com óleo mineral", sis:"pulo", grav:"baixa",
 cid:"H61.2", ciap:"H81",
 sin:["Cerume","Tampão de cerume","Cera no ouvido","Cerúmen","Ear wax","Lavagem de ouvido"],
 
@@ -2395,7 +2395,7 @@ alertas:[
 fluxo:null,
 diretriz:"AAO-HNS Clinical Practice Guideline Cerumen Impaction 2017. Cochrane Reviews."
 },
-{id:"pulo-tunel-carpo", nome:"Síndrome do túnel do carpo aguda — splint noturno", sis:"pulo", grav:"baixa",
+{id:"pulo-tunel-carpo", contexto:["pa","ubs"], nome:"Síndrome do túnel do carpo aguda — splint noturno", sis:"pulo", grav:"baixa",
 cid:"G56.0", ciap:"N93",
 sin:["Túnel do carpo","STC","Parestesia mediana","Splint punho","Splint noturno"],
 def:"Crise aguda de STC = compressão do nervo mediano no punho — parestesia em 3,5 primeiros dedos + dor + 'choque', PIORA À NOITE. SPLINT NOTURNO em posição neutra do punho + AINE × 3-4 sem = primeira linha em maioria dos casos. Evita necessidade de cirurgia em >50%.",

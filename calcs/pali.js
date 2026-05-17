@@ -4,7 +4,7 @@
    =========================================================== */
 
 CALCS.push(
-{id:"ecog", nome:"ECOG Performance Status", sis:"pali",
+{id:"ecog", contexto:["pa","ubs"], nome:"ECOG Performance Status", sis:"pali",
 desc:"Escala 0-5 mais usada em oncologia (Eastern Cooperative Oncology Group). Equivalente simplificado do KPS. ⚠ ECOG 3-4 = paciente predominantemente dependente — geralmente intervenções oncológicas curativas/agressivas suspensas; foco paliativo.",
 fields:[
 {tipo:"select", id:"ecog", label:"Selecione o ECOG", opts:[
@@ -28,7 +28,7 @@ interp:function(s){
   return {risco:`ECOG 5 — Morto`, acao:"—", cor:"crit"};
 }
 },
-{id:"esas", nome:"ESAS — Edmonton Symptom Assessment System", sis:"pali",
+{id:"esas", contexto:["pa","ubs"], nome:"ESAS — Edmonton Symptom Assessment System", sis:"pali",
 desc:"Avaliação sistemática de 9 SINTOMAS em paliativos — cada um em escala 0-10 (0=sem sintoma, 10=pior possível). ⚠ NÃO é diagnóstico nem prognóstico — é ferramenta para ACOMPANHAR sintomas longitudinalmente e direcionar conduta. Reaplicar semanalmente ou conforme mudança clínica. Sintomas ≥4 demandam intervenção ativa.",
 fields:[
 {tipo:"select", id:"dor", label:"Dor (0=sem dor, 10=pior dor)", opts:[
@@ -94,7 +94,7 @@ interp:function(s){
   return {risco:`ESAS total ${s}/${max} — Sintomas intensos / múltiplos`, acao:"⚠ ⚠ Sofrimento significativo. Acionar EQUIPE COMPLETA — médico, enfermagem, psicologia, assistente social, espiritualidade. Revisar TODOS os sintomas ≥4 com plano específico. Considerar reavaliar prognóstico (PPI/KPS). Sedação paliativa: somente se sintoma refratário (não responde a manejo otimizado) E paciente em fase final. Reaplicar ESAS em 2-3 dias.", cor:"crit"};
 }
 },
-{id:"kps", nome:"Karnofsky Performance Status (KPS)", sis:"pali",
+{id:"kps", contexto:["pa","ubs"], nome:"Karnofsky Performance Status (KPS)", sis:"pali",
 desc:"Escala de status funcional 0-100 (maior = melhor). ⚠ Útil em cuidados paliativos para prognóstico e elegibilidade. KPS ≤40 = paciente predominantemente acamado, dependente, geralmente prognóstico <6 meses. KPS ≤20 = fase ativa de morte (dias-semanas).",
 fields:[
 {tipo:"select", id:"kps", label:"Selecione o nível funcional", opts:[
@@ -122,7 +122,7 @@ interp:function(s){
   return {risco:`KPS ${s} — Moribundo / fase ativa de morte`, acao:"⚠ ⚠ ⚠ ÚLTIMAS HORAS-DIAS. Aplicar protocolo de últimas horas. Manter apenas medicações de conforto via SC (morfina, midazolam, haloperidol, hioscina butilbrometo, levomepromazina). Hidratação suspensa ou volume mínimo. Acompanhar família — rituais, despedidas. Preparar declaração de óbito em domicílio (se SAD).", cor:"crit"};
 }
 },
-{id:"medd", nome:"MEDD — Dose Equivalente Diária de Morfina (Conversor de Opioides)", sis:"pali",
+{id:"medd", contexto:["pa","ubs"], nome:"MEDD — Dose Equivalente Diária de Morfina (Conversor de Opioides)", sis:"pali",
 desc:"Calcula a DOSE EQUIVALENTE DIÁRIA DE MORFINA VO (MEDD em mg/d) a partir de doses de outros opioides. ⚠ ⚠ Útil em ROTAÇÃO DE OPIOIDES — após calcular MEDD total, REDUZIR 25-50% no opioide novo (cross-tolerance INCOMPLETA). ⚠ METADONA tem conversão NÃO LINEAR — NÃO incluída neste calculador (requer especialista).",
 fields:[
 {tipo:"num", id:"morf_vo", label:"Morfina VO — mg/dia (somar todas tomadas)"},
@@ -156,7 +156,7 @@ interp:function(s){
   return {risco:`MEDD ≈ ${s} mg de morfina VO/dia (DOSE ALTA)`, acao:`⚠ ⚠ DOSE ALTA — considerar ROTAÇÃO DE OPIOIDE (cross-tolerance incompleta — reduzir 50% → ${reduzido50} mg/d ou menos). Considerar METADONA (especialista) ou via espinhal. Reavaliar componente neuropático/mecânico — adjuvantes essenciais. ⚠ Avaliar TOXICIDADE NEUROEXCITATÓRIA por opioide (mioclonia, alodinia, hiperalgesia) — sinal de necessidade rotação. SC: ~${morfSC} mg/d ÷ infusão contínua ou bolus 4-6h.`, cor:"crit"};
 }
 },
-{id:"ppi", nome:"PPI — Palliative Prognostic Index", sis:"pali",
+{id:"ppi", contexto:["pa","ubs"], nome:"PPI — Palliative Prognostic Index", sis:"pali",
 desc:"Índice prognóstico em câncer avançado — sobrevida em semanas. Usa Palliative Performance Scale (PPS, similar ao KPS) + ingesta oral + edema + dispneia em repouso + delirium. ⚠ PPI >6 = sobrevida <3 sem; PPI >4 = sobrevida <6 sem.",
 fields:[
 {tipo:"select", id:"pps", label:"PPS — Performance (similar ao KPS)", opts:[

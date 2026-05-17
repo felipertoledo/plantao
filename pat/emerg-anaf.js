@@ -9,7 +9,7 @@ PATOLOGIAS.push(
 /* ============== ANAF (2) ============== */
 
 {
-  id:"anafilaxia", sis:"anaf", grav:"alta",
+  id:"anafilaxia", contexto:["pa"], sis:"anaf", grav:"alta",
   nome:"Choque Anafilático",
   sin:["anafilaxia","choque anafilático","alergia grave"],
   def:"Reação alérgica sistêmica grave, início rápido (min a horas), envolvendo 2+ sistemas (pele, respiratório, CV, GI). Critérios WAO/EAACI.",
@@ -50,7 +50,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"urticaria", sis:"anaf", grav:"baixa",
+  id:"urticaria", contexto:["pa"], sis:"anaf", grav:"baixa",
   nome:"Urticária e Angioedema",
   sin:["urticária","angioedema","alergia"],
   def:"Lesões eritematosas pruriginosas (urticária) ± edema dérmico profundo (angioedema). Aguda (<6 sem) vs crônica.",
@@ -74,7 +74,7 @@ PATOLOGIAS.push(
 
 /* ============== ANAL (1) ============== */
 
-{id:"analgesia-er", sis:"anal", grav:"baixa",
+{id:"analgesia-er", contexto:["pa","ubs"], sis:"anal", grav:"baixa",
 nome:"Analgesia em Emergência — Guia de Escalonamento",
 sin:["analgesia","dor","escala da dor","escada OMS","EVA","opioide"],
 def:"Manejo escalonado da dor aguda em emergência. PILAR: caracterizar a dor + medir intensidade + escolher analgésico apropriado + reavaliar resposta. Dor é o 5º sinal vital — medir SEMPRE e RE-medir.",
@@ -159,7 +159,7 @@ calcs:[],
 
 /* ============== IOT (2) ============== */
 
-{id:"sedoanalgesia", sis:"iot", grav:"alta",
+{id:"sedoanalgesia", contexto:["pa"], sis:"iot", grav:"alta",
 nome:"Sedoanalgesia em VM",
 sin:["sedação","analgesia","sedoanalgesia","BIC"],
 def:"Sedoanalgesia pós-IOT para tolerância à VM. Estratégia: analgesia first, sedação leve (RASS 0 a -2), interrupção diária.",
@@ -180,7 +180,7 @@ mec:[{d:"Dexmedetomidina",x:"<strong>α2-agonista</strong> central — inibe lib
 diretriz:"PADIS Guidelines 2018 (Devlin JW et al., Crit Care Med 2018;46:e825–e873).",
 calcs:[],
 },
-{id:"sri", sis:"iot", grav:"alta",
+{id:"sri", contexto:["pa"], sis:"iot", grav:"alta",
 nome:"Sequência Rápida de Intubação (SRI)",
 sin:["SRI","IOT","intubação","laringoscopia"],
 def:"Indução farmacológica rápida com sedação + bloqueio neuromuscular para IOT em paciente crítico.",
@@ -212,7 +212,7 @@ calcs:[],
 
 /* ============== VASO (5) ============== */
 
-{id:"vaso-adre", sis:"vaso", grav:"alta",
+{id:"vaso-adre", contexto:["pa"], sis:"vaso", grav:"alta",
 nome:"Adrenalina (Epinefrina) — Uso Crítico",
 sin:["adrenalina","epinefrina"],
 def:"Anafilaxia, PCR, choque refratário.",
@@ -228,7 +228,7 @@ mec:[{d:"Adrenalina",x:"Agonista α1 + α2 + β1 + β2. Cobre todos os mecanismo
 diretriz:"WAO 2020; ACLS 2020.",
 calcs:[],
 },
-{id:"vaso-dobuta", sis:"vaso", grav:"alta",
+{id:"vaso-dobuta", contexto:["pa"], sis:"vaso", grav:"alta",
 nome:"Dobutamina",
 sin:["dobutamina","inotrópico"],
 def:"Inotrópico em choque cardiogênico ou disfunção miocárdica com baixo débito.",
@@ -244,7 +244,7 @@ mec:[{d:"Dobutamina",x:"<strong>β1-agonista seletivo</strong> (inotropismo) + �
 diretriz:"ESC HF 2021.",
 calcs:[],
 },
-{id:"vaso-dopa", sis:"vaso", grav:"alta",
+{id:"vaso-dopa", contexto:["pa"], sis:"vaso", grav:"alta",
 nome:"Dopamina",
 sin:["dopamina"],
 def:"Vasopressor/inotrópico dose-dependente. CAIU EM DESUSO em sepse (substituído por NE — SOAP-II).",
@@ -261,7 +261,7 @@ mec:[{d:"Dopamina",x:"Precursor de NE. Em doses baixas predomina ação D1 (vaso
 diretriz:"SSC 2021; SOAP-II (De Backer D, NEJM 2010).",
 calcs:[],
 },
-{id:"vaso-ne", sis:"vaso", grav:"alta",
+{id:"vaso-ne", contexto:["pa"], sis:"vaso", grav:"alta",
 nome:"Noradrenalina (NE)",
 sin:["noradrenalina","norepinefrina","NE","vasopressor"],
 def:"Vasopressor de 1ª LINHA em choque distributivo (séptico, anafilático refratário, neurogênico).",
@@ -277,7 +277,7 @@ mec:[{d:"Noradrenalina",x:"<strong>α1-agonista potente</strong> (vasoconstriç�
 diretriz:"SSC 2021.",
 calcs:[],
 },
-{id:"vaso-vp", sis:"vaso", grav:"alta",
+{id:"vaso-vp", contexto:["pa"], sis:"vaso", grav:"alta",
 nome:"Vasopressina",
 sin:["vasopressina","ADH","V1"],
 def:"Vasopressor adjuvante em choque séptico refratário.",

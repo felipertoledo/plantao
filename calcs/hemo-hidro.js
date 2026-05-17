@@ -5,7 +5,7 @@
 
 CALCS.push(
 {
-id:"aniongap", nome:"Ânion Gap", sis:"hidro",
+id:"aniongap", contexto:["pa","ubs"], nome:"Ânion Gap", sis:"hidro",
 desc:"AG = Na − (Cl + HCO₃). Normal: 8–12 (sem K) ou 12–16 (com K). ↑ Ânion gap = acidose metabólica com gap.",
 fields:[
 {tipo:"num", id:"na", label:"Na", unidade:"mEq/L"},
@@ -29,7 +29,7 @@ interp:function(s){
   return {risco:"AG ↑ muito alto", acao:"Provável intoxicação grave (metanol, etilenoglicol), CAD grave, ácidos exógenos", cor:"crit"};
 }
 },
-{id:"caprini", nome:"Caprini — Risco de TEV em paciente cirúrgico", sis:"hemo",
+{id:"caprini", contexto:["pa","ubs"], nome:"Caprini — Risco de TEV em paciente cirúrgico", sis:"hemo",
 desc:"Score para TROMBOEMBOLISMO VENOSO em pacientes CIRÚRGICOS. Estratifica risco e indica intensidade da profilaxia. Versão simplificada.",
 fields:[
 {tipo:"select", id:"idade", label:"Idade", opts:[
@@ -80,7 +80,7 @@ interp:function(s){
 }
 },
 {
-id:"cg", nome:"Cockcroft-Gault", sis:"hidro",
+id:"cg", contexto:["pa","ubs"], nome:"Cockcroft-Gault", sis:"hidro",
 desc:"Estimativa de clearance de creatinina. Útil para ajuste de doses.",
 fields:[
 {tipo:"num", id:"idade", label:"Idade", hint:"anos", unidade:"a"},
@@ -106,7 +106,7 @@ interp:function(s){
 }
 },
 {
-id:"ckd-epi", nome:"CKD-EPI 2021 (sem raça)", sis:"hidro",
+id:"ckd-epi", contexto:["pa","ubs"], nome:"CKD-EPI 2021 (sem raça)", sis:"hidro",
 desc:"Taxa de filtração glomerular estimada. Padrão para estagiar DRC.",
 fields:[
 {tipo:"num", id:"cr", label:"Creatinina sérica", unidade:"mg/dL"},
@@ -137,7 +137,7 @@ interp:function(s){
 }
 },
 {
-id:"corr-na", nome:"Correção de Na — Adrogué-Madias", sis:"hidro",
+id:"corr-na", contexto:["pa","ubs"], nome:"Correção de Na — Adrogué-Madias", sis:"hidro",
 desc:"Variação esperada de Na sérico após 1 L de solução. Meta: ↑Na 6-8 mEq/L/24h (não exceder 10-12).",
 fields:[
 {tipo:"num", id:"naatual", label:"Na sérico atual", unidade:"mEq/L"},
@@ -170,7 +170,7 @@ interp:function(s){
   return {risco:`Δ Na = ${s} mEq/L por L de solução`, acao:"Calcular volume necessário para meta de 6-8 mEq/24h. NUNCA exceder 10 mEq/24h (risco de mielinólise pontina). Monitorar Na de 2/2h ou 4/4h na fase inicial.", cor:"info"};
 }
 },
-{id:"has-bled", nome:"HAS-BLED — Risco de Sangramento em paciente em anticoagulação (FA)", sis:"hemo",
+{id:"has-bled", contexto:["pa","ubs"], nome:"HAS-BLED — Risco de Sangramento em paciente em anticoagulação (FA)", sis:"hemo",
 desc:"Avalia risco de sangramento maior em paciente com FA em anticoagulação. HAS-BLED ≥3 = alto risco — NÃO é razão para suspender anticoagulação, mas indica MONITORIZAÇÃO PRÓXIMA + correção de fatores reversíveis. Sempre comparar com CHA₂DS₂-VASc (risco trombótico).",
 fields:[
 {tipo:"bool", id:"h", label:"Hipertensão arterial NÃO controlada (PAS >160 mmHg) (+1)"},
@@ -193,7 +193,7 @@ interp:function(s){
   return {risco:`HAS-BLED ${s} — ALTO RISCO de sangramento (≥3)`, acao:"⚠ NÃO É RAZÃO PARA SUSPENDER anticoagulação (a menos que CHA₂DS₂-VASc seja baixo). ⚠ Comparar com CHA₂DS₂-VASc — geralmente benefício de anticoagular > risco. ⚠ CORRIGIR fatores reversíveis: tratar HAS, suspender AAS/AINE se possível, reduzir álcool, ajustar varfarina para INR no alvo. Monitorização mais próxima. Considerar DOAC vs varfarina (DOAC tem menor risco AVCh).", cor:"warn"};
 }
 },
-{id:"hit-4t", nome:"HIT 4T Score — Trombocitopenia Induzida por Heparina", sis:"hemo",
+{id:"hit-4t", contexto:["pa","ubs"], nome:"HIT 4T Score — Trombocitopenia Induzida por Heparina", sis:"hemo",
 desc:"Probabilidade pré-teste de HIT (trombocitopenia induzida por heparina, tipo II) em paciente sob uso de heparina + plaquetopenia. Guia investigação e troca de anticoagulante.",
 fields:[
 {tipo:"select", id:"throm", label:"Thrombocytopenia (queda)", opts:[
@@ -227,7 +227,7 @@ interp:function(s){
 }
 },
 {
-id:"osm", nome:"Osmolaridade plasmática", sis:"hidro",
+id:"osm", contexto:["pa","ubs"], nome:"Osmolaridade plasmática", sis:"hidro",
 desc:"Osm = 2·Na + glicemia/18 + ureia/6 (mg/dL). Normal 285–295 mOsm/kg. Gap osm = Osm medida − Osm calculada (normal < 10).",
 fields:[
 {tipo:"num", id:"na", label:"Na", unidade:"mEq/L"},
@@ -247,7 +247,7 @@ interp:function(s){
   return {risco:"Hiperosmolar grave", acao:"EHH (osm > 320), intoxicações; risco de coma / convulsão", cor:"crit"};
 }
 },
-{id:"padua", nome:"Padua — Risco de TEV em paciente clínico hospitalizado", sis:"hemo",
+{id:"padua", contexto:["pa","ubs"], nome:"Padua — Risco de TEV em paciente clínico hospitalizado", sis:"hemo",
 desc:"Predictive score para TROMBOEMBOLISMO VENOSO em pacientes CLÍNICOS hospitalizados (não-cirúrgicos). Indica profilaxia farmacológica. Padua ≥4 = ALTO risco — anticoagulação profilática.",
 fields:[
 {tipo:"bool", id:"a", label:"Câncer ativo (metastático, ou tratamento <6m) (+3)"},

@@ -8,7 +8,7 @@ MEDICACOES.push(
 
 /* ============== SEDATIVO (7) ============== */
 
-{id:"med-cetamina", classe:"Anestésico dissociativo + analgésico", grupo:"sedativo",
+{id:"med-cetamina", contexto:["pa"], classe:"Anestésico dissociativo + analgésico", grupo:"sedativo",
 nome:"Cetamina",
 sin:["Ketamin","Ketalar","Cetamax"],
 formas:[
@@ -87,7 +87,7 @@ diretriz:"ACEP Procedural Sedation 2014. PALICC Pediatric Sedation. ECCS Asthma 
 fluxo:null,
 calcs:[],
 },
-{id:"med-etomidato", classe:"Hipnótico imidazólico", grupo:"sedativo",
+{id:"med-etomidato", contexto:["pa"], classe:"Hipnótico imidazólico", grupo:"sedativo",
 nome:"Etomidato",
 sin:["Hypnomidate","Amidato"],
 formas:[
@@ -155,7 +155,7 @@ diretriz:"SBA IOT 2020. CORTICUS trial. Estudos de SRI em choque.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-midazolam", classe:"Benzodiazepínico de ação curta", grupo:"sedativo",
+{id:"med-midazolam", contexto:["pa"], classe:"Benzodiazepínico de ação curta", grupo:"sedativo",
 nome:"Midazolam",
 sin:["Dormonid","Dormicum"],
 formas:[
@@ -235,7 +235,7 @@ diretriz:"ACEP Procedural Sedation 2014. Neurocritical Care Status Epilepticus 2
 fluxo:null,
 calcs:[],
 },
-{id:"med-naloxona", classe:"Antagonista opioide puro", grupo:"sedativo",
+{id:"med-naloxona", contexto:["pa"], classe:"Antagonista opioide puro", grupo:"sedativo",
 nome:"Naloxona",
 sin:["Narcan","Nalone"],
 formas:[
@@ -308,7 +308,7 @@ diretriz:"AHA ACLS 2020. CDC Opioid Overdose. WHO Naloxone Guidelines.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-propofol", classe:"Hipnótico-sedativo IV", grupo:"sedativo",
+{id:"med-propofol", contexto:["pa"], classe:"Hipnótico-sedativo IV", grupo:"sedativo",
 nome:"Propofol",
 sin:["Diprivan","Propovan"],
 formas:[
@@ -385,7 +385,7 @@ diretriz:"PADIS UTI 2018. ASA Sedação Procedural. Neurocritical Care Refractor
 fluxo:null,
 calcs:[],
 },
-{id:"med-rocuronio", classe:"Bloqueador neuromuscular NÃO-DESPOLARIZANTE", grupo:"sedativo",
+{id:"med-rocuronio", contexto:["pa"], classe:"Bloqueador neuromuscular NÃO-DESPOLARIZANTE", grupo:"sedativo",
 nome:"Rocurônio",
 sin:["Esmeron","Zemuron"],
 formas:[
@@ -458,7 +458,7 @@ diretriz:"SBA BNM 2020. ASA Difficult Airway. ESAIC Sugammadex Guidelines.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-succinilcolina", classe:"Bloqueador neuromuscular DESPOLARIZANTE", grupo:"sedativo",
+{id:"med-succinilcolina", contexto:["pa"], classe:"Bloqueador neuromuscular DESPOLARIZANTE", grupo:"sedativo",
 nome:"Succinilcolina (Suxametônio)",
 sin:["Quelicin","Suxametônio"],
 formas:[

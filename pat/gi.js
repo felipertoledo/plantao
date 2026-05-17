@@ -9,7 +9,7 @@ PATOLOGIAS.push(
 /* ============== GI (17) ============== */
 
 {
-  id:"abd-agudo", sis:"gi", grav:"alta",
+  id:"abd-agudo", contexto:["pa","ubs"], sis:"gi", grav:"alta",
   nome:"Abdome Agudo (5 tipos)",
   sin:["abdome agudo","abdômen agudo","peritonite"],
   def:"Dor abdominal aguda <7d com necessidade de intervenção. 5 tipos: inflamatório / obstrutivo / perfurativo / vascular / hemorrágico.",
@@ -33,7 +33,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"apendicite", sis:"gi", grav:"alta",
+  id:"apendicite", contexto:["pa"], sis:"gi", grav:"alta",
   nome:"Apendicite Aguda",
   sin:["apendicite","apêndice"],
   def:"Dor periumbilical migrando para FID + náuseas + febre baixa + leucocitose. Escores: Alvarado, AIR, AAS.",
@@ -52,7 +52,7 @@ PATOLOGIAS.push(
   calcs:["alvarado"],
 },
 {
-  id:"ascite", sis:"gi", grav:"media",
+  id:"ascite", contexto:["pa","ubs"], sis:"gi", grav:"media",
   nome:"Ascite + PBE",
   sin:["ascite","PBE","peritonite","cirrose"],
   def:"Acúmulo de líquido peritoneal. PBE = peritonite bacteriana espontânea em cirrótico (PMN ≥250 no líquido ascítico).",
@@ -78,7 +78,7 @@ PATOLOGIAS.push(
   calcs:["meld","child-pugh"],
 },
 {
-  id:"colangite", sis:"gi", grav:"alta",
+  id:"colangite", contexto:["pa"], sis:"gi", grav:"alta",
   nome:"Colangite Aguda (Tokyo 2018)",
   sin:["colangite","Charcot","Reynolds","TG18"],
   def:"Infecção biliar com obstrução. Tríade de Charcot: febre + icterícia + dor HCD. Pêntade de Reynolds: + hipotensão + alteração mental. ALTA MORTALIDADE se atraso.",
@@ -100,7 +100,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"colecistite", sis:"gi", grav:"alta",
+  id:"colecistite", contexto:["pa","ubs"], sis:"gi", grav:"alta",
   nome:"Colecistite Aguda (Tokyo 2018)",
   sin:["colecistite","colecistite aguda","TG18"],
   def:"Inflamação da vesícula biliar. Critérios TG18: A (Murphy/dor HCD) + B (febre, ↑PCR/leuco) + C (imagem: parede espessada, líquido pericístico). Suspeito = 1A + 1B; definitivo = + C.",
@@ -124,7 +124,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"colelit", sis:"gi", grav:"media",
+  id:"colelit", contexto:["pa","ubs"], sis:"gi", grav:"media",
   nome:"Colelitíase / Cólica Biliar",
   sin:["colelitíase","cálculo biliar","cólica biliar"],
   def:"Dor em hipocôndrio direito/epigástrio pós-prandial, <6h, sem febre nem icterícia (cólica simples). Diferenciar de colecistite (>6h + febre + Murphy +).",
@@ -146,7 +146,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"diarreia", sis:"gi", grav:"baixa",
+  id:"diarreia", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
   nome:"Diarreia Aguda",
   sin:["diarreia","gastroenterite","disenteria"],
   def:"≥3 evacuações líquidas/24h <14 dias. Maioria viral autolimitada. Investigar disenteria (sangue/muco/febre alta) e desidratação.",
@@ -172,7 +172,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"diverticulite", sis:"gi", grav:"media",
+  id:"diverticulite", contexto:["pa"], sis:"gi", grav:"media",
   nome:"Diverticulite Aguda",
   sin:["diverticulite","Hinchey"],
   def:"Dor em FIE + febre + leucocitose em paciente com diverticulose. TC define gravidade (Hinchey I–IV).",
@@ -194,7 +194,7 @@ PATOLOGIAS.push(
   calcs:[],
 },
 {
-  id:"drge", sis:"gi", grav:"baixa",
+  id:"drge", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
   nome:"DRGE / Esofagite",
   sin:["DRGE","refluxo","esofagite","pirose"],
   def:"Pirose + regurgitação ácida ± disfagia. Diagnóstico clínico + teste terapêutico com IBP. EDA se sinais de alarme.",
@@ -215,7 +215,7 @@ PATOLOGIAS.push(
   diretriz:"ACG Guidelines for the Diagnosis and Management of Gastroesophageal Reflux Disease (Katz PO et al., Am J Gastroenterol 2022;117:27–56).",
   calcs:[],
 },
-{id:"drge-dispepsia", nome:"DRGE / Dispepsia Funcional", sis:"gi", grav:"baixa",
+{id:"drge-dispepsia", contexto:["pa","ubs"], nome:"DRGE / Dispepsia Funcional", sis:"gi", grav:"baixa",
 cid:"K21 (DRGE) / K30 (dispepsia)", ciap:"D03 (pirose) / D07 (dispepsia)",
 sin:["DRGE","Refluxo","Pirose","Azia","Queimação","Dispepsia funcional","Síndrome do desconforto pós-prandial","Síndrome da dor epigástrica"],
 
@@ -326,7 +326,7 @@ fluxo:null,
 diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 2022 (H. pylori). Choosing Wisely Brasil."
 },
 {
-  id:"encefa", sis:"gi", grav:"alta",
+  id:"encefa", contexto:["pa","ubs"], sis:"gi", grav:"alta",
   nome:"Encefalopatia Hepática",
   sin:["EH","encefalopatia hepática","coma hepático","amônia"],
   def:"Alteração de consciência em cirrótico/hepatopata. West Haven I–IV. Fator precipitante quase sempre presente.",
@@ -350,7 +350,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:[],
 },
 {
-  id:"hda", sis:"gi", grav:"alta",
+  id:"hda", contexto:["pa"], sis:"gi", grav:"alta",
   nome:"Hemorragia Digestiva Alta (HDA)",
   sin:["HDA","hematêmese","melena","sangramento digestivo"],
   def:"Sangramento proximal ao ângulo de Treitz. Hematêmese, vômitos em borra de café, melena. Estabilizar + EDA em até 24h. Varicoso vs não-varicoso.",
@@ -385,7 +385,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:["blatchford"],
 },
 {
-  id:"hdb", sis:"gi", grav:"alta",
+  id:"hdb", contexto:["pa"], sis:"gi", grav:"alta",
   nome:"Hemorragia Digestiva Baixa (HDB)",
   sin:["HDB","hematoquezia","retorragia"],
   def:"Sangramento distal ao Treitz. Hematoquezia/enterorragia. Causas: diverticular (40%), angiodisplasia, neoplasia, doença inflamatória, hemorroida.",
@@ -405,7 +405,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:[],
 },
 {
-  id:"hemorroida", sis:"gi", grav:"baixa",
+  id:"hemorroida", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
   nome:"Doença Hemorroidária",
   sin:["hemorroidas","hemorroida","fissura anal"],
   def:"Dilatação dos plexos hemorroidários internos (escala I–IV) ou externos. Manifestações: hematoquezia, prolapso, dor (trombose).",
@@ -428,7 +428,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:[],
 },
 {
-  id:"nausea", sis:"gi", grav:"baixa",
+  id:"nausea", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
   nome:"Náuseas e Vômitos",
   sin:["náusea","vômito","êmese","antiemético"],
   def:"Sintomas inespecíficos. Sempre investigar causa: gastroenterite, gestação, intox, obstrução, central (HIC, vertigem), drogas (opioides, quimioterapia).",
@@ -452,7 +452,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:[],
 },
 {
-  id:"pancreatite", sis:"gi", grav:"alta",
+  id:"pancreatite", contexto:["pa","ubs"], sis:"gi", grav:"alta",
   nome:"Pancreatite Aguda",
   sin:["pancreatite","pancreatite aguda","PA"],
   def:"Dor abdominal alta característica (em faixa) + amilase/lipase ≥3× ULN OU imagem compatível. Critérios de Atlanta. Etiologia 80% biliar/alcoólica.",
@@ -477,7 +477,7 @@ diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 202
   calcs:["ranson","bisap"],
 },
 {
-  id:"ulcera", sis:"gi", grav:"media",
+  id:"ulcera", contexto:["pa","ubs"], sis:"gi", grav:"media",
   nome:"Doença Ulcerosa Péptica / H. pylori",
   sin:["úlcera","Hp","H. pylori","gastrite"],
   def:"Dor epigástrica + náuseas. Causas: H. pylori (60–80%), AINE, estresse, Zollinger-Ellison. Diagnóstico: EDA + biópsia / urease / antígeno fecal / teste respiratório.",

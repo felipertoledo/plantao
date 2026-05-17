@@ -5,7 +5,7 @@
 
 CALCS.push(
 {
-id:"alvarado", nome:"Alvarado (Apendicite)", sis:"gi",
+id:"alvarado", contexto:["pa","ubs"], nome:"Alvarado (Apendicite)", sis:"gi",
 desc:"Escala MANTRELS — probabilidade de apendicite aguda. 10 pontos. Útil para triagem; não substitui imagem em casos duvidosos.",
 fields:[
 {tipo:"bool", id:"m", label:"M — Migração da dor (epigástrio/periumbilical → FID)", peso:1},
@@ -29,7 +29,7 @@ interp:function(s){
 }
 },
 {
-id:"bisap", nome:"BISAP", sis:"gi",
+id:"bisap", contexto:["pa","ubs"], nome:"BISAP", sis:"gi",
 desc:"Estratificação de pancreatite aguda nas primeiras 24h.",
 fields:[
 {tipo:"bool", id:"b", label:"BUN > 25 mg/dL (ureia > 53)", peso:1},
@@ -48,7 +48,7 @@ interp:function(s){
   return {risco:"Alto (> 15% mortalidade)", acao:"UTI / observação intensiva", cor:"crit"};
 }
 },
-{id:"bisap", nome:"BISAP — Gravidade da Pancreatite Aguda", sis:"gi",
+{id:"bisap", contexto:["pa","ubs"], nome:"BISAP — Gravidade da Pancreatite Aguda", sis:"gi",
 desc:"Bedside Index for Severity in Acute Pancreatitis. Aplicar nas PRIMEIRAS 24H. Score ≥3 = pancreatite GRAVE (10-20% mortalidade) — UTI / acompanhamento próximo.",
 fields:[
 {tipo:"bool", id:"b", label:"BUN >25 mg/dL (Ureia >53) (+1)"},
@@ -69,7 +69,7 @@ interp:function(s){
 }
 },
 {
-id:"blatchford", nome:"Glasgow-Blatchford", sis:"gi",
+id:"blatchford", contexto:["pa","ubs"], nome:"Glasgow-Blatchford", sis:"gi",
 desc:"Estratifica HDA — identifica pacientes de muito baixo risco que podem ser manejados ambulatorialmente.",
 fields:[
 {tipo:"select", id:"ur", label:"Ureia (mg/dL)",
@@ -103,7 +103,7 @@ interp:function(s){
 }
 },
 {
-id:"child-pugh", nome:"Child-Pugh", sis:"gi",
+id:"child-pugh", contexto:["pa","ubs"], nome:"Child-Pugh", sis:"gi",
 desc:"Classificação prognóstica em cirrose. Avalia sobrevida e risco cirúrgico.",
 fields:[
 {tipo:"select", id:"a", label:"Ascite",
@@ -126,7 +126,7 @@ interp:function(s){
   return {risco:"Child C — sobrevida 1 ano 45%", acao:"Lista de transplante", cor:"crit"};
 }
 },
-{id:"child-pugh", nome:"Child-Pugh — Cirrose", sis:"gi",
+{id:"child-pugh", contexto:["pa","ubs"], nome:"Child-Pugh — Cirrose", sis:"gi",
 desc:"Classificação clássica de gravidade da cirrose. A (5-6), B (7-9), C (10-15). Cirurgia abdominal, transplante, prognóstico.",
 fields:[
 {tipo:"select", id:"bili", label:"Bilirrubina (mg/dL)", opts:[
@@ -157,7 +157,7 @@ interp:function(s){
 }
 },
 {
-id:"meld", nome:"MELD", sis:"gi",
+id:"meld", contexto:["pa","ubs"], nome:"MELD", sis:"gi",
 desc:"Mortalidade em 3 meses na cirrose. Lista de transplante. MELD = 9,57·ln(Cr) + 3,78·ln(BT) + 11,2·ln(RNI) + 6,43",
 fields:[
 {tipo:"num", id:"cr", label:"Creatinina (mg/dL)", hint:"se diálise 2x/sem use 4,0", unidade:"mg/dL"},
@@ -179,7 +179,7 @@ interp:function(s){
   return {risco:"~71% mortalidade", acao:"Transplante hepático urgente — UTI", cor:"crit"};
 }
 },
-{id:"meld-na", nome:"MELD-Na — Gravidade da Doença Hepática", sis:"gi",
+{id:"meld-na", contexto:["pa","ubs"], nome:"MELD-Na — Gravidade da Doença Hepática", sis:"gi",
 desc:"Model for End-Stage Liver Disease com sódio. Predição de mortalidade em 3 meses. Usado em alocação de transplante hepático.",
 fields:[
 {tipo:"num", id:"bili", label:"Bilirrubina total (mg/dL)", min:0.1, max:50, step:0.1},
@@ -220,7 +220,7 @@ interp:function(s){
 }
 },
 {
-id:"ranson", nome:"Ranson — admissão", sis:"gi",
+id:"ranson", contexto:["pa","ubs"], nome:"Ranson — admissão", sis:"gi",
 desc:"Mortalidade em pancreatite aguda. Critérios da admissão (somar com critérios 48h depois).",
 fields:[
 {tipo:"bool", id:"a", label:"Idade > 55 anos", peso:1},
@@ -241,7 +241,7 @@ interp:function(s){
 }
 },
 {
-id:"rockall", nome:"Rockall (clínico)", sis:"gi",
+id:"rockall", contexto:["pa","ubs"], nome:"Rockall (clínico)", sis:"gi",
 desc:"Risco de óbito após HDA. Versão clínica (pré-endoscopia).",
 fields:[
 {tipo:"select", id:"a", label:"Idade",

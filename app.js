@@ -261,9 +261,16 @@ window.addEventListener("hashchange", routeFromHash);
 /* ============== HOME ============== */
 function renderHome() {
   window.scrollTo(0,0);
+  
+  // Filtra patologias e calcs pelo contexto atual
+  const fitCtx = (typeof itemFitContexto === 'function') ? itemFitContexto : (() => true);
+  const patsCtx = PATOLOGIAS.filter(fitCtx);
+  const calcsCtx = CALCS.filter(fitCtx);
+  const medsCtx = (typeof MEDICACOES !== 'undefined') ? MEDICACOES.filter(fitCtx) : [];
+  
   const sisOrd = Object.entries(SISTEMAS).sort((a,b) => a[1].ord - b[1].ord);
   const cardsSis = sisOrd.map(([k,s]) => {
-    const ct = PATOLOGIAS.filter(p => p.sis === k).length;
+    const ct = patsCtx.filter(p => p.sis === k).length;
     if (!ct) return "";
     return `
       <button class="sys-card" onclick="navigate('#/s/${k}')" style="--sys-color:${s.cor}">
@@ -275,18 +282,29 @@ function renderHome() {
       </button>`;
   }).join("");
 
-  const totalP = PATOLOGIAS.length;
-  const totalC = CALCS.length;
+  const totalP = patsCtx.length;
+  const totalC = calcsCtx.length;
   const totalF = FLOWS_LIST.length;
-  const totalM = (typeof MEDICACOES !== 'undefined' ? MEDICACOES.length : 0);
+  const totalM = medsCtx.length;
+  
+  // Hero subtitle dinâmico pelo contexto
+  const ctxNow = (typeof CONTEXTO !== 'undefined') ? CONTEXTO.current : 'tudo';
+  const heroEyebrow = ctxNow === 'pa' ? 'Guia de Plantão · Emergência · SUS'
+                    : ctxNow === 'ubs' ? 'Atenção Primária · UBS · MFC'
+                    : 'Guia Clínico · Emergência + UBS · SUS';
+  const heroLead = ctxNow === 'ubs' 
+    ? 'Patologias da APS com PTS estruturado, calendário vacinal PNI 2026, rastreamentos e prevenção quaternária. Cada conduta com fonte.'
+    : ctxNow === 'pa'
+    ? 'Patologias do plantão 2026 com prescrições prontas, fluxogramas decisionais e calculadoras de uso imediato. Cada conduta com diretriz e DOI.'
+    : 'Patologias de emergência e UBS num só lugar. Use o toggle abaixo para filtrar por contexto.';
 
   const v = document.getElementById("view");
   v.innerHTML = `
     <section class="hero">
       <div class="hero-inner">
-        <span class="hero-eyebrow">Guia de Plantão · Emergência · SUS</span>
+        <span class="hero-eyebrow">${heroEyebrow}</span>
         <h1>Decisão clínica<br>na beira do leito.</h1>
-        <p class="hero-lead">Patologias do guia 2026 com prescrições prontas, fluxogramas decisionais e calculadoras de uso imediato. Cada conduta com diretriz e DOI.</p>
+        <p class="hero-lead">${heroLead}</p>
         <div class="hero-stats">
           <div><strong>${totalP}</strong><span>patologias</span></div>
           <div><strong>${totalC}</strong><span>calculadoras</span></div>
@@ -306,6 +324,8 @@ function renderHome() {
         </div>
       </div>
     </section>
+
+    ${typeof ctxToggleHTML === 'function' ? ctxToggleHTML() : ''}
 
     <section class="container">
       <div class="section-header">
@@ -360,10 +380,60 @@ function renderPatologia(id) {
   const isCompleto = STATE.modo === "completo";
 
   const completoHTML = isCompleto ? `
+    ${p.intro ? `
+    <div class="block">
+      <h2>Introdução</h2>
+      <p class="lead">${safeHtml(p.intro)}</p>
+    </div>` : ""}
     <div class="block">
       <h2>Fisiopatologia</h2>
       <p class="lead">${safeHtml(p.fisio || "Sem detalhe específico.")}</p>
     </div>
+    ${p.apresentacao ? `
+    <div class="block">
+      <h2>Apresentação clínica</h2>
+      <p class="lead">${safeHtml(p.apresentacao)}</p>
+    </div>` : ""}
+    ${p.sintomas && p.sintomas.length ? `
+    <div class="block">
+      <h2>Sinais e sintomas</h2>
+      ${listHTML(p.sintomas, "sintomas-list")}
+    </div>` : ""}
+    ${p.profilaxia ? `
+    <div class="block">
+      <h2>Profilaxia e cuidados</h2>
+      <p class="lead">${safeHtml(p.profilaxia)}</p>
+    </div>` : ""}
+    ${p.freire ? `
+    <div class="block block-freire">
+      <h2>🗣️ Orientação ao paciente (lente freireana)</h2>
+      <p class="lead">${safeHtml(p.freire)}</p>
+    </div>` : ""}
+    ${p.sus_tx ? `
+    <div class="block">
+      <h2>Tratamento no SUS</h2>
+      <p class="lead">${safeHtml(p.sus_tx)}</p>
+    </div>` : ""}
+    ${p.padrao_ouro ? `
+    <div class="block">
+      <h2>Tratamento padrão-ouro</h2>
+      <p class="lead">${safeHtml(p.padrao_ouro)}</p>
+    </div>` : ""}
+    ${p.prog ? `
+    <div class="block">
+      <h2>Prognóstico</h2>
+      <p class="lead">${safeHtml(p.prog)}</p>
+    </div>` : ""}
+    ${p.acomp ? `
+    <div class="block">
+      <h2>Acompanhamento</h2>
+      <p class="lead">${safeHtml(p.acomp)}</p>
+    </div>` : ""}
+    ${p.p4 ? `
+    <div class="block block-p4">
+      <h2>🛡️ Prevenção Quaternária</h2>
+      <p class="lead">${safeHtml(p.p4)}</p>
+    </div>` : ""}
     ${p.mec && p.mec.length ? `
     <div class="block">
       <h2>Mecanismo dos fármacos</h2>
@@ -395,7 +465,13 @@ function renderPatologia(id) {
         <a onclick="navigate('#/s/${p.sis}')" style="color:${sis.cor}">${esc(sis.nome)}</a>
       </nav>
       <header class="pat-head">
-        <div class="pat-head-meta">${gravBadge(p.grav)} <span class="sis-tag" style="color:${sis.cor}">${esc(sis.nome)}</span></div>
+        <div class="pat-head-meta">
+          ${gravBadge(p.grav)}
+          <span class="sis-tag" style="color:${sis.cor}">${esc(sis.nome)}</span>
+          ${p.cid ? `<span class="code-badge code-cid" title="CID-10">${esc(p.cid)}</span>` : ""}
+          ${p.ciap ? `<span class="code-badge code-ciap${p.ciapAuto ? ' code-ciap-auto' : ''}" title="CIAP-2 (Wonca)${p.ciapAuto ? ' — inferido automaticamente' : ''}">${esc(p.ciap)}</span>` : ""}
+          ${typeof ctxBadgeHTML === 'function' ? ctxBadgeHTML(p) : ""}
+        </div>
         <h1>${safeHtml(p.nome)}</h1>
         <p class="lead">${safeHtml(p.def)}</p>
       </header>
@@ -587,7 +663,8 @@ function renderSistema(sk) {
   window.scrollTo(0,0);
   const s = SISTEMAS[sk];
   if (!s) return navigate("#/");
-  const lista = PATOLOGIAS.filter(p => p.sis === sk)
+  const fitCtx = (typeof itemFitContexto === 'function') ? itemFitContexto : (() => true);
+  const lista = PATOLOGIAS.filter(p => p.sis === sk && fitCtx(p))
     .sort((a,b) => {
       const ord = {alta:0, media:1, baixa:2};
       const da = ord[a.grav] ?? 2, db = ord[b.grav] ?? 2;
@@ -743,9 +820,10 @@ function recalcCalc(id) {
 /* ============== LISTA DE CALCULADORAS ============== */
 function renderCalcs() {
   window.scrollTo(0,0);
-  // agrupar por sistema
+  const fitCtx = (typeof itemFitContexto === 'function') ? itemFitContexto : (() => true);
+  // agrupar por sistema (após filtro de contexto)
   const groups = {};
-  CALCS.forEach(c => { (groups[c.sis] = groups[c.sis] || []).push(c); });
+  CALCS.filter(fitCtx).forEach(c => { (groups[c.sis] = groups[c.sis] || []).push(c); });
 
   let html = "";
   Object.entries(SISTEMAS)
@@ -839,9 +917,10 @@ function renderFlows() {
 /* ============== MEDICAÇÕES — Biblioteca ============== */
 function renderMedicacoes() {
   window.scrollTo(0,0);
-  // Agrupar por grupo
+  const fitCtx = (typeof itemFitContexto === 'function') ? itemFitContexto : (() => true);
+  // Agrupar por grupo (após filtro de contexto)
   const byGrupo = {};
-  MEDICACOES.forEach(m => {
+  MEDICACOES.filter(fitCtx).forEach(m => {
     const g = m.grupo || "outros";
     if (!byGrupo[g]) byGrupo[g] = [];
     byGrupo[g].push(m);
@@ -1161,22 +1240,24 @@ function normStr(s) {
 }
 
 function buildSearchIndex() {
+  const fitCtx = (typeof itemFitContexto === 'function') ? itemFitContexto : (() => true);
   const idx = [];
-  PATOLOGIAS.forEach(p => {
+  PATOLOGIAS.filter(fitCtx).forEach(p => {
     const text = [p.nome, p.def, ...(p.sin||[]), SISTEMAS[p.sis]?.nome].filter(Boolean).join(" · ");
     idx.push({tipo:"p", id:p.id, nome:p.nome, sub:SISTEMAS[p.sis]?.nome||p.sis, search:normStr(text), grav:p.grav});
   });
-  CALCS.forEach(c => {
+  CALCS.filter(fitCtx).forEach(c => {
     const text = [c.nome, c.desc, SISTEMAS[c.sis]?.nome].filter(Boolean).join(" · ");
     idx.push({tipo:"c", id:c.id, nome:c.nome, sub:"Calc · " + (SISTEMAS[c.sis]?.nome||c.sis), search:normStr(text)});
   });
   FLOWS_LIST.forEach(fid => {
     const f = FLOWS[fid];
+    if (typeof itemFitContexto === 'function' && !itemFitContexto(f)) return;
     const fonte = f.fonte || f.descricao || "";
     idx.push({tipo:"f", id:fid, nome:f.titulo, sub:"Fluxograma · " + fonte.split(";")[0], search:normStr(f.titulo + " " + fonte)});
   });
   if (typeof MEDICACOES !== "undefined") {
-    MEDICACOES.forEach(m => {
+    MEDICACOES.filter(fitCtx).forEach(m => {
       const text = [m.nome, m.classe, ...(m.sin || []), m.resumo, m.dose_rapida].filter(Boolean).join(" · ");
       idx.push({tipo:"m", id:m.id, nome:m.nome, sub:"Medicação · " + (m.classe || ""), search:normStr(text)});
     });
@@ -1184,7 +1265,7 @@ function buildSearchIndex() {
   return idx;
 }
 
-const SEARCH_INDEX = buildSearchIndex();
+let SEARCH_INDEX = buildSearchIndex();
 
 function searchFuzzy(q) {
   const nq = normStr(q);

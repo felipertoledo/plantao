@@ -8,7 +8,7 @@ MEDICACOES.push(
 
 /* ============== ANTIARRITMICO (2) ============== */
 
-{id:"med-adenosina", classe:"Antiarrítmico — nucleosídeo purínico", grupo:"antiarritmico",
+{id:"med-adenosina", contexto:["pa","ubs"], classe:"Antiarrítmico — nucleosídeo purínico", grupo:"antiarritmico",
 nome:"Adenosina",
 sin:["Adenocard","Striadyne"],
 formas:[
@@ -79,7 +79,7 @@ diretriz:"AHA ACLS 2020. ESC Supraventricular Tachycardia 2019.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-amiodarona", classe:"Antiarrítmico Classe III (predominante)", grupo:"antiarritmico",
+{id:"med-amiodarona", contexto:["pa","ubs"], classe:"Antiarrítmico Classe III (predominante)", grupo:"antiarritmico",
 nome:"Amiodarona",
 sin:["Ancoron","Cordarone"],
 formas:[
@@ -157,7 +157,7 @@ calcs:[],
 
 /* ============== VASOPRESSOR (9) ============== */
 
-{id:"med-adrenalina", classe:"Vasopressor + broncodilatador — α/β-agonista", grupo:"vasopressor",
+{id:"med-adrenalina", contexto:["pa"], classe:"Vasopressor + broncodilatador — α/β-agonista", grupo:"vasopressor",
 nome:"Adrenalina (Epinefrina)",
 sin:["Epinefrina","Epi","Adre"],
 formas:[
@@ -235,7 +235,7 @@ diretriz:"AHA ACLS 2020. ERC Anaphylaxis 2021. SBP/ASBAI Anafilaxia. PARAMEDIC-2
 fluxo:null,
 calcs:[],
 },
-{id:"med-atropina", classe:"Anticolinérgico — antagonista muscarínico", grupo:"vasopressor",
+{id:"med-atropina", contexto:["pa"], classe:"Anticolinérgico — antagonista muscarínico", grupo:"vasopressor",
 nome:"Atropina",
 sin:["Atropion"],
 formas:[
@@ -309,7 +309,7 @@ diretriz:"AHA ACLS 2020. Toxicologia clínica MS. PRAM (Pesticide Resistance and
 fluxo:null,
 calcs:[],
 },
-{id:"med-dobutamina", classe:"Inotrópico — β1-agonista", grupo:"vasopressor",
+{id:"med-dobutamina", contexto:["pa"], classe:"Inotrópico — β1-agonista", grupo:"vasopressor",
 nome:"Dobutamina",
 sin:["Dobutrex"],
 formas:[
@@ -382,7 +382,7 @@ diretriz:"ACC/AHA HF 2022. SBC Insuficiência Cardíaca 2018. Surviving Sepsis 2
 fluxo:null,
 calcs:[],
 },
-{id:"med-esmolol", classe:"β1-bloqueador IV — cardiosseletivo ultra-curto", grupo:"vasopressor",
+{id:"med-esmolol", contexto:["pa"], classe:"β1-bloqueador IV — cardiosseletivo ultra-curto", grupo:"vasopressor",
 nome:"Esmolol",
 sin:["Brevibloc","Brevbloc"],
 formas:[
@@ -456,7 +456,7 @@ diretriz:"AHA Aortic Dissection 2022. ESC Hypertension Emergencies 2023. ESC AF 
 fluxo:null,
 calcs:[],
 },
-{id:"med-hidralazina", classe:"Vasodilatador arterial direto", grupo:"vasopressor",
+{id:"med-hidralazina", contexto:["pa"], classe:"Vasodilatador arterial direto", grupo:"vasopressor",
 nome:"Hidralazina",
 sin:["Apresolina","Apresoline"],
 formas:[
@@ -528,7 +528,7 @@ diretriz:"ACOG Hypertension in Pregnancy 2020. SOGC Pre-eclampsia. AHA Heart Fai
 fluxo:null,
 calcs:[],
 },
-{id:"med-nitroglicerina", classe:"Vasodilatador venoso (predominante) — nitrato", grupo:"vasopressor",
+{id:"med-nitroglicerina", contexto:["pa"], classe:"Vasodilatador venoso (predominante) — nitrato", grupo:"vasopressor",
 nome:"Nitroglicerina (Tridil)",
 sin:["NTG","GTN","Tridil","Nitronal"],
 formas:[
@@ -604,7 +604,7 @@ diretriz:"ESC ACS 2023. AHA STEMI 2013. ESC Acute Heart Failure 2021.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-nitroprussiato", classe:"Vasodilatador arterial + venoso direto", grupo:"vasopressor",
+{id:"med-nitroprussiato", contexto:["pa"], classe:"Vasodilatador arterial + venoso direto", grupo:"vasopressor",
 nome:"Nitroprussiato de sódio",
 sin:["Nipride","Nitropress"],
 formas:[
@@ -673,7 +673,7 @@ diretriz:"ESC Hypertension Emergencies 2023. AHA Aortic Dissection 2022.",
 fluxo:null,
 calcs:[],
 },
-{id:"med-noradrenalina", classe:"Vasopressor — Catecolamina α1+β1", grupo:"vasopressor",
+{id:"med-noradrenalina", contexto:["pa"], classe:"Vasopressor — Catecolamina α1+β1", grupo:"vasopressor",
 nome:"Noradrenalina",
 sin:["norepinefrina","NA","NE","Levophed"],
 formas:[
@@ -741,7 +741,7 @@ diretriz:"Surviving Sepsis Campaign 2021. ACC/AHA Cardiogenic Shock 2022. SBC Ch
 fluxo:null,
 calcs:[],
 },
-{id:"med-vasopressina", classe:"Vasopressor não-adrenérgico — análogo ADH", grupo:"vasopressor",
+{id:"med-vasopressina", contexto:["pa"], classe:"Vasopressor não-adrenérgico — análogo ADH", grupo:"vasopressor",
 nome:"Vasopressina (ADH)",
 sin:["AVP","ADH","Arginina-vasopressina","Pitressin"],
 formas:[

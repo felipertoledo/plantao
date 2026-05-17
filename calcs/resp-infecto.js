@@ -5,7 +5,7 @@
 
 CALCS.push(
 {
-id:"centor", nome:"Centor / McIsaac", sis:"resp",
+id:"centor", contexto:["pa","ubs"], nome:"Centor / McIsaac", sis:"resp",
 desc:"Probabilidade de faringite estreptocócica. Decisão sobre teste rápido e antibioticoterapia.",
 fields:[
 {tipo:"bool", id:"a", label:"Febre > 38°C", peso:1},
@@ -28,7 +28,7 @@ interp:function(s){
 }
 },
 {
-id:"curb65", nome:"CURB-65", sis:"resp",
+id:"curb65", contexto:["pa","ubs"], nome:"CURB-65", sis:"resp",
 desc:"Decisão de internação em PAC. Mortalidade em 30 dias.",
 fields:[
 {tipo:"bool", id:"c", label:"Confusão mental nova", peso:1},
@@ -49,7 +49,7 @@ interp:function(s){
 }
 },
 {
-id:"mascc", nome:"MASCC — Neutropenia febril", sis:"infecto",
+id:"mascc", contexto:["pa","ubs"], nome:"MASCC — Neutropenia febril", sis:"infecto",
 desc:"Estratifica risco em neutropenia febril. ≥ 21 = baixo risco, pode considerar manejo ambulatorial.",
 fields:[
 {tipo:"select", id:"a", label:"Sintomas",
@@ -78,7 +78,7 @@ interp:function(s){
 }
 },
 {
-id:"qsofa", nome:"qSOFA", sis:"infecto",
+id:"qsofa", contexto:["pa","ubs"], nome:"qSOFA", sis:"infecto",
 desc:"Triagem rápida fora da UTI para suspeita de sepse. ≥ 2 = pior prognóstico.",
 fields:[
 {tipo:"bool", id:"a", label:"FR ≥ 22 ipm", peso:1},
@@ -95,7 +95,7 @@ interp:function(s){
   return {risco:"Alto risco — mortalidade > 10%", acao:"Suspeitar de sepse → bundle 1h da SSC: lactato, hemoculturas, ATB amplo, cristaloide 30 mL/kg se hipotensão ou lactato ≥ 4, NE para PAM ≥ 65", cor:"crit"};
 }
 },
-{id:"qsofa", nome:"qSOFA — Triagem rápida de Sepse fora da UTI", sis:"infecto",
+{id:"qsofa", contexto:["pa","ubs"], nome:"qSOFA — Triagem rápida de Sepse fora da UTI", sis:"infecto",
 desc:"Quick SOFA. Aplicar em paciente com infecção SUSPEITA fora da UTI. ⚠ qSOFA ≥2 = ALTO risco de mortalidade — investigar SEPSE (SOFA completo, lactato, hemoculturas, ATB precoce). ⚠ NÃO é diagnóstico de sepse — é FERRAMENTA DE TRIAGEM.",
 fields:[
 {tipo:"select", id:"fr", label:"Frequência respiratória", opts:[
@@ -124,7 +124,7 @@ interp:function(s){
 }
 },
 {
-id:"sofa", nome:"SOFA", sis:"infecto",
+id:"sofa", contexto:["pa","ubs"], nome:"SOFA", sis:"infecto",
 desc:"Disfunção orgânica em UTI. ↑ ≥ 2 pontos sobre basal define sepse (Sepsis-3).",
 fields:[
 {tipo:"select", id:"resp", label:"PaO₂/FiO₂",
