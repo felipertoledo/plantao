@@ -142,54 +142,6 @@ interp:function(s){
   return {risco:`GCS ${s} — TCE GRAVE`, acao:"IOT IMEDIATA (proteção VA) com sequência rápida + Cardiomonitorização + Acesso venoso + TC + Neurocirurgia. UTI. Manter PaCO2 35-40, PAS ≥110, SpO2 ≥94%, evitar hipoglicemia.", cor:"crit"};
 }
 },
-{
-id:"nihss", contexto:["pa","ubs"], nome:"NIHSS", sis:"neuro",
-desc:"Avaliação de gravidade no AVC isquêmico. Itens individuais com soma 0–42.",
-fields:[
-{tipo:"select", id:"i1a", label:"1a — Nível de consciência",
-  opts:[{val:0,label:"Alerta"},{val:1,label:"Sonolento"},{val:2,label:"Estuporoso"},{val:3,label:"Comatoso"}]},
-{tipo:"select", id:"i1b", label:"1b — Perguntas (mês, idade)",
-  opts:[{val:0,label:"2 corretas"},{val:1,label:"1 correta"},{val:2,label:"Nenhuma"}]},
-{tipo:"select", id:"i1c", label:"1c — Comandos (fechar olho, abrir mão)",
-  opts:[{val:0,label:"2 corretos"},{val:1,label:"1 correto"},{val:2,label:"Nenhum"}]},
-{tipo:"select", id:"i2", label:"2 — Olhar conjugado",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Paresia parcial"},{val:2,label:"Desvio fixo"}]},
-{tipo:"select", id:"i3", label:"3 — Campo visual",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Hemianopsia parcial"},{val:2,label:"Hemianopsia completa"},{val:3,label:"Cegueira bilateral"}]},
-{tipo:"select", id:"i4", label:"4 — Paresia facial",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Sutil"},{val:2,label:"Parcial"},{val:3,label:"Total uni ou bi"}]},
-{tipo:"select", id:"i5a", label:"5a — Força MSD",
-  opts:[{val:0,label:"Sem queda"},{val:1,label:"Queda < 10s"},{val:2,label:"Cai antes 10s"},{val:3,label:"Sem força contra gravidade"},{val:4,label:"Plégico"}]},
-{tipo:"select", id:"i5b", label:"5b — Força MSE",
-  opts:[{val:0,label:"Sem queda"},{val:1,label:"Queda < 10s"},{val:2,label:"Cai antes 10s"},{val:3,label:"Sem força contra gravidade"},{val:4,label:"Plégico"}]},
-{tipo:"select", id:"i6a", label:"6a — Força MID",
-  opts:[{val:0,label:"Sem queda"},{val:1,label:"Queda < 5s"},{val:2,label:"Cai antes 5s"},{val:3,label:"Sem força contra gravidade"},{val:4,label:"Plégico"}]},
-{tipo:"select", id:"i6b", label:"6b — Força MIE",
-  opts:[{val:0,label:"Sem queda"},{val:1,label:"Queda < 5s"},{val:2,label:"Cai antes 5s"},{val:3,label:"Sem força contra gravidade"},{val:4,label:"Plégico"}]},
-{tipo:"select", id:"i7", label:"7 — Ataxia (índex-nariz/calcanhar-joelho)",
-  opts:[{val:0,label:"Ausente"},{val:1,label:"Em 1 membro"},{val:2,label:"Em 2 ou mais"}]},
-{tipo:"select", id:"i8", label:"8 — Sensibilidade",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Leve perda"},{val:2,label:"Perda grave/anestesia"}]},
-{tipo:"select", id:"i9", label:"9 — Linguagem",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Afasia leve"},{val:2,label:"Afasia grave"},{val:3,label:"Mutismo / afasia global"}]},
-{tipo:"select", id:"i10", label:"10 — Disartria",
-  opts:[{val:0,label:"Normal"},{val:1,label:"Leve"},{val:2,label:"Grave / anártrico"}]},
-{tipo:"select", id:"i11", label:"11 — Extinção / negligência",
-  opts:[{val:0,label:"Sem"},{val:1,label:"Em 1 modalidade"},{val:2,label:"Em mais de 1"}]},
-],
-calc:function(v){
-  let s=0;
-  for(let k in v) s += parseInt(v[k]||0);
-  return s;
-},
-interp:function(s){
-  if(s===0) return {risco:"Sem déficit", acao:"Reavaliar — pode ser AIT", cor:"ok"};
-  if(s<=4) return {risco:"AVC leve", acao:"Considerar trombólise IV se janela ≤ 4,5h e sem contraindicação (mesmo NIHSS baixo se déficit incapacitante)", cor:"warn"};
-  if(s<=15) return {risco:"AVC moderado", acao:"Trombólise IV ≤ 4,5h. TC sem mismatch para trombectomia se oclusão de grande vaso e ≤ 24h.", cor:"crit"};
-  if(s<=20) return {risco:"AVC moderado-grave", acao:"Trombólise + trombectomia (oclusão proximal)", cor:"crit"};
-  return {risco:"AVC grave", acao:"Trombólise + trombectomia. Risco de transformação hemorrágica ↑.", cor:"crit"};
-}
-},
 {id:"nihss", contexto:["pa","ubs"], nome:"NIHSS — National Institutes of Health Stroke Scale", sis:"neuro",
 desc:"Escala completa para gravidade de AVC isquêmico. 11 itens, total 0-42. Decisão de trombólise + monitoramento evolutivo.",
 fields:[

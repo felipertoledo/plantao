@@ -77,24 +77,6 @@ interp:function(s){
   return {risco:"Alto risco", acao:"Internar — ATB IV amplo espectro (cefepime ou pipe-tazo) em 1h após febre", cor:"crit"};
 }
 },
-{
-id:"qsofa", contexto:["pa","ubs"], nome:"qSOFA", sis:"infecto",
-desc:"Triagem rápida fora da UTI para suspeita de sepse. ≥ 2 = pior prognóstico.",
-fields:[
-{tipo:"bool", id:"a", label:"FR ≥ 22 ipm", peso:1},
-{tipo:"bool", id:"b", label:"Alteração do nível de consciência (Glasgow < 15)", peso:1},
-{tipo:"bool", id:"c", label:"PAS ≤ 100 mmHg", peso:1},
-],
-calc:function(v){
-  let s=0;
-  ["a","b","c"].forEach(k=>{ if(v[k]) s+=1; });
-  return s;
-},
-interp:function(s){
-  if(s<2) return {risco:"Baixo risco de desfecho desfavorável", acao:"Reavaliar; não exclui sepse — manter alta suspeição clínica", cor:"ok"};
-  return {risco:"Alto risco — mortalidade > 10%", acao:"Suspeitar de sepse → bundle 1h da SSC: lactato, hemoculturas, ATB amplo, cristaloide 30 mL/kg se hipotensão ou lactato ≥ 4, NE para PAM ≥ 65", cor:"crit"};
-}
-},
 {id:"qsofa", contexto:["pa","ubs"], nome:"qSOFA — Triagem rápida de Sepse fora da UTI", sis:"infecto",
 desc:"Quick SOFA. Aplicar em paciente com infecção SUSPEITA fora da UTI. ⚠ qSOFA ≥2 = ALTO risco de mortalidade — investigar SEPSE (SOFA completo, lactato, hemoculturas, ATB precoce). ⚠ NÃO é diagnóstico de sepse — é FERRAMENTA DE TRIAGEM.",
 fields:[

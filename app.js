@@ -158,9 +158,19 @@ function richText(s) {
 }
 
 function alertHTML(a) {
-  // Aceita ambos schemas: {t, x} (legado patologias) e {nivel, txt} (medicações + novas patologias)
-  const tipo = a.t || a.nivel || "info";
-  const texto = a.x !== undefined ? a.x : a.txt;
+  // Aceita 3 schemas:
+  //   {t, x}             — legado patologias
+  //   {nivel, txt}       — medicações + novas patologias
+  //   {tipo, t, d}       — vacina/PNI: tipo=nível, t=título, d=descrição
+  let tipo, texto;
+  if (a.tipo && a.d !== undefined) {
+    // Schema 3: tipo+t(título)+d(descrição)
+    tipo = a.tipo;
+    const titulo = a.t ? `<strong>${safeHtml(a.t)}</strong> — ` : "";
+    return `<div class="alert alert-${tipo === "crit" ? "crit" : tipo === "warn" ? "warn" : tipo === "ok" ? "ok" : "info"}"><span class="ai alert-ic">${tipo === "crit" ? "⚠" : tipo === "warn" ? "!" : tipo === "ok" ? "✓" : "ℹ"}</span><div>${titulo}${safeHtml(a.d || "")}</div></div>`;
+  }
+  tipo = a.t || a.nivel || "info";
+  texto = a.x !== undefined ? a.x : a.txt;
   const cls = "alert-" + (tipo === "crit" ? "crit" : tipo === "warn" ? "warn" : tipo === "ok" ? "ok" : "info");
   const ic = tipo === "crit" ? "⚠" : tipo === "warn" ? "!" : tipo === "ok" ? "✓" : "ℹ";
   return `<div class="alert ${cls}"><span class="ai alert-ic">${ic}</span><div>${safeHtml(texto)}</div></div>`;
@@ -1159,18 +1169,44 @@ function renderMedicacao(id) {
     if (t === "sério" || t === "grave") return "Sérios";
     return "Raros";
   };
-  const efeitosHTML = m.efeitos && m.efeitos.length ? `
-    <h2>Efeitos adversos</h2>
-    <table class="med-table med-efeitos">
-      ${m.efeitos.map(e => `<tr><td class="med-tipo med-tipo-${e.tipo.split("_")[0]}">${tipoLabel(e.tipo)}</td><td>${esc(e.item)}</td></tr>`).join("")}
-    </table>
-  ` : "";
+  // Schema novo: m.efeitos = [{tipo, item}]
+  // Schema antigo: m.ef_colats = {comuns:[], sérios:[], raros:[]} (objeto)
+  let efeitosHTML = "";
+  if (m.efeitos && m.efeitos.length) {
+    efeitosHTML = `
+      <h2>Efeitos adversos</h2>
+      <table class="med-table med-efeitos">
+        ${m.efeitos.map(e => `<tr><td class="med-tipo med-tipo-${e.tipo.split("_")[0]}">${tipoLabel(e.tipo)}</td><td>${esc(e.item)}</td></tr>`).join("")}
+      </table>
+    `;
+  } else if (m.ef_colats && typeof m.ef_colats === "object") {
+    const rows = [];
+    const map = { "comuns": "comum", "sérios": "sério", "serios": "sério", "raros": "raro", "graves": "sério" };
+    Object.entries(m.ef_colats).forEach(([cat, items]) => {
+      const tipo = map[cat] || cat;
+      const label = tipoLabel(tipo);
+      const cls = tipo.split("_")[0];
+      (items || []).forEach(item => {
+        rows.push(`<tr><td class="med-tipo med-tipo-${cls}">${label}</td><td>${esc(item)}</td></tr>`);
+      });
+    });
+    if (rows.length) {
+      efeitosHTML = `<h2>Efeitos adversos</h2><table class="med-table med-efeitos">${rows.join("")}</table>`;
+    }
+  }
 
-  // Alertas
-  const alertasHTML = m.alertas && m.alertas.length ? `
+  // Alertas — schema novo: m.alertas = [{nivel, txt}]
+  // Schema antigo: m.contraindicacoes = [strings] — convertemos para alertas crit
+  let alertasArr = [];
+  if (m.alertas && m.alertas.length) {
+    alertasArr = m.alertas;
+  } else if (m.contraindicacoes && m.contraindicacoes.length) {
+    alertasArr = m.contraindicacoes.map(c => ({nivel:"crit", txt: "Contraindicado: " + c}));
+  }
+  const alertasHTML = alertasArr.length ? `
     <h2>⚠ Alertas medicolegais</h2>
     <div class="med-alertas">
-      ${m.alertas.map(a => `<div class="alert alert-${a.nivel === "crit" ? "crit" : a.nivel === "warn" ? "warn" : "info"}">
+      ${alertasArr.map(a => `<div class="alert alert-${a.nivel === "crit" ? "crit" : a.nivel === "warn" ? "warn" : "info"}">
         <span class="alert-ic">${a.nivel === "crit" ? "⚠" : a.nivel === "warn" ? "!" : "ℹ"}</span>
         <div>${esc(a.txt)}</div>
       </div>`).join("")}
@@ -1231,9 +1267,20 @@ function renderMedicacao(id) {
 
       ${alertasHTML}
 
-      ${m.monitor ? `<h2>Monitorização</h2><p>${esc(m.monitor)}</p>` : ""}
+      ${m.monitor ? `<h2>Monitorização</h2><p>${esc(m.monitor)}</p>` :
+        (m.monit && m.monit.length ? `<h2>Monitorização</h2><ul class="med-list">${m.monit.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "")}
 
-      ${m.diretriz ? `<p class="med-diretriz"><strong>Referências:</strong> ${esc(m.diretriz)}</p>` : ""}
+      ${(m.gravidez || m.sus || m.remume) ? `
+        <h2>Status legado</h2>
+        <dl class="med-fk">
+          ${m.gravidez ? `<dt>Categoria gestação (FDA)</dt><dd>${esc(m.gravidez)}</dd>` : ""}
+          ${m.sus ? `<dt>Disponibilidade SUS</dt><dd>${esc(m.sus)}</dd>` : ""}
+          ${m.remume ? `<dt>REMUME</dt><dd>${esc(m.remume)}</dd>` : ""}
+        </dl>
+      ` : ""}
+
+      ${m.diretriz ? `<p class="med-diretriz"><strong>Referências:</strong> ${esc(m.diretriz)}</p>` :
+        (m.referencias && m.referencias.length ? `<p class="med-diretriz"><strong>Referências:</strong> ${m.referencias.map(r => esc(r)).join("; ")}</p>` : "")}
     </section>
   `;
 }

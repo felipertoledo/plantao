@@ -58,7 +58,7 @@ diretriz:"PNI 2026 Adulto: [CNV-PNI 2026, IN DPNI/SVSA, 30/jan/2026]. [MAN-PNI 2
 alertas:[
 {tipo:"info", t:"Sem registro = não vacinado", d:"Adulto sem carteira nem dado no SI-PNI: considere não-vacinado e ofereça esquemas. Não \"presuma\" vacinas tomadas na infância sem prova."},
 {tipo:"warn", t:"Imunodepressão e vacinas vivas", d:"BCG, Tríplice Viral, Febre Amarela, Varicela: CONTRAINDICADAS em imunodeprimidos. Sempre perguntar: corticoide alta dose? Imunobiológico (anti-TNF, biológicos)? HIV (CD4)? Câncer ativo em quimioterapia? Transplantado? Gestante? Em qualquer dessas situações, vacina viva é avaliada caso a caso e geralmente postergada."},
-{tipo:"info", t:"Aplicação simultânea", d:"Vacinas inativadas podem ser aplicadas no mesmo dia, em locais anatômicos distintos. Vacinas vivas: se não aplicadas no mesmo dia, intervalo de 4 semanas entre elas (exceto FA + tríplice viral em criança <2 anos, intervalo 30 dias)."},
+{tipo:"info", t:"Aplicação simultânea", d:"Vacinas inativadas podem ser aplicadas no mesmo dia, em locais anatômicos distintos. Vacinas vivas: se não aplicadas no mesmo dia, intervalo de 4 semanas entre elas (exceto FA + tríplice viral em criança <2 anos, intervalo 30 dias)."}
 ],
 
 exames:[],

@@ -43,6 +43,16 @@ mec:[
 {nome:"Espironolactona", como:"Antagonista do receptor da aldosterona — diurético poupador K+, anti-fibrótico. Ginecomastia: efeito colateral por afinidade androgênica."},
 {nome:"Metildopa", como:"Agonista α2 central — reduz tônus simpático. Primeira escolha gestação por segurança (uso antigo, dados extensos)."},
 ],
+
+alertas:[
+{nivel:"crit", txt:"⚠ NUNCA reduzir PA agressivamente em pseudoemergência (PA alta sem lesão de órgão-alvo). Queda brusca → hipoperfusão coronariana/cerebral, especialmente no idoso. Captopril SL ROTINEIRO é cascata de prescrição — abandone."},
+{nivel:"crit", txt:"⚠ IECA/BRA: ⛔ CONTRAINDICADO em gestação (1º/2º/3º tri) — teratogênico. Suspender IMEDIATAMENTE se gestação confirmada/planejada. Trocar por metildopa, hidralazina, nifedipino retard."},
+{nivel:"warn", txt:"Tiazídico em idoso: vigilar hipoNa+, hipoK+, hiperuricemia, intolerância glicídica. Dose mínima eficaz (HCTZ 12,5–25 mg). Acima de 25 mg = mais efeitos adversos sem benefício adicional de PA."},
+{nivel:"warn", txt:"Betabloqueador NÃO é 1ª linha em HAS isolada (sem comorbidade) — diretrizes brasileira/europeia/americana convergem. Indicar quando há DAC, IC, FA, tremor essencial, enxaqueca. Em DPOC/asma: preferir cardiosseletivo (atenolol, metoprolol)."},
+{nivel:"warn", txt:"AINEs reduzem efeito anti-hipertensivo (especialmente IECA/BRA/tiazídico/espironolactona) E aumentam risco de IRA pré-renal em idosos. ⚠ Cascata clássica: AINE crônico → HAS resistente → adicionar droga em vez de retirar AINE."},
+{nivel:"info", txt:"Alvo em idoso frágil (≥80a, comorbidades, queda recorrente): tolerar até PAS <150 mmHg. Hipotensão postural é tão perigosa quanto HAS. Sempre medir PA em pé na consulta."},
+{nivel:"info", txt:"HAS resistente verdadeira (3 drogas em dose máxima incluindo diurético, ainda ≥140/90): investigar adesão, MAPA (jaleco branco?), causas secundárias (aldosteronismo primário, SAOS, doença renovascular, feocromocitoma). Adicionar espironolactona como 4ª droga."},
+],
 },
 
 /* ============================================================
@@ -80,6 +90,16 @@ mec:[
 {nome:"Insulina Regular (rápida)", como:"Insulina humana solúvel. Pico 2-4h, duração 6-8h. Usada pré-prandial em esquema basal-bolus."},
 {nome:"Sinvastatina (estatina)", como:"Inibe HMG-CoA redutase → reduz síntese hepática colesterol. Em DM2: reduz LDL ~30% + redução de evento CV mesmo com LDL 'normal' (efeito pleiotrópico)."},
 ],
+
+alertas:[
+{nivel:"crit", txt:"⚠ Metformina: SUSPENDER se TFGe <30 mL/min/1,73m². Entre 30-45: reduzir dose (max 1g/dia) e reavaliar trimestral. Risco de acidose lática se TFG baixa + intercorrência aguda (sepse, jejum, contraste iodado)."},
+{nivel:"crit", txt:"⚠ HbA1c ≥10% sintomática (poliúria, polidipsia, perda de peso) + glicemia ≥300 + cetonúria → iniciar INSULINA de imediato. NÃO insistir em escalonar VO. Considerar DM tipo 1 LADA ou descompensação grave de DM2."},
+{nivel:"warn", txt:"Glibenclamida em idoso: alto risco de hipoglicemia prolongada (especialmente com função renal limítrofe). Beers Criteria recomenda EVITAR. Preferir gliclazida MR (menor risco) ou trocar por metformina/SGLT2/GLP-1 se disponível."},
+{nivel:"warn", txt:"Insulina basal (NPH): hipoglicemias noturnas — orientar glicemia ao deitar, lanche se <100 mg/dL, reduzir dose se ocorrência. Dawn phenomenon vs efeito Somogyi: avaliar glicemia 3h da manhã."},
+{nivel:"warn", txt:"⚠ Hipoglicemia (glicose <70) em paciente diabético em tratamento — PROTOCOLO: 15 g de açúcar VO (3 colheres chá de açúcar ou 150 mL de suco), reavaliar em 15 min, repetir se necessário. Se inconsciente: glicose hipertônica IV. Hipoglicemia em idoso aumenta risco de demência e mortalidade — REVISAR esquema, NÃO intensificar."},
+{nivel:"info", txt:"Alvo HbA1c individualizado: jovem sem comorbidade <7%; idoso saudável <7,5%; idoso frágil ou com hipoglicemias <8% (até 8,5%). Tratar a doença, não o número. NNT para reduzir HbA1c em 1% existe — para reduzir microalbuminúria muito maior."},
+{nivel:"info", txt:"SGLT2 (dapa/empa) e GLP-1 (liraglutida/semaglutida): hoje 1ª linha em DM2 com RCV alto, IC ou DRC, segundo SBD/ADA/EASD. CEAF tem dapagliflozina/empagliflozina/liraglutida com PCDT (DM2 + RCV alto OU IC OU DRC). PFPB não cobre nenhum."},
+],
 },
 
 /* ============================================================
@@ -108,6 +128,13 @@ prog:"SM duplica risco de DM2 e DCV em 5-10 anos. Mudança de estilo de vida sus
 acomp:"Mesmo cronograma de HAS+DM2 conforme componentes. Reavaliar SM (cintura + componentes) anualmente.",
 p4:"NÃO 'tratar' síndrome metabólica como entidade — tratar componentes. NÃO indicar estatina rotineiramente sem cálculo de risco CV global (ER/Framingham/PCE). NÃO 'prevenir DM2' com metformina em todo pré-DM — apenas em IMC>35, <60a, DM gestacional prévio (DPP study). NÃO indicar polivitamínico/suplemento como 'cura' da SM.",
 diretriz:"[I Diretriz Brasileira de Diagnóstico e Tratamento da Síndrome Metabólica — SBC 2005 + atualizações] [IDF Consensus Worldwide Definition 2009] [DUNCAN 5ª ed, cap. Obesidade e Síndrome Metabólica]",
+
+alertas:[
+{nivel:"warn", txt:"⚠ Síndrome metabólica NÃO é doença — é AGRUPAMENTO de fatores de risco CV. Diagnóstico ≠ prescrição automática. Tratar cada componente conforme alvo individual; não \"tratar o diagnóstico\"."},
+{nivel:"warn", txt:"\"Pré-diabetes\" (glicemia 100-125 ou HbA1c 5,7-6,4%): muitos NÃO progridem. Intervenção 1ª linha é MUDANÇA DE ESTILO DE VIDA, não metformina rotineira. Metformina só se IMC ≥35, <60 anos, mulher com história de DMG, ou progressão clara apesar de MEV."},
+{nivel:"info", txt:"Cintura abdominal é marcador mais sensível que IMC para risco CV em síndrome metabólica. Aferir SEMPRE na consulta — não esquecer."},
+{nivel:"info", txt:"Estatina em prevenção primária: calcular risco CV (Framingham ou ASCVD) antes de prescrever. NNT alto para benefício em baixo risco — discutir compartilhada. Em alto risco, NNT cai dramaticamente."},
+],
 },
 
 );

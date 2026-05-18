@@ -112,7 +112,7 @@ exames:[
 "⚠ CARBAPENÊMICOS (Meropenem, Imipenem, Ertapenem) — referência",
 "PEGA BEM: ⚠ ULTRA AMPLO — G+, G-, anaeróbios, ESBL. Meropenem cobre Pseudomonas (Ertapenem NÃO)",
 "NÃO PEGA: MRSA, VRE, Stenotrophomonas, atípicos",
-"USO PRINCIPAL: ⚠ ESBL, infecções polimicrobianas graves hospitalares — RESERVAR para uso hospitalar específico",
+"USO PRINCIPAL: ⚠ ESBL, infecções polimicrobianas graves hospitalares — RESERVAR para uso hospitalar específico"
 ],
 diretriz:"Sanford Guide 2025; IDSA; Diretrizes Brasileiras; PCDT-MS"
 },
@@ -255,7 +255,7 @@ exames:[
 
 "⚠ HANSENÍASE",
 "PB (paucibacilar): RIFAMPICINA + DAPSONA × 6 meses (PCDT-MS)",
-"MB (multibacilar): RIFAMPICINA + DAPSONA + CLOFAZIMINA × 12 meses",
+"MB (multibacilar): RIFAMPICINA + DAPSONA + CLOFAZIMINA × 12 meses"
 ],
 diretriz:"Sanford Guide 2025; PCDT-MS IST 2024; PCDT-MS TB/Hanseníase/Lepto; IDSA; Diretrizes Brasileiras"
 },
@@ -272,11 +272,11 @@ exames:[
 "- Horário da decisão de tratamento",
 "- Horário do alteplase (alvo ≤60 min porta-agulha)",
 "- NIHSS",
-"- Critérios para trombólise (inclusão/exclusão)",
+"- Critérios para trombólise (inclusão/exclusão)"
 ],
 
 rx:[
-{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar e adaptar",via:"—",o:"Documentação medicolegal crítica."},
+{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar e adaptar",via:"—",o:"Documentação medicolegal crítica."}
 ],
 
 alertas:[
@@ -288,16 +288,12 @@ alertas:[
 {t:"info",x:"OU 'Último visto bem' às ___:___"},
 {t:"info",x:"Sintomas iniciais: [hemiplegia/parestesia/afasia/disartria/desvio rima/diplopia/tontura/cefaleia]"},
 {t:"info",x:"Progressão dos sintomas: [evolução súbita/progressiva, sintomas presentes ainda?]"},
-{t:"info",x:""},
 {t:"info",x:"Antecedentes: HAS, DM, DLP, FA, AVC prévio, IAM, anticoagulado [varfarina/DOAC]"},
 {t:"info",x:"Medicações: ___"},
-{t:"info",x:""},
 {t:"info",x:"SINAIS VITAIS NA CHEGADA (___:___ — porta):"},
 {t:"info",x:"PA ___/___mmHg FC ___bpm FR ___irpm Tax ___ SpO2 ___% Glasgow ___ Glicemia capilar ___"},
-{t:"info",x:""},
 {t:"info",x:"NIHSS na admissão: ___ pontos"},
 {t:"info",x:"(detalhar componentes principais)"},
-{t:"info",x:""},
 {t:"info",x:"EXAME FÍSICO:"},
 {t:"info",x:"- NEURO:"},
 {t:"info",x:"  Pares cranianos: [paralisia facial central D/E, desvio olhar para D/E, hemianopsia]"},
@@ -305,22 +301,18 @@ alertas:[
 {t:"info",x:"  Sensitivo: [perda em hemicorpo]"},
 {t:"info",x:"  Linguagem: [afasia expressiva/receptiva/global/disartria]"},
 {t:"info",x:"  Coordenação: [ataxia]"},
-{t:"info",x:""},
 {t:"info",x:"TC CRÂNIO (___:___) — tempo porta-TC: ___min"},
 {t:"info",x:"Achados: [normal/hipodensidade em ___/hemorragia em ___/efeito de massa/desvio linha média]"},
 {t:"info",x:"ASPECTS: ___/10"},
-{t:"info",x:""},
 {t:"info",x:"AVALIAÇÃO:"},
 {t:"info",x:"[ ] AVC ISQUÊMICO presumido"},
 {t:"info",x:"[ ] AVC HEMORRÁGICO confirmado em TC"},
 {t:"info",x:"Janela terapêutica: [___ minutos desde último visto bem]"},
-{t:"info",x:""},
 {t:"info",x:"DECISÃO DE TROMBÓLISE IV (AVC isquêmico):"},
 {t:"info",x:"Critérios de inclusão verificados:"},
 {t:"info",x:"[X] AVC isquêmico com déficit neurológico mensurável"},
 {t:"info",x:"[X] Início <4,5h do tratamento"},
 {t:"info",x:"[X] Idade ≥18 anos"},
-{t:"info",x:""},
 {t:"info",x:"Critérios de exclusão verificados (TODOS AUSENTES):"},
 {t:"info",x:"[ ] Hemorragia em TC — Ausente"},
 {t:"info",x:"[ ] AVC ou TCE grave em 3 meses — Ausente"},
@@ -329,26 +321,21 @@ alertas:[
 {t:"info",x:"[ ] PAS>185 ou PAD>110 — Controlada"},
 {t:"info",x:"[ ] Glicemia <50 ou >400 — Ausente"},
 {t:"info",x:"[ ] Anticoagulação plena (HNF<48h, DOAC<48h) — Ausente"},
-{t:"info",x:""},
 {t:"info",x:"DECISÃO: [TROMBÓLISE INDICADA] / [TROMBÓLISE NÃO INDICADA: motivo ___]"},
-{t:"info",x:""},
 {t:"info",x:"CONDUTA (com horários):"},
 {t:"info",x:"___:___  Alteplase 0,9mg/kg = ___mg IV (10% em bolus 1min, 90% em 60min)"},
 {t:"info",x:"   TEMPO PORTA-AGULHA: ___min"},
 {t:"info",x:"___:___  PA monitorizada (alvo <180/105)"},
 {t:"info",x:"___:___  NIHSS reavaliado: ___"},
-{t:"info",x:""},
 {t:"info",x:"CRITÉRIOS PARA TROMBECTOMIA MECÂNICA:"},
 {t:"info",x:"[ ] Oclusão de grande artéria (ACM M1, ACA, CI) em TC/angio-TC"},
 {t:"info",x:"[ ] NIHSS ≥6"},
 {t:"info",x:"[ ] ASPECTS ≥6"},
 {t:"info",x:"[ ] Janela <6h (ou até 24h em janela estendida com mismatch)"},
 {t:"info",x:"Encaminhamento centro especializado: ___:___"},
-{t:"info",x:""},
 {t:"info",x:"COMUNICAÇÃO:"},
 {t:"info",x:"Riscos da trombólise (hemorragia 6%) explicados. Família ciente, concorda com tratamento."},
-{t:"info",x:""},
-{t:"info",x:"ASSINATURA + CRM"},
+{t:"info",x:"ASSINATURA + CRM"}
 ],
 
 fisio:"Tempo é cérebro: cada minuto de AVC isquêmico = 1,9 milhão de neurônios mortos. Janela rígida de 4,5h para trombólise IV (até 24h para trombectomia em casos selecionados). Documentação meticulosa de TEMPOS + CRITÉRIOS é defesa medicolegal essencial.",
@@ -371,11 +358,11 @@ exames:[
 "- Horário de fibrinolítico (alvo ≤30 min) ou de balão (alvo ≤90 min)",
 "- Justificativa para a escolha de estratégia",
 "- Score de risco (GRACE/TIMI)",
-"- Contraindicações para reperfusão",
+"- Contraindicações para reperfusão"
 ],
 
 rx:[
-{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar e adaptar",via:"—",o:"Imprimir e colar no prontuário."},
+{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar e adaptar",via:"—",o:"Imprimir e colar no prontuário."}
 ],
 
 alertas:[
@@ -389,31 +376,24 @@ alertas:[
 {t:"info",x:"Fatores de risco CV: [HAS / DM / DLP / tabagismo (___ maços-ano) / história familiar / IRC / obesidade / sedentarismo]"},
 {t:"info",x:"Cardiopatia prévia: [sim/não] — [IAM prévio data / angioplastia / revascularização]"},
 {t:"info",x:"Uso de drogas (cocaína recente?): [sim/não]"},
-{t:"info",x:""},
 {t:"info",x:"SINAIS VITAIS:"},
 {t:"info",x:"PA ___/___mmHg (ambos braços: D___/___, E___/___) FC ___bpm FR ___irpm Tax ___ SpO2 ___%"},
-{t:"info",x:""},
 {t:"info",x:"EXAME FÍSICO:"},
 {t:"info",x:"- ACV: BNF, [B3/B4 audível?], sopros, pulsos periféricos simétricos, sinais de IC?"},
 {t:"info",x:"- AR: MV bilateral, [estertores em bases (Killip)]?"},
 {t:"info",x:"- MMII: edema, perfusão"},
-{t:"info",x:""},
 {t:"info",x:"CLASSIFICAÇÃO KILLIP: [I/II/III/IV]"},
-{t:"info",x:""},
 {t:"info",x:"ECG (___:___) — Tempo porta-ECG: ___min"},
 {t:"info",x:"Ritmo: ___ FC: ___"},
 {t:"info",x:"Achados: [supra ST em ___mm em DII-III-aVF / V1-V4 / V5-V6 / etc] OU [infra ST / T invertida / sem alterações isquêmicas]"},
-{t:"info",x:""},
 {t:"info",x:"BIOMARCADORES:"},
 {t:"info",x:"Troponina ___ (cutoff ___) — coletada [hora]"},
 {t:"info",x:"Repetir em 3h: ___ "},
-{t:"info",x:""},
 {t:"info",x:"DIAGNÓSTICO:"},
 {t:"info",x:"[ ] STEMI parede [___] - PERFUSÃO URGENTE"},
 {t:"info",x:"[ ] NSTEMI alto risco (GRACE ≥140 ou critérios MAJOR)"},
 {t:"info",x:"[ ] NSTEMI intermediário"},
 {t:"info",x:"[ ] Angina instável"},
-{t:"info",x:""},
 {t:"info",x:"CONDUTA INICIAL (registrada com horário):"},
 {t:"info",x:"___:___  AAS 300mg VO mastigado"},
 {t:"info",x:"___:___  Clopidogrel 300mg VO (or ticagrelor 180mg, ou prasugrel se ICP)"},
@@ -421,7 +401,6 @@ alertas:[
 {t:"info",x:"___:___  Heparina HBPM ___mg SC (or HNF ___UI bolus + ___UI/h BIC)"},
 {t:"info",x:"___:___  Nitrato sl/IV se PAS≥110, sem disfunção VD"},
 {t:"info",x:"___:___  Morfina IV ___mg titulada (NUNCA antes de avaliar nitrato)"},
-{t:"info",x:""},
 {t:"info",x:"ESTRATÉGIA DE REPERFUSÃO (STEMI):"},
 {t:"info",x:"[ ] ANGIOPLASTIA PRIMÁRIA: tempo porta-balão estimado ___min"},
 {t:"info",x:"   Hemodinâmica acionada às ___:___"},
@@ -433,17 +412,14 @@ alertas:[
 {t:"info",x:"   [ ] Sangramento ativo — Ausente"},
 {t:"info",x:"   [ ] Trauma/cirurgia recente — Ausente"},
 {t:"info",x:"   [ ] PA >180/110 controlada — Sim"},
-{t:"info",x:""},
 {t:"info",x:"AVALIAÇÃO DE REPERFUSÃO (90min pós-fibrinólise):"},
 {t:"info",x:"- Resolução do supra ≥50%: [sim/não]"},
 {t:"info",x:"- Melhora da dor: [sim/não]"},
 {t:"info",x:"- Arritmia de reperfusão: [sim/não]"},
 {t:"info",x:"Falha de reperfusão → ICP de resgate transferida"},
-{t:"info",x:""},
 {t:"info",x:"COMUNICAÇÃO:"},
 {t:"info",x:"Familiares informados sobre diagnóstico, prognóstico, riscos da intervenção. Concordância obtida."},
-{t:"info",x:""},
-{t:"info",x:"ASSINATURA + CARIMBO + CRM"},
+{t:"info",x:"ASSINATURA + CARIMBO + CRM"}
 ],
 
 fisio:"Tempo é músculo. STEMI tem mortalidade que aumenta 1% a cada 30 min de atraso. Documentar TEMPOS é medicolegal essencial. Diretrizes brasileiras (SBC) e internacionais (ESC) definem alvos rígidos.",
@@ -465,11 +441,11 @@ exames:[
 "- Justificativa para diagnóstico",
 "- Justificativa para CADA conduta (especialmente decisões irreversíveis)",
 "- Reavaliação após intervenções",
-"- Plano para próximas 6-12h",
+"- Plano para próximas 6-12h"
 ],
 
 rx:[
-{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar bloco abaixo para o prontuário",via:"—",o:"Adaptar conforme paciente. Manter elementos medicolegais."},
+{etapa:"inicial", d:"TEMPLATE COMPLETO",do:"Copiar bloco abaixo para o prontuário",via:"—",o:"Adaptar conforme paciente. Manter elementos medicolegais."}
 ],
 
 alertas:[
@@ -482,10 +458,8 @@ alertas:[
 {t:"info",x:"PACIENTE: ___________________________________"},
 {t:"info",x:"IDADE: ____ anos    SEXO: ______    PESO: ____kg"},
 {t:"info",x:"LEITO/Nº PRONTUÁRIO: ________________________"},
-{t:"info",x:""},
 {t:"info",x:"S — SUBJETIVO (HMA / queixas atuais)"},
 {t:"info",x:"Paciente com [tempo] de evolução de [sintomas]. Procurou atendimento por [motivo]. Refere [associados]. Nega [exclusões relevantes: sangramento, dor torácica, etc]. Antecedentes pessoais: [HAS/DM/cardiopatia/etc]. Medicações em uso: ___. Alergias: ___."},
-{t:"info",x:""},
 {t:"info",x:"O — OBJETIVO"},
 {t:"info",x:"Sinais vitais: PA ___/___ mmHg, FC ___ bpm, FR ___ irpm, Tax ___°C, SpO2 ___% em [ar amb/O2 ___L]"},
 {t:"info",x:"Glasgow ___/15 (E_V_M_). EVA dor: ___/10. Glicemia capilar: ___mg/dL"},
@@ -496,7 +470,6 @@ alertas:[
 {t:"info",x:"- ABD: plano, RHA+, doloroso à palpação em [região], [sem/com] sinais de irritação peritoneal, [sem] visceromegalias"},
 {t:"info",x:"- NEURO: orientado em tempo e espaço/confuso, [sem/com] déficit focal, pupilas isocóricas e fotorreagentes"},
 {t:"info",x:"- MMII: [sem/com] edema, [sem/com] sinais de TVP"},
-{t:"info",x:""},
 {t:"info",x:"Exames laboratoriais relevantes ([data/hora]):"},
 {t:"info",x:"- Hb ___ Ht ___ Leuco ___ (___% bastões) Plaq ___"},
 {t:"info",x:"- Cr ___ Ur ___ Na ___ K ___ Cl ___ Ca ___"},
@@ -504,36 +477,29 @@ alertas:[
 {t:"info",x:"- Gasometria arterial: pH ___ pCO2 ___ pO2 ___ HCO3 ___ BE ___"},
 {t:"info",x:"- TAP/INR ___ TTPA ___"},
 {t:"info",x:"- EAS: ___ leucócitos, ___ nitritos, ___"},
-{t:"info",x:""},
 {t:"info",x:"Imagens: [RX tórax/USG/TC] — [achados]"},
-{t:"info",x:""},
 {t:"info",x:"A — AVALIAÇÃO"},
 {t:"info",x:"Paciente em quadro de SEPSE com critérios:"},
 {t:"info",x:"[ ] qSOFA ≥2 (FR≥22, PAS≤100, alteração mental)"},
 {t:"info",x:"[ ] SOFA escore ___ (descrever componentes)"},
 {t:"info",x:"Foco PROVÁVEL: [pulmonar/urinário/abdominal/pele/meningite/desconhecido]"},
 {t:"info",x:"Justificativa do foco: ___ (achados clínicos + exames)"},
-{t:"info",x:""},
 {t:"info",x:"[ ] Choque séptico (necessita vasopressor + lactato >2 apesar de volume)"},
-{t:"info",x:""},
 {t:"info",x:"P — PLANO"},
 {t:"info",x:"BUNDLE HORA-1:"},
 {t:"info",x:"1. Coletado lactato ([hora]) e hemoculturas 2 pares ([hora])"},
 {t:"info",x:"2. Iniciado ATB empírico [droga/dose] em [hora] — escolha justificada por: [foco suspeito + epidemiologia local + alergias]"},
 {t:"info",x:"3. Cristaloide [Ringer/SF] 30 mL/kg = ___ mL infundido em ___min"},
 {t:"info",x:"4. [SE CHOQUE] Noradrenalina iniciada em [hora], dose atual ___ mcg/kg/min, alvo PAM ≥65 mmHg"},
-{t:"info",x:""},
 {t:"info",x:"REAVALIAÇÕES PROGRAMADAS:"},
 {t:"info",x:"- Lactato em 2h"},
 {t:"info",x:"- Avaliação de responsividade a volume (USG-VCI, eco, débito urinário)"},
 {t:"info",x:"- Ajuste vasopressor"},
 {t:"info",x:"- Solicitar [exames complementares]"},
-{t:"info",x:""},
 {t:"info",x:"COMUNICAÇÃO FAMILIAR:"},
 {t:"info",x:"Familiares informados sobre gravidade, prognóstico reservado, intervenções propostas. [Concordaram/manifestaram dúvidas/recusam-se a]."},
-{t:"info",x:""},
 {t:"info",x:"ASSINATURA + CARIMBO + CRM"},
-{t:"info",x:"═══════════════════════════════════════════════"},
+{t:"info",x:"═══════════════════════════════════════════════"}
 ],
 
 fisio:"Justificativa medicolegal: registrar a SEQUÊNCIA do raciocínio + intervenções tempo-críticas (lactato, hemoculturas, ATB, volume) é crucial em sepse. Em mortalidade ou complicação, o prontuário é a única defesa do plantonista. SBA — 'o que não está escrito não foi feito'.",
@@ -575,7 +541,7 @@ exames:[
 "- SIVEP-Gripe: SRAG (vigilância sentinela)",
 "- e-SUS Notifica: COVID-19 (atualmente integrado SINAN)",
 "- Telefone à vigilância epidemiológica municipal: imediata",
-"- Ficha SINAN específica: cada agravo tem ficha própria",
+"- Ficha SINAN específica: cada agravo tem ficha própria"
 ],
 
 rx:[
@@ -587,14 +553,14 @@ rx:[
 
 {etapa:"adj", d:"VIOLÊNCIA — Notificação OBRIGATÓRIA",do:"Toda suspeita: sexual, física, psicológica, negligência, financeira",via:"—",o:"Crianças/adolescentes/idosos: também Conselho Tutelar/Delegacia Idoso. NÃO depende de denúncia da vítima — é obrigação do médico (Lei 12.845/2013)."},
 {etapa:"adj", d:"VIOLÊNCIA SEXUAL — Profilaxias",do:"Anticoncepção emergência + IST + HIV PEP + Hepatite B (vacina + Ig se não-imune)",via:"VO/IV",o:"≤72h: tudo viável. Coleta de evidências (perícia). Acolhimento ético. Encaminhar serviço de violência sexual de referência."},
-{etapa:"adj", d:"ÓBITO MATERNO — Notificação OBRIGATÓRIA",do:"Toda morte de mulher grávida ou até 42 dias após parto/abortamento",via:"—",o:"Investigação obrigatória (Comitê de Mortalidade Materna). Independente da causa (acidente, suicídio, doença não-obstétrica também)."},
+{etapa:"adj", d:"ÓBITO MATERNO — Notificação OBRIGATÓRIA",do:"Toda morte de mulher grávida ou até 42 dias após parto/abortamento",via:"—",o:"Investigação obrigatória (Comitê de Mortalidade Materna). Independente da causa (acidente, suicídio, doença não-obstétrica também)."}
 ],
 
 alertas:[
 {t:"crit",x:"NÃO NOTIFICAR é INFRAÇÃO ÉTICA (CFM Res. 2.217/2018) e ADMINISTRATIVA (Lei 6.259/1975). Pode gerar processo CRM + sanção administrativa do MS."},
 {t:"crit",x:"VIOLÊNCIA: notificação NÃO é denúncia policial. Não exige consentimento da vítima. Sigilo médico não impede notificação à vigilância em saúde."},
 {t:"warn",x:"DUPLICIDADE: se outro profissional já notificou, NÃO é problema. Vigilância identifica e consolida. Melhor duas notificações que zero."},
-{t:"info",x:"Notificar IMEDIATAMENTE em surto suspeito (≥2 casos ligados) mesmo de doenças não-listadas. Surto = evento de saúde pública por si só."},
+{t:"info",x:"Notificar IMEDIATAMENTE em surto suspeito (≥2 casos ligados) mesmo de doenças não-listadas. Surto = evento de saúde pública por si só."}
 ],
 
 fisio:"Notificação compulsória é instrumento da Vigilância Epidemiológica. Permite: detecção precoce de surtos, monitoramento de doenças, planejamento de intervenções, controle de focos. Lei 6.259/1975 e Portarias MS atualizam lista periodicamente.",
@@ -614,38 +580,32 @@ exames:[
 "- Tolera VO (sem vômitos persistentes)",
 "- Diurese adequada",
 "- AUSÊNCIA DE SINAIS DE ALARME: dor abdominal intensa/contínua, vômitos persistentes, sangramento mucoso, letargia/irritabilidade, hipotensão postural, hepatomegalia >2cm, ↑Ht súbita com ↓plaquetas",
-"- Hematócrito estável",
+"- Hematócrito estável"
 ],
 
 rx:[
-{etapa:"inicial", d:"RECEITUÁRIO + ORIENTAÇÕES",do:"Imprimir e entregar",via:"—",o:"Reavaliação diária OBRIGATÓRIA até 48h pós-defervescência."},
+{etapa:"inicial", d:"RECEITUÁRIO + ORIENTAÇÕES",do:"Imprimir e entregar",via:"—",o:"Reavaliação diária OBRIGATÓRIA até 48h pós-defervescência."}
 ],
 
 alertas:[
 {t:"info",x:"═══════════════════════════════════════════════"},
 {t:"info",x:"DENGUE — ALTA + ORIENTAÇÕES"},
 {t:"info",x:"═══════════════════════════════════════════════"},
-{t:"info",x:""},
 {t:"info",x:"Paciente: _____________________________________"},
 {t:"info",x:"Dx: Dengue (CID A90 — clássico / A91 — hemorrágica)"},
 {t:"info",x:"Notificada no SINAN — data: ___"},
-{t:"info",x:""},
 {t:"info",x:"HIDRATAÇÃO ORAL (FUNDAMENTAL):"},
 {t:"info",x:"1. ADULTO: 60-80 mL/kg/dia, sendo 1/3 SRO (sal de reidratação oral) + 2/3 água/sucos"},
 {t:"info",x:"   Pacientes 60kg → 4-5 L/dia"},
 {t:"info",x:"2. CRIANÇA <12 anos: 10 mL/kg em 1h, depois 100 mL/kg em 24h, sendo 1/3 SRO"},
-{t:"info",x:""},
 {t:"info",x:"SINTOMÁTICOS:"},
 {t:"info",x:"3. Paracetamol 500-750mg ........... 1 cp VO 6/6h se febre ou dor (máx 4g/d)"},
 {t:"info",x:"   OU Dipirona 500mg ............... 1 cp VO 6/6h se necessário"},
-{t:"info",x:""},
 {t:"info",x:"⚠ MEDICAMENTOS PROIBIDOS:"},
 {t:"info",x:"- AAS (Aspirina) — risco de sangramento + Síndrome de Reye"},
 {t:"info",x:"- AINEs (ibuprofeno, diclofenaco, nimesulida) — risco renal + sangramento"},
 {t:"info",x:"- Corticoides — não usar em dengue (controverso, exceto choque)"},
-{t:"info",x:""},
 {t:"info",x:"REPOUSO RELATIVO. ALIMENTAÇÃO LEVE."},
-{t:"info",x:""},
 {t:"info",x:"⚠⚠⚠ SINAIS DE ALARME (RETORNAR IMEDIATAMENTE):"},
 {t:"info",x:"- Dor abdominal intensa ou contínua"},
 {t:"info",x:"- Vômitos persistentes (≥3 episódios/h)"},
@@ -656,24 +616,19 @@ alertas:[
 {t:"info",x:"- Confusão mental"},
 {t:"info",x:"- Pele fria, suor, palidez (sinais de choque)"},
 {t:"info",x:"- Tontura ao levantar"},
-{t:"info",x:""},
 {t:"info",x:"⚠ DIA CRÍTICO: 4-7 dia da doença (queda da febre)"},
 {t:"info",x:"   90% das complicações ocorrem nesse período."},
-{t:"info",x:""},
 {t:"info",x:"REAVALIAÇÃO MÉDICA:"},
 {t:"info",x:"GRUPO A: retorno em 24h se persistência da febre, ou no 1º dia sem febre."},
 {t:"info",x:"GRUPO B: reavaliação DIÁRIA até 48h pós-defervescência."},
-{t:"info",x:""},
 {t:"info",x:"REPETIR EXAMES:"},
 {t:"info",x:"Hemograma a cada 24h até 48h pós-defervescência (Ht/plaquetas)"},
-{t:"info",x:""},
 {t:"info",x:"PROFILAXIA DOMICILIAR:"},
 {t:"info",x:"- Eliminar criadouros do Aedes (água parada)"},
 {t:"info",x:"- Uso de repelente"},
 {t:"info",x:"- Familiares com sintomas: avaliar"},
-{t:"info",x:""},
 {t:"info",x:"Data: __/__/____"},
-{t:"info",x:"Médico: ______________________ CRM: _______"},
+{t:"info",x:"Médico: ______________________ CRM: _______"}
 ],
 
 fisio:"Dengue tem 3 fases: febril (1-5 dias), crítica (5-7 dias — extravasamento plasmático), recuperação (>7 dias). Defervescência é momento CRÍTICO — paciente pode parecer melhor mas estar entrando em choque. Reavaliação diária é essencial no grupo B.",
@@ -692,55 +647,47 @@ exames:[
 "- Desidratação leve corrigida ou ausente",
 "- Tolera VO",
 "- Sem sinais de gravidade (choque, alteração consciência, sangue nas fezes intenso)",
-"- Suporte familiar / acesso a retorno",
+"- Suporte familiar / acesso a retorno"
 ],
 
 rx:[
-{etapa:"inicial", d:"PRESCRIÇÃO DE ALTA",do:"Modelo a copiar",via:"—",o:"Adaptar peso e idade."},
+{etapa:"inicial", d:"PRESCRIÇÃO DE ALTA",do:"Modelo a copiar",via:"—",o:"Adaptar peso e idade."}
 ],
 
 alertas:[
 {t:"info",x:"═══════════════════════════════════════════════"},
 {t:"info",x:"GASTROENTERITE — ALTA + ORIENTAÇÕES"},
 {t:"info",x:"═══════════════════════════════════════════════"},
-{t:"info",x:""},
 {t:"info",x:"Dx: Gastroenterite aguda (CID A09)"},
-{t:"info",x:""},
 {t:"info",x:"HIDRATAÇÃO ORAL (PRIORIDADE):"},
 {t:"info",x:"1. SRO (sal de reidratação oral, sachê na água)"},
 {t:"info",x:"   ADULTO: 200 mL após cada episódio de diarreia/vômito"},
 {t:"info",x:"   CRIANÇA: 50-100 mL/kg em 4 horas se desidratação leve"},
-{t:"info",x:""},
 {t:"info",x:"SINTOMÁTICOS:"},
 {t:"info",x:"2. Ondansetrona 4-8mg ........... 1 cp VO 8/8h se vômitos (máx 24mg/d)"},
 {t:"info",x:"   ou Bromoprida 10mg ............. 1 cp VO 8/8h"},
 {t:"info",x:"3. Racecadotrila 100mg ........... 1 cp VO 8/8h por até 7 dias (anti-secretor)"},
 {t:"info",x:"4. Probiótico: Saccharomyces boulardii ou Lactobacillus ........... 1 sachê VO 1-2×/d × 5 dias"},
-{t:"info",x:""},
 {t:"info",x:"⚠ EVITAR:"},
 {t:"info",x:"- Loperamida em diarreia COM sangue ou febre (risco megacólon)"},
 {t:"info",x:"- Antibiótico NÃO está indicado na maioria (vírus 80%)"},
 {t:"info",x:"  Indicar ATB SE: febre alta + leucócitos fecais + disenteria + viagem recente + imunossuprimido"},
-{t:"info",x:""},
 {t:"info",x:"ALIMENTAÇÃO:"},
 {t:"info",x:"- Dieta normal (NÃO suspender). Evitar gorduras, doces, lactose se intolerância."},
 {t:"info",x:"- Em crianças: MANTER amamentação."},
 {t:"info",x:"- BRAT (banana, arroz, maçã, torrada) — útil mas não obrigatório."},
-{t:"info",x:""},
 {t:"info",x:"⚠ SINAIS DE ALARME (retornar):"},
 {t:"info",x:"- Vômitos persistentes (>24h)"},
 {t:"info",x:"- Sangue nas fezes vermelho-vivo"},
 {t:"info",x:"- Febre persistente >48h"},
 {t:"info",x:"- Sinais de desidratação grave: pouca urina, mucosas secas, sonolência"},
 {t:"info",x:"- Em criança: choro sem lágrimas, fontanela deprimida"},
-{t:"info",x:""},
 {t:"info",x:"PROFILAXIA — HIGIENE:"},
 {t:"info",x:"- Lavar as mãos com sabão (especialmente antes refeições e após banheiro)"},
 {t:"info",x:"- Água filtrada/fervida"},
 {t:"info",x:"- Alimentos bem cozidos"},
-{t:"info",x:""},
 {t:"info",x:"Data: __/__/____"},
-{t:"info",x:"Médico: ______________________ CRM: _______"},
+{t:"info",x:"Médico: ______________________ CRM: _______"}
 ],
 
 fisio:"Gastroenterite: 80% viral (rotavírus, norovírus, adenovírus). 20% bacteriana (E. coli, Salmonella, Shigella, Campylobacter). Manejo é hidratação. ATB raramente indicado e pode piorar (S. enterotoxigênica produz toxina shiga = SHU).",
@@ -760,58 +707,46 @@ exames:[
 "- Sem dor lombar/Giordano (excluir pielonefrite)",
 "- Sem comorbidade grave / gestação avançada",
 "- Capacidade de tomada medicação VO",
-"- Acesso a reavaliação se piora",
+"- Acesso a reavaliação se piora"
 ],
 
 rx:[
-{etapa:"inicial", d:"RECEITUÁRIO MODELO",do:"Adaptar conforme paciente",via:"—",o:"Imprimir em receituário institucional."},
+{etapa:"inicial", d:"RECEITUÁRIO MODELO",do:"Adaptar conforme paciente",via:"—",o:"Imprimir em receituário institucional."}
 ],
 
 alertas:[
 {t:"info",x:"═══════════════════════════════════════════════"},
 {t:"info",x:"RECEITUÁRIO MÉDICO"},
 {t:"info",x:"═══════════════════════════════════════════════"},
-{t:"info",x:""},
 {t:"info",x:"Paciente: _____________________________________"},
-{t:"info",x:""},
 {t:"info",x:"Dx: Infecção do Trato Urinário Baixa (Cistite) — CID N30.0"},
-{t:"info",x:""},
 {t:"info",x:"OPÇÃO 1 — Nitrofurantoína (preferencial; mulher não-gestante)"},
 {t:"info",x:"1. Nitrofurantoína 100mg ........... 1 cápsula VO 6/6h por 5 dias"},
-{t:"info",x:""},
 {t:"info",x:"OPÇÃO 2 — Fosfomicina (dose única, alta adesão)"},
 {t:"info",x:"1. Fosfomicina trometamol 3g ....... 1 sachê VO dose única (diluir em água)"},
-{t:"info",x:""},
 {t:"info",x:"OPÇÃO 3 — SMX-TMP (só se sensibilidade local <20% resist)"},
 {t:"info",x:"1. SMX-TMP 800/160mg ............... 1 cp VO 12/12h por 3 dias"},
-{t:"info",x:""},
 {t:"info",x:"OPÇÃO 4 — Ciprofloxacino (RESERVAR — alta resistência)"},
 {t:"info",x:"1. Ciprofloxacino 500mg ............ 1 cp VO 12/12h por 3 dias"},
-{t:"info",x:""},
 {t:"info",x:"GESTANTE — Cefalexina (1ª linha) ou Amoxicilina+clavulanato"},
 {t:"info",x:"1. Cefalexina 500mg ................ 1 cp VO 6/6h por 7 dias"},
-{t:"info",x:""},
 {t:"info",x:"ADJUVANTES (todos):"},
 {t:"info",x:"2. Hidratação oral abundante (≥2L/d)"},
 {t:"info",x:"3. Fenazopiridina 100mg ............ 1 cp VO 8/8h por 2 dias (analgésico urinário; urina alaranjada)"},
-{t:"info",x:""},
 {t:"info",x:"ORIENTAÇÕES NÃO-FARMACOLÓGICAS:"},
 {t:"info",x:"- Aumentar ingesta hídrica (≥2 litros/dia)"},
 {t:"info",x:"- NÃO segurar a urina"},
 {t:"info",x:"- Higiene de frente para trás após uso do banheiro"},
 {t:"info",x:"- Esvaziar bexiga antes e após relação sexual"},
-{t:"info",x:""},
 {t:"info",x:"SINAIS DE ALARME (retornar ao PS):"},
 {t:"info",x:"- Febre, calafrios"},
 {t:"info",x:"- Dor lombar"},
 {t:"info",x:"- Vômitos"},
 {t:"info",x:"- Sangue na urina persistente"},
 {t:"info",x:"- Sem melhora em 48-72h"},
-{t:"info",x:""},
 {t:"info",x:"Solicitar urocultura de controle apenas se: gestante, ITU recorrente, falha terapêutica."},
-{t:"info",x:""},
 {t:"info",x:"Data: __/__/____"},
-{t:"info",x:"Médico: _______________________ CRM: ______"},
+{t:"info",x:"Médico: _______________________ CRM: ______"}
 ],
 
 fisio:"ITU baixa não-complicada: tratamento empírico orientado por epidemiologia local. Resistência brasileira ao SMX-TMP e ciprofloxacino é alta. Nitrofurantoína e fosfomicina mantêm boa sensibilidade.",
@@ -831,7 +766,7 @@ exames:[
 "- Coagulograma basal",
 "- Plaquetas (HIT)",
 "- Risco hemorrágico (HAS-BLED em FA)",
-"- Comorbidades + medicações concomitantes (interações)",
+"- Comorbidades + medicações concomitantes (interações)"
 ],
 
 rx:[
@@ -847,7 +782,7 @@ rx:[
 {etapa:"adj", d:"VITAMINA K (fitomenadiona)",do:"5-10 mg VO (preferencial) ou IV lento. Em sangramento: 10 mg IV",via:"VO/IV",o:"REVERTE VARFARINA em 12-24h. NÃO uso emergencial. Combina com PCC ou PFC em sangramento grave."},
 {etapa:"adj", d:"CONCENTRADO COMPLEXO PROTROMBÍNICO (PCC)",do:"25-50 UI/kg IV (4 fatores: II, VII, IX, X)",via:"IV",o:"REVERSÃO de varfarina + Xa-inibidores. Efeito em 15 min. Preferível a PFC (menor volume, mais rápido). Risco: trombose. Dose conforme INR."},
 {etapa:"adj", d:"IDARUCIZUMABE (Praxbind)",do:"5 g IV (2 frascos × 2,5 g)",via:"IV",o:"ANTÍDOTO ESPECÍFICO da DABIGATRANA. Anticorpo monoclonal — neutraliza em min. Indicação: sangramento grave + cirurgia urgente."},
-{etapa:"adj", d:"PFC (plasma fresco congelado)",do:"10-15 mL/kg IV (1 unidade = ~200-250 mL)",via:"IV",o:"Reposição GERAL de fatores. Alternativa quando PCC não disponível. DESVANTAGEM: grande volume, demora (descongelar), risco TRALI."},
+{etapa:"adj", d:"PFC (plasma fresco congelado)",do:"10-15 mL/kg IV (1 unidade = ~200-250 mL)",via:"IV",o:"Reposição GERAL de fatores. Alternativa quando PCC não disponível. DESVANTAGEM: grande volume, demora (descongelar), risco TRALI."}
 ],
 
 alertas:[
@@ -855,7 +790,7 @@ alertas:[
 {t:"crit",x:"HIT (trombocitopenia induzida por heparina): trombose paradoxal! Suspender TODA heparina, iniciar ALTERNATIVO (fondaparinux, argatroban). NÃO usar varfarina sem ponte (risco gangrena venosa)."},
 {t:"warn",x:"DOACs em IRC: cada um tem corte diferente. Apixabana tolera melhor IRC (~15% renal). Dabigatrana é mais renal (~80% renal — evitar IRC grave)."},
 {t:"warn",x:"VARFARINA tem >50 interações importantes. Ao iniciar/parar qualquer medicação, reavaliar INR em 5-7 dias."},
-{t:"info",x:"DOAC vs Varfarina: DOACs têm MENOR sangramento intracraniano + sem monitorização rotineira. Não usar em: válvula mecânica, SAAF triplo-positivo, IRC dialítica (avaliar)."},
+{t:"info",x:"DOAC vs Varfarina: DOACs têm MENOR sangramento intracraniano + sem monitorização rotineira. Não usar em: válvula mecânica, SAAF triplo-positivo, IRC dialítica (avaliar)."}
 ],
 
 fisio:"Cascata: via intrínseca (XII→XI→IX) + extrínseca (VII) → comum (X→II→I/fibrina). HNF e HBPM ativam antitrombina (inativa Xa e IIa). DOACs inibem direto (dabigatrana → IIa; -xabanas → Xa). Varfarina antagoniza vitamina K (precisa para II, VII, IX, X + prot C/S).",
@@ -875,7 +810,7 @@ exames:[
 "- Coletar HMC + cultura do foco SEMPRE antes da 1ª dose ATB (mas NÃO atrasar ATB >45 min)",
 "- Em sepse: ATB em ≤1h do reconhecimento",
 "- Step-down para VO ou descalonamento conforme antibiograma + melhora clínica em 48-72h",
-"- Considerar: alergia, função renal/hepática, gestação, MR conhecida (ESBL, MRSA, ICU)",
+"- Considerar: alergia, função renal/hepática, gestação, MR conhecida (ESBL, MRSA, ICU)"
 ],
 
 rx:[
@@ -890,14 +825,14 @@ rx:[
 {etapa:"atb", d:"NEUTROPENIA FEBRIL",do:"Cefepime 2g 8/8h OU Piperacilina-tazobactam 4,5g 6/6h. Instável: + Vancomicina se mucosite/CVC/MRSA prévia",via:"IV",o:"Em <1h da febre. Cobrir Pseudomonas. Adicionar antifúngico empírico se febre persistente >4-7 dias."},
 {etapa:"atb", d:"SEPSE FOCO DESCONHECIDO",do:"Comunidade: Ceftriaxona 2g/d ± Vancomicina. Hospitalar: Piperacilina-tazobactam + Vancomicina. MR/UTI: Meropenem + Vancomicina ± Antifúngico",via:"IV",o:"Cobertura mais ampla. Buscar foco IMEDIATAMENTE (foco é tão crítico quanto ATB). Descalonamento em 48-72h."},
 {etapa:"atb", d:"FARINGITE ESTREPTOCÓCICA",do:"Penicilina G benzatina 1.200.000 UI IM dose única (>27 kg) OU Amoxicilina 500mg 8/8h × 10 dias",via:"IM/VO",o:"Centor/McIsaac ≥3 — considerar tratar. Crianças <27 kg: PNC G benzatina 600.000 UI. Alérgico: Azitromicina."},
-{etapa:"atb", d:"SINUSITE BACTERIANA",do:"Amoxicilina-clavulanato 875/125mg 12/12h × 5-7 dias. Alérgico: Doxiciclina 100mg 12/12h",via:"VO",o:"Suspeitar bacteriana: >10 dias sintomas, piora após melhora, ou ≥3 dias sintomas graves. Maioria viral."},
+{etapa:"atb", d:"SINUSITE BACTERIANA",do:"Amoxicilina-clavulanato 875/125mg 12/12h × 5-7 dias. Alérgico: Doxiciclina 100mg 12/12h",via:"VO",o:"Suspeitar bacteriana: >10 dias sintomas, piora após melhora, ou ≥3 dias sintomas graves. Maioria viral."}
 ],
 
 alertas:[
 {t:"crit",x:"SEPSE: ATB em ≤1h. Cada hora de atraso ↑mortalidade ~7,6%. Coletar culturas SEM atrasar ATB."},
 {t:"warn",x:"ALERGIA À PENICILINA: maioria das alergias 'reportadas' não é IgE-mediada. Risco de cruzada cefalo <1%. Se anafilaxia documentada → evitar β-lactâmicos."},
 {t:"warn",x:"ESBL+: usar CARBAPENEM (ceftriaxona NÃO cobre). Hospitalar com risco MR conhecido."},
-{t:"info",x:"DESCALONAMENTO em 48-72h é OBRIGATÓRIO conforme cultura + antibiograma + evolução. Reduz resistência e custos."},
+{t:"info",x:"DESCALONAMENTO em 48-72h é OBRIGATÓRIO conforme cultura + antibiograma + evolução. Reduz resistência e custos."}
 ],
 
 fisio:"Princípios da ATB empírica: (1) cobrir patógenos mais prováveis pelo foco; (2) ajustar conforme epidemiologia local de resistência; (3) considerar fatores do paciente (imune, gestante, alergia, função renal); (4) começar antes da cultura mas coletar primeiro; (5) descalonar conforme cultura.",
@@ -907,7 +842,7 @@ mec:[
 {d:"Glicopeptídeos (vanco)",x:"Liga-se a D-Ala-D-Ala impedindo cross-linking parede Gram+. Não atravessa membrana Gram-."},
 {d:"Macrolídeos",x:"Liga 50S ribossomal → bloqueia síntese proteica. Cobertura intracelular (atípicos)."},
 {d:"Quinolonas",x:"Inibem DNA-girase + topoisomerase IV. Boa penetração tecidual. Risco ruptura tendínea."},
-{d:"Aminoglicosídeos",x:"Liga 30S → erros na síntese proteica. Bactericida concentração-dependente. Nefro/ototoxicidade."},
+{d:"Aminoglicosídeos",x:"Liga 30S → erros na síntese proteica. Bactericida concentração-dependente. Nefro/ototoxicidade."}
 ],
 
 diretriz:"IDSA Guidelines (diversos). PCDT MS. Sociedades brasileiras (SBI, SBP, SBU).",
@@ -925,7 +860,7 @@ exames:[
 "- COMEÇAR PELA METADE em idoso, IR/IH, obeso (peso ideal), opioide-naive",
 "- ABORDAGEM MULTIMODAL: combinar com paracetamol/dipirona/AINE reduz dose",
 "- REAVALIAR em 15-30 min após qualquer dose IV",
-"- NALOXONA pronta em todos os casos",
+"- NALOXONA pronta em todos os casos"
 ],
 
 rx:[
@@ -937,7 +872,7 @@ rx:[
 {etapa:"intensa", d:"METADONA",do:"VO: 2,5-10 mg 8/8h (mas conversão NÃO é linear)",via:"VO",o:"POTÊNCIA: VARIÁVEL (5-10× morfina em uso crônico). MEIA-VIDA LONGA (15-60h — variável!). MÚLTIPLOS RECEPTORES: μ-agonista + antagonista NMDA + inibe recaptação 5HT/NE. INDICAÇÃO: dor refratária, dor neuropática, substituição em opioidedependência. RISCO: QT longo. NÃO usar em emergência sem experiência."},
 {etapa:"intensa", d:"HIDROMORFONA",do:"IV: 0,2-1 mg cada 4-6h. VO: 2-4 mg cada 4-6h",via:"IV/VO",o:"POTÊNCIA: 5-7× morfina IV. MEIA-VIDA: 2-3h. METABOLISMO: hepático (sem metabólitos ativos como morfina M6G). PREFERIDO em IRC (sem acúmulo de M6G). Indisponível em muitas instituições BR."},
 {etapa:"intensa", d:"REMIFENTANIL",do:"BIC: 0,025-2 mcg/kg/min",via:"IV",o:"POTÊNCIA: 100× morfina. ULTRA-CURTA: hidrolisado por esterases plasmáticas → meia-vida 3-5 min independente da função hepática/renal. INDICAÇÃO: anestesia + sedação consciente em UTI. NÃO usa para analgesia pós-op (curta demais)."},
-{etapa:"alta", d:"NALOXONA — ANTÍDOTO",do:"0,04-0,4 mg IV cada 2-3 min (titular para reverter depressão respiratória SEM acordar totalmente)",via:"IV/IM/SC/IN",o:"ANTAGONISTA μ-opioide PURO. INÍCIO: 1-2 min. DURAÇÃO: 30-60 min (CURTA — opioide de longa ação pode causar 're-narcose' → manter monitorização ou BIC). DOSES ALTAS em usuário crônico = síndrome de abstinência aguda + dor. EM EXTRA-HOSPITALAR: IM/IN preferível."},
+{etapa:"alta", d:"NALOXONA — ANTÍDOTO",do:"0,04-0,4 mg IV cada 2-3 min (titular para reverter depressão respiratória SEM acordar totalmente)",via:"IV/IM/SC/IN",o:"ANTAGONISTA μ-opioide PURO. INÍCIO: 1-2 min. DURAÇÃO: 30-60 min (CURTA — opioide de longa ação pode causar 're-narcose' → manter monitorização ou BIC). DOSES ALTAS em usuário crônico = síndrome de abstinência aguda + dor. EM EXTRA-HOSPITALAR: IM/IN preferível."}
 ],
 
 alertas:[
@@ -945,14 +880,14 @@ alertas:[
 {t:"crit",x:"OPIOIDE EM IDOSO / IRC / IH / OBESIDADE / OPIOIDE-NAIVE: começar com METADE da dose padrão. Monitorizar SpO₂ + FR."},
 {t:"warn",x:"TRAMADOL + ISRS = risco SÍNDROME SEROTONINÉRGICA. Tramadol + tramadol overdose ou tramadol + outros pró-convulsivantes = convulsão."},
 {t:"warn",x:"METADONA = QT longo. ECG basal. Cuidado com cetoconazol, claritromicina (CYP3A4), inibidores."},
-{t:"info",x:"TOLERÂNCIA CRUZADA INCOMPLETA: na rotação de opioide, REDUZIR 25-50% da dose calculada de equipotência. Metadona é EXCEÇÃO (conversão não-linear; experiência)."},
+{t:"info",x:"TOLERÂNCIA CRUZADA INCOMPLETA: na rotação de opioide, REDUZIR 25-50% da dose calculada de equipotência. Metadona é EXCEÇÃO (conversão não-linear; experiência)."}
 ],
 
 fisio:"Receptores opioides: μ (mu — analgesia, depressão respiratória, euforia), κ (kappa — analgesia espinal, disforia), δ (delta). Todos opioides de uso clínico agem principalmente no μ. Mecanismo: hiperpolarização neuronal (↑K, ↓Ca) → ↓liberação de neurotransmissores (subst P, glutamato) no corno dorsal + ativação de vias descendentes inibitórias.",
 
 mec:[
 {d:"Opioides μ-agonistas",x:"Hiperpolarização neuronal + redução da liberação de neurotransmissores excitatórios = analgesia. Em centros respiratórios (tronco): depressão respiratória dose-dependente. Sistema límbico: euforia (potencial abuso)."},
-{d:"Naloxona",x:"Antagonista competitivo μ puro — desloca opioide. Curta ação (30-60 min) → re-narcose possível se opioide longa ação não eliminado."},
+{d:"Naloxona",x:"Antagonista competitivo μ puro — desloca opioide. Curta ação (30-60 min) → re-narcose possível se opioide longa ação não eliminado."}
 ],
 
 diretriz:"WHO Pain Ladder. ACEP Pain Management 2017. ANS Brasil Política de Opioides.",
@@ -969,7 +904,7 @@ exames:[
 "- Choque distributivo (sepse, anafilaxia): RVS baixa → NORADRENALINA 1ª linha",
 "- Choque cardiogênico: débito baixo → DOBUTAMINA (se PAS adequada) ou NORADRENALINA+DOBUTA",
 "- Choque hipovolêmico: PRIMEIRO volume; vasopressor temporário enquanto reponhe",
-"- Bradicardia sintomática: ATROPINA → DOPAMINA → ADRENALINA",
+"- Bradicardia sintomática: ATROPINA → DOPAMINA → ADRENALINA"
 ],
 
 rx:[
@@ -980,7 +915,7 @@ rx:[
 {etapa:"escala", d:"DOPAMINA",do:"2-20 mcg/kg/min IV BIC",via:"IV",o:"RECEPTORES dose-dependentes: 2-5 (D1 renal — desuso), 5-10 (β1 inotropismo), >10 (α1 vasoconstrição). HOJE: 2ª linha, evidência menos favorável (mais arritmia, mortalidade vs NE — SOAP II trial). Reservar para: bradicardia sintomática refratária à atropina."},
 {etapa:"escala", d:"MILRINONA",do:"50 mcg/kg em 10 min (bolus) + 0,375-0,75 mcg/kg/min BIC",via:"IV",o:"INIBIDOR fosfodiesterase III. EFEITO: ↑contratilidade + VASODILATADOR (não-adrenérgico). INDICAÇÃO: IC avançada refratária a β-agonistas (down-regulation receptor β em IC crônica). Causa hipotensão — frequentemente associada a NE. UTI/cardiologia."},
 {etapa:"escala", d:"FENILEFRINA",do:"40-180 mcg/min IV BIC",via:"IV",o:"RECEPTOR: α1 PURO. EFEITO: vasoconstrição sem ação cardíaca. INDICAÇÃO: hipotensão pós-anestesia, choque distributivo onde taquicardia é problema. PODE causar bradicardia reflexa (vagal por ↑PA). Útil em hipotensão sob propofol/sevoflurano."},
-{etapa:"alta", d:"ATROPINA (não vasoativa mas relacionada)",do:"0,5-1 mg IV cada 3-5 min (máx 3 mg)",via:"IV",o:"ANTICOLINÉRGICO. EFEITO: ↑FC por bloqueio vagal. INDICAÇÃO: 1ª linha em bradicardia SINTOMÁTICA. Dose <0,5 mg pode causar bradicardia paradoxal — não fazer."},
+{etapa:"alta", d:"ATROPINA (não vasoativa mas relacionada)",do:"0,5-1 mg IV cada 3-5 min (máx 3 mg)",via:"IV",o:"ANTICOLINÉRGICO. EFEITO: ↑FC por bloqueio vagal. INDICAÇÃO: 1ª linha em bradicardia SINTOMÁTICA. Dose <0,5 mg pode causar bradicardia paradoxal — não fazer."}
 ],
 
 alertas:[
@@ -988,13 +923,13 @@ alertas:[
 {t:"crit",x:"DOPAMINA: evidência SOAP II mostrou MAIOR MORTALIDADE em choque vs noradrenalina. NÃO usar em sepse. Reservar para bradicardia sintomática."},
 {t:"warn",x:"DOBUTAMINA pode reduzir PA (β2 vasodilator). Em hipotenso, associar SEMPRE com noradrenalina."},
 {t:"warn",x:"DESMAME: reduzir vasopressor LENTAMENTE quando hemodinamicamente estável. Reduzir NE 0,05 mcg/kg/min cada 30-60 min se PAM mantida."},
-{t:"info",x:"EXTRAVASAMENTO de NE: aplicar FENTOLAMINA 5-10 mg em 10 mL SF infiltrar localmente (antídoto)."},
+{t:"info",x:"EXTRAVASAMENTO de NE: aplicar FENTOLAMINA 5-10 mg em 10 mL SF infiltrar localmente (antídoto)."}
 ],
 
 fisio:"Receptores adrenérgicos: α1 (vasoconstrição), β1 (cardíaco — inotropismo + cronotropismo), β2 (vasodilatação + broncodilatação). Receptor V1 (vascular) e V2 (renal) para vasopressina. PDE-III (fosfodiesterase) para milrinona — aumenta cAMP independente de receptor. Em sepse, ocorre downregulation de β-receptores → resistência relativa às catecolaminas → benefício de vasopressina + corticoide.",
 
 mec:[
-{d:"Esquema rápido por receptor",x:"α1: PA↑ (NE, fenilefrina) | β1: DC↑ (dobuta, isoprenalina) | β2: vasodilatação (dobuta secundário) | V1: PA↑ não-adrenérgico (vasopressina) | M: anticolinérgico (atropina) | PDE-III: inotropismo + vasodilatação (milrinona)"},
+{d:"Esquema rápido por receptor",x:"α1: PA↑ (NE, fenilefrina) | β1: DC↑ (dobuta, isoprenalina) | β2: vasodilatação (dobuta secundário) | V1: PA↑ não-adrenérgico (vasopressina) | M: anticolinérgico (atropina) | PDE-III: inotropismo + vasodilatação (milrinona)"}
 ],
 
 diretriz:"Surviving Sepsis Campaign 2021. ACC/AHA Cardiogenic Shock 2022. SBC Brasil — Diretriz Choque Cardiogênico.",

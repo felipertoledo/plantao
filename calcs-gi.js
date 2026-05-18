@@ -28,26 +28,6 @@ interp:function(s){
   return {risco:"9-10 — Apendicite muito provável", acao:"Cirurgia (apendicectomia) — pode dispensar imagem em homens jovens com quadro clássico. ATB profilático no centro cirúrgico. Imagem se dúvida diagnóstica ou suspeita de complicação (abscesso, perfuração).", cor:"crit"};
 }
 },
-{
-id:"bisap", contexto:["pa","ubs"], nome:"BISAP", sis:"gi",
-desc:"Estratificação de pancreatite aguda nas primeiras 24h.",
-fields:[
-{tipo:"bool", id:"b", label:"BUN > 25 mg/dL (ureia > 53)", peso:1},
-{tipo:"bool", id:"i", label:"Impaired mental status (Glasgow < 15)", peso:1},
-{tipo:"bool", id:"s", label:"SIRS (≥ 2 critérios)", peso:1},
-{tipo:"bool", id:"a", label:"Age > 60 anos", peso:1},
-{tipo:"bool", id:"p", label:"Pleural effusion (RX/USG/TC)", peso:1},
-],
-calc:function(v){
-  let s=0;
-  ["b","i","s","a","p"].forEach(k=>{ if(v[k]) s+=1; });
-  return s;
-},
-interp:function(s){
-  if(s<3) return {risco:"Baixo (< 2% mortalidade)", acao:"Manejo padrão", cor:"ok"};
-  return {risco:"Alto (> 15% mortalidade)", acao:"UTI / observação intensiva", cor:"crit"};
-}
-},
 {id:"bisap", contexto:["pa","ubs"], nome:"BISAP — Gravidade da Pancreatite Aguda", sis:"gi",
 desc:"Bedside Index for Severity in Acute Pancreatitis. Aplicar nas PRIMEIRAS 24H. Score ≥3 = pancreatite GRAVE (10-20% mortalidade) — UTI / acompanhamento próximo.",
 fields:[
@@ -100,30 +80,6 @@ interp:function(s){
   if(s===0) return {risco:"Muito baixo (0,5% mortalidade)", acao:"Considerar alta + EDA ambulatorial", cor:"ok"};
   if(s<=5) return {risco:"Baixo-moderado", acao:"Internar para EDA precoce (< 24h)", cor:"warn"};
   return {risco:"Alto", acao:"Internar — EDA urgente (< 12h), estabilização, IBP IV", cor:"crit"};
-}
-},
-{
-id:"child-pugh", contexto:["pa","ubs"], nome:"Child-Pugh", sis:"gi",
-desc:"Classificação prognóstica em cirrose. Avalia sobrevida e risco cirúrgico.",
-fields:[
-{tipo:"select", id:"a", label:"Ascite",
-  opts:[{val:1,label:"Ausente",peso:1},{val:2,label:"Pequena/controlada",peso:2},{val:3,label:"Refratária",peso:3}]},
-{tipo:"select", id:"b", label:"Bilirrubina (mg/dL)",
-  opts:[{val:1,label:"< 2",peso:1},{val:2,label:"2-3",peso:2},{val:3,label:"> 3",peso:3}]},
-{tipo:"select", id:"c", label:"Albumina (g/dL)",
-  opts:[{val:1,label:"> 3,5",peso:1},{val:2,label:"2,8-3,5",peso:2},{val:3,label:"< 2,8",peso:3}]},
-{tipo:"select", id:"d", label:"RNI",
-  opts:[{val:1,label:"< 1,7",peso:1},{val:2,label:"1,7-2,3",peso:2},{val:3,label:"> 2,3",peso:3}]},
-{tipo:"select", id:"e", label:"Encefalopatia",
-  opts:[{val:1,label:"Ausente",peso:1},{val:2,label:"Grau 1-2",peso:2},{val:3,label:"Grau 3-4",peso:3}]},
-],
-calc:function(v){
-  return parseInt(v.a||1)+parseInt(v.b||1)+parseInt(v.c||1)+parseInt(v.d||1)+parseInt(v.e||1);
-},
-interp:function(s){
-  if(s<=6) return {risco:"Child A — sobrevida 1 ano 100%", acao:"Compensado", cor:"ok"};
-  if(s<=9) return {risco:"Child B — sobrevida 1 ano 80%", acao:"Cuidado com fármacos hepatotóxicos; pré-transplante", cor:"warn"};
-  return {risco:"Child C — sobrevida 1 ano 45%", acao:"Lista de transplante", cor:"crit"};
 }
 },
 {id:"child-pugh", contexto:["pa","ubs"], nome:"Child-Pugh — Cirrose", sis:"gi",

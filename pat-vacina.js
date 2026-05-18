@@ -29,6 +29,15 @@ prog:"PEP adequada: prevenção quase total. Tétano instalado tem letalidade 30
 acomp:"Esquema iniciado: completar 3 doses (0-1-6 meses). Reforço a cada 10a daí em diante. Documentar no cartão. Reavaliar ferida em 48-72h se contaminada — sinais de infecção secundária.",
 p4:"NÃO usar SAT 'just in case' — heterólogo tem risco anafilático. NÃO repetir reforço dT em <5 anos se já em dia. Não confundir 'dT' com 'dTpa' — em adulto sem indicação obstétrica/profissional pediátrica = dT é suficiente. NÃO indicar ATB profilático para TODA ferida — apenas em ferida contaminada/mordedura/com sinais infecciosos.",
 diretriz:"[MS — Guia de Vigilância em Saúde, Tétano] [CRIE 2023] [CNV-PNI 2026]",
+
+alertas:[
+{nivel:"crit", txt:"⚠ Ferimento PROFUNDO + CONTAMINADO + ≥3 doses MAS última >5a → reforço dT IMEDIATO. Sem soro. Aplicar até 72h, idealmente nas primeiras horas."},
+{nivel:"crit", txt:"⚠ NÃO-VACINADO OU vacinação ignorada com ferimento de ALTO RISCO (mordedura, queimadura extensa, ferida com terra/fezes, fratura exposta) → dT + IGHT/SAT IMEDIATAMENTE em sítios anatômicos distintos. Iniciar/completar série dT depois."},
+{nivel:"warn", txt:"Limpeza cirúrgica do ferimento é parte INALIENÁVEL da profilaxia — sem desbridamento adequado, vacina/soro não previne tétano. Remover corpo estranho, tecido desvitalizado, irrigar abundantemente."},
+{nivel:"warn", txt:"IGHT (humana) é melhor que SAT (heteróloga eqüina) — menor risco anafilaxia/doença do soro. Disponibilidade: IGHT é dose única IM. SAT exige teste sensibilidade prévio. Confirmar disponibilidade local antes."},
+{nivel:"info", txt:"Adulto com ≥3 doses + último reforço <5a: NENHUMA profilaxia adicional, qualquer tipo de ferida. Comunicar paciente da proteção atual."},
+{nivel:"info", txt:"Gestante: dT contraindicação não existe; pode usar dTpa (preferível em 3º trimestre se necessária revacinação)."},
+],
 },
 
 {
@@ -56,6 +65,15 @@ prog:"PEP completa adequada: prevenção quase 100% se iniciada precocemente. AT
 acomp:"Completar 4 doses no esquema. NÃO interromper esquema mesmo se sintomas alérgicos leves (manejar com antialérgico e seguir; relatar ao serviço). Observação canina (se aplicável): 10 dias — se animal morre/adoece, mandar cabeça para análise (raiva por imunofluorescência). Investigação epidemiológica de surto se mais casos similar localmente.",
 p4:"NÃO indicar PEP em contato sem risco real: lambedura em pele íntegra, mordedura de roedor pequeno (rato, camundongo, hamster — não-transmissores rotineiros), contato com sangue de cão sem mordedura. PrEP raiva NÃO indicada para população geral. Não interromper esquema iniciado por dor local ou febre leve — eventos esperados.",
 diretriz:"[MS — Norma Técnica de Profilaxia da Raiva Humana, 2024] [OMS — Rabies Vaccines: WHO Position Paper, 2018, simplifica esquema para 4 doses] [CNV-PNI 2026]",
+
+alertas:[
+{nivel:"crit", txt:"⚠ MORDEDURA por animal SUSPEITO/RAIVOSO ou MORCEGO em qualquer circunstância → iniciar PEP IMEDIATAMENTE, mesmo antes de observação do animal. Esquema completo = 5 doses (D0, D3, D7, D14, D28) + soro/imunoglobulina antirrábica nos ferimentos graves."},
+{nivel:"crit", txt:"⚠ MORCEGO: TODA exposição é considerada GRAVE — mesmo contato sem ferimento aparente. Esquema completo + soro. Não esperar testes do animal."},
+{nivel:"crit", txt:"NÃO suturar ferida de mordedura suspeita antes da limpeza com sabão E aplicação local de soro antirrábico (se indicado). Fechamento primário aumenta retenção do vírus."},
+{nivel:"warn", txt:"Cão/gato OBSERVÁVEL (domiciliado, identificável, sem sinais de raiva): pode-se aguardar 10 dias de observação E suspender PEP se animal continuar saudável. Não é regra para morcegos, animais silvestres, animais sem identificação."},
+{nivel:"warn", txt:"Lavagem ABUNDANTE com água e sabão por ≥15 min é parte CRUCIAL da PEP — reduz carga viral local em até 90%. Não dispensar."},
+{nivel:"info", txt:"Pacientes previamente vacinados (esquema completo prévio): apenas 2 doses de reforço (D0, D3), sem soro. Confirmar dados na caderneta — não 'achar'."},
+],
 },
 
 {
@@ -81,6 +99,23 @@ prog:"Profilaxia adequada reduz transmissão Hep B em >90% em acidentado suscept
 acomp:"Acidentado susceptível: sorologias seguimento 6 sem / 3 m / 6 m (HBsAg + anti-HCV + anti-HIV). Acompanhamento no SAE. Atualizar vacinação para futuro.",
 p4:"NÃO administrar IGHAHB em pessoa já-imune — desperdício de recurso caro. NÃO repetir esquema vacinal em respondedor já-confirmado (uma vez >10 = memória). NÃO atrasar PEP para esperar resultado sorológico da fonte — iniciar com base na suspeita; ajustar conforme resultado.",
 diretriz:"[PCDT-MS Profilaxia Pós-Exposição (PEP) de risco à infecção por HIV, IST e Hepatites Virais, 2024] [CRIE 2023 — Imunoglobulina Humana Anti-Hepatite B (IGHAHB)] [CNV-PNI 2026]",
+
+alertas:[
+{nivel:"crit", txt:"⚠ Acidente perfurocortante com fonte HBsAg+ e profissional NÃO-VACINADO ou anti-HBs<10 → IGHB (imunoglobulina anti-HB) + vacina HB em sítios distintos, em ATÉ 24h (idealmente <2h). Eficácia cai drasticamente após 7 dias."},
+{nivel:"warn", txt:"Profissional VACINADO com anti-HBs documentado ≥10 mUI/mL → NENHUMA conduta adicional além de limpeza do sítio. Confirmar sorologia (não confiar só em \"tomou vacina\")."},
+{nivel:"warn", txt:"Fonte com status desconhecido: solicitar HBsAg da fonte de forma URGENTE. Iniciar vacina HB no profissional sem aguardar (a vacina é segura mesmo se vier negativa). IGHB só se HBsAg+ confirmado."},
+{nivel:"info", txt:"Esquema completo de vacina HB = 3 doses (0, 1, 6 meses) com sorologia 1-2 meses após 3ª dose (anti-HBs)."},
+{nivel:"info", txt:"\"Non-responder\" (anti-HBs<10 após 2 séries completas): considerar imunodepressão, intercorrências, falha técnica. Manejo individualizado."},
+],
+
+alertas:[
+{nivel:"crit", txt:"⚠ PEP HIV: INICIAR EM ATÉ 72h (idealmente <2h). Eficácia decresce com tempo. Após 72h, NÃO está indicada (exceto exposições recidivantes graves discutir caso a caso). Não 'guardar pro dia seguinte'."},
+{nivel:"crit", txt:"Esquema padrão 2026: Tenofovir + Lamivudina + Dolutegravir (TDF/3TC/DTG) — 28 dias VO. Mesmo esquema de TARV inicial. Disponibilizado pelo SAE / SAE-emergência local. UBS pode iniciar 1ª dose se SAE não acessível imediatamente."},
+{nivel:"warn", txt:"Antes de iniciar: testar profissional/exposto para HIV (descartar infecção PRÉVIA). Solicitar também HBsAg, anti-HBs, anti-HCV, VDRL, β-HCG. NÃO retardar PEP esperando resultado HIV — colher e iniciar."},
+{nivel:"warn", txt:"Acompanhamento: testagem HIV em 6 semanas e 3 meses (manter precaução sexual nesse período). Hemograma, função renal e hepática 4 semanas após início (toxicidade TDF/DTG)."},
+{nivel:"info", txt:"Fonte HIV+ confirmada com carga viral indetectável persistente >6 meses: PEP geralmente NÃO indicada (U=U). Mas avaliar caso a caso — confirmar a indetectabilidade na documentação, não na fala."},
+{nivel:"info", txt:"Exposição sexual de risco (estupro, ruptura de preservativo com parceiro de status incerto, sexo desprotegido com PVHIV sem TARV/com carga viral): PEP elegível em ≤72h. Encaminhar SAE para PrEP após PEP se exposição recidivante."},
+],
 },
 
 {
@@ -107,6 +142,13 @@ prog:"PEP iniciada <72h com aderência ≥95% das doses: prevenção >80% da sor
 acomp:"Reavaliação 1ª semana (tolerabilidade, esclarecer dúvidas), 4ª semana (final do tratamento), 4-6 sem (sorologia HIV teste rápido), 3 m e 6 m (sorologias finais). Iniciar PrEP se exposição de alto risco recorrente prevista.",
 p4:"NÃO indicar PEP em exposições de baixo risco: sexo com camisinha intacta; contato com sangue em pele íntegra; sexo com parceiro U=U (CV indetectável); contato salivar. NÃO iniciar PEP após 72h — sem evidência de benefício. NÃO interromper PEP por intolerância leve — manejar sintomático e completar.",
 diretriz:"[PCDT-MS — Profilaxia Pós-Exposição (PEP) de risco à infecção por HIV, IST e Hepatites Virais, 2024] [Protocolo de Atendimento a Vítimas de Violência Sexual — MS] [Diretrizes Antirretrovirais OMS 2024]",
-}
+alertas:[
+{nivel:"crit", txt:"⚠ PEP HIV: INICIAR EM ATÉ 72h (idealmente <2h). Eficácia decresce com tempo. Após 72h, NÃO está indicada (exceto exposições recidivantes graves discutir caso a caso). Não 'guardar pro dia seguinte'."},
+{nivel:"crit", txt:"Esquema padrão 2026: Tenofovir + Lamivudina + Dolutegravir (TDF/3TC/DTG) — 28 dias VO. Mesmo esquema de TARV inicial. Disponibilizado pelo SAE / SAE-emergência local. UBS pode iniciar 1ª dose se SAE não acessível imediatamente."},
+{nivel:"warn", txt:"Antes de iniciar: testar profissional/exposto para HIV (descartar infecção PRÉVIA). Solicitar também HBsAg, anti-HBs, anti-HCV, VDRL, β-HCG. NÃO retardar PEP esperando resultado HIV — colher e iniciar."},
+{nivel:"warn", txt:"Acompanhamento: testagem HIV em 6 semanas e 3 meses (manter precaução sexual nesse período). Hemograma, função renal e hepática 4 semanas após início (toxicidade TDF/DTG)."},
+{nivel:"info", txt:"Fonte HIV+ confirmada com carga viral indetectável persistente >6 meses: PEP geralmente NÃO indicada (U=U). Mas avaliar caso a caso — confirmar a indetectabilidade na documentação, não na fala."},
+{nivel:"info", txt:"Exposição sexual de risco (estupro, ruptura de preservativo com parceiro de status incerto, sexo desprotegido com PVHIV sem TARV/com carga viral): PEP elegível em ≤72h. Encaminhar SAE para PrEP após PEP se exposição recidivante."},
+],}
 
 );
