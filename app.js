@@ -324,6 +324,12 @@ function routeFromHash() {
   if (parts[0] === "calcs") return renderCalcs();
   if (parts[0] === "flows") return renderFlows();
   if (parts[0] === "sobre") return renderSobre();
+  // Rotas custom de ui-extensions.js (histórico, comparador)
+  if (parts[0] === "historico" || parts[0] === "compare") {
+    const v = document.getElementById("view");
+    if (v) v.innerHTML = '<section class="container"><p style="color:var(--ink-3)">Carregando...</p></section>';
+    return; // ui-extensions render no afterRender
+  }
   renderHome();
 }
 

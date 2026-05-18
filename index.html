@@ -2118,6 +2118,547 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 
+
+
+/* =========================================================
+   POLIMENTO — CAMADAS 1+2+3
+   Cmd+K · TOC · Histórico · Favoritos · Atalhos
+   Tooltips · Compare · Notas · Print
+   ========================================================= */
+
+/* --- Paleta de comando (Cmd+K / Ctrl+K) --- */
+.cmdk-backdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  background: color-mix(in srgb, #000 50%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: flex-start; justify-content: center;
+  padding-top: 12vh;
+}
+.cmdk-backdrop.open { display: flex; }
+.cmdk-modal {
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2);
+  width: 100%; max-width: 640px;
+  max-height: 70vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  margin: 0 1rem;
+}
+.cmdk-input-wrap {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.85rem 1.05rem;
+  border-bottom: 1px solid var(--rule);
+}
+.cmdk-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: transparent;
+  border: 0; outline: 0;
+  color: var(--ink);
+  padding: 0;
+}
+.cmdk-kbd-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-4);
+  background: var(--bg-sunken);
+  padding: 0.18rem 0.42rem;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+.cmdk-results {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.3rem 0;
+}
+.cmdk-group-label {
+  padding: 0.5rem 1.05rem 0.3rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--ink-4);
+}
+.cmdk-item {
+  padding: 0.5rem 1.05rem;
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+.cmdk-item.active, .cmdk-item:hover {
+  background: var(--bg-sunken);
+}
+.cmdk-item-icon { color: var(--ink-3); font-size: 0.95rem; }
+.cmdk-item-sub { color: var(--ink-3); font-size: 0.78rem; }
+.cmdk-empty {
+  padding: 1.2rem; text-align: center;
+  color: var(--ink-3); font-style: italic;
+}
+
+/* --- Table of Contents lateral (desktop) e botão flutuante (mobile) --- */
+.toc-rail {
+  position: fixed;
+  right: 1.2rem;
+  top: 5.5rem;
+  width: 220px;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  z-index: 30;
+  font-size: 0.85rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: var(--shadow-1);
+  display: none;
+}
+.toc-rail.show { display: block; }
+@media (max-width: 1200px) {
+  .toc-rail { display: none !important; }
+}
+.toc-rail-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-rail a {
+  display: block;
+  padding: 0.32rem 0.5rem;
+  color: var(--ink-2);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-bottom: 0;
+  font-size: 0.86rem;
+  margin-left: -0.5rem;
+  border-radius: 0;
+  line-height: 1.3;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.toc-rail a:hover, .toc-rail a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--bg-sunken);
+}
+.toc-fab {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 30;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: 0;
+  cursor: pointer;
+  display: none;
+  align-items: center; justify-content: center;
+  box-shadow: var(--shadow-2);
+  font-size: 1.2rem;
+}
+.toc-fab.show { display: flex; }
+@media (min-width: 1201px) { .toc-fab { display: none !important; } }
+.toc-drawer-backdrop {
+  position: fixed; inset: 0; z-index: 999;
+  background: color-mix(in srgb, #000 40%, transparent);
+  display: none;
+}
+.toc-drawer-backdrop.open { display: block; }
+.toc-drawer {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  background: var(--bg-elev);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 1rem 1.2rem 1.4rem;
+  transform: translateY(100%);
+  transition: transform .25s;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.2);
+}
+.toc-drawer.open { transform: translateY(0); }
+.toc-drawer h4 { font-size: 0.78rem; color: var(--ink-3); margin-bottom: 0.7rem; }
+.toc-drawer a {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.96rem;
+}
+.toc-drawer a:last-child { border-bottom: 0; }
+
+/* --- Histórico (Recently viewed) e Favoritos --- */
+.home-personal {
+  margin-top: 0.5rem;
+}
+.home-personal h3 {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: 0.6rem;
+}
+.chip-row {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.chip-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.42rem 0.75rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--ink);
+  cursor: pointer;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: border-color .15s, background .15s;
+}
+.chip-link:hover {
+  border-color: var(--accent);
+  background: var(--bg-sunken);
+}
+.chip-link .chip-icon { font-size: 0.85rem; }
+
+/* Pin button dentro de patologia/med */
+.pin-btn {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: var(--font-body);
+  transition: all .15s;
+}
+.pin-btn:hover { border-color: var(--accent); color: var(--accent); }
+.pin-btn.active {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Modal de atalhos (?) --- */
+.shortcut-modal-backdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  background: color-mix(in srgb, #000 40%, transparent);
+  backdrop-filter: blur(2px);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.shortcut-modal-backdrop.open { display: flex; }
+.shortcut-modal {
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2);
+  max-width: 480px;
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+}
+.shortcut-modal h2 {
+  font-size: 1.15rem; margin-bottom: 1rem;
+}
+.shortcut-modal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.shortcut-modal td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+.shortcut-modal td:last-child { color: var(--ink-2); }
+.kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  margin: 0 2px;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* --- Tooltip de siglas --- */
+.acro {
+  border-bottom: 1px dotted var(--ink-3);
+  cursor: help;
+  position: relative;
+}
+.acro::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -4px);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s;
+  z-index: 100;
+  font-weight: 400;
+  max-width: 260px;
+  white-space: normal;
+  width: max-content;
+}
+.acro:hover::after { opacity: 1; }
+
+/* --- Badge "Última revisão" e caixa fonte/diretriz refinada --- */
+.review-meta {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  margin-top: 1.5rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.review-meta-item { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+.block-diretriz {
+  background: var(--bg-sunken);
+  border-left: 3px solid var(--ink-3);
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 4px 4px 0;
+  margin-top: 1rem;
+}
+.block-diretriz h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+}
+.block-diretriz .diretriz-content {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* --- Modo consulta-rápida / estudo (visual indicator) --- */
+.dense .block { padding: 0.7rem 0; }
+.dense h2 { font-size: 1rem !important; margin-bottom: 0.4rem !important; }
+.dense .block p { margin-bottom: 0.4em; font-size: 0.93rem; }
+
+/* --- Notas pessoais --- */
+.notes-section {
+  background: color-mix(in srgb, var(--warn) 4%, var(--bg-elev));
+  border: 1px dashed color-mix(in srgb, var(--warn) 35%, var(--rule));
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+}
+.notes-section h3 {
+  font-size: 0.72rem; color: var(--warn);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin: 0 0 0.5rem;
+}
+.notes-textarea {
+  width: 100%;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--ink);
+  resize: vertical;
+  min-height: 70px;
+  outline: 0;
+}
+.notes-textarea:focus { border-color: var(--accent); }
+.notes-hint {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+/* --- Comparador de medicamentos --- */
+.compare-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 90;
+  background: var(--bg-elev);
+  border-top: 1px solid var(--rule);
+  padding: 0.7rem 1rem;
+  display: none;
+  gap: 0.7rem;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.08);
+}
+.compare-bar.show { display: flex; }
+.compare-bar .meds-list {
+  flex: 1; display: flex; gap: 0.4rem; flex-wrap: wrap; min-width: 0;
+}
+.compare-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+.compare-chip button {
+  background: 0; border: 0; cursor: pointer;
+  color: var(--ink-3); font-size: 1rem; padding: 0; line-height: 1;
+}
+.compare-add-btn {
+  background: transparent; border: 1px solid var(--rule);
+  border-radius: 6px; padding: 0.4rem 0.7rem;
+  font-size: 0.82rem; cursor: pointer; color: var(--ink-2);
+  font-family: var(--font-body);
+}
+.compare-add-btn.active {
+  background: color-mix(in srgb, var(--info) 14%, transparent);
+  border-color: var(--info); color: var(--info);
+}
+
+.compare-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+.compare-grid.cols-2 { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+.compare-grid.cols-3 { grid-template-columns: repeat(3, minmax(260px, 1fr)); }
+@media (max-width: 720px) {
+  .compare-grid.cols-2, .compare-grid.cols-3 { grid-template-columns: 1fr; }
+}
+.compare-col {
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+.compare-col h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+.compare-col .compare-classe {
+  font-size: 0.78rem; color: var(--ink-3); margin-bottom: 0.6rem;
+}
+.compare-col dl { margin: 0; }
+.compare-col dt {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: 0.65rem;
+}
+.compare-col dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+/* --- Refinamento de badges semânticos --- */
+.badge-pill {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+}
+.badge-pill.grav-alta { background: var(--crit-bg); color: var(--accent-2); }
+.badge-pill.grav-media { background: var(--warn-bg); color: var(--warn); }
+.badge-pill.grav-baixa { background: var(--ok-bg); color: var(--ok); }
+.badge-pill.ctx { background: var(--info-bg); color: var(--info); }
+
+/* --- Histórico completo (página) --- */
+.history-filter {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin: 1rem 0 1.4rem;
+}
+.history-filter button {
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--ink-2); cursor: pointer;
+}
+.history-filter button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.history-list { display: flex; flex-direction: column; gap: 0.3rem; }
+.history-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.7rem;
+  padding: 0.6rem 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background .1s;
+}
+.history-row:hover { background: var(--bg-sunken); }
+.history-row .ico { font-size: 0.95rem; }
+.history-row .date { font-size: 0.75rem; color: var(--ink-3); font-family: var(--font-mono); }
+
+/* --- Print mode otimizado --- */
+@media print {
+  .topbar, .toc-rail, .toc-fab, .compare-bar, .pin-btn, .ctx-bar, .install-fab,
+  .cmdk-backdrop, .shortcut-modal-backdrop,
+  .quick-grid, .sys-groups, .mode-tabs, .home-personal,
+  button { display: none !important; }
+  body { background: white !important; color: black !important; font-size: 11pt; }
+  .container { max-width: 100% !important; padding: 0 !important; }
+  .block { break-inside: avoid; page-break-inside: avoid; }
+  h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  .alert { border: 1px solid #999 !important; background: #f5f5f5 !important; color: #000 !important; padding: 0.4rem 0.7rem !important; }
+  .alert.crit { border-left: 4px solid #b00 !important; }
+  .alert.warn { border-left: 4px solid #b45309 !important; }
+  a { color: black !important; text-decoration: none !important; }
+  a[href]:after { content: ""; } /* sem URLs após links */
+  /* footer com fonte */
+  .print-footer {
+    display: block !important;
+    border-top: 2px solid #999;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+    font-size: 9pt;
+    color: #666;
+  }
+}
+.print-footer { display: none; }
+
 </style>
 </head>
 <body>
@@ -2140,6 +2681,12 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
       </a>
       <button class="icon-btn" id="btnInstall" onclick="installPWA()" aria-label="Instalar app" title="Instalar como aplicativo (offline)" style="display:none">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+      <button class="icon-btn" onclick="window.uiExt && window.uiExt.openCmdk()" aria-label="Busca rápida (Cmd+K)" title="Busca rápida (Cmd+K / Ctrl+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" onclick="navigate('#/historico')" aria-label="Histórico" title="Histórico de navegação">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       </button>
       <button class="icon-btn" onclick="navigate('#/sobre')" aria-label="Como usar" title="Como usar este guia">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -2211,6 +2758,9 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
 <script src="meds-gi.js" defer></script>
 <script src="meds-pali.js" defer></script>
 <script src="meds-ost.js" defer></script>
+<script src="meds-gineco.js" defer></script>
+<script src="meds-pcdt-infecto.js" defer></script>
+<script src="meds-derm.js" defer></script>
 <script src="calcs-cardio.js" defer></script>
 <script src="calcs-neuro.js" defer></script>
 <script src="calcs-resp-infecto.js" defer></script>
@@ -2229,6 +2779,7 @@ table.rx td.cell-obs { color: var(--ink-3); font-size: 0.85rem; word-break: brea
 <script src="ui-figs-apply.js" defer></script>
 <script src="ui-contexto.js" defer></script>
 <script src="app.js" defer></script>
+<script src="ui-extensions.js" defer></script>
 
 </body>
 </html>
