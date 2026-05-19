@@ -1311,6 +1311,19 @@ function renderSobre() {
       </div>
 
       <div class="block">
+        <h2>Quem fez isto</h2>
+        <p><strong>Felipe Ribeiro Toledo</strong> — Médico de Família e Comunidade, <strong>CRM-SP 216.986</strong>, atuando na UBS de Estiva Gerbi (SP), bairro Ludi.</p>
+        <p>Graduado pela Universidade Anhembi Morumbi (campus Mooca), com Residência em MFC pela USP, Mestrado e Doutorado em Atenção Primária à Saúde também pela USP, e título de especialista pela SBMFC. Pesquisador na interface entre clínica, território e pedagogia freireana aplicada à medicina.</p>
+        <p>O Vovôminic Doutô é trabalho independente, sem fins lucrativos. Não recebe patrocínio de indústria farmacêutica nem operadora de saúde. O propósito é educacional — apoiar colegas em formação e em prática no SUS, especialmente em territórios com acesso restrito a referências atualizadas.</p>
+      </div>
+
+      <div class="block">
+        <h2>Como contribuir</h2>
+        <p>Encontrou erro, conduta desatualizada, fonte equivocada? Quer sugerir uma patologia, calculadora ou fluxograma? Quer reportar uma situação onde o guia ajudou (ou não ajudou) no plantão?</p>
+        <p>O projeto melhora com retorno da prática. Contato pelo Instagram <strong>@vovôminic</strong> ou por e-mail <strong>felipertoledo@gmail.com</strong>.</p>
+      </div>
+
+      <div class="block">
         <h2>Prioridades dos cards (badges coloridos)</h2>
         <p>Cada patologia tem uma etiqueta de gravidade no canto superior do card. Indica o <strong>nível de ameaça à vida e urgência de ação</strong>:</p>
         <div class="prio-grid">

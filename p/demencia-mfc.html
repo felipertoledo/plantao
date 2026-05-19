@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demência — Rastreio, Diagnóstico e Manejo MFC — CID F03 — Vovôminic Doutô</title>
+<meta name="description" content="Demência — Rastreio, Diagnóstico e Manejo MFC. Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/demencia-mfc.html">
+<meta name="author" content="Felipe Ribeiro Toledo (CRM-SP 216.986)">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Demência — Rastreio, Diagnóstico e Manejo MFC — CID F03">
+<meta property="og:description" content="Demência — Rastreio, Diagnóstico e Manejo MFC. Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/demencia-mfc.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demência — Rastreio, Diagnóstico e Manejo MFC — CID F03">
+<meta name="twitter:description" content="Demência — Rastreio, Diagnóstico e Manejo MFC. Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "jobTitle": "Médico de Família e Comunidade", "identifier": "CRM-SP 216.986", "affiliation": {"@type": "Organization", "name": "UBS Estiva Gerbi (SP)"}, "knowsAbout": ["Medicina de Família e Comunidade", "Atenção Primária à Saúde", "Pronto-Atendimento", "SUS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/demencia-mfc.html#condition", "name": "Demência — Rastreio, Diagnóstico e Manejo MFC", "alternateName": ["demência", "alzheimer", "CCL", "comprometimento cognitivo leve", "síndrome demencial"], "description": "Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais comum, 60-70%), demência vascular, demência por corpos de Lewy, demência frontotemporal, demência mista. Diagnóstico clínico, baseado em história + exame cognitivo + funcionalidade — exames", "code": {"@type": "MedicalCode", "codeValue": "F03", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Saúde do idoso"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "Esquecimento de eventos recentes"}, {"@type": "MedicalSignOrSymptom", "name": "Repetição de perguntas"}, {"@type": "MedicalSignOrSymptom", "name": "Dificuldade em encontrar palavras"}, {"@type": "MedicalSignOrSymptom", "name": "Desorientação no tempo (data, dia da semana) e espaço"}, {"@type": "MedicalSignOrSymptom", "name": "Perda de objetos"}, {"@type": "MedicalSignOrSymptom", "name": "Dificuldade em tarefas complexas (conta corrente, receita, dirigir)"}, {"@type": "MedicalSignOrSymptom", "name": "Mudanças de personalidade, irritabilidade, apatia"}, {"@type": "MedicalSignOrSymptom", "name": "Sintomas BPSD: agitação, perambulação, delírios, alucinações, agressividade, insônia"}], "epidemiology": "Demência tem alta prevalência (~7% em ≥65a, dobrando a cada 5 anos). Subdiagnosticada na APS. Diagnóstico precoce permite: planejamento familiar, despresecrição de drogas que pioram cognição, manejo de comorbidades, tratamento sintomático, identificação de causa reversível em ~5-10% dos casos. MFC tem papel CENTRAL — não é só 'mandar pra neurologista'.", "pathophysiology": "Múltiplas etiologias com fisiopatologia distinta. ALZHEIMER: acúmulo β-amiloide (placas) + tau hiperfosforilada (emaranhados neurofibrilares) → morte neuronal, especialmente hipocampo e córtex temporoparietal. VASCULAR: lesões cumulativas isquêmicas (multi-infarto ou doença de pequenos vasos). LEWY: α-sinucleína em corpos de Lewy difusos → flutuação cognitiva, alucinações visuais, parkinsonismo. FRONTOTEMPORAL: degeneração lobar frontal/temporal → mudança comportamental ou afasia progressiva. MI", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "AVALIAÇÃO E MANEJO DE DEMÊNCIA — APS:\n\nA) RASTREIO em idoso com queixa cognitiva (própria ou familiar):\n\n  TRIAGEM RÁPIDA — Mini-Cog (3 min):\n  • Pedir lembrar 3 palavras (relógio, bola, banana)\n  • Desenhar relógio com horas e ponteiros marcando 11:10\n  • Recordar 3 palavras\n  • Score: 0-2 sugere déficit; 3-5 normal\n  \n  MEEM (10-15 min, mais detalhado):\n  • Pontuação por escolaridade:\n    - Analfabeto: ponto de corte 13\n    - 1-4 anos: 18\n    - 5-8 anos: 23\n    - >8 anos: 26\n  • Avalia: orient"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "NICE Dementia Guidance 2018 (atualizado 2023). AAN Practice Parameters 2021. Lancet Commission on Dementia 2024 (14 fatores modificáveis). PCDT Alzheimer MS. FREITAS 5ª ed 2022. ABRAz."}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Demência — Rastreio, Diagnóstico e Manejo MFC — CID F03", "description": "Demência — Rastreio, Diagnóstico e Manejo MFC. Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/demencia-mfc.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/demencia-mfc.html#condition"}, "inLanguage": "pt-BR", "keywords": "Demência — Rastreio, Diagnóstico e Manejo MFC, Saúde do idoso, SUS, UBS, Pronto-Atendimento, demência, alzheimer, CCL, comprometimento cognitivo leve, síndrome demencial, CID F03, CIAP P70"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Saúde do idoso", "item": "https://felipertoledo.github.io/plantao/#/sis/idoso"}, {"@type": "ListItem", "position": 3, "name": "Demência — Rastreio, Diagnóstico e Manejo MFC", "item": "https://felipertoledo.github.io/plantao/p/demencia-mfc.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · Felipe Ribeiro Toledo · CRM-SP 216.986</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/idoso">Saúde do idoso</a> › <span>Demência — Rastreio, Diagnóstico e Manejo MFC</span>
+</nav>
+<span class="eyebrow">Saúde do idoso</span>
+<h1>Demência — Rastreio, Diagnóstico e Manejo MFC</h1>
+<p class="lead">Demência tem alta prevalência (~7% em ≥65a, dobrando a cada 5 anos). Subdiagnosticada na APS. Diagnóstico precoce permite: planejamento familiar, despresecrição de drogas que pioram cognição, manejo de comorbidades, tratamento sintomático, identificação de causa reversível em ~5-10% dos casos. MFC tem papel CENTRAL — não é só &#x27;mandar pra neurologista&#x27;.</p>
+<div class="meta"><span class="tag">CID F03</span><span class="tag">CIAP P70</span><span class="tag info">Baixa gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> demência, alzheimer, CCL, comprometimento cognitivo leve, síndrome demencial, BPSD.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/demencia-mfc">Abrir Demência — Rastreio, Diagnóstico e Manejo MFC no app →</a>
+</div>
+<h2>Definição</h2><p>Síndrome de declínio cognitivo progressivo, persistente, que compromete funcionalidade. Inclui Alzheimer (mais comum, 60-70%), demência vascular, demência por corpos de Lewy, demência frontotemporal, demência mista. Diagnóstico clínico, baseado em história + exame cognitivo + funcionalidade — exames de imagem/lab são para diferencial e EXCLUSÃO de causas reversíveis.</p>
+<h2>Fisiopatologia</h2><p>Múltiplas etiologias com fisiopatologia distinta. ALZHEIMER: acúmulo β-amiloide (placas) + tau hiperfosforilada (emaranhados neurofibrilares) → morte neuronal, especialmente hipocampo e córtex temporoparietal. VASCULAR: lesões cumulativas isquêmicas (multi-infarto ou doença de pequenos vasos). LEWY: α-sinucleína em corpos de Lewy difusos → flutuação cognitiva, alucinações visuais, parkinsonismo. FRONTOTEMPORAL: degeneração lobar frontal/temporal → mudança comportamental ou afasia progressiva. MISTA (frequente em idoso ≥85a).</p>
+<h2>Apresentação típica</h2><p>Família traz queixa primariamente — paciente frequentemente minimiza ou não tem insight. Queixas iniciais: esquecimentos repetidos (mesmas perguntas), perda de objetos, desorientação espacial (saiu e não soube voltar), dificuldade em conta corrente / receita / medicações, mudança de personalidade, perda de interesse, irritabilidade, isolamento. Apresentações atípicas: queixa cognitiva como sintoma de DEPRESSÃO (pseudodemência), apresentação somática.</p>
+<h2>Apresentação clínica</h2><ul>
+<li>Esquecimento de eventos recentes</li>
+<li>Repetição de perguntas</li>
+<li>Dificuldade em encontrar palavras</li>
+<li>Desorientação no tempo (data, dia da semana) e espaço</li>
+<li>Perda de objetos</li>
+<li>Dificuldade em tarefas complexas (conta corrente, receita, dirigir)</li>
+<li>Mudanças de personalidade, irritabilidade, apatia</li>
+<li>Sintomas BPSD: agitação, perambulação, delírios, alucinações, agressividade, insônia</li>
+<li>Quedas frequentes (sem causa motora explicada)</li>
+<li>Perda de peso involuntária</li>
+<li>Histórico familiar de demência</li>
+<li>Fatores de risco vascular (HAS, DM, dislipidemia, AVC prévio, FA)</li>
+<li>Trauma craniano significativo prévio</li>
+<li>Álcool / drogas</li>
+<li>Privação social, baixa escolaridade</li>
+<li>Comprometimento funcional (AVDs e AIVDs)</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>AVALIAÇÃO E MANEJO DE DEMÊNCIA — APS:
+
+A) RASTREIO em idoso com queixa cognitiva (própria ou familiar):
+
+  TRIAGEM RÁPIDA — Mini-Cog (3 min):
+  • Pedir lembrar 3 palavras (relógio, bola, banana)
+  • Desenhar relógio com horas e ponteiros marcando 11:10
+  • Recordar 3 palavras
+  • Score: 0-2 sugere déficit; 3-5 normal
+  
+  MEEM (10-15 min, mais detalhado):
+  • Pontuação por escolaridade:
+    - Analfabeto: ponto de corte 13
+    - 1-4 anos: 18
+    - 5-8 anos: 23
+    - &gt;8 anos: 26
+  • Avalia: orientação, registro, atenção/cálculo, memória, linguagem, praxis
+  
+  MoCA (15 min):
+  • Mais sensível para CCL (Comprometimento Cognitivo Leve)
+  • Score ≤25/30 sugere déficit (ajuste por escolaridade)
+
+B) INVESTIGAÇÃO BÁSICA (excluir causa reversível ou modificável):
+  • Hemograma, função renal, eletrólitos, glicemia, lipídograma
+  • TSH (hipotireoidismo)
+  • B12 (deficiência)
+  • VDRL (neurossífilis — rara)
+  • HIV se fatores de risco
+  • Função hepática
+  • Ca, P, Mg
+  • Vit D (deficiência associada)
+  • Ácido úrico
+  • Sumário de urina (ITU pode descompensar cognição)
+  
+  IMAGEM:
+  • TC ou RM crânio: para excluir HSDC (hematoma subdural crônico — comum em idoso pós-trauma), hidrocefalia normo-pressão (HNP — tríade: marcha apraxica + incontinência + déficit cognitivo, REVERSÍVEL com derivação), tumor, AVC silenciosos extensos
+  • Idealmente RM para detalhe estrutural
+  • Não rotineira em quadro típico de Alzheimer leve — usar em atipicidades
+
+C) DIAGNÓSTICO DIFERENCIAL CRÍTICO:
+  • DEPRESSÃO (pseudodemência): início mais agudo, queixa exagerada pelo paciente, esforço para responder, melhora com tratamento AD
+  • DELIRIUM (ver patologia específica): início agudo, flutuação, alteração consciência
+  • CCL (Comprometimento Cognitivo Leve): queixa + déficit em testes mas SEM comprometimento funcional. ~10-15%/ano evoluem para demência
+  • HSDC, HNP, neoplasia, hipotireoidismo, B12, neurossífilis
+  • Apneia obstrutiva do sono (causa subdiagnosticada)
+  • Uso crônico de medicamentos (BZD, anticolinérgicos)
+  • Álcool
+
+D) MANEJO FARMACOLÓGICO:
+
+  Inibidores de colinesterase (donepezila 5-10 mg, rivastigmina, galantamina):
+  • Para Alzheimer leve a moderado (MEEM 12-26)
+  • Modesto benefício em sintomas — não modificam progressão
+  • Não disponíveis CBAF rotineiramente — CEAF tem com PCDT específicos (donepezila SUS via CEAF)
+  • Efeitos adversos: GI, bradicardia, hipotensão, síncope
+  
+  Memantina (antagonista NMDA):
+  • Alzheimer moderado a grave (MEEM &lt;16)
+  • CEAF com PCDT
+  
+  ANTI-Aβ (Lecanemabe, Donanemabe): aprovados 2023-2024 — alto custo, modesto benefício em estágio inicial. NÃO no SUS. Restritos a centros privados.
+  
+  TRATAMENTO BPSD (sintomas comportamentais):
+  • PRIMEIRA LINHA: ABORDAGEM NÃO-FARMACOLÓGICA
+    - Ambiente calmo, previsível
+    - Identificar gatilhos (dor, fome, sede, calor, frio, banheiro, sono)
+    - Validação (não confrontar delírios — redirecionar)
+    - Música, atividades estruturadas
+    - Resposta a agitação: presença calma, voz baixa
+  • Se SINTOMAS GRAVES com risco (agressão, agitação intensa):
+    - Risperidona 0,25-1 mg/d (CEAF; uso ≤12 semanas — Beers/STOPP)
+    - Quetiapina baixa dose em demência por corpos de Lewy (não usar haldol — piora muito)
+    - Evitar BZD (paradoxal: agita, sedando demais)
+  • ATENÇÃO: antipsicóticos em demência aumentam mortalidade — uso restrito, justificado, reavaliado a cada 4-12 sem.
+
+E) MANEJO NÃO-FARMACOLÓGICO:
+  • Estimulação cognitiva (jogos, leitura, conversas, exercícios)
+  • Atividade física regular (caminhar, dançar)
+  • Socialização (combater isolamento)
+  • Sono adequado
+  • Nutrição (dieta Mediterrânea ou DASH)
+  • Manejo de comorbidades (HAS, DM, dislipidemia)
+  • Aparelho auditivo se hipoacusia
+  • Manter rotina, ambiente familiar
+
+F) CUIDADO DO CUIDADOR:
+  • Psicoeducação sobre evolução, comportamentos, cuidados práticos
+  • Apoio psicológico (~50% dos cuidadores desenvolvem depressão)
+  • Grupos de apoio (ABRAz - Associação Brasileira de Alzheimer)
+  • Períodos de descanso (cuidador secundário, centro-dia)
+  • Avaliar sobrecarga (Zarit Burden Interview)
+  • Avaliar abuso/maus tratos (idoso vulnerável)
+
+G) PLANEJAMENTO AVANÇADO:
+  • CEDO (enquanto capacidade preservada): testamento, procurações, diretivas antecipadas de cuidado
+  • Discussão sobre RCR, internação, alimentação enteral em fases avançadas
+  • Cuidados paliativos integrados
+
+H) ARTICULAÇÃO:
+  • Neurologia (matriciamento): casos atípicos, jovens, refratários
+  • Psiquiatria: BPSD complexo, antipsicótico
+  • CAPS-AD se uso álcool concomitante
+  • CRAS / Assistência Social: benefícios, BPC
+  • Fisioterapia: manutenção mobilidade
+  • Fonoaudiologia: deglutição em fase avançada
+  • Cuidados paliativos: fase avançada/terminal
+
+I) REAVALIAÇÃO:
+  • Trimestral em fase estável
+  • Mensal em fase de ajuste de medicação ou BPSD
+  • Reavaliar MEEM anualmente</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>NICE 2018 (atualizado), AAN 2021, AGS Beers 2023 para uso de antipsicóticos. PCDT Alzheimer MS para CEAF. Anti-amiloides são gold-standard internacional emergente mas com restrições (custo, efeitos adversos, benefício modesto). Centros de referência: Programa de Memória.</p>
+<h2>Prevenção</h2><p>Fatores de risco MODIFICÁVEIS (Lancet Commission 2024): 14 fatores reduzem ~45% dos casos potencialmente:
+• Educação na infância
+• HAS, obesidade, DM2, dislipidemia
+• Tabaco, álcool excessivo
+• Atividade física regular
+• Audição não corrigida (aparelho auditivo)
+• Depressão não tratada
+• Isolamento social
+• Poluição do ar
+• TCE prévio
+• Sono inadequado
+• Visão não corrigida
+• Colesterol LDL alto
+
+Intervenção em fatores de risco mid-life e late-life é prevenção primária real.</p>
+<h2>Alertas clínicos</h2>
+<div class="callout crit"><p>DELIRIUM ≠ DEMÊNCIA. Início agudo + flutuação + alteração consciência = delirium (emergência, buscar causa).</p></div>
+<div class="callout warn"><p>Pseudodemência depressiva: tratável. Dx diferencial fundamental. PHQ-9/GDS-15 sempre.</p></div>
+<div class="callout info"><p>5-10% das demências têm causa REVERSÍVEL — investigar (TSH, B12, HSDC, HNP, neurossífilis, hipotireoidismo).</p></div>
+<div class="callout warn"><p>Antipsicótico em demência aumenta mortalidade. Uso restrito, dose mín, tempo mín, reavaliar.</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>⚠ NÃO &#x27;dar remédio para memória&#x27; em queixa subjetiva sem rastreio adequado e dx — overuse de inibidores de colinesterase em CCL não tem benefício comprovado e tem efeitos adversos. ⚠ Antipsicóticos em demência aumentam mortalidade — usar SÓ se risco a si/outros, dose mínima, tempo mínimo, reavaliar 4-12 sem. ⚠ NÃO usar haloperidol em demência por corpos de Lewy (piora muito — sensibilidade extrema a antipsicóticos). ⚠ BZD em demência: paradoxal — piora agitação, piora cognição. EVITAR. ⚠ Não restringir o paciente fisicamente (contenção) salvo emergência absoluta — piora agitação. ⚠ Não medicar sintoma comportamental SEM buscar gatilho (dor, ITU, retenção urinária, fome, calor). ⚠ Anti-amiloide tem benefício modesto + efeitos adversos relevantes — decisão muito compartilhada quando disponível. ⚠ Não infantilizar paciente com demência. ⚠ Cuidador exausto = paciente piora — cuidar do cuidador.</p>
+<h2>Abordagem ao paciente</h2><p>Diagnóstico de demência é momento delicado — toca identidade, autonomia, futuro. Comunique COM o paciente E família (quando paciente tem cognição preservada o suficiente). &#x27;O senhor tem percebido que a memória está mudando?&#x27;. Validar a perda sem deixar a pessoa só com o medo. Foco em CAPACIDADES PRESERVADAS, não só perdas. Planejamento avançado de cuidados deve ser feito CEDO (testamento, procurações, decisões sobre cuidados terminais) enquanto a pessoa tem capacidade. Família precisa de psicoeducação — entender que comportamentos não são &#x27;birra&#x27; nem &#x27;manipulação&#x27;, são sintoma. CUIDAR DO CUIDADOR é parte do tratamento — sobrecarga familiar gera depressão, doença, abandono.</p>
+<h2>Prognóstico</h2><p>Alzheimer progride 5-10 anos em média do diagnóstico ao óbito. Demência vascular: degraus de declínio. Demência por corpos de Lewy: progressão mais rápida que Alzheimer. CCL: 10-15%/ano evolui para demência. Causas reversíveis (HSDC, HNP, hipotireoidismo, B12) podem ter quadro melhorado/estabilizado com tratamento adequado.</p>
+<h2>Acompanhamento</h2><p>Trimestral em estabilidade, mensal em ajuste. Avaliação multifocal (cognição, funcionalidade, BPSD, sobrecarga do cuidador). Despresecrição rotineira (ver &#x27;Polifarmácia&#x27;).</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> NICE Dementia Guidance 2018 (atualizado 2023). AAN Practice Parameters 2021. Lancet Commission on Dementia 2024 (14 fatores modificáveis). PCDT Alzheimer MS. FREITAS 5ª ed 2022. ABRAz.</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Saúde do idoso</h3>
+<ul>
+<li><a href="/p/aga-mfc.html">Avaliação Geriátrica Ampla (AGA) — Abordagem MFC</a></li>
+<li><a href="/p/polifarmacia-idoso.html">Polifarmácia e Despresecrição (Beers + STOPP-START)</a></li>
+<li><a href="/p/quedas-idoso.html">Quedas em Idoso — Investigação e Prevenção Multifatorial</a></li>
+<li><a href="/p/delirium-idoso.html">Delirium em Idoso — Reconhecimento e Manejo</a></li>
+<li><a href="/p/osteoporose-mfc.html">Osteoporose — Rastreio, FRAX e Manejo MFC</a></li>
+<li><a href="/p/fragilidade-sarcopenia-mfc.html">Fragilidade e Sarcopenia — Identificação e Manejo MFC</a></li>
+<li><a href="/p/incontinencia-urinaria-mfc.html">Incontinência Urinária no Idoso — Abordagem MFC</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta. Médico de Família e Comunidade, UBS Estiva Gerbi (SP).</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>

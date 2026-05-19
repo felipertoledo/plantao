@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aleitamento Materno — Problemas Comuns e Manejo MFC — CID O92, P92 — Vovôminic Doutô</title>
+<meta name="description" content="Aleitamento Materno — Problemas Comuns e Manejo MFC. Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html">
+<meta name="author" content="Felipe Ribeiro Toledo (CRM-SP 216.986)">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Aleitamento Materno — Problemas Comuns e Manejo MFC — CID O92, P92">
+<meta property="og:description" content="Aleitamento Materno — Problemas Comuns e Manejo MFC. Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aleitamento Materno — Problemas Comuns e Manejo MFC — CID O92, P92">
+<meta name="twitter:description" content="Aleitamento Materno — Problemas Comuns e Manejo MFC. Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "jobTitle": "Médico de Família e Comunidade", "identifier": "CRM-SP 216.986", "affiliation": {"@type": "Organization", "name": "UBS Estiva Gerbi (SP)"}, "knowsAbout": ["Medicina de Família e Comunidade", "Atenção Primária à Saúde", "Pronto-Atendimento", "SUS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html#condition", "name": "Aleitamento Materno — Problemas Comuns e Manejo MFC", "alternateName": ["aleitamento", "amamentação", "pega", "fissura mamária", "ingurgitamento"], "description": "Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas comuns na APS: pega/sucção inadequadas, dor mamilar/fissuras, ingurgitamento, baixa produção (real vs percebida), mastite (entidade separada — ver mastite-mastalgia-mfc), retorno ao trabalho, des", "code": {"@type": "MedicalCode", "codeValue": "O92, P92", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Gestação"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "DOR MAMILAR / FISSURA: indica em geral PEGA INADEQUADA — corrigir é prioridade; sem trauma, mamilo deve estar arredondado após a mamada (não amassado/branco/em forma de bisel)"}, {"@type": "MedicalSignOrSymptom", "name": "INGURGITAMENTO: mamas duras, dolorosas, edemaciadas + dificuldade de pega — comum nos primeiros dias da descida do leite"}, {"@type": "MedicalSignOrSymptom", "name": "BAIXA PRODUÇÃO PERCEBIDA: mãe sente \"não tenho leite suficiente\" — frequentemente real diagnóstico é OUTRO (mama não-cheia em produção estabelecida + bebê pegando bem + ganho ponderal adequado = produ"}, {"@type": "MedicalSignOrSymptom", "name": "BAIXA PRODUÇÃO REAL (rara): ganho ponderal inadequado documentado, sinais de desidratação do bebê, oligúria"}, {"@type": "MedicalSignOrSymptom", "name": "RN: peso (perda fisiológica ≤7-10% nos primeiros 5 dias, recupera em 14 dias; >10% perda OU não recupera em 14 dias = ALARME), eliminações (≥6 fraldas urinadas/dia + ≥3 evacuações/dia em RN no aleitam"}, {"@type": "MedicalSignOrSymptom", "name": "FRENULINHO CURTO (anquiloglossia): dificuldade de protrusão lingual, sucção fraca, lesão mamilar persistente apesar de pega corrigida — investigação especialista (dentista/odontopediatra/fonoaudiólogo"}], "epidemiology": "Aleitamento materno é INTERVENÇÃO DE SAÚDE PÚBLICA com maior custo-efetividade documentada — reduz mortalidade infantil, infecções, obesidade, alergias na criança; reduz risco de câncer de mama e ovário materno + DM2 + SOP + osteoporose. MFC: orientar tecnicamente (pega + posição), reconhecer e tratar problemas comuns, MANTER aleitamento sempre que possível, articular banco de leite quando indicado, apoiar volta ao trabalho com adaptações.", "pathophysiology": "Lactogênese: I (segunda metade da gestação — colostro), II (descida do leite ~D3-D5 pós-parto), III (galactopoiese — manutenção). LEITE MATERNO PADRÃO DEMANDA: produção é REGULADA POR DEMANDA (\"oferta-procura\") — sucção frequente + esvaziamento adequado = produção mantida. Baixa produção REAL é incomum; baixa produção PERCEBIDA é frequente (mãe ansiosa, choro do bebê interpretado como fome quando pode ser cansaço/cólica). Composição muda ao longo da mamada (leite anterior — mais aquoso, sede; le", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "OBSERVAÇÃO DA MAMADA é exame mais importante. CORREÇÃO DE PEGA: bebê deve abocanhar grande parte da aréola (não só mamilo), boca BEM aberta (lábios evertidos como peixe), queixo toca a mama, deglutição audível, posição alinhada. EM FISSURA / DOR MAMILAR: corrigir pega é prioridade; leite materno aplicado no mamilo após mamada + secagem ao ar (efeito cicatrizante); evitar sabão/cremes/lanolina (lanolina pura é exceção — pode ajudar); em casos de fissura grave: pausa de uma mamada na mama afetada "}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "[Caderno de Atenção Básica nº 23 — Saúde da Criança: Aleitamento Materno e Alimentação Complementar 2015] [Manual de Aleitamento Materno SBP 2024] [Rede IBFAN] [Iniciativa Hospital Amigo da Criança IHAC] [Lei 13.002/2014 — Avaliação do Frenulinho Lingual]"}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Aleitamento Materno — Problemas Comuns e Manejo MFC — CID O92, P92", "description": "Aleitamento Materno — Problemas Comuns e Manejo MFC. Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html#condition"}, "inLanguage": "pt-BR", "keywords": "Aleitamento Materno — Problemas Comuns e Manejo MFC, Gestação, SUS, UBS, Pronto-Atendimento, aleitamento, amamentação, pega, fissura mamária, ingurgitamento, CID O92, P92, CIAP W21"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Gestação", "item": "https://felipertoledo.github.io/plantao/#/sis/gest"}, {"@type": "ListItem", "position": 3, "name": "Aleitamento Materno — Problemas Comuns e Manejo MFC", "item": "https://felipertoledo.github.io/plantao/p/aleitamento-problemas.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · Felipe Ribeiro Toledo · CRM-SP 216.986</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/gest">Gestação</a> › <span>Aleitamento Materno — Problemas Comuns e Manejo MFC</span>
+</nav>
+<span class="eyebrow">Gestação</span>
+<h1>Aleitamento Materno — Problemas Comuns e Manejo MFC</h1>
+<p class="lead">Aleitamento materno é INTERVENÇÃO DE SAÚDE PÚBLICA com maior custo-efetividade documentada — reduz mortalidade infantil, infecções, obesidade, alergias na criança; reduz risco de câncer de mama e ovário materno + DM2 + SOP + osteoporose. MFC: orientar tecnicamente (pega + posição), reconhecer e tratar problemas comuns, MANTER aleitamento sempre que possível, articular banco de leite quando indicad</p>
+<div class="meta"><span class="tag">CID O92, P92</span><span class="tag">CIAP W21</span><span class="tag info">Baixa gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> aleitamento, amamentação, pega, fissura mamária, ingurgitamento, baixa produção, desmame.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/aleitamento-problemas">Abrir Aleitamento Materno — Problemas Comuns e Manejo MFC no app →</a>
+</div>
+<h2>Definição</h2><p>Aleitamento materno EXCLUSIVO até 6 meses + complementado até pelo menos 2 anos é meta OMS/MS. Problemas comuns na APS: pega/sucção inadequadas, dor mamilar/fissuras, ingurgitamento, baixa produção (real vs percebida), mastite (entidade separada — ver mastite-mastalgia-mfc), retorno ao trabalho, desmame. ALEITAMENTO MATERNO É TRABALHO APRENDIDO — exige apoio + paciência + correção técnica. Mais de 80% das mulheres podem amamentar; problemas frequentemente são tecnicamente solucionáveis na APS.</p>
+<h2>Fisiopatologia</h2><p>Lactogênese: I (segunda metade da gestação — colostro), II (descida do leite ~D3-D5 pós-parto), III (galactopoiese — manutenção). LEITE MATERNO PADRÃO DEMANDA: produção é REGULADA POR DEMANDA (&quot;oferta-procura&quot;) — sucção frequente + esvaziamento adequado = produção mantida. Baixa produção REAL é incomum; baixa produção PERCEBIDA é frequente (mãe ansiosa, choro do bebê interpretado como fome quando pode ser cansaço/cólica). Composição muda ao longo da mamada (leite anterior — mais aquoso, sede; leite posterior — mais gorduroso, fome).</p>
+<h2>Apresentação típica</h2><p>Mãe com QUEIXAS variadas em puerpério: dor mamilar / fissuras, ingurgitamento, sensação de baixa produção, choro persistente do bebê, dificuldade em pega, dor durante/após a mamada, RN com ganho ponderal aquém do esperado. AVALIAÇÃO: anamnese (frequência das mamadas — esperado 8-12×/24h em RN, livre demanda; tempo aproximado; alternância de mamas; presença de chupeta/mamadeira), OBSERVAÇÃO DA MAMADA (PEGA — boca bem aberta, lábios evertidos, abocanha grande parte da aréola, queixo encosta na mama, deglutição audível; POSIÇÃO — bebê alinhado, abdome com mãe, cabeça e corpo no mesmo eixo, suporte adequado), exame da mama materna (mamilo — fissura, formato, sangramento; mama — calor, dor, vermelhidão, induração), exame do RN (peso, hidratação, frenulinho — anquiloglossia, sucção).</p>
+<h2>Apresentação clínica</h2><ul>
+<li>DOR MAMILAR / FISSURA: indica em geral PEGA INADEQUADA — corrigir é prioridade; sem trauma, mamilo deve estar arredondado após a mamada (não amassado/branco/em forma de bisel)</li>
+<li>INGURGITAMENTO: mamas duras, dolorosas, edemaciadas + dificuldade de pega — comum nos primeiros dias da descida do leite</li>
+<li>BAIXA PRODUÇÃO PERCEBIDA: mãe sente &quot;não tenho leite suficiente&quot; — frequentemente real diagnóstico é OUTRO (mama não-cheia em produção estabelecida + bebê pegando bem + ganho ponderal adequado = produção adequada)</li>
+<li>BAIXA PRODUÇÃO REAL (rara): ganho ponderal inadequado documentado, sinais de desidratação do bebê, oligúria</li>
+<li>RN: peso (perda fisiológica ≤7-10% nos primeiros 5 dias, recupera em 14 dias; &gt;10% perda OU não recupera em 14 dias = ALARME), eliminações (≥6 fraldas urinadas/dia + ≥3 evacuações/dia em RN no aleitamento bem-estabelecido), icterícia tardia / persistente, sucção, vigor</li>
+<li>FRENULINHO CURTO (anquiloglossia): dificuldade de protrusão lingual, sucção fraca, lesão mamilar persistente apesar de pega corrigida — investigação especialista (dentista/odontopediatra/fonoaudiólogo)</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>OBSERVAÇÃO DA MAMADA é exame mais importante. CORREÇÃO DE PEGA: bebê deve abocanhar grande parte da aréola (não só mamilo), boca BEM aberta (lábios evertidos como peixe), queixo toca a mama, deglutição audível, posição alinhada. EM FISSURA / DOR MAMILAR: corrigir pega é prioridade; leite materno aplicado no mamilo após mamada + secagem ao ar (efeito cicatrizante); evitar sabão/cremes/lanolina (lanolina pura é exceção — pode ajudar); em casos de fissura grave: pausa de uma mamada na mama afetada com ordenha + ofertar leite ordenhado em copinho/colher. EM INGURGITAMENTO: ordenha manual antes da mamada (esvazia o suficiente para permitir pega); aplicação de COMPRESSA FRIA entre as mamadas (analgésica, anti-inflamatória — INCORRETO uso de compressa morna que aumenta produção); evitar mamadas espaçadas. EM BAIXA PRODUÇÃO REAL: avaliar pega+frequência+esvaziamento (otimizar), galactagogos (domperidona — uso off-label em alguns serviços; metoclopramida menos preferida — risco extrapiramidal); avaliar tireoide, Sheehan (HPP severa prévia), hipoplasia mamária. EM RN COM GANHO INADEQUADO: pesar antes/depois da mamada (test-weighing — orientação especialista), complementação prescrita por médico (leite materno ordenhado preferível ao artificial), encaminhar banco de leite humano. ANQUILOGLOSSIA (frenulinho curto): avaliar com pediatra/dentista — frenotomia em casos sintomáticos (sucção fraca + ganho inadequado + lesão mamilar persistente apesar de pega adequada).</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>Acrescenta: Banco de Leite Humano (BLH) — coleta + processamento + distribuição; rede IBFAN; consultores de aleitamento materno certificados (IBCLC); test-weighing; galactagogos (domperidona — eficácia modesta); frenotomia/frenectomia em anquiloglossia significativa; bombas elétricas de qualidade.</p>
+<h2>Prevenção</h2><p>Aconselhamento PRÉ-NATAL sobre aleitamento (toda gestante). Contato pele-a-pele + 1ª mamada nas primeiras 1-2h pós-parto. Alojamento conjunto (mãe-bebê na mesma sala/leito desde o nascimento — direito legal). NÃO uso de chupeta/mamadeira nas primeiras semanas (interfere com pega — &quot;confusão de bicos&quot;). Sucção EM LIVRE DEMANDA (mín 8-12×/24h, sem horário fixo). Pega + posição CORRETAS. Adequação do banho/mamilo (NÃO usar sabão/cremes — apenas leite materno após mamada, secagem ao ar).</p>
+<h2>Alertas clínicos</h2>
+<div class="callout crit"><p>⚠ ALEITAMENTO É CONTRAINDICADO em mães com: HIV (regra Brasil — leite materno transmite; fórmula é fornecida pelo SUS), HTLV-1/2 (transmissão vertical via aleitamento), uso ativo de drogas ilícitas (cocaína, anfetamina, heroína), quimioterapia ativa, radioiodo, brucelose ativa, herpes nas mamas (suspensão temporária da mama afetada).</p></div>
+<div class="callout crit"><p>⚠ RN COM PERDA DE PESO &gt;10% nos primeiros dias ou NÃO RECUPERAÇÃO em 14 dias = ALARME. Avaliar técnica de aleitamento + complementação supervisionada + investigar (frenulinho, doença, baixa produção real). Banco de leite humano. Encaminhar pediatra.</p></div>
+<div class="callout warn"><p>BANCO DE LEITE HUMANO (BLH): rede SUS de coleta + processamento + distribuição. Mãe pode doar (excedente) + RN/lactente com indicação pode receber (UTI neonatal, prematuro, baixo peso, mãe com baixa produção real). Articular em UBS para apoio especializado.</p></div>
+<div class="callout warn"><p>MEDICAMENTOS NA LACTAÇÃO: maioria é compatível ou tem alternativas seguras. Recursos: LactMed (NIH), e-lactancia.org, livro &quot;Medicamentos e Amamentação&quot; SBP. Drogas que SUSPENDEM TEMPORARIAMENTE aleitamento: radioiodo (semanas), citostáticos, lítio (controverso — alguns autores aceitam com monitoração).</p></div>
+<div class="callout warn"><p>GALACTAGOGOS (domperidona — off-label; metoclopramida menos preferida): uso restrito, eficácia modesta, NÃO substituem manejo técnico (pega + frequência + esvaziamento). Avaliar risco-benefício. Domperidona: prolonga QT, evitar em arritmia/cardiopatia.</p></div>
+<div class="callout warn"><p>ANQUILOGLOSSIA (&quot;língua presa&quot;): avaliar TODA dificuldade de aleitamento PERSISTENTE com fissura/sucção fraca/ganho inadequado. Encaminhar pediatra/dentista pediátrico/fono para avaliação + frenotomia em casos confirmados (Protocolo de Avaliação do Frenulinho Lingual SUS — Lei 13.002/2014).</p></div>
+<div class="callout info"><p>DIREITOS LEGAIS: Licença-maternidade 120 dias (CLT, podendo ser prorrogada 60 dias por empresa Cidadã — total 180); 2 períodos de 30 min/dia para amamentação até 6 meses (CLT art 396); creche em empresas com &gt;30 mulheres acima de 16 anos OU vale-creche. Estabilidade do emprego desde concepção até 5 meses pós-parto.</p></div>
+<div class="callout info"><p>RETORNO AO TRABALHO + ALEITAMENTO: ordenha manual ou bomba durante expediente, armazenamento (geladeira 24-48h ou freezer 14 dias), oferta em copinho/colher ao bebê (não mamadeira). Orientar técnica + suporte. Direito legal a amamentação (CLT 396).</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>NÃO INDICAR DESMAME por dor ou problemas técnicos solucionáveis. NÃO INDICAR FORMULA ARTIFICIAL como 1ª linha em sensação de baixa produção (investigar primeiro). NÃO USAR CHUPETA/MAMADEIRA nas primeiras semanas (confusão de bicos). NÃO USAR SABÃO/CREME/POMADA no mamilo rotineiramente (apenas leite materno + ar). NÃO INDICAR DOMPERIDONA / METOCLOPRAMIDA como rotina (off-label, sem evidência consistente). NÃO RECOMENDAR &#x27;chás&#x27; / &#x27;cervejas pretas&#x27; para aumentar produção (sem evidência + álcool em cerveja é prejudicial).</p>
+<h2>Abordagem ao paciente</h2><p>Aleitamento materno é frequentemente apresentado como &#x27;natural e fácil&#x27; — mas é HABILIDADE APRENDIDA, exige paciência + apoio + correção técnica. Validar: &#x27;amamentar é trabalho, exige técnica, e algumas dores nos primeiros dias podem ser corrigíveis — não é &quot;o seu corpo não foi feito pra isso&quot;&#x27;. Combater MITOS: &#x27;leite fraco&#x27; (não existe — todo leite materno é nutricionalmente completo), &#x27;mama pequena = pouco leite&#x27; (tamanho da mama NÃO relaciona com produção), &#x27;criança chora = fome&#x27; (pode ser cansaço, cólica, fralda, calor, demanda de colo). Em volta ao TRABALHO: orientar legislação (licença + 2 períodos diários de 30 min para amamentação até 6 meses, conforme CLT) e ordenha + congelamento. Em mãe que escolhe DESMAMAR (informada): RESPEITAR escolha, orientar transição gradual, não-culpabilizar.</p>
+<h2>Prognóstico</h2><p>Bom — maioria dos problemas resolvíveis com manejo adequado em poucas semanas. Aleitamento exclusivo até 6m em &lt;40% das mulheres brasileiras (PNDS 2006 e atuais) — esforços de apoio impactam.</p>
+<h2>Acompanhamento</h2><p>VD pós-parto + consulta tardia + consultas pediátricas como espaço de avaliação contínua. Banco de leite humano para apoio especializado.</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> [Caderno de Atenção Básica nº 23 — Saúde da Criança: Aleitamento Materno e Alimentação Complementar 2015] [Manual de Aleitamento Materno SBP 2024] [Rede IBFAN] [Iniciativa Hospital Amigo da Criança IHAC] [Lei 13.002/2014 — Avaliação do Frenulinho Lingual]</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Gestação</h3>
+<ul>
+<li><a href="/p/gest-antiemetico.html">Antieméticos em Gestantes</a></li>
+<li><a href="/p/gest-candidiase.html">Candidíase em Gestante</a></li>
+<li><a href="/p/gest-dor.html">Dor em Gestante</a></li>
+<li><a href="/p/gest-enxaqueca.html">Enxaqueca em Gestante</a></li>
+<li><a href="/p/pre-natal-baixo-risco-mfc.html">Pré-natal de Baixo Risco — Rotina Completa MFC (CAB 32)</a></li>
+<li><a href="/p/dm-gestacional.html">Diabetes Mellitus Gestacional (DMG) — Diagnóstico e Manejo MFC</a></li>
+<li><a href="/p/has-gestacional.html">HAS na Gestação — Crônica, Gestacional e Pré-Eclâmpsia (MFC)</a></li>
+<li><a href="/p/nausea-vomito-gestacao.html">Náusea e Vômito na Gestação + Hiperêmese Gravídica</a></li>
+<li><a href="/p/anemia-gestacional.html">Anemia na Gestação — Investigação e Tratamento MFC</a></li>
+<li><a href="/p/puerperio-mfc.html">Puerpério — Visita Domiciliar 7d + Consulta 30-42d MFC</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta. Médico de Família e Comunidade, UBS Estiva Gerbi (SP).</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>
