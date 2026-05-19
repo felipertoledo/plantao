@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Esclerose Múltipla — Reconhecimento e Acompanhamento MFC — CID G35 — Vovôminic Doutô</title>
+<meta name="description" content="Esclerose Múltipla — Reconhecimento e Acompanhamento MFC. Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html">
+<meta name="author" content="Felipe Ribeiro Toledo">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Esclerose Múltipla — Reconhecimento e Acompanhamento MFC — CID G35">
+<meta property="og:description" content="Esclerose Múltipla — Reconhecimento e Acompanhamento MFC. Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Esclerose Múltipla — Reconhecimento e Acompanhamento MFC — CID G35">
+<meta name="twitter:description" content="Esclerose Múltipla — Reconhecimento e Acompanhamento MFC. Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+.disclaimer { background:var(--bg-sunken); border:1px solid var(--rule); border-left:3px solid #c89218; border-radius:var(--radius); padding:0.9rem 1.1rem; margin:1.4rem 0; font-size:0.88rem; color:var(--ink-2); }
+.disclaimer strong { color:var(--ink); }
+.disclaimer-footer { font-size:0.82rem; color:var(--ink-3); padding:0.9rem 0; border-top:1px solid var(--rule); margin-top:1.2rem; }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "alternateName": "vovôminic", "description": "médico e nerd", "url": "https://felipertoledo.github.io/plantao"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html#condition", "name": "Esclerose Múltipla — Reconhecimento e Acompanhamento MFC", "alternateName": ["esclerose múltipla", "EM", "MS", "neurite óptica", "mielite"], "description": "Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em mulher jovem (20-40a), incidência 2:1 mulher:homem. CARACTERÍSTICA: lesões DISSEMINADAS NO TEMPO (≥2 episódios) e NO ESPAÇO (≥2 regiões do SNC) — critério de McDonald 2017. FORMAS: surto-remissão (RRMS —", "code": {"@type": "MedicalCode", "codeValue": "G35", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Neurologia"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "NEURITE ÓPTICA — perda visual unilateral progressiva em dias + dor ocular + escotoma central. RECUPERAÇÃO típica em semanas-meses. Primeiro evento clássico (~30%)"}, {"@type": "MedicalSignOrSymptom", "name": "MIELITE — fraqueza + parestesia abaixo de nível sensitivo + alteração esfinctérica + sinal de Lhermitte (choque na coluna ao flexionar pescoço)"}, {"@type": "MedicalSignOrSymptom", "name": "SÍNDROME DE TRONCO — diplopia (oftalmoplegia internuclear bilateral é clássica), vertigem, disartria, ataxia"}, {"@type": "MedicalSignOrSymptom", "name": "FADIGA crônica intensa (extremamente comum, frequentemente o sintoma mais incapacitante)"}, {"@type": "MedicalSignOrSymptom", "name": "UHTHOFF — piora de sintomas neurológicos com aumento da temperatura corporal (banho quente, exercício, febre)"}, {"@type": "MedicalSignOrSymptom", "name": "ESPASTICIDADE em fase mais avançada — rigidez de extensão de membros inferiores, espasmos"}, {"@type": "MedicalSignOrSymptom", "name": "BEXIGA NEUROGÊNICA — urgência, incontinência, retenção (extremamente comum)"}, {"@type": "MedicalSignOrSymptom", "name": "SINTOMAS COGNITIVOS — lentificação, déficit de atenção, memória de trabalho"}], "epidemiology": "EM é DIAGNÓSTICO E TRATAMENTO de NEUROLOGIA — MFC tem papel CHAVE em SUSPEITAR precocemente (paciente jovem com sintoma neurológico que regride espontaneamente — \"foi muito estranho mas passou\"; episódio de visão embaçada em um olho que melhorou; dormência migrando), encaminhar, e MANTER acompanhamento longitudinal das comorbidades + função + cuidado de saúde geral. EM é MAIS PREVALENTE em país de clima temperado e em pessoa com baixa exposição solar / deficiência de vitamina D na infância — Bra", "pathophysiology": "Resposta autoimune contra mielina do SNC → desmielinização + inflamação + dano axonal progressivo. Placas (lesões desmielinizantes) em substância branca periventricular, justacortical, infratentorial, medula espinhal. Linfócitos T autorreativos atravessam BHE (barreira hematoencefálica) + ativação de microglia/macrófagos + dano axonal cumulativo → incapacidade neurológica progressiva. Fatores de risco: genético (HLA-DRB1*15:01), ambiental (infecção por Epstein-Barr — relação causal forte; tabagi", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "DIAGNÓSTICO + INÍCIO DE TRATAMENTO: NEUROLOGIA + neuroimagem (RM crânio e medula). MFC: SUSPEITAR + encaminhar urgente + ACOMPANHAR longitudinalmente. EM SURTO AGUDO: pulsoterapia com METILPREDNISOLONA 1 g IV/d × 3-5 dias (hospitalização ou ambulatório de neuroimuno) — encurta duração do surto, não muda evolução final. DMTs (Disease-Modifying Therapies) — fornecimento via CEAF + PCDT-MS de Esclerose Múltipla — escolha conforme atividade da doença, comorbidades, perfil de efeitos colaterais, gest"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "[McDonald Criteria 2017 — Diagnostic Criteria for Multiple Sclerosis] [AAN — Practice Guideline: Disease-Modifying Therapies in Multiple Sclerosis 2018] [ABN — Diretrizes Esclerose Múltipla 2023] [PCDT-MS Esclerose Múltipla 2022]"}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Esclerose Múltipla — Reconhecimento e Acompanhamento MFC — CID G35", "description": "Esclerose Múltipla — Reconhecimento e Acompanhamento MFC. Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-19", "dateModified": "2026-05-19", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html#condition"}, "inLanguage": "pt-BR", "keywords": "Esclerose Múltipla — Reconhecimento e Acompanhamento MFC, Neurologia, SUS, UBS, Pronto-Atendimento, esclerose múltipla, EM, MS, neurite óptica, mielite, CID G35, CIAP N86"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Neurologia", "item": "https://felipertoledo.github.io/plantao/#/sis/neuro"}, {"@type": "ListItem", "position": 3, "name": "Esclerose Múltipla — Reconhecimento e Acompanhamento MFC", "item": "https://felipertoledo.github.io/plantao/p/esclerose-multipla-reconhec.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · por vovôminic</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/neuro">Neurologia</a> › <span>Esclerose Múltipla — Reconhecimento e Acompanhamento MFC</span>
+</nav>
+<span class="eyebrow">Neurologia</span>
+<h1>Esclerose Múltipla — Reconhecimento e Acompanhamento MFC</h1>
+<p class="lead">EM é DIAGNÓSTICO E TRATAMENTO de NEUROLOGIA — MFC tem papel CHAVE em SUSPEITAR precocemente (paciente jovem com sintoma neurológico que regride espontaneamente — &quot;foi muito estranho mas passou&quot;; episódio de visão embaçada em um olho que melhorou; dormência migrando), encaminhar, e MANTER acompanhamento longitudinal das comorbidades + função + cuidado de saúde geral. EM é MAIS PREVALENTE em país de</p>
+<div class="meta"><span class="tag">CID G35</span><span class="tag">CIAP N86</span><span class="tag warn">Média gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> esclerose múltipla, EM, MS, neurite óptica, mielite, McDonald, interferon beta, fingolimode, natalizumabe, ocrelizumabe, CEAF EM.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/esclerose-multipla-reconhec">Abrir Esclerose Múltipla — Reconhecimento e Acompanhamento MFC no app →</a>
+</div>
+<div class="disclaimer">
+<p><strong>⚠ Aviso médico-legal:</strong> material educacional para profissionais de saúde. As informações podem conter erros, omissões ou estar desatualizadas. <strong>Toda informação deve ser verificada</strong> nas diretrizes-fonte e em literatura atual antes de aplicar na prática. <strong>A responsabilidade da prescrição é exclusivamente do médico assistente</strong>, que avalia o paciente diretamente. O autor do site não se responsabiliza por decisões clínicas, eventos adversos ou desfechos decorrentes do uso destas informações.</p>
+</div>
+<h2>Definição</h2><p>Doença INFLAMATÓRIA, DESMIELINIZANTE e DEGENERATIVA do SNC com base AUTOIMUNE — predominância em mulher jovem (20-40a), incidência 2:1 mulher:homem. CARACTERÍSTICA: lesões DISSEMINADAS NO TEMPO (≥2 episódios) e NO ESPAÇO (≥2 regiões do SNC) — critério de McDonald 2017. FORMAS: surto-remissão (RRMS — ~85% no início), progressiva secundária (SPMS — evolução de RRMS), progressiva primária (PPMS — ~10-15%), remitente progressiva (rara). SINTOMAS variados conforme topografia — neurite óptica (clássico primeiro evento), parestesia, fraqueza, ataxia, espasticidade, disfunção urinária, fadiga, cognitivo. Diagnóstico: clínico + RM (lesões T2 periventriculares, justacorticais, infratentoriais, medulares) + LCR (bandas oligoclonais).</p>
+<h2>Fisiopatologia</h2><p>Resposta autoimune contra mielina do SNC → desmielinização + inflamação + dano axonal progressivo. Placas (lesões desmielinizantes) em substância branca periventricular, justacortical, infratentorial, medula espinhal. Linfócitos T autorreativos atravessam BHE (barreira hematoencefálica) + ativação de microglia/macrófagos + dano axonal cumulativo → incapacidade neurológica progressiva. Fatores de risco: genético (HLA-DRB1*15:01), ambiental (infecção por Epstein-Barr — relação causal forte; tabagismo; deficiência de vitamina D; obesidade adolescência; baixa exposição solar infantil). Mulher&gt;homem (2:1). Mais comum em descendentes europeus.</p>
+<h2>Apresentação típica</h2><p>Adulto JOVEM (geralmente 20-40a, predominância feminina) com: SURTO NEUROLÓGICO — sintoma de início agudo/subagudo (horas-dias-semanas), evolução por dias-semanas, recuperação parcial ou completa em semanas-meses. APRESENTAÇÕES MAIS COMUNS: NEURITE ÓPTICA (dor periorbital + perda visual unilateral progressiva em dias + escotoma central + dor à movimentação ocular + papila normal ou edema discreto — &quot;vê o nada&quot; no olho afetado) — primeiro evento clássico (~30%); MIELITE TRANSVERSA (fraqueza + parestesia + alteração esfinctérica + nível sensitivo); SÍNDROMES DO TRONCO (diplopia, vertigem, ataxia, disartria); SÍNDROMES SENSITIVAS (parestesia migrando, sinal de Lhermitte — choque elétrico desce coluna ao flexionar pescoço — clássico de lesão cervical); CEREBELARES (ataxia, tremor de intenção); FADIGA pode preceder; UHTHOFF (sintomas pioram com calor — banho quente, exercício, febre); SINTOMAS COGNITIVOS sutis.</p>
+<h2>Apresentação clínica</h2><ul>
+<li>NEURITE ÓPTICA — perda visual unilateral progressiva em dias + dor ocular + escotoma central. RECUPERAÇÃO típica em semanas-meses. Primeiro evento clássico (~30%)</li>
+<li>MIELITE — fraqueza + parestesia abaixo de nível sensitivo + alteração esfinctérica + sinal de Lhermitte (choque na coluna ao flexionar pescoço)</li>
+<li>SÍNDROME DE TRONCO — diplopia (oftalmoplegia internuclear bilateral é clássica), vertigem, disartria, ataxia</li>
+<li>FADIGA crônica intensa (extremamente comum, frequentemente o sintoma mais incapacitante)</li>
+<li>UHTHOFF — piora de sintomas neurológicos com aumento da temperatura corporal (banho quente, exercício, febre)</li>
+<li>ESPASTICIDADE em fase mais avançada — rigidez de extensão de membros inferiores, espasmos</li>
+<li>BEXIGA NEUROGÊNICA — urgência, incontinência, retenção (extremamente comum)</li>
+<li>SINTOMAS COGNITIVOS — lentificação, déficit de atenção, memória de trabalho</li>
+<li>DEPRESSÃO em ~50% (multifatorial — doença + reação + lesão estrutural)</li>
+<li>DOR NEUROPÁTICA — neuralgia do trigêmeo é clássica em EM jovem (≠ neuralgia idiopática do idoso)</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>DIAGNÓSTICO + INÍCIO DE TRATAMENTO: NEUROLOGIA + neuroimagem (RM crânio e medula). MFC: SUSPEITAR + encaminhar urgente + ACOMPANHAR longitudinalmente. EM SURTO AGUDO: pulsoterapia com METILPREDNISOLONA 1 g IV/d × 3-5 dias (hospitalização ou ambulatório de neuroimuno) — encurta duração do surto, não muda evolução final. DMTs (Disease-Modifying Therapies) — fornecimento via CEAF + PCDT-MS de Esclerose Múltipla — escolha conforme atividade da doença, comorbidades, perfil de efeitos colaterais, gestação planejada: INTERFERON BETA-1A/1B (Avonex, Rebif, Betaferon) — injetável SC/IM, 1ª linha clássica, efeitos colaterais: sintomas gripais, irritação local, ↑ALT, depressão, hipotireoidismo; GLATIRÂMER ACETATO (Copaxone) — injetável diário, perfil mais seguro; FINGOLIMODE — oral, 1× dia; NATALIZUMABE (Tysabri) — infusão IV mensal, alta eficácia, ⚠ risco de LEMP (leucoencefalopatia multifocal progressiva — JCV+); OCRELIZUMABE — infusão IV 6/6m, alta eficácia, usado também em PPMS; CLADRIBINA — esquema curto oral; OUTROS: dimetilfumarato, teriflunomida, alemtuzumabe, ofatumumabe. MANEJO MFC — COMORBIDADES E SINTOMAS: FADIGA (amantadina, modafinila — particular); ESPASTICIDADE (baclofeno UBS, tizanidina, gabapentina); DOR NEUROPÁTICA (amitriptilina, carbamazepina — neuralgia trigêmeo); BEXIGA NEUROGÊNICA (oxibutinina, mirabegrona, cateterismo intermitente — fisio uroginecológica); DEPRESSÃO (ISRS — sertralina, escitalopram); DISFUNÇÃO ERÉTIL (sildenafil); CONSTIPAÇÃO (PEG, lactulose); QUEDAS (fisioterapia, dispositivos auxiliares). FISIOTERAPIA NEUROLÓGICA + TERAPIA OCUPACIONAL + FONOAUDIOLOGIA — pilares. SUPORTE PSICOLÓGICO. VITAMINA D: manter níveis &gt;40-50 ng/mL (evidência sugere benefício em modular doença). GESTAÇÃO: planejamento com neuro (suspender alguns DMTs antes da concepção, manter outros como glatirâmer); 3º trimestre tipicamente PROTEGE de surto; 1º semestre pós-parto tem ↑risco surto — retomar DMT precocemente.</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>Acrescenta: RM cerebral e medular 3T anual (monitorar atividade radiológica); LCR (bandas oligoclonais); evocados visuais e somatossensitivos; OCT (tomografia de coerência óptica — atrofia retiniana = biomarcador); biomarcadores séricos (NfL — neurofilamento de cadeia leve, em pesquisa); DMTs em centros de neuroimuno especializados; reabilitação multidisciplinar; tratamento da espasticidade (toxina botulínica, baclofeno intratecal); cuidados paliativos em fase avançada.</p>
+<h2>Prevenção</h2><p>Sem prevenção primária estabelecida. Fatores possivelmente modificáveis (baseados em estudos epidemiológicos): manter vitamina D suficiente, evitar tabagismo, manter peso saudável, exposição solar adequada na infância. Em paciente com EM já estabelecida: adesão ao DMT, otimização de fatores cardiovasculares, atividade física regular (alterada trajetória da doença), gerenciamento da fadiga, controle de fatores de risco para surtos (estresse, infecções, calor extremo).</p>
+<h2>Alertas clínicos</h2>
+<div class="callout crit"><p>⚠ NMOSD (Neuromielite Óptica) é DIAGNÓSTICO DIFERENCIAL CRÍTICO de EM — clinicamente semelhante (neurite óptica, mielite), mas TRATAMENTO É DIFERENTE: alguns DMTs de EM (interferon, natalizumabe, fingolimode) PIORAM NMOSD. Anti-AQP4 (aquaporina 4) distingue. Sempre solicitar em apresentações atípicas (neurite óptica bilateral, mielite longa, ataques graves).</p></div>
+<div class="callout crit"><p>⚠ LEMP (Leucoencefalopatia Multifocal Progressiva) — complicação RARA mas GRAVE de NATALIZUMABE (especialmente em JCV+ com tratamento &gt;2 anos): déficit neurológico progressivo + RM com lesão extensa de substância branca. Em paciente em natalizumabe com piora neurológica subaguda: RM urgente + retorno neuro imediato.</p></div>
+<div class="callout crit"><p>PULSOTERAPIA COM CORTICOIDE: glicose deve ser monitorada (hiperglicemia frequente), pressão (hipertensão pode descontrolar), psiquiátrico (psicose por corticoide), gastrointestinal (úlcera — IBP profilático), infecção (imunossupressão temporária).</p></div>
+<div class="callout warn"><p>PARALISIA / FRAQUEZA NOVA em paciente com EM: descartar URGÊNCIAS — surto agudo (necessita pulsoterapia), mielite extensa, lesão de tronco, AVC concomitante (EM não imuniza contra AVC), compressão medular por outras causas. PS + neuroimuno urgente.</p></div>
+<div class="callout warn"><p>INFECÇÕES em paciente em DMT: imunossupressão variável conforme DMT. Em paciente em fingolimode/natalizumabe/ocrelizumabe/alemtuzumabe — RISCO ↑ de infecções (urinária, respiratória, varicela-zoster reativada). Manter vacinação em dia (atualizar carteira ANTES do início do DMT — vivas geralmente contraindicadas durante).</p></div>
+<div class="callout warn"><p>GESTAÇÃO em EM: planejar com neuroimuno. Alguns DMTs (interferon, glatirâmer) podem ser mantidos; outros (fingolimode, natalizumabe, ocrelizumabe) — suspender antes da concepção com washout adequado. 3º trimestre tipicamente PROTEGE de surto (downregulação imune fisiológica). 1º SEMESTRE PÓS-PARTO ↑ RISCO SURTO — retomar DMT precocemente (depois do aleitamento se possível, ou compatível com lactação).</p></div>
+<div class="callout warn"><p>DEPRESSÃO + RISCO DE SUICÍDIO em EM: prevalência ~50% (maior que em outras doenças crônicas comparáveis). Suicídio ↑ 2-3× vs população geral. Rastrear PHQ-9 em consulta. Manejo: ISRS (sertralina, escitalopram). Comorbidade depressão pode mimicar fadiga — diferenciar.</p></div>
+<div class="callout warn"><p>VITAMINA D em EM: manter níveis 40-80 ng/mL (alvo mais alto que população geral). Evidência sugere benefício em redução de atividade radiológica. Suplementar conforme nível.</p></div>
+<div class="callout info"><p>NEURALGIA DO TRIGÊMEO em paciente JOVEM (&lt;40a) — pensar em EM até prova contrário. Em paciente &gt;50a com neuralgia do trigêmeo — geralmente idiopática (compressão vascular).</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>NÃO confundir SURTO de EM com SÍNDROME PSEUDOSURTO (sintomas neurológicos preexistentes que pioram temporariamente com febre, infecção, calor — Uhthoff — NÃO é novo surto, NÃO precisa pulsoterapia). NÃO suspender DMT abruptamente sem discussão com neuro (especialmente fingolimode — risco rebound). NÃO usar fluoroquinolonas (ciprofloxacino, levofloxacino) em paciente em uso de natalizumabe sem necessidade — sem interação direta, mas avaliar com cuidado infecções (risco LEMP). NÃO recomendar restrições absurdas de atividade física (&quot;vai forçar muito&quot;) — atividade física regular MELHORA prognóstico funcional. NÃO confundir Esclerose Múltipla com Esclerose Lateral Amiotrófica (ELA) — doenças totalmente diferentes (EM = inflamatória/imune; ELA = degenerativa de motoneurônio).</p>
+<h2>Abordagem ao paciente</h2><p>Diagnóstico de EM é golpe DEVASTADOR para paciente jovem (carreira, gestação planejada, relacionamentos, identidade). Validar: &quot;EM em 2026 NÃO é a mesma EM de 30 anos atrás — temos tratamentos efetivos que mudam a trajetória da doença; muitas pessoas vivem com EM e mantêm vida produtiva por décadas&quot;. Combater MITO de &quot;vou ficar em cadeira de rodas&quot; — com tratamento adequado, acumulação de incapacidade é muito mais lenta. Sobre GESTAÇÃO: &quot;EM não é contraindicação à gestação; gestação até PROTEGE de surtos no 3º trimestre; planejamento com neuro é central&quot;. Sobre ADESÃO ao DMT — frequentemente é injeção/comprimido CRÔNICO, com efeitos colaterais — &quot;medicação não cura, mas atrasa progressão e reduz surtos; pular dose tem custo&quot;. Apoio à família (cuidador em fase avançada).</p>
+<h2>Prognóstico</h2><p>Curso variável — alguns pacientes têm doença benigna (poucos surtos, pouca incapacidade após 20a), outros progridem rapidamente. SINAIS DE BOM PROGNÓSTICO: início com neurite óptica isolada, sintomas sensitivos puros, recuperação completa entre surtos, sexo feminino, idade jovem ao início. SINAIS DE MAU PROGNÓSTICO: início motor/cerebelar, recuperação incompleta, alta carga lesional em RM, atrofia cerebral precoce, formas progressivas. Tratamento adequado MUDA TRAJETÓRIA (efetividade dos DMTs é robusta). Expectativa de vida ~5-10 anos menor que população geral em casos mais graves; em formas leves, próxima ao normal.</p>
+<h2>Acompanhamento</h2><p>Neuroimunologia: trimestral-semestral conforme atividade. MFC: trimestral-semestral — adesão ao DMT, comorbidades, sintomas, função, cuidador, depressão, suporte psicossocial, gestação planejada.</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> [McDonald Criteria 2017 — Diagnostic Criteria for Multiple Sclerosis] [AAN — Practice Guideline: Disease-Modifying Therapies in Multiple Sclerosis 2018] [ABN — Diretrizes Esclerose Múltipla 2023] [PCDT-MS Esclerose Múltipla 2022]</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Neurologia</h3>
+<ul>
+<li><a href="/p/parkinson-mfc.html">Doença de Parkinson — Manejo Compartilhado MFC + Neuro</a></li>
+<li><a href="/p/epilepsia-cronica-mfc.html">Epilepsia Crônica Ambulatorial — Manejo Longitudinal MFC</a></li>
+<li><a href="/p/neuropatia-diabetica.html">Neuropatia Diabética — Reconhecimento, Manejo e Prevenção MFC</a></li>
+<li><a href="/p/neuralgia-trigemio.html">Neuralgia do Trigêmeo — Reconhecimento e Tratamento</a></li>
+<li><a href="/p/tremor-essencial.html">Tremor Essencial — Reconhecimento e Diferenciação de Parkinson</a></li>
+<li><a href="/p/sind-pernas-inquietas.html">Síndrome das Pernas Inquietas (Willis-Ekbom) — MFC</a></li>
+<li><a href="/p/cefaleia-cronica.html">Cefaleia Crônica e Profilaxia de Migrânea — MFC</a></li>
+<li><a href="/p/ait.html">Ataque Isquêmico Transitório (AIT)</a></li>
+<li><a href="/p/avci.html">AVC Isquêmico Agudo / Trombólise</a></li>
+<li><a href="/p/bell.html">Paralisia de Bell</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <div class="disclaimer-footer">
+    <strong>Aviso médico-legal:</strong> material educacional. Informações podem conter erros ou estar desatualizadas — sempre verifique nas diretrizes-fonte. A responsabilidade da prescrição é exclusivamente do médico assistente. O autor não se responsabiliza por decisões clínicas ou desfechos decorrentes do uso destas informações.
+  </div>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta.</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>
