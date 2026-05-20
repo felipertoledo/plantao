@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artrite Reumatoide — Manejo MFC com Metotrexato — CID M06.9 — Vovôminic Doutô</title>
+<meta name="description" content="Artrite Reumatoide — Manejo MFC com Metotrexato. Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/ar-mfc.html">
+<meta name="author" content="Felipe Ribeiro Toledo">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Artrite Reumatoide — Manejo MFC com Metotrexato — CID M06.9">
+<meta property="og:description" content="Artrite Reumatoide — Manejo MFC com Metotrexato. Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/ar-mfc.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Artrite Reumatoide — Manejo MFC com Metotrexato — CID M06.9">
+<meta name="twitter:description" content="Artrite Reumatoide — Manejo MFC com Metotrexato. Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+.disclaimer { background:var(--bg-sunken); border:1px solid var(--rule); border-left:3px solid #c89218; border-radius:var(--radius); padding:0.9rem 1.1rem; margin:1.4rem 0; font-size:0.88rem; color:var(--ink-2); }
+.disclaimer strong { color:var(--ink); }
+.disclaimer-footer { font-size:0.82rem; color:var(--ink-3); padding:0.9rem 0; border-top:1px solid var(--rule); margin-top:1.2rem; }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "alternateName": "vovôminic", "description": "médico e nerd", "url": "https://felipertoledo.github.io/plantao"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/ar-mfc.html#condition", "name": "Artrite Reumatoide — Manejo MFC com Metotrexato", "alternateName": ["AR", "artrite reumatoide", "poliartrite reumatoide", "RA"], "description": "Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e pés, com tendência erosiva. Diagnóstico ACR/EULAR 2010 baseado em pontuação: articulações acometidas + sorologia (FR, anti-CCP) + reagentes de fase aguda (VHS/PCR) + duração ≥6 sem.", "code": {"@type": "MedicalCode", "codeValue": "M06.9", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Osteomuscular"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "Poliartrite SIMÉTRICA: MCF (metacarpofalângica), IFP (interfalângica proximal), punhos, MTF (pés). Geralmente NÃO afeta IFD (diferencial com osteoartrose)"}, {"@type": "MedicalSignOrSymptom", "name": "Rigidez matinal LONGA (≥60 min, frequentemente 2-4h) — sinal cardinal de artrite INFLAMATÓRIA"}, {"@type": "MedicalSignOrSymptom", "name": "Edema sinovial palpável (sinovite) — diferente de derrame mecânico"}, {"@type": "MedicalSignOrSymptom", "name": "Sintomas sistêmicos: fadiga importante, perda de peso, febre baixa, mal-estar"}, {"@type": "MedicalSignOrSymptom", "name": "Deformidades tardias: desvio ulnar dos dedos, polegar em Z, dedos em botoeira/pescoço-de-cisne"}, {"@type": "MedicalSignOrSymptom", "name": "Manifestações extra-articulares: nódulos reumatoides (cotovelos), Sjögren secundário, pleurisia, pericardite, vasculite"}], "epidemiology": "AR é doença crônica grave que sem tratamento adequado leva a deformidades e incapacidade. Estratégia atual: 'treat-to-target' — atingir REMISSÃO ou baixa atividade rapidamente, com DMARDs sintéticos convencionais (csDMARDs — METOTREXATO é PILAR) iniciados nos primeiros 3-6 meses. MFC tem papel cofundamental: identificação precoce (rigidez matinal >60 min + sinovite simétrica de mãos), encaminhamento à reumatologia, ACOMPANHAMENTO LONGITUDINAL do paciente em MTX (monitorização hepática, hemato, r", "pathophysiology": "Auto-imunidade contra antígenos articulares: FR (anti-IgG), anti-CCP (anti-citrulinado) → sinovite crônica com pannus proliferativo → invasão de cartilagem/osso → erosões. Manifestações extra-articulares: nódulos reumatoides, vasculite, doença pulmonar intersticial, ceratoconjuntivite seca (Sjögren), pericardite. Risco CV ↑ (inflamação sistêmica).", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "Encaminhar REUMATOLOGIA URGENTE em suspeita (≤4-6 sem) — diagnóstico e início precoce de DMARD é prognóstico. METOTREXATO (CEAF com PCDT AR) 7,5-25 mg VO 1×/sem + ÁCIDO FÓLICO 5 mg outro dia (UBS) — para reduzir efeitos GI e hepatotoxicidade. AINE/prednisona em dose baixa (5-10 mg) podem ser usados como 'ponte' nos primeiros 2-3 meses até MTX fazer efeito (4-12 sem). Em refratariedade: leflunomida, sulfassalazina, HIDROXICLOROQUINA (CEAF com PCDT). Refratariedade a csDMARDs ≥3 meses em doses ade"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "[SBR — Diretriz Brasileira de Artrite Reumatoide 2024] [EULAR 2022 recommendations for the management of RA with synthetic and biological DMARDs] [ACR 2021 Guideline for the Treatment of RA] [PCDT-MS Artrite Reumatoide] [TMFC 2ª ed, cap. 161] [DUNCAN 5ª ed, cap. 82]"}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Artrite Reumatoide — Manejo MFC com Metotrexato — CID M06.9", "description": "Artrite Reumatoide — Manejo MFC com Metotrexato. Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/ar-mfc.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/ar-mfc.html#condition"}, "inLanguage": "pt-BR", "keywords": "Artrite Reumatoide — Manejo MFC com Metotrexato, Osteomuscular, SUS, UBS, Pronto-Atendimento, AR, artrite reumatoide, poliartrite reumatoide, RA, CID M06.9, CIAP L88"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Osteomuscular", "item": "https://felipertoledo.github.io/plantao/#/sis/ost"}, {"@type": "ListItem", "position": 3, "name": "Artrite Reumatoide — Manejo MFC com Metotrexato", "item": "https://felipertoledo.github.io/plantao/p/ar-mfc.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · por vovôminic</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/ost">Osteomuscular</a> › <span>Artrite Reumatoide — Manejo MFC com Metotrexato</span>
+</nav>
+<span class="eyebrow">Osteomuscular</span>
+<h1>Artrite Reumatoide — Manejo MFC com Metotrexato</h1>
+<p class="lead">AR é doença crônica grave que sem tratamento adequado leva a deformidades e incapacidade. Estratégia atual: &#x27;treat-to-target&#x27; — atingir REMISSÃO ou baixa atividade rapidamente, com DMARDs sintéticos convencionais (csDMARDs — METOTREXATO é PILAR) iniciados nos primeiros 3-6 meses. MFC tem papel cofundamental: identificação precoce (rigidez matinal &gt;60 min + sinovite simétrica de mãos), encaminhamen</p>
+<div class="meta"><span class="tag">CID M06.9</span><span class="tag">CIAP L88</span><span class="tag crit">Alta gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> AR, artrite reumatoide, poliartrite reumatoide, RA.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/ar-mfc">Abrir Artrite Reumatoide — Manejo MFC com Metotrexato no app →</a>
+</div>
+<div class="disclaimer">
+<p><strong>⚠ Aviso médico-legal:</strong> material educacional para profissionais de saúde. As informações podem conter erros, omissões ou estar desatualizadas. <strong>Toda informação deve ser verificada</strong> nas diretrizes-fonte e em literatura atual antes de aplicar na prática. <strong>A responsabilidade da prescrição é exclusivamente do médico assistente</strong>, que avalia o paciente diretamente. O autor do site não se responsabiliza por decisões clínicas, eventos adversos ou desfechos decorrentes do uso destas informações.</p>
+</div>
+<h2>Definição</h2><p>Doença auto-imune sistêmica caracterizada por sinovite crônica simétrica de pequenas articulações de mãos e pés, com tendência erosiva. Diagnóstico ACR/EULAR 2010 baseado em pontuação: articulações acometidas + sorologia (FR, anti-CCP) + reagentes de fase aguda (VHS/PCR) + duração ≥6 sem.</p>
+<h2>Fisiopatologia</h2><p>Auto-imunidade contra antígenos articulares: FR (anti-IgG), anti-CCP (anti-citrulinado) → sinovite crônica com pannus proliferativo → invasão de cartilagem/osso → erosões. Manifestações extra-articulares: nódulos reumatoides, vasculite, doença pulmonar intersticial, ceratoconjuntivite seca (Sjögren), pericardite. Risco CV ↑ (inflamação sistêmica).</p>
+<h2>Apresentação típica</h2><p>Mulher (3:1 vs homem), 30-60 anos, com poliartrite simétrica de mãos: MCFs, IFPs, punhos. Rigidez matinal LONGA (&gt;60 min, frequentemente horas). Dor + edema sinovial palpável. Pode ter MTF (pés). Evolução: erosões, desvio ulnar dos dedos, dedos em pescoço de cisne/botoeira. Sistemicos: fadiga, perda de peso, febrícula. Pode ser primeira manifestação em idoso (RA-LARO — late-onset RA).</p>
+<h2>Apresentação clínica</h2><ul>
+<li>Poliartrite SIMÉTRICA: MCF (metacarpofalângica), IFP (interfalângica proximal), punhos, MTF (pés). Geralmente NÃO afeta IFD (diferencial com osteoartrose)</li>
+<li>Rigidez matinal LONGA (≥60 min, frequentemente 2-4h) — sinal cardinal de artrite INFLAMATÓRIA</li>
+<li>Edema sinovial palpável (sinovite) — diferente de derrame mecânico</li>
+<li>Sintomas sistêmicos: fadiga importante, perda de peso, febre baixa, mal-estar</li>
+<li>Deformidades tardias: desvio ulnar dos dedos, polegar em Z, dedos em botoeira/pescoço-de-cisne</li>
+<li>Manifestações extra-articulares: nódulos reumatoides (cotovelos), Sjögren secundário, pleurisia, pericardite, vasculite</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>Encaminhar REUMATOLOGIA URGENTE em suspeita (≤4-6 sem) — diagnóstico e início precoce de DMARD é prognóstico. METOTREXATO (CEAF com PCDT AR) 7,5-25 mg VO 1×/sem + ÁCIDO FÓLICO 5 mg outro dia (UBS) — para reduzir efeitos GI e hepatotoxicidade. AINE/prednisona em dose baixa (5-10 mg) podem ser usados como &#x27;ponte&#x27; nos primeiros 2-3 meses até MTX fazer efeito (4-12 sem). Em refratariedade: leflunomida, sulfassalazina, HIDROXICLOROQUINA (CEAF com PCDT). Refratariedade a csDMARDs ≥3 meses em doses adequadas: bDMARDs (anti-TNF, abatacepte, rituximabe, tocilizumabe) — CEAF com PCDT específico. MFC: AUC com reumato sobre monitorização e novas prescrições; ajuste de comorbidades; manejo de intercorrências.</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>Acrescenta: TOFACITINIBE 5 mg VO 12/12h, BARICITINIBE 2-4 mg VO 1×/dia (JAK inhibitors — CEAF em casos selecionados); combinação csDMARDs — esquema &quot;tripla&quot;: METOTREXATO 15-25 mg VO/SC 1×/sem + SULFASSALAZINA 2-3 g/dia em 2-3 doses (UBS — escalonar de 500 mg/dia + 500 mg/sem) + HIDROXICLOROQUINA 200-400 mg/dia (CEAF) — eficácia comparável a biológico em alguns estudos; cirurgia ortopédica em deformidades estabelecidas (artrodese, artroplastia).</p>
+<h2>Prevenção</h2><p>Cessação tabágica (NNT 4 para resposta a tratamento), perda de peso, atividade física adequada (mesmo com AR — preservação muscular e cardio), vacinação ANUAL (influenza, pneumocócica, COVID — IMPORTANTE em paciente em imunossupressor), saúde óssea (cálcio + D, DMO se &gt;65a ou pós-meno).</p>
+<h2>Alertas clínicos</h2>
+<div class="callout crit"><p>⚠ METOTREXATO + ÁLCOOL = hepatotoxicidade somada. Educar paciente: NENHUM consumo ou no máximo ocasional (1 dose/sem em dia distante do MTX). Em hepatopata estabelecido, MTX contraindicado.</p></div>
+<div class="callout crit"><p>⚠ Paciente em DMARD/biológico + FEBRE + sintomas infecciosos = suspender DMARD, investigar (hemograma, PCR, hemocultura, Rx tórax). Sepse oculta é causa frequente de óbito em AR — IMUNOSSUPRESSÃO mascara sinais.</p></div>
+<div class="callout crit"><p>⛔ Metotrexato em GESTAÇÃO = TERATOGÊNICO. Suspender 3 meses antes de tentar engravidar (para homem E mulher). Educar paciente em idade fértil — contraceção segura obrigatória. Se gestação inadvertida em MTX: encaminhar urgente reumatologia + obstetrícia.</p></div>
+<div class="callout warn"><p>Vacina viva (febre amarela, tríplice viral, varicela, BCG) = CONTRAINDICADA em paciente em DMARD/biológico/corticoide alta dose. Vacinas inativadas (influenza, pneumocócica, COVID, hep B) = recomendadas, idealmente 2-4 sem antes de iniciar imunossupressor.</p></div>
+<div class="callout warn"><p>Antes de iniciar bDMARD (anti-TNF especialmente): RASTREIO de TB latente (PPD/IGRA + Rx tórax), Hepatites B/C, HIV. Se ILTB+: tratamento com isoniazida antes.</p></div>
+<div class="callout warn"><p>AR sem-tratamento adequado: risco CV ↑ — mortalidade CV é PRINCIPAL causa de morte em AR. Controlar agressivamente FRC (PA, LDL, glicemia, tabagismo). Inflamação sistêmica = aterosclerose acelerada.</p></div>
+<div class="callout info"><p>AR em IDOSO (LARO): forma clínica diferente — pode mimetizar polimialgia reumática. Considerar diferencial e tratamento mais cauteloso (mais comorbidade, mais polifarmácia, mais quedas).</p></div>
+<div class="callout info"><p>FR positivo NÃO é específico de AR — 5-15% da população saudável é FR+, ↑em idoso, hep C, Sjögren, doenças crônicas. Anti-CCP é mais específico (~95%).</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>NÃO indicar AR-painel auto-imune completo (FAN, anti-DNA, ENA, AAS, antifosfolípide) em todo paciente com poliartralgia — direcionar conforme suspeita. NÃO usar corticoide em alta dose crônica para AR (eficaz curto prazo, péssimo longo prazo — Cushing, osteoporose, DM, infecções). NÃO suspender MTX por elevação transitória de AST (&lt;2-3× LSN) — repetir e reavaliar. NÃO indicar &#x27;cura natural&#x27; (sem evidência) — risco de progressão erosiva.</p>
+<h2>Abordagem ao paciente</h2><p>Diagnóstico de AR é assustador — paciente vê &#x27;doença auto-imune&#x27; e imagina cadeira de rodas. Educar: &#x27;AR de hoje, tratada cedo e bem, é doença controlável. A diferença em deformidade entre tratar nos primeiros 3 meses vs depois de 1 ano é IMENSA — por isso pressa.&#x27; Empoderar para vir à consulta ao primeiro sinal de descompensação, NÃO &#x27;aguardar passar&#x27;. Combater estigma do MTX — paciente ouve &#x27;isso é remédio de câncer&#x27; e desiste. Esclarecer: doses baixas semanais, eficácia comprovada, segurança com monitorização. Apoio para sintomas: dor crônica, fadiga, impacto na imagem corporal (deformidades), impacto no trabalho.</p>
+<h2>Prognóstico</h2><p>Bem-tratada: remissão ou baixa atividade em 50-70% em 1 ano. Mal-tratada: erosões progressivas, deformidades, IFL avançada, ↑mortalidade CV. Janela terapêutica é nos primeiros 6 meses de doença — após isso, ganhos terapêuticos menores.</p>
+<h2>Acompanhamento</h2><p>MFC compartilha cuidado com reumato. Cada 3 meses: hemograma, função renal, transaminases (toxicidade MTX) — alterar se ALT/AST &gt;2-3× LSN ou citopenias. Anual: lipidograma, glicemia (corticoide), DMO se &gt;65a/corticoide &gt;3 m. Vigilância de infecções (zoster reativado, TB latente, hepatites). Inspeção articular trimestral: contagem de articulações dolorosas/inchadas (DAS28 quando reumato vê). Atualizar vacinação.</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> [SBR — Diretriz Brasileira de Artrite Reumatoide 2024] [EULAR 2022 recommendations for the management of RA with synthetic and biological DMARDs] [ACR 2021 Guideline for the Treatment of RA] [PCDT-MS Artrite Reumatoide] [TMFC 2ª ed, cap. 161] [DUNCAN 5ª ed, cap. 82]</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Osteomuscular</h3>
+<ul>
+<li><a href="/p/fratura-exposta.html">Fratura Exposta</a></li>
+<li><a href="/p/gota.html">Gota / Artrite Gotosa</a></li>
+<li><a href="/p/lombalgia.html">Lombalgia Mecânica / Torcicolo</a></li>
+<li><a href="/p/tendinopatias-aps.html">Tendinopatias Comuns na APS — Ombro, Cotovelo, Punho, Joelho, Calcâneo</a></li>
+<li><a href="/p/bursites-aps.html">Bursites Comuns na APS — Subacromial, Trocantérica, Olecraniana, Pré-patelar, Anserina</a></li>
+<li><a href="/p/dor-cervical-mfc.html">Dor Cervical Mecânica (Cervicalgia) — Manejo MFC + Sinais de Alarme</a></li>
+<li><a href="/p/sind-miofascial.html">Síndrome Dolorosa Miofascial — Pontos-Gatilho e Manejo MFC</a></li>
+<li><a href="/p/espondiloartrite-axial.html">Espondiloartrite Axial — Reconhecimento Precoce MFC + Manejo Compartilhado</a></li>
+<li><a href="/p/les-mfc.html">Lúpus Eritematoso Sistêmico (LES) — Reconhecimento + Manejo Compartilhado MFC</a></li>
+<li><a href="/p/sjogren-mfc.html">Síndrome de Sjögren — Reconhecimento + Manejo Compartilhado MFC</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <div class="disclaimer-footer">
+    <strong>Aviso médico-legal:</strong> material educacional. Informações podem conter erros ou estar desatualizadas — sempre verifique nas diretrizes-fonte. A responsabilidade da prescrição é exclusivamente do médico assistente. O autor não se responsabiliza por decisões clínicas ou desfechos decorrentes do uso destas informações.
+  </div>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta.</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>

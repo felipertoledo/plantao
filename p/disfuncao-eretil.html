@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV — CID F52.2 — Vovôminic Doutô</title>
+<meta name="description" content="Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV. Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html">
+<meta name="author" content="Felipe Ribeiro Toledo">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV — CID F52.2">
+<meta property="og:description" content="Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV. Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV — CID F52.2">
+<meta name="twitter:description" content="Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV. Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+.disclaimer { background:var(--bg-sunken); border:1px solid var(--rule); border-left:3px solid #c89218; border-radius:var(--radius); padding:0.9rem 1.1rem; margin:1.4rem 0; font-size:0.88rem; color:var(--ink-2); }
+.disclaimer strong { color:var(--ink); }
+.disclaimer-footer { font-size:0.82rem; color:var(--ink-3); padding:0.9rem 0; border-top:1px solid var(--rule); margin-top:1.2rem; }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "alternateName": "vovôminic", "description": "médico e nerd", "url": "https://felipertoledo.github.io/plantao"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html#condition", "name": "Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV", "alternateName": ["DE", "impotência", "disfunção erétil", "ED", "disfunção sexual masculina"], "description": "Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual satisfatória. Origem multifatorial: orgânica (vasculogênica, neurogênica, hormonal, anatômica, medicamentosa) e/ou psicogênica.", "code": {"@type": "MedicalCode", "codeValue": "F52.2", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Geniturinário"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "Dificuldade para iniciar/manter ereção ≥3 meses"}, {"@type": "MedicalSignOrSymptom", "name": "Ereção parcial ou de curta duração"}, {"@type": "MedicalSignOrSymptom", "name": "Pode ter componente: súbito (psicogênico, eventos vitais), gradual (orgânico, vascular)"}, {"@type": "MedicalSignOrSymptom", "name": "Libido conservada vs reduzida (sugere causa diferente — hipogonadismo, depressão, antidepressivo)"}, {"@type": "MedicalSignOrSymptom", "name": "Ereções noturnas/matinais: preservadas (psicogênico ou início orgânico) vs ausentes (orgânico avançado)"}, {"@type": "MedicalSignOrSymptom", "name": "Sintomas de hipogonadismo: fadiga, perda massa muscular, perda libido, depressão, oligospermia"}, {"@type": "MedicalSignOrSymptom", "name": "Sintomas de DAC oculta: angina aos esforços, fadiga, dispneia"}], "epidemiology": "DE é comum (~50% dos homens 40-70 anos), MAS frequentemente silenciada por estigma. MFC: criar abertura para conversa sem julgamento, avaliar componentes orgânicos vs psicogênicos, identificar a doença subjacente (DE é MARCADOR PRECOCE DE RCV — endotélio do pênis afeta antes que coronárias), tratar com iPDE5, articular psicologia se componente psicogênico/relacional. Atenção: DE pode ser primeira manifestação de DAC oculta ou DM.", "pathophysiology": "Ereção depende de: integridade vascular arterial (entrada de sangue) + endotélio (NO → cGMP → relaxamento de cavernoso) + retorno venoso comprometido (mecanismo veno-oclusivo) + estímulos neurológicos (S2-S4 + simpático) + integridade hormonal (testosterona). Falha em qualquer eixo gera DE. Causas: aterosclerose (vasculogênica — mais comum em homem >50a), DM (vasculopatia + neuropatia), HAS, dislipidemia, hipogonadismo, neurológica (pós-cirurgia pélvica, EM, Parkinson), medicamentos (BB, tiazídi", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "Anamnese estruturada (IIEF-5 — score de 5 itens, validado), exame físico (genitália, próstata, sinais de hipogonadismo — testículos pequenos, ginecomastia, redução pelos), avaliar comorbidades. Labs: glicemia jejum, HbA1c, lipidograma, testosterona total (matinal — 7-10h), TSH, PSA. Tratamento de 1ª linha: SILDENAFIL 50 mg (max 100 mg, 1h antes — meia-vida 4h) — VIA PRIVADA (não CBAF, não PFPB usualmente). Tadalafila 5 mg/dia ou 10-20 mg sob demanda (meia-vida 36h) — privada. Tratar causa subjac"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "[SBU — Diretriz Brasileira de Disfunção Erétil 2023] [EAU 2024 Guidelines on Sexual and Reproductive Health] [AUA 2018 Guideline on the Evaluation and Management of Testosterone Deficiency] [Princeton Consensus III on Sexual Activity and Cardiac Risk] [TMFC 2ª ed, cap. 174] [DUNCAN 5ª ed, cap. 91]"}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV — CID F52.2", "description": "Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV. Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html#condition"}, "inLanguage": "pt-BR", "keywords": "Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV, Geniturinário, SUS, UBS, Pronto-Atendimento, DE, impotência, disfunção erétil, ED, disfunção sexual masculina, CID F52.2, CIAP Y07"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Geniturinário", "item": "https://felipertoledo.github.io/plantao/#/sis/gu"}, {"@type": "ListItem", "position": 3, "name": "Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV", "item": "https://felipertoledo.github.io/plantao/p/disfuncao-eretil.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · por vovôminic</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/gu">Geniturinário</a> › <span>Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV</span>
+</nav>
+<span class="eyebrow">Geniturinário</span>
+<h1>Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV</h1>
+<p class="lead">DE é comum (~50% dos homens 40-70 anos), MAS frequentemente silenciada por estigma. MFC: criar abertura para conversa sem julgamento, avaliar componentes orgânicos vs psicogênicos, identificar a doença subjacente (DE é MARCADOR PRECOCE DE RCV — endotélio do pênis afeta antes que coronárias), tratar com iPDE5, articular psicologia se componente psicogênico/relacional. Atenção: DE pode ser primeira </p>
+<div class="meta"><span class="tag">CID F52.2</span><span class="tag">CIAP Y07</span><span class="tag info">Baixa gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> DE, impotência, disfunção erétil, ED, disfunção sexual masculina.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/disfuncao-eretil">Abrir Disfunção Erétil (DE) — Abordagem MFC e Marcador de RCV no app →</a>
+</div>
+<div class="disclaimer">
+<p><strong>⚠ Aviso médico-legal:</strong> material educacional para profissionais de saúde. As informações podem conter erros, omissões ou estar desatualizadas. <strong>Toda informação deve ser verificada</strong> nas diretrizes-fonte e em literatura atual antes de aplicar na prática. <strong>A responsabilidade da prescrição é exclusivamente do médico assistente</strong>, que avalia o paciente diretamente. O autor do site não se responsabiliza por decisões clínicas, eventos adversos ou desfechos decorrentes do uso destas informações.</p>
+</div>
+<h2>Definição</h2><p>Incapacidade persistente (≥3 meses) de obter ou manter ereção suficiente para relação sexual satisfatória. Origem multifatorial: orgânica (vasculogênica, neurogênica, hormonal, anatômica, medicamentosa) e/ou psicogênica.</p>
+<h2>Fisiopatologia</h2><p>Ereção depende de: integridade vascular arterial (entrada de sangue) + endotélio (NO → cGMP → relaxamento de cavernoso) + retorno venoso comprometido (mecanismo veno-oclusivo) + estímulos neurológicos (S2-S4 + simpático) + integridade hormonal (testosterona). Falha em qualquer eixo gera DE. Causas: aterosclerose (vasculogênica — mais comum em homem &gt;50a), DM (vasculopatia + neuropatia), HAS, dislipidemia, hipogonadismo, neurológica (pós-cirurgia pélvica, EM, Parkinson), medicamentos (BB, tiazídico, ISRS, finasterida, espironolactona), tabagismo, álcool, depressão, ansiedade de desempenho.</p>
+<h2>Apresentação típica</h2><p>Homem (geralmente &gt;40-50a) traz queixa — frequentemente disfarçada, indireta. Caracterizar: tempo de evolução, súbito vs gradual (súbito sugere psicogênico; gradual sugere orgânico), ereção noturna/matinal preservada (sugere psicogênico), libido preservada (psicogênico ou DE de causa não-hormonal), libido baixa (suspeitar hipogonadismo, depressão), problemas conjugais, ansiedade de desempenho.</p>
+<h2>Apresentação clínica</h2><ul>
+<li>Dificuldade para iniciar/manter ereção ≥3 meses</li>
+<li>Ereção parcial ou de curta duração</li>
+<li>Pode ter componente: súbito (psicogênico, eventos vitais), gradual (orgânico, vascular)</li>
+<li>Libido conservada vs reduzida (sugere causa diferente — hipogonadismo, depressão, antidepressivo)</li>
+<li>Ereções noturnas/matinais: preservadas (psicogênico ou início orgânico) vs ausentes (orgânico avançado)</li>
+<li>Sintomas de hipogonadismo: fadiga, perda massa muscular, perda libido, depressão, oligospermia</li>
+<li>Sintomas de DAC oculta: angina aos esforços, fadiga, dispneia</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>Anamnese estruturada (IIEF-5 — score de 5 itens, validado), exame físico (genitália, próstata, sinais de hipogonadismo — testículos pequenos, ginecomastia, redução pelos), avaliar comorbidades. Labs: glicemia jejum, HbA1c, lipidograma, testosterona total (matinal — 7-10h), TSH, PSA. Tratamento de 1ª linha: SILDENAFIL 50 mg (max 100 mg, 1h antes — meia-vida 4h) — VIA PRIVADA (não CBAF, não PFPB usualmente). Tadalafila 5 mg/dia ou 10-20 mg sob demanda (meia-vida 36h) — privada. Tratar causa subjacente: otimizar DM/HAS, trocar BB por outro anti-hipertensivo se possível (BB não-seletivo — propranolol — é o pior para função sexual; NEBIVOLOL 5 mg/dia é o melhor BB para preservar função erétil — particular; alfa-bloqueador como DOXAZOSINA 2-4 mg/dia é amigo da função erétil), trocar tiazídico, trocar ISRS por BUPROPIONA SR 150 mg/dia × 3 dias depois 150 mg 12/12h (não causa DE, pode até melhorar — particular) se possível. Hipogonadismo confirmado (testosterona &lt;300 ng/dL em 2 medidas matinais + sintomas): testosterona — via CEAF com critérios + reumato/endocrino.</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>Acrescenta: vardenafil, avanafil; alprostadil (PGE1) intracavernoso ou intra-uretral em refratariedade; bomba a vácuo; prótese peniana em casos refratários (urologia); reposição de testosterona com critérios rigorosos; terapia de casal/psicoterapia em componente psicogênico.</p>
+<h2>Prevenção</h2><p>Fatores de risco CV são os mesmos: cessar tabagismo, atividade física aeróbica regular, dieta mediterrânea, controle peso/PA/DM/lipídios. Atividade física isolada melhora DE em meta-análises. Reduzir álcool. Manejar estresse, depressão, ansiedade.</p>
+<h2>Alertas clínicos</h2>
+<div class="callout crit"><p>⛔ iPDE5 + NITRATO (qualquer formulação) = CONTRAINDICAÇÃO ABSOLUTA — hipotensão grave/fatal. Inclui isossorbida, nitroglicerina, mononitrato — VO, SL, transdérmico. Janela: 24h após sildenafil/vardenafil/avanafil; 48h após tadalafila. EM CASO DE EMERGÊNCIA com angina em paciente que usou iPDE5: NUNCA dar nitrato — alternativa é morfina.</p></div>
+<div class="callout crit"><p>DE súbita + idade &lt;40 ou cardiopata = pesquisar DAC oculta. DE pode ser primeira manifestação ~3-5 anos antes do IAM. Calcular risco CV (ASCVD/Framingham), considerar TE/cintilografia se moderado-alto risco.</p></div>
+<div class="callout warn"><p>iPDE5 + alfa-bloqueador (tamsulosina, doxazosina): hipotensão ortostática. Iniciar com cuidado, dose menor. Tadalafila 5 mg + tamsulosina é combinação aprovada (HBP + DE — útil em homens com ambos).</p></div>
+<div class="callout warn"><p>Testosterona em homem: ↑risco TEV, eritrocitose (Ht &gt;54% = suspender ou flebotomia), agravação de HBP/PSA, possível ↑risco CV em alguns estudos. Indicar apenas com sintomas claros + 2 medidas matinais &lt;300 ng/dL.</p></div>
+<div class="callout warn"><p>DE em paciente em ISRS: muito comum. Discutir com paciente: continuar antidepressivo (depressão tratada &gt; DE) vs trocar para BUPROPIONA (não causa DE, pode até ajudar) vs adicionar iPDE5. Decisão compartilhada.</p></div>
+<div class="callout info"><p>Sildenafil pode estar disponível em PFPB em alguns municípios (variável). Confirmar localmente. Genéricos baratos disponíveis.</p></div>
+<div class="callout info"><p>DE psicogênica: súbito, situacional (com X parceira, não com Y), ereção noturna/matinal preservada, libido normal. Resposta a sildenafil &#x27;placebo-positiva&#x27; frequente. Aliada: psicoterapia, terapia de casal.</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>NÃO indicar fitoterápico/suplemento masculino sem evidência (vai resolver MENOS que iPDE5, custa MAIS, e fitoterápicos podem conter iPDE5 não-declarado — risco com nitrato). NÃO indicar dosagem extensa de hormônios sexuais sem suspeita clínica (estradiol, prolactina, FSH, LH). NÃO indicar Doppler peniano rotineiramente. NÃO indicar testosterona em homem assintomático com testosterona limítrofe — risco CV, eritrocitose. NÃO confundir DE com diminuição fisiológica de libido — são diferentes.</p>
+<h2>Abordagem ao paciente</h2><p>Sexualidade masculina carrega cultura de virilidade que torna DE fonte de vergonha, isolamento, negação. Acolher SEM piada, SEM evitação. Comum: &#x27;doutor, doutor... não tenho mais ânimo de homem&#x27;. Validar como queixa legítima de saúde. Educar sobre causas (NÃO é fraqueza, NÃO é envelhecimento inevitável). Em homem casado: opção de incluir parceira na conversa (com consentimento) — desmedicalizar e contextualizar. Conectar DE com saúde cardiovascular: &#x27;sua ereção e seu coração funcionam pelo mesmo mecanismo de circulação — tratar a DE é também cuidar do coração&#x27;. Em homem com depressão/ansiedade — DE pode ser efeito do antidepressivo (ISRS) ou da própria depressão; ajustar abordagem.</p>
+<h2>Prognóstico</h2><p>Tratável em maioria dos casos. iPDE5 eficaz em ~70% dos pacientes. Falha de iPDE5 pode indicar DE orgânica avançada ou hipogonadismo associado.</p>
+<h2>Acompanhamento</h2><p>Reavaliar em 4-6 semanas após início de iPDE5. Estável: semestral. Vigiar comorbidades (DAC, DM). Em uso crônico de testosterona: PSA + hematócrito + lipidograma cada 6 meses.</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> [SBU — Diretriz Brasileira de Disfunção Erétil 2023] [EAU 2024 Guidelines on Sexual and Reproductive Health] [AUA 2018 Guideline on the Evaluation and Management of Testosterone Deficiency] [Princeton Consensus III on Sexual Activity and Cardiac Risk] [TMFC 2ª ed, cap. 174] [DUNCAN 5ª ed, cap. 91]</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Geniturinário</h3>
+<ul>
+<li><a href="/p/hbp.html">Hiperplasia Prostática Benigna (HBP) — Manejo MFC</a></li>
+<li><a href="/p/drc-mfc.html">Doença Renal Crônica (DRC) — Manejo Conservador MFC</a></li>
+<li><a href="/p/climaterio.html">Climatério e Menopausa — Abordagem MFC</a></li>
+<li><a href="/p/candidiase.html">Candidíase Vulvovaginal</a></li>
+<li><a href="/p/cistite.html">Cistite (ITU baixa)</a></li>
+<li><a href="/p/herpes-gen.html">Herpes Genital</a></li>
+<li><a href="/p/orquiepi.html">Orquiepididimite</a></li>
+<li><a href="/p/pielonefrite.html">Pielonefrite Aguda</a></li>
+<li><a href="/p/priapismo.html">Priapismo</a></li>
+<li><a href="/p/retencao-urinaria.html">Retenção Urinária Aguda</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <div class="disclaimer-footer">
+    <strong>Aviso médico-legal:</strong> material educacional. Informações podem conter erros ou estar desatualizadas — sempre verifique nas diretrizes-fonte. A responsabilidade da prescrição é exclusivamente do médico assistente. O autor não se responsabiliza por decisões clínicas ou desfechos decorrentes do uso destas informações.
+  </div>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta.</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>

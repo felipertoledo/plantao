@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Incontinência Urinária no Idoso — Abordagem MFC — CID R32 — Vovôminic Doutô</title>
+<meta name="description" content="Incontinência Urinária no Idoso — Abordagem MFC. Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html">
+<meta name="author" content="Felipe Ribeiro Toledo">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Incontinência Urinária no Idoso — Abordagem MFC — CID R32">
+<meta property="og:description" content="Incontinência Urinária no Idoso — Abordagem MFC. Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Incontinência Urinária no Idoso — Abordagem MFC — CID R32">
+<meta name="twitter:description" content="Incontinência Urinária no Idoso — Abordagem MFC. Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+.disclaimer { background:var(--bg-sunken); border:1px solid var(--rule); border-left:3px solid #c89218; border-radius:var(--radius); padding:0.9rem 1.1rem; margin:1.4rem 0; font-size:0.88rem; color:var(--ink-2); }
+.disclaimer strong { color:var(--ink); }
+.disclaimer-footer { font-size:0.82rem; color:var(--ink-3); padding:0.9rem 0; border-top:1px solid var(--rule); margin-top:1.2rem; }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "alternateName": "vovôminic", "description": "médico e nerd", "url": "https://felipertoledo.github.io/plantao"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html#condition", "name": "Incontinência Urinária no Idoso — Abordagem MFC", "alternateName": ["incontinência urinária", "ui", "perda urinária", "bexiga hiperativa", "incontinência de esforço"], "description": "Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou psicológico. Não é 'parte normal do envelhecer' — É TRATÁVEL. Tipos: ESFORÇO (esforço/tosse), URGÊNCIA (urgência sem chegar ao banheiro — bexiga hiperativa), MISTA, POR TRANSBORDAMENTO (reten", "code": {"@type": "MedicalCode", "codeValue": "R32", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Saúde do idoso"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "Tipo de perda:\n  - Esforço: tosse, espirro, riso, levantar peso\n  - Urgência: vontade súbita que não chega\n  - Noturna (enurese, nictúria)\n  - Em pequeno volume contínuo (transbordamento)\n  - Total (r"}, {"@type": "MedicalSignOrSymptom", "name": "Quantidade (gotas, sufficiente para troca de roupa, escorre)"}, {"@type": "MedicalSignOrSymptom", "name": "Frequência diurna (>8x/dia = polaciúria)"}, {"@type": "MedicalSignOrSymptom", "name": "Frequência noturna (≥2x/noite = nictúria)"}, {"@type": "MedicalSignOrSymptom", "name": "Início e evolução"}, {"@type": "MedicalSignOrSymptom", "name": "Eventos desencadeantes (parto, cirurgia ginecológica/prostatica, AVC, medicação nova)"}, {"@type": "MedicalSignOrSymptom", "name": "Uso de absorvente/fralda — quantidade/dia"}, {"@type": "MedicalSignOrSymptom", "name": "Comorbidades: DM (poliúria), HAS, IC, obesidade, Parkinson, AVC, demência, DRC"}], "epidemiology": "Incontinência urinária (UI) é altamente prevalente (~30-50% das mulheres ≥60a, ~15-20% dos homens ≥60a) e MUITO subnotificada — paciente tem vergonha, atribui à idade, usa fralda em silêncio. MFC tem papel chave: PERGUNTAR (ninguém fala se você não pergunta), avaliar, intervir (muito pode ser tratado na APS), referenciar quando necessário. Impacto: institucionalização, depressão, isolamento, infecção, lesão de pele, queda (apressando para banheiro).", "pathophysiology": "Continência depende de: força muscular do assoalho pélvico + esfíncter urinário, capacidade vesical adequada, controle neurológico (centro pontino + medular + cortical), mobilidade para chegar ao banheiro, cognição para reconhecer urgência.\n\nESFORÇO: ↑ pressão intra-abdominal > pressão de fechamento uretral (assoalho pélvico fraco, esfíncter incompetente — comum pós-parto, pós-menopausa, pós-prostatectomia)\nURGÊNCIA (bexiga hiperativa): hiperatividade do detrusor (contrações involuntárias) — idi", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "AVALIAÇÃO E MANEJO DE INCONTINÊNCIA URINÁRIA:\n\nA) AVALIAÇÃO INICIAL:\n  • Tipo de UI (questionar perdas associadas a esforço, urgência, ou ambos)\n  • Diário miccional 3 dias (frequência, volume, vazamentos, ingesta hídrica): paciente preenche em casa\n  • Exame físico:\n    - Geral\n    - Genital (atrofia urogenital, prolapso pélvico — visualizar com manobras de Valsalva)\n    - Toque retal (HPB em homem, fecaloma)\n    - Neurológico (sensibilidade perineal, tônus esfincteriano, reflexo bulbocavernoso"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "NICE — Urinary Incontinence in Women 2019. AUA Surgical Treatment of Female Stress Urinary Incontinence 2017. ICS — International Continence Society Standardisation. FREITAS 5ª ed 2022. Beers 2023."}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Incontinência Urinária no Idoso — Abordagem MFC — CID R32", "description": "Incontinência Urinária no Idoso — Abordagem MFC. Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-20", "dateModified": "2026-05-20", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html#condition"}, "inLanguage": "pt-BR", "keywords": "Incontinência Urinária no Idoso — Abordagem MFC, Saúde do idoso, SUS, UBS, Pronto-Atendimento, incontinência urinária, ui, perda urinária, bexiga hiperativa, incontinência de esforço, CID R32, CIAP U04"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Saúde do idoso", "item": "https://felipertoledo.github.io/plantao/#/sis/idoso"}, {"@type": "ListItem", "position": 3, "name": "Incontinência Urinária no Idoso — Abordagem MFC", "item": "https://felipertoledo.github.io/plantao/p/incontinencia-urinaria-mfc.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · por vovôminic</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/idoso">Saúde do idoso</a> › <span>Incontinência Urinária no Idoso — Abordagem MFC</span>
+</nav>
+<span class="eyebrow">Saúde do idoso</span>
+<h1>Incontinência Urinária no Idoso — Abordagem MFC</h1>
+<p class="lead">Incontinência urinária (UI) é altamente prevalente (~30-50% das mulheres ≥60a, ~15-20% dos homens ≥60a) e MUITO subnotificada — paciente tem vergonha, atribui à idade, usa fralda em silêncio. MFC tem papel chave: PERGUNTAR (ninguém fala se você não pergunta), avaliar, intervir (muito pode ser tratado na APS), referenciar quando necessário. Impacto: institucionalização, depressão, isolamento, infec</p>
+<div class="meta"><span class="tag">CID R32</span><span class="tag">CIAP U04</span><span class="tag info">Baixa gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> incontinência urinária, ui, perda urinária, bexiga hiperativa, incontinência de esforço.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/incontinencia-urinaria-mfc">Abrir Incontinência Urinária no Idoso — Abordagem MFC no app →</a>
+</div>
+<div class="disclaimer">
+<p><strong>⚠ Aviso médico-legal:</strong> material educacional para profissionais de saúde. As informações podem conter erros, omissões ou estar desatualizadas. <strong>Toda informação deve ser verificada</strong> nas diretrizes-fonte e em literatura atual antes de aplicar na prática. <strong>A responsabilidade da prescrição é exclusivamente do médico assistente</strong>, que avalia o paciente diretamente. O autor do site não se responsabiliza por decisões clínicas, eventos adversos ou desfechos decorrentes do uso destas informações.</p>
+</div>
+<h2>Definição</h2><p>Perda involuntária de urina em quantidade e frequência suficientes para causar problema social, higiênico ou psicológico. Não é &#x27;parte normal do envelhecer&#x27; — É TRATÁVEL. Tipos: ESFORÇO (esforço/tosse), URGÊNCIA (urgência sem chegar ao banheiro — bexiga hiperativa), MISTA, POR TRANSBORDAMENTO (retenção crônica com extravasamento), FUNCIONAL (não chega no banheiro por mobilidade/cognição).</p>
+<h2>Fisiopatologia</h2><p>Continência depende de: força muscular do assoalho pélvico + esfíncter urinário, capacidade vesical adequada, controle neurológico (centro pontino + medular + cortical), mobilidade para chegar ao banheiro, cognição para reconhecer urgência.
+
+ESFORÇO: ↑ pressão intra-abdominal &gt; pressão de fechamento uretral (assoalho pélvico fraco, esfíncter incompetente — comum pós-parto, pós-menopausa, pós-prostatectomia)
+URGÊNCIA (bexiga hiperativa): hiperatividade do detrusor (contrações involuntárias) — idiopática, neurogênica (AVC, EM, Parkinson), uropática (cistite, cálculo, tumor)
+TRANSBORDAMENTO: obstrução (HPB, prolapso, estenose) ou hipocontratilidade detrusora (DM, neuropatia) → bexiga distendida com extravasamento
+FUNCIONAL: bexiga e uretra preservadas, mas paciente não chega ao banheiro (mobilidade, cognição, ambiente)</p>
+<h2>Apresentação típica</h2><p>Raramente queixa primária — paciente nega. PERGUNTAR ATIVAMENTE em AGA e consultas de rotina: &#x27;a senhora tem perdas de urina sem querer?&#x27;. Ou família traz: &#x27;mãe tá usando fralda&#x27;. Ou rastreio com fralda úmida no exame. Pode ser componente de queixa funcional (&#x27;não saio mais por medo&#x27;). ITU recorrente pode ser pista. Em homem: HPB com retenção crônica → transbordamento.</p>
+<h2>Apresentação clínica</h2><ul>
+<li>Tipo de perda:
+  - Esforço: tosse, espirro, riso, levantar peso
+  - Urgência: vontade súbita que não chega
+  - Noturna (enurese, nictúria)
+  - Em pequeno volume contínuo (transbordamento)
+  - Total (raro — fístula)</li>
+<li>Quantidade (gotas, sufficiente para troca de roupa, escorre)</li>
+<li>Frequência diurna (&gt;8x/dia = polaciúria)</li>
+<li>Frequência noturna (≥2x/noite = nictúria)</li>
+<li>Início e evolução</li>
+<li>Eventos desencadeantes (parto, cirurgia ginecológica/prostatica, AVC, medicação nova)</li>
+<li>Uso de absorvente/fralda — quantidade/dia</li>
+<li>Comorbidades: DM (poliúria), HAS, IC, obesidade, Parkinson, AVC, demência, DRC</li>
+<li>Medicações: diurético (timing!), αbloq (esforço relaxante uretral), BZD, opioide (retenção), anticolinérgicos (retenção), IECA (tosse causando esforço)</li>
+<li>Função intestinal (constipação compromete bexiga)</li>
+<li>Hábito hídrico, cafeína, álcool</li>
+<li>Funcionalidade (consegue ir ao banheiro?)</li>
+<li>Cognição (esquece de ir? não reconhece a vontade?)</li>
+<li>Acesso ao banheiro (escada, distância, à noite)</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>AVALIAÇÃO E MANEJO DE INCONTINÊNCIA URINÁRIA:
+
+A) AVALIAÇÃO INICIAL:
+  • Tipo de UI (questionar perdas associadas a esforço, urgência, ou ambos)
+  • Diário miccional 3 dias (frequência, volume, vazamentos, ingesta hídrica): paciente preenche em casa
+  • Exame físico:
+    - Geral
+    - Genital (atrofia urogenital, prolapso pélvico — visualizar com manobras de Valsalva)
+    - Toque retal (HPB em homem, fecaloma)
+    - Neurológico (sensibilidade perineal, tônus esfincteriano, reflexo bulbocavernoso)
+    - Avaliação funcional (mobilidade, cognição)
+  
+  EXAMES:
+  • EAS + urocultura (excluir ITU — fator precipitante muito frequente)
+  • Glicemia (DM descompensado causa poliúria)
+  • Função renal
+  • Sódio (hiponatremia pode causar urgência)
+  • Resíduo pós-miccional (USG bexiga) se suspeita retenção/transbordamento — Volume &gt;100 mL anormal
+  • PSA em homem (HPB) — decisão compartilhada
+  • Estudo urodinâmico: APENAS em refratário ou cirurgia planejada — não rotineiro
+
+B) IDENTIFICAÇÃO DO TIPO:
+  
+  ESFORÇO: perda com tosse/esforço, geralmente em ♀ pós-parto/menopausa ou ♂ pós-prostatectomia
+  URGÊNCIA: &#x27;urgência miccional&#x27;, perda no caminho ao banheiro, bexiga hiperativa
+  MISTA: ambos (frequente)
+  TRANSBORDAMENTO: pequeno volume contínuo + esforço miccional + jato fraco + sensação de esvaziamento incompleto — HPB em homem, prolapso/diabetes em mulher
+  FUNCIONAL: cognição/mobilidade impedem chegar a tempo
+
+C) CAUSAS REVERSÍVEIS — Mnemônico DIAPPERS (avaliar SEMPRE):
+  • D: Delirium
+  • I: Infection (ITU)
+  • A: Atrophic vaginitis/uretrite
+  • P: Pharmacology (medicamentos)
+  • P: Psychological (depressão grave)
+  • E: Excessive urine output (poliúria — DM, IC, hipercalcemia)
+  • R: Restricted mobility
+  • S: Stool impaction (fecaloma)
+
+D) INTERVENÇÕES:
+
+  1. MEDIDAS BÁSICAS PARA TODOS:
+  • Tratar causas reversíveis (DIAPPERS)
+  • Reduzir cafeína (café, chá preto, refrigerantes, energéticos)
+  • Reduzir álcool
+  • Cessação tabagismo (tosse)
+  • Perda de peso se obeso
+  • Tratar constipação
+  • Otimizar diurético (timing — não à noite)
+  • Tratar atrofia urogenital com estrogênio tópico vaginal (♀ pós-menopausa — uso seguro mesmo após CA mama em geral, mas decisão compartilhada)
+  
+  2. INCONTINÊNCIA DE ESFORÇO:
+  • EXERCÍCIOS DE KEGEL (assoalho pélvico):
+    - 3 séries de 10 contrações/dia
+    - Contrair como &#x27;segurando xixi/gases&#x27;
+    - Manter 5-10s, relaxar 10s
+    - Resultados em 3-6 meses (paciência!)
+    - Fisioterapia pélvica NASF é gold standard
+  • Pessários vaginais em prolapso (ginecologia)
+  • Em refratário: cirurgia (sling uretral, colpossuspensão) — encaminhar urologia/uroginecologia
+  
+  3. INCONTINÊNCIA DE URGÊNCIA / BEXIGA HIPERATIVA:
+  • TREINO VESICAL: ir ao banheiro em horários fixos (ex: a cada 2h), aumentar intervalo gradualmente
+  • Reduzir cafeína
+  • Tratar ITU se presente
+  • Fisioterapia pélvica (Kegel ajuda aqui também)
+  • Medicamentos antimuscarínicos:
+    - Oxibutinina 5 mg 2-3x/d (única no CBAF; mas CUIDADO Beers em idoso — anticolinérgico alto)
+    - Solifenacina, tolterodina (mais seletivos, melhor perfil — não disponíveis CBAF rotineiramente; CEAF ou particular)
+    - Mirabegrona (β3-agonista) — não anticolinérgico, melhor para idoso, particular geralmente
+  • β-agonista (mirabegrona): MELHOR alternativa em idoso pelo perfil P4 (sem anticolinérgico)
+  • Injeção de toxina botulínica intra-detrusor: refratário (uroginecologia)
+  
+  4. TRANSBORDAMENTO:
+  • Tratar causa (HPB com αbloq + 5α-redutase; cateterização intermitente em retenção crônica; cirurgia se obstrução grave)
+  • Em mulher: tratar prolapso, otimizar DM, neuropatia
+  
+  5. FUNCIONAL:
+  • Adaptar ambiente (banheiro próximo, vaso elevado, suporte)
+  • Cadeira sanitária ao lado da cama à noite
+  • Roupa fácil de baixar
+  • Horários miccionais programados
+  • ACS/cuidador acompanha
+
+  6. ABSORVENTES/FRALDA:
+  • Como medida de QUALIDADE DE VIDA quando outras falharam ou em conjunto
+  • SUS oferece fralda geriátrica via PFPB (≥60a ou PcD com critério) — guiar paciente
+  • Trocar regularmente (cada 4-6h ou conforme uso) — prevenir lesão de pele
+  
+E) AÇÕES E RESPONSÁVEIS:
+  • Médico: avaliação, tratar causas, prescrição
+  • Enfermagem: orientação Kegel, treino vesical, monitoramento
+  • Fisioterapeuta NASF (perineal): gold standard para Kegel
+  • ACS: orientação no domicílio, identificar idosos com UI subnotificada
+  • Uroginecologia/Urologia: refratário ou cirurgia
+  • Família: apoio, evitar julgamento
+
+F) REAVALIAÇÃO:
+  • 1 mês após início (medidas comportamentais demoram a fazer efeito)
+  • 3 meses para avaliar resposta Kegel
+  • Tratamento medicamentoso: ajustar/trocar se sem resposta em 4-8 sem</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>NICE Urinary Incontinence in Women 2019, AUA, ICS (International Continence Society). β3-agonistas como mirabegrona estão deslocando antimuscarínicos no idoso (perfil P4 melhor). Toxina botulínica e neuromodulação sacral são padrões em refratários.</p>
+<h2>Prevenção</h2><p>Manter peso adequado, atividade física regular (assoalho pélvico via exercícios), hidratação adequada SEM excesso, evitar constipação, evitar cafeína em excesso, parar tabagismo (tosse crônica), Kegel preventivo em gestantes e pós-menopausa, manejo de comorbidades.</p>
+<h2>Alertas clínicos</h2>
+<div class="callout info"><p>PERGUNTAR sobre UI ativamente — paciente raramente fala espontaneamente.</p></div>
+<div class="callout warn"><p>Oxibutinina em idoso = Beers/STOPP. Preferir mirabegrona, fisioterapia pélvica, Kegel.</p></div>
+<div class="callout crit"><p>UI súbita em idoso = pesquisar ITU, fecaloma, medicação nova, delirium incipiente. NÃO assumir &#x27;envelhecimento&#x27;.</p></div>
+<div class="callout info"><p>Fralda geriátrica via PFPB (≥60a). Não esquecer orientar — qualidade de vida.</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>⚠ NÃO usar fralda &#x27;pra resolver&#x27; SEM avaliar causa. Fralda não é diagnóstico, é última medida. ⚠ OXIBUTININA em idoso = Beers/STOPP (anticolinérgico — confusão, queda, retenção, demência). Preferir mirabegrona ou intervenção comportamental. ⚠ Cuidado com cateter de demora &#x27;pra evitar incomodo&#x27; — ITU, lesão uretral, dependência. Indicação restrita. ⚠ Estrogênio tópico vaginal em mulher pós-menopausa com atrofia: SEGURO mesmo após CA mama em geral — não confundir com TH sistêmica. ⚠ Anticolinérgico cumulativo: somar EFEITO TOTAL (oxibutinina + amitriptilina + dexclorfeniramina + ranitidina = carga anticolinérgica alta = piora cognição). ⚠ Investigar ITU antes de assumir UI &#x27;envelhecimento&#x27;. ⚠ Restringir hidratação para reduzir UI: ERRO comum — causa desidratação, infecção, constipação, delirium. Hidratação adequada + manejo correto.</p>
+<h2>Abordagem ao paciente</h2><p>UI é tabu — paciente sente vergonha, culpa, (&#x27;eu deveria controlar&#x27;), nojo, perda de dignidade. Aborde com NORMALIDADE: &#x27;isso é comum, é problema médico, tem tratamento&#x27;. Validar o impacto na vida (&#x27;parou de sair? não dorme bem? a fralda incomoda?&#x27;). NÃO atribuir à idade (&#x27;é da idade&#x27;). Negociar plano sem julgamento. Em consultas com familiar, pedir privacidade quando possível (&#x27;vou conversar sozinho com a senhora agora&#x27;). Empoderar — exercícios de Kegel funcionam quando feitos. METÁFORA: &#x27;o assoalho pélvico é como qualquer músculo — pode fortalecer com treino certo&#x27;.</p>
+<h2>Prognóstico</h2><p>UI de esforço com Kegel: 50-70% de melhora em mulher. UI de urgência com medicamentos + treino vesical: 60-70% melhora. Idoso institucionalizado com UI funcional: prognóstico depende de manejo ambiental + cuidador. UI raramente &#x27;cura&#x27; completamente em idoso, mas frequentemente IS controlável.</p>
+<h2>Acompanhamento</h2><p>Mensal nos primeiros 3-6 meses após início de intervenção. Após estabilização, a cada 6 meses. Avaliação anual de revisão (mudanças medicamentosas, novas causas reversíveis).</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> NICE — Urinary Incontinence in Women 2019. AUA Surgical Treatment of Female Stress Urinary Incontinence 2017. ICS — International Continence Society Standardisation. FREITAS 5ª ed 2022. Beers 2023.</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Saúde do idoso</h3>
+<ul>
+<li><a href="/p/aga-mfc.html">Avaliação Geriátrica Ampla (AGA) — Abordagem MFC</a></li>
+<li><a href="/p/polifarmacia-idoso.html">Polifarmácia e Despresecrição (Beers + STOPP-START)</a></li>
+<li><a href="/p/quedas-idoso.html">Quedas em Idoso — Investigação e Prevenção Multifatorial</a></li>
+<li><a href="/p/demencia-mfc.html">Demência — Rastreio, Diagnóstico e Manejo MFC</a></li>
+<li><a href="/p/delirium-idoso.html">Delirium em Idoso — Reconhecimento e Manejo</a></li>
+<li><a href="/p/osteoporose-mfc.html">Osteoporose — Rastreio, FRAX e Manejo MFC</a></li>
+<li><a href="/p/fragilidade-sarcopenia-mfc.html">Fragilidade e Sarcopenia — Identificação e Manejo MFC</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <div class="disclaimer-footer">
+    <strong>Aviso médico-legal:</strong> material educacional. Informações podem conter erros ou estar desatualizadas — sempre verifique nas diretrizes-fonte. A responsabilidade da prescrição é exclusivamente do médico assistente. O autor não se responsabiliza por decisões clínicas ou desfechos decorrentes do uso destas informações.
+  </div>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta.</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>
