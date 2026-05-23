@@ -1,0 +1,503 @@
+/* ===========================================================
+   VOVÔMINIC EMERGÊNCIA — pat/gi.js
+   17 patologias
+   Sistemas: gi
+   =========================================================== */
+
+PATOLOGIAS.push(
+
+/* ============== GI (17) ============== */
+
+{
+  id:"abd-agudo", contexto:["pa","ubs"], sis:"gi", grav:"alta",
+  nome:"Abdome Agudo (5 tipos)",
+  sin:["abdome agudo","abdômen agudo","peritonite"],
+  def:"Dor abdominal aguda <7d com necessidade de intervenção. 5 tipos: inflamatório / obstrutivo / perfurativo / vascular / hemorrágico.",
+  exames:["RX simples em pé/decúbito + cúpulas","TC com contraste (padrão-ouro)","Hemograma, lactato, função renal, eletrólitos","β-HCG","Tipo sanguíneo + reserva"],
+  rx:[
+    {etapa:"escala", d:"INFLAMATÓRIO (apendicite, colecistite, diverticulite)",do:"ATB + analgesia + cirurgia conforme caso",via:"—",o:"Ver pages específicas."},
+    {etapa:"escala", d:"OBSTRUTIVO",do:"SNG + dieta zero + SF 30 mL/kg + correção eletrolítica",via:"—",o:"Bridada/aderência: tentar conservador 48–72h. Estrangulamento: cirurgia."},
+    {etapa:"escala", d:"PERFURATIVO",do:"Cirurgia URGENTE + ATB amplo (piperacilina-tazobactam ou ceftriaxona+metronidazol) + reanimação",via:"—",o:"Pneumoperitônio no RX/TC."},
+    {etapa:"escala", d:"VASCULAR (isq. mesentérica)",do:"Heparinização imediata + cirurgia/intervenção endovascular + ATB",via:"—",o:"DOR DESPROPORCIONAL ao exame. Mortalidade 50–80%. Angio-TC."},
+    {etapa:"escala", d:"HEMORRÁGICO (ruptura aneurisma, gestação ectópica, baço)",do:"Reanimação balanceada 1:1:1 + ácido tranexâmico 1g + cirurgia/embolização",via:"—",o:"Choque + Hb em queda + massa pulsátil/HCD/anexo doloroso."},
+  ],
+  alertas:[
+    {t:"crit",x:"SEMPRE β-HCG em mulher fértil — gestação ectópica é emergência cirúrgica."},
+    {t:"crit",x:"NÃO suspender opioides em obstrução (mito) — alívio da dor não mascara peritonismo, e estudos mostram melhor decisão clínica com analgesia adequada."},
+    {t:"warn",x:"Idoso com dor abdominal súbita + FA + dor desproporcional → considerar isquemia mesentérica precoce."},
+  ],
+  fisio:"Cada tipo tem fisiopatologia distinta — ver páginas específicas (apendicite, colecistite, isquemia mesentérica, perfuração ulcerosa, etc.). Pontos comuns: dor visceral mal localizada (inicial) → dor somática localizada (peritônio parietal envolvido) → peritonite.",
+  mec:[],
+  diretriz:"WSES Guidelines.",
+  fluxo:"abd-agudo",
+  calcs:[],
+},
+{
+  id:"apendicite", contexto:["pa"], sis:"gi", grav:"alta",
+  nome:"Apendicite Aguda",
+  sin:["apendicite","apêndice"],
+  def:"Dor periumbilical migrando para FID + náuseas + febre baixa + leucocitose. Escores: Alvarado, AIR, AAS.",
+  exames:["USG abdome (1ª escolha em jovens, gestantes, crianças)","TC abdome (padrão-ouro adultos)","Hemograma, PCR","β-HCG","EAS"],
+  rx:[
+    {etapa:"escala", d:"Apendicectomia laparoscópica",do:"—",via:"Cirúrgico",o:"PADRÃO. Preferível em <24h."},
+    {etapa:"atb", d:"Ceftriaxona + Metronidazol",do:"2 g + 500 mg IV 8/8h pré-op + 24h pós",via:"IV",o:"Não complicada. Em perfurada/abscesso: estender 5–7 dias."},
+    {etapa:"escala", d:"ATB sem cirurgia (NOTA)",do:"Amox-clav 875/125 mg 12/12h × 7–10 dias",via:"VO",o:"Apendicite não complicada selecionada. Recidiva ~25–30% em 1 ano."},
+  ],
+  alertas:[
+    {t:"warn",x:"Sinais de perfuração: dor difusa, peritonismo, febre >39, leuco >18k. TC + cirurgia + ATB amplo."},
+  ],
+  fisio:"Obstrução luminal (fecálito 60%, hiperplasia linfoide 20% em jovens, tumor 1% em idosos) → distensão → estase → infecção → isquemia → perfuração em 24–72h.",
+  mec:[],
+  diretriz:"WSES Jerusalem Guidelines 2020 (Di Saverio S et al., World J Emerg Surg 2020;15:27).",
+  calcs:["alvarado"],
+},
+{
+  id:"ascite", contexto:["pa","ubs"], sis:"gi", grav:"media",
+  nome:"Ascite + PBE",
+  sin:["ascite","PBE","peritonite","cirrose"],
+  def:"Acúmulo de líquido peritoneal. PBE = peritonite bacteriana espontânea em cirrótico (PMN ≥250 no líquido ascítico).",
+  exames:["Paracentese diagnóstica em TODOS os admitidos: bioq, celularidade, GASA, Gram, cultura","Hemograma, função renal e hepática","Eletrólitos (hiponatremia comum)"],
+  rx:[
+    {etapa:"escala", d:"Espironolactona",do:"100–400 mg VO/d",via:"VO",o:"Combinar com furosemida em proporção 100:40 mg. Paracentese terapêutica se ascite tensa."},
+    {etapa:"escala", d:"Furosemida",do:"40–160 mg VO/d",via:"VO",o:"Manter relação 100:40 (espiro:furo) para evitar hiponatremia/hipocalemia."},
+    {etapa:"escala", d:"Albumina 20%",do:"6–8 g por L removido se paracentese >5 L",via:"IV",o:"Previne disfunção circulatória pós-paracentese."},
+    {etapa:"atb", d:"Ceftriaxona",do:"2 g IV/d × 5–7 dias",via:"IV",o:"PBE — empírico. Cobre E. coli, Klebsiella, pneumococo."},
+    {etapa:"escala", d:"Albumina (PBE)",do:"1,5 g/kg D1 + 1 g/kg D3",via:"IV",o:"Reduz SHR e mortalidade na PBE."},
+    {etapa:"adj", d:"Profilaxia PBE",do:"Norfloxacino 400 mg/d ou SMX-TMP 1 cp/d",via:"VO",o:"Indicações: HDA varicosa, PBE prévia, prot. asc <1,5 g/dL + disfunção renal/Child C."},
+  ],
+  alertas:[
+    {t:"crit",x:"PBE não tratada: mortalidade 60–90%. Iniciar ATB EMPIRICAMENTE assim que paracentese coletada."},
+  ],
+  fisio:"Cirrose → ↑pressão portal → vasodilatação esplâncnica/sistêmica → ↓volume arterial efetivo → ativação RAA/SNS/ADH → retenção de sódio e água. PBE: translocação bacteriana intestinal → bacteriemia → infecção do líquido ascítico (pobre em opsoninas).",
+  mec:[
+    {d:"Espironolactona",x:"Antagonista do <strong>receptor da aldosterona</strong> no túbulo coletor → ↑excreção de Na⁺ e retenção de K⁺."},
+    {d:"Furosemida",x:"Inibe Na⁺/K⁺/2Cl⁻ na alça de Henle."},
+    {d:"Albumina",x:"Mantém pressão oncótica e volume circulante efetivo; ↓incidência de síndrome hepatorrenal pós-paracentese."},
+  ],
+  diretriz:"AASLD Guideline on Ascites (Biggins SW et al., Hepatology 2021;74:1014–1048). EASL 2018.",
+  calcs:["meld","child-pugh"],
+},
+{
+  id:"colangite", contexto:["pa"], sis:"gi", grav:"alta",
+  nome:"Colangite Aguda (Tokyo 2018)",
+  sin:["colangite","Charcot","Reynolds","TG18"],
+  def:"Infecção biliar com obstrução. Tríade de Charcot: febre + icterícia + dor HCD. Pêntade de Reynolds: + hipotensão + alteração mental. ALTA MORTALIDADE se atraso.",
+  exames:["Hemograma + PCR","Função hepática (↑FA, ↑BT direta, ↑GGT, ↑ALT)","HMC (positivas em 50%)","USG abdome → dilatação biliar","ColangioRM ou TC + CPRE diagnóstica/terapêutica"],
+  rx:[
+    {etapa:"inicial", d:"Estabilização hemodinâmica",do:"Cristaloide + vasopressor se choque",via:"IV",o:"Hour-1 bundle de sepse."},
+    {etapa:"atb", d:"Piperacilina-tazobactam",do:"4,5 g IV 6/6h",via:"IV",o:"Inicial empírico amplo (TG18 grau II/III)."},
+    {etapa:"atb", d:"Ceftriaxona + Metronidazol",do:"2 g + 500 mg 8/8h",via:"IV",o:"Alternativa em grau I."},
+    {etapa:"atb", d:"Meropenem ± Vancomicina",do:"1 g 8/8h + 15 mg/kg 12/12h",via:"IV",o:"Grau III ou fatores MR."},
+    {etapa:"escala", d:"Drenagem biliar URGENTE",do:"CPRE em até 24–48h (grau I/II) ou imediata (grau III)",via:"—",o:"Padrão-ouro. PTC se CPRE falha/anatomia."},
+  ],
+  alertas:[
+    {t:"crit",x:"Grau III (disfunção orgânica): drenagem em <12h. Mortalidade sem drenagem 50–100%."},
+    {t:"warn",x:"ATB SEM drenagem fracassa — fonte controle é mandatório."},
+  ],
+  fisio:"Obstrução biliar (coledocolitíase, estenose, tumor) → estase → translocação bacteriana ascendente do duodeno → bacteriobilia → bacteremia. Tóxinas e produtos inflamatórios entram na corrente sanguínea via shunts colangiovenosos → sepse fulminante.",
+  mec:[],
+  diretriz:"Tokyo Guidelines 2018 (Kiriyama S et al., J Hepatobiliary Pancreat Sci 2018;25:17–30, DOI:10.1002/jhbp.512).",
+  calcs:[],
+},
+{
+  id:"colecistite", contexto:["pa","ubs"], sis:"gi", grav:"alta",
+  nome:"Colecistite Aguda (Tokyo 2018)",
+  sin:["colecistite","colecistite aguda","TG18"],
+  def:"Inflamação da vesícula biliar. Critérios TG18: A (Murphy/dor HCD) + B (febre, ↑PCR/leuco) + C (imagem: parede espessada, líquido pericístico). Suspeito = 1A + 1B; definitivo = + C.",
+  exames:["USG abdome (parede>4mm, líquido pericístico, Murphy ecográfico)","Hemograma, função hepática, FA, BT, lipase","HMC se febre alta","TC se complicação"],
+  rx:[
+    {etapa:"inicial", d:"Dieta zero + hidratação",do:"SF 1–2 mL/kg/h",via:"IV",o:"—"},
+    {etapa:"adj", d:"Analgesia",do:"Dipirona + opioide",via:"IV",o:"Como em cólica biliar."},
+    {etapa:"atb", d:"Ceftriaxona + Metronidazol",do:"1 g IV/d + 500 mg IV 8/8h",via:"IV",o:"Grau I (leve). Cobertura E. coli, Klebsiella, anaeróbios."},
+    {etapa:"atb", d:"Piperacilina-tazobactam",do:"4,5 g IV 6/6h",via:"IV",o:"Grau II (moderado) ou paciente com fatores de risco MR."},
+    {etapa:"atb", d:"Meropenem",do:"1 g IV 8/8h + vanco/linezolida",via:"IV",o:"Grau III (grave/disfunção orgânica)."},
+    {etapa:"inicial", d:"Colecistectomia laparoscópica precoce",do:"<72h",via:"Cirúrgico",o:"Padrão para todos. Grau III: estabilizar primeiro; colecistostomia se inoperável."},
+  ],
+  alertas:[
+    {t:"crit",x:"Sepse de origem biliar: hour-1 bundle + cirurgia/drenagem URGENTE."},
+  ],
+  fisio:"Obstrução persistente do ducto cístico → distensão → ↑pressão intraluminal → isquemia da parede → invasão bacteriana secundária. Não tratada evolui para empiema, gangrena, perfuração.",
+  mec:[
+    {d:"Ceftriaxona + Metronidazol",x:"Cobertura Gram-negativos entéricos (cefalosporina 3G) + anaeróbios (5-nitroimidazol — reduzido em ambiente anaeróbio gerando radicais que danificam DNA bacteriano)."},
+  ],
+  diretriz:"Tokyo Guidelines 2018 (Yokoe M et al., J Hepatobiliary Pancreat Sci 2018;25:41–54, DOI:10.1002/jhbp.515). Antibiótico: Gomi H et al. DOI:10.1002/jhbp.518.",
+  calcs:[],
+},
+{
+  id:"colelit", contexto:["pa","ubs"], sis:"gi", grav:"media",
+  nome:"Colelitíase / Cólica Biliar",
+  sin:["colelitíase","cálculo biliar","cólica biliar"],
+  def:"Dor em hipocôndrio direito/epigástrio pós-prandial, <6h, sem febre nem icterícia (cólica simples). Diferenciar de colecistite (>6h + febre + Murphy +).",
+  exames:["USG abdome (cálculo, espessamento de parede)","Hemograma, função hepática, FA, BT","Lipase para descartar pancreatite"],
+  rx:[
+    {etapa:"adj", d:"Dipirona",do:"1 g IV em 10 min",via:"IV",o:"1ª linha analgésica."},
+    {etapa:"escala", d:"Cetoprofeno",do:"100 mg IV em 100 mL SF",via:"IV",o:"AINE — pode reduzir progressão para colecistite."},
+    {etapa:"escala", d:"Escopolamina (Buscopan)",do:"20 mg IV/IM",via:"IV/IM",o:"Anticolinérgico — ↓espasmo. CI: glaucoma, taquicardia."},
+    {etapa:"escala", d:"Colecistectomia eletiva",do:"Em sintomáticos",via:"Cirúrgico",o:"Mesma internação se episódio agudo grave; ambulatorial em sintomáticos leves."},
+  ],
+  alertas:[
+    {t:"warn",x:"Cólica + febre + Murphy + = colecistite. Cólica + febre + icterícia + dor (Charcot) = colangite. INVESTIGAR."},
+  ],
+  fisio:"Cálculos formam-se por desequilíbrio de colesterol/sais biliares/lecitina (>70% colesterol; 20% pigmentados). Cólica biliar = obstrução transitória do ducto cístico → distensão da vesícula → dor visceral. Sem obstrução persistente, não há inflamação significativa.",
+  mec:[
+    {d:"Escopolamina",x:"Antagonista <strong>muscarínico</strong> — ↓motilidade e tônus da musculatura lisa do trato biliar."},
+  ],
+  diretriz:"AASLD; Tokyo Guidelines 2018.",
+  calcs:[],
+},
+{
+  id:"diarreia", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
+  nome:"Diarreia Aguda",
+  sin:["diarreia","gastroenterite","disenteria"],
+  def:"≥3 evacuações líquidas/24h <14 dias. Maioria viral autolimitada. Investigar disenteria (sangue/muco/febre alta) e desidratação.",
+  exames:["Hemograma + eletrólitos se desidratação","Função renal","Coprocultura se disenteria, imunossupressão, viagem","Toxina C. difficile se ATB recente"],
+  rx:[
+    {etapa:"escala", d:"SRO/Reidratação oral",do:"50–100 mL após cada evacuação",via:"VO",o:"PILAR. Reidratação suficiente em 90% dos casos."},
+    {etapa:"escala", d:"SF 0,9%",do:"30 mL/kg em 30 min se grave",via:"IV",o:"Desidratação grave."},
+    {etapa:"escala", d:"Racecadotrila",do:"100 mg VO 8/8h × ≤7 dias",via:"VO",o:"Antissecretor sem efeito na motilidade. Útil em diarreia secretora."},
+    {etapa:"escala", d:"Saccharomyces boulardii",do:"500 mg VO 12/12h × 5 dias",via:"VO",o:"Probiótico, especialmente em diarreia pós-ATB."},
+    {etapa:"atb", d:"Ciprofloxacino",do:"500 mg VO 12/12h × 3–5 dias",via:"VO",o:"Disenteria moderada/grave (sangue, febre), viajante, imunossuprimido."},
+    {etapa:"atb", d:"Metronidazol",do:"500 mg VO 8/8h × 10–14 dias",via:"VO",o:"Suspeita de C. difficile ou amebíase."},
+  ],
+  alertas:[
+    {t:"warn",x:"NÃO usar loperamida (antimotílico) em disenteria — risco de megacólon tóxico e prolongamento da infecção."},
+    {t:"info",x:"Reidratação ORAL é superior a IV na maioria. Reservar IV para choque/vômito persistente/coma."},
+  ],
+  fisio:"Mecanismos: <strong>osmótica</strong> (má absorção — vírus, lactose), <strong>secretora</strong> (toxinas — ETEC, cólera), <strong>inflamatória/invasiva</strong> (Shigella, Salmonella, C. jejuni, EHEC) e <strong>motilidade ↑</strong>. Vírus (norovírus, rotavírus) causam ~70% das diarreias agudas no adulto.",
+  mec:[
+    {d:"Racecadotrila",x:"Inibe <strong>encefalinase intestinal</strong> → ↑encefalinas → ↓secreção hidroeletrolítica. Não afeta motilidade (vs. loperamida)."},
+    {d:"Ciprofloxacino",x:"Fluoroquinolona — inibe DNA-girase e topoisomerase IV bacterianas."},
+  ],
+  diretriz:"IDSA — Infectious Diarrhea (Shane AL et al., CID 2017;65:e45–e80).",
+  calcs:[],
+},
+{
+  id:"diverticulite", contexto:["pa"], sis:"gi", grav:"media",
+  nome:"Diverticulite Aguda",
+  sin:["diverticulite","Hinchey"],
+  def:"Dor em FIE + febre + leucocitose em paciente com diverticulose. TC define gravidade (Hinchey I–IV).",
+  exames:["TC abdome com contraste (PADRÃO-OURO)","Hemograma, PCR","Função renal"],
+  rx:[
+    {etapa:"atb", d:"Ciprofloxacino + Metronidazol",do:"500 mg 12/12h + 500 mg 8/8h × 7–10 dias",via:"VO",o:"Não complicada (Hinchey 0–I, sem abscesso). Ambulatorial."},
+    {etapa:"atb", d:"Amoxicilina-clavulanato",do:"875/125 mg 12/12h × 7–10 dias",via:"VO",o:"Alternativa em não complicada."},
+    {etapa:"atb", d:"Ceftriaxona + Metronidazol",do:"2 g IV/d + 500 mg IV 8/8h",via:"IV",o:"Internação. Hinchey I (abscesso pericólico pequeno) ou intolerância oral."},
+    {etapa:"atb", d:"Piperacilina-tazobactam",do:"4,5 g IV 6/6h",via:"IV",o:"Hinchey II–III ou sepse."},
+    {etapa:"escala", d:"Drenagem percutânea",do:"—",via:"—",o:"Abscesso >4 cm."},
+    {etapa:"escala", d:"Cirurgia (Hartmann)",do:"—",via:"—",o:"Hinchey III (peritonite purulenta) ou IV (fecal)."},
+  ],
+  alertas:[
+    {t:"info",x:"Em casos selecionados de diverticulite não complicada, ATB pode ser dispensado (estudos AVOD, DIABOLO). Decisão individualizada."},
+  ],
+  fisio:"Obstrução do colo do divertículo por fecálito → ↑pressão → microperfuração → inflamação local. Em cólon sigmoide em 95%. Pode evoluir para abscesso, peritonite, fístula.",
+  mec:[],
+  diretriz:"ASCRS Clinical Practice Guidelines for Diverticulitis (Hall J et al., Dis Colon Rectum 2020;63:728–747).",
+  calcs:[],
+},
+{
+  id:"drge", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
+  nome:"DRGE / Esofagite",
+  sin:["DRGE","refluxo","esofagite","pirose"],
+  def:"Pirose + regurgitação ácida ± disfagia. Diagnóstico clínico + teste terapêutico com IBP. EDA se sinais de alarme.",
+  exames:["EDA se: disfagia, idade >50 com sintomas novos, hemorragia, anemia, perda de peso, vômitos persistentes, hist. familiar de CA"],
+  rx:[
+    {etapa:"escala", d:"Omeprazol",do:"20–40 mg VO/d em jejum × 4–8 sem",via:"VO",o:"1ª linha. 30 min antes do café."},
+    {etapa:"escala", d:"Pantoprazol",do:"40 mg VO/d",via:"VO",o:"Alternativa."},
+    {etapa:"adj", d:"Bromoprida/Domperidona",do:"10 mg VO 8/8h",via:"VO",o:"Procinético adjuvante. Limitar uso (efeitos cardiovasc/extrapiramidais)."},
+    {etapa:"escala", d:"Mudanças de hábito",do:"Perder peso, elevar cabeceira, evitar deitar pós-prandial, ↓café/álcool/gorduras",via:"—",o:"Componente essencial."},
+  ],
+  alertas:[
+    {t:"warn",x:"Sinais de alarme: investigar com EDA. Considerar Barrett (metaplasia)."},
+  ],
+  fisio:"Disfunção do esfíncter esofágico inferior + relaxamentos transitórios + hérnia de hiato → refluxo ácido → erosão da mucosa esofágica.",
+  mec:[
+    {d:"Omeprazol/Pantoprazol",x:"<strong>Inibidores irreversíveis da H⁺/K⁺-ATPase</strong> (bomba de prótons) nas células parietais gástricas → ↑pH gástrico."},
+  ],
+  diretriz:"ACG Guidelines for the Diagnosis and Management of Gastroesophageal Reflux Disease (Katz PO et al., Am J Gastroenterol 2022;117:27–56).",
+  calcs:[],
+},
+{id:"drge-dispepsia", contexto:["pa","ubs"], nome:"DRGE / Dispepsia Funcional", sis:"gi", grav:"baixa",
+cid:"K21 (DRGE) / K30 (dispepsia)", ciap:"D03 (pirose) / D07 (dispepsia)",
+sin:["DRGE","Refluxo","Pirose","Azia","Queimação","Dispepsia funcional","Síndrome do desconforto pós-prandial","Síndrome da dor epigástrica"],
+
+def:"DRGE = retorno do conteúdo gástrico ao esôfago causando sintomas/lesão. Dispepsia funcional = sintomas no andar superior do abdome sem causa orgânica. Quadros frequentemente sobrepostos. Maioria responde a MEV + IBP.",
+
+quadro:[
+"DRGE TÍPICA: pirose retroesternal (queimação ascendente) + regurgitação ácida. Piora deitado, após refeição, agachamento, refeições gordurosas/picantes",
+"DRGE ATÍPICA: tosse crônica, rouquidão, asma de difícil controle, faringite, laringite posterior, erosão dental, dor torácica não-cardíaca",
+"DISPEPSIA FUNCIONAL — síndrome da dor epigástrica (EPS): dor/queimação epigástrica intermitente, NÃO relacionada a refeições",
+"DISPEPSIA FUNCIONAL — síndrome do desconforto pós-prandial (PDS): plenitude pós-prandial precoce, saciedade precoce, distensão epigástrica",
+"⚠ SINAIS DE ALARME (Red flags) — investigar com EDA: idade ≥55a sintomas novos, disfagia/odinofagia, perda de peso involuntária, anemia/sangramento, vômito persistente, massa palpável, história familiar CA gástrico precoce",
+],
+
+diag:[
+"DIAGNÓSTICO É CLÍNICO na maioria dos casos. Sintomas típicos + sem red flag = teste terapêutico com IBP por 4-8 semanas (ENDOSCOPIA NÃO ROTINA)",
+"EDA (endoscopia digestiva alta) INDICADA: red flags, falha de tratamento empírico, sintomas atípicos persistentes, idade ≥55a com sintomas novos",
+"EDA classifica esofagite (Los Angeles A-D). 50-60% dos pacientes com DRGE tem ENDOSCOPIA NORMAL (DRGE não erosiva — NERD) — endoscopia normal NÃO exclui DRGE",
+"pHmetria de 24h: padrão-ouro para confirmação em casos atípicos ou refratários (medir tempo de pH <4 + correlação com sintomas)",
+"Impedância-pHmetria: detecta refluxo NÃO ÁCIDO (em paciente com IBP refratário)",
+"Manometria esofágica: avalia motilidade, indicada pré-cirurgia ou suspeita de outras causas",
+"Pesquisa H. PYLORI em DISPEPSIA: teste-e-trate (test-and-treat) em <55a sem red flags — UREASE rápida em EDA, antígeno fecal ou ureia respiratória (sorologia é menos confiável)",
+],
+
+exames:[
+"História clínica detalhada (frequência, intensidade, gatilhos, sintomas atípicos, red flags)",
+"Hemograma (anemia ferropriva por sangramento oculto?)",
+"H. pylori (antígeno fecal ou ureia respiratória — preferíveis à sorologia)",
+"EDA — se red flags / falha de tratamento / ≥55a com sintomas novos",
+"⚠ NÃO solicitar rotineiramente: USG abdominal (não avalia esôfago/estômago), Rx contrastado (baixa sensibilidade), CT (sem indicação para DRGE/dispepsia)",
+"Eletrólitos / função renal em uso crônico de IBP (depleção de Mg, Ca)",
+"Densitometria óssea em uso crônico de IBP em fatores de risco para osteoporose",
+],
+
+rx:[
+// ============== INICIAL — MEV ==============
+{etapa:"inicial", d:"MUDANÇAS DE ESTILO DE VIDA — base de qualquer tratamento", o:"Aplicar SEMPRE, mesmo com indicação medicamentosa. Eficácia comparável a IBP de baixa dose em casos leves."},
+{etapa:"inicial", d:"PERDA DE PESO se IMC ≥25 — perda de 5 kg pode reduzir sintomas em 40%", o:"Aumento de IMC é o fator de risco mais bem estabelecido."},
+{etapa:"inicial", d:"ELEVAR CABECEIRA da cama 15-20 cm (calço, não travesseiro) — para sintomas noturnos", o:""},
+{etapa:"inicial", d:"NÃO DEITAR 2-3 H APÓS REFEIÇÕES; jantar leve 3h antes de dormir", o:""},
+{etapa:"inicial", d:"REDUZIR/EVITAR: gorduras saturadas, frituras, chocolate, hortelã, café, álcool, cítricos, tomate, refrigerantes — INDIVIDUALIZAR (cada paciente tem gatilhos próprios)", o:""},
+{etapa:"inicial", d:"CESSAR TABAGISMO — reduz tônus EEI (esfíncter esofágico inferior)", o:""},
+{etapa:"inicial", d:"REVISAR MEDICAMENTOS: AINEs, bisfosfonatos, anticolinérgicos, BCC, β-bloq, teofilina, doxiciclina podem agravar DRGE", o:""},
+{etapa:"inicial", d:"Roupas frouxas; evitar exercício extenuante após refeições", o:""},
+
+// ============== ESCALONAMENTO ==============
+{etapa:"escala", d:"⚠ TESTE TERAPÊUTICO com IBP — 4-8 SEMANAS em DRGE TÍPICA SEM RED FLAGS", o:""},
+{etapa:"escala", d:"Omeprazol 20-40 mg VO 1×/d EM JEJUM (30-60 min antes café)", o:"REMUME — 1ª escolha SUS. 40 mg em casos moderados-graves. Tomar antes do café (precisa de bomba de prótons ativa)."},
+{etapa:"escala", d:"Pantoprazol 40 mg VO 1×/d em jejum — alternativa com menos interações", o:"Preferir em paciente em uso de clopidogrel, varfarina, citalopram (omeprazol inibe CYP2C19)."},
+{etapa:"escala", d:"Esomeprazol 20-40 mg VO 1×/d em jejum — formulação mais nova, perfil similar", o:""},
+
+{etapa:"escala", d:"RESPOSTA INICIAL: avaliar em 4-8 semanas. Se sintomas controlados:", o:""},
+{etapa:"escala", d:"(1) DRGE EROSIVA confirmada por EDA: manter IBP em DOSE MÍNIMA EFICAZ a longo prazo", o:""},
+{etapa:"escala", d:"(2) DRGE não erosiva (NERD) / dispepsia: tentar STEP-DOWN — reduzir para meia dose, depois dias alternados, depois sob demanda (on-demand)", o:""},
+{etapa:"escala", d:"(3) Refratário (sintomas persistentes apesar de IBP em dose plena por 8 sem): aumentar para 12/12h × 4 sem, avaliar adesão/horário, considerar EDA + pHmetria", o:""},
+
+{etapa:"escala", d:"⚠ TIMING do IBP é CRÍTICO: tomar 30-60 MIN ANTES DO CAFÉ (precisa de bomba de prótons ATIVA para ser inibida). Tomar à noite/após café reduz eficácia em 40%", o:""},
+
+// ============== ADJUVANTES ==============
+{etapa:"adj", d:"BLOQUEADORES H2 — alternativa em DRGE leve, sintomas noturnos breakthrough, ou intolerância a IBP", o:""},
+{etapa:"adj", d:"Famotidina 20-40 mg VO 12/12h (antes refeições) ou 40 mg à noite", o:"PREFERIDA atualmente (ranitidina foi retirada em 2020 por NDMA — N-nitrosodimetilamina, contaminante carcinogênico)."},
+{etapa:"adj", d:"⚠ Ranitidina: RETIRADA do mercado globalmente em 2020. NÃO PRESCREVER", o:""},
+{etapa:"adj", d:"TAQUIFILAXIA: H2 perde eficácia em 2-6 semanas de uso contínuo — usar sob demanda ou intermitente, não contínuo crônico", o:""},
+
+{etapa:"adj", d:"SUCRALFATO 1 g VO 6/6h ou 4/4h (antes refeições + ao deitar)", o:"Forma barreira protetora sobre lesão. Útil em ESOFAGITE EROSIVA + GESTAÇÃO (categoria B). Tomar separado de outras drogas (afeta absorção)."},
+
+{etapa:"adj", d:"ANTIÁCIDOS (hidróxido de alumínio + magnésio, carbonato de cálcio) — alívio sintomático SOB DEMANDA. Não modificam doença", o:"Tomar separado de outras medicações (interfere absorção). Magnésio causa diarreia; alumínio causa constipação."},
+
+{etapa:"adj", d:"PROCINÉTICOS — adjuvantes em casos selecionados (DRGE + gastroparesia, regurgitação proeminente)", o:""},
+{etapa:"adj", d:"Domperidona 10 mg VO 8/8h (preferida — passa menos BBB que metoclopramida)", o:"⚠ Pode prolongar QT. EVITAR em cardiopata, ≥60 anos sem indicação clara, uso prolongado (limite 7 dias EMA)."},
+{etapa:"adj", d:"Metoclopramida 10 mg VO 8/8h — RESTRITA a uso ≤5 DIAS (sintomas extrapiramidais, discinesia tardia irreversível)", o:"Black box FDA. Evitar idoso. NÃO usar crônico."},
+
+// ============== H. PYLORI ==============
+{etapa:"adj", d:"⚠ H. PYLORI: TESTAR + TRATAR em DISPEPSIA não-investigada <55a sem red flags", o:""},
+{etapa:"adj", d:"ERRADICAÇÃO 1ª linha (14 dias): IBP 12/12h + Amoxicilina 1g 12/12h + Claritromicina 500 mg 12/12h", o:"Resistência à claritromicina aumentando — verificar padrão local."},
+{etapa:"adj", d:"ERRADICAÇÃO em alergia à penicilina: IBP + Claritromicina + Metronidazol 500 mg 12/12h × 14 dias", o:""},
+{etapa:"adj", d:"BISMUTO quádrupla (alta resistência): IBP + Bismuto + Tetraciclina + Metronidazol × 14 dias", o:"Subsalicilato/subcitrato de bismuto pouco disponível no Brasil."},
+{etapa:"adj", d:"CONFIRMAR ERRADICAÇÃO 4-8 sem após término (suspender IBP 2 sem antes do teste): antígeno fecal ou ureia respiratória", o:""},
+
+// ============== SITUAÇÕES ESPECIAIS ==============
+{etapa:"adj", d:"GESTAÇÃO: MEV + antiácidos + sucralfato (categoria B). IBP é seguro mas reservar para casos não responsivos (pantoprazol categoria B, omeprazol C — preferir pantoprazol)", o:""},
+{etapa:"adj", d:"PEDIATRIA: DRGE fisiológica do lactente é AUTOLIMITADA — espessamento de fórmula, posicionamento, NÃO usar IBP rotineiramente (sem evidência de eficácia em <1 ano)", o:""},
+{etapa:"adj", d:"IDOSO: cautela com IBP crônico (risco fratura, pneumonia, IRC, Mg/B12 baixos, C. difficile). Aplicar lente de PREVENÇÃO QUATERNÁRIA — usar dose mínima eficaz, considerar suspensão periódica", o:""},
+{etapa:"adj", d:"DRGE REFRATÁRIA verdadeira (IBP máximo + adesão + timing corretos): considerar CIRURGIA antirefluxo (fundoplicatura de Nissen) em paciente jovem motivado", o:"Cirurgia melhora qualidade de vida mas pode causar disfagia transitória, gases."},
+
+// ============== ALTA ==============
+{etapa:"alta", d:"⚠ ORIENTAR PACIENTE: tomar IBP 30-60 MIN antes do café. Resposta esperada em 1-2 semanas para sintomas, 8 semanas para cicatrização de esofagite", o:""},
+{etapa:"alta", d:"REAVALIAR em 4-8 semanas. Se controlado: TENTAR STEP-DOWN gradual (meia dose → dias alternados → on-demand)", o:""},
+{etapa:"alta", d:"USO CRÔNICO de IBP: avaliar PERIODICAMENTE a indicação. Riscos a longo prazo: ↓ B12, ↓ Mg, ↓ Ca/osteoporose-fratura, ↑ pneumonia, ↑ C. difficile, ↑ IRC, possível rebote ácido na suspensão", o:""},
+{etapa:"alta", d:"⚠ SUSPENSÃO DE IBP: tem REBOTE ÁCIDO (hipergastrinemia compensatória) em 4-6 semanas. Reduzir GRADUALMENTE — meia dose por 2 sem, depois dias alternados, depois sob demanda", o:""},
+{etapa:"alta", d:"SINAIS DE ALERTA — voltar antes: disfagia, perda de peso, vômito persistente, hematêmese, melena, dor torácica intensa", o:""},
+{etapa:"alta", d:"PRÓXIMOS PASSOS — encaminhamento gastroenterologia: (1) red flags; (2) refratário a IBP em dose plena 8 sem; (3) suspeita de Barrett; (4) candidato a cirurgia antirefluxo; (5) H. pylori resistente após 2ª tentativa", o:""},
+],
+
+alertas:[
+{nivel:"crit", txt:"RED FLAGS = ENDOSCOPIA URGENTE: disfagia, odinofagia, perda de peso involuntária, anemia/sangramento (hematêmese, melena), vômito persistente, massa palpável, idade ≥55a sintomas novos, hist familiar CA gástrico precoce."},
+{nivel:"crit", txt:"DOR TORÁCICA ATÍPICA: NÃO assumir DRGE em emergência sem excluir SCA primeiro — especialmente >45a, fatores de risco CV. ECG + troponina + clínica."},
+{nivel:"warn", txt:"TIMING DO IBP é CRÍTICO: 30-60 MIN ANTES DO CAFÉ. Tomar à noite/junto/após reduz eficácia em 40%. Orientar repetidamente."},
+{nivel:"warn", txt:"RANITIDINA: RETIRADA do mercado em 2020 (contaminação por NDMA — carcinogênico). NÃO PRESCREVER. Usar FAMOTIDINA."},
+{nivel:"warn", txt:"USO CRÔNICO DE IBP — aplicar P4: ↓ B12, ↓ Mg, ↓ Ca/fratura, ↑ pneumonia, ↑ C. difficile, ↑ IRC. Usar DOSE MÍNIMA EFICAZ, tentar step-down periódico."},
+{nivel:"warn", txt:"METOCLOPRAMIDA: limite ≤5 DIAS (sintomas extrapiramidais, discinesia tardia IRREVERSÍVEL). BLACK BOX FDA. Evitar idoso."},
+{nivel:"warn", txt:"H. PYLORI: testar + tratar dispepsia <55a sem red flags. Confirmar erradicação 4-8 sem após (suspender IBP 2 sem antes do teste)."},
+{nivel:"warn", txt:"REBOTE ÁCIDO ao suspender IBP — reduzir GRADUALMENTE. Suspensão abrupta após uso prolongado piora sintomas em 4-6 sem."},
+{nivel:"info", txt:"ENDOSCOPIA NORMAL não exclui DRGE — 50-60% dos pacientes tem DRGE não erosiva (NERD)."},
+{nivel:"info", txt:"INTERAÇÃO OMEPRAZOL + CLOPIDOGREL: omeprazol inibe CYP2C19 → reduz ativação clopidogrel. PREFERIR PANTOPRAZOL (mínima interação)."},
+],
+
+fluxo:null,
+diretriz:"AGA 2022. ACG DRGE 2022. ESPGHAN/NASPGHAN Peds 2018. Maastricht VI 2022 (H. pylori). Choosing Wisely Brasil."
+},
+{
+  id:"encefa", contexto:["pa","ubs"], sis:"gi", grav:"alta",
+  nome:"Encefalopatia Hepática",
+  sin:["EH","encefalopatia hepática","coma hepático","amônia"],
+  def:"Alteração de consciência em cirrótico/hepatopata. West Haven I–IV. Fator precipitante quase sempre presente.",
+  exames:["Hemograma","Função renal + eletrólitos","Glicemia","Amônia sérica (útil se ↓)","HMC e EAS (PBE? ITU?)","Função hepática + INR","TC crânio se déficit/trauma"],
+  rx:[
+    {etapa:"escala", d:"Lactulose",do:"30 mL VO 1–2h até evacuação, depois 20–30 mL 8/8h",via:"VO/SNG",o:"Meta: 2–3 evacuações pastosas/d. Em coma: enema 300 mL em 700 mL SF."},
+    {etapa:"escala", d:"Rifaximina",do:"550 mg VO 12/12h",via:"VO",o:"Adicionar à lactulose em refratário ou recorrente. ATB não absorvível."},
+    {etapa:"atb", d:"Metronidazol",do:"250 mg VO 8/8h",via:"VO",o:"Alternativa quando rifaximina indisponível."},
+    {etapa:"inicial", d:"Tratar precipitante",do:"—",via:"—",o:"PBE → ceftriaxona; constipação → lactulose; ITU → ATB; sangramento → estabilizar; eletrólitos → corrigir."},
+  ],
+  alertas:[
+    {t:"warn",x:"Identificar e tratar precipitante é tão importante quanto a lactulose: PBE, sangramento GI, drogas (BZD, diurético), constipação, infecção, distúrbios eletrolíticos."},
+    {t:"info",x:"Restringir proteínas NÃO é mais recomendado (1,2–1,5 g/kg/d, preferindo vegetal/laticínio)."},
+  ],
+  fisio:"A insuficiência hepática reduz a depuração de toxinas nitrogenadas (especialmente <strong>amônia</strong>) produzidas pela flora intestinal a partir de proteínas. A amônia atravessa BHE → astrócitos a convertem em glutamina → edema astrocitário → alteração de neurotransmissão (GABA ↑, glutamato modulado). Shunts portossistêmicos agravam.",
+  mec:[
+    {d:"Lactulose",x:"Dissacarídeo não absorvível — fermentado por bactérias colônicas em ácidos orgânicos → <strong>↓pH do cólon, convertendo NH₃ (absorvível) em NH₄⁺ (não absorvível)</strong>. Também laxativo osmótico, eliminando produtos nitrogenados nas fezes."},
+    {d:"Rifaximina",x:"ATB não absorvível — <strong>↓flora colônica produtora de amônia</strong> sem efeito sistêmico relevante."},
+  ],
+  diretriz:"AASLD/EASL — Hepatic Encephalopathy (Vilstrup H et al., Hepatology 2014;60:715–735).",
+  calcs:[],
+},
+{
+  id:"hda", contexto:["pa"], sis:"gi", grav:"alta",
+  nome:"Hemorragia Digestiva Alta (HDA)",
+  sin:["HDA","hematêmese","melena","sangramento digestivo"],
+  def:"Sangramento proximal ao ângulo de Treitz. Hematêmese, vômitos em borra de café, melena. Estabilizar + EDA em até 24h. Varicoso vs não-varicoso.",
+  exames:["Hemograma seriado","Coagulograma + plaquetas","Função renal + ureia (↑desproporcional)","Tipagem + reserva CH","ECG (ICAD)","Glasgow-Blatchford"],
+  rx:[
+    {etapa:"inicial", d:"Avaliação inicial + Glasgow-Blatchford",do:"PA, FC, Hb, ureia, creatinina, estado mental",via:"—",o:"GB 0-1 = baixo risco, alta ambulatorial possível. Maior = internar. Buscar sinais de choque (FC>100, PAS<100, frio, oligúria, ↓consciência)."},
+    {etapa:"inicial", d:"2 acessos calibrosos + tipagem",do:"16G ou 14G + reserva CH",via:"—",o:"Em hipovolemia: 2 jelcos amplos. Coletar HMG + coag + tipagem na mesma punção."},
+    {etapa:"inicial", d:"SNG (apenas se diagnóstico duvidoso)",do:"Lavagem + aspiração",via:"—",o:"NÃO obrigatório. Útil se dúvida HDA vs HDB. Sangue franco = HDA. Café = HDA antiga."},
+    {etapa:"escala", d:"① VOLUME — Cristaloide",do:"500-1000 mL bolus, repetir conforme resposta",via:"IV",o:"Alvo PAM ≥65 (não normalizar PA em sangramento ativo — pode piorar)."},
+    {etapa:"escala", d:"② TRANSFUSÃO — Concentrado de hemácias",do:"1 UI eleva Hb ~1 g/dL",via:"IV",o:"Alvo Hb >7 (geral) ou >8 (cardiopata). Estratégia RESTRITIVA > liberal (Villanueva NEJM 2013)."},
+    {etapa:"escala", d:"③ CHOQUE — Transfusão maciça",do:"Proporção 1:1:1 (CH:PFC:plaquetas)",via:"IV",o:"Em choque grave. Acionar banco de sangue + ácido tranexâmico 1g IV (controverso em HDA — discutir)."},
+    {etapa:"escala", d:"④ EDA TERAPÊUTICA em ≤24h",do:"Hemoclipe, escleroterapia, ligadura elástica (varizes)",via:"—",o:"Padrão-ouro diagnóstico-terapêutico. Acionar endoscopia precoce. Estabilizar paciente antes."},
+    {etapa:"escala", d:"NÃO-VARICOSO — Omeprazol IV",do:"80 mg IV bolus + 8 mg/h BIC × 72h",via:"IV",o:"Antes da EDA em sangramento ativo. Após EDA: ajustar conforme achado (Forrest)."},
+    {etapa:"atb", d:"VARICOSO — Terlipressina",do:"2 mg IV 4/4h × 24h, depois 1 mg 4/4h × 3-5 dias",via:"IV",o:"Suspeita: cirrótico, ascite, encefalopatia, varizes prévias. Reduz pressão portal."},
+    {etapa:"escala", d:"VARICOSO — Octreotide (alternativa)",do:"50 mcg IV bolus + 50 mcg/h BIC × 3-5 dias",via:"IV",o:"Alternativa à terlipressina onde indisponível. Sem grandes diferenças de eficácia."},
+    {etapa:"atb", d:"PROFILAXIA PBE (cirrótico) — Ceftriaxona",do:"1 g IV/d × 7 dias",via:"IV",o:"OBRIGATÓRIA em cirrótico com HDA. Reduz mortalidade (NNT 22). Norfloxacino VO alternativa."},
+    {etapa:"adj", d:"Pré-EDA: Eritromicina (opcional)",do:"250 mg IV 30 min antes",via:"IV",o:"Procinético — limpa estômago, melhora visualização. Sem benefício de mortalidade comprovado mas pode reduzir necessidade de 2ª EDA."},
+    {etapa:"adj", d:"Reversão de anticoagulação se em uso",do:"Conforme droga: vit K + PCC (varfarina), idarucizumab (dabigatrana), etc.",via:"IV",o:"Sangramento grave + anticoagulado = reverter. Discutir risco/benefício (válvula mecânica, TEP recente)."},
+    {etapa:"alta", d:"IBP de manutenção pós-controle",do:"Omeprazol 40 mg VO/d × 4-8 semanas (úlcera) ou crônico",via:"VO",o:"Cicatrização úlcera. Pesquisa + erradicação H. pylori. Suspender AINE/AAS quando possível."},
+  ],
+  alertas:[
+    {t:"crit",x:"Choque hipovolêmico: ressuscitação balanceada + transfusão maciça (CH:plasma:plaq 1:1:1) + ácido tranexâmico 1 g IV."},
+    {t:"info",x:"Glasgow-Blatchford 0–1 = baixíssimo risco, considerar alta ambulatorial."},
+  ],
+  fisio:"Causas: úlcera péptica (50%), varizes esofagogástricas (10–15%, mortalidade ~20%), Mallory-Weiss (10%), erosões/gastrite, neoplasia, malformação vascular. A perda volêmica aguda gera resposta adrenérgica e ativação renina-angiotensina; coagulopatia dilucional surge após >4–6 UI CH sem fator de coagulação.",
+  mec:[
+    {d:"Omeprazol",x:"Inibidor de bomba de prótons — bloqueia <strong>H⁺/K⁺-ATPase</strong> nas células parietais → ↑pH gástrico (>6) estabiliza coágulo de fibrina."},
+    {d:"Terlipressina",x:"Análogo de vasopressina — agonista <strong>V1</strong> nos vasos esplâncnicos → vasoconstrição → ↓fluxo portal e ↓pressão varicosa."},
+    {d:"Octreotide",x:"Análogo de somatostatina — ↓liberação de glucagon (vasodilatador esplâncnico) → vasoconstrição esplâncnica indireta."},
+  ],
+  diretriz:"ACG Guidelines HDA Não-Varicosa (Laine L et al., Am J Gastroenterol 2021;116:899–917). Baveno VII Consensus 2022 (varizes).",
+  calcs:["blatchford"],
+},
+{
+  id:"hdb", contexto:["pa"], sis:"gi", grav:"alta",
+  nome:"Hemorragia Digestiva Baixa (HDB)",
+  sin:["HDB","hematoquezia","retorragia"],
+  def:"Sangramento distal ao Treitz. Hematoquezia/enterorragia. Causas: diverticular (40%), angiodisplasia, neoplasia, doença inflamatória, hemorroida.",
+  exames:["Hemograma + coagulograma","Tipagem","Colonoscopia <24h se estável","Angio-TC se ativo/instável"],
+  rx:[
+    {etapa:"inicial", d:"Reanimação volêmica",do:"SF/Ringer + CH",via:"IV",o:"Mesma estratégia que HDA. Restritiva (Hb>7)."},
+    {etapa:"inicial", d:"Suspender anticoagulante/antiagregante",do:"Conforme situação",via:"—",o:"Considerar reversão se grave (vit K, andexanet, idarucizumabe)."},
+    {etapa:"escala", d:"Colonoscopia + hemostasia endoscópica",do:"Clip, escleroterapia, eletrocoagulação",via:"—",o:"Diagnóstico + terapêutica."},
+    {etapa:"escala", d:"Embolização angiográfica",do:"—",via:"—",o:"Sangramento ativo refratário à endoscopia."},
+  ],
+  alertas:[
+    {t:"warn",x:"15% das HDB \"baixas\" são na verdade HDA com trânsito rápido — considerar EDA se hemodinamicamente instável."},
+  ],
+  fisio:"Diverticulose causa sangramento por erosão de arteríola adjacente ao colo do divertículo (mais comum em cólon direito). Angiodisplasia (idosos, IRC, doença valvar) é a 2ª causa. HDB raramente é maciça; 80% cessa espontaneamente.",
+  mec:[],
+  diretriz:"ACG Clinical Guideline: Management of Patients With Acute Lower GI Bleeding (Strate LL, Gralnek IM, Am J Gastroenterol 2016;111:459–474).",
+  calcs:[],
+},
+{
+  id:"hemorroida", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
+  nome:"Doença Hemorroidária",
+  sin:["hemorroidas","hemorroida","fissura anal"],
+  def:"Dilatação dos plexos hemorroidários internos (escala I–IV) ou externos. Manifestações: hematoquezia, prolapso, dor (trombose).",
+  exames:["Anuscopia/toque","Hemograma se sangramento significativo"],
+  rx:[
+    {etapa:"escala", d:"Banho de assento morno",do:"15 min, 3×/d",via:"Tópico",o:"Conservador, alívio de dor e edema."},
+    {etapa:"escala", d:"Dieta com fibras",do:"25–35 g/d + ≥2L água",via:"VO",o:"Pilar da prevenção. Suplemento: psyllium 5 g 8/8h."},
+    {etapa:"escala", d:"Diosmina + Hesperidina",do:"450/50 mg 6/6h por 4 dias, depois 12/12h",via:"VO",o:"Flebotônico — ↑tônus venoso, ↓permeabilidade."},
+    {etapa:"escala", d:"Policresuleno + Cinchocaína",do:"Pomada 2–3×/d",via:"Tópico",o:"Sintomático. Lidocaína em gel é alternativa."},
+    {etapa:"adj", d:"Trombose hemorroidária",do:"Excisão em <48h se dor intensa",via:"Cirúrgico",o:"Após 48h tende a regredir; pomada + analgesia."},
+  ],
+  alertas:[
+    {t:"info",x:"Hematoquezia indolor em >40a: sempre excluir CCR — encaminhar para colonoscopia."},
+  ],
+  fisio:"Aumento da pressão venosa nos plexos hemorroidários (esforço evacuatório, obstipação, gestação, sedentarismo) → dilatação → prolapso/sangramento. Trombose externa: coágulo agudo em vênula = dor intensa.",
+  mec:[
+    {d:"Diosmina + Hesperidina",x:"Flavonoides — ↑tônus venoso (efeito noradrenalina-mediado), ↓permeabilidade capilar, anti-inflamatório."},
+  ],
+  diretriz:"ASCRS Clinical Practice Guidelines for Hemorrhoids (Davis BR et al., Dis Colon Rectum 2018).",
+  calcs:[],
+},
+{
+  id:"nausea", contexto:["pa","ubs"], sis:"gi", grav:"baixa",
+  nome:"Náuseas e Vômitos",
+  sin:["náusea","vômito","êmese","antiemético"],
+  def:"Sintomas inespecíficos. Sempre investigar causa: gastroenterite, gestação, intox, obstrução, central (HIC, vertigem), drogas (opioides, quimioterapia).",
+  exames:["Glicemia","Eletrólitos (Na, K)","Função renal","β-HCG em mulher fértil","Considerar imagem se obstrução"],
+  rx:[
+    {etapa:"adj", d:"Ondansetrona",do:"4–8 mg IV/VO/SL 8/8h",via:"IV/VO/SL",o:"1ª escolha em gastroenterite/quimio. Cuidado: prolonga QT."},
+    {etapa:"adj", d:"Metoclopramida",do:"10 mg IV/IM/VO 8/8h",via:"IV/IM/VO",o:"Procinético. Risco de distonia/SEP em jovem; CI em obstrução."},
+    {etapa:"adj", d:"Bromoprida",do:"10 mg IV/VO 8/8h",via:"IV/VO",o:"Alternativa ao metoclopramida."},
+    {etapa:"escala", d:"Dimenidrato",do:"50–100 mg IV/IM",via:"IV/IM",o:"Cinetose, vertigem. Sedativo."},
+  ],
+  alertas:[
+    {t:"warn",x:"Vômitos persistentes + cefaleia/papiledema = HIC. Vômitos + sinais de obstrução abdominal = não usar procinético."},
+  ],
+  fisio:"O vômito é coordenado por núcleos no tronco encefálico (zona quimiorreceptora gatilho — área postrema) ativados por estímulos serotoninérgicos (5-HT3), dopaminérgicos (D2), histaminérgicos (H1), muscarínicos (M1) e NK1. Antieméticos atuam em diferentes receptores.",
+  mec:[
+    {d:"Ondansetrona",x:"Antagonista <strong>5-HT3</strong> central (área postrema) e periférico (aferências vagais entéricas)."},
+    {d:"Metoclopramida",x:"Antagonista <strong>D2</strong> central + agonista <strong>5-HT4</strong> (procinético TGI superior)."},
+    {d:"Dimenidrato",x:"Antagonista <strong>H1</strong> central + anticolinérgico — suprime núcleo vestibular e centro do vômito."},
+  ],
+  diretriz:"Diretrizes brasileiras de antieméticos (SBOC 2018); IDSA gastroenterite 2017.",
+  calcs:[],
+},
+{
+  id:"pancreatite", contexto:["pa","ubs"], sis:"gi", grav:"alta",
+  nome:"Pancreatite Aguda",
+  sin:["pancreatite","pancreatite aguda","PA"],
+  def:"Dor abdominal alta característica (em faixa) + amilase/lipase ≥3× ULN OU imagem compatível. Critérios de Atlanta. Etiologia 80% biliar/alcoólica.",
+  exames:["Amilase + lipase","Função renal + eletrólitos (Ca, Mg)","ALT/AST/FA/GGT/BT","Triglicerídeos, glicemia","LDH, hemograma","RX/USG abdome (biliar)","TC com contraste após 72–96h se complicação"],
+  rx:[
+    {etapa:"inicial", d:"Ringer Lactato",do:"10 mL/kg bolus + 1,5 mL/kg/h",via:"IV",o:"REGIME MODERADO guiado por meta (PAM>65, diurese>0,5 mL/kg/h, lactato em queda). WATERFALL: agressivo causa mais sobrecarga."},
+    {etapa:"adj", d:"Analgesia",do:"Dipirona 1g IV + opioide se intenso (fentanil/morfina)",via:"IV",o:"Não há contraindicação a opioide (mito do espasmo de Oddi)."},
+    {etapa:"inicial", d:"Dieta zero inicial",do:"Reintrodução em 24–72h se tolerância",via:"VO",o:"Dieta precoce VO/enteral reduz complicações. NPT só se ↑ ileostomia/jejum prolongado."},
+    {etapa:"adj", d:"Antieméticos",do:"Ondansetrona 4–8 mg IV 8/8h",via:"IV",o:"Sintomático."},
+    {etapa:"escala", d:"CPRE precoce",do:"<24–48h",via:"—",o:"APENAS se colangite associada OU obstrução biliar persistente. NÃO de rotina."},
+    {etapa:"escala", d:"ATB",do:"Imipenem 500 mg 6/6h OU meropenem 1g 8/8h",via:"IV",o:"APENAS em necrose infectada documentada. NÃO profilático."},
+  ],
+  alertas:[
+    {t:"warn",x:"NÃO hidratação agressiva (WATERFALL 2022 — sobrecarga 20,5% vs 6,3%, sem benefício)."},
+    {t:"info",x:"Pancreatite biliar leve: colecistectomia na mesma internação. Grave: aguardar resolução."},
+  ],
+  fisio:"Ativação intra-acinar das enzimas pancreáticas (tripsinogênio → tripsina) → autodigestão glandular + cascata inflamatória sistêmica → SIRS, vazamento capilar, SDRA, IRA. Causas: <strong>cálculos biliares</strong> (40%), <strong>álcool</strong> (35%), hipertrigliceridemia (>1000), CPRE, drogas, escorpião, idiopática.",
+  mec:[
+    {d:"Ringer Lactato",x:"Cristaloide balanceado — pH ~6,5, sem cloro excessivo. Em PA pode atenuar inflamação intrapancreática vs. SF (estudos sugerem)."},
+  ],
+  diretriz:"ACG Acute Pancreatitis Guideline (Tenner S et al., Am J Gastroenterol 2024;119:419–437). WATERFALL trial (de-Madaria E et al., NEJM 2022;387:989–1000).",
+  calcs:["ranson","bisap"],
+},
+{
+  id:"ulcera", contexto:["pa","ubs"], sis:"gi", grav:"media",
+  nome:"Doença Ulcerosa Péptica / H. pylori",
+  sin:["úlcera","Hp","H. pylori","gastrite"],
+  def:"Dor epigástrica + náuseas. Causas: H. pylori (60–80%), AINE, estresse, Zollinger-Ellison. Diagnóstico: EDA + biópsia / urease / antígeno fecal / teste respiratório.",
+  exames:["EDA + biópsia (úlcera + Hp)","Teste de urease ou antígeno fecal Hp","Hemograma se sangramento","Lipase para excluir pancreatite"],
+  rx:[
+    {etapa:"escala", d:"IBP",do:"Omeprazol 20–40 mg 12/12h × 4–8 sem",via:"VO",o:"Cicatrização da úlcera."},
+    {etapa:"escala", d:"Esquema H. pylori (1ª linha)",do:"Claritro 500 mg + Amox 1g + IBP dose dobrada — todos 12/12h × 14 dias",via:"VO",o:"Adesão crítica. Em alta resistência (>15%): quadrupla com bismuto."},
+    {etapa:"escala", d:"Esquema quádruplo com bismuto",do:"IBP 12/12h + bismuto + tetraciclina 500 mg 6/6h + metronidazol 500 mg 8/8h × 14 dias",via:"VO",o:"Alta resistência ou falha primeira linha."},
+    {etapa:"adj", d:"Suspender AINE",do:"—",via:"—",o:"Se possível. Trocar por paracetamol/dipirona."},
+  ],
+  alertas:[
+    {t:"warn",x:"Complicações: hemorragia (Forrest), perfuração (pneumoperitônio), estenose, malignização."},
+  ],
+  fisio:"Desequilíbrio entre fatores agressivos (ácido, pepsina, H. pylori, AINE) e defensivos (muco, bicarbonato, prostaglandinas). H. pylori produz urease (neutraliza ácido local) + citotoxinas (CagA, VacA) → gastrite crônica → atrofia → úlcera/CA gástrico.",
+  mec:[
+    {d:"Claritromicina",x:"Macrolídeo — inibe 50S ribossomal."},
+    {d:"Amoxicilina",x:"Aminopenicilina — inibe PBPs."},
+    {d:"Bismuto",x:"Antimicrobiano direto contra H. pylori + barreira mucosa."},
+  ],
+  diretriz:"IV Consenso Brasileiro sobre Infecção pelo Helicobacter pylori (Coelho LGV et al., Arq Gastroenterol 2018;55:97–121).",
+  calcs:[],
+},
+);
