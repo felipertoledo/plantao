@@ -452,6 +452,8 @@ function renderHome() {
           ${totalM ? `<button class="btn btn-ghost" onclick="navigate('#/meds')">℞ Medicações</button>` : ""}
           <button class="btn btn-ghost" onclick="navigate('#/calcs')">Calculadoras</button>
           <button class="btn btn-ghost" onclick="navigate('#/flows')">Fluxogramas</button>
+          <button class="btn btn-ghost" onclick="navigate('#/consulta')">📄 Consulta</button>
+          <button class="btn btn-ghost" onclick="navigate('#/receituario')">🧾 Receituário</button>
           <button class="btn btn-ghost" onclick="navigate('#/sobre')">Como usar →</button>
         </div>
         <a class="hero-sibling" href="https://felipertoledo.github.io/Whitepobre2/" target="_blank" rel="noopener">
@@ -492,6 +494,39 @@ function renderHome() {
         <button class="quick-card" onclick="navigate('#/p/tep')"><span class="quick-tag crit">TEP</span><span>TEP maciço</span></button>
         <button class="quick-card" onclick="navigate('#/c/qsofa')"><span class="quick-tag info">Calc</span><span>qSOFA</span></button>
         <button class="quick-card" onclick="navigate('#/c/sri')"><span class="quick-tag warn">SRI</span><span>Sequência rápida</span></button>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-header">
+        <h2>Documentos clínicos</h2>
+        <p class="lead">Emitir consulta ou receita em PDF para impressão e arquivamento físico</p>
+      </div>
+      <div class="docs-grid">
+        <button class="doc-card" onclick="navigate('#/consulta')">
+          <div class="doc-card-icon">📄</div>
+          <div class="doc-card-body">
+            <h3>Registro de Consulta</h3>
+            <p>Paciente · queixa · diagnóstico CID/CIAP · escalas · prescrição · orientações · retorno</p>
+            <span class="doc-card-cta">Abrir →</span>
+          </div>
+        </button>
+        <button class="doc-card" onclick="navigate('#/receituario')">
+          <div class="doc-card-icon">🧾</div>
+          <div class="doc-card-body">
+            <h3>Receituário</h3>
+            <p>Receita simples ou controlada (branca especial, B azul, A amarela) com posologia e duração</p>
+            <span class="doc-card-cta">Abrir →</span>
+          </div>
+        </button>
+        <button class="doc-card doc-card-config" onclick="navigate('#/prefs')">
+          <div class="doc-card-icon">⚙️</div>
+          <div class="doc-card-body">
+            <h3>Configurar dados</h3>
+            <p>Nome, CRM e local de atendimento — preenchidos uma vez, aparecem no cabeçalho de todos os PDFs</p>
+            <span class="doc-card-cta">Configurar →</span>
+          </div>
+        </button>
       </div>
     </section>
 

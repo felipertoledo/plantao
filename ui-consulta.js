@@ -126,78 +126,96 @@ function setVal(id, v) {
 function renderPrefs() {
   window.scrollTo(0, 0);
   const prefs = window.pdfGen.getPrefsMedico();
+  const completo = window.pdfGen.prefsEstaoCompletas(prefs);
   const view = document.getElementById("view");
   view.innerHTML = `
     <section class="container">
       <div class="consulta-hero">
-        <h1>Preferências do Médico</h1>
-        <p>Esses dados aparecem no cabeçalho de TODOS os PDFs gerados (consulta, receituário). Salvos no seu navegador (localStorage) — preencha uma vez.</p>
+        <h1>Configurar dados do médico</h1>
+        <p>Dados que aparecem no cabeçalho dos PDFs gerados (consulta, receituário). <strong>Este site é público e pode ser usado por qualquer profissional</strong> — os dados ficam salvos APENAS no seu próprio navegador (localStorage), nunca são enviados para nenhum servidor. Preencha uma vez e use à vontade.</p>
+      </div>
+      
+      <div class="alert alert-${completo ? 'ok' : 'warn'}" style="margin-bottom:1rem;padding:0.9rem 1.1rem;border-radius:var(--radius);display:flex;gap:0.6rem;">
+        <span class="alert-ic">${completo ? '✓' : '⚠'}</span>
+        <div><strong>${completo ? 'Configuração completa' : 'Configuração pendente'}</strong><br>${completo ? `${esc(prefs.nome)} — ${esc(prefs.crm)} · você já pode emitir PDFs.` : 'Preencha pelo menos <strong>nome completo</strong> e <strong>registro profissional (CRM/CRO/etc.)</strong> antes de emitir PDFs.'}</div>
       </div>
       
       <div class="form-section">
-        <h3>Identificação profissional</h3>
+        <h3>Identificação profissional <span style="color:var(--accent);font-size:0.9rem;font-weight:normal">(obrigatório)</span></h3>
         <div class="form-grid">
           <div class="form-field form-grid-full">
-            <label>Nome completo</label>
-            <input type="text" id="pref-nome" value="${esc(prefs.nome)}" placeholder="Felipe Ribeiro Toledo">
+            <label>Nome completo *</label>
+            <input type="text" id="pref-nome" value="${esc(prefs.nome)}" placeholder="Seu nome completo">
           </div>
           <div class="form-field">
-            <label>Título</label>
-            <input type="text" id="pref-titulo" value="${esc(prefs.titulo)}" placeholder="Médico">
+            <label>Título profissional</label>
+            <input type="text" id="pref-titulo" value="${esc(prefs.titulo)}" placeholder="Médico(a) / Enfermeiro(a) / Dentista">
           </div>
           <div class="form-field">
-            <label>Registro profissional</label>
-            <input type="text" id="pref-crm" value="${esc(prefs.crm)}" placeholder="CRM-SP 216.986">
+            <label>Registro profissional *</label>
+            <input type="text" id="pref-crm" value="${esc(prefs.crm)}" placeholder="CRM-SP 000.000">
           </div>
         </div>
       </div>
       
       <div class="form-section">
-        <h3>Local de atendimento</h3>
+        <h3>Local de atendimento <span style="color:var(--ink-3);font-size:0.85rem;font-weight:normal">(opcional)</span></h3>
         <div class="form-grid">
           <div class="form-field">
             <label>Estabelecimento</label>
-            <input type="text" id="pref-estab" value="${esc(prefs.estabelecimento)}" placeholder="UBS Estiva Gerbi">
+            <input type="text" id="pref-estab" value="${esc(prefs.estabelecimento)}" placeholder="UBS / Hospital / Clínica / Consultório">
           </div>
           <div class="form-field">
-            <label>Bairro/Unidade</label>
-            <input type="text" id="pref-bairro" value="${esc(prefs.bairro)}" placeholder="Bairro Ludi">
+            <label>Setor / unidade / bairro</label>
+            <input type="text" id="pref-bairro" value="${esc(prefs.bairro)}" placeholder="Setor, ala, bairro">
           </div>
           <div class="form-field form-grid-full">
-            <label>Endereço (opcional)</label>
-            <input type="text" id="pref-end" value="${esc(prefs.endereco)}" placeholder="Rua das Flores, 100">
+            <label>Endereço</label>
+            <input type="text" id="pref-end" value="${esc(prefs.endereco)}" placeholder="Rua, número">
           </div>
           <div class="form-field">
             <label>Cidade / UF</label>
-            <input type="text" id="pref-cidade" value="${esc(prefs.cidade)}" placeholder="Estiva Gerbi / SP">
+            <input type="text" id="pref-cidade" value="${esc(prefs.cidade)}" placeholder="Cidade / UF">
           </div>
         </div>
       </div>
       
       <div class="form-section">
-        <h3>Contato (opcional)</h3>
+        <h3>Contato <span style="color:var(--ink-3);font-size:0.85rem;font-weight:normal">(opcional)</span></h3>
         <div class="form-grid">
           <div class="form-field">
             <label>Telefone</label>
-            <input type="text" id="pref-tel" value="${esc(prefs.telefone)}" placeholder="(19) 9XXXX-XXXX">
+            <input type="text" id="pref-tel" value="${esc(prefs.telefone)}" placeholder="(00) 0000-0000">
           </div>
           <div class="form-field">
             <label>E-mail</label>
-            <input type="email" id="pref-email" value="${esc(prefs.email)}" placeholder="felipe@example.com">
+            <input type="email" id="pref-email" value="${esc(prefs.email)}" placeholder="seu@email.com">
           </div>
         </div>
       </div>
       
       <div class="actions-bar">
         <div class="left">
-          <button class="btn-secondary" onclick="navigate('#/')">← Voltar</button>
+          <button class="btn-secondary" onclick="navigate('#/')">← Início</button>
+          <button class="btn-danger" onclick="limparPrefs()">Apagar tudo</button>
         </div>
         <div class="right">
-          <button class="btn-pdf" onclick="salvarPrefs()">Salvar preferências</button>
+          <button class="btn-pdf" onclick="salvarPrefs()">Salvar</button>
         </div>
       </div>
+      
+      <p style="margin-top:1.5rem;color:var(--ink-3);font-size:0.85rem;text-align:center;">
+        🔒 Os dados ficam APENAS no seu navegador (localStorage). Nada é enviado para servidor algum. Se você limpar o cache/usar aba anônima, precisará preencher novamente.
+      </p>
     </section>
   `;
+}
+
+function limparPrefs() {
+  if (!confirm("Apagar TODAS as suas configurações? Esta ação não pode ser desfeita.")) return;
+  localStorage.removeItem("vovo_prefs_medico_v1");
+  renderPrefs();
+  toast("Configurações apagadas");
 }
 
 function salvarPrefs() {
@@ -584,6 +602,13 @@ function coletarPrescricoes(containerId) {
 
 /* ============== GERAÇÃO PDF — UI ============== */
 function gerarPDFConsultaUI() {
+  // Validação OBRIGATÓRIA: prefs precisam estar preenchidas (nome + CRM)
+  if (!window.pdfGen.prefsEstaoCompletas(window.pdfGen.getPrefsMedico())) {
+    toast("Configure nome e CRM antes de gerar o PDF", "warn");
+    setTimeout(() => navigate("#/prefs"), 1200);
+    return;
+  }
+  
   const nome = valOf("c-pac-nome");
   if (!nome) {
     toast("Preencha o nome do paciente", "warn");
@@ -625,6 +650,13 @@ function gerarPDFConsultaUI() {
 }
 
 function gerarPDFReceituarioUI() {
+  // Validação OBRIGATÓRIA: prefs precisam estar preenchidas (nome + CRM)
+  if (!window.pdfGen.prefsEstaoCompletas(window.pdfGen.getPrefsMedico())) {
+    toast("Configure nome e CRM antes de gerar o PDF", "warn");
+    setTimeout(() => navigate("#/prefs"), 1200);
+    return;
+  }
+  
   const nome = valOf("r-pac-nome");
   if (!nome) {
     toast("Preencha o nome do paciente", "warn");

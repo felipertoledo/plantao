@@ -1248,6 +1248,63 @@ details .acc-body p:last-child { margin-bottom: 0; }
 .sys-card h3 { font-size: 1rem; margin: 0; font-weight: 600; line-height: 1.2; }
 .sys-card p { font-size: 0.78rem; color: var(--ink-3); margin: 0.15rem 0 0; }
 
+/* ============== DOCS GRID — Documentos clínicos ============== */
+.docs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+@media (min-width: 700px) { .docs-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.doc-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.3rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: var(--ink);
+  transition: all .15s;
+  box-shadow: var(--shadow-1);
+}
+.doc-card:hover {
+  border-color: var(--accent);
+  border-left-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+.doc-card-config { border-left-color: var(--ink-3); }
+.doc-card-config:hover { border-left-color: var(--accent); }
+.doc-card-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.doc-card-body { flex: 1; }
+.doc-card-body h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.doc-card-body p {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+.doc-card-cta {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* ============== QUICK CARDS ============== */
 .quick-grid {
   display: grid;
