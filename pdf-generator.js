@@ -19,21 +19,16 @@ function getPrefsMedico() {
 
 function getDefaultPrefs() {
   return {
-    nome: "",
-    crm: "",
-    titulo: "Médico(a)",
-    estabelecimento: "",
-    bairro: "",
+    nome: "Felipe Ribeiro Toledo",
+    crm: "CRM-SP 216.986",
+    titulo: "Médico",
+    estabelecimento: "UBS Estiva Gerbi",
+    bairro: "Bairro Ludi",
     endereco: "",
     telefone: "",
     email: "",
-    cidade: ""
+    cidade: "Estiva Gerbi / SP"
   };
-}
-
-function prefsEstaoCompletas(prefs) {
-  // Mínimo necessário: nome e CRM
-  return !!(prefs && prefs.nome && prefs.nome.trim() && prefs.crm && prefs.crm.trim());
 }
 
 function setPrefsMedico(prefs) {
@@ -141,8 +136,7 @@ function pdfRodape(doc, prefs) {
   doc.setFont("helvetica", "italic");
   doc.setFontSize(7);
   doc.setTextColor(107, 107, 107);
-  const ident = (prefs.nome && prefs.crm) ? `${prefs.nome} — ${prefs.crm}` : "";
-  const texto = `Documento emitido em ${formatarDataHoje()} às ${formatarHoraAgora()}${ident ? " · " + ident : ""}`;
+  const texto = `Documento emitido em ${formatarDataHoje()} às ${formatarHoraAgora()} · ${prefs.nome} — ${prefs.crm}`;
   doc.text(texto, MARGEM_X, y);
 }
 
@@ -558,7 +552,6 @@ window.pdfGen = {
   gerarPDFReceituario,
   getPrefsMedico,
   setPrefsMedico,
-  prefsEstaoCompletas,
   formatarDataHoje,
   formatarHoraAgora
 };
