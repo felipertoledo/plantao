@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fibromialgia — Abordagem MFC — CID M79.7 — Vovôminic Doutô</title>
+<meta name="description" content="Fibromialgia — Abordagem MFC. Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e.">
+<link rel="canonical" href="https://felipertoledo.github.io/plantao/p/fibromialgia.html">
+<meta name="author" content="Felipe Ribeiro Toledo">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vovôminic Doutô">
+<meta property="og:title" content="Fibromialgia — Abordagem MFC — CID M79.7">
+<meta property="og:description" content="Fibromialgia — Abordagem MFC. Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e.">
+<meta property="og:url" content="https://felipertoledo.github.io/plantao/p/fibromialgia.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fibromialgia — Abordagem MFC — CID M79.7">
+<meta name="twitter:description" content="Fibromialgia — Abordagem MFC. Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e.">
+
+<style>
+:root {
+  --ink:#1a1d23; --ink-2:#3a4047; --ink-3:#6b727b; --rule:#d8dde3; --rule-2:#b8bec5;
+  --bg:#fafaf7; --bg-elev:#fff; --bg-sunken:#f3f4f0;
+  --accent:#a82a3a; --accent-2:#7c1f2b;
+  --radius:8px; --maxw:780px;
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; }
+.container { max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.1rem 3rem; }
+.bar { background:#1a1d23; color:#fff; padding:0.7rem 1.1rem; font-size:0.9rem; }
+.bar a { color:#fff; text-decoration:none; font-weight:500; }
+.bar a:hover { text-decoration:underline; }
+nav.crumb { font-size:0.82rem; color:var(--ink-3); margin-bottom:0.6rem; }
+nav.crumb a { color:var(--accent); text-decoration:none; }
+nav.crumb a:hover { text-decoration:underline; }
+.eyebrow { display:inline-block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:600; margin-bottom:0.5rem; border-bottom:1px solid var(--accent); padding-bottom:3px; }
+h1 { font-family:var(--font-display); font-size:2rem; letter-spacing:-0.02em; line-height:1.15; margin:0.2rem 0 0.7rem; }
+h2 { font-family:var(--font-display); font-size:1.35rem; margin:1.8rem 0 0.6rem; line-height:1.25; }
+h3 { font-size:1.05rem; margin:1.2rem 0 0.4rem; color:var(--ink); }
+p { margin:0.6rem 0; }
+.lead { font-size:1.08rem; color:var(--ink-2); margin:0.6rem 0 1rem; }
+.meta { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.8rem 0; font-size:0.83rem; }
+.tag { display:inline-block; padding:0.25rem 0.55rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); }
+.tag.crit { background:#fbeaea; border-color:#e8c1c1; color:#7a1f1f; }
+.tag.warn { background:#fcf2dd; border-color:#e8d49a; color:#7a521f; }
+.tag.info { background:#e6f0fa; border-color:#bdd5ec; color:#1a466e; }
+.tag.ok { background:#e6f5ec; border-color:#b9d9c4; color:#1a5e2e; }
+ul, ol { padding-left:1.4rem; margin:0.5rem 0 1rem; }
+li { margin:0.35rem 0; }
+.callout { background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:var(--radius); padding:0.85rem 1.1rem; margin:1rem 0; }
+.callout.crit { border-left-color:#a82a3a; background:#fdf3f3; }
+.callout.warn { border-left-color:#c89218; background:#fcf6e8; }
+.cite { font-size:0.85rem; color:var(--ink-3); margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); }
+.app-cta { background:#1a1d23; color:#fff; padding:1.3rem 1.4rem; border-radius:var(--radius); margin:2rem 0 1.5rem; }
+.app-cta h3 { color:#fff; margin:0 0 0.4rem; }
+.app-cta p { color:#cfd2d6; margin:0 0 0.9rem; }
+.app-cta a { display:inline-block; padding:0.65rem 1.2rem; background:var(--accent); color:#fff; text-decoration:none; border-radius:6px; font-weight:500; }
+.app-cta a:hover { background:var(--accent-2); }
+footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); font-size:0.85rem; color:var(--ink-3); }
+footer a { color:var(--accent); text-decoration:none; }
+.sibling { display:flex; align-items:center; gap:0.85rem; padding:0.85rem 1rem; background:var(--bg-elev); border:1px solid var(--rule); border-left:3px solid #ec6191; border-radius:var(--radius); text-decoration:none; color:var(--ink); margin:1rem 0; }
+.sibling:hover { background:var(--bg-sunken); }
+.sibling .ic { width:36px; height:36px; border-radius:50%; background:rgba(236,97,145,0.12); color:#ec6191; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.sibling .body { flex:1; min-width:0; }
+.sibling .k { font-size:0.78rem; color:var(--ink-3); display:block; }
+.sibling .t { font-size:0.96rem; font-weight:600; color:var(--ink); font-family:var(--font-display); }
+.sibling .arr { color:#ec6191; font-weight:600; }
+.related { margin:1.6rem 0; }
+.related h3 { font-size:0.92rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:0.5rem; }
+.related ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.related li { margin:0; }
+.related a { display:inline-block; padding:0.3rem 0.7rem; background:var(--bg-elev); border:1px solid var(--rule); border-radius:4px; color:var(--ink-2); text-decoration:none; font-size:0.85rem; }
+.related a:hover { border-color:var(--accent); color:var(--accent); }
+.disclaimer { background:var(--bg-sunken); border:1px solid var(--rule); border-left:3px solid #c89218; border-radius:var(--radius); padding:0.9rem 1.1rem; margin:1.4rem 0; font-size:0.88rem; color:var(--ink-2); }
+.disclaimer strong { color:var(--ink); }
+.disclaimer-footer { font-size:0.82rem; color:var(--ink-3); padding:0.9rem 0; border-top:1px solid var(--rule); margin-top:1.2rem; }
+@media (prefers-color-scheme:dark) {
+  :root { --ink:#e8e8e3; --ink-2:#b0b4ba; --ink-3:#8d9197; --rule:#3a3e44; --rule-2:#525860; --bg:#15171a; --bg-elev:#1e2125; --bg-sunken:#26292d; --accent:#e8526a; --accent-2:#f47482; }
+  .tag.crit { background:#3a1818; border-color:#5e2828; color:#f0a0a0; }
+  .tag.warn { background:#3a2e10; border-color:#5e4a18; color:#f0c878; }
+  .tag.info { background:#152838; border-color:#244258; color:#7eb4dc; }
+  .tag.ok { background:#163020; border-color:#244e34; color:#88c898; }
+  .callout.crit { background:#2a1818; }
+  .callout.warn { background:#2a2210; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vovôminic Doutô", "alternateName": "Plantão Vovôminic", "url": "https://felipertoledo.github.io/plantao", "description": "Guia clínico de Pronto-Atendimento, UPA e UBS no SUS — adulto e idoso. Patologias, medicações, calculadoras e fluxogramas baseados em diretrizes brasileiras."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://felipertoledo.github.io/plantao/#author", "name": "Felipe Ribeiro Toledo", "alternateName": "vovôminic", "description": "médico e nerd", "url": "https://felipertoledo.github.io/plantao"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalCondition", "@id": "https://felipertoledo.github.io/plantao/p/fibromialgia.html#condition", "name": "Fibromialgia — Abordagem MFC", "alternateName": ["fibro", "FM", "síndrome dolorosa miofascial generalizada", "SDP", "sensibilização central"], "description": "Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e múltiplos sintomas somáticos, na ausência de doença inflamatória subjacente que explique. Critérios ACR 2016: WPI (Widespread Pain Index) + SSS (Symptom Severity Scale), sem nec", "code": {"@type": "MedicalCode", "codeValue": "M79.7", "codingSystem": "ICD-10"}, "associatedAnatomy": {"@type": "AnatomicalSystem", "name": "Osteomuscular"}, "signOrSymptom": [{"@type": "MedicalSignOrSymptom", "name": "Dor crônica generalizada (≥3 meses) afetando ≥4 das 5 regiões corporais (axial, MMSS direito/esquerdo, MMII direito/esquerdo)"}, {"@type": "MedicalSignOrSymptom", "name": "Fadiga importante, despertar não-restaurador, sono fragmentado"}, {"@type": "MedicalSignOrSymptom", "name": "Distúrbios cognitivos: dificuldade de concentração, memória, 'fibro-fog'"}, {"@type": "MedicalSignOrSymptom", "name": "Múltiplos sintomas somáticos: cefaleia, SII, parestesias, sensação de inchaço, intolerância ao frio, boca seca, urgência miccional"}, {"@type": "MedicalSignOrSymptom", "name": "Humor: depressão e ansiedade muito frequentes (não 'causam' fibromialgia, mas amplificam)"}, {"@type": "MedicalSignOrSymptom", "name": "Exame físico: sem sinovite, sem deformidades, sem alteração neurológica focal — apenas hipersensibilidade à palpação em múltiplos pontos"}], "epidemiology": "Fibromialgia é REAL, comum (~2-4% da população, mais mulheres), subdiagnosticada e subtratada. Modelo atual: sensibilização central do sistema nociceptivo (dor sem lesão tecidual, com amplificação central). MFC é o lugar ideal para diagnosticar e tratar — relação longitudinal, abordagem biopsicossocial, evitar peregrinação especializada. O grande erro: tratar como 'invenção', mandar para reumatologia indefinidamente, ou prescrever AINE crônico (não funciona).", "pathophysiology": "Sensibilização central: redução do limiar nociceptivo + aumento da resposta dolorosa central. Disfunção do controle inibitório descendente. Frequente comorbidade com: distúrbios do humor (depressão, ansiedade), distúrbios do sono (sono não-restaurador), SII, cefaleia tensional, vulvodínia, síndrome da bexiga dolorosa. História frequente de traumas, ansiedade familiar, abuso.", "possibleTreatment": {"@type": "MedicalTherapy", "name": "Tratamento conforme diretrizes brasileiras (SUS)", "description": "Linha 1: exercício aeróbico regular (Academia da Saúde, hidroginástica, caminhada) + educação + higiene do sono. Linha 2 farmacológica: AMITRIPTILINA 12,5-50 mg à noite (FARMASUS) — antidepressivo tricíclico, melhora dor + sono [NNT 4-6]. Alternativa: NORTRIPTILINA. Duloxetina 30-60 mg/dia se depressão associada (CEAF/particular). Pregabalina 75-150 mg 2× (CEAF com PCDT dor neuropática refratária). Tratar depressão/ansiedade se presentes. Manejo do sono: higiene do sono > medicamento; se necessá"}, "guideline": {"@type": "MedicalGuideline", "evidenceLevel": "https://schema.org/EvidenceLevelA", "guidelineSubject": "[SBR — Diretriz Brasileira de Fibromialgia 2022] [EULAR 2016 revised recommendations for the management of fibromyalgia] [ACR 2016 Diagnostic Criteria for Fibromyalgia] [TMFC 2ª ed, cap. 159] [DUNCAN 5ª ed, cap. 81]"}, "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalScholarlyArticle", "headline": "Fibromialgia — Abordagem MFC — CID M79.7", "description": "Fibromialgia — Abordagem MFC. Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e.", "author": {"@id": "https://felipertoledo.github.io/plantao/#author"}, "publisher": {"@type": "Organization", "name": "Vovôminic Doutô", "url": "https://felipertoledo.github.io/plantao"}, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": "https://felipertoledo.github.io/plantao/p/fibromialgia.html", "about": {"@id": "https://felipertoledo.github.io/plantao/p/fibromialgia.html#condition"}, "inLanguage": "pt-BR", "keywords": "Fibromialgia — Abordagem MFC, Osteomuscular, SUS, UBS, Pronto-Atendimento, fibro, FM, síndrome dolorosa miofascial generalizada, SDP, sensibilização central, CID M79.7, CIAP L18"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Vovôminic Doutô", "item": "https://felipertoledo.github.io/plantao"}, {"@type": "ListItem", "position": 2, "name": "Osteomuscular", "item": "https://felipertoledo.github.io/plantao/#/sis/ost"}, {"@type": "ListItem", "position": 3, "name": "Fibromialgia — Abordagem MFC", "item": "https://felipertoledo.github.io/plantao/p/fibromialgia.html"}]}</script>
+</head>
+<body>
+<div class="bar"><a href="https://felipertoledo.github.io/plantao/">← Vovôminic Doutô</a> · por vovôminic</div>
+<div class="container">
+<nav class="crumb">
+<a href="https://felipertoledo.github.io/plantao/">Início</a> › <a href="https://felipertoledo.github.io/plantao/#/sis/ost">Osteomuscular</a> › <span>Fibromialgia — Abordagem MFC</span>
+</nav>
+<span class="eyebrow">Osteomuscular</span>
+<h1>Fibromialgia — Abordagem MFC</h1>
+<p class="lead">Fibromialgia é REAL, comum (~2-4% da população, mais mulheres), subdiagnosticada e subtratada. Modelo atual: sensibilização central do sistema nociceptivo (dor sem lesão tecidual, com amplificação central). MFC é o lugar ideal para diagnosticar e tratar — relação longitudinal, abordagem biopsicossocial, evitar peregrinação especializada. O grande erro: tratar como &#x27;invenção&#x27;, mandar para reumatolo</p>
+<div class="meta"><span class="tag">CID M79.7</span><span class="tag">CIAP L18</span><span class="tag info">Baixa gravidade</span><span class="tag">UBS / Atenção Primária</span></div>
+<p><strong>Sinônimos:</strong> fibro, FM, síndrome dolorosa miofascial generalizada, SDP, sensibilização central.</p>
+<div class="app-cta">
+<h3>Abra a conduta interativa no app</h3>
+<p>Calculadoras vinculadas, fluxograma decisional, prescrição pronta e referência cruzada com outras patologias.</p>
+<a href="https://felipertoledo.github.io/plantao/#/pat/fibromialgia">Abrir Fibromialgia — Abordagem MFC no app →</a>
+</div>
+<div class="disclaimer">
+<p><strong>⚠ Aviso médico-legal:</strong> material educacional para profissionais de saúde. As informações podem conter erros, omissões ou estar desatualizadas. <strong>Toda informação deve ser verificada</strong> nas diretrizes-fonte e em literatura atual antes de aplicar na prática. <strong>A responsabilidade da prescrição é exclusivamente do médico assistente</strong>, que avalia o paciente diretamente. O autor do site não se responsabiliza por decisões clínicas, eventos adversos ou desfechos decorrentes do uso destas informações.</p>
+</div>
+<h2>Definição</h2><p>Síndrome de dor crônica generalizada (≥3 meses) associada a fadiga, distúrbio do sono, distúrbios cognitivos (fibro-fog) e múltiplos sintomas somáticos, na ausência de doença inflamatória subjacente que explique. Critérios ACR 2016: WPI (Widespread Pain Index) + SSS (Symptom Severity Scale), sem necessidade de tender points como no critério antigo.</p>
+<h2>Fisiopatologia</h2><p>Sensibilização central: redução do limiar nociceptivo + aumento da resposta dolorosa central. Disfunção do controle inibitório descendente. Frequente comorbidade com: distúrbios do humor (depressão, ansiedade), distúrbios do sono (sono não-restaurador), SII, cefaleia tensional, vulvodínia, síndrome da bexiga dolorosa. História frequente de traumas, ansiedade familiar, abuso.</p>
+<h2>Apresentação típica</h2><p>Mulher (predomínio 4:1) entre 30-60 anos, com dor crônica generalizada migratória (mudando de lugar), fadiga constante, sono não-restaurador (acorda cansada), &#x27;fibro-fog&#x27; (dificuldade de concentração, esquecimentos), múltiplos sintomas somáticos (cefaleia, intestino irritável, parestesias, sensação de inchaço sem inchaço objetivo). Exame físico SEM sinovite, sem alteração neurológica objetiva. Labs normais (PCR, VHS, hemograma, TSH).</p>
+<h2>Apresentação clínica</h2><ul>
+<li>Dor crônica generalizada (≥3 meses) afetando ≥4 das 5 regiões corporais (axial, MMSS direito/esquerdo, MMII direito/esquerdo)</li>
+<li>Fadiga importante, despertar não-restaurador, sono fragmentado</li>
+<li>Distúrbios cognitivos: dificuldade de concentração, memória, &#x27;fibro-fog&#x27;</li>
+<li>Múltiplos sintomas somáticos: cefaleia, SII, parestesias, sensação de inchaço, intolerância ao frio, boca seca, urgência miccional</li>
+<li>Humor: depressão e ansiedade muito frequentes (não &#x27;causam&#x27; fibromialgia, mas amplificam)</li>
+<li>Exame físico: sem sinovite, sem deformidades, sem alteração neurológica focal — apenas hipersensibilidade à palpação em múltiplos pontos</li>
+</ul>
+<h2>Conduta no SUS / UBS</h2><p>Linha 1: exercício aeróbico regular (Academia da Saúde, hidroginástica, caminhada) + educação + higiene do sono. Linha 2 farmacológica: AMITRIPTILINA 12,5-50 mg à noite (FARMASUS) — antidepressivo tricíclico, melhora dor + sono [NNT 4-6]. Alternativa: NORTRIPTILINA. Duloxetina 30-60 mg/dia se depressão associada (CEAF/particular). Pregabalina 75-150 mg 2× (CEAF com PCDT dor neuropática refratária). Tratar depressão/ansiedade se presentes. Manejo do sono: higiene do sono &gt; medicamento; se necessário, trazodona 25-100 mg HS (FARMASUS) — melhor perfil que BZD em uso crônico. Articulação com NASF/psicologia.</p>
+<h2>Padrão-ouro (referência ampliada)</h2><p>Acrescenta: ciclobenzaprina à noite (uso curto, cuidado em idoso); ISRS (fluoxetina, sertralina) se predomínio depressivo/ansioso; programas multidisciplinares de dor (raros no SUS); terapia cognitivo-comportamental focada em dor (TCC dor) — uma das melhores evidências, mas pouco disponível. Acupuntura — evidência moderada, pode oferecer. CANABIDIOL — evidência ainda fraca, alto custo; não-rotineiro.</p>
+<h2>Prevenção</h2><p>Eixo é manejo multimodal: (1) Educação em neurociência da dor — dor crônica ≠ dano contínuo; sensibilização central explica a experiência; (2) Exercício aeróbico de baixo impacto regular (caminhada, hidroginástica, yoga, taichi) — uma das melhores evidências de benefício [Cochrane NNT 5]; (3) Higiene do sono rigorosa; (4) Manejo do estresse (mindfulness, terapia cognitivo-comportamental); (5) Tratar comorbidades psiquiátricas; (6) Identificar e tratar gatilhos (eventos vitais, traumas).</p>
+<h2>Alertas clínicos</h2>
+<div class="callout warn"><p>Diagnóstico DIFERENCIAL crucial: artrite reumatoide (rigidez matinal &gt;60 min, sinovite), polimialgia reumática (&gt;50a, cintura escapular/pélvica, PCR/VHS↑), espondiloartrite (sacroileíte), hipotireoidismo, deficiência B12/D, anemia, doença reumatológica auto-imune. Solicitar painel básico: hemograma, PCR, VHS, TSH, vitamina D, B12, FAN, FR. Tudo NORMAL apoia fibromialgia.</p></div>
+<div class="callout warn"><p>Amitriptilina em idoso: critério Beers — anticolinérgico, ↑risco quedas/confusão. Se necessário, dose baixa (10-25 mg) com vigilância. Preferir nortriptilina (menos anticolinérgica) ou duloxetina.</p></div>
+<div class="callout warn"><p>Comorbidade psiquiátrica é REGRA, não exceção em fibromialgia — depressão em ~70%, ansiedade em ~50%. Rastrear ativamente (PHQ-9, GAD-7) e tratar. Não tratar comorbidade = fracasso terapêutico.</p></div>
+<div class="callout info"><p>Tender points (critérios ACR 1990) não são mais necessários para diagnóstico — critérios 2016 (WPI + SSS) são clínicos. Paciente NÃO precisa de reumato para diagnóstico.</p></div>
+<div class="callout info"><p>Exercício é UM DOS melhores tratamentos — começar com 5-10 min/dia, aumentar gradualmente, qualquer modalidade tolerada. &#x27;Start low, go slow&#x27; — sobrecarga inicial pode piorar dor por 1-2 semanas (efeito esperado, não falha).</p></div>
+<div class="callout info"><p>Dor lombar + fibromialgia = comum. Manejo é semelhante, com componente generalizado adicional. NÃO investigar lombar isoladamente em paciente fibromialgica conhecida sem red flags.</p></div>
+<h2>Prevenção quaternária — o que evitar</h2><p>NÃO indicar AINE crônico (não funciona em fibromialgia — não tem componente inflamatório). NÃO indicar opioides — risco de dependência sem benefício documentado, contraindicado [recomendação CDC, EULAR]. NÃO indicar &#x27;pesquisas&#x27; caras (RM corpo todo, marcadores de auto-imunidade extensos) — sem indicação salvo dúvida diagnóstica genuína. NÃO indicar corticoide. NÃO indicar &#x27;tratamentos miraculosos&#x27; (laser, ozônio, hiperbárica) — sem evidência. NÃO institucionalizar a paciente como &#x27;crônica incurável&#x27; — desempodera; oferecer plano de manejo.</p>
+<h2>Abordagem ao paciente</h2><p>Paciente com fibromialgia frequentemente chega exausta de peregrinar entre especialistas, tendo ouvido &#x27;não tem nada&#x27;, &#x27;é da cabeça&#x27;, &#x27;invenção sua&#x27;. Primeira intervenção: VALIDAR. &#x27;Sua dor existe e é real. Não é fraqueza nem invenção. É uma doença chamada fibromialgia, com mecanismos conhecidos.&#x27; Educar em neurociência da dor: &#x27;seu sistema de dor está mais sensível — não porque seu corpo está danificado, mas porque o sinal está amplificado.&#x27; Trabalhar com metáforas: termostato de dor desregulado; alarme de carro hipersensível. Empoderar com autocuidado: exercício é remédio. Trazer família para entender. Combater catastrofização e isolamento.</p>
+<h2>Prognóstico</h2><p>Crônica e flutuante. Não &#x27;cura&#x27;, mas estabiliza com manejo adequado — paciente pode ter períodos de dor leve e função preservada. Predisposição familiar/genética. Bem-controlada permite vida laboral e social significativa; mal-controlada gera incapacidade laboral importante.</p>
+<h2>Acompanhamento</h2><p>Mensal nos primeiros 3 meses (titulação medicamentosa, estabelecer aliança terapêutica), trimestral em estável. Avaliar: dor (0-10), sono, fadiga, humor, função (PHQ-9, GAD-7 se suspeita comorbidade psiquiátrica), adesão ao exercício. Não escalar fármacos sem otimizar não-farmacológico.</p>
+<div class="cite"><strong>Diretrizes fonte:</strong> [SBR — Diretriz Brasileira de Fibromialgia 2022] [EULAR 2016 revised recommendations for the management of fibromyalgia] [ACR 2016 Diagnostic Criteria for Fibromyalgia] [TMFC 2ª ed, cap. 159] [DUNCAN 5ª ed, cap. 81]</div>
+<a class="sibling" href="https://felipertoledo.github.io/Whitepobre2/">
+<span class="ic">⚕</span>
+<span class="body">
+<span class="k">Atende criança ou adolescente?</span>
+<span class="t">WhitePobre · Pediatria de Bolso</span>
+</span>
+<span class="arr">→</span>
+</a>
+<div class="related">
+<h3>Outras condições em Osteomuscular</h3>
+<ul>
+<li><a href="/p/fratura-exposta.html">Fratura Exposta</a></li>
+<li><a href="/p/gota.html">Gota / Artrite Gotosa</a></li>
+<li><a href="/p/lombalgia.html">Lombalgia Mecânica / Torcicolo</a></li>
+<li><a href="/p/tendinopatias-aps.html">Tendinopatias Comuns na APS — Ombro, Cotovelo, Punho, Joelho, Calcâneo</a></li>
+<li><a href="/p/bursites-aps.html">Bursites Comuns na APS — Subacromial, Trocantérica, Olecraniana, Pré-patelar, Anserina</a></li>
+<li><a href="/p/dor-cervical-mfc.html">Dor Cervical Mecânica (Cervicalgia) — Manejo MFC + Sinais de Alarme</a></li>
+<li><a href="/p/sind-miofascial.html">Síndrome Dolorosa Miofascial — Pontos-Gatilho e Manejo MFC</a></li>
+<li><a href="/p/espondiloartrite-axial.html">Espondiloartrite Axial — Reconhecimento Precoce MFC + Manejo Compartilhado</a></li>
+<li><a href="/p/les-mfc.html">Lúpus Eritematoso Sistêmico (LES) — Reconhecimento + Manejo Compartilhado MFC</a></li>
+<li><a href="/p/sjogren-mfc.html">Síndrome de Sjögren — Reconhecimento + Manejo Compartilhado MFC</a></li>
+</ul>
+</div>
+</div>
+<footer>
+  <div class="disclaimer-footer">
+    <strong>Aviso médico-legal:</strong> material educacional. Informações podem conter erros ou estar desatualizadas — sempre verifique nas diretrizes-fonte. A responsabilidade da prescrição é exclusivamente do médico assistente. O autor não se responsabiliza por decisões clínicas ou desfechos decorrentes do uso destas informações.
+  </div>
+  <p><strong>Vovôminic Doutô</strong> — Tudo o que chega à porta.</p>
+  <p>Material educacional sem fins lucrativos. Cada conduta cita a diretriz fonte. Atualização contínua.</p>
+  <p><a href="https://felipertoledo.github.io/plantao/">Página inicial</a> · <a href="https://felipertoledo.github.io/plantao/#/sobre">Sobre o projeto</a> · <a href="https://felipertoledo.github.io/Whitepobre2/">WhitePobre Pediatria (site irmão)</a></p>
+</footer>
+</body>
+</html>
