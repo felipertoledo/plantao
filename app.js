@@ -1603,44 +1603,18 @@ window.installPWA = function() {
   });
 };
 
-/* Registrar Service Worker via Blob (sem precisar de arquivo separado).
-   Cacheia tudo na 1ª visita; usa cache se offline. */
+/* Registrar Service Worker REAL (service-worker.js na raiz).
+   Pré-cacheia index + todos os JS na 1ª visita → funciona OFFLINE depois.
+   Gerado por build/build_sw.py. Registro com escopo relativo (funciona em
+   subpath /plantao/ do GitHub Pages e em local). */
 if ("serviceWorker" in navigator && location.protocol !== "file:") {
-  const swSource = `
-    const CACHE_NAME = "vovominic-er-v3";
-    self.addEventListener("install", e => {
-      e.waitUntil(caches.open(CACHE_NAME));
-      self.skipWaiting();
+  window.addEventListener("load", () => {
+    // Escopo relativo ao diretório do app (resolve subpath do GitHub Pages)
+    const swUrl = new URL("service-worker.js", document.baseURI).href;
+    navigator.serviceWorker.register(swUrl).catch(() => {
+      /* silencioso — se falhar, app segue online normalmente */
     });
-    self.addEventListener("activate", e => {
-      e.waitUntil(
-        caches.keys().then(keys => Promise.all(
-          keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-        )).then(() => self.clients.claim())
-      );
-    });
-    self.addEventListener("fetch", e => {
-      if (e.request.method !== "GET") return;
-      e.respondWith(
-        caches.open(CACHE_NAME).then(cache =>
-          cache.match(e.request).then(cached => {
-            const fetchPromise = fetch(e.request).then(resp => {
-              if (resp.ok && resp.type !== "opaque") cache.put(e.request, resp.clone());
-              return resp;
-            }).catch(() => cached);
-            return cached || fetchPromise;
-          })
-        )
-      );
-    });
-  `;
-  try {
-    const blob = new Blob([swSource], { type: "application/javascript" });
-    const url = URL.createObjectURL(blob);
-    navigator.serviceWorker.register(url).catch(() => { /* silencioso — fallback é HTML standalone */ });
-  } catch (e) {
-    // ignore
-  }
+  });
 }
 
 /* ============== INICIALIZAÇÃO ============== */

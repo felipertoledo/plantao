@@ -1,0 +1,74 @@
+# ============================================================
+# Build automático — Vovôminic Doutô
+# A cada push, regenera as páginas SEO (/p /c /f /m /sis),
+# o sitemap.xml e o service-worker.js a partir dos arquivos-fonte.
+# Você continua editando pat-*.js / meds-*.js / index.html
+# normalmente; o resto é gerado sozinho.
+# ============================================================
+name: Build SEO + Service Worker
+
+on:
+  push:
+    branches: [ main ]
+    # Não dispara quando o próprio bot commita os arquivos gerados
+    paths-ignore:
+      - 'p/**'
+      - 'c/**'
+      - 'f/**'
+      - 'm/**'
+      - 'sis/**'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'service-worker.js'
+      - 'tools/snapshot.json'
+  workflow_dispatch:   # permite rodar manualmente pela aba Actions
+
+permissions:
+  contents: write      # necessário para commitar os arquivos gerados
+
+concurrency:
+  group: build-seo
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Gerar snapshot dos dados
+        run: node tools/make_snapshot.js
+
+      - name: Gerar páginas SEO + sitemap
+        env:
+          SITE_DIR: ${{ github.workspace }}
+          SNAPSHOT: ${{ github.workspace }}/tools/snapshot.json
+        run: python3 tools/generator.py
+
+      - name: Gerar service worker
+        env:
+          SITE_DIR: ${{ github.workspace }}
+        run: python3 tools/build_sw.py
+
+      - name: Commitar arquivos gerados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add p c f m sis sitemap.xml robots.txt service-worker.js tools/snapshot.json
+          if git diff --staged --quiet; then
+            echo "Nada a commitar — já está atualizado."
+          else
+            git commit -m "build: regenerar SEO + service worker [skip ci]"
+            git push
+          fi
