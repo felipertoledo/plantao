@@ -47,6 +47,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Registrar arquivos de dados no index.html (auto)
+        env:
+          SITE_DIR: ${{ github.workspace }}
+        run: python3 tools/sync_index.py
+
       - name: Gerar snapshot dos dados
         run: node tools/make_snapshot.js
 
@@ -65,7 +70,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add p c f m sis sitemap.xml robots.txt service-worker.js tools/snapshot.json
+          git add index.html p c f m sis sitemap.xml robots.txt service-worker.js tools/snapshot.json
           if git diff --staged --quiet; then
             echo "Nada a commitar — já está atualizado."
           else
