@@ -1,7 +1,7 @@
 /* ============================================================
    SERVICE WORKER — Vovôminic Doutô
    Gerado por build/build_sw.py — NÃO editar à mão.
-   Versão (hash de conteúdo): bfab32accc0d
+   Versão (hash de conteúdo): 920198c9b090
    Estratégia:
      - Pré-cache de index.html + 92 JS na instalação → offline total.
      - Navegação (SPA): cache-first com fallback ao index.
@@ -9,7 +9,7 @@
      - CDN (jsPDF): cache-first com tentativa de rede.
    ============================================================ */
 
-const CACHE = "vovominic-v-bfab32accc0d";
+const CACHE = "vovominic-v-920198c9b090";
 
 const PRECACHE = [
   "./",
@@ -27,7 +27,6 @@ const PRECACHE = [
   "pat-trauma.js",
   "pat-obst-gest.js",
   "pat-psiq.js",
-  "pat-psiq-exame.js",
   "pat-ost-derm-oft.js",
   "pat-pali.js",
   "pat-emerg-anaf.js",
@@ -67,9 +66,6 @@ const PRECACHE = [
   "meds-atb.js",
   "meds-neuro.js",
   "meds-psiq.js",
-  "meds-psiq-amp.js",
-  "meds-psiq-extra.js",
-  "meds-psiq-extra2.js",
   "meds-resp.js",
   "meds-alergia.js",
   "meds-endo.js",
@@ -102,6 +98,10 @@ const PRECACHE = [
   "ui-ciap.js",
   "ui-figs-apply.js",
   "ui-contexto.js",
+  "meds-psiq-amp.js",
+  "meds-psiq-extra.js",
+  "meds-psiq-extra2.js",
+  "pat-psiq-exame.js",
   "app.js",
   "ui-extensions.js",
   "pdf-generator.js",
