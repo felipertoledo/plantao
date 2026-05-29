@@ -1,33 +1,30 @@
 #!/usr/bin/env python3
 """
-build_bundle.py  -  Concatena os arquivos de DADOS do site (pat-*.js, meds-*.js,
+build_bundle.py  -  Concatena os arquivos de DADOS (pat-*.js, meds-*.js,
 calcs*.js, flows*.js) num unico bundle-data.js e reescreve o index.html para
-carregar 1 arquivo no lugar de dezenas. Reduz o numero de requisicoes HTTP
-(91 -> ~3-5) SEM mexer nos arquivos-fonte, que voce continua editando normal.
+carregar 1 arquivo no lugar de dezenas. Reduz requisicoes HTTP sem mexer nos
+arquivos-fonte (que voce continua editando).
 
-Caracteristicas de seguranca:
-  - GLOB no disco (fonte da verdade) -> idempotente, pode rodar a cada push.
-  - Prelude de inicializacao dos arrays globais (PATOLOGIAS/MEDICACOES/CALCS/
-    FLOWS) -> protege a ordem de carga independente de onde eram inicializados.
-  - NUNCA apaga arquivo-fonte. Apenas (re)gera bundle-data.js e ajusta o index.
-  - Insere o bundle ANTES da tag do app.js (o renderizador), garantindo que os
-    dados existam quando o app roda. Ambos sao 'defer' -> ordem do documento.
-  - Idempotente: rodar varias vezes deixa o index sempre com 1 tag de bundle.
+POSICAO CRITICA: o bundle e inserido LOGO APOS o init.js (que declara os arrays
+PATOLOGIAS/MEDICACOES/CALCS e o objeto FLOWS) e ANTES de qualquer consumidor
+(indexes.js faz FLOWS_LIST = Object.keys(FLOWS) no load; precisa rodar DEPOIS
+dos dados). Inserir antes do app.js quebrava os fluxogramas.
+
+Seguranca: GLOB no disco (idempotente), nunca apaga fonte, remove tags de dados
+E qualquer tag de bundle antiga (reposiciona corretamente a cada execucao).
 """
-import re, sys, pathlib, glob, os
+import re, sys, pathlib, os
 
 ROOT = pathlib.Path(os.environ.get("SITE_DIR")
                     or pathlib.Path(__file__).resolve().parent.parent)  # raiz do repo
 INDEX = ROOT / "index.html"
 BUNDLE_NAME = "bundle-data.js"
-APP_JS = "app.js"   # renderizador/roteador; o bundle entra logo ANTES dele
+INIT_JS = "init.js"   # declara os arrays/objeto; o bundle entra logo DEPOIS dele
+APP_JS = "app.js"     # fallback
 
-# Padroes dos arquivos que empurram para os arrays globais (.push)
 DATA_GLOBS = ["pat-*.js", "meds-*.js", "calcs*.js", "flows*.js",
-              "data*.js", "conversores*.js"]   # data*/conversores: heranca emergencia
-
-# arrays globais que os arquivos de dados populam
-GLOBALS = ["PATOLOGIAS", "MEDICACOES", "CALCS", "FLOWS"]
+              "data*.js", "conversores*.js"]
+GLOBALS = ["PATOLOGIAS", "MEDICACOES", "CALCS"]   # arrays (FLOWS e objeto -> nao pre-init aqui)
 
 SCRIPT_RE = re.compile(
     r'[ \t]*<script\b[^>]*\bsrc=["\']([^"\']+)["\'][^>]*>\s*</script>\s*\n?',
@@ -43,15 +40,12 @@ def is_data_src(src):
     return any(pathlib.PurePath(b).match(g) for g in DATA_GLOBS)
 
 def collect_data_files():
-    files = []
-    seen = set()
+    files, seen = [], set()
     for g in DATA_GLOBS:
         for fp in sorted(ROOT.glob(g)):
-            name = fp.name
-            if name == BUNDLE_NAME or name in seen:
+            if fp.name == BUNDLE_NAME or fp.name in seen:
                 continue
-            seen.add(name)
-            files.append(fp)
+            seen.add(fp.name); files.append(fp)
     return files
 
 def main():
@@ -60,64 +54,58 @@ def main():
 
     data_files = collect_data_files()
     if not data_files:
-        print("i Nenhum arquivo de dados (pat-/meds-/calcs/flows) no disco. Nada a fazer.")
-        return
+        print("i Nenhum arquivo de dados no disco. Nada a fazer."); return
 
-    # 1) Montar o bundle: prelude de init + cada arquivo, em ordem deterministica
+    # 1) Gerar bundle: prelude (so arrays; FLOWS e objeto, init.js cuida) + arquivos
     prelude = ("/* " + BUNDLE_NAME + " - GERADO por tools/build_bundle.py. NAO editar a mao.\n"
                "   Edite os arquivos-fonte (pat-*.js, meds-*.js, ...) e rode o build. */\n"
                "(function(){\n"
                + "".join(f"  window.{g} = window.{g} || [];\n" for g in GLOBALS)
+               + "  window.FLOWS = window.FLOWS || {};\n"
                + "})();\n")
     chunks = [prelude]
     for fp in data_files:
         chunks.append(f"\n/* ===== {fp.name} ===== */\n")
-        chunks.append(fp.read_text(encoding="utf-8"))
-        if not chunks[-1].endswith("\n"):
-            chunks.append("\n")
+        t = fp.read_text(encoding="utf-8")
+        chunks.append(t if t.endswith("\n") else t + "\n")
     (ROOT / BUNDLE_NAME).write_text("".join(chunks), encoding="utf-8")
     kb = (ROOT / BUNDLE_NAME).stat().st_size // 1024
-    print(f"OK  {BUNDLE_NAME} gerado: {len(data_files)} arquivos concatenados ({kb} KB)")
+    print(f"OK  {BUNDLE_NAME}: {len(data_files)} arquivos concatenados ({kb} KB)")
 
-    # 2) Reescrever index.html
+    # 2) Reescrever index: remover TODAS as tags de dados E a tag de bundle antiga
     html = INDEX.read_text(encoding="utf-8")
     tags = list(SCRIPT_RE.finditer(html))
-    data_tags = [m for m in tags if is_data_src(m.group(1))]
-    has_bundle = any(base_of(m.group(1)) == BUNDLE_NAME for m in tags)
-
-    n_removed = len(data_tags)
-    # remover todas as tags de dados individuais
-    if data_tags:
+    to_remove = [m for m in tags if is_data_src(m.group(1)) or base_of(m.group(1)) == BUNDLE_NAME]
+    n_data = sum(1 for m in tags if is_data_src(m.group(1)))
+    if to_remove:
         out, cursor = [], 0
-        for m in data_tags:
-            out.append(html[cursor:m.start()])
-            cursor = m.end()
+        for m in to_remove:
+            out.append(html[cursor:m.start()]); cursor = m.end()
         out.append(html[cursor:])
         html = "".join(out)
 
-    # garantir 1 tag de bundle, ANTES do app.js (ou antes de </body> como fallback)
-    if not has_bundle:
-        bundle_tag = f'  <script src="{BUNDLE_NAME}" defer></script>\n'
-        app_re = re.compile(r'[ \t]*<script\b[^>]*\bsrc=["\'][^"\']*'
-                            + re.escape(APP_JS) + r'["\'][^>]*>\s*</script>', re.IGNORECASE)
+    bundle_tag = f'  <script src="{BUNDLE_NAME}" defer></script>\n'
+
+    # 3) Inserir o bundle LOGO APOS o init.js (antes de indexes.js e demais consumidores)
+    init_re = re.compile(r'[ \t]*<script\b[^>]*\bsrc=["\'][^"\']*' + re.escape(INIT_JS)
+                         + r'["\'][^>]*>\s*</script>[ \t]*\n?', re.IGNORECASE)
+    m_init = init_re.search(html)
+    if m_init:
+        html = html[:m_init.end()] + bundle_tag + html[m_init.end():]
+        anchor = f"apos {INIT_JS}"
+    else:
+        app_re = re.compile(r'[ \t]*<script\b[^>]*\bsrc=["\'][^"\']*' + re.escape(APP_JS)
+                            + r'["\'][^>]*>\s*</script>', re.IGNORECASE)
         m_app = app_re.search(html)
         if m_app:
-            html = html[:m_app.start()] + bundle_tag + html[m_app.start():]
-            anchor = f"antes de {APP_JS}"
+            html = html[:m_app.start()] + bundle_tag + html[m_app.start():]; anchor = f"antes de {APP_JS} (init.js nao achado)"
         else:
-            idx = html.lower().rfind("</body>")
-            if idx == -1:
-                idx = len(html)
-            html = html[:idx] + bundle_tag + html[idx:]
-            anchor = "antes de </body> (app.js nao localizado)"
-        print(f"OK  tag <script {BUNDLE_NAME}> inserida ({anchor})")
-    else:
-        print(f"i  tag de bundle ja existia no index (mantida)")
+            idx = html.lower().rfind("</body>"); idx = idx if idx != -1 else len(html)
+            html = html[:idx] + bundle_tag + html[idx:]; anchor = "antes de </body>"
 
     INDEX.write_text(html, encoding="utf-8")
-    total_after = len([m for m in SCRIPT_RE.finditer(html)])
-    print(f"OK  index.html: removidas {n_removed} tags de dados -> 1 bundle")
-    print(f"    requisicoes de dados: {n_removed if n_removed else '(ja bundlado)'} -> 1")
+    print(f"OK  tag de bundle posicionada: {anchor}")
+    print(f"OK  index: removidas {n_data} tags de dados (+ bundle antigo se havia) -> 1 bundle")
 
 if __name__ == "__main__":
     main()
