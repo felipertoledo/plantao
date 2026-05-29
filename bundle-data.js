@@ -4,7 +4,7 @@
   window.PATOLOGIAS = window.PATOLOGIAS || [];
   window.MEDICACOES = window.MEDICACOES || [];
   window.CALCS = window.CALCS || [];
-  window.FLOWS = window.FLOWS || [];
+  window.FLOWS = window.FLOWS || {};
 })();
 
 /* ===== pat-cardio-mfc.js ===== */
