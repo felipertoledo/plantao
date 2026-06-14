@@ -1,7 +1,7 @@
 /* ============================================================
    SERVICE WORKER — Vovôminic Doutô
    Gerado por build/build_sw.py — NÃO editar à mão.
-   Versão (hash de conteúdo): 25f3e7553d03
+   Versão (hash de conteúdo): 98fedc443c85
    Estratégia:
      - Pré-cache de index.html + 13 JS na instalação → offline total.
      - Navegação (SPA): cache-first com fallback ao index.
@@ -9,7 +9,7 @@
      - CDN (jsPDF): cache-first com tentativa de rede.
    ============================================================ */
 
-const CACHE = "vovominic-v-25f3e7553d03";
+const CACHE = "vovominic-v-98fedc443c85";
 
 const PRECACHE = [
   "./",
